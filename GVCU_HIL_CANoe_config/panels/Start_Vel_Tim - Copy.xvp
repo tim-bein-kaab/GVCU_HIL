@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=19.5.44.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Panel" ControlName="Start_Vel_Tim">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xec775b5de3d28e4029e8d6fe79dc0da91dd8" ControlName="Static Text 8">
+      <Property Name="Name">Xec775b5de3d28e4029e8d6fe79dc0da91dd8</Property>
+      <Property Name="Size">25, 15</Property>
+      <Property Name="Location">249, 31</Property>
+      <Property Name="Text">0 V</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X5dff997bee38ae4a7febe80ee67c2cdf2c6a" ControlName="Static Text 7">
+      <Property Name="Name">X5dff997bee38ae4a7febe80ee67c2cdf2c6a</Property>
+      <Property Name="Size">31, 15</Property>
+      <Property Name="Location">249, 99</Property>
+      <Property Name="Text">12 V</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X34c73d46e43dbe47ece9ca9e9cb432377f36" ControlName="Static Text 6">
+      <Property Name="Name">X34c73d46e43dbe47ece9ca9e9cb432377f36</Property>
+      <Property Name="Size">109, 15</Property>
+      <Property Name="Location">159, 5</Property>
+      <Property Name="Text">Power supply GVCU</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xdf15f0abef5d8e4f26eafbae5b3d2bb12e18" ControlName="Switch / Indicator 2">
+      <Property Name="Name">Xdf15f0abef5d8e4f26eafbae5b3d2bb12e18</Property>
+      <Property Name="Size">83, 108</Property>
+      <Property Name="Location">160, 19</Property>
+      <Property Name="SymbolConfiguration">8;16;VTS::VT7101_1_Out2;;;Active;1;;;-1;;;Value;;;0</Property>
+      <Property Name="TabIndex">3</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="Epsilon">0</Property>
+      <Property Name="Increment">1</Property>
+      <Property Name="StartValue">0</Property>
+      <Property Name="SwitchValuesVTXml">&lt;Version&gt;2&lt;/Version&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;RxValue&gt;0&lt;/RxValue&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;TxValue&gt;0&lt;/TxValue&gt;&lt;RxValue&gt;1&lt;/RxValue&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;TxValue&gt;1&lt;/TxValue&gt;</Property>
+      <Property Name="SwitchValuesVT">1;2;0/Lower/0;1/Lower/1</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="SwitchValuesRx">1;2;0;1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X444f2f2de7096e4b7de904de666ba7efc769" ControlName="Static Text 4">
+      <Property Name="Name">X444f2f2de7096e4b7de904de666ba7efc769</Property>
+      <Property Name="Size">23, 15</Property>
+      <Property Name="Location">115, 31</Property>
+      <Property Name="Text">Off</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X7e0d57b4ed9d3e4685e8478e0386b1f3d1ab" ControlName="Static Text 3">
+      <Property Name="Name">X7e0d57b4ed9d3e4685e8478e0386b1f3d1ab</Property>
+      <Property Name="Size">23, 15</Property>
+      <Property Name="Location">115, 99</Property>
+      <Property Name="Text">On</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X7ccf1332eee58e4eb5e9dcfefbc57361ab33" ControlName="Static Text 2">
+      <Property Name="Name">X7ccf1332eee58e4eb5e9dcfefbc57361ab33</Property>
+      <Property Name="Size">84, 15</Property>
+      <Property Name="Location">25, 5</Property>
+      <Property Name="Text">Start simulation</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X556be076ee50ae4b6beb8cbeea57cad618d1" ControlName="Static Text 1">
+      <Property Name="Name">X556be076ee50ae4b6beb8cbeea57cad618d1</Property>
+      <Property Name="Size">42, 15</Property>
+      <Property Name="Location">25, 139</Property>
+      <Property Name="Text">RefVel</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.NumericUpDownControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X35b5ebd7e9153e46cae9fdeec7cc83b422c4" ControlName="Numeric Up/Down 1">
+      <Property Name="Name">X35b5ebd7e9153e46cae9fdeec7cc83b422c4</Property>
+      <Property Name="Size">84, 18</Property>
+      <Property Name="Location">26, 160</Property>
+      <Property Name="Maximum">310</Property>
+      <Property Name="TabIndex">2</Property>
+      <Property Name="SymbolConfiguration">8;16;Checker_Simulink;;;RefVel;2;;;-1;;;Value;;;0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X34fcfbe2e2ad2e4ee0ea783e0c65bc0755a6" ControlName="Switch / Indicator 1">
+      <Property Name="Name">X34fcfbe2e2ad2e4ee0ea783e0c65bc0755a6</Property>
+      <Property Name="Size">83, 108</Property>
+      <Property Name="Location">26, 19</Property>
+      <Property Name="SymbolConfiguration">8;16;Checker_Simulink;;;start_seq_simu;1;;;-1;;;Value;;;0</Property>
+      <Property Name="TabIndex">1</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="Epsilon">0</Property>
+      <Property Name="Increment">1</Property>
+      <Property Name="StartValue">0</Property>
+      <Property Name="SwitchValuesVTXml">&lt;Version&gt;2&lt;/Version&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;RxValue&gt;0&lt;/RxValue&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;TxValue&gt;0&lt;/TxValue&gt;&lt;RxValue&gt;1&lt;/RxValue&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;TxValue&gt;1&lt;/TxValue&gt;</Property>
+      <Property Name="SwitchValuesVT">1;2;0/Lower/0;1/Lower/1</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="SwitchValuesRx">1;2;0;1</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">311, 199</Property>
+    <Property Name="Location">0, 0</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

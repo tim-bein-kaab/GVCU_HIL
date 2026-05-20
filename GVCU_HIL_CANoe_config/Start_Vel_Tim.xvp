@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=19.5.44.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Panel" ControlName="Start_Vel_Tim">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X26ef6485ef62ee4219eb6c1ecc74125a6ed0" ControlName="Static Text 9">
+      <Property Name="Name">X26ef6485ef62ee4219eb6c1ecc74125a6ed0</Property>
+      <Property Name="Size">203, 15</Property>
+      <Property Name="Location">85, 334</Property>
+      <Property Name="Text">Real acc pedal input from measurement</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X5af5becfea962e4634ea91be17216d2bf7bf" ControlName="Static Text 10">
+      <Property Name="Name">X5af5becfea962e4634ea91be17216d2bf7bf</Property>
+      <Property Name="Size">186, 15</Property>
+      <Property Name="Location">85, 288</Property>
+      <Property Name="Text">Real speed input from measurement</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X336d72c9e4123e4c90e8a05ebbea81f35c65" ControlName="Track Bar 1">
+      <Property Name="Name">X336d72c9e4123e4c90e8a05ebbea81f35c65</Property>
+      <Property Name="Size">30, 106</Property>
+      <Property Name="Location">25, 243</Property>
+      <Property Name="Orientation">Vertical</Property>
+      <Property Name="TabIndex">11</Property>
+      <Property Name="MaximumDouble">2</Property>
+      <Property Name="LargeChangeDouble">2</Property>
+      <Property Name="MaximumSize">30, 100000</Property>
+      <Property Name="Maximum">2</Property>
+      <Property Name="LargeChange">2</Property>
+      <Property Name="SymbolConfiguration">8;16;Checker_Simulink;;;input_mode;1;;;-1;;;Value;;;0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xafeb56e7edbabe4edee9e76e45c0b05f248f" ControlName="Static Text 4">
+      <Property Name="Name">Xafeb56e7edbabe4edee9e76e45c0b05f248f</Property>
+      <Property Name="Size">118, 15</Property>
+      <Property Name="Location">328, 222</Property>
+      <Property Name="Text">Vehicle Speed in km/h</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.LCDControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X16ca7f96e8973e40bfe8277eb1019404b31b" ControlName="LCD Control 1">
+      <Property Name="Name">X16ca7f96e8973e40bfe8277eb1019404b31b</Property>
+      <Property Name="Size">164, 50</Property>
+      <Property Name="Location">332, 243</Property>
+      <Property Name="BackColor">255, 238, 236, 225</Property>
+      <Property Name="ColorOn">Black</Property>
+      <Property Name="DecimalPlaces">2</Property>
+      <Property Name="NumberIntDigits">3</Property>
+      <Property Name="SymbolConfiguration">8;16;Checker_Simulink;;;ModelVel;2;;;-1;;;Value;;;0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xf9059dc9e7e19e48a1ea827ed59a5d5cc0ae" ControlName="Static Text 3">
+      <Property Name="Name">Xf9059dc9e7e19e48a1ea827ed59a5d5cc0ae</Property>
+      <Property Name="Size">82, 27</Property>
+      <Property Name="Location">131, 147</Property>
+      <Property Name="ForeColor">255, 247, 150, 70</Property>
+      <Property Name="Text">go into Drive to
+output torque</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xe5f45455ee5eee41a8eb3bfe7f35a40784b5" ControlName="Static Text 2">
+      <Property Name="Name">Xe5f45455ee5eee41a8eb3bfe7f35a40784b5</Property>
+      <Property Name="Size">77, 15</Property>
+      <Property Name="Location">222, 267</Property>
+      <Property Name="ForeColor">255, 247, 150, 70</Property>
+      <Property Name="Text">max 310 km/h</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xc2dcf226ea7b9e4525ebfabea791bada108a" ControlName="Button 2">
+      <Property Name="Name">Xc2dcf226ea7b9e4525ebfabea791bada108a</Property>
+      <Property Name="Size">100, 36</Property>
+      <Property Name="Location">25, 147</Property>
+      <Property Name="TabIndex">10</Property>
+      <Property Name="Text">Park -&gt; Drive</Property>
+      <Property Name="SymbolConfiguration">8;16;drive_mode_requests;;;trans_park_drive;1;;;-1;;;Value;;;0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X5aa04f1aed523e4809e93cae85918342a52c" ControlName="Button 1">
+      <Property Name="Name">X5aa04f1aed523e4809e93cae85918342a52c</Property>
+      <Property Name="Size">100, 36</Property>
+      <Property Name="Location">25, 85</Property>
+      <Property Name="TabIndex">9</Property>
+      <Property Name="Text">Neutral -&gt; Drive</Property>
+      <Property Name="SymbolConfiguration">8;16;drive_mode_requests;;;trans_neutral_drive;1;;;-1;;;Value;;;0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X267271aee8ec7e46c6e8a1ce97c9cdc9cfa7" ControlName="Start transition">
+      <Property Name="Name">X267271aee8ec7e46c6e8a1ce97c9cdc9cfa7</Property>
+      <Property Name="Size">100, 36</Property>
+      <Property Name="Location">25, 26</Property>
+      <Property Name="TabIndex">8</Property>
+      <Property Name="Text">Park -&gt; Neutral</Property>
+      <Property Name="SymbolConfiguration">8;16;drive_mode_requests;;;trans_park_neutral;1;;;-1;;;Value;;;0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xecd374e6e525de4e7ce9531eddbef3095548" ControlName="Input/Output Box 1">
+      <Property Name="Name">Xecd374e6e525de4e7ce9531eddbef3095548</Property>
+      <Property Name="Size">286, 21</Property>
+      <Property Name="Location">158, 26</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="AlarmLowerTextColor">Black</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmUpperTextColor">Black</Property>
+      <Property Name="BoxBorderStyle">FixedSingle</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="TabIndex">7</Property>
+      <Property Name="DescriptionText">drive mode (GVCU output):</Property>
+      <Property Name="ValueDisplay">Symbolic</Property>
+      <Property Name="UsedValueTable">RawValue</Property>
+      <Property Name="DescriptionSize">138, 21</Property>
+      <Property Name="SymbolConfiguration">8;2;main_bus;GVCU;gvcu_veh_state_2;drv_mod;1;Main_bus;;-1;;;Value;;;0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xc5e149a8e6304e4495eba8be96d60b2c0daa" ControlName="Static Text 5">
+      <Property Name="Name">Xc5e149a8e6304e4495eba8be96d60b2c0daa</Property>
+      <Property Name="Size">122, 15</Property>
+      <Property Name="Location">12, 5</Property>
+      <Property Name="Text">Drive Mode Transitions</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xec775b5de3d28e4029e8d6fe79dc0da91dd8" ControlName="Static Text 8">
+      <Property Name="Name">Xec775b5de3d28e4029e8d6fe79dc0da91dd8</Property>
+      <Property Name="Size">25, 15</Property>
+      <Property Name="Location">404, 102</Property>
+      <Property Name="Text">0 V</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X5dff997bee38ae4a7febe80ee67c2cdf2c6a" ControlName="Static Text 7">
+      <Property Name="Name">X5dff997bee38ae4a7febe80ee67c2cdf2c6a</Property>
+      <Property Name="Size">31, 15</Property>
+      <Property Name="Location">406, 177</Property>
+      <Property Name="Text">12 V</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X34c73d46e43dbe47ece9ca9e9cb432377f36" ControlName="Static Text 6">
+      <Property Name="Name">X34c73d46e43dbe47ece9ca9e9cb432377f36</Property>
+      <Property Name="Size">109, 15</Property>
+      <Property Name="Location">314, 71</Property>
+      <Property Name="Text">Power supply GVCU</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xdf15f0abef5d8e4f26eafbae5b3d2bb12e18" ControlName="Switch / Indicator 2">
+      <Property Name="Name">Xdf15f0abef5d8e4f26eafbae5b3d2bb12e18</Property>
+      <Property Name="Size">83, 108</Property>
+      <Property Name="Location">315, 92</Property>
+      <Property Name="SymbolConfiguration">8;16;VTS::VT7101_1_Out2;;;Active;1;;;-1;;;Value;;;0</Property>
+      <Property Name="TabIndex">3</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="Epsilon">0</Property>
+      <Property Name="Increment">1</Property>
+      <Property Name="StartValue">0</Property>
+      <Property Name="SwitchValuesVTXml">&lt;Version&gt;2&lt;/Version&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;RxValue&gt;0&lt;/RxValue&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;TxValue&gt;0&lt;/TxValue&gt;&lt;RxValue&gt;1&lt;/RxValue&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;TxValue&gt;1&lt;/TxValue&gt;</Property>
+      <Property Name="SwitchValuesVT">1;2;0/Lower/0;1/Lower/1</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="SwitchValuesRx">1;2;0;1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X556be076ee50ae4b6beb8cbeea57cad618d1" ControlName="Static Text 1">
+      <Property Name="Name">X556be076ee50ae4b6beb8cbeea57cad618d1</Property>
+      <Property Name="Size">137, 15</Property>
+      <Property Name="Location">85, 243</Property>
+      <Property Name="Text">Static velocity goal (km/h):</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.NumericUpDownControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X35b5ebd7e9153e46cae9fdeec7cc83b422c4" ControlName="Numeric Up/Down 1">
+      <Property Name="Name">X35b5ebd7e9153e46cae9fdeec7cc83b422c4</Property>
+      <Property Name="Size">66, 18</Property>
+      <Property Name="Location">228, 243</Property>
+      <Property Name="Maximum">310</Property>
+      <Property Name="TabIndex">2</Property>
+      <Property Name="SymbolConfiguration">8;16;Checker_Simulink;;;RefVel;2;;;-1;;;Value;;;0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">533, 366</Property>
+    <Property Name="Location">0, 0</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>
