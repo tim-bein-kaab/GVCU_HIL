@@ -1,0 +1,673 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: DDC EPSA EPSB GVCU LOGGER
+
+
+BO_ 485 pwr_steer_sts: 4 EPSA
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ ag_failr_sts : 12|2@1+ (1,0) [0|2] "enum"  LOGGER
+ SG_ failr_sts : 14|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ haptic_feedback_sens_sts : 16|3@1+ (1,0) [0|4] "enum"  LOGGER
+ SG_ calibration_sts : 19|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ hands_off_steer_sts : 21|2@1+ (1,0) [0|3] "enum"  LOGGER
+ SG_ eps_perf_mod_fb : 24|2@1+ (1,0) [0|3] "enum"  GVCU
+
+BO_ 486 pwr_steer_val: 8 EPSA
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ steer_whl_snsr_v : 12|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ steer_tq : 16|16@1+ (0.1,-25) [-25|25] "Nm"  LOGGER
+ SG_ steer_whl_ag : 32|16@1+ (0.1,-780) [-780|780] "deg"  GVCU
+ SG_ steer_whl_rot_spd : 48|16@1+ (0.1,-1016) [-1016|1016] "deg/s"  GVCU
+
+BO_ 488 vehicle_speed_ds1: 4 GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  DDC,EPSA
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  DDC,EPSA
+ SG_ vehicle_speed_v : 12|1@1+ (1,0) [0|1] "enum"  DDC,EPSA
+ SG_ vehicle_speed : 16|16@1+ (0.01,0) [0|655] "km/h"  DDC,EPSA
+
+BO_ 490 vehicle_status_ds1: 7 GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  DDC,EPSA
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  DDC,EPSA
+ SG_ accelerator_pedal_position_v : 12|1@1+ (1,0) [0|1] "enum"  DDC
+ SG_ accelerator_pedal_state : 13|2@1+ (1,0) [0|2] "enum"  DDC
+ SG_ brk_pressure_v : 15|1@1+ (1,0) [0|1] "enum"  DDC
+ SG_ accelerator_pedal_position : 16|10@1+ (0.1,0) [0|100] "%"  DDC
+ SG_ eps_perf_mod_req : 26|3@1+ (1,0) [0|3] "enum"  EPSA
+ SG_ drv_mod : 29|3@1+ (1,0) [0|4] "enum"  EPSA
+ SG_ brk_pressure : 32|8@1+ (1,0) [0|255] "bar"  DDC
+ SG_ haptic_feedback_sens_req : 40|3@1+ (1,0) [0|4] "enum"  EPSA
+ SG_ launch_control_active : 43|2@1+ (1,0) [0|2] "enum"  DDC
+ SG_ ddc_perf_mod_req : 45|4@1+ (1,0) [0|6] "enum"  DDC
+
+BO_ 491 pwr_steer_ds1: 6 GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  DDC
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  DDC
+ SG_ steer_whl_snsr_v : 12|1@1+ (1,0) [0|1] "enum"  DDC
+ SG_ steer_whl_ag : 16|16@1+ (0.1,-780) [-780|780] "deg"  DDC
+ SG_ steer_whl_rot_spd : 32|16@1+ (0.1,-1016) [-1016|1016] "deg/s"  DDC
+
+BO_ 493 stability_info_ds1: 8 GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  DDC
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  DDC
+ SG_ lat_accel_v : 12|1@1+ (1,0) [0|1] "enum"  DDC
+ SG_ long_accel_v : 13|1@1+ (1,0) [0|1] "enum"  DDC
+ SG_ long_accel : 16|16@1+ (0.002,-65.532) [-65.532|65.532] "m/s2"  DDC
+ SG_ lat_accel : 32|16@1+ (0.002,-65.532) [-65.532|65.532] "m/s2"  DDC
+
+BO_ 496 suspension_stat: 7 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ ddc_perf_mod_fb : 12|4@1+ (1,0) [0|6] "enum"  GVCU
+ SG_ susp_snsr_supply_whl_err : 16|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_voltage_err : 18|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_err_can_rx : 20|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_err_active_sts : 22|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_snsr_supply_chassis_err : 24|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_snsr_chassis_err_fl : 26|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_snsr_chassis_err_fr : 28|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_snsr_chassis_err_r : 30|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_vlv_err_flc : 32|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_vlv_err_flr : 34|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_vlv_err_frc : 36|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_vlv_err_frr : 38|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_vlv_err_rlc : 40|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_vlv_err_rlr : 42|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_vlv_err_rrc : 44|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_vlv_err_rrr : 46|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_snsr_whl_err_fl : 48|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_snsr_whl_err_fr : 50|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_snsr_whl_err_rl : 52|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ susp_snsr_whl_err_rr : 54|2@1+ (1,0) [0|2] "enum"  GVCU
+
+BO_ 497 chassis_vel_cog: 8 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ susp_chassis_vel_heave : 16|16@1+ (0.0005,-16) [-16|16] "m/s"  LOGGER
+ SG_ susp_chassis_vel_pitch : 32|16@1+ (0.0005,-16) [-16|16] "deg/s"  GVCU
+ SG_ susp_chassis_vel_roll : 48|16@1+ (0.0005,-16) [-16|16] "deg/s"  GVCU
+
+BO_ 498 whl_accel_front: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  LOGGER
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  LOGGER
+ SG_ susp_whl_accel_fl : 16|16@1+ (0.0055,-180) [-180|180] "m/s^2"  LOGGER
+ SG_ susp_whl_accel_fr : 32|16@1+ (0.0055,-180) [-180|180] "m/s^2"  LOGGER
+
+BO_ 499 whl_accel_rear: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  LOGGER
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  LOGGER
+ SG_ susp_whl_accel_rl : 16|16@1+ (0.0055,-180) [-180|180] "m/s^2"  LOGGER
+ SG_ susp_whl_accel_rr : 32|16@1+ (0.0055,-180) [-180|180] "m/s^2"  LOGGER
+
+BO_ 500 whl_vel_front: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  LOGGER
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  LOGGER
+ SG_ susp_whl_vel_fl : 16|16@1+ (0.0005,-16) [-16|16] "m/s"  LOGGER
+ SG_ susp_whl_vel_fr : 32|16@1+ (0.0005,-16) [-16|16] "m/s"  LOGGER
+
+BO_ 501 whl_vel_rear: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  LOGGER
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  LOGGER
+ SG_ susp_whl_vel_rl : 16|16@1+ (0.0005,-16) [-16|16] "m/s"  LOGGER
+ SG_ susp_whl_vel_rr : 32|16@1+ (0.0005,-16) [-16|16] "m/s"  LOGGER
+
+BO_ 502 chassis_accel_front: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  LOGGER
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  LOGGER
+ SG_ susp_chassis_accel_fl : 16|14@1+ (0.0032,-26) [-26|26] "m/s^2"  LOGGER
+ SG_ susp_chassis_accel_fr : 32|14@1+ (0.0032,-26) [-26|26] "m/s^2"  LOGGER
+
+BO_ 503 chassis_accel_rear: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  LOGGER
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  LOGGER
+ SG_ susp_chassis_accel_rl : 16|14@1+ (0.0032,-26) [-26|26] "m/s^2"  LOGGER
+ SG_ susp_chassis_accel_rr : 32|14@1+ (0.0032,-26) [-26|26] "m/s^2"  LOGGER
+
+BO_ 504 chassis_vel_front: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  LOGGER
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  LOGGER
+ SG_ susp_chassis_vel_fl : 16|16@1+ (0.0005,-16) [-16|16] "m/s"  LOGGER
+ SG_ susp_chassis_vel_fr : 32|16@1+ (0.0005,-16) [-16|16] "m/s"  LOGGER
+
+BO_ 505 chassis_vel_rear: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  LOGGER
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  LOGGER
+ SG_ susp_chassis_vel_rl : 16|16@1+ (0.0005,-16) [-16|16] "m/s"  LOGGER
+ SG_ susp_chassis_vel_rr : 32|16@1+ (0.0005,-16) [-16|16] "m/s"  LOGGER
+
+BO_ 506 damper_vel_front: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ susp_dampr_vel_fl : 16|16@1+ (0.0005,-16) [-16|16] "m/s"  GVCU
+ SG_ susp_dampr_vel_fr : 32|16@1+ (0.0005,-16) [-16|16] "m/s"  GVCU
+
+BO_ 507 damper_vel_rear: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ susp_dampr_vel_rl : 16|16@1+ (0.0005,-16) [-16|16] "m/s"  GVCU
+ SG_ susp_dampr_vel_rr : 32|16@1+ (0.0005,-16) [-16|16] "m/s"  GVCU
+
+BO_ 509 valve_curr_front: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ susp_curr_flr : 16|8@1+ (0.01,0) [0|2.54] "A"  GVCU
+ SG_ susp_curr_flc : 24|8@1+ (0.01,0) [0|2.54] "A"  GVCU
+ SG_ susp_curr_frr : 32|8@1+ (0.01,0) [0|2.54] "A"  GVCU
+ SG_ susp_curr_frc : 40|8@1+ (0.01,0) [0|2.54] "A"  GVCU
+
+BO_ 510 valve_curr_rear: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ susp_curr_rlr : 16|8@1+ (0.01,0) [0|2.54] "A"  GVCU
+ SG_ susp_curr_rlc : 24|8@1+ (0.01,0) [0|2.54] "A"  GVCU
+ SG_ susp_curr_rrr : 32|8@1+ (0.01,0) [0|2.54] "A"  GVCU
+ SG_ susp_curr_rrc : 40|8@1+ (0.01,0) [0|2.54] "A"  GVCU
+
+BO_ 526 whl_tq_act_front_ds1: 6 GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  DDC,EPSA
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  DDC,EPSA
+ SG_ whl_tq_act_fl_v : 12|1@1+ (1,0) [0|1] "enum"  DDC,EPSA
+ SG_ whl_tq_act_fr_v : 13|1@1+ (1,0) [0|1] "enum"  DDC,EPSA
+ SG_ whl_tq_act_fl : 16|16@1+ (1,-32767) [-32767|32767] "Nm"  DDC,EPSA
+ SG_ whl_tq_act_fr : 32|16@1+ (1,-32767) [-32767|32767] "Nm"  DDC,EPSA
+
+BO_ 527 whl_tq_act_rear_ds1: 6 GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  DDC,EPSA
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  DDC,EPSA
+ SG_ whl_tq_act_rl_v : 12|1@1+ (1,0) [0|1] "enum"  DDC,EPSA
+ SG_ whl_tq_act_rr_v : 13|1@1+ (1,0) [0|1] "enum"  DDC,EPSA
+ SG_ whl_tq_act_rl : 16|16@1+ (1,-32767) [-32767|32767] "Nm"  DDC,EPSA
+ SG_ whl_tq_act_rr : 32|16@1+ (1,-32767) [-32767|32767] "Nm"  DDC,EPSA
+
+BO_ 1472 sec_stat_eps: 7 EPSA
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_crc_err_cnt : 16|16@1+ (1,0) [0|65535] ""  GVCU
+ SG_ e2e_alive_cnt_err_cnt : 32|16@1+ (1,0) [0|65535] ""  GVCU
+ SG_ sa_fail_attempt_cnt : 48|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 1473 err_cnt_ddc: 6 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_crc_err_cnt : 16|16@1+ (1,0) [0|65535] ""  GVCU
+ SG_ e2e_alive_cnt_err_cnt : 32|16@1+ (1,0) [0|65535] ""  GVCU
+
+BO_ 1501 odometer_value_ds1: 6 GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  EPSA
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  EPSA
+ SG_ veh_odo_v : 12|1@1+ (1,0) [0|1] "enum"  EPSA
+ SG_ veh_odo : 16|32@1+ (0.015625,0) [0|67108863.984] "km"  EPSA
+
+BO_ 1509 nm_request_gvcu_ds1: 2 GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  DDC,EPSA
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  DDC,EPSA
+ SG_ nm_request : 12|4@1+ (1,0) [0|4] "enum"  DDC,EPSA
+
+BO_ 1511 nm_status_eps: 2 EPSA
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ nm_status : 12|4@1+ (1,0) [0|12] "enum"  GVCU
+
+BO_ 1512 nm_status_ddc: 2 DDC
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ nm_status : 12|4@1+ (1,0) [0|12] "enum"  GVCU
+
+BO_ 1517 system_time_ds1: 8 GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  DDC,EPSA
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  DDC,EPSA
+ SG_ time_year : 16|8@1+ (1,2010) [2010|2265] "years"  DDC,EPSA
+ SG_ time_month : 24|8@1+ (1,0) [1|12] "mon"  DDC,EPSA
+ SG_ time_day : 32|8@1+ (1,0) [1|31] "d"  DDC,EPSA
+ SG_ time_hour : 40|8@1+ (1,0) [0|23] "h"  DDC,EPSA
+ SG_ time_minute : 48|8@1+ (1,0) [0|59] "min"  DDC,EPSA
+ SG_ time_second : 56|8@1+ (1,0) [0|59] "s"  DDC,EPSA
+
+BO_ 1610 xcp_cmd_eps_a: 8 GVCU
+ SG_ command : 0|64@1+ (1,0) [0|0] ""  EPSA
+
+BO_ 1611 xcp_cmd_eps_b: 8 GVCU
+ SG_ command : 0|64@1+ (1,0) [0|0] ""  EPSA
+
+BO_ 1612 xcp_resp_eps_a: 8 EPSA
+ SG_ response : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 1613 xcp_resp_eps_b: 8 EPSA
+ SG_ response : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 1990 diag_req_eps_a_g2: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  EPSA
+
+BO_ 1991 diag_req_eps_b_g2: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  EPSA
+
+BO_ 1992 diag_funcreq_eps_g2: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  EPSA
+
+BO_ 1998 diag_resp_eps_a: 8 EPSA
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 1999 diag_resp_eps_b: 8 EPSA
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 2006 diag_ds1_func_req_g2: 8 GVCU
+ SG_ DiagnosticFuncAddrReq : 0|64@1+ (1,0) [0|0] ""  EPSA,EPSB
+
+
+
+
+CM_ BU_ DDC "KW damper control unit";
+CM_ BU_ EPSA "DIAS Electric Power Steering";
+CM_ BU_ GVCU "Vehicle Control Module";
+CM_ BO_ 485 "steering angle and rotation speed as well as status bits from power steering";
+CM_ SG_ 485 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 485 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 485 ag_failr_sts "failure status of internal EPS sensors";
+CM_ SG_ 485 failr_sts "failure / degration status of entire EPS";
+CM_ SG_ 485 haptic_feedback_sens_sts "status of haptic feedback function";
+CM_ SG_ 485 calibration_sts "calibration status of steering angle sensor";
+CM_ SG_ 485 hands_off_steer_sts "status of hands off detection function";
+CM_ SG_ 485 eps_perf_mod_fb "feedback of performance mode - to verfiy EPS is working in the correct mode";
+CM_ BO_ 486 "steering torque as well inhibit bits for ADAS";
+CM_ SG_ 486 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 486 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 486 steer_whl_snsr_v "valid bit for both, steering angle and steering rotation speed";
+CM_ SG_ 486 steer_tq "current steering torque";
+CM_ SG_ 486 steer_whl_ag "steering wheel angle";
+CM_ SG_ 486 steer_whl_rot_spd "steering wheel rotation speed";
+CM_ BO_ 488 "vehicle speed";
+CM_ SG_ 488 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 488 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 488 vehicle_speed_v "Vehicle speed by GVCU valid parameter";
+CM_ SG_ 488 vehicle_speed "Vehicle speed by GVCU";
+CM_ BO_ 490 "vehicle information";
+CM_ SG_ 490 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 490 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 490 accelerator_pedal_position_v "Acceleration pedal position in % valid";
+CM_ SG_ 490 accelerator_pedal_state "Status of accelerator pedal";
+CM_ SG_ 490 brk_pressure_v "Status of accelerator pedal valid signal";
+CM_ SG_ 490 accelerator_pedal_position "Acceleration pedal position in %";
+CM_ SG_ 490 eps_perf_mod_req "sets the performance mode of the vehicle";
+CM_ SG_ 490 drv_mod "sets the drive mode of the vehicle";
+CM_ SG_ 490 haptic_feedback_sens_req "request to shake the steering wheel";
+CM_ SG_ 490 launch_control_active "Indicates if launch control is active";
+CM_ SG_ 490 ddc_perf_mod_req "Active Suspension Mode request";
+CM_ BO_ 491 "steering angle and rotation speed send out by GVCU";
+CM_ SG_ 491 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 491 e2e_alive_counter "Alive counter for E2E";
+CM_ BO_ 493 "Accelerometer(CoG): X, Y";
+CM_ SG_ 493 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 493 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 493 lat_accel_v "VALID signal";
+CM_ SG_ 493 long_accel_v "VALID signal";
+CM_ SG_ 493 long_accel "Longitudal acceleration (X-axis)";
+CM_ SG_ 493 lat_accel "Lateral acceleration (Y-axis)";
+CM_ BO_ 496 "KW status signals";
+CM_ SG_ 496 ddc_perf_mod_fb "Active Suspension Mode";
+CM_ SG_ 496 susp_snsr_supply_whl_err "sensor supply error, wheel sensor";
+CM_ SG_ 496 susp_voltage_err "ECU supply voltage error";
+CM_ SG_ 496 susp_err_can_rx "CAN message receive error";
+CM_ SG_ 496 susp_err_active_sts "DDC error flag";
+CM_ SG_ 496 susp_snsr_supply_chassis_err "sensor supply error, chassis sensor";
+CM_ SG_ 496 susp_snsr_chassis_err_fl "chassis accelerometer error, front left";
+CM_ SG_ 496 susp_snsr_chassis_err_fr "chassis accelerometer error, front right";
+CM_ SG_ 496 susp_snsr_chassis_err_r "chassis accelerometer error, rear";
+CM_ SG_ 496 susp_vlv_err_flc "damper valve error, front left compression";
+CM_ SG_ 496 susp_vlv_err_flr "damper valve error, front left rebound";
+CM_ SG_ 496 susp_vlv_err_frc "damper valve error, front right compression";
+CM_ SG_ 496 susp_vlv_err_frr "damper valve error, front right rebound";
+CM_ SG_ 496 susp_vlv_err_rlc "damper valve error, rear left compression";
+CM_ SG_ 496 susp_vlv_err_rlr "damper valve error, rear left rebound";
+CM_ SG_ 496 susp_vlv_err_rrc "damper valve error, rear right compression";
+CM_ SG_ 496 susp_vlv_err_rrr "damper valve error, rear right rebound";
+CM_ SG_ 496 susp_snsr_whl_err_fl "wheel accelerometer error, front left";
+CM_ SG_ 496 susp_snsr_whl_err_fr "wheel accelerometer error, front right";
+CM_ SG_ 496 susp_snsr_whl_err_rl "wheel accelerometer error, rear left";
+CM_ SG_ 496 susp_snsr_whl_err_rr "wheel accelerometer error, rear right";
+CM_ BO_ 497 "KW chassis velocity values at CoG";
+CM_ SG_ 497 susp_chassis_vel_heave "vehicle heave velocity estimation, center of gravity";
+CM_ SG_ 497 susp_chassis_vel_pitch "vehicle pitch velocity estimation, center of gravity";
+CM_ SG_ 497 susp_chassis_vel_roll "vehicle roll velocity estimation, center of gravity";
+CM_ BO_ 498 "KW wheel acceleration front";
+CM_ SG_ 498 susp_whl_accel_fl "wheel acceleration, front left";
+CM_ SG_ 498 susp_whl_accel_fr "wheel acceleration, front right";
+CM_ BO_ 499 "KW wheel acceleration rear";
+CM_ SG_ 499 susp_whl_accel_rl "wheel acceleration, rear left";
+CM_ SG_ 499 susp_whl_accel_rr "wheel acceleration, rear right";
+CM_ BO_ 500 "KW wheel velocity front";
+CM_ SG_ 500 susp_whl_vel_fl "wheel velocity, front left";
+CM_ SG_ 500 susp_whl_vel_fr "wheel velocity, front right";
+CM_ BO_ 501 "KW wheel velocity rear";
+CM_ SG_ 501 susp_whl_vel_rl "wheel velocity, rear left";
+CM_ SG_ 501 susp_whl_vel_rr "wheel velocity, rear right";
+CM_ BO_ 502 "KW chassis acceleration values front";
+CM_ SG_ 502 susp_chassis_accel_fl "chassis acceleration, front left";
+CM_ SG_ 502 susp_chassis_accel_fr "chassis acceleration, front right";
+CM_ BO_ 503 "KW chassis acceleration values rear";
+CM_ SG_ 503 susp_chassis_accel_rl "chassis acceleration, rear left";
+CM_ SG_ 503 susp_chassis_accel_rr "chassis acceleration, rear right";
+CM_ BO_ 504 "KW chassis velocity values front";
+CM_ SG_ 504 susp_chassis_vel_fl "chassis velocity, front left";
+CM_ SG_ 504 susp_chassis_vel_fr "chassis velocity, front right";
+CM_ BO_ 505 "KW chassis velocity values rear";
+CM_ SG_ 505 susp_chassis_vel_rl "chassis velocity, rear left";
+CM_ SG_ 505 susp_chassis_vel_rr "chassis velocity, rear right";
+CM_ BO_ 506 "KW damper velocity values front";
+CM_ SG_ 506 susp_dampr_vel_fl "damper velocity, front left";
+CM_ SG_ 506 susp_dampr_vel_fr "damper velocity, front right";
+CM_ BO_ 507 "KW damper velocity values rear";
+CM_ SG_ 507 susp_dampr_vel_rl "damper velocity, rear left";
+CM_ SG_ 507 susp_dampr_vel_rr "damper velocity, rear right";
+CM_ BO_ 509 "KW valve current front";
+CM_ SG_ 509 susp_curr_flr "damper valve current, front left rebound";
+CM_ SG_ 509 susp_curr_flc "damper valve current, front left compression";
+CM_ SG_ 509 susp_curr_frr "damper valve current, front right rebound";
+CM_ SG_ 509 susp_curr_frc "damper valve current, front right compression";
+CM_ BO_ 510 "KW valve current rear";
+CM_ SG_ 510 susp_curr_rlr "damper valve current, rear left rebound";
+CM_ SG_ 510 susp_curr_rlc "damper valve current, rear left compression";
+CM_ SG_ 510 susp_curr_rrr "damper valve current, rear right rebound";
+CM_ SG_ 510 susp_curr_rrc "damper valve current, rear right compression";
+CM_ BO_ 526 "Wheel torque front wheels";
+CM_ SG_ 526 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 526 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 526 whl_tq_act_fl_v "Valid signal";
+CM_ SG_ 526 whl_tq_act_fr_v "Valid signal";
+CM_ SG_ 526 whl_tq_act_fl "The actual torque of the front left wheel";
+CM_ SG_ 526 whl_tq_act_fr "The actual torque of the front right wheel";
+CM_ BO_ 527 "Wheel torque rear wheels";
+CM_ SG_ 527 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 527 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 527 whl_tq_act_rl_v "Valid signal";
+CM_ SG_ 527 whl_tq_act_rr_v "Valid signal";
+CM_ SG_ 527 whl_tq_act_rl "The actual torque of the rear left wheel";
+CM_ SG_ 527 whl_tq_act_rr "The actual torque of the rear right wheel";
+CM_ BO_ 1472 "error counter status message";
+CM_ SG_ 1472 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 1472 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1472 e2e_crc_err_cnt "EPS e2e crc error counter";
+CM_ SG_ 1472 e2e_alive_cnt_err_cnt "EPS e2e alive error counter";
+CM_ SG_ 1472 sa_fail_attempt_cnt "EPS security access fail attempt counter";
+CM_ BO_ 1473 "error counter status message";
+CM_ SG_ 1473 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 1473 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1473 e2e_crc_err_cnt "e2e crc error counter";
+CM_ SG_ 1473 e2e_alive_cnt_err_cnt "e2e alive counter error counter";
+CM_ BO_ 1501 "odometer value";
+CM_ SG_ 1501 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 1501 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1501 veh_odo_v "Vehicle odometer qualifier";
+CM_ SG_ 1501 veh_odo "Vehicle odometer sent by GVCU";
+CM_ BO_ 1509 "Network management request from GVCU";
+CM_ SG_ 1509 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 1509 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1509 nm_request "Network management request from GVCU";
+CM_ BO_ 1511 "EPS network management status for CAN wakeup";
+CM_ SG_ 1511 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 1511 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1511 nm_status "EPS network management status sent by EPS";
+CM_ BO_ 1512 "DDC network management status for CAN wakeup";
+CM_ SG_ 1512 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 1512 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1512 nm_status "Network management response from DDC";
+CM_ BO_ 1517 "system time";
+CM_ SG_ 1517 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 1517 e2e_alive_counter "Alive counter for E2E";
+CM_ BO_ 1610 "EPS A XCP Command";
+CM_ BO_ 1611 "EPS B XCP Command";
+CM_ BO_ 1612 "EPS A XCP Response";
+CM_ BO_ 1613 "EPS B XCP Reponse";
+CM_ BO_ 1990 "Diag Req EPS A";
+CM_ BO_ 1991 "Diag Req EPS B";
+CM_ BO_ 1992 "Diag Function Req EPS";
+CM_ BO_ 1998 "Diag Resp EPS A";
+CM_ BO_ 1999 "Diag Resp EPS B";
+CM_ BO_ 2006 "Dynamic Bus 1 & 2 Diagnostic Request";
+BA_DEF_  "BusSpeed" INT 0 2000000;
+BA_DEF_ SG_  "CheckSigRange" ENUM  "NO","YES";
+BA_DEF_ BO_  "DiagState" ENUM  "no","yes";
+BA_DEF_ BO_  "GatewayMode" ENUM  "GW_OFF","GW_ONLY","GW_RECV";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetitions" INT 0 0;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","event","NoMsgSendType";
+BA_DEF_ SG_  "GenSigStartValue" INT -999999 999999;
+BA_DEF_ BO_  "NmMessage" ENUM  "no","yes";
+BA_DEF_DEF_  "BusSpeed" 500000;
+BA_DEF_DEF_  "CheckSigRange" "YES";
+BA_DEF_DEF_  "DiagState" "no";
+BA_DEF_DEF_  "GatewayMode" "GW_OFF";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetitions" 0;
+BA_DEF_DEF_  "GenMsgSendType" "cyclic";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "NmMessage" "no";
+BA_ "BusSpeed" 500000;
+BA_ "GatewayMode" BO_ 485 0;
+BA_ "GenMsgCycleTime" BO_ 485 10;
+BA_ "GenMsgSendType" BO_ 485 0;
+BA_ "GatewayMode" BO_ 486 0;
+BA_ "GenMsgCycleTime" BO_ 486 20;
+BA_ "GenMsgSendType" BO_ 486 0;
+BA_ "GatewayMode" BO_ 488 0;
+BA_ "GenMsgCycleTime" BO_ 488 10;
+BA_ "GenMsgSendType" BO_ 488 0;
+BA_ "GatewayMode" BO_ 490 0;
+BA_ "GenMsgCycleTime" BO_ 490 20;
+BA_ "GenMsgSendType" BO_ 490 0;
+BA_ "GatewayMode" BO_ 491 0;
+BA_ "GenMsgCycleTime" BO_ 491 20;
+BA_ "GenMsgSendType" BO_ 491 0;
+BA_ "GatewayMode" BO_ 493 0;
+BA_ "GenMsgCycleTime" BO_ 493 10;
+BA_ "GenMsgSendType" BO_ 493 0;
+BA_ "GatewayMode" BO_ 496 0;
+BA_ "GenMsgCycleTime" BO_ 496 100;
+BA_ "GenMsgSendType" BO_ 496 0;
+BA_ "GatewayMode" BO_ 497 0;
+BA_ "GenMsgCycleTime" BO_ 497 10;
+BA_ "GenMsgSendType" BO_ 497 0;
+BA_ "GatewayMode" BO_ 498 0;
+BA_ "GenMsgCycleTime" BO_ 498 10;
+BA_ "GenMsgSendType" BO_ 498 0;
+BA_ "GatewayMode" BO_ 499 0;
+BA_ "GenMsgCycleTime" BO_ 499 10;
+BA_ "GenMsgSendType" BO_ 499 0;
+BA_ "GatewayMode" BO_ 500 0;
+BA_ "GenMsgCycleTime" BO_ 500 10;
+BA_ "GenMsgSendType" BO_ 500 0;
+BA_ "GatewayMode" BO_ 501 0;
+BA_ "GenMsgCycleTime" BO_ 501 10;
+BA_ "GenMsgSendType" BO_ 501 0;
+BA_ "GatewayMode" BO_ 502 0;
+BA_ "GenMsgCycleTime" BO_ 502 10;
+BA_ "GenMsgSendType" BO_ 502 0;
+BA_ "GatewayMode" BO_ 503 0;
+BA_ "GenMsgCycleTime" BO_ 503 10;
+BA_ "GenMsgSendType" BO_ 503 0;
+BA_ "GatewayMode" BO_ 504 0;
+BA_ "GenMsgCycleTime" BO_ 504 10;
+BA_ "GenMsgSendType" BO_ 504 0;
+BA_ "GatewayMode" BO_ 505 0;
+BA_ "GenMsgCycleTime" BO_ 505 10;
+BA_ "GenMsgSendType" BO_ 505 0;
+BA_ "GatewayMode" BO_ 506 0;
+BA_ "GenMsgCycleTime" BO_ 506 10;
+BA_ "GenMsgSendType" BO_ 506 0;
+BA_ "GatewayMode" BO_ 507 0;
+BA_ "GenMsgCycleTime" BO_ 507 10;
+BA_ "GenMsgSendType" BO_ 507 0;
+BA_ "GatewayMode" BO_ 509 0;
+BA_ "GenMsgCycleTime" BO_ 509 10;
+BA_ "GenMsgSendType" BO_ 509 0;
+BA_ "GatewayMode" BO_ 510 0;
+BA_ "GenMsgCycleTime" BO_ 510 10;
+BA_ "GenMsgSendType" BO_ 510 0;
+BA_ "GatewayMode" BO_ 526 0;
+BA_ "GenMsgCycleTime" BO_ 526 10;
+BA_ "GenMsgSendType" BO_ 526 0;
+BA_ "GatewayMode" BO_ 527 0;
+BA_ "GenMsgCycleTime" BO_ 527 10;
+BA_ "GenMsgSendType" BO_ 527 0;
+BA_ "GatewayMode" BO_ 1472 0;
+BA_ "GenMsgCycleTime" BO_ 1472 1000;
+BA_ "GenMsgDelayTime" BO_ 1472 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1472 0;
+BA_ "GenMsgSendType" BO_ 1472 0;
+BA_ "GatewayMode" BO_ 1473 0;
+BA_ "GenMsgCycleTime" BO_ 1473 1000;
+BA_ "GenMsgDelayTime" BO_ 1473 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1473 0;
+BA_ "GenMsgSendType" BO_ 1473 0;
+BA_ "GatewayMode" BO_ 1501 0;
+BA_ "GenMsgCycleTime" BO_ 1501 100;
+BA_ "GenMsgSendType" BO_ 1501 0;
+BA_ "GatewayMode" BO_ 1509 0;
+BA_ "GenMsgCycleTime" BO_ 1509 100;
+BA_ "GenMsgSendType" BO_ 1509 0;
+BA_ "NmMessage" BO_ 1509 1;
+BA_ "GatewayMode" BO_ 1511 0;
+BA_ "GenMsgCycleTime" BO_ 1511 100;
+BA_ "GenMsgSendType" BO_ 1511 0;
+BA_ "NmMessage" BO_ 1511 1;
+BA_ "GatewayMode" BO_ 1512 0;
+BA_ "GenMsgCycleTime" BO_ 1512 100;
+BA_ "GenMsgSendType" BO_ 1512 0;
+BA_ "NmMessage" BO_ 1512 1;
+BA_ "GatewayMode" BO_ 1517 0;
+BA_ "GenMsgCycleTime" BO_ 1517 500;
+BA_ "GenMsgSendType" BO_ 1517 0;
+BA_ "GatewayMode" BO_ 1610 0;
+BA_ "GenMsgSendType" BO_ 1610 1;
+BA_ "GatewayMode" BO_ 1611 0;
+BA_ "GenMsgSendType" BO_ 1611 1;
+BA_ "GatewayMode" BO_ 1612 0;
+BA_ "GenMsgSendType" BO_ 1612 1;
+BA_ "GatewayMode" BO_ 1613 0;
+BA_ "GenMsgSendType" BO_ 1613 1;
+BA_ "GatewayMode" BO_ 1990 0;
+BA_ "GenMsgSendType" BO_ 1990 1;
+BA_ "GatewayMode" BO_ 1991 0;
+BA_ "GenMsgSendType" BO_ 1991 1;
+BA_ "GatewayMode" BO_ 1992 0;
+BA_ "GenMsgSendType" BO_ 1992 1;
+BA_ "GatewayMode" BO_ 1998 1;
+BA_ "GenMsgSendType" BO_ 1998 1;
+BA_ "GatewayMode" BO_ 1999 1;
+BA_ "GenMsgSendType" BO_ 1999 1;
+BA_ "DiagState" BO_ 2006 1;
+BA_ "GatewayMode" BO_ 2006 1;
+BA_ "GenMsgSendType" BO_ 2006 1;
+VAL_ 485 e2e_alive_counter 15 "INVALID" ;
+VAL_ 485 ag_failr_sts 0 "UNKNOWN" 1 "FAILURE" 2 "NO_FAILURE" ;
+VAL_ 485 failr_sts 0 "UNKNOWN" 1 "FUNCTION_MITIGATION" 2 "SYSTEM_FAILURE" 3 "NO_FAILURE" ;
+VAL_ 485 haptic_feedback_sens_sts 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "STANDARD" 3 "LOW_INTENSITY" 4 "HIGH_INTENSITY" ;
+VAL_ 485 calibration_sts 0 "UNKNOWN" 1 "NOT_CALIBRATED" 2 "CALIBRATED" ;
+VAL_ 485 hands_off_steer_sts 0 "UNKNOWN" 1 "UNVAILABLE_OR_FAULT" 2 "HANDS_ON" 3 "HANDS_OFF" ;
+VAL_ 485 eps_perf_mod_fb 0 "UNKNOWN" 1 "EPS_PERF_MOD_SOFT" 2 "EPS_PERF_MOD_MED" 3 "EPS_PERF_MOD_HARD" ;
+VAL_ 486 e2e_alive_counter 15 "INVALID" ;
+VAL_ 486 steer_whl_snsr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 488 e2e_alive_counter 15 "INVALID" ;
+VAL_ 488 vehicle_speed_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 490 e2e_alive_counter 15 "INVALID" ;
+VAL_ 490 accelerator_pedal_position_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 490 accelerator_pedal_state 0 "UNKNOWN" 1 "NOT_PRESSED" 2 "PRESSED" ;
+VAL_ 490 brk_pressure_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 490 eps_perf_mod_req 0 "UNKNOWN" 1 "EPS_PERF_MOD_SOFT" 2 "EPS_PERF_MOD_MED" 3 "EPS_PERF_MOD_HARD" ;
+VAL_ 490 drv_mod 0 "UNKNOWN" 1 "DRIVE" 2 "NEUTRAL" 3 "REVERSE" 4 "PARK" ;
+VAL_ 490 haptic_feedback_sens_req 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "STANDARD" 3 "LOW_INTENSITY" 4 "HIGH_INTENSITY" ;
+VAL_ 490 launch_control_active 0 "UNKNOWN" 1 "INACTIVE" 2 "ACTIVE" ;
+VAL_ 490 ddc_perf_mod_req 0 "UNKNWON" 1 "DDC_PERF_MOD_1" 2 "DDC_PERF_MOD_2" 3 "DDC_PERF_MOD_3" 4 "DDC_PERF_MOD_4" 5 "DDC_PERF_MOD_5" 6 "DDC_PERF_MOD_6" ;
+VAL_ 491 e2e_alive_counter 15 "INVALID" ;
+VAL_ 491 steer_whl_snsr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 493 e2e_alive_counter 15 "INVALID" ;
+VAL_ 493 lat_accel_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 493 long_accel_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 496 e2e_alive_counter 15 "INVALID" ;
+VAL_ 496 ddc_perf_mod_fb 0 "UNKNOWN" 1 "DDC_PERF_MOD_1" 2 "DDC_PERF_MOD_2" 3 "DDC_PERF_MOD_3" 4 "DDC_PERF_MOD_4" 5 "DDC_PERF_MOD_5" 6 "DDC_PERF_MOD_6" ;
+VAL_ 496 susp_snsr_supply_whl_err 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_voltage_err 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_err_can_rx 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_err_active_sts 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_snsr_supply_chassis_err 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_snsr_chassis_err_fl 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_snsr_chassis_err_fr 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_snsr_chassis_err_r 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_vlv_err_flc 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_vlv_err_flr 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_vlv_err_frc 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_vlv_err_frr 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_vlv_err_rlc 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_vlv_err_rlr 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_vlv_err_rrc 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_vlv_err_rrr 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_snsr_whl_err_fl 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_snsr_whl_err_fr 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_snsr_whl_err_rl 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 496 susp_snsr_whl_err_rr 0 "UNKNOWN" 1 "ERROR_SET" 2 "ERROR_CLEAR" ;
+VAL_ 497 e2e_alive_counter 15 "INVALID" ;
+VAL_ 498 e2e_alive_counter 15 "INVALID" ;
+VAL_ 499 e2e_alive_counter 15 "INVALID" ;
+VAL_ 500 e2e_alive_counter 15 "INVALID" ;
+VAL_ 501 e2e_alive_counter 15 "INVALID" ;
+VAL_ 502 e2e_alive_counter 15 "INVALID" ;
+VAL_ 503 e2e_alive_counter 15 "INVALID" ;
+VAL_ 504 e2e_alive_counter 15 "INVALID" ;
+VAL_ 505 e2e_alive_counter 15 "INVALID" ;
+VAL_ 506 e2e_alive_counter 15 "INVALID" ;
+VAL_ 507 e2e_alive_counter 15 "INVALID" ;
+VAL_ 509 e2e_alive_counter 15 "INVALID" ;
+VAL_ 510 e2e_alive_counter 15 "INVALID" ;
+VAL_ 526 e2e_alive_counter 15 "INVALID" ;
+VAL_ 526 whl_tq_act_fl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 526 whl_tq_act_fr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 527 e2e_alive_counter 15 "INVALID" ;
+VAL_ 527 whl_tq_act_rl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 527 whl_tq_act_rr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1472 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1473 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1509 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1509 nm_request 0 "UNKNOWN" 1 "STANDBY_REQUEST" 2 "ACTIVE_REQUEST" 3 "SLEEP_REQUEST" ;
+VAL_ 1511 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1511 nm_status 0 "UNKNOWN" 1 "STANDBY" 2 "ACTIVE" 3 "READY_SLEEP" 8 "ERR" 9 "STANDBY_ERR" 10 "ACTIVE_ERR" 11 "READY_SLEEP_ERR" ;
+VAL_ 1512 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1512 nm_status 0 "UNKNOWN" 1 "STANDBY" 2 "ACTIVE" 3 "READY_SLEEP" 8 "ERR" 9 "STANDBY_ERR" 10 "ACTIVE_ERR" 11 "READY_SLEEP_ERR" ;
+VAL_ 1517 e2e_alive_counter 15 "INVALID" ;
+
+
+

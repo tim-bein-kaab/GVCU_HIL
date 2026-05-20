@@ -1,0 +1,445 @@
+VERSION "HIPBNYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY/4/%%%/4/'%**4YYY///"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: GVCU INV
+
+
+BO_ 100 acu_01_g2: 2 GVCU
+ SG_ E2eChecksum : 0|8@1+ (1,0) [0|255] ""  INV
+ SG_ E2eAliveCounter : 8|4@1+ (1,0) [0|15] ""  INV
+ SG_ CrashOutput : 12|1@1+ (1,0) [0|1] ""  INV
+
+BO_ 101 acu_03_g2: 3 GVCU
+ SG_ E2eChecksum : 0|8@1+ (1,0) [0|255] ""  INV
+ SG_ E2eAliveCounter : 8|4@1+ (1,0) [0|15] ""  INV
+ SG_ CrashSeverity : 12|2@1+ (1,0) [0|2] ""  INV
+ SG_ DriverSideCrash : 14|1@1+ (1,0) [0|1] ""  INV
+ SG_ FrontCrash : 15|1@1+ (1,0) [0|1] ""  INV
+ SG_ PassSideCrash : 16|1@1+ (1,0) [0|1] ""  INV
+ SG_ RearCrash : 17|1@1+ (1,0) [0|1] ""  INV
+ SG_ RolloverCrash : 18|1@1+ (1,0) [0|1] ""  INV
+
+BO_ 371 inv_temperature_1: 8 INV
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ dc_cap_temp_1 : 16|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ dc_cap_temp_2 : 24|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ mosfet_temp_max : 32|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ driver_board_temp_max : 40|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ pcb_temp : 48|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ coolant_temp : 56|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+
+BO_ 372 inv_temperature_2: 6 INV
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ motor_temp_a1 : 16|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ motor_temp_a2 : 24|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ motor_temp_a3 : 32|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ motor_temp_a4 : 40|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+
+BO_ 375 inv_status_feedback: 7 INV
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ inv_enable_feedback : 12|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ motor_enable_feedback : 13|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ctrl_mode_feedback : 14|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ state_machine : 16|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ torque_limit_reason : 20|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ dc_voltage : 24|12@1+ (0.25,0) [0|1023.75] "V"  GVCU
+ SG_ dc_current : 36|12@1+ (0.5,-1024) [-1024|1023.5] "A"  GVCU
+ SG_ fault_level : 48|3@1+ (1,0) [0|7] "enum"  GVCU
+ SG_ safe_state_method : 51|3@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ safe_state_req_feedback : 54|2@1+ (1,0) [0|3] "enum"  GVCU
+
+BO_ 376 inv_trq_feedback: 8 INV
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ actual_torque : 16|12@1+ (1,-2048) [-2048|2047] "Nm"  GVCU
+ SG_ requested_torque : 28|12@1+ (1,-2048) [-2048|2047] "Nm"  GVCU
+ SG_ available_torque_neg : 40|11@1+ (1,0) [0|2047] "Nm"  GVCU
+ SG_ available_torque_pos : 51|11@1+ (1,0) [0|2047] "Nm"  GVCU
+
+BO_ 377 inv_spd_feedback: 7 INV
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ pos_offset_b : 16|12@1+ (0.001,0) [0|1.023] "pu"  GVCU
+ SG_ pos_offset_a : 28|12@1+ (0.001,0) [0|1.023] "pu"  GVCU
+ SG_ motor_speed : 40|15@1+ (1,-16384) [-16384|16383] "rpm"  GVCU
+ SG_ motor_speed_valid_bit : 55|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 378 inv_fault_1: 8 INV
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ mcu_bist_fault : 12|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ mcu_fault : 13|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ sbc_bist_fault : 14|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ sbc_fault : 15|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ gate_driver_bist_fault : 16|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ gate_driver_fault : 17|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ gate_driver_warning : 18|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ mosfet_t_fault : 19|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ mosfet_t_warning : 20|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ mosfet_t_rationality : 21|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ mosfet_t_sensing : 22|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ mosfet_t_imbalance : 23|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ driver_t_fault : 24|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ driver_t_warning : 25|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ driver_t_rationality : 26|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ driver_t_sensing : 27|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_link_t_fault : 28|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_link_t_warning : 29|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_link_t_rationality : 30|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_link_t_sensing : 31|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ coolant_t_fault : 32|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ coolant_t_warning : 33|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ coolant_t_rationality : 34|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ coolant_t_sensing : 35|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ motor_t_fault : 36|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ motor_t_warning : 37|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ motor_t_rationality : 38|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ motor_t_sensing : 39|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ inverter_boards_t_fault : 40|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ inverter_boards_t_warning : 41|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ inverter_boards_t_rationality : 42|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ inverter_boards_t_sensing : 43|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ lv_ext_supply_uv : 44|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ lv_ext_supply_ov : 45|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ crash_signal : 46|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ lv_self_check_main : 47|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ipc_lock_main : 48|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ sw_compatibility : 49|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ task_alive_main : 50|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ task_deadline_main : 51|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ipc_lock_cm : 52|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ task_alive_cm : 53|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ task_deadline_cm : 54|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ can_e2e : 55|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ can_comm_loss_warning : 56|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ can_comm_loss_error : 57|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ y_cap_ctrl_u : 58|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ lv_int_supply : 59|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 379 inv_fault_2: 5 INV
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ rslv_bist_fault : 12|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ rslv_fault : 13|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ rslv_offset : 14|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ac_i_sensor_calibration : 15|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ac_i_sensor_oor : 16|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ac_phase_short : 17|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ac_phase_loss : 18|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ac_phase_u_rationnality : 19|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ac_phase_i_imbalance : 20|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ac_phase_i_oc : 21|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_bus_i_oc : 22|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_bus_i_rationnality : 23|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_bus_i_sensing : 24|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_bus_u_ov : 25|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_bus_u_uv : 26|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_bus_u_rationnality : 27|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ dc_bus_u_sensing : 28|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ motor_over_speed : 29|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ motor_speed_rationnality : 30|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ motor_stall : 31|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ trq_estimation_rationnality : 32|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ trq_command_rationnality : 33|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ lv_self_check_ctrl : 34|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_self_check_ctrl : 35|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ task_alive_ctrl : 36|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ task_deadline_ctrl : 37|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ipc_lock_ctrl : 38|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ctrl_mode_rationnality : 39|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 380 inv_pwr_feedback: 4 INV
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|0] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|0] ""  GVCU
+ SG_ mechanical_pwr_out : 16|16@1+ (0.02,-655.35) [-655.35|655.35] "kW"  GVCU
+
+BO_ 381 inv_cmd: 4 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  INV
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  INV
+ SG_ inv_enable_req : 12|1@1+ (1,0) [0|1] "bool"  INV
+ SG_ motor_enable_req : 13|1@1+ (1,0) [0|1] "bool"  INV
+ SG_ vehicle_crash_signal : 14|1@1+ (1,0) [0|1] "bool"  INV
+ SG_ shutdown_req : 15|1@1+ (1,0) [0|1] "bool"  INV
+ SG_ safe_state_req : 16|2@1+ (1,0) [0|3] "enum"  INV
+ SG_ ctrl_mode_req : 18|2@1+ (1,0) [0|3] "enum"  INV
+ SG_ spd_ctrl_gain_set : 20|3@1+ (1,0) [0|7] "Enum"  INV
+ SG_ inv_cool_pump_fault : 24|1@1+ (1,0) [0|1] "bool"  INV
+ SG_ emot_cool_pump_fault : 25|1@1+ (1,0) [0|1] "bool"  INV
+
+BO_ 382 inv_motion_cmd: 7 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  INV
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  INV
+ SG_ torque_req : 12|12@1+ (1,-2048) [-2048|2047] "Nm"  INV
+ SG_ speed_req : 24|15@1+ (1,-16384) [-16384|16383] "rpm"  INV
+ SG_ motor_dir : 39|1@1+ (1,0) [0|1] "bool"  INV
+ SG_ torque_max_neg : 40|8@1+ (10,0) [0|2550] "Nm"  INV
+ SG_ torque_max_pos : 48|8@1+ (10,0) [0|2550] "Nm"  INV
+
+BO_ 2019 diag_req_inverter_g2: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  INV
+
+BO_ 2027 diag_resp_inverter: 8 INV
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+
+
+
+CM_ BU_ GVCU "Vehicle Control Module";
+CM_ BU_ INV "David inverter.";
+CM_ BO_ 100 "Message FROZEN due to ACU usage";
+CM_ SG_ 100 E2eChecksum "CRC check value according to specification E2E";
+CM_ SG_ 100 E2eAliveCounter "Alive counter for E2E";
+CM_ SG_ 100 CrashOutput "CrashOutput ACU";
+CM_ BO_ 101 "Message FROZEN due to ACU usage";
+CM_ SG_ 101 E2eChecksum "CRC check value according to specification E2E";
+CM_ SG_ 101 E2eAliveCounter "Alive counter for E2E";
+CM_ SG_ 101 CrashSeverity "ACU crash severity status";
+CM_ SG_ 101 DriverSideCrash "Driver side crash detection";
+CM_ SG_ 101 FrontCrash "Front crash detection";
+CM_ SG_ 101 PassSideCrash "Pasenger side crash detection";
+CM_ SG_ 101 RearCrash "Rear crash detection";
+CM_ SG_ 101 RolloverCrash "Rollover crash detection";
+CM_ SG_ 371 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 372 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 375 ctrl_mode_feedback "Control mode feedback";
+CM_ SG_ 375 state_machine "Application state machine feedback.";
+CM_ SG_ 375 torque_limit_reason "Limiting factor for available torques.";
+CM_ SG_ 375 dc_voltage "Measured DC Voltage.";
+CM_ SG_ 375 dc_current "Measured DC Current.";
+CM_ SG_ 375 fault_level "Highest triggered fault.";
+CM_ SG_ 375 safe_state_method "Safe state method.";
+CM_ SG_ 375 safe_state_req_feedback "Safe state request source.";
+CM_ SG_ 376 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 376 actual_torque "Currently applied torque.";
+CM_ SG_ 376 requested_torque "Requested torque to FOC Loop.";
+CM_ SG_ 376 available_torque_neg "Available negative torque.";
+CM_ SG_ 376 available_torque_pos "Available positive torque.";
+CM_ SG_ 377 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 377 pos_offset_b "Angle offset for resolver reading B";
+CM_ SG_ 377 pos_offset_a "Angle offset for resolver reading A";
+CM_ SG_ 377 motor_speed "Motor speed";
+CM_ SG_ 377 motor_speed_valid_bit "Motor speed valid bit";
+CM_ SG_ 378 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 378 mcu_bist_fault "MCU Start-up BIST failed";
+CM_ SG_ 378 mcu_fault "MCU Fault ";
+CM_ SG_ 378 sbc_bist_fault "SBC Start-up BIST failed";
+CM_ SG_ 378 sbc_fault "SBC fault";
+CM_ SG_ 378 gate_driver_bist_fault "Gate Driver Start-up BIST failed";
+CM_ SG_ 378 gate_driver_fault "Gate Driver Fault";
+CM_ SG_ 378 gate_driver_warning "Gate Driver Warning";
+CM_ SG_ 378 mosfet_t_fault "MOSFET temperature fault. Temperature above threshold.";
+CM_ SG_ 378 mosfet_t_warning "MOSFET temperature warning. Temperature above threshold.";
+CM_ SG_ 378 mosfet_t_rationality "MOSFET temperature rationnality fault.";
+CM_ SG_ 378 mosfet_t_sensing "MOSFET temperature sensing fault.";
+CM_ SG_ 378 mosfet_t_imbalance "MOSFET temperature imbalance fault.";
+CM_ SG_ 378 driver_t_fault "Driver Board temperature fault. Temperature above threshold.";
+CM_ SG_ 378 driver_t_warning "Driver Board temperature warning. Temperature above threshold.";
+CM_ SG_ 378 driver_t_rationality "Driver Board temperature rationnality fault.";
+CM_ SG_ 378 driver_t_sensing "Driver Board temperature sensing fault.";
+CM_ SG_ 378 dc_link_t_fault "DC Link temperature fault. Temperature above threshold.";
+CM_ SG_ 378 dc_link_t_warning "DC Link temperature warning. Temperature above threshold.";
+CM_ SG_ 378 dc_link_t_rationality "DC Link temperature rationnality fault.";
+CM_ SG_ 378 dc_link_t_sensing "DC Link temperature sensing fault.";
+CM_ SG_ 378 coolant_t_fault "Coolant temperature fault. Temperature above threshold.";
+CM_ SG_ 378 coolant_t_warning "Coolant temperature warning. Temperature above threshold.";
+CM_ SG_ 378 coolant_t_rationality "Cooland temperature rationnality fault.";
+CM_ SG_ 378 coolant_t_sensing "Coolant temperature sensing fault.";
+CM_ SG_ 378 motor_t_fault "Motor temperature fault. Temperature above threshold.";
+CM_ SG_ 378 motor_t_warning "Motor temperature warning. Temperature above threshold.";
+CM_ SG_ 378 motor_t_rationality "Motor temperature rationnality fault.";
+CM_ SG_ 378 motor_t_sensing "Motor temperature sensing fault.";
+CM_ SG_ 378 inverter_boards_t_fault "Inverter boards temperature fault. Temperatures above threshold.";
+CM_ SG_ 378 inverter_boards_t_warning "Inverter boards temperature warning. Temperature above threshold.";
+CM_ SG_ 378 inverter_boards_t_rationality "Inverter boards temperature rationnality fault.";
+CM_ SG_ 378 inverter_boards_t_sensing "Inverter boards temperature sensing fault.";
+CM_ SG_ 378 lv_ext_supply_uv "Low voltage supply under voltage fault.";
+CM_ SG_ 378 lv_ext_supply_ov "Low voltage supply over voltage fault.";
+CM_ SG_ 378 crash_signal "Crash signal ";
+CM_ SG_ 378 ipc_lock_main "Main CPU IPC Lock fault";
+CM_ SG_ 378 sw_compatibility "Software compatibility fault.";
+CM_ SG_ 378 task_alive_main "Main CPU task alive fault.";
+CM_ SG_ 378 task_deadline_main "Main CPU task running time fault.";
+CM_ SG_ 378 ipc_lock_cm "CM CPU IPC Lock fault";
+CM_ SG_ 378 task_alive_cm "CM CPU task alive fault.";
+CM_ SG_ 378 task_deadline_cm "CM CPU task running time fault.";
+CM_ SG_ 378 can_e2e "Can E2E fault.";
+CM_ SG_ 378 can_comm_loss_warning "Can communication loss warning.";
+CM_ SG_ 378 can_comm_loss_error "Can communication loss fault.";
+CM_ SG_ 378 y_cap_ctrl_u "Y Cap control voltage is out of range.";
+CM_ SG_ 378 lv_int_supply "One of internal 5V supply is out of expected range.";
+CM_ SG_ 379 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 379 rslv_bist_fault "Resolver BIST fault. ";
+CM_ SG_ 379 rslv_fault "Resolver fault.";
+CM_ SG_ 379 rslv_offset "Resolver offset fault.";
+CM_ SG_ 379 ac_i_sensor_calibration "Current sensor calibration fault.";
+CM_ SG_ 379 ac_i_sensor_oor "Current sensor out of range fault.";
+CM_ SG_ 379 ac_phase_short "Phase short fault.";
+CM_ SG_ 379 ac_phase_loss "Phase connection loss.";
+CM_ SG_ 379 ac_phase_u_rationnality "Phase voltage rationnality fault.";
+CM_ SG_ 379 ac_phase_i_imbalance "Phase current imbalance fault.";
+CM_ SG_ 379 ac_phase_i_oc "Phase over current fault.";
+CM_ SG_ 379 dc_bus_i_oc "DC Bus over current fault.";
+CM_ SG_ 379 dc_bus_i_rationnality "DC Bus current rationnality fault.";
+CM_ SG_ 379 dc_bus_i_sensing "DC Bus current sensing fault.";
+CM_ SG_ 379 dc_bus_u_ov "DC Bus over voltage fault.";
+CM_ SG_ 379 dc_bus_u_uv "DC Bus under voltage fault.";
+CM_ SG_ 379 dc_bus_u_rationnality "DC Bus voltage rationnality fault.";
+CM_ SG_ 379 dc_bus_u_sensing "DC Bus voltage sensign fault.";
+CM_ SG_ 379 motor_over_speed "Motor over speed fault.";
+CM_ SG_ 379 motor_speed_rationnality "Motor speed rationnality fault.";
+CM_ SG_ 379 motor_stall "Motor stall fault.";
+CM_ SG_ 379 trq_estimation_rationnality "Torque command estimation fault.";
+CM_ SG_ 379 trq_command_rationnality "Torque comand rationnality fault.";
+CM_ SG_ 379 lv_self_check_ctrl "Control CPU LV Self check fault.";
+CM_ SG_ 379 hv_self_check_ctrl "Control CPU HV Self check fault.";
+CM_ SG_ 379 task_alive_ctrl "Control CPU task alive fault.";
+CM_ SG_ 379 task_deadline_ctrl "Control CPU task running time fault.";
+CM_ SG_ 379 ipc_lock_ctrl "Control CPU IPC Lock.";
+CM_ SG_ 379 ctrl_mode_rationnality "Control Mode Rationnality";
+CM_ SG_ 380 mechanical_pwr_out "Estimated mechanical power output. - for regen, + for motoring. Sign is based on motor_dir signal";
+CM_ SG_ 381 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 381 inv_enable_req "Enable inverter to prepare for HV";
+CM_ SG_ 381 motor_enable_req "Enable inverter switching";
+CM_ SG_ 381 vehicle_crash_signal "Vehicle crashed indication signal from VCU as a redun";
+CM_ SG_ 381 shutdown_req "Request diagnostic clearing attempts";
+CM_ SG_ 381 safe_state_req "Safe state request";
+CM_ SG_ 381 ctrl_mode_req "Request control mode";
+CM_ SG_ 381 spd_ctrl_gain_set "Set of gains to be used for speed control.";
+CM_ SG_ 381 inv_cool_pump_fault "Send fault flag to INV when the inverter cooling pump fails";
+CM_ SG_ 381 emot_cool_pump_fault "Send fault flag to INV when the emotor cooling pump fails";
+CM_ SG_ 382 torque_req "Torque request for torque control mode. In speed control, this torque should be used as feedforward value.";
+CM_ SG_ 382 speed_req "Speed request for speed control mode";
+CM_ SG_ 382 motor_dir "Set inverter positive torque direction";
+CM_ SG_ 382 torque_max_neg "Max authorised negative torque";
+CM_ SG_ 382 torque_max_pos "Max authorised positive torque";
+BA_DEF_  "BusSpeed" INT 0 2000000;
+BA_DEF_ SG_  "CheckSigRange" ENUM  "NO","YES";
+BA_DEF_ BO_  "GatewayMode" ENUM  "GW_OFF","GW_ONLY","GW_RECV";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetitions" INT 0 0;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","event","NoMsgSendType";
+BA_DEF_ SG_  "GenSigStartValue" INT -999999 999999;
+BA_DEF_ SG_  "SystemSignalLongSymbol" STRING ;
+BA_DEF_DEF_  "BusSpeed" 500000;
+BA_DEF_DEF_  "CheckSigRange" "YES";
+BA_DEF_DEF_  "GatewayMode" "GW_OFF";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetitions" 0;
+BA_DEF_DEF_  "GenMsgSendType" "cyclic";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "SystemSignalLongSymbol" "";
+BA_ "BusSpeed" 500000;
+BA_ "GatewayMode" BO_ 100 2;
+BA_ "GenMsgCycleTime" BO_ 100 10;
+BA_ "GenMsgSendType" BO_ 100 0;
+BA_ "GatewayMode" BO_ 101 2;
+BA_ "GenMsgCycleTime" BO_ 101 20;
+BA_ "GenMsgSendType" BO_ 101 0;
+BA_ "GatewayMode" BO_ 371 0;
+BA_ "GenMsgCycleTime" BO_ 371 100;
+BA_ "GenMsgSendType" BO_ 371 0;
+BA_ "GatewayMode" BO_ 372 0;
+BA_ "GenMsgCycleTime" BO_ 372 100;
+BA_ "GenMsgSendType" BO_ 372 0;
+BA_ "GatewayMode" BO_ 375 0;
+BA_ "GenMsgCycleTime" BO_ 375 10;
+BA_ "GenMsgSendType" BO_ 375 0;
+BA_ "GatewayMode" BO_ 376 0;
+BA_ "GenMsgCycleTime" BO_ 376 5;
+BA_ "GenMsgSendType" BO_ 376 0;
+BA_ "GatewayMode" BO_ 377 0;
+BA_ "GenMsgCycleTime" BO_ 377 5;
+BA_ "GenMsgSendType" BO_ 377 0;
+BA_ "GatewayMode" BO_ 378 0;
+BA_ "GenMsgCycleTime" BO_ 378 100;
+BA_ "GenMsgSendType" BO_ 378 0;
+BA_ "GatewayMode" BO_ 379 0;
+BA_ "GenMsgCycleTime" BO_ 379 100;
+BA_ "GenMsgSendType" BO_ 379 0;
+BA_ "GatewayMode" BO_ 380 0;
+BA_ "GenMsgCycleTime" BO_ 380 5;
+BA_ "GenMsgSendType" BO_ 380 0;
+BA_ "GatewayMode" BO_ 381 0;
+BA_ "GenMsgCycleTime" BO_ 381 100;
+BA_ "GenMsgSendType" BO_ 381 0;
+BA_ "GatewayMode" BO_ 382 0;
+BA_ "GenMsgCycleTime" BO_ 382 2;
+BA_ "GenMsgSendType" BO_ 382 0;
+BA_ "GatewayMode" BO_ 2019 1;
+BA_ "GenMsgSendType" BO_ 2019 1;
+BA_ "GatewayMode" BO_ 2027 1;
+BA_ "GenMsgSendType" BO_ 2027 1;
+BA_ "GenSigStartValue" SG_ 371 dc_cap_temp_1 40;
+BA_ "GenSigStartValue" SG_ 371 dc_cap_temp_2 40;
+BA_ "GenSigStartValue" SG_ 371 mosfet_temp_max 40;
+BA_ "GenSigStartValue" SG_ 371 driver_board_temp_max 40;
+BA_ "GenSigStartValue" SG_ 371 pcb_temp 40;
+BA_ "GenSigStartValue" SG_ 371 coolant_temp 40;
+BA_ "GenSigStartValue" SG_ 372 motor_temp_a1 40;
+BA_ "GenSigStartValue" SG_ 372 motor_temp_a2 40;
+BA_ "GenSigStartValue" SG_ 372 motor_temp_a3 40;
+BA_ "GenSigStartValue" SG_ 372 motor_temp_a4 40;
+BA_ "CheckSigRange" SG_ 2019 diag_data 0;
+BA_ "CheckSigRange" SG_ 2027 diag_data 0;
+VAL_ 100 E2eAliveCounter 15 "Invalid" ;
+VAL_ 100 CrashOutput 0 "NoCrashDetected" 1 "CrashDetected" ;
+VAL_ 101 E2eAliveCounter 15 "Invalid" ;
+VAL_ 101 CrashSeverity 0 "NoCrash" 1 "Level1" 2 "Level2" ;
+VAL_ 101 DriverSideCrash 0 "No_Event" 1 "DriverSideCrash_Detected" ;
+VAL_ 101 FrontCrash 0 "No_Event" 1 "FrontCrash_Detected" ;
+VAL_ 101 PassSideCrash 0 "No_Event" 1 "PassSideCrash_Detected" ;
+VAL_ 101 RearCrash 0 "No_Event" 1 "RearCrash_Detected" ;
+VAL_ 101 RolloverCrash 0 "No_Event" 1 "RolloverCrash_Detected" ;
+VAL_ 375 inv_enable_feedback 0 "DISABLED" 1 "ENABLED" ;
+VAL_ 375 motor_enable_feedback 0 "DISABLED" 1 "ENABLED" ;
+VAL_ 375 ctrl_mode_feedback 0 "CTRL_MODE_NONE" 1 "CTRL_MODE_TRQ" 2 "CTRL_MODE_SPD" ;
+VAL_ 375 state_machine 0 "INV_INIT" 1 "INV_APPL_SELFCHECK" 2 "INV_CTRL_SELFCHECK" 3 "INV_READY" 4 "INV_RUN" 5 "INV_IDLE" 6 "INV_FAULT" ;
+VAL_ 375 torque_limit_reason 0 "NOT_ENABLED" 1 "MAX_MOTOR_TRQ" 2 "MOTOR_TEMP" 3 "INV_MOS_TEMP" 4 "INV_EXT_TEMP" 5 "TIMEOUT" 6 "SPEED" 7 "EXTERNAL" 8 "FAULT_LEVEL" 9 "RATIONNALITY" 10 "EMOTOR_PUMP_OFF" ;
+VAL_ 375 fault_level 0 "LEVEL_NONE" 1 "LEVEL_0" 2 "LEVEL_1" 3 "LEVEL_2" 4 "LEVEL_3" 5 "LEVEL_4" ;
+VAL_ 375 safe_state_method 0 "SAFE_STATE_DISABLED" 1 "SAFE_STATE_METHOD_1" 2 "SAFE_STATE_METHOD_2" 3 "SAFE_STATE_METHOD_3" ;
+VAL_ 375 safe_state_req_feedback 0 "NA" 1 "INTERNAL_REQ" 2 "EXTERNAL_REQ" ;
+VAL_ 381 inv_enable_req 0 "DISABLE" 1 "ENABLE" ;
+VAL_ 381 motor_enable_req 0 "DISABLE" 1 "ENABLE" ;
+VAL_ 381 vehicle_crash_signal 0 "VEHICLE_CRASHED_FALSE" 1 "VEHICLE_CRASHED_TRUE" ;
+VAL_ 381 safe_state_req 0 "SAFE_STATE_DISABLE" 1 "SAFE_STATE_METHOD_1" 2 "SAFE_STATE_METHOD_2" 3 "SAFE_STATE_METHOD_3" ;
+VAL_ 381 ctrl_mode_req 0 "CTRL_MODE_NONE" 1 "CTRL_MODE_TRQ" 2 "CTRL_MODE_SPD" ;
+
+
+

@@ -1,0 +1,2956 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: ECM2 ECMAUX GVCU HEADUNIT HPDM1 HPDM2 HPDM3 HPDM4 HUB_DYNO LPDM1 LPDM2 LPDM3 LST SCU SMARTWHEEL
+
+
+BO_ 100 acu_01_g1: 2 HPDM2
+ SG_ E2eChecksum : 0|8@1+ (1,0) [0|255] ""  ECM2,GVCU,HPDM3,SCU
+ SG_ E2eAliveCounter : 8|4@1+ (1,0) [0|15] ""  ECM2,GVCU,HPDM3,SCU
+ SG_ CrashOutput : 12|1@1+ (1,0) [0|1] ""  ECM2,GVCU,HPDM3,SCU
+
+BO_ 101 acu_03_g1: 3 HPDM2
+ SG_ E2eChecksum : 0|8@1+ (1,0) [0|255] ""  GVCU,HPDM3
+ SG_ E2eAliveCounter : 8|4@1+ (1,0) [0|15] ""  GVCU,HPDM3
+ SG_ CrashSeverity : 12|2@1+ (1,0) [0|2] ""  GVCU,HPDM3
+ SG_ DriverSideCrash : 14|1@1+ (1,0) [0|1] ""  GVCU,HPDM3
+ SG_ FrontCrash : 15|1@1+ (1,0) [0|1] ""  GVCU,HPDM3
+ SG_ PassSideCrash : 16|1@1+ (1,0) [0|1] ""  GVCU,HPDM3
+ SG_ RearCrash : 17|1@1+ (1,0) [0|1] ""  GVCU,HPDM3
+ SG_ RolloverCrash : 18|1@1+ (1,0) [0|1] ""  GVCU,HPDM3
+
+BO_ 150 veh_pwr_st: 2 SCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  ECM2,GVCU,HEADUNIT,HPDM1,HPDM2,HPDM3,HPDM4,LPDM1,LPDM2,LPDM3,LST,SMARTWHEEL
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] ""  ECM2,GVCU,HEADUNIT,HPDM1,HPDM2,HPDM3,HPDM4,LPDM1,LPDM2,LPDM3,LST,SMARTWHEEL
+ SG_ pwr_st : 12|4@1+ (1,0) [0|15] "enum"  ECM2,ECMAUX,GVCU,HEADUNIT,HPDM1,HPDM2,HPDM3,HPDM4,LPDM1,LPDM2,LPDM3,LST,SMARTWHEEL
+
+BO_ 410 dcdc_data: 7 HPDM3
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|0] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|0] ""  GVCU
+ SG_ in_voltage_hv : 16|8@1+ (5,0) [0|1275] "V"  GVCU
+ SG_ in_current_hv : 24|8@1+ (0.5,0) [0|100] "A"  GVCU
+ SG_ dtc_list_12v : 32|8@1+ (1,0) [0|0] ""  GVCU
+ SG_ dtc_list_48v : 40|8@1+ (1,0) [0|0] ""  GVCU
+ SG_ state_12v : 48|3@1+ (1,0) [0|0] ""  GVCU
+ SG_ swt_ena_fb_12v : 51|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ state_48v : 52|3@1+ (1,0) [0|0] ""  GVCU
+ SG_ swt_ena_fb_48v : 55|1@1+ (1,0) [0|1] "enum"  GVCU
+
+BO_ 411 dcdc_data_2: 8 HPDM3
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|0] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|0] ""  GVCU
+ SG_ current_output_12v : 14|10@1+ (1,0) [0|333] "A"  GVCU
+ SG_ current_output_48v : 24|8@1+ (1,0) [0|150] "A"  GVCU
+ SG_ available_power_12v : 32|8@1+ (1,0) [0|100] "%"  GVCU
+ SG_ available_power_48v : 40|8@1+ (1,0) [0|100] "%"  GVCU
+ SG_ dcdc_fan_req : 48|8@1+ (1,0) [0|100] "%"  GVCU
+ SG_ dcdc_pump_req : 56|8@1+ (1,0) [0|100] "%"  GVCU
+
+BO_ 420 charger_data: 8 HPDM3
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|0] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|0] ""  GVCU
+ SG_ charging_mode : 12|2@1+ (1,0) [0|3] "enum"  GVCU,SCU
+ SG_ charge_port_status : 14|2@1+ (1,0) [0|3] "enum"  GVCU,HEADUNIT,SCU
+ SG_ charge_current : 16|12@1+ (0.1,0) [0|120] "A"  GVCU
+ SG_ charge_voltage : 28|10@1+ (1,0) [0|1000] "V"  GVCU
+ SG_ inlet_motor_status : 38|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ obc_status : 40|3@1+ (1,0) [0|7] "enum"  GVCU
+ SG_ evcc_status : 43|3@1+ (1,0) [0|7] "enum"  GVCU
+ SG_ obc_fan_req : 48|8@1+ (1,0) [0|100] "%"  GVCU
+ SG_ obc_pump_req : 56|8@1+ (1,0) [0|100] "%"  GVCU
+
+BO_ 471 gvcu_veh_state_2: 8 GVCU
+ SG_ E2eChecksum_Disable : 0|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ E2eAliveCounter_Disable : 8|4@1+ (1,0) [0|15] ""  HEADUNIT
+ SG_ veh_vel_lgt : 12|13@1+ (0.1,0) [0|550] "km/h"  HEADUNIT,HPDM2,LPDM1,LPDM3,SCU
+ SG_ drv_cfg : 25|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ b_forced_chrg_actv : 27|1@1+ (1,0) [0|1] "bool"  HEADUNIT
+ SG_ b_auto_mod_actv : 28|1@1+ (1,0) [0|1] "bool"  HEADUNIT,HPDM2,LST
+ SG_ b_man_mod_actv : 29|1@1+ (1,0) [0|1] "bool"  HEADUNIT,HPDM2,LST
+ SG_ tire_mdl : 30|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ suppg_mod : 32|3@1+ (1,0) [0|6] "enum"  HEADUNIT,HPDM2
+ SG_ park_brk_st : 35|3@1+ (1,0) [0|5] "enum"  HEADUNIT
+ SG_ esp_st : 38|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ drv_mod : 40|3@1+ (1,0) [0|4] "enum"  HEADUNIT,HPDM2,LPDM1,LPDM3
+ SG_ lift_st : 43|3@1+ (1,0) [0|6] "enum"  HEADUNIT,HPDM2
+ SG_ veh_vel_lgt_v : 46|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2,LPDM1,LPDM3,SCU
+ SG_ ign_hold : 47|1@1+ (1,0) [0|1] "bool"  LPDM2,SCU
+ SG_ bto_active : 48|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ launch_ctrl_sts : 50|3@1+ (1,0) [0|5] "enum"  HPDM2
+
+BO_ 473 gvcu_veh_state_3: 5 GVCU
+ SG_ E2eChecksum_Disable : 0|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ E2eAliveCounter_Disable : 8|4@1+ (1,0) [0|15] ""  HEADUNIT
+ SG_ tq_sys_st : 12|3@1+ (1,0) [0|5] "enum"  HEADUNIT
+ SG_ brk_li_req : 15|2@1+ (1,0) [0|3] "enum"  LPDM3
+ SG_ pwr_combd : 17|8@1+ (10,0) [0|2400] "hp"  HPDM2
+ SG_ soc_disp : 25|7@1+ (1,0) [0|100] "%"  HEADUNIT,HPDM2,SCU
+ SG_ veh_rollg_st : 32|3@1+ (1,0) [0|4] "enum"  SCU
+ SG_ avas_speaker_ena_req : 35|2@1+ (1,0) [0|2] "enum"  LPDM1,LPDM3
+
+BO_ 474 gvcu_veh_state_1: 6 GVCU
+ SG_ E2eChecksum_Disable : 0|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ E2eAliveCounter_Disable : 8|4@1+ (1,0) [0|15] ""  HEADUNIT
+ SG_ steer_whl_ag : 12|14@1+ (0.1,-800) [-800|800] "deg"  HEADUNIT
+ SG_ ice_speed_actual : 26|14@1+ (1,0) [0|10000] "rpm"  HPDM2,SCU
+ SG_ steer_whl_ag_v : 40|1@1+ (1,0) [0|1] "enum"  HEADUNIT
+ SG_ ice_speed_actual_v : 41|1@1+ (1,0) [0|1] "enum"  HPDM2,SCU
+
+BO_ 476 gvcu_hv_control: 6 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  HPDM3,LPDM1,LPDM2
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  HPDM3,LPDM1,LPDM2
+ SG_ contactor_req : 12|4@1+ (1,0) [0|4] "enum"  HPDM3,LPDM1,LPDM2
+ SG_ skip_hvac_contactor : 16|1@1+ (1,0) [0|1] "bool"  HPDM3,LPDM1,LPDM2
+ SG_ skip_dcdc_contactor : 17|1@1+ (1,0) [0|1] "bool"  HPDM3,LPDM1,LPDM2
+ SG_ skip_obc_contactor : 18|1@1+ (1,0) [0|1] "bool"  HPDM3,LPDM1,LPDM2
+ SG_ hyb_st_mac_state : 19|4@1+ (1,0) [0|8] "enum"  HEADUNIT,HPDM1,HPDM3,HPDM4,LPDM1,LPDM2,SCU
+ SG_ unlock_charge_port_req : 23|1@1+ (1,0) [0|1] "bool"  HPDM3
+ SG_ hv_req_reason_ign : 24|1@1+ (1,0) [0|1] "bool"  HPDM3
+ SG_ hv_req_reason_climate : 25|1@1+ (1,0) [0|1] "bool"  HPDM3,SCU
+ SG_ hv_req_reason_lv_charging : 26|1@1+ (1,0) [0|1] "bool"  HPDM3,SCU
+ SG_ hv_req_reason_hv_charging : 27|1@1+ (1,0) [0|1] "bool"  HPDM3,SCU
+ SG_ hv_req_reason_thermal : 28|1@1+ (1,0) [0|1] "bool"  HPDM3,SCU
+ SG_ lv_chrg_req_allwd : 29|1@1+ (1,0) [0|1] "bool"  SCU
+ SG_ chrgn_pwr : 30|8@1+ (1,0) [0|250] "kW"  HEADUNIT
+ SG_ rem_chrgn_time : 40|8@1+ (5,0) [0|1275] "min"  HEADUNIT
+
+BO_ 477 hpdm3_hv_status: 8 HPDM3
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ bms_state : 12|4@1+ (1,0) [0|10] "enum"  GVCU
+ SG_ hvac_contactor : 16|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ dcdc_contactor : 18|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ obc_contactor : 20|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ hv_on_req_lv_charging : 22|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_hv_bat_fan_req : 24|8@1+ (1,0) [0|100] "%"  GVCU
+ SG_ front_hv_bat_pump_req : 32|8@1+ (1,0) [0|100] "%"  GVCU
+ SG_ available_discharge_current : 40|12@1+ (1,0) [0|2000] "A"  GVCU
+ SG_ available_charge_current : 52|12@1+ (1,0) [0|2000] "A"  GVCU
+
+BO_ 478 hpdm3_hv_status_2: 8 HPDM3
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU,HEADUNIT
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU,HEADUNIT
+ SG_ thermal_runaway_detection : 12|1@1+ (1,0) [0|1] "bool"  GVCU,HEADUNIT,HPDM2
+ SG_ soh_v : 13|1@1+ (1,0) [0|1] "enum"  GVCU,HEADUNIT
+ SG_ soe_v : 14|1@1+ (1,0) [0|1] "enum"  GVCU,HEADUNIT
+ SG_ soc : 16|10@1+ (0.1,0) [0|100] "%"  GVCU
+ SG_ soc_v : 26|1@1+ (1,0) [0|1] "enum"  GVCU,HEADUNIT
+ SG_ soh : 32|8@1+ (1,0) [0|100] "%"  GVCU,HEADUNIT
+ SG_ soe : 40|8@1+ (0.1,0) [0|25.5] "KWH"  GVCU,HEADUNIT
+ SG_ soc_predictive : 48|10@1+ (0.1,0) [0|100] "%"  GVCU
+ SG_ soc_predictive_v : 58|1@1+ (1,0) [0|1] "enum"  GVCU
+
+BO_ 479 hpdm3_hv_status_3: 6 HPDM3
+ SG_ pack_current : 0|16@1+ (0.1,-3276) [-3276|3276] "A"  GVCU
+ SG_ pack_voltage : 16|16@1+ (1,0) [0|1000] "V"  GVCU
+ SG_ dtc_list_bms : 32|8@1+ (1,0) [0|46] "enum"  GVCU
+ SG_ avg_cell_temperature : 40|8@1+ (1,-40) [-40|215] "degree C"  GVCU
+
+BO_ 640 ecm2_broadcast_1: 8 ECM2
+ SG_ ecm2_eng_rpm : 0|16@1+ (0.25,0) [0|10000] "rpm"  HEADUNIT
+ SG_ ecm2_intake_mfld_pressure : 16|10@1+ (1,0) [0|1023] "kPa"  HEADUNIT,HPDM2
+ SG_ ecm2_oil_pressure : 32|8@1+ (0.1,0) [0|10] "Bar"  HEADUNIT
+ SG_ ecm2_fuel_pressure : 40|8@1+ (0.05,-1) [-1|11.75] "Bar"  HEADUNIT
+ SG_ ecm2_actual_torque_estimate : 48|16@1+ (0.1,-200) [-200|2000] "Nm"  HEADUNIT,HPDM2
+
+BO_ 641 ecm2_broadcast_2: 8 ECM2
+ SG_ ecm2_intake_air_temp : 0|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT
+ SG_ ecm2_oil_temp : 8|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT,HPDM2
+ SG_ ecm2_ethanol_content : 16|8@1+ (1,0) [0|100] "%"  HEADUNIT,HPDM2
+ SG_ ecm2_engine_coolant_temp : 24|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT,HPDM2
+ SG_ ecm2_fuel_level : 32|7@1+ (1,0) [0|100] "L"  GVCU,HPDM2
+ SG_ ecm2_ambient_pressure : 40|8@1+ (1,0) [0|115] "kPa"  GVCU
+ SG_ ecm2_estimate_engine_power : 48|12@1+ (1,-200) [-200|1800] "kW"  HEADUNIT,HPDM2
+
+BO_ 650 lst_status: 2 LST
+ SG_ gear : 0|4@1+ (1,0) [0|10] "enum"  HPDM2
+ SG_ gearbox_t : 4|8@1+ (1,-40) [-40|215] "degC"  HPDM2
+
+BO_ 891 steer_whl_repack: 8 HPDM2
+ SG_ btn_step_le : 0|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ btn_step_ri : 2|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ btn_lines : 4|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ btn_enc_le : 6|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ btn_phone : 8|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ btn_lift : 10|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ btn_crs_ctrl : 12|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ btn_enc_ri : 14|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ btn_knob_ri : 16|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ btn_knob_le : 18|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ btn_horn : 20|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ btn_paddle_ri : 22|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ btn_paddle_le : 24|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ enc_volume : 26|8@1+ (1,0) [0|255] "posn"  HEADUNIT
+ SG_ enc_crs_ctrl : 34|8@1+ (1,0) [0|255] "posn"  GVCU
+ SG_ enc_knob_le : 42|8@1+ (1,0) [0|255] "posn"  GVCU
+ SG_ enc_knob_ri : 50|8@1+ (1,0) [0|255] "posn"  GVCU
+ SG_ enc_volume_vld : 58|1@1+ (1,0) [0|1] "bool"  HEADUNIT
+ SG_ enc_crs_ctrl_vld : 59|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ enc_knob_le_vld : 60|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ enc_knob_ri_vld : 61|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 1000 dummy_e2e: 2 HPDM1
+ SG_ E2eChecksum : 0|8@1+ (1,0) [0|255] ""  HPDM4
+ SG_ E2eAliveCounter : 8|4@1+ (1,0) [0|15] ""  HPDM4
+
+BO_ 1001 headunit_odometer: 4 SCU
+ SG_ odometer : 0|31@1+ (1,0) [0|2147483647] "m"  GVCU
+ SG_ odometer_v : 31|1@1+ (1,0) [0|1] "enum"  GVCU
+
+BO_ 1002 gvcu_odometer: 4 GVCU
+ SG_ odometer : 0|31@1+ (1,0) [0|2147483647] "m"  HEADUNIT,HPDM2
+ SG_ odometer_v : 31|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2
+
+BO_ 1003 key_fob_btn_st: 2 SCU
+ SG_ btn_1_st : 0|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ btn_2_st : 1|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ btn_3_st : 2|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ btn_4_st : 3|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ btn_5_st : 4|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ btn_6_st : 5|1@1+ (1,0) [0|1] "enum"  ECM2,HPDM2
+ SG_ btn_7_st : 6|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ Keyfob_inside_car : 7|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ keyfob_Lo_pwr : 8|2@1+ (1,0) [0|2] "enum"  HPDM2
+
+BO_ 1026 hpdm2_body_veh_req_2: 3 HPDM2
+ SG_ E2eChecksum_Disable : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ E2eAliveCounter_Disable : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ park_btn_st : 12|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ ign_btn_st : 14|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ launch_mod_btn_st : 16|2@1+ (1,0) [0|2] "enum"  GVCU
+
+BO_ 1039 hmi_to_bcc: 8 SCU
+ SG_ intr_li_req_red : 0|8@1+ (1,0) [0|255] ""  HPDM2
+ SG_ intr_li_req_green : 8|8@1+ (1,0) [0|255] ""  HPDM2
+ SG_ intr_li_req_blue : 16|8@1+ (1,0) [0|255] ""  HPDM2
+ SG_ seat_req_le : 24|3@1+ (1,0) [0|4] "enum"  HPDM2
+ SG_ seat_req_ri : 27|3@1+ (1,0) [0|4] "enum"  HPDM2
+ SG_ door_req_le : 30|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ steer_col_req : 32|3@1+ (1,0) [0|4] "enum"  HPDM2
+ SG_ roof_dim_req : 35|3@1+ (1,0) [0|4] "enum"  LPDM2
+ SG_ door_req_ri : 38|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ mirr_adj_req_le : 40|3@1+ (1,0) [0|4] "enum"  HPDM2
+ SG_ mirr_adj_req_ri : 43|3@1+ (1,0) [0|4] "enum"  HPDM2
+ SG_ mirr_fold_req : 46|2@1+ (1,0) [0|2] ""  HPDM2
+ SG_ cup_holders_req_frnt : 48|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ cup_holders_req_re : 50|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ wipr_req : 52|2@1+ (1,0) [0|3] "enum"  HPDM2,LPDM1
+ SG_ glovebox_req : 54|1@1+ (1,0) [0|1] "enum"  HPDM2,LPDM2
+ SG_ hood_req_frnt : 55|1@1+ (1,0) [0|1] "enum"  HPDM2
+
+BO_ 1040 hmi_to_bcc_2: 8 SCU
+ SG_ hood_req_re : 0|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ stop_hv_charge_req : 1|1@1+ (1,0) [0|1] "bool"  GVCU,HPDM3
+ SG_ fog_li_re : 2|1@1+ (1,0) [0|1] "enum"  HPDM2,LPDM3
+ SG_ chrgn_lid_req : 3|1@1+ (1,0) [0|1] "enum"  LPDM3
+ SG_ fuel_lid_usr_req : 4|1@1+ (1,0) [0|1] "enum"  ECM2
+ SG_ seat_heatr_req_le : 5|2@1+ (1,0) [0|3] "enum"  HPDM2
+ SG_ seat_heatr_req_ri : 7|2@1+ (1,0) [0|3] "enum"  HPDM2
+ SG_ extr_li_mod_req : 9|3@1+ (1,0) [0|4] "enum"  HPDM2
+ SG_ media_playing : 12|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ carplay_actv : 14|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ media_vol : 16|8@1+ (1,0) [0|100] "%"  HPDM2
+ SG_ disp_bri : 24|8@1+ (1,0) [0|100] "%"  HPDM2
+ SG_ accent_color_red : 32|8@1+ (1,0) [0|255] "int"  HPDM2
+ SG_ accent_color_green : 40|8@1+ (1,0) [0|255] "int"  HPDM2
+ SG_ accent_color_blue : 48|8@1+ (1,0) [0|255] "int"  HPDM2
+ SG_ unit_dst : 56|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ unit_t : 58|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ unit_p : 60|2@1+ (1,0) [0|2] "enum"  HPDM2
+
+BO_ 1043 stalks_repack: 1 HPDM2
+ SG_ wind_wshr_pmp_req : 0|2@1+ (1,0) [0|2] "enum"  LPDM1
+ SG_ high_beam_req : 2|2@1+ (1,0) [0|2] "enum"  LPDM1
+ SG_ turn_indcr_le_req : 4|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ turn_indcr_ri_req : 6|2@1+ (1,0) [0|3] "enum"  LPDM1
+
+BO_ 1044 hpdm2_generic_bcc: 7 HPDM2
+ SG_ door_hyd_req_ri : 0|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ door_hyd_req_le : 2|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ door_st_le : 4|2@1+ (1,0) [0|3] "enum"  HEADUNIT,SCU
+ SG_ door_st_ri : 6|2@1+ (1,0) [0|3] "enum"  HEADUNIT,SCU
+ SG_ heater_temp_sens_1 : 8|12@1+ (1,0) [0|4095] "bits"  LPDM1
+ SG_ heater_temp_sens_2 : 20|12@1+ (1,0) [0|4095] "bits"  LPDM1
+ SG_ evap_sens : 32|12@1+ (1,0) [0|4095] "bits"  LPDM1
+ SG_ turn_indcr_le : 44|2@1+ (1,0) [0|3] "enum"  LPDM1,LPDM3
+ SG_ turn_indcr_ri : 46|2@1+ (1,0) [0|3] "enum"  LPDM1,LPDM3
+ SG_ hood_frnt_ltch_cmd : 48|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ hood_re_ltch_cmd : 50|2@1+ (1,0) [0|3] "enum"  LPDM3
+
+BO_ 1045 hpdm2_generic_bcc_2: 4 HPDM2
+ SG_ door_le_amb_t : 0|8@1+ (1,-30) [-30|100] "degC"  ECM2,GVCU,HPDM3
+ SG_ door_ri_amb_t : 8|8@1+ (1,-30) [-30|100] "degC"  ECM2,GVCU,HPDM3
+ SG_ high_beam_req : 16|2@1+ (1,0) [0|2] "enum"  LPDM1
+ SG_ extr_li_mod_req : 18|3@1+ (1,0) [0|4] "enum"  LPDM1,LPDM3
+ SG_ door_le_amb_t_snsr_sts : 21|3@1+ (1,0) [0|4] "enum"  ECM2,GVCU,HPDM3
+ SG_ door_ri_amb_t_snsr_sts : 24|3@1+ (1,0) [0|4] "enum"  ECM2,GVCU,HPDM3
+
+BO_ 1046 hvac_t_snsr: 8 HPDM2
+ SG_ frnt_t_snsr_freeze_1 : 0|8@1+ (1,-40) [-40|105] ""  LPDM1
+ SG_ frnt_t_snsr_freeze_2 : 8|8@1+ (1,-40) [-40|105] ""  LPDM1
+ SG_ frnt_t_snsr_out_1 : 16|8@1+ (1,-40) [-40|105] ""  LPDM1
+ SG_ frnt_t_snsr_out_2 : 24|8@1+ (1,-40) [-40|105] ""  LPDM1
+ SG_ frnt_t_snsr_in : 32|8@1+ (1,-20) [-20|70] ""  LPDM1
+ SG_ re_t_snsr_freeze : 40|8@1+ (1,-40) [-40|105] ""  LPDM1
+ SG_ re_t_snsr_out : 48|8@1+ (1,-40) [-40|105] ""  LPDM1
+
+BO_ 1047 hpdm2_hmi_sounds: 2 HPDM2
+ SG_ turn_indcr_tone : 0|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ gen_warn_alert_tone : 2|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ hv_warn_alert_tone : 4|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ seat_blt_warn_alert_tone : 6|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ veh_lift_alert_tone : 8|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ actv_sys_flt_alert_tone : 10|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ obstcl_warn_tone : 12|3@1+ (1,0) [0|4] "enum"  HEADUNIT
+
+BO_ 1048 hpdm4_cooling_status1: 8 HPDM4
+ SG_ middle_left_lst_fan_speed : 0|8@1+ (26,0) [0|4500] "RPM"  GVCU
+ SG_ middle_right_lst_fan_speed : 8|8@1+ (26,0) [0|4500] "RPM"  GVCU
+ SG_ rear_left_ic_fan_speed : 16|8@1+ (26,0) [0|4500] "RPM"  GVCU
+ SG_ rear_right_ic_fan_speed : 24|8@1+ (26,0) [0|4500] "RPM"  GVCU
+ SG_ rear_right_ic_pump_speed : 32|8@1+ (26,0) [0|5500] "RPM"  GVCU
+ SG_ rear_left_ic_pump_speed : 40|8@1+ (26,0) [0|5500] "RPM"  GVCU
+ SG_ middle_left_lst_fan_fault : 48|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_left_lst_fan_bat_vltg : 49|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_left_lst_fan_over_pwr : 50|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_left_lst_fan_over_crnt : 51|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_left_lst_fan_over_temp : 52|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_left_lst_fan_watchdog : 53|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_left_lst_fan_can_coll : 54|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_left_lst_fan_motor_stall : 55|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_right_lst_fan_fault : 56|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_right_lst_fan_bat_vltg : 57|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_right_lst_fan_over_pwr : 58|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_right_lst_fan_over_crnt : 59|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_right_lst_fan_over_temp : 60|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_right_lst_fan_watchdog : 61|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_right_lst_fan_can_coll : 62|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ middle_right_lst_fan_motor_stal : 63|1@1+ (1,0) [0|1] ""  GVCU
+
+BO_ 1049 hpdm4_cooling_status2: 8 HPDM4
+ SG_ rear_left_ic_fan_fault : 0|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_fan_bat_vltg : 1|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_fan_over_pwr : 2|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_fan_over_crnt : 3|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_fan_over_temp : 4|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_fan_watchdog : 5|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_fan_can_coll : 6|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_fan_motor_stalled : 7|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_fan_fault : 8|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_fan_bat_vltg : 9|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_fan_over_pwr : 10|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_fan_over_crnt : 11|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_fan_over_temp : 12|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_fan_watchdog : 13|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_fan_can_coll : 14|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_fan_motor_stalled : 15|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_pump_fault : 16|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_pump_bat_vltg : 17|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_pump_over_pwr : 18|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_pump_over_crnt : 19|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_pump_over_temp : 20|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_pump_watchdog : 21|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_pump_can_collision : 22|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_pump_motor_stalled : 23|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_pump_fault : 24|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_pump_bat_vltg : 25|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_pump_over_pwr : 26|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_pump_over_crnt : 27|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_pump_over_temp : 28|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_pump_watchdog : 29|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_pump_can_collision : 30|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_right_ic_pump_motor_stalled : 31|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ rear_left_ic_pump_power : 32|16@1+ (1,0) [0|5000] "Watt"  GVCU
+ SG_ rear_right_ic_pump_power : 48|16@1+ (1,0) [0|5000] "Watt"  GVCU
+
+BO_ 1054 ecm_to_bcc: 1 ECM2
+ SG_ fuel_lid_req : 0|1@1+ (1,0) [0|1] "enum"  LPDM3
+ SG_ flexfuel_mismatch : 2|2@1+ (1,0) [0|2] "enum"  HPDM2
+
+BO_ 1056 hood_frnt_st: 1 LPDM1
+ SG_ ltch_st : 0|3@1+ (1,0) [0|5] "enum"  HPDM2
+
+BO_ 1057 hood_re_st: 1 LPDM3
+ SG_ ltch_le_st : 0|3@1+ (1,0) [0|5] "enum"  HPDM2
+ SG_ ltch_ri_st : 3|3@1+ (1,0) [0|5] "enum"  HPDM2
+
+BO_ 1080 ac_system_status: 6 LPDM1
+ SG_ compressor_hv_volt : 0|8@1+ (5,0) [0|1275] "V"  GVCU
+ SG_ compressor_hv_curr : 8|8@1+ (0.5,0) [0|100] "A"  GVCU
+ SG_ compressor_op_state : 16|3@1+ (1,0) [0|4] "enum"  GVCU
+ SG_ compressor_warning : 19|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ compressor_fault : 20|1@1+ (1,0) [0|1] "bool"  GVCU,HPDM2
+ SG_ ac_low_gas : 21|1@1+ (1,0) [0|1] "bool"  GVCU,HPDM2
+ SG_ clima_hv_req : 22|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ ac_pressure_high : 24|8@1+ (0.1,0) [0|25.5] "bar"  GVCU
+ SG_ ac_pressure_low : 32|8@1+ (0.1,0) [0|25.5] "bar"  GVCU
+ SG_ front_hvac_fan_request : 40|8@1+ (1,0) [0|100] "%"  GVCU
+
+BO_ 1090 dyno_aut_drvr: 4 HUB_DYNO
+ SG_ drvg_cyc_tar_vel : 0|12@1+ (0.1,0) [0|250] "km/h"  GVCU
+ SG_ drvg_cyc_tar_vel_v : 12|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ drvg_cyc_st : 13|3@1+ (1,0) [0|5] "enum"  GVCU
+ SG_ drvg_cyc_tar_accel : 16|12@1+ (0.1,-50) [-50|50] "km/hs"  GVCU
+ SG_ drvg_cyc_tar_accel_v : 28|1@1+ (1,0) [0|1] "enum"  GVCU
+
+BO_ 1091 gvcu_aut_drvr: 2 GVCU
+ SG_ ctrl_st : 0|3@1+ (1,0) [0|5] "enum"  HUB_DYNO
+ SG_ ctrl_off_mask : 4|12@1+ (1,0) [0|255] "enum"  HUB_DYNO
+
+BO_ 1136 gvcu_nodes_enable_hold: 4 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  LPDM1,LPDM2
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  LPDM1,LPDM2
+ SG_ ddc_enable_hold : 12|2@1+ (1,0) [0|2] "enum"  LPDM2
+ SG_ eps_enable_hold : 14|2@1+ (1,0) [0|2] "enum"  LPDM1
+ SG_ ieb_enable_hold : 16|2@1+ (1,0) [0|2] "enum"  LPDM1
+ SG_ acc_enable_hold : 18|2@1+ (1,0) [0|2] "enum"  LPDM2
+
+BO_ 1149 lpdm1_hyd_block: 3 LPDM1
+ SG_ autoskin_oil_pressure : 0|12@1+ (0.1,0) [0|280] "bar"  GVCU
+ SG_ autoskin_oil_temperature : 12|8@1+ (1,-40) [-40|140] "degC"  GVCU
+ SG_ autoskin_oil_pressure_vld : 20|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ autoskin_oil_temperature_vld : 21|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 1150 lpdm1_fuse_sts: 8 LPDM1
+ SG_ bts_3a_1 : 0|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_2 : 2|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_3 : 4|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_4 : 6|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_5 : 8|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_6 : 10|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_7 : 12|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_8 : 14|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_9 : 16|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_10 : 18|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_11 : 20|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_12 : 22|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_13 : 24|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_14 : 26|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_15 : 28|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_16 : 30|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_17 : 32|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_18 : 34|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_19 : 36|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_20 : 38|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_1 : 40|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_2 : 42|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_3 : 44|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_4 : 46|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_5 : 48|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_6 : 50|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_7 : 52|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_8 : 54|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_9 : 56|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10 : 58|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_11 : 60|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_10a_1 : 62|2@1+ (1,0) [0|3] "enum"  LPDM2
+
+BO_ 1151 lpdm1_fuse_sts2: 2 LPDM1
+ SG_ bts_10a_2 : 0|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_1 : 2|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_2 : 4|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_3 : 6|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_4 : 8|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_5 : 10|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_6 : 12|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ vnd_5a : 14|2@1+ (1,0) [0|3] "enum"  LPDM2
+
+BO_ 1152 lpdm2_fuse_sts: 8 LPDM2
+ SG_ bts_3a_1 : 0|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_2 : 2|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_3 : 4|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_4 : 6|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_5 : 8|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_6 : 10|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_7 : 12|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_8 : 14|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_9 : 16|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_10 : 18|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_11 : 20|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_12 : 22|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_13 : 24|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_14 : 26|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_15 : 28|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_16 : 30|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_17 : 32|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_18 : 34|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_19 : 36|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_3a_20 : 38|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_1 : 40|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_2 : 42|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_3 : 44|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_4 : 46|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_5 : 48|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_6 : 50|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_7 : 52|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_8 : 54|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_9 : 56|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_10 : 58|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_11 : 60|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_10a_1 : 62|2@1+ (1,0) [0|3] "enum"  LPDM1
+
+BO_ 1153 lpdm2_fuse_sts2: 2 LPDM2
+ SG_ bts_10a_2 : 0|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_10a_1 : 2|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_10a_2 : 4|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_10a_3 : 6|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_10a_4 : 8|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_10a_5 : 10|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ bts_5a_10a_6 : 12|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ vnd_5a : 14|2@1+ (1,0) [0|3] "enum"  LPDM1
+
+BO_ 1154 lpdm3_fuse_sts: 8 LPDM3
+ SG_ bts_3a_1 : 0|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_2 : 2|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_3 : 4|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_4 : 6|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_5 : 8|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_6 : 10|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_7 : 12|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_8 : 14|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_9 : 16|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_10 : 18|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_11 : 20|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_12 : 22|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_13 : 24|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_14 : 26|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_15 : 28|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_16 : 30|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_17 : 32|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_18 : 34|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_19 : 36|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_20 : 38|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_1 : 40|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_2 : 42|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_3 : 44|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_4 : 46|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_5 : 48|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_6 : 50|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_7 : 52|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_8 : 54|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_9 : 56|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10 : 58|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_11 : 60|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_10a_1 : 62|2@1+ (1,0) [0|3] "enum"  LPDM2
+
+BO_ 1155 lpdm3_fuse_sts2: 2 LPDM3
+ SG_ bts_10a_2 : 0|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_1 : 2|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_2 : 4|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_3 : 6|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_4 : 8|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_5 : 10|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_5a_10a_6 : 12|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ vnd_5a : 14|2@1+ (1,0) [0|3] "enum"  LPDM2
+
+BO_ 1156 hpdm1_fuse_sts: 2 HPDM1
+ SG_ bts_3a_1 : 0|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_2 : 2|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_3 : 4|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_4 : 6|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_5 : 8|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_6 : 10|2@1+ (1,0) [0|3] "enum"  LPDM2
+
+BO_ 1157 hpdm2_fuse_sts: 2 HPDM2
+ SG_ bts_3a_1 : 0|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_2 : 2|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_3 : 4|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_4 : 6|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_5 : 8|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_6 : 10|2@1+ (1,0) [0|3] "enum"  LPDM2
+
+BO_ 1158 hpdm3_fuse_sts: 2 HPDM3
+ SG_ bts_3a_1 : 0|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_2 : 2|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_3 : 4|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_4 : 6|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_5 : 8|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_6 : 10|2@1+ (1,0) [0|3] "enum"  LPDM2
+
+BO_ 1159 hpdm4_fuse_sts: 2 HPDM4
+ SG_ bts_3a_1 : 0|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_2 : 2|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_3 : 4|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_4 : 6|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_5 : 8|2@1+ (1,0) [0|3] "enum"  LPDM2
+ SG_ bts_3a_6 : 10|2@1+ (1,0) [0|3] "enum"  LPDM2
+
+BO_ 1199 imu_data_rear: 8 HPDM4
+ SG_ accelerometer_x_reading : 0|10@1+ (0.004,-2) [-2|2] "g"  ECM2,GVCU,LPDM2
+ SG_ accelerometer_y_reading : 10|10@1+ (0.004,-2) [-2|2] "g"  ECM2,GVCU,LPDM2
+ SG_ accelerometer_z_reading : 20|10@1+ (0.004,-2) [-2|2] "g"  ECM2,GVCU,LPDM2
+ SG_ gyroscope_x_reading : 30|10@1+ (0.25,-125) [-125|125] "deg/s"  ECM2,GVCU,LPDM2
+ SG_ gyroscope_y_reading : 40|10@1+ (0.25,-125) [-125|125] "deg/s"  ECM2,GVCU,LPDM2
+ SG_ gyroscope_z_reading : 50|10@1+ (0.25,-125) [-125|125] "deg/s"  ECM2,GVCU,LPDM2
+ SG_ imu_flt : 60|1@1+ (1,0) [0|1] "bool"  ECM2,GVCU,LPDM2
+
+BO_ 1200 imu_data_frnt: 8 HPDM1
+ SG_ accelerometer_x_reading : 0|10@1+ (0.004,-2) [-2|2] "g"  GVCU,HPDM2
+ SG_ accelerometer_y_reading : 10|10@1+ (0.004,-2) [-2|2] "g"  GVCU,HPDM2
+ SG_ accelerometer_z_reading : 20|10@1+ (0.004,-2) [-2|2] "g"  GVCU,HPDM2
+ SG_ gyroscope_x_reading : 30|10@1+ (0.25,-125) [-125|125] "deg/s"  GVCU,HPDM2
+ SG_ gyroscope_y_reading : 40|10@1+ (0.25,-125) [-125|125] "deg/s"  GVCU,HPDM2
+ SG_ gyroscope_z_reading : 50|10@1+ (0.25,-125) [-125|125] "deg/s"  GVCU,HPDM2
+ SG_ imu_flt : 60|1@1+ (1,0) [0|1] "bool"  GVCU,HPDM2
+
+BO_ 1201 gvcu_cog_imu: 8 GVCU
+ SG_ accelerometer_x_fused : 0|10@1+ (0.04,-20) [-20|20] "m/s^2"  ECM2,HPDM2,LST
+ SG_ accelerometer_y_fused : 10|10@1+ (0.04,-20) [-20|20] "m/s^2"  ECM2,HPDM2,LST
+ SG_ accelerometer_z_fused : 20|10@1+ (0.04,-20) [-20|20] "m/s^2"  ECM2,HPDM2,LST
+ SG_ gyroscope_x_fused : 30|10@1+ (0.005,-2.5) [-2.5|2.5] "rad/s"  ECM2,HPDM2,LST
+ SG_ gyroscope_y_fused : 40|10@1+ (0.005,-2.5) [-2.5|2.5] "rad/s"  ECM2,HPDM2,LST
+ SG_ gyroscope_z_fused : 50|10@1+ (0.005,-2.5) [-2.5|2.5] "rad/s"  ECM2,HPDM2,LST
+ SG_ imu_vld : 60|1@1+ (1,0) [0|1] "bool"  ECM2,HPDM2,LST
+
+BO_ 1202 gvcu_front_cooling_control: 8 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  HPDM1,LPDM1
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  HPDM1,LPDM1
+ SG_ front_right_fan_req : 12|6@1+ (2,0) [0|100] "%"  HPDM1
+ SG_ front_center_right_fan_req : 18|6@1+ (2,0) [0|100] "%"  HPDM1
+ SG_ front_center_left_fan_req : 24|6@1+ (2,0) [0|100] "%"  HPDM1
+ SG_ front_left_fan_req : 30|6@1+ (2,0) [0|100] "%"  HPDM1
+ SG_ hv_bat_pump : 36|6@1+ (2,0) [0|100] "%"  HPDM1
+ SG_ e_motor_pump : 42|6@1+ (2,0) [0|100] "%"  HPDM1
+ SG_ inverter_pump : 48|6@1+ (2,0) [0|100] "%"  HPDM1
+ SG_ chiller_valve_req : 54|4@1+ (10,0) [0|100] "%"  LPDM1
+ SG_ hv_bat_pump2 : 58|6@1+ (2,0) [0|100] "%"  HPDM1
+
+BO_ 1203 hpdm1_cooling_status1: 8 HPDM1
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ front_right_fan_speed : 16|13@1+ (1,0) [0|6500] "RPM"  GVCU
+ SG_ front_right_fan_power_on : 29|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_right_fan_warning : 30|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_right_fan_fault : 31|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_center_right_fan_speed : 32|13@1+ (1,0) [0|6500] "RPM"  GVCU
+ SG_ front_center_right_fan_power_on : 45|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_center_right_fan_warning : 46|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_center_right_fan_fault : 47|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_center_left_fan_speed : 48|13@1+ (1,0) [0|6500] "RPM"  GVCU
+ SG_ front_center_left_fan_power_on : 61|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_center_left_fan_warning : 62|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_center_left_fan_fault : 63|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 1204 hpdm1_cooling_status2: 8 HPDM1
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ front_left_fan_speed : 12|13@1+ (1,0) [0|6500] "RPM"  GVCU
+ SG_ front_left_fan_power_on : 25|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_left_fan_warning : 26|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_left_fan_fault : 27|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ e_motor_pump_speed : 28|13@1+ (28,0) [0|7000] "RPM"  GVCU
+ SG_ e_motor_pump_power_on : 41|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ e_motor_pump_warning : 42|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ e_motor_pump_fault : 43|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 1205 hpdm1_cooling_status3: 8 HPDM1
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ inverter_pump_speed : 12|13@1+ (1,0) [0|6500] "RPM"  GVCU
+ SG_ inverter_pump_power_on : 25|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ inverter_pump_warning : 26|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ inverter_pump_fault : 27|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_bat_pump2_speed : 28|13@1+ (28,0) [0|7000] "RPM"  GVCU
+ SG_ hv_bat_pump2_voltage : 41|8@1+ (0.2,0) [0|50] "V"  GVCU
+ SG_ hv_bat_pump2_current : 49|8@1+ (0.2,0) [0|50] "A"  GVCU
+ SG_ hv_bat_pump2_fault : 57|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_bat_pump2_fault_voltage : 58|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_bat_pump2_fault_over_current : 59|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_bat_pump2_fault_over_temp : 60|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_bat_pump2_fault_communication : 61|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_bat_pump2_fault_internal_op : 62|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_bat_pump2_fault_dry_run : 63|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 1206 gvcu_rear_cooling_control: 7 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  HPDM4
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  HPDM4
+ SG_ lst_right_fan_req : 12|6@1+ (2,0) [0|100] "%"  HPDM4
+ SG_ lst_left_fan_req : 18|6@1+ (2,0) [0|100] "%"  HPDM4
+ SG_ ic_right_fan_req : 24|6@1+ (2,0) [0|100] "%"  HPDM4
+ SG_ ic_left_fan_req : 30|6@1+ (2,0) [0|100] "%"  HPDM4
+ SG_ ic_right_pump_req : 36|6@1+ (2,0) [0|100] "%"  HPDM4
+ SG_ ic_left_pump_req : 42|6@1+ (2,0) [0|100] "%"  HPDM4
+ SG_ upper_engine_bay_fan_req : 48|1@1+ (1,0) [0|1] "bool"  HPDM4
+ SG_ lower_engine_bay_fan_req : 49|1@1+ (1,0) [0|1] "bool"  HPDM4
+
+BO_ 1207 hpdm1_cooling_status4: 8 HPDM1
+ SG_ front_right_fan_bat_vltg : 0|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_right_fan_over_pwr : 1|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_right_fan_over_crnt : 2|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_right_fan_over_temp : 3|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_right_fan_can_watchdog : 4|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_right_fan_can_collision : 5|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_right_fan_motor_stall : 6|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_right_fan_bat_vltg : 7|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_right_fan_over_pwr : 8|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_right_fan_over_crnt : 9|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_right_fan_over_temp : 10|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_right_fan_can_watchdog : 11|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_right_fan_can_collision : 12|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_right_fan_motor_stall : 13|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_left_fan_bat_vltg : 14|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_left_fan_over_pwr : 15|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_left_fan_over_crnt : 16|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_left_fan_over_temp : 17|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_left_fan_can_watchdog : 18|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_left_fan_can_collision : 19|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ center_left_fan_motor_stall : 20|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_left_fan_bat_vltg : 21|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_left_fan_over_pwr : 22|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_left_fan_over_crnt : 23|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_left_fan_over_temp : 24|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_left_fan_can_watchdog : 25|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_left_fan_can_collision : 26|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ front_left_fan_motor_stall : 27|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ inverter_pump_bat_vltg : 28|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ inverter_pump_over_pwr : 29|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ inverter_pump_over_crnt : 30|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ inverter_pump_over_temp : 31|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ inverter_pump_can_watchdog : 32|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ inverter_pump_can_collision : 33|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ inverter_pump_motor_stall : 34|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ e_mot_pump_int_op_fault : 35|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ e_mot_pump_over_temp : 36|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ e_mot_pump_over_crnt : 37|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ e_mot_pump_vltg_err : 38|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ e_mot_pump_comm_fault : 39|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ hv_bat_pump1_fault_voltage : 40|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ hv_bat_pump1_fault_over_current : 41|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ hv_bat_pump1_fault_over_temp : 42|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ hv_bat_pump1_fault_communication : 43|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ hv_bat_pump1_fault_internal_op : 44|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ hv_bat_pump1_fault_dry_run : 45|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ hv_bat_pump1_fault : 46|1@1+ (1,0) [0|1] ""  GVCU
+ SG_ hv_bat_pump1_speed : 48|13@1+ (28,0) [0|7000] "RPM"  GVCU
+
+BO_ 1208 hpdm1_cooling_status5: 8 HPDM1
+ SG_ front_left_fan_power : 0|16@1+ (1,0) [0|5000] "Watt"  GVCU
+ SG_ front_right_fan_power : 16|16@1+ (1,0) [0|5000] "Watt"  GVCU
+ SG_ e_mot_pump_current : 32|8@1+ (0.2,0) [0|50] "A"  GVCU
+ SG_ e_mot_pump_voltage : 40|8@1+ (0.2,0) [0|50] "V"  GVCU
+ SG_ hv_bat_pump1_current : 48|8@1+ (0.2,0) [0|50] "A"  GVCU
+ SG_ hv_bat_pump1_voltage : 56|8@1+ (0.2,0) [0|50] "V"  GVCU
+
+BO_ 1209 hpdm1_cooling_status6: 8 HPDM1
+ SG_ center_right_fan_power : 0|16@1+ (1,0) [0|5000] "Watt"  GVCU
+ SG_ center_left_fan_power : 16|16@1+ (1,0) [0|5000] "Watt"  GVCU
+ SG_ inverter_pump_power : 32|16@1+ (1,0) [0|5000] "Watt"  GVCU
+ SG_ center_right_fan_msg_timeout : 48|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ center_left_fan_msg_timeout : 49|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_right_fan_msg_timeout : 50|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ front_left_fan_msg_timeout : 51|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ inv_pump_msg_timeout : 52|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_bat_pump1_msg_timeout : 53|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ hv_bat_pump2_msg_timeout : 54|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ emotor_pump_msg_timeout : 55|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 1210 hpdm4_cooling_status3: 8 HPDM4
+ SG_ rear_left_ic_fan_power : 0|16@1+ (1,0) [0|5000] "Watt"  GVCU
+ SG_ rear_right_ic_fan_power : 16|16@1+ (1,0) [0|5000] "Watt"  GVCU
+ SG_ middle_left_lst_fan_power : 32|16@1+ (1,0) [0|5000] "Watt"  GVCU
+ SG_ middle_right_lst_fan_power : 48|16@1+ (1,0) [0|5000] "Watt"  GVCU
+
+BO_ 1211 hpdm4_cooling_status4: 1 HPDM4
+ SG_ middle_left_fan_msg_timeout : 0|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ middle_right_fan_msg_timeout : 1|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ rear_left_fan_msg_timeout : 2|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ rear_right_fan_msg_timeout : 3|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ rear_right_pump_msg_timeout : 4|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ rear_left_pump_msg_timeout : 5|1@1+ (1,0) [0|1] "bool"  GVCU
+
+BO_ 1212 lv_batt_sts: 7 SCU
+ SG_ Lv_batt_voltage : 0|10@1+ (0.05,0) [0|50] "V"  GVCU,HPDM3
+ SG_ lv_batt_current : 10|14@1+ (0.1,-800) [-800|800] "A"  GVCU,HPDM3
+ SG_ charge_voltage_limit : 24|8@1+ (0.1,0) [9|16] "V"  GVCU,HPDM3
+ SG_ soc : 32|7@1+ (1,0) [0|100] "perc"  GVCU,HPDM3
+ SG_ bat_cpcty_ah : 40|6@1+ (1,0) [0|40] "Ah"  GVCU,HPDM3
+ SG_ rly_sts : 46|2@1+ (1,0) [0|3] "enum"  GVCU,HPDM3
+ SG_ volt_pack_flt : 48|1@1+ (1,0) [0|1] "bool"  GVCU,HPDM3
+ SG_ rly_fail_cls_flt : 49|1@1+ (1,0) [0|1] "bool"  GVCU,HPDM3
+ SG_ critical_error : 50|1@1+ (1,0) [0|1] "bool"  GVCU,HPDM3
+ SG_ curr_error : 51|1@1+ (1,0) [0|1] "bool"  GVCU,HPDM3
+ SG_ term_volt_flt : 52|1@1+ (1,0) [0|1] "bool"  GVCU,HPDM3
+ SG_ lv_battery_type : 53|2@1+ (1,0) [0|1] "enum"  GVCU,HPDM3
+
+BO_ 1280 tpms_car_data: 6 GVCU
+ SG_ atmos_press : 7|16@0+ (1,0) [0|65535] "mbar"  LPDM1,LPDM2,LPDM3
+ SG_ vehicle_speed : 23|16@0+ (0.1,0) [0|655] "km/h"  LPDM1,LPDM2,LPDM3
+ SG_ vehicle_odometer : 39|16@0+ (2,0) [0|131070] "km"  LPDM1,LPDM2,LPDM3
+
+BO_ 1285 debug_hv_2: 5 HPDM3
+ SG_ bms_state_machine : 0|8@1+ (1,0) [0|8] "enum"  HEADUNIT
+ SG_ soc : 8|8@1+ (1,0) [0|100] "%"  HEADUNIT
+ SG_ max_cell_temperature : 16|8@1+ (1,-40) [-40|215] "degreeC"  HEADUNIT
+ SG_ min_cell_temperature : 24|8@1+ (1,-40) [-40|215] "degreeC"  HEADUNIT
+ SG_ dcdc_status_12v : 32|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ dcdc_status_48v : 34|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+
+BO_ 1286 debug_hv: 8 HPDM3
+ SG_ isolation_value_kohm : 0|16@1+ (1,0) [0|65535] "kOhm"  HEADUNIT
+ SG_ pack_voltage : 16|14@1+ (0.1,0) [0|1000] "V"  HEADUNIT
+ SG_ bus_voltage : 32|14@1+ (0.1,0) [0|1000] "V"  HEADUNIT
+ SG_ pack_current : 48|16@1+ (0.1,-3276) [-3276|3276] "A"  HEADUNIT
+
+BO_ 1287 debug_inv: 5 GVCU
+ SG_ inv_state_machine : 0|8@1+ (1,0) [0|6] "enum"  HEADUNIT
+ SG_ dc_current : 8|12@1+ (0.5,-1024) [-1024|1023.5] "A"  HEADUNIT
+ SG_ dc_voltage : 24|12@1+ (0.25,0) [0|1023] "V"  HEADUNIT
+
+BO_ 1341 front_lift_status: 5 HPDM1
+ SG_ u_lift_cyl_fl : 0|10@1+ (0.0048875855327,0) [0|5] "Volt"  GVCU
+ SG_ u_lift_cyl_fr : 10|10@1+ (0.00488759,0) [0|5] "Volt"  GVCU
+ SG_ u_wishbone_angle_fl : 20|10@1+ (0.00488759,0) [0|5] "Volt"  GVCU
+ SG_ u_wishbone_angle_fr : 30|10@1+ (0.00488759,0) [0|5] "Volt"  GVCU
+
+BO_ 1342 lift_cmd: 1 GVCU
+ SG_ lift_cyl_cmd_fl : 0|2@1+ (1,0) [0|2] "enum"  LPDM1
+ SG_ lift_cyl_cmd_fr : 2|2@1+ (1,0) [0|2] "enum"  LPDM1
+ SG_ lift_cyl_cmd_rl : 4|2@1+ (1,0) [0|2] "enum"  LPDM1
+ SG_ lift_cyl_cmd_rr : 6|2@1+ (1,0) [0|2] "enum"  LPDM1
+
+BO_ 1343 rear_lift_status: 5 HPDM4
+ SG_ u_lift_cyl_rl : 0|10@1+ (0.00488759,0) [0|5] "Volt"  GVCU
+ SG_ u_lift_cyl_rr : 10|10@1+ (0.00488759,0) [0|5] "Volt"  GVCU
+ SG_ u_wishbone_angle_rl : 20|10@1+ (0.00488759,0) [0|5] "Volt"  GVCU
+ SG_ u_wishbone_angle_rr : 30|10@1+ (0.00488759,0) [0|5] "Volt"  GVCU
+
+BO_ 1344 lift_movement: 1 LPDM1
+ SG_ lift_movmt_fl : 0|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ lift_movmt_fr : 2|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ lift_movmt_rl : 4|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ lift_movmt_rr : 6|2@1+ (1,0) [0|2] "enum"  GVCU
+
+BO_ 1350 tpms_front_data: 8 LPDM1
+ SG_ tire_p_fl : 0|8@1+ (20,0) [0|5100] "mbar"  GVCU,HEADUNIT,HPDM2
+ SG_ tire_p_fr : 8|8@1+ (20,0) [0|5100] "mbar"  GVCU,HEADUNIT,HPDM2
+ SG_ tire_t_fl : 16|8@1+ (1,-40) [-40|215] "degC"  GVCU,HEADUNIT,HPDM2
+ SG_ tire_t_fr : 24|8@1+ (1,-40) [-40|215] "degC"  GVCU,HEADUNIT,HPDM2
+ SG_ rbl_fl : 32|7@1+ (1,0) [0|100] "%"  GVCU,HEADUNIT
+ SG_ battery_low_fl : 39|1@1+ (1,0) [0|1] "bool"  GVCU,HEADUNIT
+ SG_ rbl_fr : 40|7@1+ (1,0) [0|100] "%"  GVCU,HEADUNIT
+ SG_ battery_low_fr : 47|1@1+ (1,0) [0|1] "bool"  GVCU,HEADUNIT
+ SG_ rssi_fl : 48|7@1+ (1,-127) [-127|0] "dBm"  GVCU
+ SG_ tpms_fl_v : 55|1@1+ (1,0) [0|1] "enum"  GVCU,HEADUNIT
+ SG_ rssi_fr : 56|7@1+ (1,-127) [-127|0] "dBm"  GVCU
+ SG_ tpms_fr_v : 63|1@1+ (1,0) [0|1] "enum"  GVCU,HEADUNIT
+
+BO_ 1351 tpms_front_diag: 4 LPDM1
+ SG_ tpms_ecu_fault_mask_fl : 0|6@1+ (1,0) [0|63] "enum"  GVCU
+ SG_ tpms_ecu_fault_mask_fr : 6|6@1+ (1,0) [0|63] "enum"  GVCU
+ SG_ tpms_sensor_fault_mask_fl : 12|8@1+ (1,0) [0|255] "enum"  GVCU
+ SG_ tpms_sensor_fault_mask_fr : 20|8@1+ (1,0) [0|255] "enum"  GVCU
+ SG_ tpms_diag_veh_moving_fl : 28|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ tpms_diag_veh_moving_fr : 30|2@1+ (1,0) [0|3] "enum"  GVCU
+
+BO_ 1352 tpms_rear_data: 8 LPDM3
+ SG_ tire_p_rl : 0|8@1+ (20,0) [0|5100] "mbar"  GVCU,HEADUNIT,HPDM2
+ SG_ tire_p_rr : 8|8@1+ (20,0) [0|5100] "mbar"  GVCU,HEADUNIT,HPDM2
+ SG_ tire_t_rl : 16|8@1+ (1,-40) [-40|215] "degC"  GVCU,HEADUNIT,HPDM2
+ SG_ tire_t_rr : 24|8@1+ (1,-40) [-40|215] "degC"  GVCU,HEADUNIT,HPDM2
+ SG_ rbl_rl : 32|7@1+ (1,0) [0|100] "%"  GVCU,HEADUNIT
+ SG_ battery_low_rl : 39|1@1+ (1,0) [0|1] "bool"  GVCU,HEADUNIT
+ SG_ rbl_rr : 40|7@1+ (1,0) [0|100] "%"  GVCU,HEADUNIT
+ SG_ battery_low_rr : 47|1@1+ (1,0) [0|1] "bool"  GVCU,HEADUNIT
+ SG_ rssi_rl : 48|7@1+ (1,-127) [-127|0] "dBm"  GVCU
+ SG_ tpms_rl_v : 55|1@1+ (1,0) [0|1] "enum"  GVCU,HEADUNIT
+ SG_ rssi_rr : 56|7@1+ (1,-127) [-127|0] "dBm"  GVCU
+ SG_ tpms_rr_v : 63|1@1+ (1,0) [0|1] "enum"  GVCU,HEADUNIT
+
+BO_ 1353 tpms_rear_diag: 4 LPDM3
+ SG_ tpms_ecu_fault_mask_rl : 0|6@1+ (1,0) [0|63] "enum"  GVCU
+ SG_ tpms_ecu_fault_mask_rr : 6|6@1+ (1,0) [0|63] "enum"  GVCU
+ SG_ tpms_sensor_fault_mask_rl : 12|8@1+ (1,0) [0|255] "enum"  GVCU
+ SG_ tpms_sensor_fault_mask_rr : 20|8@1+ (1,0) [0|255] "enum"  GVCU
+ SG_ tpms_diag_veh_moving_rl : 28|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ tpms_diag_veh_moving_rr : 30|2@1+ (1,0) [0|3] "enum"  GVCU
+
+BO_ 1360 scu_hmi_veh_req: 7 SCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ suppg_mod_req : 23|3@1+ (1,0) [0|6] "enum"  GVCU
+ SG_ drv_cfg_req : 26|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ forced_chrg_btn_st : 28|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ man_mod_btn_st : 30|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ tire_mdl_req : 32|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ esp_st_req : 34|2@1+ (1,0) [0|2] "enum"  UNUSED
+ SG_ auto_upsh_btn_st : 43|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ lift_mod_btn_st : 45|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ drv_mod_req : 48|3@1+ (1,0) [0|4] "enum"  GVCU
+ SG_ acc_dft_dist_lvl : 51|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ acc_dft_actv_st : 53|2@1+ (1,0) [0|3] "enum"  GVCU
+
+BO_ 1363 lpdm2_gps_data_1: 8 LPDM2
+ SG_ veh_latitude : 0|20@1+ (0.000171662,-90) [0|90] "deg"  GVCU,SCU
+ SG_ veh_longitude : 20|21@1+ (0.000171662,-180) [-180|180] "deg"  GVCU,SCU
+ SG_ veh_elevation : 41|20@1+ (0.01,-100) [-100|10385.75] "m"  GVCU,SCU
+ SG_ sig_quality_gps : 61|3@1+ (1,0) [0|0] "-"  GVCU,SCU
+
+BO_ 1364 lpdm2_gps_data_2: 7 LPDM2
+ SG_ E2eChecksum : 0|8@1+ (1,0) [0|255] ""  GVCU,SCU
+ SG_ E2eAliveCounter : 8|4@1+ (1,0) [0|15] ""  GVCU,SCU
+ SG_ veh_vel_gps : 12|13@1+ (0.1,0) [0|819.1] "km/h"  GVCU,SCU
+ SG_ num_sat_gps : 25|6@1+ (1,0) [0|0] "-"  GVCU,SCU
+ SG_ pdop_gps : 31|7@1+ (0.1,0) [0|0] "-"  GVCU,SCU
+ SG_ hdop_gps : 38|7@1+ (0.1,0) [0|0] "-"  GVCU,SCU
+ SG_ vdop_gps : 45|7@1+ (0.1,0) [0|0] "-"  GVCU,SCU
+
+BO_ 1365 lpdm2_body_veh_req: 2 LPDM2
+ SG_ E2eChecksum_Disable : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ E2eAliveCounter_Disable : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ imob_st : 12|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ brk_li_swt_st : 14|2@1+ (1,0) [0|3] "enum"  GVCU
+
+BO_ 1366 gvcu_adaptive_cruise_control: 5 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  HPDM2
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] "enum"  HPDM2
+ SG_ adpv_crs_ctrl_st : 12|4@1+ (1,0) [0|8] "enum"  HPDM2
+ SG_ adpv_crs_ctrl_set_vel : 16|12@1+ (0.1,0) [0|250] "km/h"  HPDM2
+ SG_ adpv_crs_ctrl_takeoff_drvr_req : 28|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ adpv_crs_ctrl_takeover_drvr_req : 30|2@1+ (1,0) [0|3] "enum"  HPDM2
+ SG_ adpv_crs_ctrl_set_vel_v : 32|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ adpv_crs_ctrl_dist_lvl : 33|3@1+ (1,0) [0|4] "enum"  HPDM2
+ SG_ adpv_crs_ctrl_set_vel_or_dist : 36|3@1+ (1,0) [0|4] "enum"  HPDM2
+
+BO_ 1367 gvcu_cruise_control_masks: 8 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  LPDM2
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] "enum"  LPDM2
+ SG_ adpv_crs_ctrl_camera_blkd_mask : 12|12@1+ (1,0) [0|1023] "enum"  LPDM2
+ SG_ crs_ctrl_off_rsn_mask : 24|16@1+ (1,0) [0|8191] "enum"  LPDM2
+ SG_ crs_ctrl_stby_rsn_mask : 40|8@1+ (1,0) [0|31] "enum"  LPDM2
+ SG_ adpv_crs_ctrl_stby_rsn_mask : 48|16@1+ (1,0) [0|2047] "enum"  LPDM2
+
+BO_ 1368 hu_perf_mod_req_g1: 5 SCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ perf_mod_swt_req : 12|3@1+ (1,0) [0|6] "enum"  GVCU
+ SG_ rhc_perf_mod_swt_req : 18|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ pedl_map_perf_mod_swt_req : 20|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ rgn_perf_mod_swt_req : 22|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ perf_stgy_perf_mod_swt_req : 24|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ auto_shift_perf_mod_swt_req : 26|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ ddc_perf_mod_swt_req : 30|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ eps_perf_mod_swt_req : 32|2@1+ (1,0) [0|3] "enum"  GVCU
+
+BO_ 1370 powertrain_telltales_1: 8 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  HEADUNIT
+ SG_ abs_warning : 12|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ brake_failure_warning : 14|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ check_engine_warning : 16|2@1+ (1,0) [0|3] "enum"  HEADUNIT,HPDM2
+ SG_ parking_brake_warning : 18|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ engine_oil_pressure_warning : 20|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ engine_oil_temperature_warning : 22|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ engine_oil_level_low : 24|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ engine_oil_add : 26|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ fuel_pressure_warning : 28|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ coolant_temperature_warning : 30|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ coolant_level_low_warning : 32|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ transmission_failure : 34|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ transmission_fluid_level_warning : 36|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ transmission_temperature_warning : 38|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ limp_warning : 40|2@1+ (1,0) [0|3] "enum"  HEADUNIT,HPDM2
+ SG_ esp : 42|3@1+ (1,0) [0|4] "enum"  HEADUNIT,HPDM2
+ SG_ tire_pressure_warning : 45|2@1+ (1,0) [0|3] "enum"  HEADUNIT,HPDM2
+ SG_ hill_hold_warning : 47|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ lift_system : 49|3@1+ (1,0) [0|6] "enum"  HEADUNIT,HPDM2
+ SG_ hv_warning : 52|2@1+ (1,0) [0|3] "enum"  HEADUNIT,HPDM2
+ SG_ tc : 54|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ active_system_fault : 56|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ eps_steering_failure : 58|2@1+ (1,0) [0|3] "enum"  HEADUNIT,HPDM2
+ SG_ engine_oil_p_snsr_flt : 60|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ engine_oil_p_out_of_rng : 62|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+
+BO_ 1371 powertrain_telltales_2: 5 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  HEADUNIT
+ SG_ battery_charge_condition : 12|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ track_mode : 14|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ cruise_control : 16|3@1+ (1,0) [0|7] "enum"  HEADUNIT,HPDM2
+ SG_ adaptive_cruise_control : 19|3@1+ (1,0) [0|7] "enum"  HEADUNIT,HPDM2
+ SG_ engine_oil_lvl_hi : 22|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ engine_oil_snsr_flt : 24|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ engine_oil_p_hi : 26|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ leave_veh_actv_drvg_warn : 28|2@1+ (1,0) [0|2] "enum"  HPDM2
+ SG_ inv_coolt_lvl_low : 30|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ emot_coolt_lvl_low : 32|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ hv_batt_coolt_lvl_low : 34|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+
+BO_ 1373 powertrain_information_messages: 8 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] ""  HEADUNIT
+ SG_ ride_height_asf_fault : 12|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ brake_asf_fault : 14|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ damper_asf_fault : 16|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ hydraulic_press_asf_fault : 18|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ steering_asf_fault : 20|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ tpms_asf_fault : 22|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ imu_asf_fault : 24|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ vehicle_speed_asf_fault : 26|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ adaptive_cruise_control_fault : 28|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ cruise_control_fault : 30|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ tpms_max_spd_lim : 32|6@1+ (10,0) [0|630] "km/h"  HEADUNIT,HPDM2
+ SG_ tpms_max_spd_lim_hit : 38|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ brake_fluid_level_low : 40|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ eng_shutdown_inhb_low_voltage : 42|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ eng_auto_start : 44|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ ign_inhb_voltage_low : 46|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ ign_shutdown_voltage_low : 48|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ ign_inhb_hv_fault : 50|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ ign_shutdown_hv_fault : 52|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+ SG_ crk_inhb_reason_low_voltage : 54|2@1+ (1,0) [0|2] "enum"  HEADUNIT,HPDM2
+
+BO_ 1374 gvcu_perf_mod: 5 GVCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|15] "enum"  HEADUNIT
+ SG_ perf_mod : 12|3@1+ (1,0) [0|6] "enum"  HEADUNIT,HPDM2
+ SG_ rhc_perf_mod : 16|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ pedl_map_perf_mod : 18|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ rgn_perf_mod : 20|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ perf_stgy_perf_mod : 22|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ auto_shift_perf_mod : 24|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ ddc_perf_mod : 28|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ eps_perf_mod : 30|2@1+ (1,0) [0|3] "enum"  HEADUNIT
+ SG_ hndlg_attd_mod : 32|3@1+ (1,0) [0|7] "enum"  HEADUNIT,HPDM2
+ SG_ perf_mod_st : 35|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+
+BO_ 1440 prkg_snsr_st_1: 7 HPDM2
+ SG_ snsr_rel_dst_frl : 0|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ actv_frnt : 7|1@1+ (1,0) [0|1] "enum"  HEADUNIT
+ SG_ snsr_rel_dst_flc : 8|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_sts_frl : 15|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_rel_dst_frc : 17|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_rel_dst_fl : 24|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_sts_flc : 31|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_rel_dst_fll : 33|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_rel_dst_fr : 40|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_sts_frc : 47|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_sts_fl : 49|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_sts_fll : 51|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_sts_fr : 53|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+
+BO_ 1441 prkg_snsr_st_2: 7 HPDM2
+ SG_ snsr_rel_dst_rrl : 0|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ actv_re : 7|1@1+ (1,0) [0|1] "enum"  HEADUNIT
+ SG_ snsr_rel_dst_rlc : 8|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_sts_rrl : 15|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_rel_dst_rrc : 17|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_rel_dst_rl : 24|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_sts_rlc : 31|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_rel_dst_rll : 33|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_rel_dst_rr : 40|7@1+ (1,0) [0|100] "perc"  HEADUNIT
+ SG_ snsr_sts_rrc : 47|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_sts_rl : 49|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_sts_rll : 51|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+ SG_ snsr_sts_rr : 53|2@1+ (1,0) [0|2] "enum"  HEADUNIT
+
+BO_ 1508 trans_cloud1: 8 LST
+ SG_ p_clutch_1a : 0|8@1+ (1,0) [0|150] "bar"  HEADUNIT
+ SG_ p_clutch_1b : 8|8@1+ (1,0) [0|150] "bar"  HEADUNIT
+ SG_ p_clutch_1c : 16|8@1+ (1,0) [0|150] "bar"  HEADUNIT
+ SG_ p_clutch_2a : 24|8@1+ (1,0) [0|150] "bar"  HEADUNIT
+ SG_ p_clutch_2b : 32|8@1+ (1,0) [0|150] "bar"  HEADUNIT
+ SG_ p_clutch_2c : 40|8@1+ (1,0) [0|150] "bar"  HEADUNIT
+ SG_ p_clutch_ps : 48|8@1+ (1,0) [0|150] "bar"  HEADUNIT
+ SG_ oil_level_lst : 56|6@1+ (2,0) [0|100] "percent"  HEADUNIT
+
+BO_ 1516 system_time_scu: 6 SCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  ECM2,GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  ECM2,GVCU
+ SG_ unix_time_v : 15|1@1+ (1,0) [0|1] "enum"  ECM2,GVCU
+ SG_ unix_time : 16|32@1+ (1,0) [0|4294967295] "s"  ECM2,GVCU
+
+BO_ 1519 trans_cloud2: 8 LST
+ SG_ p_low_p_circuit : 0|6@1+ (0.1,0) [0|5] "bar"  HEADUNIT
+ SG_ p_high_p_circuit : 6|8@1+ (1,0) [0|200] "bar"  HEADUNIT
+ SG_ active_gear : 14|4@1+ (1,0) [0|9] ""  HEADUNIT
+ SG_ stuck_closed_valves : 18|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ stuck_open_valves : 26|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ stuck_valve_failed_attempts : 34|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ drivemode_neutral_reason : 42|11@1+ (1,0) [0|1024] ""  HEADUNIT
+ SG_ hp_pump_duty : 53|4@1+ (8,0) [0|100] "percent"  HEADUNIT
+
+BO_ 1520 trans_cloud3: 8 LST
+ SG_ t_gearbox : 0|8@1+ (1,-40) [-40|210] "degC"  HEADUNIT,HPDM2
+ SG_ t_clutch_peak : 8|8@1+ (2,-40) [-40|470] "degC"  HEADUNIT
+ SG_ index_clutch_peak : 16|3@1+ (1,0) [0|6] ""  HEADUNIT
+ SG_ safety_reason_mask : 19|5@1+ (1,0) [0|31] ""  HEADUNIT
+ SG_ gear_shift_reason_mask : 24|8@1+ (1,0) [0|255] ""  HEADUNIT
+ SG_ recommended_gear : 32|4@1+ (1,0) [0|9] ""  HEADUNIT
+ SG_ gear_selection_inhibits_mask : 36|6@1+ (1,0) [0|63] ""  HEADUNIT
+ SG_ auto_shift_mode : 42|1@1+ (1,0) [0|1] ""  HEADUNIT
+ SG_ pcb_temp : 43|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT
+
+BO_ 1521 trans_cloud4: 8 LST
+ SG_ shutoff_reason : 0|10@1+ (1,0) [0|511] "bitmask"  HEADUNIT
+ SG_ limp_status_mask : 10|13@1+ (1,0) [0|0] ""  HEADUNIT
+ SG_ upperGearTemperatureClutch1 : 23|9@1+ (1,0) [0|511] "degC"  HEADUNIT
+ SG_ upperGearTemperatureClutch2 : 32|9@1+ (1,0) [0|511] "degC"  HEADUNIT
+ SG_ lowerGearTemperatureClutch1 : 41|9@1+ (1,0) [0|511] "degC"  HEADUNIT
+ SG_ lowerGearTemperatureClutch2 : 50|9@1+ (1,0) [0|511] "degC"  HEADUNIT
+
+BO_ 1522 trans_cloud5: 8 LST
+ SG_ engine_spd_max_recorded : 0|14@1+ (1,0) [0|10000] "rpm"  HEADUNIT
+ SG_ engine_max_torque_recorded : 14|11@1+ (1,0) [0|2047] "Nm"  HEADUNIT
+ SG_ lst_temp_max_recorded : 25|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT
+ SG_ lst_temp_min_recorded : 33|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT
+ SG_ engine_oil_temp_max_recorded : 41|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT
+ SG_ engine_oil_temp_min_recorded : 49|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT
+
+BO_ 1523 trans_cloud6: 7 LST
+ SG_ engine_coolant_temp_max_recorded : 0|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT
+ SG_ engine_coolant_temp_min_recorded : 8|8@1+ (1,-40) [-40|215] "degC"  HEADUNIT
+ SG_ max_clutch_temp_recorded : 16|10@1+ (1,-40) [-40|983] "degC"  HEADUNIT
+ SG_ revlimit_count : 26|11@1+ (1,0) [0|2047] ""  HEADUNIT
+ SG_ max_vehicle_spd_recorded : 37|9@1+ (1,0) [0|511] "kph"  HEADUNIT
+ SG_ max_clutch_temp_recorded_index : 46|3@1+ (1,0) [0|6] ""  HEADUNIT
+
+BO_ 1534 ecm_vin_sending1: 8 ECM2
+ SG_ vin1 : 0|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin2 : 7|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin3 : 14|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin4 : 21|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin5 : 28|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin6 : 35|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin7 : 42|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin8 : 49|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin9 : 56|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+
+BO_ 1535 ecm_vin_sending2: 8 ECM2
+ SG_ vin10 : 0|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin11 : 8|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin12 : 16|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin13 : 24|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin14 : 32|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin15 : 40|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin16 : 48|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+ SG_ vin17 : 56|7@1+ (1,0) [0|127] "Ascii"  GVCU,HPDM2
+
+BO_ 1585 lst_sleep: 1 LST
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  HPDM3,SCU
+
+BO_ 1590 lpdm1_sleep: 1 LPDM1
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  SCU
+
+BO_ 1591 lpdm2_sleep: 1 LPDM2
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  SCU
+
+BO_ 1592 lpdm3_sleep: 1 LPDM3
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  SCU
+
+BO_ 1593 hpdm1_sleep: 1 HPDM1
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  SCU
+
+BO_ 1594 hpdm2_sleep: 1 HPDM2
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  SCU
+
+BO_ 1595 hpdm3_sleep: 1 HPDM3
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  SCU
+
+BO_ 1596 hpdm4_sleep: 1 HPDM4
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  SCU
+
+BO_ 1597 gvcu_sleep: 1 GVCU
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  SCU
+
+BO_ 1598 ecm_sleep: 1 ECM2
+ SG_ ok_to_sleep : 0|2@1+ (1,0) [0|2] "enum"  HPDM3,SCU
+
+BO_ 1708 air_cond_op_ctrl: 5 SCU
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|0] ""  LPDM1
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|0] ""  LPDM1
+ SG_ ventn_fan_frnt : 12|4@1+ (1,0) [0|15] "enum"  LPDM1
+ SG_ ventn_fan_back : 16|4@1+ (1,0) [0|15] "enum"  LPDM1
+ SG_ air_distbn_footwell : 20|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ air_distbn_dash : 22|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ air_distbn_wind : 24|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ defr_btn : 26|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ air_recirc_btn : 28|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ demist_btn : 30|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ air_cond_btn : 32|2@1+ (1,0) [0|3] "enum"  LPDM1
+ SG_ heatr_req : 34|4@1+ (1,0) [0|9] "enum"  LPDM1
+ SG_ cool_back : 38|2@1+ (1,0) [0|3] "enum"  LPDM1
+
+BO_ 1709 air_cond_op_sts: 5 LPDM1
+ SG_ e2e_checksum_disabled : 0|8@1+ (1,0) [0|0] ""  HEADUNIT,HPDM2
+ SG_ e2e_alive_counter_disabled : 8|4@1+ (1,0) [0|0] ""  HEADUNIT,HPDM2
+ SG_ ventn_fan_frnt_fb : 12|4@1+ (1,0) [0|15] "enum"  HEADUNIT,HPDM2
+ SG_ ventn_fan_back_fb : 16|4@1+ (1,0) [0|15] "enum"  HEADUNIT,HPDM2
+ SG_ air_distbn_footwell_fb : 20|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2
+ SG_ air_distbn_dash_fb : 21|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2
+ SG_ air_distbn_wind_fb : 22|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2
+ SG_ defr_btn_sts : 23|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2
+ SG_ air_recirc_btn_sts : 24|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2
+ SG_ demist_btn_sts : 25|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2
+ SG_ air_cond_btn_sts : 26|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2
+ SG_ exp_vlv_re_ctrl : 27|1@1+ (1,0) [0|1] "enum"  HPDM2
+ SG_ heatr_req_fb : 28|4@1+ (1,0) [0|9] "enum"  HEADUNIT,HPDM2
+ SG_ cool_back_fb : 32|3@1+ (1,0) [0|3] "enum"  HEADUNIT,HPDM2
+ SG_ exp_vlv_frnt_ctrl : 35|1@1+ (1,0) [0|1] "enum"  HPDM2
+
+BO_ 1813 diag_phys_req_acu_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1875 diag_req_lcm_re_ri_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  LPDM3
+
+BO_ 1876 diag_req_lcm_re_le_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  LPDM3
+
+BO_ 1877 diag_req_lcm_frnt_ri_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  LPDM1
+
+BO_ 1878 diag_req_lcm_frnt_le_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  LPDM1
+
+BO_ 1883 diag_resp_lcm_re_ri_g1: 8 LPDM3
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1884 diag_resp_lcm_re_le_g1: 8 LPDM3
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1885 diag_resp_lcm_frnt_ri_g1: 8 LPDM1
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1886 diag_resp_lcm_frnt_le_g1: 8 LPDM1
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1888 diag_req_dcml_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1889 diag_req_dcmr_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1890 diag_req_imu_g1: 4 SCU
+ SG_ diag_request : 0|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ reset_request : 4|4@1+ (1,0) [0|15] "enum"  GVCU
+
+BO_ 1891 diag_resp_imu_g1: 8 GVCU
+ SG_ diag_response_0 : 0|8@1+ (1,0) [0|0] ""  SCU
+ SG_ diag_response_1 : 8|8@1+ (1,0) [0|0] ""  SCU
+ SG_ diag_response_2 : 16|8@1+ (1,0) [0|0] ""  SCU
+ SG_ diag_response_3 : 24|8@1+ (1,0) [0|0] ""  SCU
+ SG_ diag_response_4 : 32|8@1+ (1,0) [0|0] ""  SCU
+ SG_ diag_response_5 : 40|8@1+ (1,0) [0|0] ""  SCU
+ SG_ diag_response_6 : 48|8@1+ (1,0) [0|0] ""  SCU
+ SG_ diag_response_7 : 56|8@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1896 diag_resp_dcml_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1897 diag_resp_dcmr_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1904 diag_req_dbcm_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1905 diag_req_ecmaux_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  ECMAUX
+
+BO_ 1906 diag_req_scmd_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1907 diag_req_scmp_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1908 diag_req_rcm_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1912 diag_resp_dbcm_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1913 diag_resp_ecmaux: 8 ECMAUX
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1914 diag_resp_scmd_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1915 diag_resp_scmp_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1916 diag_resp_rcm_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1919 diag_resp_acu_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1922 diag_req_hyd_blk_ctrlr_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  LPDM1
+
+BO_ 1930 diag_resp_hyd_blk_ctrlr_g1: 8 LPDM1
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1938 diag_req_icm_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1943 diag_req_ttmr_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1944 diag_req_ttml_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1946 diag_resp_icm_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1951 ttmr_diag_resp_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1952 ttml_diag_resp_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1954 diag_req_swcm_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1955 diag_req_dbtm_le_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1956 diag_req_dbtm_ri_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1962 diag_resp_swcm_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1963 diag_resp_dbtm_le_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1964 diag_resp_dbtm_ri_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1970 diag_req_hpdm1_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM1
+
+BO_ 1971 diag_req_hpdm2_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1972 diag_req_hpdm3_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM3
+
+BO_ 1973 diag_req_hpdm4_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM4
+
+BO_ 1974 diag_req_lpdm1_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  LPDM1
+
+BO_ 1976 diag_req_lpdm3_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  LPDM3
+
+BO_ 1977 diag_req_lpdm2_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  LPDM2
+
+BO_ 1978 diag_resp_hpdm1: 8 HPDM1
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1979 diag_resp_hpdm2: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1980 diag_resp_hpdm3: 8 HPDM3
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1981 diag_resp_hpdm4: 8 HPDM4
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1982 diag_resp_lpdm1: 8 LPDM1
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1984 diag_resp_lpdm3: 8 LPDM3
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1985 diag_resp_lpdm2: 8 LPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1989 diag_req_ieb_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 1990 diag_req_eps_a_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 1991 diag_req_eps_b_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 1992 diag_funcreq_eps_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 1993 diag_phys_req_apa_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 1995 diag_acc_phys_req_fvcm_g1: 8 SCU
+ SG_ DiagnosticPhysAddrReq : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 1997 diag_resp_ieb_g1: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1998 diag_resp_eps_a_g1: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 1999 diag_resp_eps_b_g1: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 2001 diag_phys_resp_apa_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 2002 diag_acc_phys_resp_fvcm_g1: 8 GVCU
+ SG_ DiagnosticPhysResp_FVCM : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 2006 diag_ds2_func_req_g1: 8 SCU
+ SG_ DiagnosticFuncAddrReq : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 2015 diag_req_from_scantool_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  ECM2,GVCU,HPDM3,LST
+
+BO_ 2016 diag_req_ecm_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  ECM2
+
+BO_ 2017 diag_req_bms_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM3
+
+BO_ 2019 diag_req_inverter_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 2021 diag_req_gvcu_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 2023 diag_req_lst_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  LST
+
+BO_ 2024 diag_resp_ecm: 8 ECM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 2025 diag_resp_bms_g1: 8 HPDM3
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 2027 diag_resp_inverter_g1: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 2029 diag_resp_gvcu: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 2031 diag_resp_lst: 8 LST
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+BO_ 2033 diag_deploy_request_acu_g1: 8 SCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  HPDM2
+
+BO_ 2041 diag_deploy_resp_acu_g1: 8 HPDM2
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  SCU
+
+
+
+
+CM_ BU_ ECM2 "Engine Control Module";
+CM_ BU_ ECMAUX "ECM Auxiliary";
+CM_ BU_ GVCU "Gemera Vehicle Control Module";
+CM_ BU_ HPDM1 "High Power Distribution Module 1";
+CM_ BU_ HPDM2 "High Power Distribution Module 2";
+CM_ BU_ HPDM3 "High Power Distribution Module 3";
+CM_ BU_ HPDM4 "High Power Distribution Module 4";
+CM_ BU_ LPDM1 "Low Power Distribution Module 1";
+CM_ BU_ LPDM2 "Low Power Distribution Module 2";
+CM_ BU_ LPDM3 "Low Power Distribution Module 3";
+CM_ BU_ LST "Light Speed Transmission";
+CM_ BO_ 100 "Message FROZEN due to ACU usage";
+CM_ SG_ 100 E2eChecksum "CRC check value according to specification E2E";
+CM_ SG_ 100 E2eAliveCounter "Alive counter for E2E";
+CM_ SG_ 100 CrashOutput "CrashOutput ACU";
+CM_ BO_ 101 "Message FROZEN due to ACU usage";
+CM_ SG_ 101 E2eChecksum "CRC check value according to specification E2E";
+CM_ SG_ 101 E2eAliveCounter "Alive counter for E2E";
+CM_ SG_ 101 CrashSeverity "ACU crash severity status";
+CM_ SG_ 101 DriverSideCrash "Driver side crash detection";
+CM_ SG_ 101 FrontCrash "Front crash detection";
+CM_ SG_ 101 PassSideCrash "Pasenger side crash detection";
+CM_ SG_ 101 RearCrash "Rear crash detection";
+CM_ SG_ 101 RolloverCrash "Rollover crash detection";
+CM_ BO_ 150 "Vehicle power state message";
+CM_ SG_ 150 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 150 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 150 pwr_st "Current power state of vehicle";
+CM_ BO_ 410 "Data from the DC/DC converter";
+CM_ SG_ 410 dtc_list_12v "Iterates over DTCs present in the DC/DC converter";
+CM_ SG_ 410 dtc_list_48v "Iterates over DTCs present in the DC/DC converter";
+CM_ BO_ 411 "Data from the DC/DC converter";
+CM_ SG_ 411 available_power_12v "Available 12V output power from DCDC. 100% means no derating.";
+CM_ SG_ 411 available_power_48v "Available 48V output power from DCDC. 100% means no derating.";
+CM_ BO_ 420 "Data from the OBC converter";
+CM_ SG_ 420 charge_current "Charging current for both DC fast charging and OBC charging";
+CM_ SG_ 420 charge_voltage "Charging voltage for both DC fast charging and OBC charging";
+CM_ SG_ 420 obc_status "OBC internal state machine";
+CM_ SG_ 420 evcc_status "EVCC state machine";
+CM_ BO_ 471 "GVCU vehicle state at 50 ms";
+CM_ SG_ 471 E2eChecksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 471 E2eAliveCounter_Disable "Alive counter for E2E";
+CM_ SG_ 471 veh_vel_lgt "Vehicle velocity longitudinal";
+CM_ SG_ 471 drv_cfg "Drive configuration";
+CM_ SG_ 471 b_forced_chrg_actv "Forced charge active";
+CM_ SG_ 471 b_auto_mod_actv "Automatic mode state";
+CM_ SG_ 471 b_man_mod_actv "Manual mode active";
+CM_ SG_ 471 tire_mdl "Tire model";
+CM_ SG_ 471 suppg_mod "Supporting mode";
+CM_ SG_ 471 park_brk_st "Parking brake state";
+CM_ SG_ 471 esp_st "ESP state";
+CM_ SG_ 471 drv_mod "Drive mode";
+CM_ SG_ 471 lift_st "Lifting system state";
+CM_ SG_ 471 ign_hold "Signal to hold ignition active by GVCU";
+CM_ SG_ 471 bto_active "Brake throttle override active";
+CM_ SG_ 471 launch_ctrl_sts "Launch control system status information";
+CM_ BO_ 473 "GVCU vehicle state at 50 ms";
+CM_ SG_ 473 E2eChecksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 473 E2eAliveCounter_Disable "Alive counter for E2E";
+CM_ SG_ 473 tq_sys_st "Torque system state";
+CM_ SG_ 473 brk_li_req "Brake light request
+NORMAL_BRAKING = brake light solid on
+ESS_BRAKING = brake light blinking with around 5 Hz";
+CM_ SG_ 473 pwr_combd "Displayed Power used (Engine + E-Motor).
+maximum value of 2400 bhp, minimum 0 (negative not considered for this display)";
+CM_ SG_ 473 soc_disp "Displayed SoC";
+CM_ SG_ 473 veh_rollg_st "Vehicle Rolling State";
+CM_ SG_ 473 avas_speaker_ena_req "Request AVAS speaker enable";
+CM_ BO_ 474 "GVCU vehicle state at 10 ms";
+CM_ SG_ 474 E2eChecksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 474 E2eAliveCounter_Disable "Alive counter for E2E";
+CM_ SG_ 474 steer_whl_ag "Steering wheel angle";
+CM_ SG_ 474 ice_speed_actual "ICE actual speed";
+CM_ BO_ 476 "HV system control request";
+CM_ SG_ 476 skip_hvac_contactor "Forces the HVAC contactor to be open";
+CM_ SG_ 476 skip_dcdc_contactor "Forces the DCDC contactor to be open";
+CM_ SG_ 476 skip_obc_contactor "Forces the OBC contactor to be open";
+CM_ SG_ 476 hyb_st_mac_state "State of the hybrid state machine";
+CM_ SG_ 476 hv_req_reason_ign "high voltage request reason ignition";
+CM_ SG_ 476 hv_req_reason_climate "high voltage request reason cabin climate control";
+CM_ SG_ 476 hv_req_reason_lv_charging "high voltage request reason LV battery charging";
+CM_ SG_ 476 hv_req_reason_hv_charging "high voltage request reason HV battery charging";
+CM_ SG_ 476 hv_req_reason_thermal "high voltage request reason thermal management";
+CM_ SG_ 476 lv_chrg_req_allwd "lv charging request allowed if HV soc > threshold";
+CM_ SG_ 476 chrgn_pwr "charging power";
+CM_ SG_ 476 rem_chrgn_time "remaining charging time";
+CM_ BO_ 477 "State feedback from HPDM3 about BMS status";
+CM_ SG_ 477 hvac_contactor "if hvac contactor is closed";
+CM_ SG_ 477 dcdc_contactor "if dcdc contactor is closed";
+CM_ SG_ 477 obc_contactor "if obc contactor is closed";
+CM_ SG_ 477 hv_on_req_lv_charging "HPDM3 request HV on to GVCU  because of LV battery charging";
+CM_ BO_ 478 "State feedback from HPDM3 about BMS status";
+CM_ SG_ 478 soc "State of Charge";
+CM_ SG_ 478 soh "State of health";
+CM_ SG_ 478 soe "State of Energy";
+CM_ SG_ 478 soc_predictive "State of Charge predictive based on ambient temperature";
+CM_ BO_ 479 "State feedback from HPDM3 about BMS status";
+CM_ BO_ 640 "ECM2/ICE information to infotainment";
+CM_ BO_ 641 "ECM2/ICE information to infotainment";
+CM_ SG_ 650 gear "Active gear";
+CM_ SG_ 650 gearbox_t "Temprature of the gearbox";
+CM_ BO_ 891 "Steering Wheel Button Reads";
+CM_ SG_ 891 btn_step_le "Left step button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_step_ri "Right step button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_lines "Lines button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_enc_le "Left encoder button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_phone "Phone button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_lift "Lift button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_crs_ctrl "Cruise control button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_enc_ri "Right encoder button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_knob_ri "Right knob button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_knob_le "Left knob button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_horn "Horn button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_paddle_ri "Right paddle button from Steering Wheel Control Module";
+CM_ SG_ 891 btn_paddle_le "Left paddle button from Steering Wheel Control Module";
+CM_ SG_ 891 enc_volume "Volume encoder position from Steering Wheel Control Module";
+CM_ SG_ 891 enc_crs_ctrl "Cruise control encoder position from Steering Wheel Control Module";
+CM_ SG_ 891 enc_knob_le "Left knob encoder position from Steering Wheel Control Module";
+CM_ SG_ 891 enc_knob_ri "Right knob encoder position from Steering Wheel Control Module";
+CM_ SG_ 891 enc_volume_vld "Validity bit for volume encoder position from Steering Wheel Control Module";
+CM_ SG_ 891 enc_crs_ctrl_vld "Validity bit for cruise control encoder position from Steering Wheel Control Module";
+CM_ SG_ 891 enc_knob_le_vld "Validity bit for left knob encoder position from Steering Wheel Control Module";
+CM_ SG_ 891 enc_knob_ri_vld "Validity bit for right knob encoder position from Steering Wheel Control Module";
+CM_ BO_ 1001 "Headunit odometer value for syncing. Gatewayed via SCU";
+CM_ SG_ 1001 odometer_v "vehicle odometer validity";
+CM_ SG_ 1002 odometer "vehicle odometer value, live calculated";
+CM_ SG_ 1002 odometer_v "vehicle odometer validity";
+CM_ SG_ 1003 Keyfob_inside_car "is keyfob located inside the cabine";
+CM_ SG_ 1003 keyfob_Lo_pwr "Set to logic one if keyfob low power";
+CM_ BO_ 1026 "Body to vehicle controller at 50 ms";
+CM_ SG_ 1026 E2eChecksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 1026 E2eAliveCounter_Disable "Alive counter for E2E";
+CM_ SG_ 1026 park_btn_st "Park button state";
+CM_ SG_ 1026 ign_btn_st "ignition button state";
+CM_ SG_ 1040 fuel_lid_usr_req "User request for init refuel. Fuel lid request in hmi to ecm2.";
+CM_ SG_ 1040 media_playing "Indicates if media is currently playing";
+CM_ SG_ 1040 carplay_actv "Indicates if Apple CarPlay is active";
+CM_ SG_ 1040 media_vol "Current media volume level";
+CM_ SG_ 1040 disp_bri "Display brightness level";
+CM_ SG_ 1040 accent_color_red "Red component of the UI accent color";
+CM_ SG_ 1040 accent_color_green "Green component of the UI accent color";
+CM_ SG_ 1040 accent_color_blue "Blue component of the UI accent color";
+CM_ SG_ 1040 unit_dst "Distance metric setting";
+CM_ SG_ 1040 unit_t "Temperature unit setting";
+CM_ SG_ 1040 unit_p "Pressure unit setting";
+CM_ BO_ 1043 "Dashboard Stalks Repack";
+CM_ SG_ 1043 wind_wshr_pmp_req "Windshield washer pump request";
+CM_ SG_ 1043 high_beam_req "High Beam Request";
+CM_ SG_ 1043 turn_indcr_le_req "Left Turn Indicator Request";
+CM_ SG_ 1043 turn_indcr_ri_req "Right Turn Indicator Request";
+CM_ SG_ 1044 hood_frnt_ltch_cmd "Hood front latch command";
+CM_ SG_ 1044 hood_re_ltch_cmd "Hood rear latch command";
+CM_ BO_ 1047 "Message with sound requests to hmi";
+CM_ SG_ 1047 turn_indcr_tone "Turn indicatortone, will play once while active.";
+CM_ SG_ 1047 gen_warn_alert_tone "Generic warning alert tone, will play in loop while active.";
+CM_ SG_ 1047 hv_warn_alert_tone "HighVoltage warning alert tone, will play in loop while active.";
+CM_ SG_ 1047 seat_blt_warn_alert_tone "Seat belts warning alert tone, will play once while active, tone lenght depends on vehicle market.";
+CM_ SG_ 1047 veh_lift_alert_tone "vehicle lift start alert tone, will play once while active.";
+CM_ SG_ 1047 actv_sys_flt_alert_tone "active systems fault alert tone, will play in loop while active.";
+CM_ SG_ 1047 obstcl_warn_tone "Obstacle warning tone, will play in loop while active.";
+CM_ SG_ 1054 fuel_lid_req "validated fuel lid request by ecm, based on fuel_lid_usr_req";
+CM_ SG_ 1054 flexfuel_mismatch "Fuel signal to decide either it's e85 or not";
+CM_ SG_ 1056 ltch_st "Hood Front Latch State";
+CM_ SG_ 1057 ltch_le_st "Hood Rear Left Latch State";
+CM_ SG_ 1057 ltch_ri_st "Hood Rear Right Latch State";
+CM_ SG_ 1080 clima_hv_req "ClimateControl request to turn on HV";
+CM_ BO_ 1090 "Driving cycle velocity profiler script state and target speed";
+CM_ SG_ 1090 drvg_cyc_tar_vel "Current target velocity for Automated Driver Controller";
+CM_ SG_ 1090 drvg_cyc_tar_vel_v "Current target velocity validity bit";
+CM_ SG_ 1090 drvg_cyc_st "Automated Driver Emission Cycle state";
+CM_ SG_ 1090 drvg_cyc_tar_accel "Current target velocity for Automated Driver Controller";
+CM_ SG_ 1090 drvg_cyc_tar_accel_v "Current target acceleration validity bit";
+CM_ BO_ 1091 "Activation Request for automated driver";
+CM_ SG_ 1091 ctrl_st "Automated driver velocity control state";
+CM_ SG_ 1091 ctrl_off_mask "Automated driver control mask, describes why the controller is in OFF state";
+CM_ BO_ 1149 "Autoskin oil information";
+CM_ SG_ 1149 autoskin_oil_pressure "HBM Oil Pressure";
+CM_ SG_ 1149 autoskin_oil_temperature "HBM Oil Temperature";
+CM_ SG_ 1149 autoskin_oil_pressure_vld "Oil Pressure Validity";
+CM_ SG_ 1149 autoskin_oil_temperature_vld "Oil Temperature Validity";
+CM_ BO_ 1201 "GVCU Virtual Fusion IMU COG sensor";
+CM_ SG_ 1201 accelerometer_x_fused "x-axis accelerometer data from IMU fusion algorithm, reported from COG in m/s^2";
+CM_ SG_ 1201 accelerometer_y_fused "y-axis accelerometer data from IMU fusion algorithm, reported from COG in m/s^2";
+CM_ SG_ 1201 accelerometer_z_fused "z-axis accelerometer data from IMU fusion algorithm, reported from COG in m/s^2";
+CM_ SG_ 1201 gyroscope_x_fused "x-axis gyroscope data from IMU fusion algorithm, reported from COG in rad/s";
+CM_ SG_ 1201 gyroscope_y_fused "y-axis gyroscope data from IMU fusion algorithm, reported from COG in rad/s";
+CM_ SG_ 1201 gyroscope_z_fused "z-axis gyroscope data from IMU fusion algorithm, reported from COG in rad/s";
+CM_ SG_ 1201 imu_vld "IMU data validity bit, 1 means the fused IMU data is valid and can be used, 0 means the fused IMU data is not valid and should not be used";
+CM_ SG_ 1202 front_right_fan_req "HV battery, vectorque fan";
+CM_ SG_ 1202 front_center_right_fan_req "ICE, HVAC fan";
+CM_ SG_ 1202 front_center_left_fan_req "ICE, HVAC fan";
+CM_ SG_ 1202 front_left_fan_req "E-Motor, vectorque fan";
+CM_ BO_ 1206 "GVCU rear cooling bus control message to control cooling fans and pumps";
+CM_ BO_ 1207 "Cooling fans and pumps faults from front cooling bus";
+CM_ BO_ 1212 "12v battery BMS feedback";
+CM_ SG_ 1212 Lv_batt_voltage "Voltage reported from 12V battery BMS or measured by SCU when 12V battery LIN is not available. When LIN is not available, the lv battery type will be set to UNKNOWN.";
+CM_ SG_ 1212 lv_batt_current "Current reported from 12V battery BMS or showing 0 when 12V battery LIN is not available. When LIN is not available, the lv battery type will be set to UNKNOWN.";
+CM_ SG_ 1212 charge_voltage_limit "Max of charging voltage limit";
+CM_ SG_ 1212 rly_sts "Relay status";
+CM_ SG_ 1212 volt_pack_flt "Cell stack open sense line fault";
+CM_ SG_ 1212 rly_fail_cls_flt "Relay diagnostics fault status";
+CM_ SG_ 1212 critical_error "Cell Deep Discharge Status, BMS shall not allow relay to close and allow the charge. Battery is no longer safe to use";
+CM_ SG_ 1212 curr_error "Current sense line diagnostics error";
+CM_ SG_ 1212 term_volt_flt "Post voltage sense line fault";
+CM_ SG_ 1212 lv_battery_type "Type of 12V low voltage battery detected";
+CM_ BO_ 1280 "Vehicle Data required by TPMS ECU, orginal ID 0x500;
+No E2E possible due to TPMS supplie.
+GVCU -> LPDM2 -> LPDM3 -> TPMS_RE
+GVCU -> LPDM1 -> TPMS_FRNT";
+CM_ SG_ 1280 atmos_press "Atmospheric Pressure, required for calculating gage pressure";
+CM_ SG_ 1280 vehicle_speed "Vehicle speed by GVCU";
+CM_ SG_ 1280 vehicle_odometer "Vehicle Odometer (\"time reference\")";
+CM_ BO_ 1285 "debug message to send HV information to infotainment";
+CM_ BO_ 1286 "debug message to send HV information to infotainment";
+CM_ BO_ 1287 "debug message to send inverter information to infotainment";
+CM_ BO_ 1341 "Message to report the front lift sensor voltages";
+CM_ SG_ 1341 u_lift_cyl_fl "Front left lift sensor voltage";
+CM_ SG_ 1341 u_lift_cyl_fr "Front right lift sensor voltage";
+CM_ SG_ 1341 u_wishbone_angle_fl "Front left wishbone angle sensor voltage";
+CM_ SG_ 1341 u_wishbone_angle_fr "Front right wishbone angle sensor voltage";
+CM_ BO_ 1342 "Message to request lift movement";
+CM_ SG_ 1342 lift_cyl_cmd_fl "Front left lift cylinder movement command";
+CM_ SG_ 1342 lift_cyl_cmd_fr "Front right lift cylinder movement command";
+CM_ SG_ 1342 lift_cyl_cmd_rl "Rear left lift cylinder movement command";
+CM_ SG_ 1342 lift_cyl_cmd_rr "Rear right lift cylinder movement command";
+CM_ BO_ 1343 "Message to report the rear lift sensor voltages";
+CM_ SG_ 1343 u_lift_cyl_rl "Rear left lift sensor voltage";
+CM_ SG_ 1343 u_lift_cyl_rr "Rear right lift sensor voltage";
+CM_ SG_ 1343 u_wishbone_angle_rl "Front right lift sensor voltage";
+CM_ SG_ 1343 u_wishbone_angle_rr "Front right lift sensor voltage";
+CM_ BO_ 1344 "Current lift cylinder movement";
+CM_ SG_ 1344 lift_movmt_fl "Current FL lift cylinder movement";
+CM_ SG_ 1344 lift_movmt_fr "Current FR lift cylinder movement";
+CM_ SG_ 1344 lift_movmt_rl "Current RL lift cylinder movement";
+CM_ SG_ 1344 lift_movmt_rr "Current RR lift cylinder movement";
+CM_ SG_ 1350 tire_p_fl "Tire pressure Front Left.";
+CM_ SG_ 1350 tire_p_fr "Tire pressure Front Right.";
+CM_ SG_ 1350 tire_t_fl "Tire temperature Front Left";
+CM_ SG_ 1350 tire_t_fr "Tire temperature Front Right";
+CM_ SG_ 1350 rbl_fl "TPMS Wheel Sensor Residual BATT Level Estimate (FL)";
+CM_ SG_ 1350 battery_low_fl "wheel sensor battery low FL";
+CM_ SG_ 1350 rbl_fr "TPMS Wheel Sensor Residual BATT Level Estimate (FR)";
+CM_ SG_ 1350 battery_low_fr "wheel sensor battery low FR";
+CM_ SG_ 1350 rssi_fl "RSSI signal strength FL";
+CM_ SG_ 1350 tpms_fl_v "valid bit for tpms values FL";
+CM_ SG_ 1350 rssi_fr "RSSI signal strength FR";
+CM_ SG_ 1350 tpms_fr_v "valid bit for tpms values FR";
+CM_ SG_ 1351 tpms_ecu_fault_mask_fl "TPMS ECU fault mask compiled in LPDM1, FL";
+CM_ SG_ 1351 tpms_ecu_fault_mask_fr "TPMS ECU fault mask compiled in LPDM1, FR";
+CM_ SG_ 1351 tpms_sensor_fault_mask_fl "TPMS wheel sensor fault mask compiled in LPDM1, FL";
+CM_ SG_ 1351 tpms_sensor_fault_mask_fr "TPMS wheel sensor fault mask compiled in LPDM1, FR";
+CM_ SG_ 1351 tpms_diag_veh_moving_fl "TPMS sensor detects \"Vehicle is moving\", FL";
+CM_ SG_ 1351 tpms_diag_veh_moving_fr "TPMS sensor detects \"Vehicle is moving\", FR";
+CM_ SG_ 1352 tire_p_rl "Tire pressure Rear Left.";
+CM_ SG_ 1352 tire_p_rr "Tire pressure Rear Right.";
+CM_ SG_ 1352 tire_t_rl "Tire temperature Rear Left";
+CM_ SG_ 1352 tire_t_rr "Tire temperature Rear Right";
+CM_ SG_ 1352 rbl_rl "TPMS Wheel Sensor Residual BATT Level Estimate (RL)";
+CM_ SG_ 1352 battery_low_rl "wheel sensor battery low RL";
+CM_ SG_ 1352 rbl_rr "TPMS Wheel Sensor Residual BATT Level Estimate (RR)";
+CM_ SG_ 1352 battery_low_rr "wheel sensor battery low RR";
+CM_ SG_ 1352 rssi_rl "RSSI signal strength RL";
+CM_ SG_ 1352 tpms_rl_v "valid bit for tpms values RL";
+CM_ SG_ 1352 rssi_rr "RSSI signal strength RR";
+CM_ SG_ 1352 tpms_rr_v "valid bit for tpms values RR";
+CM_ SG_ 1353 tpms_ecu_fault_mask_rl "TPMS ECU fault mask compiled in LPDM1, RL";
+CM_ SG_ 1353 tpms_ecu_fault_mask_rr "TPMS ECU fault mask compiled in LPDM1, RR";
+CM_ SG_ 1353 tpms_sensor_fault_mask_rl "TPMS wheel sensor fault mask compiled in LPDM1, RL";
+CM_ SG_ 1353 tpms_sensor_fault_mask_rr "TPMS wheel sensor fault mask compiled in LPDM1, RR";
+CM_ SG_ 1353 tpms_diag_veh_moving_rl "TPMS sensor detects \"Vehicle is moving\", RL";
+CM_ SG_ 1353 tpms_diag_veh_moving_rr "TPMS sensor detects \"Vehicle is moving\", RR";
+CM_ BO_ 1360 "HMI vehicle requests at 50 ms";
+CM_ SG_ 1360 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 1360 e2e_alive_counter_disabled "Alive counter for E2E";
+CM_ SG_ 1360 suppg_mod_req "supporting mode request";
+CM_ SG_ 1360 drv_cfg_req "Drive configuration request";
+CM_ SG_ 1360 forced_chrg_btn_st "forced electric system charging button state";
+CM_ SG_ 1360 man_mod_btn_st "manual mode button state";
+CM_ SG_ 1360 tire_mdl_req "tire model request";
+CM_ SG_ 1360 esp_st_req "ESP state request";
+CM_ SG_ 1360 auto_upsh_btn_st "Auto upshift button state";
+CM_ SG_ 1360 lift_mod_btn_st "Lift mode button state";
+CM_ SG_ 1360 drv_mod_req "Temporary, for TC6";
+CM_ SG_ 1360 acc_dft_dist_lvl "Adaptive Cruise Control default distance level selection in headunit";
+CM_ SG_ 1360 acc_dft_actv_st "Adaptive Cruise Control default active state";
+CM_ BO_ 1363 "GPS data from HMI";
+CM_ SG_ 1363 veh_latitude "GPGGA: Latitude in degrees";
+CM_ SG_ 1363 veh_longitude "GPGGA: Longitude in degrees";
+CM_ SG_ 1363 veh_elevation "GPGGA: Elevation in metres";
+CM_ SG_ 1363 sig_quality_gps "GPGGA: Quality";
+CM_ BO_ 1364 "GPS data from HMI";
+CM_ SG_ 1364 E2eChecksum "CRC check value according to specification E2E";
+CM_ SG_ 1364 E2eAliveCounter "Alive counter for E2E";
+CM_ BO_ 1365 "Body to vehicle controller at 50 ms";
+CM_ SG_ 1365 E2eChecksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 1365 E2eAliveCounter_Disable "Alive counter for E2E";
+CM_ SG_ 1365 imob_st "Immobilizer State";
+CM_ SG_ 1365 brk_li_swt_st "Brake light switch state";
+CM_ BO_ 1366 "Adaptive Cruise control state from GVCU";
+CM_ SG_ 1366 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 1366 e2e_alive_counter_disabled "Alive counter for E2E";
+CM_ SG_ 1366 adpv_crs_ctrl_st "Adaptive Cruise Control State";
+CM_ SG_ 1366 adpv_crs_ctrl_set_vel "Adaptive Cruise Control Set Velocity actually used";
+CM_ SG_ 1366 adpv_crs_ctrl_takeoff_drvr_req "Adaptive Cruise Control Takeoff Request to Driver: after an autonomous vehicle stop performed by ACC, request the driver to press the throttle pedal to let the vehicle takeoff autonomously ";
+CM_ SG_ 1366 adpv_crs_ctrl_takeover_drvr_req "Adas Takeover Request to Driver: in case a potentially dangerous situation is recognised by ADAS systems (ACC), inform the driver to take control over the vehicle. Two takeover levels, warning for only visual notification, emergency for visual and acustic";
+CM_ SG_ 1366 adpv_crs_ctrl_set_vel_v "Adaptive Cruise Control Set Velocity actually used Valid bit";
+CM_ SG_ 1366 adpv_crs_ctrl_dist_lvl "Adaptive Cruise Control Adaptive Distance Level";
+CM_ SG_ 1366 adpv_crs_ctrl_set_vel_or_dist "Adaptive Cruise Control steering wheel scroll options: scroll button is currently changing set velocity or distance level";
+CM_ BO_ 1367 "Masks from Cruise Control and ACC";
+CM_ SG_ 1367 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 1367 e2e_alive_counter_disabled "Alive counter for E2E";
+CM_ SG_ 1367 adpv_crs_ctrl_camera_blkd_mask "Camera blocked reason mask";
+CM_ SG_ 1367 crs_ctrl_off_rsn_mask "Cruise Control drop state to OFF";
+CM_ SG_ 1367 crs_ctrl_stby_rsn_mask "Cruise Control drop state to STANDBY";
+CM_ SG_ 1367 adpv_crs_ctrl_stby_rsn_mask "Adaptive Cruise Control drop state to STANDBY";
+CM_ BO_ 1368 "Performance Mode request switches from Headunit";
+CM_ SG_ 1368 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 1368 e2e_alive_counter_disabled "Alive counter for E2E";
+CM_ SG_ 1368 perf_mod_swt_req "Performance mode switch request coming from headunit. The value should reflect the selected state, either if it's pending or confirmed";
+CM_ SG_ 1368 rhc_perf_mod_swt_req "Ride Height Control Performance Mode request from Headunit";
+CM_ SG_ 1368 pedl_map_perf_mod_swt_req "Pedal Map Performance Mode request from Headunit";
+CM_ SG_ 1368 rgn_perf_mod_swt_req "Regenerative braking Performance Mode request from Headunit";
+CM_ SG_ 1368 perf_stgy_perf_mod_swt_req "Performance Strategy Performance Mode request from Headunit";
+CM_ SG_ 1368 auto_shift_perf_mod_swt_req "Auto Shift Performance Mode request from Headunit";
+CM_ SG_ 1368 ddc_perf_mod_swt_req "DDC (Dampers) Performance Mode request from Headunit";
+CM_ SG_ 1368 eps_perf_mod_swt_req "EPS (Steering) Performance Mode request from Headunit";
+CM_ SG_ 1370 tc "Traction Control (TC)";
+CM_ SG_ 1370 engine_oil_p_snsr_flt "Engine oil pressure sensor fault";
+CM_ SG_ 1370 engine_oil_p_out_of_rng "Engine oil pressure out of range";
+CM_ SG_ 1371 cruise_control "ISO 7000-2047 for Cruise Control telltale ";
+CM_ SG_ 1371 adaptive_cruise_control "ISO 7000-2580 for Adaptive Cruise Control telltale ";
+CM_ SG_ 1371 engine_oil_lvl_hi "Engine oil level high";
+CM_ SG_ 1371 engine_oil_snsr_flt "Engine oil sensor fault";
+CM_ SG_ 1371 engine_oil_p_hi "Engine oil pressure high";
+CM_ SG_ 1371 leave_veh_actv_drvg_warn "Inform when driver leaves the vehicle while an active driving mode is enabled";
+CM_ SG_ 1371 inv_coolt_lvl_low "Inverter coolant level low warning";
+CM_ SG_ 1371 emot_coolt_lvl_low "Emotor coolant level low warning";
+CM_ SG_ 1371 hv_batt_coolt_lvl_low "HV battery coolant level low warning";
+CM_ SG_ 1373 tpms_max_spd_lim "current speed limit (result of current tire pressure)";
+CM_ SG_ 1373 tpms_max_spd_lim_hit "vehicle reached tpms_max_spd_lim";
+CM_ SG_ 1373 eng_shutdown_inhb_low_voltage "Engine cannot switch off, charging battery";
+CM_ SG_ 1373 eng_auto_start "Low battery charge, engine will start at the next standstill";
+CM_ SG_ 1373 ign_inhb_voltage_low "Ignition inhibited due to low HV soc";
+CM_ SG_ 1373 ign_shutdown_voltage_low "Ignition switched off due to low HV soc";
+CM_ SG_ 1373 ign_inhb_hv_fault "Ignition inhibited due to low HV fault";
+CM_ SG_ 1373 ign_shutdown_hv_fault "Ignition switched off due to HV fault";
+CM_ SG_ 1373 crk_inhb_reason_low_voltage "Low voltage, engine start is not possible";
+CM_ BO_ 1374 "Performance Mode of the vehicle and of the affected components";
+CM_ SG_ 1374 e2e_checksum_disabled "CRC check value according to specification E2E";
+CM_ SG_ 1374 e2e_alive_counter_disabled "Alive counter for E2E";
+CM_ SG_ 1374 perf_mod "Vehicle Performance Mode";
+CM_ SG_ 1374 rhc_perf_mod "Ride Height Control Performance Mode actual";
+CM_ SG_ 1374 pedl_map_perf_mod "Pedal Map Performance Mode actual";
+CM_ SG_ 1374 rgn_perf_mod "Regenerative braking Performance Mode actual";
+CM_ SG_ 1374 perf_stgy_perf_mod "Performance Strategy Performance Mode actual";
+CM_ SG_ 1374 auto_shift_perf_mod "Auto Shift Performance Mode actual";
+CM_ SG_ 1374 ddc_perf_mod "DDC (Dampers) Performance Mode actual";
+CM_ SG_ 1374 eps_perf_mod "EPS (Steering) Performance Mode actual";
+CM_ SG_ 1374 hndlg_attd_mod "Handling Attitude Mode actual";
+CM_ SG_ 1374 perf_mod_st "Performance mode state, either Pending (_PND) or Confirmed (_CFMD).
+Pending state is either triggered when driver presses one of the perf_mod_swt_req buttons or when GVCU sends the actual Performance mode as Pending, and corresponds to a blinking button on HU.
+Confirmed state is triggered only by GVCU actual Performance Mode state, and corresponds to a fixed button.";
+CM_ SG_ 1440 snsr_rel_dst_frl "parking sensor front right lateral relative distance";
+CM_ SG_ 1440 snsr_rel_dst_flc "parking sensor front left center relative distance";
+CM_ SG_ 1440 snsr_sts_frl "parking sensor front right lateral status";
+CM_ SG_ 1440 snsr_rel_dst_frc "parking sensor front right center  relative distance";
+CM_ SG_ 1440 snsr_rel_dst_fl "parking sensor front left relative distance";
+CM_ SG_ 1440 snsr_sts_flc "parking sensor front left center status";
+CM_ SG_ 1440 snsr_rel_dst_fll "parking sensor front left lateral relative distance";
+CM_ SG_ 1440 snsr_rel_dst_fr "parking sensor front right relative distance";
+CM_ SG_ 1440 snsr_sts_frc "parking sensor front right center status";
+CM_ SG_ 1440 snsr_sts_fl "parking sensor front left status";
+CM_ SG_ 1440 snsr_sts_fll "parking sensor front left lateral status";
+CM_ SG_ 1440 snsr_sts_fr "parking sensor front right status";
+CM_ SG_ 1441 snsr_rel_dst_rrl "parking sensor rear right lateral relative distance";
+CM_ SG_ 1441 snsr_rel_dst_rlc "parking sensor rear left center relative distance";
+CM_ SG_ 1441 snsr_sts_rrl "parking sensor rear right lateral status";
+CM_ SG_ 1441 snsr_rel_dst_rrc "parking sensor rear right center relative distance";
+CM_ SG_ 1441 snsr_rel_dst_rl "parking sensor rear left relative distance";
+CM_ SG_ 1441 snsr_sts_rlc "parking sensor rear left center status";
+CM_ SG_ 1441 snsr_rel_dst_rll "parking sensor rear left lateral relative distance";
+CM_ SG_ 1441 snsr_rel_dst_rr "parking sensor rear right relative distance";
+CM_ SG_ 1441 snsr_sts_rrc "parking sensor rear right center status";
+CM_ SG_ 1441 snsr_sts_rl "parking sensor rear left status";
+CM_ SG_ 1441 snsr_sts_rll "parking sensor rear left lateral status";
+CM_ SG_ 1441 snsr_sts_rr "parking sensor rear right status";
+CM_ BO_ 1516 "system time";
+CM_ SG_ 1516 e2e_checksum "CRC check value according to specification E2E";
+CM_ SG_ 1516 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1516 unix_time "Unix time [s] from RTC on SCU";
+CM_ SG_ 1521 upperGearTemperatureClutch1 "Estimated temperature of 1X clutch in case of upshift";
+CM_ SG_ 1521 upperGearTemperatureClutch2 "Estimated temperature of 2X clutch in case of upshift";
+CM_ SG_ 1521 lowerGearTemperatureClutch1 "Estimated temperature of 1X clutch in case of downshift";
+CM_ SG_ 1521 lowerGearTemperatureClutch2 "Estimated temperature of 2X clutch in case of downshift";
+CM_ SG_ 1534 vin1 "WMI code digit 2";
+CM_ SG_ 1534 vin2 "WMI code digit 2";
+CM_ SG_ 1534 vin3 "WMI code digit 3";
+CM_ SG_ 1534 vin4 "Vehicle model";
+CM_ SG_ 1534 vin5 "propulsion system";
+CM_ SG_ 1534 vin6 "Chassis spec";
+CM_ SG_ 1534 vin7 "Vehicle Approval";
+CM_ SG_ 1534 vin8 "Restraint System";
+CM_ SG_ 1534 vin9 "Check Digit (defined by 49 CFR 565)";
+CM_ SG_ 1535 vin10 "Model year (defined by 49 CFR 565)";
+CM_ SG_ 1535 vin11 "Manufacturer plant";
+CM_ SG_ 1535 vin12 "WMI extension for SVM (0 = KAAB)";
+CM_ SG_ 1535 vin13 "WMI extension for SVM (07 = KAAB)";
+CM_ SG_ 1535 vin14 "WMI extension for SVM (07 = KAAB)";
+CM_ SG_ 1535 vin15 "Serial number digit 1";
+CM_ SG_ 1535 vin16 "Serial number digit 2";
+CM_ SG_ 1535 vin17 "Serial number digit 3";
+CM_ BO_ 1708 "Message from HU to control the climatizer";
+CM_ BO_ 1709 "Feedback from clima controller to HU user interface. Includes command to DBCM for fans, flaps and expansion valves";
+BA_DEF_  "BusSpeed" INT 0 2000000;
+BA_DEF_ SG_  "CheckSigRange" ENUM  "NO","YES";
+BA_DEF_ BO_  "GatewayMode" ENUM  "GW_OFF","GW_ONLY","GW_RECV";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetitions" INT 0 0;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","event","NoMsgSendType";
+BA_DEF_ SG_  "GenSigStartValue" INT -999999 999999;
+BA_DEF_DEF_  "BusSpeed" 500000;
+BA_DEF_DEF_  "CheckSigRange" "YES";
+BA_DEF_DEF_  "GatewayMode" "GW_OFF";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetitions" 0;
+BA_DEF_DEF_  "GenMsgSendType" "cyclic";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_ "BusSpeed" 500000;
+BA_ "GatewayMode" BO_ 100 2;
+BA_ "GenMsgCycleTime" BO_ 100 10;
+BA_ "GenMsgSendType" BO_ 100 0;
+BA_ "GatewayMode" BO_ 101 1;
+BA_ "GenMsgSendType" BO_ 101 1;
+BA_ "GatewayMode" BO_ 150 2;
+BA_ "GenMsgCycleTime" BO_ 150 100;
+BA_ "GenMsgSendType" BO_ 150 0;
+BA_ "GatewayMode" BO_ 410 0;
+BA_ "GenMsgCycleTime" BO_ 410 100;
+BA_ "GenMsgSendType" BO_ 410 0;
+BA_ "GatewayMode" BO_ 411 0;
+BA_ "GenMsgCycleTime" BO_ 411 100;
+BA_ "GenMsgSendType" BO_ 411 0;
+BA_ "GatewayMode" BO_ 420 0;
+BA_ "GenMsgCycleTime" BO_ 420 100;
+BA_ "GenMsgSendType" BO_ 420 0;
+BA_ "GatewayMode" BO_ 471 0;
+BA_ "GenMsgCycleTime" BO_ 471 50;
+BA_ "GenMsgSendType" BO_ 471 0;
+BA_ "GatewayMode" BO_ 473 0;
+BA_ "GenMsgCycleTime" BO_ 473 50;
+BA_ "GenMsgSendType" BO_ 473 0;
+BA_ "GatewayMode" BO_ 474 0;
+BA_ "GenMsgCycleTime" BO_ 474 10;
+BA_ "GenMsgSendType" BO_ 474 0;
+BA_ "GatewayMode" BO_ 476 0;
+BA_ "GenMsgCycleTime" BO_ 476 100;
+BA_ "GenMsgSendType" BO_ 476 0;
+BA_ "GatewayMode" BO_ 477 0;
+BA_ "GenMsgCycleTime" BO_ 477 100;
+BA_ "GenMsgSendType" BO_ 477 0;
+BA_ "GatewayMode" BO_ 478 0;
+BA_ "GenMsgCycleTime" BO_ 478 100;
+BA_ "GenMsgDelayTime" BO_ 478 0;
+BA_ "GenMsgSendType" BO_ 478 0;
+BA_ "GatewayMode" BO_ 479 0;
+BA_ "GenMsgCycleTime" BO_ 479 100;
+BA_ "GenMsgDelayTime" BO_ 479 0;
+BA_ "GenMsgSendType" BO_ 479 0;
+BA_ "GatewayMode" BO_ 640 0;
+BA_ "GenMsgCycleTime" BO_ 640 10;
+BA_ "GenMsgSendType" BO_ 640 0;
+BA_ "GatewayMode" BO_ 641 0;
+BA_ "GenMsgCycleTime" BO_ 641 100;
+BA_ "GenMsgSendType" BO_ 641 0;
+BA_ "GatewayMode" BO_ 650 0;
+BA_ "GenMsgCycleTime" BO_ 650 100;
+BA_ "GenMsgSendType" BO_ 650 0;
+BA_ "GatewayMode" BO_ 891 0;
+BA_ "GenMsgCycleTime" BO_ 891 10;
+BA_ "GenMsgSendType" BO_ 891 0;
+BA_ "GatewayMode" BO_ 1000 0;
+BA_ "GenMsgSendType" BO_ 1000 1;
+BA_ "GatewayMode" BO_ 1001 0;
+BA_ "GenMsgSendType" BO_ 1001 1;
+BA_ "GatewayMode" BO_ 1002 0;
+BA_ "GenMsgCycleTime" BO_ 1002 1000;
+BA_ "GenMsgSendType" BO_ 1002 0;
+BA_ "GatewayMode" BO_ 1003 0;
+BA_ "GenMsgCycleTime" BO_ 1003 100;
+BA_ "GenMsgDelayTime" BO_ 1003 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1003 0;
+BA_ "GenMsgSendType" BO_ 1003 0;
+BA_ "GatewayMode" BO_ 1026 0;
+BA_ "GenMsgCycleTime" BO_ 1026 50;
+BA_ "GenMsgSendType" BO_ 1026 0;
+BA_ "GatewayMode" BO_ 1039 0;
+BA_ "GenMsgCycleTime" BO_ 1039 100;
+BA_ "GenMsgSendType" BO_ 1039 0;
+BA_ "GatewayMode" BO_ 1040 0;
+BA_ "GenMsgCycleTime" BO_ 1040 100;
+BA_ "GenMsgSendType" BO_ 1040 0;
+BA_ "GatewayMode" BO_ 1043 0;
+BA_ "GenMsgCycleTime" BO_ 1043 100;
+BA_ "GenMsgDelayTime" BO_ 1043 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1043 0;
+BA_ "GenMsgSendType" BO_ 1043 0;
+BA_ "GatewayMode" BO_ 1044 0;
+BA_ "GenMsgCycleTime" BO_ 1044 50;
+BA_ "GenMsgSendType" BO_ 1044 0;
+BA_ "GatewayMode" BO_ 1045 0;
+BA_ "GenMsgCycleTime" BO_ 1045 100;
+BA_ "GenMsgDelayTime" BO_ 1045 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1045 0;
+BA_ "GenMsgSendType" BO_ 1045 0;
+BA_ "GatewayMode" BO_ 1046 0;
+BA_ "GenMsgCycleTime" BO_ 1046 1000;
+BA_ "GenMsgDelayTime" BO_ 1046 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1046 0;
+BA_ "GenMsgSendType" BO_ 1046 0;
+BA_ "GatewayMode" BO_ 1047 0;
+BA_ "GenMsgCycleTime" BO_ 1047 50;
+BA_ "GenMsgDelayTime" BO_ 1047 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1047 0;
+BA_ "GenMsgSendType" BO_ 1047 0;
+BA_ "GatewayMode" BO_ 1048 0;
+BA_ "GenMsgCycleTime" BO_ 1048 200;
+BA_ "GenMsgSendType" BO_ 1048 0;
+BA_ "GatewayMode" BO_ 1049 0;
+BA_ "GenMsgCycleTime" BO_ 1049 200;
+BA_ "GenMsgSendType" BO_ 1049 0;
+BA_ "GatewayMode" BO_ 1054 0;
+BA_ "GenMsgCycleTime" BO_ 1054 200;
+BA_ "GenMsgSendType" BO_ 1054 0;
+BA_ "GatewayMode" BO_ 1056 0;
+BA_ "GenMsgCycleTime" BO_ 1056 200;
+BA_ "GenMsgSendType" BO_ 1056 0;
+BA_ "GatewayMode" BO_ 1057 0;
+BA_ "GenMsgCycleTime" BO_ 1057 200;
+BA_ "GenMsgSendType" BO_ 1057 0;
+BA_ "GatewayMode" BO_ 1080 0;
+BA_ "GenMsgCycleTime" BO_ 1080 500;
+BA_ "GenMsgSendType" BO_ 1080 0;
+BA_ "GatewayMode" BO_ 1090 0;
+BA_ "GenMsgCycleTime" BO_ 1090 200;
+BA_ "GenMsgSendType" BO_ 1090 0;
+BA_ "GatewayMode" BO_ 1091 0;
+BA_ "GenMsgCycleTime" BO_ 1091 200;
+BA_ "GenMsgDelayTime" BO_ 1091 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1091 0;
+BA_ "GenMsgSendType" BO_ 1091 0;
+BA_ "GatewayMode" BO_ 1136 0;
+BA_ "GenMsgCycleTime" BO_ 1136 100;
+BA_ "GenMsgSendType" BO_ 1136 0;
+BA_ "GatewayMode" BO_ 1149 0;
+BA_ "GenMsgCycleTime" BO_ 1149 100;
+BA_ "GenMsgDelayTime" BO_ 1149 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1149 0;
+BA_ "GenMsgSendType" BO_ 1149 0;
+BA_ "GatewayMode" BO_ 1150 0;
+BA_ "GenMsgCycleTime" BO_ 1150 1000;
+BA_ "GenMsgSendType" BO_ 1150 0;
+BA_ "GatewayMode" BO_ 1151 0;
+BA_ "GenMsgCycleTime" BO_ 1151 1000;
+BA_ "GenMsgSendType" BO_ 1151 0;
+BA_ "GatewayMode" BO_ 1152 0;
+BA_ "GenMsgCycleTime" BO_ 1152 1000;
+BA_ "GenMsgSendType" BO_ 1152 0;
+BA_ "GatewayMode" BO_ 1153 0;
+BA_ "GenMsgCycleTime" BO_ 1153 1000;
+BA_ "GenMsgSendType" BO_ 1153 0;
+BA_ "GatewayMode" BO_ 1154 0;
+BA_ "GenMsgCycleTime" BO_ 1154 1000;
+BA_ "GenMsgSendType" BO_ 1154 0;
+BA_ "GatewayMode" BO_ 1155 0;
+BA_ "GenMsgCycleTime" BO_ 1155 1000;
+BA_ "GenMsgSendType" BO_ 1155 0;
+BA_ "GatewayMode" BO_ 1156 0;
+BA_ "GenMsgCycleTime" BO_ 1156 1000;
+BA_ "GenMsgSendType" BO_ 1156 0;
+BA_ "GatewayMode" BO_ 1157 0;
+BA_ "GenMsgCycleTime" BO_ 1157 1000;
+BA_ "GenMsgSendType" BO_ 1157 0;
+BA_ "GatewayMode" BO_ 1158 0;
+BA_ "GenMsgCycleTime" BO_ 1158 1000;
+BA_ "GenMsgSendType" BO_ 1158 0;
+BA_ "GatewayMode" BO_ 1159 0;
+BA_ "GenMsgCycleTime" BO_ 1159 1000;
+BA_ "GenMsgSendType" BO_ 1159 0;
+BA_ "GatewayMode" BO_ 1199 0;
+BA_ "GenMsgCycleTime" BO_ 1199 10;
+BA_ "GenMsgSendType" BO_ 1199 0;
+BA_ "GatewayMode" BO_ 1200 0;
+BA_ "GenMsgCycleTime" BO_ 1200 10;
+BA_ "GenMsgSendType" BO_ 1200 0;
+BA_ "GatewayMode" BO_ 1201 0;
+BA_ "GenMsgCycleTime" BO_ 1201 10;
+BA_ "GenMsgSendType" BO_ 1201 0;
+BA_ "GatewayMode" BO_ 1202 0;
+BA_ "GenMsgCycleTime" BO_ 1202 200;
+BA_ "GenMsgSendType" BO_ 1202 0;
+BA_ "GatewayMode" BO_ 1203 0;
+BA_ "GenMsgCycleTime" BO_ 1203 200;
+BA_ "GenMsgSendType" BO_ 1203 0;
+BA_ "GatewayMode" BO_ 1204 0;
+BA_ "GenMsgCycleTime" BO_ 1204 200;
+BA_ "GenMsgSendType" BO_ 1204 0;
+BA_ "GatewayMode" BO_ 1205 0;
+BA_ "GenMsgCycleTime" BO_ 1205 200;
+BA_ "GenMsgSendType" BO_ 1205 0;
+BA_ "GatewayMode" BO_ 1206 0;
+BA_ "GenMsgCycleTime" BO_ 1206 200;
+BA_ "GenMsgSendType" BO_ 1206 0;
+BA_ "GatewayMode" BO_ 1207 0;
+BA_ "GenMsgCycleTime" BO_ 1207 200;
+BA_ "GenMsgSendType" BO_ 1207 0;
+BA_ "GatewayMode" BO_ 1208 0;
+BA_ "GenMsgCycleTime" BO_ 1208 200;
+BA_ "GenMsgDelayTime" BO_ 1208 0;
+BA_ "GenMsgSendType" BO_ 1208 0;
+BA_ "GatewayMode" BO_ 1209 0;
+BA_ "GenMsgCycleTime" BO_ 1209 200;
+BA_ "GenMsgDelayTime" BO_ 1209 0;
+BA_ "GenMsgSendType" BO_ 1209 0;
+BA_ "GatewayMode" BO_ 1210 0;
+BA_ "GenMsgCycleTime" BO_ 1210 200;
+BA_ "GenMsgDelayTime" BO_ 1210 0;
+BA_ "GenMsgSendType" BO_ 1210 0;
+BA_ "GatewayMode" BO_ 1211 0;
+BA_ "GenMsgCycleTime" BO_ 1211 200;
+BA_ "GenMsgSendType" BO_ 1211 0;
+BA_ "GatewayMode" BO_ 1212 0;
+BA_ "GenMsgCycleTime" BO_ 1212 200;
+BA_ "GenMsgSendType" BO_ 1212 0;
+BA_ "GatewayMode" BO_ 1280 1;
+BA_ "GenMsgCycleTime" BO_ 1280 100;
+BA_ "GenMsgSendType" BO_ 1280 0;
+BA_ "GatewayMode" BO_ 1285 0;
+BA_ "GenMsgCycleTime" BO_ 1285 100;
+BA_ "GenMsgSendType" BO_ 1285 0;
+BA_ "GatewayMode" BO_ 1286 0;
+BA_ "GenMsgCycleTime" BO_ 1286 100;
+BA_ "GenMsgSendType" BO_ 1286 0;
+BA_ "GatewayMode" BO_ 1287 0;
+BA_ "GenMsgCycleTime" BO_ 1287 100;
+BA_ "GenMsgSendType" BO_ 1287 0;
+BA_ "GatewayMode" BO_ 1341 0;
+BA_ "GenMsgCycleTime" BO_ 1341 50;
+BA_ "GenMsgSendType" BO_ 1341 0;
+BA_ "GatewayMode" BO_ 1342 0;
+BA_ "GenMsgCycleTime" BO_ 1342 50;
+BA_ "GenMsgSendType" BO_ 1342 0;
+BA_ "GatewayMode" BO_ 1343 0;
+BA_ "GenMsgCycleTime" BO_ 1343 50;
+BA_ "GenMsgSendType" BO_ 1343 0;
+BA_ "GatewayMode" BO_ 1344 0;
+BA_ "GenMsgCycleTime" BO_ 1344 50;
+BA_ "GenMsgSendType" BO_ 1344 0;
+BA_ "GatewayMode" BO_ 1350 0;
+BA_ "GenMsgCycleTime" BO_ 1350 1000;
+BA_ "GenMsgSendType" BO_ 1350 0;
+BA_ "GatewayMode" BO_ 1351 0;
+BA_ "GenMsgCycleTime" BO_ 1351 1000;
+BA_ "GenMsgSendType" BO_ 1351 0;
+BA_ "GatewayMode" BO_ 1352 0;
+BA_ "GenMsgCycleTime" BO_ 1352 1000;
+BA_ "GenMsgSendType" BO_ 1352 0;
+BA_ "GatewayMode" BO_ 1353 0;
+BA_ "GenMsgCycleTime" BO_ 1353 1000;
+BA_ "GenMsgSendType" BO_ 1353 0;
+BA_ "GatewayMode" BO_ 1360 0;
+BA_ "GenMsgCycleTime" BO_ 1360 50;
+BA_ "GenMsgSendType" BO_ 1360 0;
+BA_ "GatewayMode" BO_ 1363 0;
+BA_ "GenMsgCycleTime" BO_ 1363 1000;
+BA_ "GenMsgDelayTime" BO_ 1363 0;
+BA_ "GenMsgSendType" BO_ 1363 0;
+BA_ "GatewayMode" BO_ 1364 0;
+BA_ "GenMsgCycleTime" BO_ 1364 1000;
+BA_ "GenMsgSendType" BO_ 1364 0;
+BA_ "GatewayMode" BO_ 1365 0;
+BA_ "GenMsgCycleTime" BO_ 1365 50;
+BA_ "GenMsgSendType" BO_ 1365 0;
+BA_ "GatewayMode" BO_ 1366 0;
+BA_ "GenMsgCycleTime" BO_ 1366 50;
+BA_ "GenMsgSendType" BO_ 1366 0;
+BA_ "GatewayMode" BO_ 1367 0;
+BA_ "GenMsgCycleTime" BO_ 1367 100;
+BA_ "GenMsgSendType" BO_ 1367 0;
+BA_ "GatewayMode" BO_ 1368 2;
+BA_ "GenMsgCycleTime" BO_ 1368 100;
+BA_ "GenMsgSendType" BO_ 1368 0;
+BA_ "GatewayMode" BO_ 1370 0;
+BA_ "GenMsgCycleTime" BO_ 1370 100;
+BA_ "GenMsgDelayTime" BO_ 1370 0;
+BA_ "GenMsgSendType" BO_ 1370 0;
+BA_ "GatewayMode" BO_ 1371 0;
+BA_ "GenMsgCycleTime" BO_ 1371 100;
+BA_ "GenMsgDelayTime" BO_ 1371 0;
+BA_ "GenMsgSendType" BO_ 1371 0;
+BA_ "GatewayMode" BO_ 1373 0;
+BA_ "GenMsgCycleTime" BO_ 1373 100;
+BA_ "GenMsgDelayTime" BO_ 1373 0;
+BA_ "GenMsgSendType" BO_ 1373 0;
+BA_ "GatewayMode" BO_ 1374 0;
+BA_ "GenMsgCycleTime" BO_ 1374 100;
+BA_ "GenMsgSendType" BO_ 1374 0;
+BA_ "GatewayMode" BO_ 1440 0;
+BA_ "GenMsgCycleTime" BO_ 1440 100;
+BA_ "GenMsgSendType" BO_ 1440 0;
+BA_ "GatewayMode" BO_ 1441 0;
+BA_ "GenMsgCycleTime" BO_ 1441 100;
+BA_ "GenMsgSendType" BO_ 1441 0;
+BA_ "GatewayMode" BO_ 1508 0;
+BA_ "GenMsgCycleTime" BO_ 1508 1000;
+BA_ "GenMsgDelayTime" BO_ 1508 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1508 0;
+BA_ "GenMsgSendType" BO_ 1508 0;
+BA_ "GatewayMode" BO_ 1516 0;
+BA_ "GenMsgCycleTime" BO_ 1516 500;
+BA_ "GenMsgSendType" BO_ 1516 0;
+BA_ "GatewayMode" BO_ 1519 0;
+BA_ "GenMsgCycleTime" BO_ 1519 1000;
+BA_ "GenMsgSendType" BO_ 1519 0;
+BA_ "GatewayMode" BO_ 1520 0;
+BA_ "GenMsgCycleTime" BO_ 1520 1000;
+BA_ "GenMsgSendType" BO_ 1520 0;
+BA_ "GatewayMode" BO_ 1521 0;
+BA_ "GenMsgCycleTime" BO_ 1521 1000;
+BA_ "GenMsgSendType" BO_ 1521 0;
+BA_ "GatewayMode" BO_ 1522 0;
+BA_ "GenMsgCycleTime" BO_ 1522 1000;
+BA_ "GenMsgSendType" BO_ 1522 0;
+BA_ "GatewayMode" BO_ 1523 0;
+BA_ "GenMsgCycleTime" BO_ 1523 1000;
+BA_ "GenMsgSendType" BO_ 1523 0;
+BA_ "GatewayMode" BO_ 1534 0;
+BA_ "GenMsgCycleTime" BO_ 1534 10000;
+BA_ "GenMsgSendType" BO_ 1534 0;
+BA_ "GatewayMode" BO_ 1535 0;
+BA_ "GenMsgCycleTime" BO_ 1535 10000;
+BA_ "GenMsgSendType" BO_ 1535 0;
+BA_ "GatewayMode" BO_ 1585 0;
+BA_ "GenMsgCycleTime" BO_ 1585 100;
+BA_ "GenMsgDelayTime" BO_ 1585 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1585 0;
+BA_ "GenMsgSendType" BO_ 1585 0;
+BA_ "GatewayMode" BO_ 1590 0;
+BA_ "GenMsgCycleTime" BO_ 1590 500;
+BA_ "GenMsgDelayTime" BO_ 1590 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1590 0;
+BA_ "GenMsgSendType" BO_ 1590 0;
+BA_ "GatewayMode" BO_ 1591 0;
+BA_ "GenMsgCycleTime" BO_ 1591 500;
+BA_ "GenMsgDelayTime" BO_ 1591 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1591 0;
+BA_ "GenMsgSendType" BO_ 1591 0;
+BA_ "GatewayMode" BO_ 1592 0;
+BA_ "GenMsgCycleTime" BO_ 1592 500;
+BA_ "GenMsgDelayTime" BO_ 1592 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1592 0;
+BA_ "GenMsgSendType" BO_ 1592 0;
+BA_ "GatewayMode" BO_ 1593 0;
+BA_ "GenMsgCycleTime" BO_ 1593 500;
+BA_ "GenMsgDelayTime" BO_ 1593 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1593 0;
+BA_ "GenMsgSendType" BO_ 1593 0;
+BA_ "GatewayMode" BO_ 1594 0;
+BA_ "GenMsgCycleTime" BO_ 1594 500;
+BA_ "GenMsgDelayTime" BO_ 1594 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1594 0;
+BA_ "GenMsgSendType" BO_ 1594 0;
+BA_ "GatewayMode" BO_ 1595 0;
+BA_ "GenMsgCycleTime" BO_ 1595 500;
+BA_ "GenMsgDelayTime" BO_ 1595 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1595 0;
+BA_ "GenMsgSendType" BO_ 1595 0;
+BA_ "GatewayMode" BO_ 1596 0;
+BA_ "GenMsgCycleTime" BO_ 1596 500;
+BA_ "GenMsgDelayTime" BO_ 1596 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1596 0;
+BA_ "GenMsgSendType" BO_ 1596 0;
+BA_ "GatewayMode" BO_ 1597 0;
+BA_ "GenMsgCycleTime" BO_ 1597 500;
+BA_ "GenMsgDelayTime" BO_ 1597 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1597 0;
+BA_ "GenMsgSendType" BO_ 1597 0;
+BA_ "GatewayMode" BO_ 1598 0;
+BA_ "GenMsgCycleTime" BO_ 1598 500;
+BA_ "GenMsgDelayTime" BO_ 1598 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1598 0;
+BA_ "GenMsgSendType" BO_ 1598 0;
+BA_ "GatewayMode" BO_ 1708 2;
+BA_ "GenMsgCycleTime" BO_ 1708 100;
+BA_ "GenMsgSendType" BO_ 1708 0;
+BA_ "GatewayMode" BO_ 1709 0;
+BA_ "GenMsgCycleTime" BO_ 1709 100;
+BA_ "GenMsgSendType" BO_ 1709 0;
+BA_ "GatewayMode" BO_ 1813 1;
+BA_ "GenMsgSendType" BO_ 1813 1;
+BA_ "GatewayMode" BO_ 1875 1;
+BA_ "GenMsgSendType" BO_ 1875 1;
+BA_ "GatewayMode" BO_ 1876 1;
+BA_ "GenMsgSendType" BO_ 1876 1;
+BA_ "GatewayMode" BO_ 1877 1;
+BA_ "GenMsgSendType" BO_ 1877 1;
+BA_ "GatewayMode" BO_ 1878 1;
+BA_ "GenMsgSendType" BO_ 1878 1;
+BA_ "GatewayMode" BO_ 1883 1;
+BA_ "GenMsgSendType" BO_ 1883 1;
+BA_ "GatewayMode" BO_ 1884 1;
+BA_ "GenMsgSendType" BO_ 1884 1;
+BA_ "GatewayMode" BO_ 1885 1;
+BA_ "GenMsgSendType" BO_ 1885 1;
+BA_ "GatewayMode" BO_ 1886 1;
+BA_ "GenMsgSendType" BO_ 1886 1;
+BA_ "GatewayMode" BO_ 1888 1;
+BA_ "GenMsgSendType" BO_ 1888 1;
+BA_ "GatewayMode" BO_ 1889 1;
+BA_ "GenMsgSendType" BO_ 1889 1;
+BA_ "GatewayMode" BO_ 1890 1;
+BA_ "GenMsgSendType" BO_ 1890 1;
+BA_ "GatewayMode" BO_ 1891 1;
+BA_ "GenMsgSendType" BO_ 1891 1;
+BA_ "GatewayMode" BO_ 1896 1;
+BA_ "GenMsgSendType" BO_ 1896 1;
+BA_ "GatewayMode" BO_ 1897 1;
+BA_ "GenMsgSendType" BO_ 1897 1;
+BA_ "GatewayMode" BO_ 1904 1;
+BA_ "GenMsgSendType" BO_ 1904 1;
+BA_ "GatewayMode" BO_ 1905 1;
+BA_ "GenMsgSendType" BO_ 1905 1;
+BA_ "GatewayMode" BO_ 1906 1;
+BA_ "GenMsgSendType" BO_ 1906 1;
+BA_ "GatewayMode" BO_ 1907 1;
+BA_ "GenMsgSendType" BO_ 1907 1;
+BA_ "GatewayMode" BO_ 1908 1;
+BA_ "GenMsgSendType" BO_ 1908 1;
+BA_ "GatewayMode" BO_ 1912 1;
+BA_ "GenMsgSendType" BO_ 1912 1;
+BA_ "GatewayMode" BO_ 1913 1;
+BA_ "GenMsgSendType" BO_ 1913 1;
+BA_ "GatewayMode" BO_ 1914 1;
+BA_ "GenMsgSendType" BO_ 1914 1;
+BA_ "GatewayMode" BO_ 1915 1;
+BA_ "GenMsgSendType" BO_ 1915 1;
+BA_ "GatewayMode" BO_ 1916 1;
+BA_ "GenMsgSendType" BO_ 1916 1;
+BA_ "GatewayMode" BO_ 1919 1;
+BA_ "GenMsgSendType" BO_ 1919 1;
+BA_ "GatewayMode" BO_ 1922 1;
+BA_ "GenMsgSendType" BO_ 1922 1;
+BA_ "GatewayMode" BO_ 1930 1;
+BA_ "GenMsgSendType" BO_ 1930 1;
+BA_ "GatewayMode" BO_ 1938 1;
+BA_ "GenMsgSendType" BO_ 1938 1;
+BA_ "GatewayMode" BO_ 1943 1;
+BA_ "GenMsgSendType" BO_ 1943 1;
+BA_ "GatewayMode" BO_ 1944 1;
+BA_ "GenMsgSendType" BO_ 1944 1;
+BA_ "GatewayMode" BO_ 1946 1;
+BA_ "GenMsgSendType" BO_ 1946 1;
+BA_ "GatewayMode" BO_ 1951 1;
+BA_ "GenMsgSendType" BO_ 1951 1;
+BA_ "GatewayMode" BO_ 1952 1;
+BA_ "GenMsgSendType" BO_ 1952 1;
+BA_ "GatewayMode" BO_ 1954 1;
+BA_ "GenMsgSendType" BO_ 1954 1;
+BA_ "GatewayMode" BO_ 1955 1;
+BA_ "GenMsgSendType" BO_ 1955 1;
+BA_ "GatewayMode" BO_ 1956 1;
+BA_ "GenMsgSendType" BO_ 1956 1;
+BA_ "GatewayMode" BO_ 1962 1;
+BA_ "GenMsgSendType" BO_ 1962 1;
+BA_ "GatewayMode" BO_ 1963 1;
+BA_ "GenMsgSendType" BO_ 1963 1;
+BA_ "GatewayMode" BO_ 1964 1;
+BA_ "GenMsgSendType" BO_ 1964 1;
+BA_ "GatewayMode" BO_ 1970 1;
+BA_ "GenMsgSendType" BO_ 1970 1;
+BA_ "GatewayMode" BO_ 1971 1;
+BA_ "GenMsgSendType" BO_ 1971 1;
+BA_ "GatewayMode" BO_ 1972 1;
+BA_ "GenMsgSendType" BO_ 1972 1;
+BA_ "GatewayMode" BO_ 1973 1;
+BA_ "GenMsgSendType" BO_ 1973 1;
+BA_ "GatewayMode" BO_ 1974 1;
+BA_ "GenMsgSendType" BO_ 1974 1;
+BA_ "GatewayMode" BO_ 1976 1;
+BA_ "GenMsgSendType" BO_ 1976 1;
+BA_ "GatewayMode" BO_ 1977 1;
+BA_ "GenMsgSendType" BO_ 1977 1;
+BA_ "GatewayMode" BO_ 1978 1;
+BA_ "GenMsgSendType" BO_ 1978 1;
+BA_ "GatewayMode" BO_ 1979 1;
+BA_ "GenMsgSendType" BO_ 1979 1;
+BA_ "GatewayMode" BO_ 1980 1;
+BA_ "GenMsgSendType" BO_ 1980 1;
+BA_ "GatewayMode" BO_ 1981 1;
+BA_ "GenMsgSendType" BO_ 1981 1;
+BA_ "GatewayMode" BO_ 1982 1;
+BA_ "GenMsgSendType" BO_ 1982 1;
+BA_ "GatewayMode" BO_ 1984 1;
+BA_ "GenMsgSendType" BO_ 1984 1;
+BA_ "GatewayMode" BO_ 1985 1;
+BA_ "GenMsgSendType" BO_ 1985 1;
+BA_ "GatewayMode" BO_ 1989 1;
+BA_ "GenMsgSendType" BO_ 1989 1;
+BA_ "GatewayMode" BO_ 1990 1;
+BA_ "GenMsgSendType" BO_ 1990 1;
+BA_ "GatewayMode" BO_ 1991 1;
+BA_ "GenMsgSendType" BO_ 1991 1;
+BA_ "GatewayMode" BO_ 1992 1;
+BA_ "GenMsgSendType" BO_ 1992 1;
+BA_ "GatewayMode" BO_ 1993 1;
+BA_ "GenMsgSendType" BO_ 1993 1;
+BA_ "GatewayMode" BO_ 1995 1;
+BA_ "GenMsgSendType" BO_ 1995 1;
+BA_ "GatewayMode" BO_ 1997 1;
+BA_ "GenMsgSendType" BO_ 1997 1;
+BA_ "GatewayMode" BO_ 1998 1;
+BA_ "GenMsgSendType" BO_ 1998 1;
+BA_ "GatewayMode" BO_ 1999 1;
+BA_ "GenMsgSendType" BO_ 1999 1;
+BA_ "GatewayMode" BO_ 2001 1;
+BA_ "GenMsgSendType" BO_ 2001 1;
+BA_ "GatewayMode" BO_ 2002 1;
+BA_ "GenMsgSendType" BO_ 2002 1;
+BA_ "GatewayMode" BO_ 2006 1;
+BA_ "GenMsgSendType" BO_ 2006 1;
+BA_ "GatewayMode" BO_ 2015 1;
+BA_ "GenMsgSendType" BO_ 2015 1;
+BA_ "GatewayMode" BO_ 2016 1;
+BA_ "GenMsgSendType" BO_ 2016 1;
+BA_ "GatewayMode" BO_ 2017 1;
+BA_ "GenMsgSendType" BO_ 2017 1;
+BA_ "GatewayMode" BO_ 2019 1;
+BA_ "GenMsgSendType" BO_ 2019 1;
+BA_ "GatewayMode" BO_ 2021 1;
+BA_ "GenMsgSendType" BO_ 2021 1;
+BA_ "GatewayMode" BO_ 2023 1;
+BA_ "GenMsgSendType" BO_ 2023 1;
+BA_ "GatewayMode" BO_ 2024 1;
+BA_ "GenMsgSendType" BO_ 2024 1;
+BA_ "GatewayMode" BO_ 2025 1;
+BA_ "GenMsgSendType" BO_ 2025 1;
+BA_ "GatewayMode" BO_ 2027 1;
+BA_ "GenMsgSendType" BO_ 2027 1;
+BA_ "GatewayMode" BO_ 2029 1;
+BA_ "GenMsgSendType" BO_ 2029 1;
+BA_ "GatewayMode" BO_ 2031 1;
+BA_ "GenMsgSendType" BO_ 2031 1;
+BA_ "GatewayMode" BO_ 2033 1;
+BA_ "GenMsgSendType" BO_ 2033 1;
+BA_ "GatewayMode" BO_ 2041 1;
+BA_ "GenMsgSendType" BO_ 2041 1;
+VAL_ 100 E2eAliveCounter 15 "Invalid" ;
+VAL_ 100 CrashOutput 0 "NoCrashDetected" 1 "CrashDetected" ;
+VAL_ 101 E2eAliveCounter 15 "Invalid" ;
+VAL_ 101 CrashSeverity 0 "NoCrash" 1 "Level1" 2 "Level2" ;
+VAL_ 101 DriverSideCrash 0 "No_Event" 1 "DriverSideCrash_Detected" ;
+VAL_ 101 FrontCrash 0 "No_Event" 1 "FrontCrash_Detected" ;
+VAL_ 101 PassSideCrash 0 "No_Event" 1 "PassSideCrash_Detected" ;
+VAL_ 101 RearCrash 0 "No_Event" 1 "RearCrash_Detected" ;
+VAL_ 101 RolloverCrash 0 "No_Event" 1 "RolloverCrash_Detected" ;
+VAL_ 150 e2e_alive_counter 15 "INVALID" ;
+VAL_ 150 pwr_st 0 "UNAVL" 1 "SLEEP" 2 "THERM_MNGT" 3 "POST_CRASH" 4 "INTRUSION" 5 "BATT_CHRGN" 6 "USR_ACS" 7 "IGN" 8 "FLSG" 15 "INVLD" ;
+VAL_ 410 dtc_list_12v 0 "DCDC_12V_NO_FAULT" 1 "DCDC_12V_INPUT_OVER_CURRENT_FAULT" 2 "DCDC_12V_INPUT_UNDER_VOLTAGE_FAULT" 3 "DCDC_12V_INPUT_OVER_VOLTAGE_FAULT" 4 "DCDC_12V_OUTPUT_OVER_CURRENT_FAULT" 5 "DCDC_12V_OUTPUT_UNDER_VOLTAGE_FAULT" 6 "DCDC_12V_OUTPUT_OVER_VOLTAGE_FAULT" 7 "DCDC_12V_PRIMARY_OVER_TEMP_FAULT" 8 "DCDC_12V_TRANSFORMER1_OVER_TEMP_FAULT" 9 "DCDC_12V_SECONDARY1_OVER_TEMP_FAULT" 10 "DCDC_12V_TRANSFORMER2_OVER_TEMP_FAULT" 11 "DCDC_12V_SECONDARY2_OVER_TEMP_FAULT" 12 "DCDC_12V_AUTOCHECK_OTP_FAULT" 13 "DCDC_12V_AUTOCHECK_OCPP_FAULT" 14 "DCDC_12V_AUTOCHECK_OVPS_FAULT" 15 "DCDC_12V_AUTOCHECK_OCPS1_FAULT" 16 "DCDC_12V_AUTOCHECK_OCPS2_FAULT" 17 "DCDC_12V_OPEN_CIRCUIT_FAULT" 18 "DCDC_12V_INTERNAL_PSU1_FAULT" 19 "DCDC_12V_INTERNAL_PSU2_FAULT" 20 "DCDC_12V_RESET_FAULT" 21 "DCDC_12V_ALARM_OTP_FAULT" 22 "DCDC_12V_ENABLE_IN_FAULT" 23 "DCDC_12V_COMMAND_FAULT" 24 "DCDC_12V_POLARITY_FAULT" 25 "DCDC_12V_INTERNAL_5V_COM_FAULT" 26 "DCDC_12V_INTERNAL_3V3_COM_FAULT" 27 "DCDC_12V_CAN_RX_TIMEOUT_FAULT" 28 "DCDC_12V_CAN_RX_MSG_COUNTER_FAULT" 29 "DCDC_12V_SLEEP_MODE_FAULT" 30 "DCDC_12V_EEPROM_WRITE_FAULT" 31 "DCDC_12V_EEPROM_CRC_FAULT" 32 "DCDC_12V_AMBIENT_OVER_TEMP_FAULT" 33 "DCDC_12V_FAULT_MAX" ;
+VAL_ 410 dtc_list_48v 0 "DCDC_48V_NO_FAULT" 1 "DCDC_48V_INPUT_OVER_CURRENT_FAULT" 2 "DCDC_48V_INPUT_UNDER_VOLTAGE_FAULT" 3 "DCDC_48V_INPUT_OVER_VOLTAGE_FAULT" 4 "DCDC_48V_OUTPUT_OVER_CURRENT_FAULT" 5 "DCDC_48V_OUTPUT_UNDER_VOLTAGE_FAULT" 6 "DCDC_48V_OUTPUT_OVER_VOLTAGE_FAULT" 7 "DCDC_48V_PRIMARY_OVER_TEMP_FAULT" 8 "DCDC_48V_TRANSFORMER1_OVER_TEMP_FAULT" 9 "DCDC_48V_TRANSFORMER2_OVER_TEMP_FAULT" 10 "DCDC_48V_AUTOCHECK_OTP_FAULT" 11 "DCDC_48V_AUTOCHECK_OCPP_FAULT" 12 "DCDC_48V_AUTOCHECK_OVPS_FAULT" 13 "DCDC_48V_AUTOCHECK_OCPS_FAULT" 14 "DCDC_48V_OPEN_CIRCUIT_FAULT" 15 "DCDC_48V_INTERNAL_15V_FAULT" 16 "DCDC_48V_GENERAL_PSU_FAULT" 17 "DCDC_48V_RESET_FAULT" 18 "DCDC_48V_ALARM_OTP_FAULT" 19 "DCDC_48V_ENABLE_IN_FAULT" 20 "DCDC_48V_COMMAND_FAULT" 21 "DCDC_48V_POLARITY_FAULT" 22 "DCDC_48V_FAULT_MAX" ;
+VAL_ 410 state_12v 0 "STRT" 1 "INT" 2 "STB" 3 "ENAG" 4 "ENA" 5 "DIG" 6 "WARN" 7 "ERR" ;
+VAL_ 410 swt_ena_fb_12v 0 "DISABLE" 1 "ENABLE" ;
+VAL_ 410 state_48v 0 "STRT" 1 "INT" 2 "STB" 3 "ENAG" 4 "ENA" 5 "DIG" 6 "WARN" 7 "ERR" ;
+VAL_ 410 swt_ena_fb_48v 0 "DISABLE" 1 "ENABLE" ;
+VAL_ 420 charging_mode 0 "NA" 1 "OBC_220V_AC_MODE" 2 "OBC_110V_AC_MODE" 3 "FAST_CHARGE_DC_MODE" ;
+VAL_ 420 charge_port_status 0 "NOT_PLUGGED" 1 "PLUGGED" 2 "UNKNOWN" ;
+VAL_ 420 inlet_motor_status 0 "UNLOCKED" 1 "LOCKED" 2 "MOVING" 3 "ERROR" ;
+VAL_ 420 obc_status 0 "START" 1 "INIT" 2 "STANDBY" 3 "ENABLING" 4 "ENABLED" 5 "DISABLING" 6 "WARNING" 7 "ERROR" ;
+VAL_ 471 E2eAliveCounter_Disable 15 "Invalid" ;
+VAL_ 471 drv_cfg 0 "DRV_CFG_UNKNOWN" 1 "DRV_CFG_AWD" 2 "DRV_CFG_FWD" 3 "DRV_CFG_RWD" ;
+VAL_ 471 b_auto_mod_actv 0 "OFF" 1 "ON" ;
+VAL_ 471 b_man_mod_actv 0 "OFF" 1 "ON" ;
+VAL_ 471 tire_mdl 0 "TIRE_MDL_UNKNOWN" 1 "TIRE_MDL_CUP2" 2 "TIRE_MDL_CUP2R" 3 "TIRE_MDL_ALPIN" ;
+VAL_ 471 suppg_mod 0 "SUPPG_MOD_UNKNOWN" 1 "SUPPG_MOD_NONE" 2 "SUPPG_MOD_LIFT" 3 "SUPPG_MOD_DYNO" 4 "SUPPG_MOD_DAMP_SERV" 5 "SUPPG_MOD_TRANSPORT" 6 "SUPPG_MOD_STAGE" ;
+VAL_ 471 park_brk_st 0 "E_BRAKE_SM_UNKNOWN" 1 "E_BRAKE_SM_ENGAGING" 2 "E_BRAKE_SM_ENGAGED" 3 "E_BRAKE_SM_DISENGAGING" 4 "E_BRAKE_SM_DISENGAGED" 5 "E_BRAKE_SM_FAULT" ;
+VAL_ 471 esp_st 0 "ESP_ST_UNKNOWN" 1 "ESP_ST_OFF" 2 "ESP_ST_ON" ;
+VAL_ 471 drv_mod 0 "DRV_MOD_UNKNOWN" 1 "DRV_MOD_PARK" 2 "DRV_MOD_NEUTRAL" 3 "DRV_MOD_REVERSE" 4 "DRV_MOD_DRIVE" ;
+VAL_ 471 lift_st 0 "LIFT_UNKNOWN" 1 "LIFT_UP" 2 "LIFT_CONTROL" 3 "LIFT_LIFTING" 4 "LIFT_PARTLYUP" 5 "LIFT_LOWERING" 6 "LIFT_PARTLYDOWN" ;
+VAL_ 471 veh_vel_lgt_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 471 ign_hold 0 "OFF" 1 "ON" ;
+VAL_ 471 bto_active 0 "UKWN" 1 "NOT_ACTV" 2 "ACTV" ;
+VAL_ 471 launch_ctrl_sts 0 "UKWN" 1 "NOT_ACTV" 2 "ACTV" 3 "RDY_TO_LAUNCH" 4 "ABORTED" 5 "NOT_RDY" ;
+VAL_ 473 E2eAliveCounter_Disable 15 "Invalid" ;
+VAL_ 473 tq_sys_st 0 "UNKNOWN" 1 "CRITICAL_FAULT" 2 "TURTLE_ELEC" 3 "TURTLE_ICE" 4 "LIMP" 5 "NORMAL" ;
+VAL_ 473 brk_li_req 0 "UNKNOWN" 1 "OFF" 2 "ON" 3 "ESS_BRAKING" ;
+VAL_ 473 veh_rollg_st 0 "VEH_ROLLG_ST_UKWN" 1 "VEH_ROLLG_ST_STATY" 2 "VEH_ROLLG_ST_FWD" 3 "VEH_ROLLG_ST_REWD" 4 "VEH_ROLLG_ST_OVERSPD" ;
+VAL_ 473 avas_speaker_ena_req 0 "ENA_ST_UNKNOWN" 1 "ENA_ST_OFF" 2 "ENA_ST_ON" ;
+VAL_ 474 E2eAliveCounter_Disable 15 "Invalid" ;
+VAL_ 474 steer_whl_ag_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 474 ice_speed_actual_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 476 contactor_req 0 "UNKNOWN" 1 "OFF" 2 "ON" 3 "CHARGE" 4 "EMERGENCY_OFF" ;
+VAL_ 476 hyb_st_mac_state 0 "UNKNOWN" 1 "OFF" 2 "SHUTDOWN" 3 "SAFESTATE" 4 "PRECHARGING" 5 "LIVE" 6 "RUNNING" 7 "CHARGING" ;
+VAL_ 476 unlock_charge_port_req 0 "NOT_REQ_UNLOCK" 1 "REQ_UNLOCK" ;
+VAL_ 477 bms_state 0 "SLEEP" 1 "IDLE" 2 "PRECHARGING" 3 "RUNNING" 4 "CHARGING" 5 "SOFT_SHUTDOWN" 6 "HARD_SHUTDOWN" 7 "SAFESTATE" 8 "UNKNOWN" ;
+VAL_ 477 hvac_contactor 0 "UNKNOWN" 1 "OPEN" 2 "CLOSED" ;
+VAL_ 477 dcdc_contactor 0 "UNKNOWN" 1 "OPEN" 2 "CLOSED" ;
+VAL_ 477 obc_contactor 0 "UNKNOWN" 1 "OPEN" 2 "CLOSED" ;
+VAL_ 478 thermal_runaway_detection 0 "NOT_DETECTED" 1 "DETECTED" ;
+VAL_ 478 soh_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 478 soe_v 0 "NOT_VALID" 1 "NOT_VALID" ;
+VAL_ 478 soc_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 478 soc_predictive_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 479 dtc_list_bms 0 "BMS_NO_FAULT" 1 "BMS_OVER_PACK_VOLTAGE_FAULT" 2 "BMS_UNDER_PACK_VOLTAGE_FAULT" 3 "BMS_OVER_DISCHARGE_CURRENT_FAULT" 4 "BMS_OVER_CHARGE_CURRENT_FAULT" 5 "BMS_OVER_CELL_VOLTAGE_FAULT" 6 "BMS_UNDER_CELL_VOLTAGE_FAULT" 7 "BMS_KL30_OVER_VOLTAGE_FAULT" 8 "BMS_KL30_UNDER_VOLTAGE_FAULT" 9 "BMS_HVIL_FAULT" 10 "BMS_CRASHED_SIGNAL_FAULT" 11 "BMS_ISOLATION_FAULT" 12 "BMS_PRECHARGE_FAILURE_FAULT" 13 "BMS_SHORT_CIRCUIT_FAULT" 14 "BMS_POS_CONTACTOR_WELDED_FAULT" 15 "BMS_POS_CONTACTOR_CONSTANT_OPEN_FAULT" 16 "BMS_POS_CONTACTOR_HS_DRIVER_FAULT" 17 "BMS_POS_CONTACTOR_LS_DRIVER_FAULT" 18 "BMS_NEG_CONTACTOR_WELDED_FAULT" 19 "BMS_NEG_CONTACTOR_CONSTANT_OPEN_FAULT" 20 "BMS_NEG_CONTACTOR_HS_DRIVER_FAULT" 21 "BMS_NEG_CONTACTOR_LS_DRIVER_FAULT" 22 "BMS_CMU_COM_TIMEOUT_FAULT" 23 "BMS_HVS_COM_TIMEOUT_FAULT" 24 "BMS_IVT_COM_TIMEOUT_FAULT" 25 "BMS_CMD_COM_TIMEOUT_FAULT" 26 "BMS_IMD_COM_TIMEOUT_FAULT" 27 "BMS_CMU_FAULT" 28 "BMS_HVS_FAULT" 29 "BMS_IVT_FAULT" 30 "BMS_CMD_FAULT" 31 "BMS_IMD_FAULT" 32 "BMS_CELL_TEMP_RATIONALITY_FAULT" 33 "BMS_CELL_VOLTAGE_RATIONALITY_FAULT" 34 "BMS_PACK_VOLTAGE_RATIONALITY_FAULT" 35 "BMS_INV_VOLTAGE_RATIONALITY_FAULT" 36 "BMS_DCDC_VOLTAGE_RATIONALITY_FAULT" 37 "BMS_HVAC_VOLTAGE_RATIONALITY_FAULT" 38 "BMS_OBC_VOLTAGE_RATIONALITY_FAULT" 39 "BMS_POS_CONTACTOR_STS_RATIONALITY_FAULT" 40 "BMS_NEG_CONTACTOR_STS_RATIONALITY_FAULT" 41 "BMS_MASTER_UNDER_TEMPERATURE_FAULT" 42 "BMS_MASTER_OVER_TEMPERATURE_FAULT" 43 "BMS_CMU_UNDER_TEMPERATURE_FAULT" 44 "BMS_CMU_OVER_TEMPERATURE_FAULT" 45 "BMS_BUSBAR_OVER_TEMPERATURE_FAULT" 46 "BMS_FAULT_MAX" ;
+VAL_ 650 gear 0 "GEAR_INVLD" 1 "GEAR_1" 2 "GEAR_2" 3 "GEAR_3" 4 "GEAR_4" 5 "GEAR_5" 6 "GEAR_6" 7 "GEAR_7" 8 "GEAR_8" 9 "GEAR_9" 10 "GEAR_N" ;
+VAL_ 891 btn_step_le 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_step_ri 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_lines 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_enc_le 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_phone 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_lift 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_crs_ctrl 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_enc_ri 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_knob_ri 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_knob_le 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_horn 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_paddle_ri 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 891 btn_paddle_le 0 "UKWN" 1 "RELD" 2 "PSD" 3 "ERR" ;
+VAL_ 1001 odometer_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1002 odometer_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1003 btn_1_st 0 "RELD" 1 "PSD" ;
+VAL_ 1003 btn_2_st 0 "RELD" 1 "PSD" ;
+VAL_ 1003 btn_3_st 0 "RELD" 1 "PSD" ;
+VAL_ 1003 btn_4_st 0 "RELD" 1 "PSD" ;
+VAL_ 1003 btn_5_st 0 "RELD" 1 "PSD" ;
+VAL_ 1003 btn_6_st 0 "RELD" 1 "PSD" ;
+VAL_ 1003 btn_7_st 0 "RELD" 1 "PSD" ;
+VAL_ 1003 Keyfob_inside_car 0 "NOT_INSIDE_CAR" 1 "INSIDE_CAR" ;
+VAL_ 1003 keyfob_Lo_pwr 0 "UKWN" 1 "FALSE" 2 "TRUE" ;
+VAL_ 1026 E2eAliveCounter_Disable 15 "Invalid" ;
+VAL_ 1026 park_btn_st 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" ;
+VAL_ 1026 ign_btn_st 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" ;
+VAL_ 1026 launch_mod_btn_st 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" ;
+VAL_ 1039 seat_req_le 0 "HLD" 1 "FWD" 2 "BACKW" 3 "UP" 4 "DWN" ;
+VAL_ 1039 seat_req_ri 0 "HLD" 1 "FWD" 2 "BACKW" 3 "UP" 4 "DWN" ;
+VAL_ 1039 door_req_le 0 "NO_REQ" 1 "CLS" 2 "OPEN" ;
+VAL_ 1039 steer_col_req 0 "HLD" 1 "UP" 2 "DWN" 3 "IN" 4 "OUT" ;
+VAL_ 1039 roof_dim_req 0 "LVL_0" 1 "LVL_1" 2 "LVL_2" 3 "LVL_3" 4 "LVL_4" ;
+VAL_ 1039 door_req_ri 0 "NO_REQ" 1 "CLS" 2 "OPEN" ;
+VAL_ 1039 mirr_adj_req_le 0 "HLD" 1 "UP" 2 "DWN" 3 "LE" 4 "RI" ;
+VAL_ 1039 mirr_adj_req_ri 0 "HLD" 1 "UP" 2 "DWN" 3 "LE" 4 "RI" ;
+VAL_ 1039 mirr_fold_req 0 "UKWN" 1 "FOLD" 2 "UNFOLD" ;
+VAL_ 1039 cup_holders_req_frnt 0 "UKWN" 1 "OFF" 2 "HOT_COLD" ;
+VAL_ 1039 cup_holders_req_re 0 "UKWN" 1 "OFF" 2 "HOT_COLD" ;
+VAL_ 1039 wipr_req 0 "SPD_0" 1 "SPD_1" 2 "SPD_2" 3 "SPD_3" ;
+VAL_ 1039 glovebox_req 0 "NO_REQ" 1 "REQD" ;
+VAL_ 1039 hood_req_frnt 0 "NO_REQ" 1 "REQD" ;
+VAL_ 1040 hood_req_re 0 "NO_REQ" 1 "REQD" ;
+VAL_ 1040 stop_hv_charge_req 0 "FALSE" 1 "TRUE" ;
+VAL_ 1040 fog_li_re 0 "OFF" 1 "ON" ;
+VAL_ 1040 chrgn_lid_req 0 "OFF" 1 "ON" ;
+VAL_ 1040 fuel_lid_usr_req 0 "OFF" 1 "ON" ;
+VAL_ 1040 seat_heatr_req_le 0 "OFF" 1 "LVL_1" 2 "LVL_2" 3 "LVL_3" ;
+VAL_ 1040 seat_heatr_req_ri 0 "OFF" 1 "LVL_1" 2 "LVL_2" 3 "LVL_3" ;
+VAL_ 1040 extr_li_mod_req 0 "UKWN" 1 "OFF" 2 "POSN" 3 "MAN" 4 "AUT" ;
+VAL_ 1040 media_playing 0 "UKWN" 1 "NOT_PLAYING" 2 "PLAYING" ;
+VAL_ 1040 carplay_actv 0 "UKWN" 1 "NOT_ACTV" 2 "ACTV" ;
+VAL_ 1040 unit_dst 0 "UKWN" 1 "METRIC" 2 "IMPERIAL" ;
+VAL_ 1040 unit_t 0 "UKWN" 1 "CELSIUS" 2 "FAHRENHEIT" ;
+VAL_ 1040 unit_p 0 "UKWN" 1 "BAR" 2 "PA" ;
+VAL_ 1043 wind_wshr_pmp_req 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1043 high_beam_req 0 "HIGH_BEAM_UKWN" 1 "HIGH_BEAM_OFF" 2 "HIGH_BEAM_ON" ;
+VAL_ 1043 turn_indcr_le_req 0 "UKWN" 1 "OFF" 2 "BLINK_OFF" 3 "BLINK_ON" ;
+VAL_ 1043 turn_indcr_ri_req 0 "UKWN" 1 "OFF" 2 "BLINK_OFF" 3 "BLINK_ON" ;
+VAL_ 1044 door_hyd_req_ri 0 "HLD" 1 "OPEN" 2 "CLS" ;
+VAL_ 1044 door_hyd_req_le 0 "HLD" 1 "OPEN" 2 "CLS" ;
+VAL_ 1044 door_st_le 0 "UKWN" 1 "CLSD" 2 "MOVG" 3 "OPEN" ;
+VAL_ 1044 door_st_ri 0 "UKWN" 1 "CLSD" 2 "MOVG" 3 "OPEN" ;
+VAL_ 1044 turn_indcr_le 0 "UKWN" 1 "OFF" 2 "BLINK_OFF" 3 "BLINK_ON" ;
+VAL_ 1044 turn_indcr_ri 0 "UKWN" 1 "OFF" 2 "BLINK_OFF" 3 "BLINK_ON" ;
+VAL_ 1044 hood_frnt_ltch_cmd 0 "UKWN" 1 "NONE" 2 "OPEN" ;
+VAL_ 1044 hood_re_ltch_cmd 0 "UKWN" 1 "NONE" 2 "OPEN" ;
+VAL_ 1045 high_beam_req 0 "HIGH_BEAM_UKWN" 1 "HIGH_BEAM_OFF" 2 "HIGH_BEAM_ON" ;
+VAL_ 1045 extr_li_mod_req 0 "UKWN" 1 "OFF" 2 "POSN" 3 "MAN" 4 "AUT" ;
+VAL_ 1045 door_le_amb_t_snsr_sts 0 "UKWN" 1 "OK" 2 "SHO_TO_GND" 3 "SHO_TO_BATT" 4 "OPEN_CIRC" ;
+VAL_ 1045 door_ri_amb_t_snsr_sts 0 "UKWN" 1 "OK" 2 "SHO_TO_GND" 3 "SHO_TO_BATT" 4 "OPEN_CIRC" ;
+VAL_ 1047 turn_indcr_tone 0 "UKWN" 1 "OFF" 2 "TICK" 3 "TOCK" ;
+VAL_ 1047 gen_warn_alert_tone 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1047 hv_warn_alert_tone 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1047 seat_blt_warn_alert_tone 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1047 veh_lift_alert_tone 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1047 actv_sys_flt_alert_tone 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1047 obstcl_warn_tone 0 "UKWN" 1 "OFF" 2 "GREEN" 3 "YELLOW" 4 "RED" ;
+VAL_ 1054 fuel_lid_req 0 "OFF" 1 "ON" ;
+VAL_ 1054 flexfuel_mismatch 0 "UKWN" 1 "NOT_ALLWD" 2 "WARN_CMNG_SOON" ;
+VAL_ 1056 ltch_st 0 "UKWN" 1 "CLSD" 2 "INTER_LOCKD" 3 "INTER_UNLOCKD" 4 "OPEN" 5 "ERR" ;
+VAL_ 1057 ltch_le_st 0 "UKWN" 1 "CLSD" 2 "INTER_LOCKD" 3 "INTER_UNLOCKD" 4 "OPEN" 5 "ERR" ;
+VAL_ 1057 ltch_ri_st 0 "UKWN" 1 "CLSD" 2 "INTER_LOCKD" 3 "INTER_UNLOCKD" 4 "OPEN" 5 "ERR" ;
+VAL_ 1080 compressor_op_state 0 "OFF" 1 "ON" 2 "STOPPED" 3 "DIRECT_PWM" 4 "DEGRADED" ;
+VAL_ 1090 drvg_cyc_tar_vel_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1090 drvg_cyc_st 0 "AUT_DRVR_CYC_ST_UKWN" 1 "AUT_DRVR_CYC_ST_OFF" 2 "AUT_DRVR_CYC_ST_STBY" 3 "AUT_DRVR_CYC_ST_ON" 4 "AUT_DRVR_CYC_ST_END" 5 "AUT_DRVR_CYC_ST_USR_STOP" ;
+VAL_ 1090 drvg_cyc_tar_accel_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1091 ctrl_st 0 "AUT_DRVR_CTRL_ST_UKWN" 1 "AUT_DRVR_CTRL_ST_OFF" 2 "AUT_DRVR_CTRL_ST_RDY" 3 "AUT_DRVR_CTRL_ST_ACTV" 4 "AUT_DRVR_CTRL_ST_OVRD" 5 "AUT_DRVR_CTRL_ST_SHUTDWN" ;
+VAL_ 1136 ddc_enable_hold 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1136 eps_enable_hold 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1136 ieb_enable_hold 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1136 acc_enable_hold 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1150 bts_3a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_7 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_8 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_9 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_10 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_11 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_12 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_13 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_14 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_15 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_16 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_17 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_18 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_19 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_3a_20 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_7 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_8 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_9 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_10 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_5a_11 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1150 bts_10a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1151 bts_10a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1151 bts_5a_10a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1151 bts_5a_10a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1151 bts_5a_10a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1151 bts_5a_10a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1151 bts_5a_10a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1151 bts_5a_10a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1151 vnd_5a 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_7 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_8 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_9 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_10 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_11 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_12 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_13 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_14 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_15 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_16 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_17 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_18 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_19 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_3a_20 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_7 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_8 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_9 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_10 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_5a_11 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1152 bts_10a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1153 bts_10a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1153 bts_5a_10a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1153 bts_5a_10a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1153 bts_5a_10a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1153 bts_5a_10a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1153 bts_5a_10a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1153 bts_5a_10a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1153 vnd_5a 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_7 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_8 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_9 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_10 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_11 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_12 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_13 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_14 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_15 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_16 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_17 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_18 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_19 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_3a_20 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_7 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_8 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_9 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_10 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_5a_11 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1154 bts_10a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1155 bts_10a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1155 bts_5a_10a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1155 bts_5a_10a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1155 bts_5a_10a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1155 bts_5a_10a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1155 bts_5a_10a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1155 bts_5a_10a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1155 vnd_5a 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1156 bts_3a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1156 bts_3a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1156 bts_3a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1156 bts_3a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1156 bts_3a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1156 bts_3a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1157 bts_3a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1157 bts_3a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1157 bts_3a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1157 bts_3a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1157 bts_3a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1157 bts_3a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1158 bts_3a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1158 bts_3a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1158 bts_3a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1158 bts_3a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1158 bts_3a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1158 bts_3a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1159 bts_3a_1 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1159 bts_3a_2 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1159 bts_3a_3 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1159 bts_3a_4 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1159 bts_3a_5 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1159 bts_3a_6 0 "UKWN" 1 "OFF" 2 "OK" 3 "ERR" ;
+VAL_ 1203 front_right_fan_power_on 0 "POWER_OFF" 1 "POWER_ON" ;
+VAL_ 1203 front_right_fan_warning 0 "NO_WARNING" 1 "WARNING" ;
+VAL_ 1203 front_right_fan_fault 0 "NO_FAULT" 1 "FAULT" ;
+VAL_ 1203 front_center_right_fan_power_on 0 "POWER_OFF" 1 "POWER_ON" ;
+VAL_ 1203 front_center_right_fan_warning 0 "NO_WARNING" 1 "WARNING" ;
+VAL_ 1203 front_center_right_fan_fault 0 "NO_FAULT" 1 "FAULT" ;
+VAL_ 1203 front_center_left_fan_power_on 0 "POWER_OFF" 1 "POWER_ON" ;
+VAL_ 1203 front_center_left_fan_warning 0 "NO_WARNING" 1 "WARNING" ;
+VAL_ 1203 front_center_left_fan_fault 0 "NO_FAULT" 1 "FAULT" ;
+VAL_ 1204 front_left_fan_power_on 0 "POWER_OFF" 1 "POWER_ON" ;
+VAL_ 1204 front_left_fan_warning 0 "NO_WARNING" 1 "WARNING" ;
+VAL_ 1204 front_left_fan_fault 0 "NO_FAULT" 1 "FAULT" ;
+VAL_ 1204 e_motor_pump_power_on 0 "POWER_OFF" 1 "POWER_ON" ;
+VAL_ 1204 e_motor_pump_warning 0 "NO_WARNING" 1 "WARNING" ;
+VAL_ 1204 e_motor_pump_fault 0 "NO_FAULT" 1 "FAULT" ;
+VAL_ 1205 inverter_pump_power_on 0 "POWER_OFF" 1 "POWER_ON" ;
+VAL_ 1205 inverter_pump_warning 0 "NO_WARNING" 1 "WARNING" ;
+VAL_ 1205 inverter_pump_fault 0 "NO_FAULT" 1 "FAULT" ;
+VAL_ 1212 rly_sts 0 "CLOSE" 1 "OPEN_REQ" 2 "OPEN" 3 "SNA" ;
+VAL_ 1212 volt_pack_flt 0 "OK" 1 "FAULT" ;
+VAL_ 1212 rly_fail_cls_flt 0 "OK" 1 "FAULT" ;
+VAL_ 1212 critical_error 0 "OK" 1 "FAULT" ;
+VAL_ 1212 curr_error 0 "Ok" 1 "FAULT" ;
+VAL_ 1212 term_volt_flt 0 "OK" 1 "FAULT" ;
+VAL_ 1212 lv_battery_type 0 "UNKNOW" 1 "PS000172_A123" ;
+VAL_ 1285 bms_state_machine 0 "SLEEP" 1 "IDLE" 2 "PRECHARGE" 3 "RUN" 4 "CHARGING" 5 "SOFT_SHUTDOWN" 6 "HARD_SHUTDOWN" 7 "SAFE_STATE" 8 "UNKNOWN" ;
+VAL_ 1285 dcdc_status_12v 0 "OFF" 1 "ON" 2 "DERATING" 3 "FAULT" ;
+VAL_ 1285 dcdc_status_48v 0 "OFF" 1 "ON" 2 "DERATING" 3 "FAULT" ;
+VAL_ 1287 inv_state_machine 0 "INV_INIT" 1 "INV_APPL_SELFCHECK" 2 "INV_CTRL_SELFCHECK" 3 "INV_READY" 4 "INV_RUN" 5 "INV_IDLE" 6 "INV_SAFESTATE" ;
+VAL_ 1342 lift_cyl_cmd_fl 0 "HOLD" 1 "LOWER" 2 "RAISE" ;
+VAL_ 1342 lift_cyl_cmd_fr 0 "HOLD" 1 "LOWER" 2 "RAISE" ;
+VAL_ 1342 lift_cyl_cmd_rl 0 "HOLD" 1 "LOWER" 2 "RAISE" ;
+VAL_ 1342 lift_cyl_cmd_rr 0 "HOLD" 1 "LOWER" 2 "RAISE" ;
+VAL_ 1344 lift_movmt_fl 0 "HOLD" 1 "LOWER" 2 "RAISE" ;
+VAL_ 1344 lift_movmt_fr 0 "HOLD" 1 "LOWER" 2 "RAISE" ;
+VAL_ 1344 lift_movmt_rl 0 "HOLD" 1 "LOWER" 2 "RAISE" ;
+VAL_ 1344 lift_movmt_rr 0 "HOLD" 1 "LOWER" 2 "RAISE" ;
+VAL_ 1350 tire_p_fl 255 "INVALID" ;
+VAL_ 1350 tire_p_fr 255 "INVALID" ;
+VAL_ 1350 tire_t_fl 255 "INVALID" ;
+VAL_ 1350 tire_t_fr 255 "INVALID" ;
+VAL_ 1350 tpms_fl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1350 tpms_fr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1351 tpms_ecu_fault_mask_fl 0 "UNKNOWN" 1 "NO_FAULT" 2 "CAR_DATA_TIMEOUT" 4 "ECU_TIMEOUT" 8 "ECU_HEARTBEAT_FROZEN" 16 "ECU_VOLTAGE_ERR" 32 "ECU_TEMP_ERR" ;
+VAL_ 1351 tpms_ecu_fault_mask_fr 0 "UNKNOWN" 1 "NO_FAULT" 2 "CAR_DATA_TIMEOUT" 4 "ECU_TIMEOUT" 8 "ECU_HEARTBEAT_FROZEN" 16 "ECU_VOLTAGE_ERR" 32 "ECU_TEMP_ERR" ;
+VAL_ 1351 tpms_sensor_fault_mask_fl 0 "UNKNOWN" 1 "NO_FAULT" 2 "WS_P_ERR" 4 "WS_T_ERR" 8 "WS_SNSR_FAULT_GROUP" 16 "WS_SECU_MISMATCH" 32 "WS_NOT_CONFIRMED" 64 "WS_NOT_DETECTED" 128 "WS_COMBINED_HW_ERR" ;
+VAL_ 1351 tpms_sensor_fault_mask_fr 0 "UNKNOWN" 1 "NO_FAULT" 2 "WS_P_ERR" 4 "WS_T_ERR" 8 "WS_SNSR_FAULT_GROUP" 16 "WS_SECU_MISMATCH" 32 "WS_NOT_CONFIRMED" 64 "WS_NOT_DETECTED" 128 "WS_COMBINED_HW_ERR" ;
+VAL_ 1351 tpms_diag_veh_moving_fl 0 "UNKNOWN" 1 "NOT_MOVING" 2 "MOVING" ;
+VAL_ 1351 tpms_diag_veh_moving_fr 0 "UNKNOWN" 1 "NOT_MOVING" 2 "MOVING" ;
+VAL_ 1352 tire_p_rl 255 "INVALID" ;
+VAL_ 1352 tire_p_rr 255 "INVALID" ;
+VAL_ 1352 tire_t_rl 255 "INVALID" ;
+VAL_ 1352 tire_t_rr 255 "INVALID" ;
+VAL_ 1352 tpms_rl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1352 tpms_rr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1353 tpms_ecu_fault_mask_rl 0 "UNKNOWN" 1 "NO_FAULT" 2 "CAR_DATA_TIMEOUT" 4 "ECU_TIMEOUT" 8 "ECU_HEARTBEAT_FROZEN" 16 "ECU_VOLTAGE_ERR" 32 "ECU_TEMP_ERR" ;
+VAL_ 1353 tpms_ecu_fault_mask_rr 0 "UNKNOWN" 1 "NO_FAULT" 2 "CAR_DATA_TIMEOUT" 4 "ECU_TIMEOUT" 8 "ECU_HEARTBEAT_FROZEN" 16 "ECU_VOLTAGE_ERR" 32 "ECU_TEMP_ERR" ;
+VAL_ 1353 tpms_sensor_fault_mask_rl 0 "UNKNOWN" 1 "NO_FAULT" 2 "WS_P_ERR" 4 "WS_T_ERR" 8 "WS_SNSR_FAULT_GROUP" 16 "WS_SECU_MISMATCH" 32 "WS_NOT_CONFIRMED" 64 "WS_NOT_DETECTED" 128 "WS_COMBINED_HW_ERR" ;
+VAL_ 1353 tpms_sensor_fault_mask_rr 0 "UNKNOWN" 1 "NO_FAULT" 2 "WS_P_ERR" 4 "WS_T_ERR" 8 "WS_SNSR_FAULT_GROUP" 16 "WS_SECU_MISMATCH" 32 "WS_NOT_CONFIRMED" 64 "WS_NOT_DETECTED" 128 "WS_COMBINED_HW_ERR" ;
+VAL_ 1353 tpms_diag_veh_moving_rl 0 "UNKNOWN" 1 "NOT_MOVING" 2 "MOVING" ;
+VAL_ 1353 tpms_diag_veh_moving_rr 0 "UNKNOWN" 1 "NOT_MOVING" 2 "MOVING" ;
+VAL_ 1360 e2e_alive_counter_disabled 15 "Invalid" ;
+VAL_ 1360 suppg_mod_req 0 "SUPPG_MOD_UNKNOWN" 1 "SUPPG_MOD_NONE" 2 "SUPPG_MOD_LIFT_MODE" 3 "SUPPG_MOD_DYNO_MODE" 4 "SUPPG_MOD_DAMP_SERV" 5 "SUPPG_MOD_TRANSPORT" 6 "SUPPG_MOD_STAGE" ;
+VAL_ 1360 drv_cfg_req 0 "DRV_CFG_UNKNOWN" 1 "DRV_CFG_AWD" 2 "DRV_CFG_FWD" 3 "DRV_CFG_RWD" ;
+VAL_ 1360 forced_chrg_btn_st 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" ;
+VAL_ 1360 man_mod_btn_st 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" ;
+VAL_ 1360 tire_mdl_req 0 "TIRE_MDL_UNKNOWN" 1 "TIRE_MDL_CUP2" 2 "TIRE_MDL_CUP2R" 3 "TIRE_MDL_ALPIN" ;
+VAL_ 1360 esp_st_req 0 "ESP_ST_UNKNOWN" 1 "ESP_ST_OFF" 2 "ESP_ST_ON" ;
+VAL_ 1360 auto_upsh_btn_st 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" ;
+VAL_ 1360 lift_mod_btn_st 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" ;
+VAL_ 1360 drv_mod_req 0 "DRV_MOD_UNKNOWN" 1 "DRV_MOD_PARK" 2 "DRV_MOD_NEUTRAL" 3 "DRV_MOD_REVERSE" 4 "DRV_MOD_DRIVE" ;
+VAL_ 1360 acc_dft_dist_lvl 0 "ACC_DIST_LVL_UNKNOWN" 1 "ACC_DIST_LVL_1" 2 "ACC_DIST_LVL_2" 3 "ACC_DIST_LVL_3" ;
+VAL_ 1360 acc_dft_actv_st 0 "ACC_DFT_ACTV_ST_UNKNOWN" 1 "ACC_DFT_ACTV_ST_VEL_CTRL" 2 "ACC_DFT_ACTV_ST_FOL_CTRL" 3 "ACC_DFT_ACTV_ST_UNDEFD" ;
+VAL_ 1364 E2eAliveCounter 15 "Invalid" ;
+VAL_ 1365 E2eAliveCounter_Disable 15 "Invalid" ;
+VAL_ 1365 imob_st 0 "IMOB_UNKNOWN" 1 "IMOB_INACTIVE" 2 "IMOB_ACTIVE" ;
+VAL_ 1365 brk_li_swt_st 0 "UNKNOWN" 1 "SWT_ST_RELD" 2 "SWT_ST_PSD" 3 "SWT_ST_FLT" ;
+VAL_ 1366 e2e_alive_counter_disabled 15 "INVALID" ;
+VAL_ 1366 adpv_crs_ctrl_st 0 "ACC_ST_UNKNOWN" 1 "ACC_ST_OFF" 2 "ACC_ST_PASSIVE" 3 "ACC_ST_STBY" 4 "ACC_ST_ACTV_VEL_CTRL" 5 "ACC_ST_ACTV_FOL_CTRL" 6 "ACC_ST_ACTV_STANDG_ACTV" 7 "ACC_ST_OVRD" 8 "ACC_ST_ERR" ;
+VAL_ 1366 adpv_crs_ctrl_takeoff_drvr_req 0 "ACC_TAKEOFF_REQ_UNKNOWN" 1 "ACC_TAKEOFF_REQ_FALSE" 2 "ACC_TAKEOFF_REQ_TRUE" ;
+VAL_ 1366 adpv_crs_ctrl_takeover_drvr_req 0 "ADAS_TAKEOVER_REQ_UNKNOWN" 1 "ADAS_TAKEOVER_REQ_NONE" 2 "ADAS_TAKEOVER_REQ_WARN" 3 "ADAS_TAKEOVER_REQ_EM" ;
+VAL_ 1366 adpv_crs_ctrl_set_vel_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1366 adpv_crs_ctrl_dist_lvl 0 "ACC_DIST_LVL_UNKNOWN" 1 "ACC_DIST_LVL_0" 2 "ACC_DIST_LVL_1" 3 "ACC_DIST_LVL_2" 4 "ACC_DIST_LVL_3" ;
+VAL_ 1366 adpv_crs_ctrl_set_vel_or_dist 0 "ACC_SET_UNKNOWN" 1 "ACC_SET_NONE" 2 "ACC_SET_VEL" 3 "ACC_SET_VEL_ONLY" 4 "ACC_SET_DIST_LVL" ;
+VAL_ 1367 e2e_alive_counter_disabled 15 "INVALID" ;
+VAL_ 1367 adpv_crs_ctrl_camera_blkd_mask 0 "UNKNOWN" 1 "ACC_BLK_RSN_FOGGY_SPOT" 2 "ACC_BLK_RSN_FRZN_WINDSHIELD" 4 "ACC_BLK_RSN_FULL_BLKD" 8 "ACC_BLK_RSN_PTL_BLKD" 16 "ACC_BLK_RSN_SPLASHES" 32 "ACC_BLK_RSN_LOW_SUN" 64 "ACC_BLK_RSN_BLURRED_IMAGE" 128 "ACC_BLK_RSN_RAIN" 256 "ACC_BLK_RSN_SUN_RAY" 512 "ACC_BLK_RSN_FREE_SIGHT" ;
+VAL_ 1367 crs_ctrl_off_rsn_mask 0 "UNKNOWN" 1 "ACC_OFF_RSN_ABS_FLT" 2 "ACC_OFF_RSN_TCS_OFF" 4 "ACC_OFF_RSN_ESC_OFF" 8 "ACC_OFF_RSN_IEB_FLT" 16 "ACC_OFF_RSN_EPS_FLT" 32 "ACC_OFF_RSN_ECM_FLT" 64 "ACC_OFF_RSN_PWT_FLT" 128 "ACC_OFF_RSN_AIRB_FLT" 256 "ACC_OFF_RSN_DRV_MOD_NOT_DRV" 512 "ACC_OFF_RSN_EPB_ENGAGED" 1024 "ACC_OFF_RSN_ANY_PASS_SEATBELT_OFF" 2048 "ACC_OFF_RSN_ANY_DOOR_OPEN" 4096 "ACC_OFF_RSN_ANY_QUALIFIER_FLT" ;
+VAL_ 1367 crs_ctrl_stby_rsn_mask 0 "UNKNOWN" 1 "ACC_VEL_STBY_RSN_OFF_RSN_PRSNT" 2 "ACC_VEL_STBY_RSN_DRVR_BRK_PSD" 4 "ACC_VEL_STBY_RSN_STEER_OOR" 8 "ACC_VEL_STBY_RSN_VEH_VEL_HIGH" 16 "ACC_VEL_STBY_RSN_VEH_VEL_LOW" ;
+VAL_ 1367 adpv_crs_ctrl_stby_rsn_mask 0 "UNKNOWN" 1 "ACC_FOL_STBY_RSN_OFF_RSN_PRSNT" 2 "ACC_FOL_STBY_RSN_ADAS_COMM_FLT" 4 "ACC_FOL_STBY_RSN_FVCM_SYS_ERR" 8 "ACC_FOL_STBY_RSN_VEH_DETN_LOST_CLS_RNG" 16 "ACC_FOL_STBY_RSN_STANDSTILL_TIMER" 32 "ACC_FOL_STBY_RSN_FWD_VEH_DIST_FLT" 64 "ACC_FOL_STBY_RSN_PERF_MOD_TRACK" 128 "ACC_FOL_STBY_RSN_DRVR_BRK_PSD" 256 "ACC_FOL_STBY_RSN_STEER_OOR" 512 "ACC_FOL_STBY_RSN_VEH_VEL_HIGH" 1024 "ACC_FOL_STBY_RSN_ANY_QUALIFIER_FLT" ;
+VAL_ 1368 e2e_alive_counter_disabled 15 "INVALID" ;
+VAL_ 1368 perf_mod_swt_req 0 "PERF_MOD_UNKNOWN" 1 "PERF_MOD_GHOST_EV" 2 "PERF_MOD_COMFORT" 3 "PERF_MOD_WET_SNOW" 4 "PERF_MOD_SPORT" 5 "PERF_MOD_TRACK" 6 "PERF_MOD_INDIVIDUAL" ;
+VAL_ 1368 rhc_perf_mod_swt_req 0 "RHC_PERF_MOD_UNKNOWN" 1 "RHC_PERF_MOD_LOW" 2 "RHC_PERF_MOD_MED" 3 "RHC_PERF_MOD_HIGH" ;
+VAL_ 1368 pedl_map_perf_mod_swt_req 0 "PEDL_MAP_PERF_MOD_UNKNOWN" 1 "PEDL_MAP_PERF_MOD_SLUGGISH" 2 "PEDL_MAP_PERF_MOD_NORMAL" 3 "PEDL_MAP_PERF_MOD_RESPONSIVE" ;
+VAL_ 1368 rgn_perf_mod_swt_req 0 "RGN_PERF_MOD_UNKNOWN" 1 "RGN_PERF_MOD_NO_RGN" 2 "RGN_PERF_MOD_MID_RGN" 3 "RGN_PERF_MOD_HIGH_RGN" ;
+VAL_ 1368 perf_stgy_perf_mod_swt_req 0 "PERF_STGY_PERF_MOD_UNKNOWN" 1 "PERF_STGY_PERF_MOD_ENDURANCE" 2 "PERF_STGY_PERF_MOD_POWER" 3 "PERF_STGY_PERF_MOD_HOT_LAP" ;
+VAL_ 1368 auto_shift_perf_mod_swt_req 0 "AUTO_SHIFT_PERF_MOD_UNKNOWN" 1 "AUTO_SHIFT_PERF_MOD_EARLY" 2 "AUTO_SHIFT_PERF_MOD_MID" 3 "AUTO_SHIFT_PERF_MOD_LATE" ;
+VAL_ 1368 ddc_perf_mod_swt_req 0 "DDC_PERF_MOD_UNKNOWN" 1 "DDC_PERF_MOD_SOFT" 2 "DDC_PERF_MOD_MED" 3 "DDC_PERF_MOD_HARD" ;
+VAL_ 1368 eps_perf_mod_swt_req 0 "EPS_PERF_MOD_UNKNOWN" 1 "EPS_PERF_MOD_SOFT" 2 "EPS_PERF_MOD_MED" 3 "EPS_PERF_MOD_HARD" ;
+VAL_ 1370 abs_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 brake_failure_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 check_engine_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" 3 "BLINK" ;
+VAL_ 1370 parking_brake_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 engine_oil_pressure_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 engine_oil_temperature_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 engine_oil_level_low 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 engine_oil_add 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 fuel_pressure_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 coolant_temperature_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 coolant_level_low_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 transmission_failure 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 transmission_fluid_level_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 transmission_temperature_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 limp_warning 0 "UNKNOWN" 1 "OFF" 2 "LIMP" 3 "TURTLE" ;
+VAL_ 1370 esp 0 "UNKNOWN" 1 "OFF" 2 "ON" 3 "BLINK" 4 "ESP_DISABLED" ;
+VAL_ 1370 tire_pressure_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" 3 "BLINKING" ;
+VAL_ 1370 hill_hold_warning 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 lift_system 0 "UNKNOWN" 1 "OFF" 2 "ACTIVE" 3 "UP" 4 "DOWN" 5 "UP_BLINK" 6 "DOWN_BLINK" ;
+VAL_ 1370 hv_warning 0 "UNKNOWN" 1 "OFF" 2 "WARNING" 3 "FAULT" ;
+VAL_ 1370 tc 0 "UNKNOWN" 1 "OFF" 2 "ON" 3 "BLINK" ;
+VAL_ 1370 active_system_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 eps_steering_failure 0 "UNKNOWN" 1 "OFF" 2 "WARNING" 3 "FAULT" ;
+VAL_ 1370 engine_oil_p_snsr_flt 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1370 engine_oil_p_out_of_rng 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1371 battery_charge_condition 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1371 track_mode 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1371 cruise_control 0 "UNKNOWN" 1 "OFF" 2 "ON_WHITE_CONT" 3 "ON_WHITE_BLINK" 4 "ON_GREEN_CONT" 5 "ON_GREEN_BLINK" 6 "ON_GREEN_DIMMED" 7 "ON_AMBER" ;
+VAL_ 1371 adaptive_cruise_control 0 "UNKNOWN" 1 "OFF" 2 "ON_WHITE_CONT" 3 "ON_WHITE_BLINK" 4 "ON_GREEN_CONT" 5 "ON_GREEN_BLINK" 6 "ON_GREEN_DIMMED" 7 "ON_AMBER" ;
+VAL_ 1371 engine_oil_lvl_hi 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1371 engine_oil_snsr_flt 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1371 engine_oil_p_hi 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1371 leave_veh_actv_drvg_warn 0 "UKWN" 1 "OFF" 2 "ON" ;
+VAL_ 1371 inv_coolt_lvl_low 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1371 emot_coolt_lvl_low 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1371 hv_batt_coolt_lvl_low 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 ride_height_asf_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 brake_asf_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 damper_asf_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 hydraulic_press_asf_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 steering_asf_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 tpms_asf_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 imu_asf_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 vehicle_speed_asf_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 adaptive_cruise_control_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 cruise_control_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 tpms_max_spd_lim_hit 0 "UNKNOWN" 1 "ON" 2 "OFF" ;
+VAL_ 1373 brake_fluid_level_low 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 eng_shutdown_inhb_low_voltage 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 eng_auto_start 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 ign_inhb_voltage_low 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 ign_shutdown_voltage_low 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 ign_inhb_hv_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 ign_shutdown_hv_fault 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1373 crk_inhb_reason_low_voltage 0 "UNKNOWN" 1 "OFF" 2 "ON" ;
+VAL_ 1374 e2e_alive_counter_disabled 15 "INVALID" ;
+VAL_ 1374 perf_mod 0 "PERF_MOD_UNKNOWN" 1 "PERF_MOD_GHOST_EV" 2 "PERF_MOD_COMFORT" 3 "PERF_MOD_WET_SNOW" 4 "PERF_MOD_SPORT" 5 "PERF_MOD_TRACK" 6 "PERF_MOD_INDIVIDUAL" ;
+VAL_ 1374 rhc_perf_mod 0 "RHC_PERF_MOD_UNKNOWN" 1 "RHC_PERF_MOD_LOW" 2 "RHC_PERF_MOD_MED" 3 "RHC_PERF_MOD_HIGH" ;
+VAL_ 1374 pedl_map_perf_mod 0 "PEDL_MAP_PERF_MOD_UNKNOWN" 1 "PEDL_MAP_PERF_MOD_SLUGGISH" 2 "PEDL_MAP_PERF_MOD_NORMAL" 3 "PEDL_MAP_PERF_MOD_RESPONSIVE" ;
+VAL_ 1374 rgn_perf_mod 0 "RGN_PERF_MOD_UNKNOWN" 1 "RGN_PERF_MOD_NO_RGN" 2 "RGN_PERF_MOD_MID_RGN" 3 "RGN_PERF_MOD_HIGH_RGN" ;
+VAL_ 1374 perf_stgy_perf_mod 0 "PERF_STGY_PERF_MOD_UNKNOWN" 1 "PERF_STGY_PERF_MOD_ENDURANCE" 2 "PERF_STGY_PERF_MOD_POWER" 3 "PERF_STGY_PERF_MOD_HOT_LAP" ;
+VAL_ 1374 auto_shift_perf_mod 0 "AUTO_SHIFT_PERF_MOD_UNKNOWN" 1 "AUTO_SHIFT_PERF_MOD_EARLY" 2 "AUTO_SHIFT_PERF_MOD_MID" 3 "AUTO_SHIFT_PERF_MOD_LATE" ;
+VAL_ 1374 ddc_perf_mod 0 "DDC_PERF_MOD_UNKNOWN" 1 "DDC_PERF_MOD_SOFT" 2 "DDC_PERF_MOD_MED" 3 "DDC_PERF_MOD_HARD" ;
+VAL_ 1374 eps_perf_mod 0 "EPS_PERF_MOD_UNKNOWN" 1 "EPS_PERF_MOD_SOFT" 2 "EPS_PERF_MOD_MED" 3 "EPS_PERF_MOD_HARD" ;
+VAL_ 1374 hndlg_attd_mod 0 "HNDLG_ATTD_MOD_UKWN" 1 "HNDLG_ATTD_MOD_1" 2 "HNDLG_ATTD_MOD_2" 3 "HNDLG_ATTD_MOD_3" 4 "HNDLG_ATTD_MOD_4" 5 "HNDLG_ATTD_MOD_5" 6 "HNDLG_ATTD_MOD_BURNOUT" 7 "HNDLG_ATTD_MOD_DRIFT" ;
+VAL_ 1374 perf_mod_st 0 "PERF_MOD_ST_UNKNOWN" 1 "PERF_MOD_ST_PND" 2 "PERF_MOD_ST_CFMD" ;
+VAL_ 1440 actv_frnt 0 "INACTIVE" 1 "ACTV" ;
+VAL_ 1440 snsr_sts_frl 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1440 snsr_sts_flc 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1440 snsr_sts_frc 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1440 snsr_sts_fl 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1440 snsr_sts_fll 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1440 snsr_sts_fr 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1441 actv_re 0 "INACTIVE" 1 "ACTV" ;
+VAL_ 1441 snsr_sts_rrl 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1441 snsr_sts_rlc 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1441 snsr_sts_rrc 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1441 snsr_sts_rl 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1441 snsr_sts_rll 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1441 snsr_sts_rr 0 "UKWN" 1 "OK" 2 "ERR" ;
+VAL_ 1516 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1516 unix_time_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1519 drivemode_neutral_reason 1 "PADDLES" 2 "SHIFTER" 4 "ENGINE_SEIZE" 8 "VALVE_STUCK" 16 "B_NMOT" 32 "SHUTDOWNICE" 64 "HP_OVERPRESSURE" 128 "HP_UNDERPRESSURE" 256 "SHIFT_TIMEOUT" 512 "VALVE_HEALING" 1024 "VALVE_HEALING_FAIL" ;
+VAL_ 1520 index_clutch_peak 0 "CLUTCH_1A" 1 "CLUTCH_1B" 2 "CLUTCH_1C" 3 "CLUTCH_2A" 4 "CLUTCH_2B" 5 "CLUTCH_2C" 6 "CLUTCH_PS" ;
+VAL_ 1520 safety_reason_mask 1 "REAR_WHEEL_SEIZED" 2 "ENGINE_SEIZED" 4 "LST_OVER_PRESSURE" 8 "VALVE_STUCK" 16 "SHIFT_TIMEOUT" ;
+VAL_ 1520 gear_shift_reason_mask 1 "UPSHIFT_BY_PADDLE" 2 "DOWNSHIFT_BY_PADDLE" 4 "UPOD_UP_SHIFT" 8 "UPOD_DOWN_SHIFT" 16 "AUTO_UP_SHIFT" 32 "AUTO_DOWN_SHIFT" 64 "FORCED_UPSHIFT" 128 "FORCED_DOWNSHIFT" ;
+VAL_ 1520 gear_selection_inhibits_mask 1 "UPSHIFT_INHIBIT_CURVE" 2 "UPSHIFT_INHIBIT_DRIVER_CHANGE_OF_MIND" 4 "UPSHIFT_INHIBIT_RELEASED_PEDAL" 8 "DOWNSHIFT_INHIBIT_PEDAL_PRESSED_FAST" 16 "UPSHIFT_DISABLED_BRAKE_PEDAL_PRESSED" 32 "DOWNSHIFT_POINT_RASIED_BRAKE_PEDAL_PRESSED" ;
+VAL_ 1521 shutoff_reason 1 "NORMAL_CB_PRESS" 2 "EMERGENCY_CB_HOLD" 4 "EMERGENCY_CB_PRESSES" 8 "NO_CAN_CENTER_CONSOL" 16 "E_BRAKES_NOT_HOLDING" 32 "NO_CAN_PDM1" 64 "NO_CAN_ECM" 128 "NOT_USED" 256 "ENGINE_OVERHEAT" 512 "REQ_KL15_OFF" ;
+VAL_ 1521 limp_status_mask 1 "ECM_LIMP_REQUEST" 2 "LST_HP_UNDER_PRESSURE" 4 "LST_HP_OVERPRESSURE" 8 "LST_LOW_LEVEL" 16 "CRITTEMP_SENSOR_FAULT" 32 "LST_LP_PRESURE_BELOW_OR_ABOVE_THRESH" 64 "LST_HP_PUMP_MAX_DURATION_EXCEEDED" 128 "NOT_USED" 256 "LST_NO_CAN_ECM_HS1" 512 "LST_NO_CAN_ECM_HS2" 1024 "LST_SAFETY_VALVE_FAULT" 2048 "NOT_USED_1" 4096 "LST_KL15_UNDERVOLTAGE" ;
+VAL_ 1523 max_clutch_temp_recorded_index 0 "CLUTCH_1A" 1 "CLUTCH_1B" 2 "CLUTCH_1C" 3 "CLUTCH_2A" 4 "CLUTCH_2B" 5 "CLUTCH_2C" 6 "CLUTCH_PS" ;
+VAL_ 1534 vin1 89 "KAAB" ;
+VAL_ 1534 vin2 84 "KAAB" ;
+VAL_ 1534 vin3 57 "KAAB" ;
+VAL_ 1534 vin4 78 "Regera" 80 "Jesko" 82 "Gemera" ;
+VAL_ 1534 vin6 1 "LHD" 2 "RHD" ;
+VAL_ 1534 vin7 66 "UK" 67 "Canada" 69 "Europe" 71 "GSO" 82 "Rest of the World" 84 "Taiwan" 85 "USA" 88 "Individual Approval" ;
+VAL_ 1535 vin11 65 "Angelholm" ;
+VAL_ 1535 vin12 48 "KAAB" ;
+VAL_ 1535 vin13 48 "KAAB" ;
+VAL_ 1535 vin14 55 "KAAB" ;
+VAL_ 1585 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1590 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1591 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1592 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1593 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1594 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1595 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1596 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1597 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1598 ok_to_sleep 0 "UNKNOWN" 1 "NOT_OK_TO_SLEEP" 2 "OK_TO_SLEEP" ;
+VAL_ 1708 ventn_fan_frnt 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" 4 "LEVEL_4" 5 "LEVEL_5" 15 "INVALID" ;
+VAL_ 1708 ventn_fan_back 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" 4 "LEVEL_4" 5 "LEVEL_5" 15 "INVALID" ;
+VAL_ 1708 air_distbn_footwell 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" 3 "ERROR" ;
+VAL_ 1708 air_distbn_dash 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" 3 "ERROR" ;
+VAL_ 1708 air_distbn_wind 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" 3 "ERROR" ;
+VAL_ 1708 defr_btn 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" 3 "ERROR" ;
+VAL_ 1708 air_recirc_btn 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" 3 "ERROR" ;
+VAL_ 1708 demist_btn 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" 3 "ERROR" ;
+VAL_ 1708 air_cond_btn 0 "UNKNOWN" 1 "RELEASED" 2 "PRESSED" 3 "ERROR" ;
+VAL_ 1708 heatr_req 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" 4 "LEVEL_4" 5 "LEVEL_5" 6 "LEVEL_6" 7 "LEVEL_7" 8 "LEVEL_8" ;
+VAL_ 1708 cool_back 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 1709 ventn_fan_frnt_fb 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" 4 "LEVEL_4" 5 "LEVEL_5" 15 "INVALID" ;
+VAL_ 1709 ventn_fan_back_fb 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" 4 "LEVEL_4" 5 "LEVEL_5" 15 "INVALID" ;
+VAL_ 1709 air_distbn_footwell_fb 0 "BTN_DISABLED" 1 "BTN_ENABLED" ;
+VAL_ 1709 air_distbn_dash_fb 0 "BTN_DISABLED" 1 "BTN_ENABLED" ;
+VAL_ 1709 air_distbn_wind_fb 0 "BTN_DISABLED" 1 "BTN_ENABLED" ;
+VAL_ 1709 defr_btn_sts 0 "BTN_DISABLED" 1 "BTN_ENABLED" ;
+VAL_ 1709 air_recirc_btn_sts 0 "BTN_DISABLED" 1 "BTN_ENABLED" ;
+VAL_ 1709 demist_btn_sts 0 "BTN_DISABLED" 1 "BTN_ENABLED" ;
+VAL_ 1709 air_cond_btn_sts 0 "BTN_DISABLED" 1 "BTN_ENABLED" ;
+VAL_ 1709 exp_vlv_re_ctrl 0 "CLS" 1 "OPEN" ;
+VAL_ 1709 heatr_req_fb 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" 4 "LEVEL_4" 5 "LEVEL_5" 6 "LEVEL_6" 7 "LEVEL_7" 8 "LEVEL_8" ;
+VAL_ 1709 cool_back_fb 0 "OFF" 1 "LEVEL_1" 2 "LEVEL_2" 3 "LEVEL_3" ;
+VAL_ 1709 exp_vlv_frnt_ctrl 0 "CLS" 1 "OPEN" ;
+VAL_ 1890 diag_request 0 "CUSTOMER_NUM" 1 "MANUFACTURER_NUM" 2 "SERIAL_NUM_P1" 3 "SERIAL_NUM_P2" 4 "SW_RELEASE_NUM" 5 "HW_RELEASE_NUM" 15 "UNFILLED" ;
+VAL_ 1890 reset_request 0 "OFF" 1 "ON" 13 "UNAVAILABLE" 14 "FAILURE" 15 "UNFILLED" ;
+
+
+

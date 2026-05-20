@@ -1,0 +1,787 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: ECM2 GVCU LST LST_OIL_SENSOR REARPUMPMOTOR
+
+
+BO_ 256 lst_oil_sensor: 6 LST_OIL_SENSOR
+ SG_ level : 7|16@0+ (1,0) [0|100] ""  LST
+ SG_ t_int : 23|16@0- (0.1,0) [-40|150] ""  LST
+ SG_ t_ext : 39|16@0- (0.1,0) [-40|150] ""  LST
+
+BO_ 458 gvcu_lst_req: 8 GVCU
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|255] ""  LST
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  LST
+ SG_ lst_ctrl_st_req : 12|4@1+ (1,0) [0|6] "enum"  LST
+ SG_ lst_tq_req_slow : 16|14@1+ (1,-8000) [-8000|8000] "Nm"  LST
+ SG_ lst_tq_req_fast : 30|14@1+ (1,-8000) [-8000|8000] "Nm"  LST
+ SG_ ice_spd_req : 44|10@1+ (10,0) [0|10000] "rpm"  LST
+ SG_ lst_tq_req_slow_v : 54|1@1+ (1,0) [0|1] "enum"  LST
+ SG_ lst_tq_req_fast_v : 55|1@1+ (1,0) [0|1] "enum"  LST
+ SG_ ice_spd_req_v : 56|1@1+ (1,0) [0|1] "enum"  LST
+ SG_ gear_req : 57|4@1+ (1,0) [0|11] "enum"  LST
+ SG_ cen_clu_st_req : 61|3@1+ (1,0) [0|7] "enum"  LST
+
+BO_ 460 gvcu_sts_1: 8 GVCU
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|255] ""  LST
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  LST
+ SG_ propsh_staty_crk_st_req : 12|4@1+ (1,0) [0|5] "enum"  ECM2,LST
+ SG_ propsh_frnt_spd : 16|14@1+ (1,-4000) [-4000|12000] "rpm"  LST
+ SG_ propsh_frnt_spd_v : 30|1@1+ (1,0) [0|1] "enum"  LST
+ SG_ propsh_drvg_crk_st_req : 32|4@1+ (1,0) [0|3] "enum"  LST
+ SG_ tq_st : 36|5@1+ (1,0) [0|20] "enum"  LST
+ SG_ shift_req : 41|2@1+ (1,0) [0|2] "enum"  LST
+ SG_ cen_clu_tq_req : 43|8@1+ (10,0) [0|2550] "Nm"  LST
+ SG_ cen_clu_tq_req_v : 51|1@1+ (1,0) [0|1] "enum"  LST
+ SG_ pedal_percent : 56|7@1+ (1,0) [0|100] "%"  LST
+ SG_ b_trsm_takeoff_req : 63|1@1+ (1,0) [0|1] "bool"  LST
+
+BO_ 463 gvcu_sts_2: 7 GVCU
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|255] ""  LST
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  LST
+ SG_ veh_vel_lgt : 12|13@1+ (0.1,0) [0|550] "km/h"  LST
+ SG_ veh_vel_lgt_v : 25|1@1+ (1,0) [0|1] "enum"  LST
+ SG_ b_veh_has_moved : 26|1@1+ (1,0) [0|1] "bool"  LST
+ SG_ b_veh_trac_ctrl : 27|1@1+ (1,0) [0|1] "bool"  LST
+ SG_ b_veh_launch_ctrl : 28|1@1+ (1,0) [0|1] "bool"  LST
+ SG_ b_veh_is_level : 29|1@1+ (1,0) [0|1] "bool"  ECM2,LST
+ SG_ propsh_tq_avl_elec_mot_max_v : 30|1@1+ (1,0) [0|1] "enum"  LST
+ SG_ propsh_tq_avl_elec_mot_min_v : 31|1@1+ (1,0) [0|1] "enum"  LST
+ SG_ max_dcdc_48v_current : 32|8@1+ (1,0) [0|150] "A"  LST
+ SG_ propsh_tq_avl_elec_mot_max : 40|8@1+ (10,0) [0|2000] "Nm"  LST
+ SG_ propsh_tq_avl_elec_mot_min : 48|8@1+ (10,-2000) [-2000|0] "Nm"  LST
+
+BO_ 466 lst_outp_shaft: 2 LST
+ SG_ third_shaft_speed : 0|15@1+ (1,-16000) [-16000|16000] "rpm"  GVCU
+ SG_ third_shaft_speed_v : 15|1@1+ (1,0) [0|1] "enum"  GVCU
+
+BO_ 468 lst_tq_sts_1: 8 LST
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ lst_tq_max_slow : 12|10@1+ (10,0) [0|8000] "Nm"  GVCU
+ SG_ lst_ctrl_st : 22|4@1+ (1,0) [0|6] "enum"  GVCU
+ SG_ lst_tq_max_fast : 26|10@1+ (10,0) [0|8000] "Nm"  GVCU
+ SG_ lst_tq_min : 36|10@1+ (10,-8000) [-8000|0] "Nm"  GVCU
+ SG_ propsh_tq_dmd_for_ice : 46|14@1+ (1,-8000) [-8000|8000] "Nm"  GVCU
+ SG_ lst_tq_max_fast_v : 60|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ lst_tq_min_v : 61|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ lst_tq_max_slow_v : 62|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ propsh_tq_dmd_for_ice_v : 63|1@1+ (1,0) [0|1] "enum"  GVCU
+
+BO_ 469 lst_tq_sts_2: 5 LST
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|255] ""  GVCU
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  GVCU
+ SG_ gear_act : 12|4@1+ (1,0) [0|11] "enum"  GVCU
+ SG_ lst_tq_estimd : 16|14@1+ (1,-8000) [-8000|8000] "Nm"  GVCU
+ SG_ lst_tq_estimd_v : 31|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ cen_clu_st : 32|3@1+ (1,0) [0|7] "enum"  GVCU
+ SG_ propsh_staty_crk_st : 35|3@1+ (1,0) [0|5] "enum"  GVCU
+ SG_ propsh_drvg_crk_st : 38|2@1+ (1,0) [0|3] "enum"  GVCU
+
+BO_ 545 eng_request_torque: 7 LST
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|0] ""  ECM2
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  ECM2
+ SG_ eng_mode : 12|2@1+ (1,0) [0|3] "enum"  ECM2
+ SG_ torque_request_slow_q : 14|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ torque_request_fast_q : 15|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ torque_request_fast : 16|12@1+ (1,-300) [-300|2000] "Nm"  ECM2
+ SG_ torque_request_slow : 28|12@1+ (1,-300) [-300|2000] "Nm"  ECM2
+ SG_ eng_speed_ext_limit : 40|14@1+ (1,0) [0|10000] "rpm"  ECM2
+ SG_ eng_speed_ext_limit_q : 55|1@1+ (1,0) [0|1] "bool"  ECM2
+
+BO_ 546 eng_request_speed: 5 LST
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|0] ""  ECM2
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  ECM2
+ SG_ eng_mode : 12|2@1+ (1,0) [0|3] "enum"  ECM2
+ SG_ is_downshift : 14|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ is_upshift : 15|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ eng_speed_request : 16|14@1+ (1,0) [0|10000] "rpm"  ECM2
+ SG_ is_takeoff : 30|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ eng_speed_request_q : 31|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ gear_target : 32|4@1+ (1,0) [0|11] "enum"  ECM2,GVCU
+ SG_ gear_active : 36|4@1+ (1,0) [0|11] "enum"  ECM2
+
+BO_ 547 eng_torque_avl: 7 ECM2
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|255] ""  LST
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  LST
+ SG_ torque_max_avl_fast_q : 12|1@1+ (1,0) [0|1] "bool"  LST
+ SG_ torque_max_avl_slow_q : 13|1@1+ (1,0) [0|1] "bool"  LST
+ SG_ torque_min_avl_q : 14|1@1+ (1,0) [0|1] "bool"  LST
+ SG_ torque_max_avl_fast : 16|12@1+ (1,-300) [-300|2000] "Nm"  LST
+ SG_ torque_max_avl_slow : 28|12@1+ (1,-300) [-300|2000] "Nm"  LST
+ SG_ torque_min_avl : 40|12@1+ (1,-300) [-300|2000] "Nm"  LST
+
+BO_ 548 eng_spd_avl: 6 ECM2
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|255] ""  GVCU,LST
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  GVCU,LST
+ SG_ eng_speed_max_avl : 16|14@1+ (1,0) [0|10000] "rpm"  GVCU,LST
+ SG_ eng_speed_max_avl_q : 30|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ eng_speed_min_avl : 32|14@1+ (1,0) [0|10000] "rpm"  GVCU,LST
+ SG_ eng_speed_min_avl_q : 46|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+
+BO_ 560 lst_status: 3 LST
+ SG_ torque_losses : 0|12@1+ (1,-300) [-300|2000] "Nm"  ECM2,GVCU
+ SG_ ice_lst_sys_sts : 12|3@1+ (1,0) [0|4] "enum"  GVCU
+ SG_ torque_losses_q : 15|1@1+ (1,0) [0|1] "bool"  ECM2,GVCU
+ SG_ lst_sys_warning : 16|4@1+ (1,0) [0|15] "bool bitfield"  GVCU
+
+BO_ 561 eng_status: 6 ECM2
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|255] ""  GVCU,LST
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  GVCU,LST
+ SG_ torque_actual : 16|12@1+ (1,-300) [-300|2000] "Nm"  LST
+ SG_ torque_actual_q : 31|1@1+ (1,0) [0|1] "bool"  LST
+ SG_ eng_speed_actual : 32|14@1+ (1,0) [0|10000] "rpm"  GVCU,LST
+ SG_ eng_speed_actual_q : 47|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+
+BO_ 576 lst_veh_status: 7 LST
+ SG_ e2e_checksum_Disable : 0|8@1+ (1,0) [0|255] ""  ECM2
+ SG_ e2e_alive_counter_Disable : 8|4@1+ (1,0) [0|15] ""  ECM2
+ SG_ ign_on : 16|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ is_cranking : 17|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ is_launch_control : 21|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ is_neutral_rev : 22|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ is_traction_control : 23|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ veh_speed : 24|13@1+ (0.1,0) [0|550] "kph"  ECM2
+ SG_ has_car_moved : 38|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ is_shutdown : 39|1@1+ (1,0) [0|1] "bool"  ECM2
+ SG_ re_hi_p_sys_p : 40|8@1+ (1,0) [0|255] "bar"  GVCU
+ SG_ re_hi_p_sys_t : 48|8@1+ (1,-40) [-40|215] "degC"  GVCU
+
+BO_ 752 eng_flags: 3 ECM2
+ SG_ b_air_charge_deficit : 0|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_request_ceiling_torque : 1|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_antijerk_ramp : 2|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_knock_retard : 3|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_tc_active : 4|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_boost_ceiling : 5|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_rev_limit : 6|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_limp : 7|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_engine_running : 8|2@1+ (1,0) [0|3] "enum"  GVCU,LST
+ SG_ telltale_MIL : 10|2@1+ (1,0) [0|3] "enum"  GVCU,LST
+ SG_ b_engine_start_inhibit : 12|2@1+ (1,0) [0|3] "enum"  LST
+ SG_ b_engine_oil_pressure_warning : 16|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_engine_oil_temperature_warning : 17|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_engine_oil_level_low : 18|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_engine_oil_add : 19|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_fuel_pressure_warning : 20|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_coolant_temperature_warning : 21|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_coolant_level_low_warning : 22|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+ SG_ b_engine_decoupled_idle_req : 23|1@1+ (1,0) [0|1] "bool"  GVCU,LST
+
+BO_ 1024 ecm_thermal_request: 8 ECM2
+ SG_ left_intercooler_fan_req : 0|7@1+ (1,0) [0|100] "%"  GVCU
+ SG_ left_intercooler_fan_req_v : 7|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ right_intercooler_fan_req : 8|7@1+ (1,0) [0|100] "%"  GVCU
+ SG_ right_intercooler_fan_req_v : 15|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ left_intercooler_pump_req : 16|7@1+ (1,0) [0|100] "%"  GVCU
+ SG_ left_intercooler_pump_req_v : 23|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ right_intercooler_pump_req : 24|7@1+ (1,0) [0|100] "%"  GVCU
+ SG_ right_intercooler_pump_req_v : 31|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ center_left_fan_req : 32|7@1+ (1,0) [0|100] "%"  GVCU
+ SG_ center_left_fan_req_v : 39|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ center_right_fan_req : 40|7@1+ (1,0) [0|100] "%"  GVCU
+ SG_ center_right_fan_req_v : 47|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ lightoff_request : 48|7@1+ (1,0) [0|100] "%"  GVCU,LST
+ SG_ engine_bay_upper_fan_req : 55|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ engine_bay_upper_fan_req_v : 56|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ engine_bay_lower_fan_req : 57|1@1+ (1,0) [0|1] "bool"  GVCU
+ SG_ engine_bay_lower_fan_req_v : 58|1@1+ (1,0) [0|1] "enum"  GVCU
+
+BO_ 1026 gvcu_thermal_sensor: 2 GVCU
+ SG_ ice_coolant_temperature : 0|8@1+ (1,-40) [-40|215] "Degree C"  ECM2
+ SG_ ice_coolant_temperature_v : 8|1@1+ (1,0) [0|1] "enum"  ECM2
+
+BO_ 1040 lst_thermal_request: 4 LST
+ SG_ rear_lst_fan_req : 0|7@1+ (1,0) [0|100] "%"  GVCU
+ SG_ rear_lst_fan_req_v : 7|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ rear_left_gearbox_temperature : 8|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ rear_right_gearbox_temperature : 16|8@1+ (1,-40) [-40|215] "Degree C"  GVCU
+ SG_ rear_left_gearbox_temperature_v : 24|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ rear_right_gearbox_temperature_v : 25|1@1+ (1,0) [0|1] "enum"  GVCU
+
+BO_ 2566861088 rear_pump_motor_feedback1: 8 REARPUMPMOTOR
+ SG_ actual_speed : 0|16@1+ (0.5,-16063.5) [-16063.5|16704] "rpm"  LST
+ SG_ target_speed : 16|16@1+ (0.5,-16063.5) [-16063.5|16704] "rpm"  LST
+ SG_ actual_torque : 32|16@1+ (0.0152588,-490.219) [-490.219|490.219] "A"  LST
+ SG_ total_current : 48|8@1+ (2,-252) [-252|252] "A"  GVCU,LST
+ SG_ msg_counter_feeedback1 : 56|4@1+ (1,0) [0|15] "count"  LST
+ SG_ msg_checksum_feeedback1 : 60|4@1+ (1,0) [0|15] "count"  LST
+
+BO_ 2566861616 rear_pump_motor_control: 8 LST
+ SG_ speed_req : 0|16@1+ (0.5,-16063.5) [-16063.5|16063.5] "rpm"  REARPUMPMOTOR
+ SG_ torque_req : 16|16@1+ (0.015258789063,-490.219) [-490.219|490.219] "A"  REARPUMPMOTOR
+ SG_ position_req : 32|32@1+ (1,-2105540607) [-2105540607|2189426688] "deg"  REARPUMPMOTOR
+
+BO_ 2566861856 rear_pump_motor_status: 8 REARPUMPMOTOR
+ SG_ operational_state : 0|4@1+ (1,0) [0|15] ""  LST
+ SG_ temp_limit_warning : 4|2@1+ (1,0) [0|3] ""  LST
+ SG_ under_voltage_cut_off : 10|2@1+ (1,0) [0|3] ""  LST
+ SG_ over_voltage_cut_off : 12|2@1+ (1,0) [0|3] ""  LST
+ SG_ over_temp_cut_off : 14|2@1+ (1,0) [0|3] ""  LST
+ SG_ motor_blocked : 16|2@1+ (1,0) [0|3] ""  LST
+ SG_ internal_failure : 18|2@1+ (1,0) [0|3] ""  LST
+ SG_ ctrl_mode_actual : 20|4@1+ (1,0) [0|15] ""  LST
+ SG_ supply_volt : 26|8@1+ (0.5,0) [0|127.5] "[V]"  LST
+ SG_ temp_powerstage : 34|8@1+ (1,-40) [-40|210] "Celcius"  LST
+ SG_ temp_stator : 44|8@1+ (1,-40) [-40|210] "Celcius"  LST
+ SG_ msg_counter_status : 56|4@1+ (1,0) [0|15] "count"  LST
+ SG_ msg_checksum_status : 60|4@1+ (1,0) [0|15] "count"  LST
+
+BO_ 2566861872 rear_pump_motor_config: 6 LST
+ SG_ max_dc_current : 0|8@1+ (1,0) [0|255] "A"  REARPUMPMOTOR
+ SG_ min_dc_current : 8|8@1+ (1,0) [0|255] "A"  REARPUMPMOTOR
+ SG_ max_iq_current : 16|8@1+ (1,0) [0|250] "A"  REARPUMPMOTOR
+ SG_ min_iq_current : 24|8@1+ (1,0) [0|250] "A"  REARPUMPMOTOR
+ SG_ max_speed : 32|16@1+ (1,0) [0|32765] "rpm"  REARPUMPMOTOR
+
+BO_ 2566862112 rear_pump_motor_unitIdentity: 8 REARPUMPMOTOR
+ SG_ sw_ref : 0|8@1+ (1,0) [0|250] ""  LST
+ SG_ sw_release : 8|8@1+ (1,0) [0|250] ""  LST
+ SG_ manufacturing_year : 16|16@1+ (1,0) [0|0] ""  LST
+ SG_ manufacturing_month : 32|8@1+ (1,0) [0|255] ""  LST
+ SG_ manufacturing_day : 40|8@1+ (1,0) [0|255] ""  LST
+ SG_ serial_number : 48|16@1+ (1,0) [0|64255] ""  LST
+
+BO_ 2566862368 rear_pump_motor_feedback2: 8 REARPUMPMOTOR
+ SG_ actual_position : 0|32@1+ (1,-2105540607) [-2105540607|2189426688] "deg"  LST
+ SG_ max_actual_torque : 32|16@1+ (0.0152588,-490.219) [-490.219|490.219] "A"  LST
+ SG_ min_actual_torque : 48|16@1+ (0.015258789063,-490.219) [-490.219|490.219] "A"  LST
+
+BO_ 2566862624 rear_pump_motor_status2: 8 REARPUMPMOTOR
+ SG_ torque_lim_pos_source : 0|4@1+ (1,0) [0|0] ""  LST
+ SG_ torque_lim_neg_source : 4|4@1+ (1,0) [0|0] ""  LST
+ SG_ speed_lim_source : 8|4@1+ (1,0) [0|0] ""  LST
+
+BO_ 2566862880 rear_pump_motor_error: 8 REARPUMPMOTOR
+ SG_ error_01 : 0|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_02 : 1|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_03 : 2|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_04 : 3|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_05 : 4|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_06 : 5|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_07 : 6|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_08 : 7|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_09 : 8|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_10 : 9|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_11 : 10|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_12 : 11|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_13 : 12|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_14 : 13|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_15 : 14|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_16 : 15|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_17 : 16|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_18 : 17|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_19 : 18|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_20 : 19|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_21 : 20|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_22 : 21|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_23 : 22|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_24 : 23|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_25 : 24|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_26 : 25|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_27 : 26|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_28 : 27|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_29 : 28|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_30 : 29|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_31 : 30|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_32 : 31|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_33 : 32|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_34 : 33|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_35 : 34|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_36 : 35|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_37 : 36|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_38 : 37|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_39 : 38|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_40 : 39|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_41 : 40|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_42 : 41|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_43 : 42|1@1+ (1,0) [0|0] ""  LST
+ SG_ error_44 : 43|1@1+ (1,0) [0|0] ""  LST
+
+
+
+
+CM_ BU_ ECM2 "Engine Control Module";
+CM_ BU_ GVCU "Gemera Vehicle Control Unit";
+CM_ BU_ LST "Light Speed Transmission";
+CM_ BU_ LST_OIL_SENSOR "Light Speed Transmission Level/Temperature Sensor";
+CM_ BU_ REARPUMPMOTOR "CPM90 eMotor";
+CM_ BO_ 256 "LST level sensor";
+CM_ SG_ 256 t_int "";
+CM_ BO_ 458 "Requests to transmission";
+CM_ SG_ 458 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 458 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 458 lst_ctrl_st_req "LST control state request";
+CM_ SG_ 458 lst_tq_req_slow "LST torque request at propshaft slow";
+CM_ SG_ 458 lst_tq_req_fast "LST torque request at propshaft fast";
+CM_ SG_ 458 ice_spd_req "ICE speed request (for decoupled revving in neutral/park)";
+CM_ SG_ 458 gear_req "Requested gear";
+CM_ SG_ 458 cen_clu_st_req "Central clutch control state request";
+CM_ BO_ 460 "GVCU status at 5 ms";
+CM_ SG_ 460 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 460 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 460 propsh_staty_crk_st_req "Stationary cranking state request";
+CM_ SG_ 460 propsh_frnt_spd "Propshaft front speed";
+CM_ SG_ 460 propsh_frnt_spd_v "Propshaft front speed valid bit";
+CM_ SG_ 460 propsh_drvg_crk_st_req "Driving cranking state request";
+CM_ SG_ 460 tq_st "Torque state machine state";
+CM_ SG_ 460 shift_req "Shift request";
+CM_ SG_ 460 cen_clu_tq_req "Central clutch torque request";
+CM_ SG_ 460 cen_clu_tq_req_v "Central clutch torque request valid bit";
+CM_ SG_ 460 pedal_percent "Accelerator pedal percent";
+CM_ SG_ 460 b_trsm_takeoff_req "Request transmission to handle takeoff";
+CM_ BO_ 463 "GVCU status at 100 ms";
+CM_ SG_ 463 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 463 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 463 veh_vel_lgt "Vehicle speed estimated";
+CM_ SG_ 463 b_veh_is_level "Vehicle level bit";
+CM_ SG_ 463 max_dcdc_48v_current "max 48Vdc current from DCDC ";
+CM_ SG_ 463 propsh_tq_avl_elec_mot_max "Max torque available from electric motor for torque fill, idle control or launch staging";
+CM_ SG_ 463 propsh_tq_avl_elec_mot_min "Min torque available from electric motor for torque fill, idle control or launch staging";
+CM_ BO_ 466 "LST third shaft speed";
+CM_ SG_ 466 third_shaft_speed "GVCU uses it to calculate whlCluRateInnerReLe and whlCluRateInnerReRi
+OBS: no e2e?";
+CM_ BO_ 468 "LST torque status";
+CM_ SG_ 468 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 468 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 468 lst_tq_max_slow "Max torque available from LST on propshaft level at current veh speed";
+CM_ SG_ 468 lst_ctrl_st "LST control state feedback";
+CM_ SG_ 468 lst_tq_max_fast "Max torque available from LST on propshaft level in current gear";
+CM_ SG_ 468 lst_tq_min "Min torque available from LST on propshaft level in current gear";
+CM_ SG_ 468 propsh_tq_dmd_for_ice "Requested propshaft torque to be provided by E-motor for ICE use (cold start idle control, launch control staging)";
+CM_ BO_ 469 "LST torque status";
+CM_ SG_ 469 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 469 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 469 gear_act "Actual gear";
+CM_ SG_ 469 lst_tq_estimd "Estimated torque supplied from LST on propshaft level";
+CM_ SG_ 469 cen_clu_st "Central clutch control state";
+CM_ SG_ 469 propsh_staty_crk_st "Stationary cranking state";
+CM_ SG_ 469 propsh_drvg_crk_st "Driving cranking state";
+CM_ BO_ 545 "Commands to engine";
+CM_ SG_ 545 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 545 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 545 eng_mode "Engine operating mode (speed/torque)";
+CM_ SG_ 545 torque_request_slow_q "Engine torque target request TX signal qualifier";
+CM_ SG_ 545 torque_request_fast_q "Engine torque target request TX signal qualifier";
+CM_ SG_ 545 torque_request_fast "Engine torque target request. (Only valid under torque mode)";
+CM_ SG_ 545 torque_request_slow "Engine torque target request. (Only valid under torque mode)";
+CM_ SG_ 545 eng_speed_ext_limit "Engine revlimiter request from external";
+CM_ SG_ 545 eng_speed_ext_limit_q "Engine revlimiter external request TX signal qualifier";
+CM_ BO_ 546 "Commands to engine";
+CM_ SG_ 546 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 546 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 546 eng_mode "Engine operating mode (speed/torque)";
+CM_ SG_ 546 is_downshift "Gearbox downshift flag";
+CM_ SG_ 546 is_upshift "Gearbox upshift flag";
+CM_ SG_ 546 eng_speed_request "Engine speed target request. Only valid under speed mode.";
+CM_ SG_ 546 is_takeoff "Vehicle takeoff flag";
+CM_ SG_ 546 eng_speed_request_q "Engine speed target request TX signal qualifier";
+CM_ SG_ 546 gear_target "LST Target Next Gear";
+CM_ SG_ 546 gear_active "LST Active Gear";
+CM_ BO_ 547 "Engine potential availability (torque)";
+CM_ SG_ 547 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 547 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 547 torque_max_avl_fast_q "Engine torque maximum available value with fast torque intervention TX signal qualifier";
+CM_ SG_ 547 torque_max_avl_slow_q "Engine torque maximum available value with slow torque intervention TX signal qualifier";
+CM_ SG_ 547 torque_min_avl_q "Engine torque minimum available value TX signal qualifier";
+CM_ SG_ 547 torque_max_avl_fast "Engine torque maximum available value with fast torque intervention";
+CM_ SG_ 547 torque_max_avl_slow "Engine torque maximum available value with slow torque interventio";
+CM_ SG_ 547 torque_min_avl "Engine torque minimum available value";
+CM_ BO_ 548 "Engine potential availability (speed)";
+CM_ SG_ 548 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 548 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 548 eng_speed_max_avl "Engine speed maximum available value";
+CM_ SG_ 548 eng_speed_max_avl_q "Engine speed maximum available value TX signal qualifier";
+CM_ SG_ 548 eng_speed_min_avl "Engine speed minimum available value";
+CM_ SG_ 548 eng_speed_min_avl_q "Engine speed minimum available value TX signal qualifier";
+CM_ BO_ 560 "LST torque status";
+CM_ SG_ 560 torque_losses "Torque losses from external (mainly LST)";
+CM_ SG_ 560 ice_lst_sys_sts "combined Ice and LST system status";
+CM_ SG_ 560 torque_losses_q "Torque losses from external (mainly LST) TX signal qualifier";
+CM_ SG_ 560 lst_sys_warning "LST system warnings to be forwarded to headunit";
+CM_ BO_ 561 "Engine operating status";
+CM_ SG_ 561 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 561 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 561 torque_actual "Engine actual torque";
+CM_ SG_ 561 torque_actual_q "Engine actual torque TX signal qualifier";
+CM_ SG_ 561 eng_speed_actual "Engine actual speed";
+CM_ SG_ 561 eng_speed_actual_q "Engine actual speed TX signal qualifier";
+CM_ BO_ 576 "Vehicle status sent from LST";
+CM_ SG_ 576 e2e_checksum_Disable "CRC check value according to specification E2E";
+CM_ SG_ 576 e2e_alive_counter_Disable "Alive counter for E2E";
+CM_ SG_ 576 ign_on "Ignition ON Flag";
+CM_ SG_ 576 is_cranking "Engine cranking flag";
+CM_ SG_ 576 is_launch_control "Vehicle launch control flag";
+CM_ SG_ 576 is_neutral_rev "Vehicle neutral revving flag";
+CM_ SG_ 576 is_traction_control "Vehicle traction control flag";
+CM_ SG_ 576 veh_speed "Vehicle current speed";
+CM_ SG_ 576 has_car_moved "Car has moved flag";
+CM_ SG_ 576 is_shutdown "Engine shutdown command";
+CM_ SG_ 576 re_hi_p_sys_p "Rear high pressure system pressure";
+CM_ SG_ 576 re_hi_p_sys_t "Rear high pressure system temperature";
+CM_ BO_ 752 "Message sending enging status flags";
+CM_ SG_ 752 telltale_MIL "Bulb check: 13 CCR 1968.2 Amd 10 (d)(2.1.2) \"For all 2005 and subsequent model year vehicles, the MIL shall continuously illuminate during this functional check for a minimum of 15 seconds...\"
+
+Flashing: 13 CCR 1968.2 Amd 10 (e)(3.4.1)(A)(ii) \"...the MIL shall blink once per second at all times while misfire is occurring during the driving cycle.\"";
+CM_ SG_ 752 b_engine_start_inhibit "Engine readiness for start / start inhibit
+UNKNOWN: Should not be here. Can adopt a default action.
+NO_STRT_INHB: No engine start inhibit.
+STRT_INHB_ACTV: Engine start is Inhibited. Either engine is internally in a state which does not allow running (any start attempt will definitely still not result in engine start), or there exists high risk of damage if engine is started e.g., Critical LIMP, IMOB, CRASH etc.";
+CM_ SG_ 752 b_engine_decoupled_idle_req "Sometimes ECM would like to run decoupled idle, if no drive request exist, or any other higher priority charging request. This will help engine run better over time as it will be able to adapt the losses and have a better speed control";
+CM_ BO_ 1024 "Overall ECM thermal request";
+CM_ SG_ 1024 left_intercooler_fan_req "Rear left intercooler fan";
+CM_ SG_ 1024 left_intercooler_fan_req_v "Rear left intercooler fan valid bit";
+CM_ SG_ 1024 right_intercooler_fan_req "Rear right intercooler fan";
+CM_ SG_ 1024 right_intercooler_fan_req_v "Rear right intercooler fan valid bit";
+CM_ SG_ 1024 left_intercooler_pump_req "Rear left intercooler pump";
+CM_ SG_ 1024 left_intercooler_pump_req_v "Rear left intercooler pump valid bit";
+CM_ SG_ 1024 right_intercooler_pump_req "Rear right intercooler pump";
+CM_ SG_ 1024 right_intercooler_pump_req_v "Rear right intercooler pump valid bit";
+CM_ SG_ 1024 center_left_fan_req "Front center left fan";
+CM_ SG_ 1024 center_left_fan_req_v "Front center left fan valid bit";
+CM_ SG_ 1024 center_right_fan_req "Front center right fan";
+CM_ SG_ 1024 center_right_fan_req_v "Front center right fan valid bit";
+CM_ SG_ 1024 lightoff_request "Lightoff Request Percentage. 0 -> No Lightoff, 100 -> Full Lightoff";
+CM_ SG_ 1024 engine_bay_upper_fan_req "Engine bay cooling upper fan request based on EGT bit";
+CM_ SG_ 1024 engine_bay_upper_fan_req_v "Engine bay upper fan request valid bit
+";
+CM_ SG_ 1024 engine_bay_lower_fan_req "Engine bay lower fan request";
+CM_ SG_ 1024 engine_bay_lower_fan_req_v "Engine bay lower fan request valid bit";
+CM_ BO_ 1026 "GVCU temperature sensor reading";
+CM_ BO_ 1040 "Rear side LST thermal request";
+CM_ BO_ 2566861088 "CPM90 eMotor Feedback1";
+CM_ SG_ 2566861088 actual_speed "Value of the actual speed of the motor, 0xFE00 Error";
+CM_ SG_ 2566861088 target_speed "MotorSpeedTarget is used to provide information about internal speed target including limitations due to degradiations, maximum speed is limited to -6500 to 6500 rpm";
+CM_ SG_ 2566861088 actual_torque "Actual torque building phase current (Iq) between -200 and 200A";
+CM_ SG_ 2566861088 total_current "Estimation of total current consumption of MCU.";
+CM_ SG_ 2566861088 msg_counter_feeedback1 "Cyclic Messagecounter (0-15) that increments with each message transmission";
+CM_ SG_ 2566861088 msg_checksum_feeedback1 "The 4 bit checksum";
+CM_ BO_ 2566861616 "Commands to CPM90 eMotor";
+CM_ SG_ 2566861616 speed_req "Valid values -32127rpm to 32128rpm (internally limited with parameters)";
+CM_ SG_ 2566861616 torque_req "Valid values -490.219A to 490.219A (internally limited to -200A ... 200A)";
+CM_ SG_ 2566861616 position_req "Target position for position control: (-2105540604 - 2105540604), 0xFFFFFFFE ResetPositon to 0, 0xFFFFFFFF NotAvailable";
+CM_ BO_ 2566861856 "CPM90 eMotor Status";
+CM_ SG_ 2566861856 operational_state "OperationalState indicates the state of the motor as additional information during limitations";
+CM_ SG_ 2566861856 temp_limit_warning "TempLimitWarning will be set if either PCB or motor temperature is critical";
+CM_ SG_ 2566861856 under_voltage_cut_off "The signal is filtered with 50 Hz.";
+CM_ SG_ 2566861856 over_voltage_cut_off "The signal is filtered with 50 Hz.";
+CM_ SG_ 2566861856 over_temp_cut_off "PCB and Motor temperature are in normal range";
+CM_ SG_ 2566861856 motor_blocked "Motor is not able to start turning with max possible torque";
+CM_ SG_ 2566861856 internal_failure "Motor has been disabled due to an internal component Fault";
+CM_ SG_ 2566861856 ctrl_mode_actual "control mode";
+CM_ SG_ 2566861856 supply_volt "Supply voltage that is measured";
+CM_ SG_ 2566861856 temp_powerstage "Temperature of the PCB in power stage region close to MOSFETs, values will be -40°C to 125 °C";
+CM_ SG_ 2566861856 temp_stator "Temperature of the motor stator";
+CM_ SG_ 2566861856 msg_counter_status "Counter that increments with each message transmission";
+CM_ SG_ 2566861856 msg_checksum_status "The 4 bit checksum";
+CM_ BO_ 2566861872 "CPM90 eMotor configuration";
+CM_ BO_ 2566862112 "UnitIdentity of CPM90 eMotor";
+CM_ SG_ 2566862112 sw_release "Value represents HW version: HEX 0x0B = 11 -> 1.1 ; 0x14 -> 2.0";
+CM_ SG_ 2566862112 serial_number "Format: nnnn as hexadecimal value. Example is s/n 12 is 0x0012. Max value is 9999 hexadecimal, counting per day";
+CM_ BO_ 2566862368 "CPM90 eMotor Feedback2";
+CM_ SG_ 2566862368 actual_position "Current position: (-2105540607 - 2105540607 degree / +-5848723 revolutions)
+0xFFFFFFFE ResetPositon to 0, 0xFFFFFFFF NotAvailable";
+CM_ SG_ 2566862368 max_actual_torque "Max allowed torque building phase current (Iq) between 0 and 200A";
+CM_ SG_ 2566862368 min_actual_torque "Min allowed torque building phase current (Iq) between -200 and 0A";
+CM_ BO_ 2566862624 "CPM90 eMotor status2, NOTE! Cycle time not defined";
+CM_ BO_ 2566862880 "CPM90 eMotor error bits, NOTE! Cycle time not defined";
+CM_ SG_ 2566862880 error_01 "Parameters Saving Error";
+CM_ SG_ 2566862880 error_02 "Parameters loading error";
+CM_ SG_ 2566862880 error_03 "CAN bus off recovery error";
+CM_ SG_ 2566862880 error_04 "Parameters checksum error";
+CM_ SG_ 2566862880 error_05 "PCB overtemperature";
+CM_ SG_ 2566862880 error_06 "Power stage overtemperature";
+CM_ SG_ 2566862880 error_07 "Stator overtemperature";
+CM_ SG_ 2566862880 error_08 "Power stage temperature measurement fault";
+CM_ SG_ 2566862880 error_09 "PCB temperature measurement fault";
+CM_ SG_ 2566862880 error_10 "U Phase overcurrent";
+CM_ SG_ 2566862880 error_11 "V Phase overcurrent";
+CM_ SG_ 2566862880 error_12 "W Phase overcurrent";
+CM_ SG_ 2566862880 error_13 "U Phase emergency overcurrent";
+CM_ SG_ 2566862880 error_14 "V Phase emergency overcurrent";
+CM_ SG_ 2566862880 error_15 "W Phase emergency overcurrent";
+CM_ SG_ 2566862880 error_16 "Undervoltage";
+CM_ SG_ 2566862880 error_17 "Overvoltage";
+CM_ SG_ 2566862880 error_18 "Conflicted software version";
+CM_ SG_ 2566862880 error_19 "Overspeed";
+CM_ SG_ 2566862880 error_20 "Overcurrent";
+CM_ SG_ 2566862880 error_21 "U6V internal voltage error";
+CM_ SG_ 2566862880 error_22 "Position sensor error";
+CM_ SG_ 2566862880 error_23 "Rotor demagnetization";
+CM_ SG_ 2566862880 error_24 "Software stackoverflow ";
+CM_ SG_ 2566862880 error_25 "U12V voltage error";
+CM_ SG_ 2566862880 error_26 "UEXT_1 voltage error";
+CM_ SG_ 2566862880 error_27 "UEXT_2 voltage error";
+CM_ SG_ 2566862880 error_28 "Software fault collection unit";
+CM_ SG_ 2566862880 error_29 "Hardware fault collection unit";
+CM_ SG_ 2566862880 error_30 "50us task overrun";
+CM_ SG_ 2566862880 error_31 "250us task overrun";
+CM_ SG_ 2566862880 error_32 "1ms task overrun";
+CM_ SG_ 2566862880 error_33 "Polling task overrun";
+CM_ SG_ 2566862880 error_34 "Startup error";
+CM_ SG_ 2566862880 error_35 "Stator temperature estimation error ";
+CM_ SG_ 2566862880 error_36 "Angle consistency error";
+CM_ SG_ 2566862880 error_37 "Speed consistency error";
+CM_ SG_ 2566862880 error_38 "Software flow monitoring error";
+CM_ SG_ 2566862880 error_39 "Software periodic function check error";
+CM_ SG_ 2566862880 error_40 "Controller selftest error";
+CM_ SG_ 2566862880 error_41 "Current plausibility error";
+CM_ SG_ 2566862880 error_42 "Digital output pins readback error";
+CM_ SG_ 2566862880 error_43 "Position sensor temperature error";
+CM_ SG_ 2566862880 error_44 "Process data checksum error";
+BA_DEF_  "BusSpeed" INT 0 0;
+BA_DEF_ SG_  "CheckSigRange" ENUM  "NO","YES";
+BA_DEF_ BO_  "GatewayMode" ENUM  "GW_OFF","GW_ONLY","GW_RECV";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetitions" INT 0 0;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","event","NoMsgSendType";
+BA_DEF_ SG_  "GenSigStartValue" INT -999999 999999;
+BA_DEF_DEF_  "BusSpeed" 0;
+BA_DEF_DEF_  "CheckSigRange" "YES";
+BA_DEF_DEF_  "GatewayMode" "GW_OFF";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetitions" 0;
+BA_DEF_DEF_  "GenMsgSendType" "cyclic";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_ "BusSpeed" 1000000;
+BA_ "GatewayMode" BO_ 256 0;
+BA_ "GenMsgCycleTime" BO_ 256 100;
+BA_ "GenMsgSendType" BO_ 256 0;
+BA_ "GatewayMode" BO_ 458 0;
+BA_ "GenMsgCycleTime" BO_ 458 5;
+BA_ "GenMsgSendType" BO_ 458 0;
+BA_ "GatewayMode" BO_ 460 0;
+BA_ "GenMsgCycleTime" BO_ 460 5;
+BA_ "GenMsgSendType" BO_ 460 0;
+BA_ "GatewayMode" BO_ 463 0;
+BA_ "GenMsgCycleTime" BO_ 463 100;
+BA_ "GenMsgSendType" BO_ 463 0;
+BA_ "GatewayMode" BO_ 466 0;
+BA_ "GenMsgCycleTime" BO_ 466 1;
+BA_ "GenMsgSendType" BO_ 466 0;
+BA_ "GatewayMode" BO_ 468 0;
+BA_ "GenMsgCycleTime" BO_ 468 5;
+BA_ "GenMsgSendType" BO_ 468 0;
+BA_ "GatewayMode" BO_ 469 0;
+BA_ "GenMsgCycleTime" BO_ 469 5;
+BA_ "GenMsgSendType" BO_ 469 0;
+BA_ "GatewayMode" BO_ 545 0;
+BA_ "GenMsgCycleTime" BO_ 545 1;
+BA_ "GenMsgSendType" BO_ 545 0;
+BA_ "GatewayMode" BO_ 546 0;
+BA_ "GenMsgCycleTime" BO_ 546 1;
+BA_ "GenMsgSendType" BO_ 546 0;
+BA_ "GatewayMode" BO_ 547 0;
+BA_ "GenMsgCycleTime" BO_ 547 2;
+BA_ "GenMsgSendType" BO_ 547 0;
+BA_ "GatewayMode" BO_ 548 0;
+BA_ "GenMsgCycleTime" BO_ 548 100;
+BA_ "GenMsgSendType" BO_ 548 0;
+BA_ "GatewayMode" BO_ 560 0;
+BA_ "GenMsgCycleTime" BO_ 560 10;
+BA_ "GenMsgSendType" BO_ 560 0;
+BA_ "GatewayMode" BO_ 561 0;
+BA_ "GenMsgCycleTime" BO_ 561 10;
+BA_ "GenMsgSendType" BO_ 561 0;
+BA_ "GatewayMode" BO_ 576 0;
+BA_ "GenMsgCycleTime" BO_ 576 100;
+BA_ "GenMsgSendType" BO_ 576 0;
+BA_ "GatewayMode" BO_ 752 0;
+BA_ "GenMsgCycleTime" BO_ 752 10;
+BA_ "GenMsgSendType" BO_ 752 0;
+BA_ "GatewayMode" BO_ 1024 0;
+BA_ "GenMsgCycleTime" BO_ 1024 200;
+BA_ "GenMsgDelayTime" BO_ 1024 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1024 0;
+BA_ "GenMsgSendType" BO_ 1024 0;
+BA_ "GatewayMode" BO_ 1026 0;
+BA_ "GenMsgCycleTime" BO_ 1026 200;
+BA_ "GenMsgDelayTime" BO_ 1026 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1026 0;
+BA_ "GenMsgSendType" BO_ 1026 0;
+BA_ "GatewayMode" BO_ 1040 0;
+BA_ "GenMsgCycleTime" BO_ 1040 1000;
+BA_ "GenMsgDelayTime" BO_ 1040 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 1040 0;
+BA_ "GenMsgSendType" BO_ 1040 0;
+BA_ "GatewayMode" BO_ 2566861088 0;
+BA_ "GenMsgCycleTime" BO_ 2566861088 10;
+BA_ "GenMsgDelayTime" BO_ 2566861088 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 2566861088 0;
+BA_ "GenMsgSendType" BO_ 2566861088 0;
+BA_ "GatewayMode" BO_ 2566861616 0;
+BA_ "GenMsgCycleTime" BO_ 2566861616 10;
+BA_ "GenMsgDelayTime" BO_ 2566861616 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 2566861616 0;
+BA_ "GenMsgSendType" BO_ 2566861616 0;
+BA_ "GatewayMode" BO_ 2566861856 0;
+BA_ "GenMsgCycleTime" BO_ 2566861856 100;
+BA_ "GenMsgDelayTime" BO_ 2566861856 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 2566861856 0;
+BA_ "GenMsgSendType" BO_ 2566861856 0;
+BA_ "GatewayMode" BO_ 2566861872 0;
+BA_ "GenMsgCycleTime" BO_ 2566861872 10;
+BA_ "GenMsgSendType" BO_ 2566861872 0;
+BA_ "GatewayMode" BO_ 2566862112 0;
+BA_ "GenMsgCycleTime" BO_ 2566862112 100;
+BA_ "GenMsgDelayTime" BO_ 2566862112 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 2566862112 0;
+BA_ "GenMsgSendType" BO_ 2566862112 0;
+BA_ "GatewayMode" BO_ 2566862368 0;
+BA_ "GenMsgCycleTime" BO_ 2566862368 10;
+BA_ "GenMsgDelayTime" BO_ 2566862368 0;
+BA_ "GenMsgNrOfRepetitions" BO_ 2566862368 0;
+BA_ "GenMsgSendType" BO_ 2566862368 0;
+BA_ "GatewayMode" BO_ 2566862624 0;
+BA_ "GenMsgCycleTime" BO_ 2566862624 100;
+BA_ "GenMsgSendType" BO_ 2566862624 0;
+BA_ "GatewayMode" BO_ 2566862880 0;
+BA_ "GenMsgCycleTime" BO_ 2566862880 100;
+BA_ "GenMsgSendType" BO_ 2566862880 0;
+VAL_ 256 t_ext 32769 "ext_sens_oc" 32770 "ext_sens_sc" 65535 "ext_sens_not_enabled" ;
+VAL_ 458 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 458 lst_ctrl_st_req 0 "LST_ST_UNKNOWN" 1 "LST_ST_OFF" 2 "LST_ST_DECOUPL_IDLE" 3 "LST_ST_DECOUPL_SPD_CTRL" 4 "LST_ST_COUPL_TQ_CTRL" 5 "LST_ST_COUPL_SPD_CTRL" 6 "LST_ST_UNAVAILABLE" ;
+VAL_ 458 lst_tq_req_slow_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 458 lst_tq_req_fast_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 458 ice_spd_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 458 gear_req 0 "GEAR_INVALID" 1 "GEAR_1" 2 "GEAR_2" 3 "GEAR_3" 4 "GEAR_4" 5 "GEAR_5" 6 "GEAR_6" 7 "GEAR_7" 8 "GEAR_8" 9 "GEAR_9" 10 "GEAR_N" ;
+VAL_ 458 cen_clu_st_req 0 "CLU_ST_UNKNOWN" 1 "CLU_ST_DISENGAGED" 2 "CLU_ST_SLIP" 3 "CLU_ST_TC_CTRL" 4 "CLU_ST_ENGAGED" 5 "CLU_ST_STUCK_CLOSED" 6 "CLU_ST_STUCK_OPEN" 7 "CLU_ST_FAULT" ;
+VAL_ 460 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 460 propsh_staty_crk_st_req 0 "STATY_CRK_ST_UNKNOWN" 1 "STATY_CRK_ST_COUPLE" 2 "STATY_CRK_ST_SYNC" 3 "STATY_CRK_ST_START" 4 "STATY_CRK_ST_RUNNING" 5 "STATY_CRK_ST_FAULT" ;
+VAL_ 460 propsh_frnt_spd_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 460 propsh_drvg_crk_st_req 0 "DRVG_CRK_ST_UNKNOWN" 1 "DRVG_CRK_ST_COUPLE" 2 "DRVG_CRK_ST_START" 3 "DRVG_CRK_ST_FAULT" ;
+VAL_ 460 tq_st 0 "TQ_MAC_ST_UNKNOWN" 1 "TQ_MAC_ST_KEY_OFF" 2 "TQ_MAC_ST_ELEC_IDLE" 3 "TQ_MAC_ST_ELEC_DRIVE" 4 "TQ_MAC_ST_CRK_PARK" 5 "TQ_MAC_ST_CRK_STATY" 6 "TQ_MAC_ST_CRK_DRVG" 7 "TQ_MAC_ST_HYB_IDLE" 8 "TQ_MAC_ST_HYB_DRV" 9 "TQ_MAC_ST_HYB_DECOUPL_IDLE" 10 "TQ_MAC_ST_HYB_DECOUPL_DRV" 11 "TQ_MAC_ST_HYB_RVSG" 12 "TQ_MAC_ST_HYB_LNCH" 13 "TQ_MAC_ST_ICE_IDLE" 14 "TQ_MAC_ST_ICE_DRIVE" 15 "TQ_MAC_ST_ICE_RVSG" 16 "TQ_MAC_ST_ELEC_TURTLE" 17 "TQ_MAC_ST_ELEC_TURTLE_IDLE" 18 "TQ_MAC_ST_ICE_TURTLE" 19 "TQ_MAC_ST_ICE_TURTLE_IDLE" ;
+VAL_ 460 shift_req 0 "SHIFT_REQ_UNKNOWN" 1 "SHIFT_REQ_DOWNSHIFT" 2 "SHIFT_REQ_UPSHIFT" ;
+VAL_ 460 cen_clu_tq_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 463 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 463 veh_vel_lgt_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 463 b_veh_is_level 0 "NOT_LEVEL" 1 "LEVEL" ;
+VAL_ 463 propsh_tq_avl_elec_mot_max_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 463 propsh_tq_avl_elec_mot_min_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 466 third_shaft_speed_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 468 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 468 lst_ctrl_st 0 "LST_ST_UNKNOWN" 1 "LST_ST_OFF" 2 "LST_ST_DECOUPL_IDLE" 3 "LST_ST_DECOUPL_SPD_CTRL" 4 "LST_ST_COUPL_TQ_CTRL" 5 "LST_ST_COUPL_SPD_CTRL" 6 "LST_ST_UNAVAILABLE" ;
+VAL_ 468 lst_tq_max_fast_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 468 lst_tq_min_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 468 lst_tq_max_slow_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 468 propsh_tq_dmd_for_ice_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 469 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 469 gear_act 0 "GEAR_INVALID" 1 "GEAR_1" 2 "GEAR_2" 3 "GEAR_3" 4 "GEAR_4" 5 "GEAR_5" 6 "GEAR_6" 7 "GEAR_7" 8 "GEAR_8" 9 "GEAR_9" 10 "GEAR_N" ;
+VAL_ 469 lst_tq_estimd_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 469 cen_clu_st 0 "CLU_ST_UNKNOWN" 1 "CLU_ST_DISENGAGED" 2 "CLU_ST_SLIP" 3 "CLU_ST_TC_CTRL" 4 "CLU_ST_ENGAGED" 5 "CLU_ST_STUCK_CLOSED" 6 "CLU_ST_STUCK_OPEN" 7 "CLU_ST_FAULT" ;
+VAL_ 469 propsh_staty_crk_st 0 "STATY_CRK_ST_UNKNOWN" 1 "STATY_CRK_ST_COUPLE" 2 "STATY_CRK_ST_SYNC" 3 "STATY_CRK_ST_START" 4 "STATY_CRK_ST_RUNNING" 5 "STATY_CRK_ST_FAULT" ;
+VAL_ 469 propsh_drvg_crk_st 0 "DRVG_CRK_ST_UNKNOWN" 1 "DRVG_CRK_ST_COUPLE" 2 "DRVG_CRK_ST_START" 3 "DRVG_CRK_ST_FAULT" ;
+VAL_ 545 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 545 eng_mode 0 "ENG_MODE_INVALID" 1 "ENG_MODE_TORQUE" 2 "ENG_MODE_SPEED" ;
+VAL_ 545 torque_request_slow_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 545 torque_request_fast_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 545 eng_speed_ext_limit_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 546 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 546 eng_mode 0 "ENG_MODE_INVALID" 1 "ENG_MODE_TORQUE" 2 "ENG_MODE_SPEED" ;
+VAL_ 546 is_downshift 0 "FALSE" 1 "TRUE" ;
+VAL_ 546 is_upshift 0 "FALSE" 1 "TRUE" ;
+VAL_ 546 is_takeoff 0 "FALSE" 1 "TRUE" ;
+VAL_ 546 eng_speed_request_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 546 gear_target 0 "GEAR_INVALID" 1 "GEAR_1" 2 "GEAR_2" 3 "GEAR_3" 4 "GEAR_4" 5 "GEAR_5" 6 "GEAR_6" 7 "GEAR_7" 8 "GEAR_8" 9 "GEAR_9" 10 "GEAR_N" ;
+VAL_ 546 gear_active 0 "GEAR_INVALID" 1 "GEAR_1" 2 "GEAR_2" 3 "GEAR_3" 4 "GEAR_4" 5 "GEAR_5" 6 "GEAR_6" 7 "GEAR_7" 8 "GEAR_8" 9 "GEAR_9" 10 "GEAR_N" ;
+VAL_ 547 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 547 torque_max_avl_fast_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 547 torque_max_avl_slow_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 547 torque_min_avl_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 548 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 548 eng_speed_max_avl_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 548 eng_speed_min_avl_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 560 ice_lst_sys_sts 0 "SYS_ST_UNKNOWN" 1 "SYS_ST_CRITICAL_FAULT" 2 "SYS_ST_LIMP" 3 "SYS_ST_NOT_READY" 4 "SYS_ST_READY" ;
+VAL_ 560 torque_losses_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 560 lst_sys_warning 0 "NO_FAULT" 1 "LOW_OIL_LEVEL" 2 "TEMP_WARNING" 4 "LST_FAULT" 8 "CHECK_ENGINE" ;
+VAL_ 561 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 561 torque_actual_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 561 eng_speed_actual_q 0 "UNQUALIFIED" 1 "QUALIFIED" ;
+VAL_ 576 e2e_alive_counter_Disable 15 "Invalid" ;
+VAL_ 576 ign_on 0 "FALSE" 1 "TRUE" ;
+VAL_ 576 is_cranking 0 "FALSE" 1 "TRUE" ;
+VAL_ 576 is_launch_control 0 "FALSE" 1 "TRUE" ;
+VAL_ 576 is_neutral_rev 0 "FALSE" 1 "TRUE" ;
+VAL_ 576 is_traction_control 0 "FALSE" 1 "TRUE" ;
+VAL_ 576 has_car_moved 0 "FALSE" 1 "TRUE" ;
+VAL_ 576 is_shutdown 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_air_charge_deficit 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_request_ceiling_torque 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_antijerk_ramp 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_knock_retard 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_tc_active 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_boost_ceiling 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_rev_limit 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_limp 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_engine_running 0 "SIGNAL_UNQUALIFIED" 1 "RESERVED" 2 "FALSE" 3 "TRUE" ;
+VAL_ 752 telltale_MIL 0 "OFF" 1 "ON" 2 "BULBCHECK" 3 "FLASHING" ;
+VAL_ 752 b_engine_start_inhibit 0 "UNKNOWN" 1 "NO_STRT_INHB" 2 "STRT_INHB_ACTV" 3 "RESERVED" ;
+VAL_ 752 b_engine_oil_pressure_warning 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_engine_oil_temperature_warning 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_engine_oil_level_low 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_engine_oil_add 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_fuel_pressure_warning 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_coolant_temperature_warning 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_coolant_level_low_warning 0 "FALSE" 1 "TRUE" ;
+VAL_ 752 b_engine_decoupled_idle_req 0 "FALSE" 1 "TRUE" ;
+VAL_ 1024 left_intercooler_fan_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1024 right_intercooler_fan_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1024 left_intercooler_pump_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1024 right_intercooler_pump_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1024 center_left_fan_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1024 center_right_fan_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1024 engine_bay_upper_fan_req 0 "FALSE" 1 "TRUE" ;
+VAL_ 1024 engine_bay_upper_fan_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1024 engine_bay_lower_fan_req 0 "FALSE" 1 "TRUE" ;
+VAL_ 1024 engine_bay_lower_fan_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1026 ice_coolant_temperature_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1040 rear_lst_fan_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1040 rear_left_gearbox_temperature_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1040 rear_right_gearbox_temperature_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 2566861856 operational_state 0 "ReadyNormalOperation" 1 "Motor performance degraded" 13 "Disabled" 14 "Failure" 15 "Not Available" ;
+VAL_ 2566861856 temp_limit_warning 0 "NotExceeded" 1 "Exceeded" 2 "Error" 3 "NotAvailable" ;
+VAL_ 2566861856 under_voltage_cut_off 0 "False" 1 "True" 2 "Error" 3 "NotAvailable" ;
+VAL_ 2566861856 over_voltage_cut_off 0 "False" 1 "True" 2 "Error" 3 "NotAvailable" ;
+VAL_ 2566861856 over_temp_cut_off 0 "False" 1 "True" 2 "Error" 3 "NotAvailable" ;
+VAL_ 2566861856 motor_blocked 0 "False" 1 "True" 2 "Reserved" 3 "NotAvailable" ;
+VAL_ 2566861856 internal_failure 0 "False" 1 "True" 2 "Reserved" 3 "NotAvailable" ;
+VAL_ 2566861856 ctrl_mode_actual 0 "Not selected" 1 "Speed control" 2 "Torque control" 3 "Position control" 14 "Error" 15 "NotAvailable" ;
+VAL_ 2566861872 max_iq_current 250 "MAX_IQ_CURRENT" ;
+VAL_ 2566861872 min_iq_current 250 "MIN_IQ_CURRENT" ;
+
+
+
