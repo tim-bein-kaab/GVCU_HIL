@@ -9,4 +9,5 @@
    <LibraryPath arch="Windows-x64" moduleType="Matlab-Specific">GVCU_HIL.dll</LibraryPath>
    <LibraryPath arch="Windows-x64" moduleType="CAPL-DLL">GVCU_HIL.dll</LibraryPath>
    <SysvarPath>GVCU_HIL.vsysvar</SysvarPath>
+   <AdditionalFile moduleType="Matlab-Specific">GVCU_HIL.ini</AdditionalFile>
 </Module>

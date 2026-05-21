@@ -7,9 +7,9 @@
  *
  * Code generation for model "GVCU_HIL".
  *
- * Model version              : 7.70
+ * Model version              : 7.73
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Wed May 20 14:41:58 2026
+ * C source code generated on : Thu May 21 16:59:07 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -393,31 +393,31 @@ typedef struct tag_sdAmwXbnJnEmimT0NaJRtAD sdAmwXbnJnEmimT0NaJRtAD_GVCU__T;
 
 #endif                             /* typedef_sdAmwXbnJnEmimT0NaJRtAD_GVCU__T */
 
-/* Parameters for system: '<S422>/Bristle Deflection' */
+/* Parameters for system: '<S428>/Bristle Deflection' */
 typedef struct P_BristleDeflection_GVCU_HIL_T_ P_BristleDeflection_GVCU_HIL_T;
 
-/* Parameters for system: '<S451>/detectSlip' */
+/* Parameters for system: '<S457>/detectSlip' */
 typedef struct P_detectSlip_GVCU_HIL_T_ P_detectSlip_GVCU_HIL_T;
 
-/* Parameters for system: '<S451>/detectLockup' */
+/* Parameters for system: '<S457>/detectLockup' */
 typedef struct P_detectLockup_GVCU_HIL_T_ P_detectLockup_GVCU_HIL_T;
 
-/* Parameters for system: '<S451>/Locked' */
+/* Parameters for system: '<S457>/Locked' */
 typedef struct P_Locked_GVCU_HIL_T_ P_Locked_GVCU_HIL_T;
 
-/* Parameters for system: '<S451>/Slipping' */
+/* Parameters for system: '<S457>/Slipping' */
 typedef struct P_Slipping_GVCU_HIL_T_ P_Slipping_GVCU_HIL_T;
 
-/* Parameters for system: '<S446>/Clutch' */
+/* Parameters for system: '<S452>/Clutch' */
 typedef struct P_Clutch_GVCU_HIL_T_ P_Clutch_GVCU_HIL_T;
 
-/* Parameters for system: '<S421>/Clutch' */
+/* Parameters for system: '<S427>/Clutch' */
 typedef struct P_CoreSubsys_GVCU_HIL_T_ P_CoreSubsys_GVCU_HIL_T;
 
-/* Parameters for system: '<S502>/Clutch' */
+/* Parameters for system: '<S508>/Clutch' */
 typedef struct P_Clutch_GVCU_HIL_k_T_ P_Clutch_GVCU_HIL_k_T;
 
-/* Parameters for system: '<S477>/Clutch' */
+/* Parameters for system: '<S483>/Clutch' */
 typedef struct P_CoreSubsys_GVCU_HIL_b_T_ P_CoreSubsys_GVCU_HIL_b_T;
 
 /* Parameters (default storage) */

@@ -7,25 +7,60 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   2 \
+    NumChartData   7 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
     }\
     ChartData {\
-      Name         "stop_ts"\
+      Name         "prevDrvMode"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "GVCU_HIL:3993:266-273"\
+      SrcLocation  "GVCU_HIL:4491:177-188"\
     }\
     ChartData {\
-      Name         "fired"\
+      Name         "prevDrvMode_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4491:177-188"\
+    }\
+    ChartData {\
+      Name         "state"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "GVCU_HIL:3993:274-279"\
+      SrcLocation  "GVCU_HIL:4491:189-194"\
+    }\
+    ChartData {\
+      Name         "timer"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4491:195-200"\
+    }\
+    ChartData {\
+      Name         "sumP"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4491:201-205"\
+    }\
+    ChartData {\
+      Name         "sampleCount"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4491:206-217"\
+    }\
+    ChartData {\
+      Name         "offset"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4491:218-224"\
     }\
   }
   %return ChartDataElements

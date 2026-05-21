@@ -15,7 +15,7 @@ GVCU_HIL/Clutch handling/Saturation2/UpperLimit; 1e+07
 GVCU_HIL/Clutch handling/Saturation2/LowerLimit; 0
 GVCU_HIL/Clutch handling/Saturation3/UpperLimit; 1e+07
 GVCU_HIL/Clutch handling/Saturation3/LowerLimit; 0
-GVCU_HIL/Clutch handling/Step/Time; 0.05
+GVCU_HIL/Clutch handling/Step/Time; 0.1
 GVCU_HIL/Clutch handling/Step/InitialValue; 0
 GVCU_HIL/Clutch handling/Step/FinalValue; 1
 GVCU_HIL/Driver/Constant/Value; 0
@@ -41,9 +41,9 @@ GVCU_HIL/Driver/Saturation/LowerLimit; 0
 GVCU_HIL/Driver/Step/Time; 0.4
 GVCU_HIL/Driver/Step/InitialValue; 0
 GVCU_HIL/Driver/Step/FinalValue; 1
-GVCU_HIL/Driver/Step1/Time; 0.6
-GVCU_HIL/Driver/Step1/InitialValue; 1
-GVCU_HIL/Driver/Step1/FinalValue; 0
+GVCU_HIL/Driver/Step1/Time; 0.45
+GVCU_HIL/Driver/Step1/InitialValue; 0
+GVCU_HIL/Driver/Step1/FinalValue; 1
 GVCU_HIL/GVCU - HiL/Compare To Constant/const; 0
 GVCU_HIL/GVCU - HiL/Constant/Value; 0
 GVCU_HIL/GVCU - HiL/Constant1/Value; 80
@@ -78,8 +78,10 @@ GVCU_HIL/GVCU - HiL/Constant37/Value; 0
 GVCU_HIL/GVCU - HiL/Constant38/Value; 2
 GVCU_HIL/GVCU - HiL/Constant39/Value; 1
 GVCU_HIL/GVCU - HiL/Constant4/Value; 80
+GVCU_HIL/GVCU - HiL/Constant42/Value; 1
 GVCU_HIL/GVCU - HiL/Constant5/Value; 1
 GVCU_HIL/GVCU - HiL/Constant9/Value; 2
+GVCU_HIL/GVCU - HiL/Zero1/Value; 1
 GVCU_HIL/GVCU - HiL/Zero101/Value; 0
 GVCU_HIL/GVCU - HiL/Zero102/Value; 0
 GVCU_HIL/GVCU - HiL/Zero103/Value; 0
@@ -102,7 +104,7 @@ GVCU_HIL/GVCU - HiL/Zero170/Value; 0
 GVCU_HIL/GVCU - HiL/Zero171/Value; 0
 GVCU_HIL/GVCU - HiL/Zero172/Value; 0
 GVCU_HIL/GVCU - HiL/Zero173/Value; 0
-GVCU_HIL/GVCU - HiL/Zero174/Value; 0
+GVCU_HIL/GVCU - HiL/Zero174/Value; 1
 GVCU_HIL/GVCU - HiL/Zero175/Value; 80
 GVCU_HIL/GVCU - HiL/Zero176/Value; 100
 GVCU_HIL/GVCU - HiL/Zero177/Value; 25.5
@@ -111,6 +113,7 @@ GVCU_HIL/GVCU - HiL/Zero18/Value; 0
 GVCU_HIL/GVCU - HiL/Zero180/Value; 0
 GVCU_HIL/GVCU - HiL/Zero181/Value; 0
 GVCU_HIL/GVCU - HiL/Zero19/Value; 0
+GVCU_HIL/GVCU - HiL/Zero3/Value; 1
 GVCU_HIL/GVCU - HiL/Zero78/Value; 0
 GVCU_HIL/GVCU - HiL/Zero79/Value; 0
 GVCU_HIL/GVCU - HiL/Zero80/Value; 0
@@ -129,6 +132,9 @@ GVCU_HIL/GVCU - HiL/Saturation1/UpperLimit; 25.5
 GVCU_HIL/GVCU - HiL/Saturation1/LowerLimit; 0
 GVCU_HIL/GVCU - HiL/Saturation3/UpperLimit; 25.5
 GVCU_HIL/GVCU - HiL/Saturation3/LowerLimit; 0
+GVCU_HIL/GVCU - HiL/Transport Delay/DelayTime; 1
+GVCU_HIL/GVCU - HiL/Transport Delay/InitialOutput; 0
+GVCU_HIL/GVCU - HiL/Unit Delay/InitialCondition; 0
 GVCU_HIL/Inverter/Constant10/Value; 0
 GVCU_HIL/Inverter/Constant100/Value; 0
 GVCU_HIL/Inverter/Constant101/Value; 0
@@ -248,11 +254,8 @@ GVCU_HIL/Inverter/Saturation1/UpperLimit; 2047
 GVCU_HIL/Inverter/Saturation1/LowerLimit; -2048
 GVCU_HIL/Inverter/Saturation2/UpperLimit; 16383
 GVCU_HIL/Inverter/Saturation2/LowerLimit; -16384
-GVCU_HIL/Inverter/Transport Delay/DelayTime; 1
-GVCU_HIL/Inverter/Transport Delay/InitialOutput; 0
 GVCU_HIL/Inverter/Transport Delay1/DelayTime; 1
 GVCU_HIL/Inverter/Transport Delay1/InitialOutput; 0
-GVCU_HIL/Inverter/Unit Delay/InitialCondition; 0
 GVCU_HIL/Inverter/Unit Delay1/InitialCondition; 0
 GVCU_HIL/Powertrain (EV)/Compare To Constant/const; 2
 GVCU_HIL/Powertrain (EV)/Constant/Value; 0
@@ -289,22 +292,22 @@ GVCU_HIL/Wheel_rates/Saturation2/LowerLimit; 0
 GVCU_HIL/Wheel_rates/Saturation3/UpperLimit; 655.35
 GVCU_HIL/Wheel_rates/Saturation3/LowerLimit; 0
 GVCU_HIL/Clutch handling/Offset prs setting/Offset setting/Value; 0
-GVCU_HIL/Clutch handling/Offset prs setting/Step/Time; 0.1
+GVCU_HIL/Clutch handling/Offset prs setting/Step/Time; 0.2
 GVCU_HIL/Clutch handling/Offset prs setting/Step/InitialValue; 0
 GVCU_HIL/Clutch handling/Offset prs setting/Step/FinalValue; 1
 GVCU_HIL/Clutch handling/Offset prs setting/Switch/Threshold; 0
 GVCU_HIL/Clutch handling/Offset prs setting1/Offset setting/Value; 0
-GVCU_HIL/Clutch handling/Offset prs setting1/Step/Time; 0.1
+GVCU_HIL/Clutch handling/Offset prs setting1/Step/Time; 0.2
 GVCU_HIL/Clutch handling/Offset prs setting1/Step/InitialValue; 0
 GVCU_HIL/Clutch handling/Offset prs setting1/Step/FinalValue; 1
 GVCU_HIL/Clutch handling/Offset prs setting1/Switch/Threshold; 0
 GVCU_HIL/Clutch handling/Offset prs setting2/Offset setting/Value; 0
-GVCU_HIL/Clutch handling/Offset prs setting2/Step/Time; 0.1
+GVCU_HIL/Clutch handling/Offset prs setting2/Step/Time; 0.2
 GVCU_HIL/Clutch handling/Offset prs setting2/Step/InitialValue; 0
 GVCU_HIL/Clutch handling/Offset prs setting2/Step/FinalValue; 1
 GVCU_HIL/Clutch handling/Offset prs setting2/Switch/Threshold; 0
 GVCU_HIL/Clutch handling/Offset prs setting3/Offset setting/Value; 0
-GVCU_HIL/Clutch handling/Offset prs setting3/Step/Time; 0.1
+GVCU_HIL/Clutch handling/Offset prs setting3/Step/Time; 0.2
 GVCU_HIL/Clutch handling/Offset prs setting3/Step/InitialValue; 0
 GVCU_HIL/Clutch handling/Offset prs setting3/Step/FinalValue; 1
 GVCU_HIL/Clutch handling/Offset prs setting3/Switch/Threshold; 0
@@ -407,8 +410,8 @@ GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P1; 109; 97; 105; 110; 95; 98;
 GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P2; 83; 67; 85
 GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P3; 118; 101; 104; 95; 112; 119; 114; 95; 115; 116
 GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P4; 3
-GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
-GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
+GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114
+GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109
 GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P7; 112; 119; 114; 95; 115; 116
 GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P8; 0
 GVCU_HIL/GVCU - HiL/Message Output11/S-Function_1/P9; 105; 110; 104; 101; 114; 105; 116; 101; 100
@@ -432,16 +435,20 @@ GVCU_HIL/GVCU - HiL/Message Output17/S-Function_1/P17; 105; 110; 104; 101; 114; 
 GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P1; 109; 97; 105; 110; 95; 98; 117; 115
 GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P2; 72; 80; 68; 77; 51
 GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P3; 104; 112; 100; 109; 51; 95; 104; 118; 95; 115; 116; 97; 116; 117; 115; 95; 50
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P4; 7
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P5; 100; 116; 99; 95; 108; 105; 115; 116; 95; 98; 109; 115
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P6; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P7; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P8; 115; 111; 99
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P9; 115; 111; 101
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P10; 115; 111; 104
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P11; 116; 104; 101; 114; 109; 97; 108; 95; 114; 117; 110; 97; 119; 97; 121; 95; 100; 101; 116; 101; 99; 116; 105; 111; 110
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P12; 0
-GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P13; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P4; 11
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P7; 115; 111; 99
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P8; 115; 111; 99; 95; 112; 114; 101; 100; 105; 99; 116; 105; 118; 101
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P9; 115; 111; 99; 95; 112; 114; 101; 100; 105; 99; 116; 105; 118; 101; 95; 118
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P10; 115; 111; 99; 95; 118
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P11; 115; 111; 101
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P12; 115; 111; 101; 95; 118
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P13; 115; 111; 104
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P14; 115; 111; 104; 95; 118
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P15; 116; 104; 101; 114; 109; 97; 108; 95; 114; 117; 110; 97; 119; 97; 121; 95; 100; 101; 116; 101; 99; 116; 105; 111; 110
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P16; 0
+GVCU_HIL/GVCU - HiL/Message Output18/S-Function_1/P17; 105; 110; 104; 101; 114; 105; 116; 101; 100
 GVCU_HIL/GVCU - HiL/Message Output2/S-Function_1/P1; 112; 111; 119; 101; 114; 116; 114; 97; 105; 110; 95; 98; 117; 115
 GVCU_HIL/GVCU - HiL/Message Output2/S-Function_1/P2; 76; 83; 84
 GVCU_HIL/GVCU - HiL/Message Output2/S-Function_1/P3; 108; 115; 116; 95; 111; 117; 116; 112; 95; 115; 104; 97; 102; 116
@@ -521,6 +528,14 @@ GVCU_HIL/GVCU - HiL/Signal Input/S-Function/P5; 99; 101; 110; 95; 99; 108; 117; 
 GVCU_HIL/GVCU - HiL/Signal Input/S-Function/P6; 0
 GVCU_HIL/GVCU - HiL/Signal Input/S-Function/P7; 0
 GVCU_HIL/GVCU - HiL/Signal Input/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/GVCU - HiL/Signal Input1/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+GVCU_HIL/GVCU - HiL/Signal Input1/S-Function/P2; 71; 86; 67; 85
+GVCU_HIL/GVCU - HiL/Signal Input1/S-Function/P3; 103; 118; 99; 117; 95; 104; 118; 95; 99; 111; 110; 116; 114; 111; 108
+GVCU_HIL/GVCU - HiL/Signal Input1/S-Function/P4; 1
+GVCU_HIL/GVCU - HiL/Signal Input1/S-Function/P5; 104; 121; 98; 95; 115; 116; 95; 109; 97; 99; 95; 115; 116; 97; 116; 101
+GVCU_HIL/GVCU - HiL/Signal Input1/S-Function/P6; 0
+GVCU_HIL/GVCU - HiL/Signal Input1/S-Function/P7; 0
+GVCU_HIL/GVCU - HiL/Signal Input1/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
 GVCU_HIL/GVCU - HiL/Signal Input2/S-Function/P1; 112; 111; 119; 101; 114; 116; 114; 97; 105; 110; 95; 98; 117; 115
 GVCU_HIL/GVCU - HiL/Signal Input2/S-Function/P2; 71; 86; 67; 85
 GVCU_HIL/GVCU - HiL/Signal Input2/S-Function/P3; 103; 118; 99; 117; 95; 108; 115; 116; 95; 114; 101; 113
@@ -592,6 +607,48 @@ GVCU_HIL/GVCU - HiL/Signal Output20/S-Function/P4; 1
 GVCU_HIL/GVCU - HiL/Signal Output20/S-Function/P5; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 116; 114; 97; 118; 101; 108; 95; 112; 101; 114; 99
 GVCU_HIL/GVCU - HiL/Signal Output20/S-Function/P6; 0
 GVCU_HIL/GVCU - HiL/Signal Output20/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/GVCU - HiL/Signal Output23/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+GVCU_HIL/GVCU - HiL/Signal Output23/S-Function/P2; 72; 80; 68; 77; 51
+GVCU_HIL/GVCU - HiL/Signal Output23/S-Function/P3; 104; 112; 100; 109; 51; 95; 104; 118; 95; 115; 116; 97; 116; 117; 115; 95; 50
+GVCU_HIL/GVCU - HiL/Signal Output23/S-Function/P4; 1
+GVCU_HIL/GVCU - HiL/Signal Output23/S-Function/P5; 115; 111; 99; 95; 112; 114; 101; 100; 105; 99; 116; 105; 118; 101; 95; 118
+GVCU_HIL/GVCU - HiL/Signal Output23/S-Function/P6; 0
+GVCU_HIL/GVCU - HiL/Signal Output23/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/GVCU - HiL/Signal Output24/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+GVCU_HIL/GVCU - HiL/Signal Output24/S-Function/P2; 72; 80; 68; 77; 51
+GVCU_HIL/GVCU - HiL/Signal Output24/S-Function/P3; 104; 112; 100; 109; 51; 95; 104; 118; 95; 115; 116; 97; 116; 117; 115; 95; 50
+GVCU_HIL/GVCU - HiL/Signal Output24/S-Function/P4; 1
+GVCU_HIL/GVCU - HiL/Signal Output24/S-Function/P5; 115; 111; 101
+GVCU_HIL/GVCU - HiL/Signal Output24/S-Function/P6; 0
+GVCU_HIL/GVCU - HiL/Signal Output24/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/GVCU - HiL/Signal Output25/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+GVCU_HIL/GVCU - HiL/Signal Output25/S-Function/P2; 72; 80; 68; 77; 51
+GVCU_HIL/GVCU - HiL/Signal Output25/S-Function/P3; 104; 112; 100; 109; 51; 95; 104; 118; 95; 115; 116; 97; 116; 117; 115; 95; 50
+GVCU_HIL/GVCU - HiL/Signal Output25/S-Function/P4; 1
+GVCU_HIL/GVCU - HiL/Signal Output25/S-Function/P5; 115; 111; 99; 95; 118
+GVCU_HIL/GVCU - HiL/Signal Output25/S-Function/P6; 0
+GVCU_HIL/GVCU - HiL/Signal Output25/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/GVCU - HiL/Signal Output26/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+GVCU_HIL/GVCU - HiL/Signal Output26/S-Function/P2; 72; 80; 68; 77; 51
+GVCU_HIL/GVCU - HiL/Signal Output26/S-Function/P3; 104; 112; 100; 109; 51; 95; 104; 118; 95; 115; 116; 97; 116; 117; 115; 95; 50
+GVCU_HIL/GVCU - HiL/Signal Output26/S-Function/P4; 1
+GVCU_HIL/GVCU - HiL/Signal Output26/S-Function/P5; 115; 111; 99
+GVCU_HIL/GVCU - HiL/Signal Output26/S-Function/P6; 0
+GVCU_HIL/GVCU - HiL/Signal Output26/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/GVCU - HiL/Signal Output27/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+GVCU_HIL/GVCU - HiL/Signal Output27/S-Function/P2; 72; 80; 68; 77; 51
+GVCU_HIL/GVCU - HiL/Signal Output27/S-Function/P3; 104; 112; 100; 109; 51; 95; 104; 118; 95; 115; 116; 97; 116; 117; 115; 95; 50
+GVCU_HIL/GVCU - HiL/Signal Output27/S-Function/P4; 1
+GVCU_HIL/GVCU - HiL/Signal Output27/S-Function/P5; 115; 111; 101; 95; 118
+GVCU_HIL/GVCU - HiL/Signal Output27/S-Function/P6; 0
+GVCU_HIL/GVCU - HiL/Signal Output27/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/GVCU - HiL/Signal Output28/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+GVCU_HIL/GVCU - HiL/Signal Output28/S-Function/P2; 72; 80; 68; 77; 51
+GVCU_HIL/GVCU - HiL/Signal Output28/S-Function/P3; 104; 112; 100; 109; 51; 95; 104; 118; 95; 115; 116; 97; 116; 117; 115; 95; 50
+GVCU_HIL/GVCU - HiL/Signal Output28/S-Function/P4; 1
+GVCU_HIL/GVCU - HiL/Signal Output28/S-Function/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
+GVCU_HIL/GVCU - HiL/Signal Output28/S-Function/P6; 0
+GVCU_HIL/GVCU - HiL/Signal Output28/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
 GVCU_HIL/GVCU - HiL/Signal Output3/S-Function/P1; 112; 111; 119; 101; 114; 116; 114; 97; 105; 110; 95; 98; 117; 115
 GVCU_HIL/GVCU - HiL/Signal Output3/S-Function/P2; 76; 83; 84
 GVCU_HIL/GVCU - HiL/Signal Output3/S-Function/P3; 108; 115; 116; 95; 116; 113; 95; 115; 116; 115; 95; 50
@@ -674,7 +731,7 @@ GVCU_HIL/Inverter/Message Output1/S-Function_1/P12; 105; 110; 104; 101; 114; 105
 GVCU_HIL/Inverter/Message Output2/S-Function_1/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
 GVCU_HIL/Inverter/Message Output2/S-Function_1/P2; 73; 78; 86
 GVCU_HIL/Inverter/Message Output2/S-Function_1/P3; 105; 110; 118; 95; 102; 97; 117; 108; 116; 95; 49
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P4; 49
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P4; 50
 GVCU_HIL/Inverter/Message Output2/S-Function_1/P5; 99; 97; 110; 95; 99; 111; 109; 109; 95; 108; 111; 115; 115; 95; 101; 114; 114; 111; 114
 GVCU_HIL/Inverter/Message Output2/S-Function_1/P6; 99; 97; 110; 95; 99; 111; 109; 109; 95; 108; 111; 115; 115; 95; 119; 97; 114; 110; 105; 110; 103
 GVCU_HIL/Inverter/Message Output2/S-Function_1/P7; 99; 97; 110; 95; 101; 50; 101
@@ -709,23 +766,24 @@ GVCU_HIL/Inverter/Message Output2/S-Function_1/P35; 108; 118; 95; 115; 101; 108;
 GVCU_HIL/Inverter/Message Output2/S-Function_1/P36; 109; 99; 117; 95; 98; 105; 115; 116; 95; 102; 97; 117; 108; 116
 GVCU_HIL/Inverter/Message Output2/S-Function_1/P37; 109; 99; 117; 95; 102; 97; 117; 108; 116
 GVCU_HIL/Inverter/Message Output2/S-Function_1/P38; 109; 111; 115; 102; 101; 116; 95; 116; 95; 102; 97; 117; 108; 116
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P39; 109; 111; 115; 102; 101; 116; 95; 116; 95; 114; 97; 116; 105; 111; 110; 97; 108; 105; 116; 121
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P40; 109; 111; 115; 102; 101; 116; 95; 116; 95; 115; 101; 110; 115; 105; 110; 103
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P41; 109; 111; 115; 102; 101; 116; 95; 116; 95; 119; 97; 114; 110; 105; 110; 103
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P42; 109; 111; 116; 111; 114; 95; 116; 95; 102; 97; 117; 108; 116
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P43; 109; 111; 116; 111; 114; 95; 116; 95; 114; 97; 116; 105; 111; 110; 97; 108; 105; 116; 121
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P44; 109; 111; 116; 111; 114; 95; 116; 95; 115; 101; 110; 115; 105; 110; 103
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P45; 109; 111; 116; 111; 114; 95; 116; 95; 119; 97; 114; 110; 105; 110; 103
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P46; 115; 98; 99; 95; 98; 105; 115; 116; 95; 102; 97; 117; 108; 116
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P47; 115; 98; 99; 95; 102; 97; 117; 108; 116
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P48; 115; 119; 95; 99; 111; 109; 112; 97; 116; 105; 98; 105; 108; 105; 116; 121
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P49; 116; 97; 115; 107; 95; 97; 108; 105; 118; 101; 95; 99; 109
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P50; 116; 97; 115; 107; 95; 97; 108; 105; 118; 101; 95; 109; 97; 105; 110
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P51; 116; 97; 115; 107; 95; 100; 101; 97; 100; 108; 105; 110; 101; 95; 99; 109
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P52; 116; 97; 115; 107; 95; 100; 101; 97; 100; 108; 105; 110; 101; 95; 109; 97; 105; 110
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P53; 121; 95; 99; 97; 112; 95; 99; 116; 114; 108; 95; 117
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P54; 0
-GVCU_HIL/Inverter/Message Output2/S-Function_1/P55; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P39; 109; 111; 115; 102; 101; 116; 95; 116; 95; 105; 109; 98; 97; 108; 97; 110; 99; 101
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P40; 109; 111; 115; 102; 101; 116; 95; 116; 95; 114; 97; 116; 105; 111; 110; 97; 108; 105; 116; 121
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P41; 109; 111; 115; 102; 101; 116; 95; 116; 95; 115; 101; 110; 115; 105; 110; 103
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P42; 109; 111; 115; 102; 101; 116; 95; 116; 95; 119; 97; 114; 110; 105; 110; 103
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P43; 109; 111; 116; 111; 114; 95; 116; 95; 102; 97; 117; 108; 116
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P44; 109; 111; 116; 111; 114; 95; 116; 95; 114; 97; 116; 105; 111; 110; 97; 108; 105; 116; 121
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P45; 109; 111; 116; 111; 114; 95; 116; 95; 115; 101; 110; 115; 105; 110; 103
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P46; 109; 111; 116; 111; 114; 95; 116; 95; 119; 97; 114; 110; 105; 110; 103
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P47; 115; 98; 99; 95; 98; 105; 115; 116; 95; 102; 97; 117; 108; 116
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P48; 115; 98; 99; 95; 102; 97; 117; 108; 116
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P49; 115; 119; 95; 99; 111; 109; 112; 97; 116; 105; 98; 105; 108; 105; 116; 121
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P50; 116; 97; 115; 107; 95; 97; 108; 105; 118; 101; 95; 99; 109
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P51; 116; 97; 115; 107; 95; 97; 108; 105; 118; 101; 95; 109; 97; 105; 110
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P52; 116; 97; 115; 107; 95; 100; 101; 97; 100; 108; 105; 110; 101; 95; 99; 109
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P53; 116; 97; 115; 107; 95; 100; 101; 97; 100; 108; 105; 110; 101; 95; 109; 97; 105; 110
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P54; 121; 95; 99; 97; 112; 95; 99; 116; 114; 108; 95; 117
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P55; 0
+GVCU_HIL/Inverter/Message Output2/S-Function_1/P56; 105; 110; 104; 101; 114; 105; 116; 101; 100
 GVCU_HIL/Inverter/Message Output3/S-Function_1/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
 GVCU_HIL/Inverter/Message Output3/S-Function_1/P2; 73; 78; 86
 GVCU_HIL/Inverter/Message Output3/S-Function_1/P3; 105; 110; 118; 95; 116; 101; 109; 112; 101; 114; 97; 116; 117; 114; 101; 95; 49
@@ -809,14 +867,6 @@ GVCU_HIL/Inverter/Message Output7/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 10
 GVCU_HIL/Inverter/Message Output7/S-Function_1/P7; 109; 101; 99; 104; 97; 110; 105; 99; 97; 108; 95; 112; 119; 114; 95; 111; 117; 116
 GVCU_HIL/Inverter/Message Output7/S-Function_1/P8; 0
 GVCU_HIL/Inverter/Message Output7/S-Function_1/P9; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Inverter/Signal Input1/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
-GVCU_HIL/Inverter/Signal Input1/S-Function/P2; 71; 86; 67; 85
-GVCU_HIL/Inverter/Signal Input1/S-Function/P3; 103; 118; 99; 117; 95; 104; 118; 95; 99; 111; 110; 116; 114; 111; 108
-GVCU_HIL/Inverter/Signal Input1/S-Function/P4; 1
-GVCU_HIL/Inverter/Signal Input1/S-Function/P5; 104; 121; 98; 95; 115; 116; 95; 109; 97; 99; 95; 115; 116; 97; 116; 101
-GVCU_HIL/Inverter/Signal Input1/S-Function/P6; 0
-GVCU_HIL/Inverter/Signal Input1/S-Function/P7; 0
-GVCU_HIL/Inverter/Signal Input1/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
 GVCU_HIL/Inverter/Signal Input2/S-Function/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
 GVCU_HIL/Inverter/Signal Input2/S-Function/P2; 71; 86; 67; 85
 GVCU_HIL/Inverter/Signal Input2/S-Function/P3; 105; 110; 118; 95; 99; 109; 100
@@ -909,12 +959,12 @@ GVCU_HIL/Powertrain (EV)/FWD_ELEC_Powertrain_sorted/Constant2/Value; 0
 GVCU_HIL/Powertrain (EV)/FWD_ELEC_Powertrain_sorted/Gain/Gain; 0.369004
 GVCU_HIL/Powertrain (EV)/FWD_ELEC_Powertrain_sorted/Gain1/Gain; 0.369004
 GVCU_HIL/Powertrain (EV)/FWD_ELEC_Powertrain_sorted/Gain2/Gain; 9.5493
-GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/P; 10
-GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/I; 5
+GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/P; 0.78
+GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/I; 0.01
 GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/InitialConditionForIntegrator; 0
 GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/UpperSaturationLimit; 1000
 GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/LowerSaturationLimit; -1000
-GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/Kb; 0.8
+GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/Kb; 0.005
 GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/UpperIntegratorSaturationLimit; inf
 GVCU_HIL/Powertrain (EV)/PID Speed Controller/PID Controller1/LowerIntegratorSaturationLimit; -inf
 GVCU_HIL/Powertrain (EV)/PID Speed Controller/Gain/Gain; -1

@@ -1,0 +1,67 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   7 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "prevDrvMode"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4507:177-188"\
+    }\
+    ChartData {\
+      Name         "prevDrvMode_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4507:177-188"\
+    }\
+    ChartData {\
+      Name         "state"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4507:189-194"\
+    }\
+    ChartData {\
+      Name         "timer"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4507:195-200"\
+    }\
+    ChartData {\
+      Name         "sumP"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4507:201-205"\
+    }\
+    ChartData {\
+      Name         "sampleCount"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4507:206-217"\
+    }\
+    ChartData {\
+      Name         "offset"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL:4507:218-224"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction
