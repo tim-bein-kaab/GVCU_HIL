@@ -94,7 +94,7 @@ BO_ 420 charger_data: 8 HPDM3
 BO_ 471 gvcu_veh_state_2: 8 GVCU
  SG_ E2eChecksum_Disable : 0|8@1+ (1,0) [0|255] ""  HEADUNIT
  SG_ E2eAliveCounter_Disable : 8|4@1+ (1,0) [0|15] ""  HEADUNIT
- SG_ veh_vel_lgt : 12|13@1+ (0.1,0) [0|550] "km/h"  HEADUNIT,HPDM2,LPDM1,LPDM3,SCU
+ SG_ veh_vel_lgt : 12|13@1+ (0.1,0) [0|550] "km/h"  HEADUNIT,HPDM2,LPDM1,LPDM2,LPDM3,SCU
  SG_ drv_cfg : 25|2@1+ (1,0) [0|3] "enum"  HEADUNIT
  SG_ b_forced_chrg_actv : 27|1@1+ (1,0) [0|1] "bool"  HEADUNIT
  SG_ b_auto_mod_actv : 28|1@1+ (1,0) [0|1] "bool"  HEADUNIT,HPDM2,LST
@@ -105,7 +105,7 @@ BO_ 471 gvcu_veh_state_2: 8 GVCU
  SG_ esp_st : 38|2@1+ (1,0) [0|2] "enum"  HEADUNIT
  SG_ drv_mod : 40|3@1+ (1,0) [0|4] "enum"  HEADUNIT,HPDM2,LPDM1,LPDM3
  SG_ lift_st : 43|3@1+ (1,0) [0|6] "enum"  HEADUNIT,HPDM2
- SG_ veh_vel_lgt_v : 46|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2,LPDM1,LPDM3,SCU
+ SG_ veh_vel_lgt_v : 46|1@1+ (1,0) [0|1] "enum"  HEADUNIT,HPDM2,LPDM1,LPDM2,LPDM3,SCU
  SG_ ign_hold : 47|1@1+ (1,0) [0|1] "bool"  LPDM2,SCU
  SG_ bto_active : 48|2@1+ (1,0) [0|2] "enum"  HPDM2
  SG_ launch_ctrl_sts : 50|3@1+ (1,0) [0|5] "enum"  HPDM2
