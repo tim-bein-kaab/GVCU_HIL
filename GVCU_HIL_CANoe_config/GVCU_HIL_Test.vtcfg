@@ -179,17 +179,8 @@ modules:
     interface: 2
     module-channel:
       name: VT2848_1
-      start-state-enabled: true
-      start-values:
-        - name: SourceSelection_Ch37_40
-          value: 0
-        - name: TriggerlevelCh33_40
-          value: 5
-        - name: SourceSelection_Ch33_36
-          value: 0
     channels:
       - name: FL_Solenoid
-        start-state-enabled: true
         active-values:
           - name: CurBit
             cycle-time: 100ms
@@ -197,11 +188,7 @@ modules:
             cycle-time: 100ms
           - name: PWMDC
             cycle-time: 100ms
-        start-values:
-          - name: OutputMode
-            value: 2
       - name: FR_Solenoid
-        start-state-enabled: true
         active-values:
           - name: CurBit
             cycle-time: 100ms
@@ -209,11 +196,7 @@ modules:
             cycle-time: 100ms
           - name: PWMDC
             cycle-time: 100ms
-        start-values:
-          - name: OutputMode
-            value: 2
       - name: RL_Solenoid
-        start-state-enabled: true
         active-values:
           - name: CurBit
             cycle-time: 100ms
@@ -221,11 +204,7 @@ modules:
             cycle-time: 100ms
           - name: PWMDC
             cycle-time: 100ms
-        start-values:
-          - name: OutputMode
-            value: 2
       - name: RR_Solenoid
-        start-state-enabled: true
         active-values:
           - name: CurBit
             cycle-time: 100ms
@@ -233,9 +212,6 @@ modules:
             cycle-time: 100ms
           - name: PWMDC
             cycle-time: 100ms
-        start-values:
-          - name: OutputMode
-            value: 2
       - name: VT2848_1_Ch5
       - name: VT2848_1_Ch6
       - name: VT2848_1_Ch7
@@ -265,113 +241,13 @@ modules:
       - name: VT2848_1_Ch31
       - name: VT2848_1_Ch32
       - name: FL_spd_sen
-        start-state-enabled: true
-        start-values:
-          - name: DigitalOutput
-            value: 1
-          - name: OutputMode
-            value: 1
-          - name: WaveForm
-            value: 1
-          - name: StartStimulation
-            value: 1
       - name: FR_spd_sen
-        start-state-enabled: true
-        start-values:
-          - name: DigitalOutput
-            value: 1
-          - name: OutputMode
-            value: 2
-          - name: WaveForm
-            value: 1
-          - name: PWMOutputFreq
-            value: 1
-          - name: StartStimulation
-            value: 1
       - name: RL_A_spd_sen
-        start-state-enabled: true
-        start-values:
-          - name: WaveForm
-            value: 1
-          - name: DigitalOutput
-            value: 1
-          - name: OutputMode
-            value: 2
-          - name: PWMOutputFreq
-            value: 1
-          - name: StartStimulation
-            value: 1
       - name: RR_A_spd_sen
-        start-state-enabled: true
-        start-values:
-          - name: WaveForm
-            value: 1
-          - name: DigitalOutput
-            value: 1
-          - name: OutputMode
-            value: 2
-          - name: PWMOutputFreq
-            value: 1
-          - name: StartStimulation
-            value: 1
       - name: RL_B_spd_sen
-        start-state-enabled: true
-        start-values:
-          - name: StartDelay
-            value: 1
-          - name: WaveForm
-            value: 1
-          - name: DigitalOutput
-            value: 1
-          - name: OutputMode
-            value: 2
-          - name: PWMOutputFreq
-            value: 1
-          - name: StartStimulation
-            value: 1
       - name: RR_B_spd_sen
-        start-state-enabled: true
-        start-values:
-          - name: DigitalOutput
-            value: 1
-          - name: WaveForm
-            value: 1
-          - name: OutputMode
-            value: 2
-          - name: PWMOutputFreq
-            value: 1
-          - name: StartStimulation
-            value: 1
-          - name: StartDelay
-            value: 1
       - name: Center_A_spd_sen
-        start-state-enabled: true
-        start-values:
-          - name: OutputMode
-            value: 2
-          - name: WaveForm
-            value: 1
-          - name: DigitalOutput
-            value: 1
-          - name: PWMOutputFreq
-            value: 1
-          - name: StartStimulation
-            value: 1
       - name: Center_B_spd_sen
-        start-state-enabled: true
-        start-values:
-          - name: StartDelay
-            value: 1
-          - name: WaveForm
-            value: 1
-          - name: OutputMode
-            value: 2
-          - name: DigitalOutput
-            value: 1
-          - name: PWMOutputFreq
-            value: 1
-          - name: StartStimulation
-            value: 1
       - name: VT2848_1_Ch41
       - name: VT2848_1_Ch42
       - name: VT2848_1_Ch43

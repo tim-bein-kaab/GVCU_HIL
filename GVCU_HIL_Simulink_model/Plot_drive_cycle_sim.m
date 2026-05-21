@@ -14,8 +14,8 @@ log_root = 'C:\work_local_TimBein\GVCU_HIL_repo\Logs';
 %log_file = 'wltp3b_125s_P0.78_I0.02_Kb0.005.mat';
 %log_file = 'wltp3b_125s_P0.78_I0.015_Kb0.005.mat';
 %log_file = 'wltp3b_125s_P0.78_I0.01_Kb0.005.mat';
-log_file = 'wltp3b_125s_P0.78_I0.001_Kb0.005.mat';
-
+%log_file = 'wltp3b_125s_P0.78_I0.001_Kb0.005.mat';
+log_file = 'wltp3b_P0.78_I0.01_Kb0.005.mat';
 
 log_data = load(fullfile(log_root, log_file));
 
@@ -49,6 +49,9 @@ v_ref = v_ref(idx_ref);
 %% Restrict both signals to the common time window
 t_start_common = max(t_sim(1), t_ref(1));
 t_end_common   = min(t_sim(end), t_ref(end));
+
+%% Limit evaluation and plotting to 1000 s
+t_end_common = min(t_end_common, 1000.0);
 
 idx_sim_common = (t_sim >= t_start_common) & (t_sim <= t_end_common);
 t_sim = t_sim(idx_sim_common);
