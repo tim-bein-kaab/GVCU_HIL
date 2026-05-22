@@ -5,9 +5,8 @@
    <Version>16.0</Version>
    <Application>CANoe</Application>
    <ModuleType>Matlab-Specific</ModuleType>
-   <SupportedArchitecture arch="Windows-x86"/>
-   <LibraryPath arch="Windows-x86" moduleType="Matlab-Specific">GVCU_HIL_simscape.dll</LibraryPath>
-   <LibraryPath arch="Windows-x86" moduleType="CAPL-DLL">GVCU_HIL_simscape.dll</LibraryPath>
+   <SupportedArchitecture arch="Windows-x64"/>
+   <LibraryPath arch="Windows-x64" moduleType="Matlab-Specific">GVCU_HIL_simscape.dll</LibraryPath>
+   <LibraryPath arch="Windows-x64" moduleType="CAPL-DLL">GVCU_HIL_simscape.dll</LibraryPath>
    <SysvarPath>GVCU_HIL_simscape.vsysvar</SysvarPath>
-   <AdditionalFile moduleType="Matlab-Specific">GVCU_HIL_simscape.ini</AdditionalFile>
 </Module>
