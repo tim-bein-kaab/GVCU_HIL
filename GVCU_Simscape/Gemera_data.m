@@ -264,8 +264,8 @@ brake.pressure_max = 180;
 
 % tire data
 
-front.wheel.magic_param = simscape.multibody.tirread('TIR/275_35_R20_TrofeoRS.tir');
-rear.wheel.magic_param = simscape.multibody.tirread('TIR/335_30_R21_TrofeoRS.tir');
+front.wheel.magic_param = simscape.multibody.tirread('Gemera_front.tir');
+rear.wheel.magic_param = simscape.multibody.tirread('Gemera_rear.tir');
 
 front.wheel.magic_param.VERTICAL.Q_FCY2 = -0.4751; %from external tir file
 front.wheel.magic_param.VERTICAL.Q_CAM1 = 85.19;

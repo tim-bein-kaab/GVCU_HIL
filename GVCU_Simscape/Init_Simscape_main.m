@@ -14,6 +14,8 @@ close all
 % telemetry = readtable('SadairsSpear_LagunaSeca_record_VBOX+mf4.csv');
 % telemetry(1,:) = [];
 
+
+
 % visualization data
 
 vis.joint.r = 0.02;
@@ -135,6 +137,173 @@ elseif config.vehicle.model == 5
     KG15_data
 end
 
+GemeraMotorMaps;
+bat.SoC_init = 0.7;
+
 % run simulation
 
 % sim('Simscape_main.slx');
+
+% Base path for recordings
+recordings_path = 'C:\work_local_TimBein\GVCU_HIL_repo\GVCU_HIL_Simulink_model\recordings';
+
+% Load recorded pedal data for replay
+pedal_data = load(fullfile(recordings_path, 'real_elec_drive_acc_pedal.mat'));
+
+% Load recorded speed data for replay
+speed_data = load(fullfile(recordings_path, 'real_elec_drive_speed.mat'));
+
+% Load recorded brake pedal data for replay
+brake_pedal_data = load(fullfile(recordings_path, 'real_elec_drive_brake_pedal.mat'));
+
+% Load driving cycle data
+wltc_data = load(fullfile(recordings_path, 'cycles_wltc.mat'));
+artemis_data = load(fullfile(recordings_path, 'cycles_artemis.mat'));
+epa_data = load(fullfile(recordings_path, 'cycles_epa.mat'));
+nedc_data = load(fullfile(recordings_path, 'cycles_nedc.mat'));
+
+
+
+% Pedal replay timeseries
+acc_pedal_data = pedal_data.accelerator_pedal_position_t0;
+acc_pedal_time = pedal_data.t0;
+
+brk_pedal_data = brake_pedal_data.shared_brakes_drvrBrkPedlPerc_t0;
+brk_pedal_time = brake_pedal_data.t0;
+
+veh_speed_data = speed_data.shared_dynamicsVso_vehVelLgt_t0;  
+veh_speed_time = speed_data.t0;
+
+% WLTC cycles
+wltc3b_speed = wltc_data.WLTC_class_3b.Data;
+wltc3b_time  = wltc_data.WLTC_class_3b.Time;
+
+wltc3a_speed = wltc_data.WLTC_class_3a.Data;
+wltc3a_time  = wltc_data.WLTC_class_3a.Time;
+
+wltc2_speed = wltc_data.WLTC_class_2.Data;
+wltc2_time  = wltc_data.WLTC_class_2.Time;
+
+wltc1_speed = wltc_data.WLTC_class_1.Data;
+wltc1_time  = wltc_data.WLTC_class_1.Time;
+
+% ARTEMIS cycles
+artemis_mw130_speed = artemis_data.ArtMw130.Data;
+artemis_mw130_time  = artemis_data.ArtMw130.Time;
+
+artemis_mw150_speed = artemis_data.ArtMw150.Data;
+artemis_mw150_time  = artemis_data.ArtMw150.Time;
+
+artemis_road_speed = artemis_data.ArtRoad.Data;
+artemis_road_time  = artemis_data.ArtRoad.Time;
+
+artemis_urban_speed = artemis_data.ArtUrban.Data;
+artemis_urban_time  = artemis_data.ArtUrban.Time;
+
+
+% EPA cycles
+epa_ftp_speed = epa_data.FTP.Data;
+epa_ftp_time  = epa_data.FTP.Time;
+
+epa_hwfet_speed = epa_data.HWFET.Data;
+epa_hwfet_time  = epa_data.HWFET.Time;
+
+epa_udds_speed = epa_data.UDDS.Data;
+epa_udds_time  = epa_data.UDDS.Time;
+
+
+% NEDC cycles
+nedc_ece_r15_speed = nedc_data.ECE_R15.Data;
+nedc_ece_r15_time  = nedc_data.ECE_R15.Time;
+
+nedc_eudc_speed = nedc_data.EUDC.Data;
+nedc_eudc_time  = nedc_data.EUDC.Time;
+
+nedc_nedc_speed = nedc_data.NEDC.Data;
+nedc_nedc_time  = nedc_data.NEDC.Time;
+
+%% Drive cycle database for Simulink
+
+cycle_names = {
+    'WLTC1'
+    'WLTC2'
+    'WLTC3a'
+    'WLTC3b'
+    'ArtMw130'
+    'ArtMw150'
+    'ArtRoad'
+    'ArtUrban'
+    'FTP'
+    'HWFET'
+    'UDDS'
+    'ECE_R15'
+    'EUDC'
+    'NEDC'
+    };
+
+cycle_time_cell = {
+    wltc1_time
+    wltc2_time
+    wltc3a_time
+    wltc3b_time
+    artemis_mw130_time
+    artemis_mw150_time
+    artemis_road_time
+    artemis_urban_time
+    epa_ftp_time
+    epa_hwfet_time
+    epa_udds_time
+    nedc_ece_r15_time
+    nedc_eudc_time
+    nedc_nedc_time
+    };
+
+cycle_speed_cell = {
+    wltc1_speed
+    wltc2_speed
+    wltc3a_speed
+    wltc3b_speed
+    artemis_mw130_speed
+    artemis_mw150_speed
+    artemis_road_speed
+    artemis_urban_speed
+    epa_ftp_speed
+    epa_hwfet_speed
+    epa_udds_speed
+    nedc_ece_r15_speed
+    nedc_eudc_speed
+    nedc_nedc_speed
+    };
+
+num_cycles = numel(cycle_names);
+
+cycle_len = zeros(1, num_cycles);
+
+for i = 1:num_cycles
+    cycle_len(i) = numel(cycle_time_cell{i});
+end
+
+max_cycle_len = max(cycle_len);
+
+cycle_time_matrix  = zeros(max_cycle_len, num_cycles);
+cycle_speed_matrix = zeros(max_cycle_len, num_cycles);
+
+for i = 1:num_cycles
+    n = cycle_len(i);
+
+    cycle_time_matrix(1:n, i)  = cycle_time_cell{i}(:);
+    cycle_speed_matrix(1:n, i) = cycle_speed_cell{i}(:);
+
+    % Fill unused rest with last value, so indexing stays safe
+    cycle_time_matrix(n+1:end, i)  = cycle_time_cell{i}(end);
+    cycle_speed_matrix(n+1:end, i) = cycle_speed_cell{i}(end);
+end
+
+
+% Default selected cycle:
+% 1=WLTC1, 2=WLTC2, 3=WLTC3a, 4=WLTC3b,
+% 5=ArtMw130, 6=ArtMw150, 7=ArtRoad, 8=ArtUrban,
+% 9=FTP, 10=HWFET, 11=UDDS,
+% 12=ECE_R15, 13=EUDC, 14=NEDC
+
+cycle_idx = 4; % default value

@@ -1,0 +1,123 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   15 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "main_state"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:161-171"\
+    }\
+    ChartData {\
+      Name         "main_state_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:161-171"\
+    }\
+    ChartData {\
+      Name         "sub_state"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:172-181"\
+    }\
+    ChartData {\
+      Name         "t_start"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:182-189"\
+    }\
+    ChartData {\
+      Name         "brake_switch_internal"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:201-222"\
+    }\
+    ChartData {\
+      Name         "btn_paddle_ri_internal"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:234-256"\
+    }\
+    ChartData {\
+      Name         "btn_paddle_le_internal"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:257-279"\
+    }\
+    ChartData {\
+      Name         "prev_trans_park_neutral"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:291-314"\
+    }\
+    ChartData {\
+      Name         "prev_trans_neutral_drive"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:315-339"\
+    }\
+    ChartData {\
+      Name         "prev_trans_park_drive"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:340-361"\
+    }\
+    ChartData {\
+      Name         "pending_park_neutral"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:373-393"\
+    }\
+    ChartData {\
+      Name         "pending_neutral_drive"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:394-415"\
+    }\
+    ChartData {\
+      Name         "pending_park_drive"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "GVCU_HIL_simscape:1044:416-434"\
+    }\
+    ChartData {\
+      Name         "freq"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "C:\Program Files\MATLAB\R2026a\toolbox\shared\coder\coder\lib\+coder\+internal\+time\CoderTimeAPI.m:5178-5182"\
+    }\
+    ChartData {\
+      Name         "freq_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "C:\Program Files\MATLAB\R2026a\toolbox\shared\coder\coder\lib\+coder\+internal\+time\CoderTimeAPI.m:5178-5182"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction
