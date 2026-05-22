@@ -15,8 +15,8 @@
 void GVCU_HIL_simscape_a37faff9_1_gateway(void)
 {
   NeModelParameters modelparams = { (enum NeSolverTypeTag)1, 0.001, 0.001, FALSE,
-    FALSE, 0.0002, 0.0, FALSE, FALSE, FALSE, (enum SscLoggingSettingTag)0,
-    701343106.0, TRUE, FALSE };
+    FALSE, 0.001, 0.0, FALSE, FALSE, FALSE, (enum SscLoggingSettingTag)0,
+    701356601.0, TRUE, FALSE };
 
   NeSolverParameters solverparams = { TRUE, TRUE, FALSE, FALSE, TRUE, FALSE,
     FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, 0.001, 0.001, 1e-09, FALSE, FALSE,

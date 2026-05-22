@@ -265,17 +265,30 @@
         <namespace name="Constant10" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Value" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
+        <namespace name="Gain1" comment="" interface="">
+          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+        </namespace>
         <namespace name="Constant13" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Value" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
-        <namespace name="Gain1" comment="" interface="">
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+        <namespace name="m" comment="" interface="">
+          <namespace name="_s_to_km" comment="" interface="">
+            <namespace name="_h" comment="" interface="">
+              <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+            </namespace>
+          </namespace>
+        </namespace>
+        <namespace name="Delay" comment="" interface="">
+          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="InitialCondition" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
         <namespace name="Constant14" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Value" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
         <namespace name="Constant15" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Value" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+        </namespace>
+        <namespace name="Delay1" comment="" interface="">
+          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="InitialCondition" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
         <namespace name="Drive_mode" comment="" interface="">
           <namespace name="Rate_Limiter" comment="" interface="">
@@ -322,9 +335,6 @@
               </namespace>
             </namespace>
           </namespace>
-        </namespace>
-        <namespace name="Gain" comment="" interface="">
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
         <namespace name="Constant16" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Value" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
@@ -498,13 +508,6 @@
           <namespace name="Transfer_Fcn" comment="" interface="">
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="A" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="C" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-          </namespace>
-        </namespace>
-        <namespace name="m" comment="" interface="">
-          <namespace name="_s_to_km" comment="" interface="">
-            <namespace name="_h" comment="" interface="">
-              <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-            </namespace>
           </namespace>
         </namespace>
       </namespace>
@@ -2334,11 +2337,6 @@
       </namespace>
       <namespace name="vehicle" comment="" interface="">
         <namespace name="powertrain" comment="" interface="">
-          <namespace name="motor" comment="" interface="">
-            <namespace name="Constant" comment="" interface="">
-              <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Value" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-            </namespace>
-          </namespace>
           <namespace name="Subsystem2" comment="" interface="">
             <namespace name="Subsystem1" comment="" interface="">
               <namespace name="Gain6" comment="" interface="">
@@ -2422,6 +2420,9 @@
             </namespace>
           </namespace>
           <namespace name="engine" comment="" interface="">
+            <namespace name="Constant1" comment="" interface="">
+              <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Value" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+            </namespace>
             <namespace name="Constant" comment="" interface="">
               <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Value" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
             </namespace>
@@ -2560,8 +2561,6 @@
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="INPUT_29_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="4"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="INPUT_2_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="4"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="INPUT_30_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="4"/>
-            <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="INPUT_31_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="4"/>
-            <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="INPUT_32_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="4"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="INPUT_3_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="4"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="INPUT_4_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="4"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="INPUT_5_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="4"/>
@@ -2712,7 +2711,7 @@
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="RATE_TRANSITION_8_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="RATE_TRANSITION_9_1_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="STATE_1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="29"/>
-            <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="STATE_2_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="354"/>
+            <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="STATE_2_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="353"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="STATE_3_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="10"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="STATE_4_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="5"/>
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="STATE_5_" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="12"/>
@@ -2783,9 +2782,10 @@
         </namespace>
         <namespace name="gear" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Clock_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="MATLAB_Function_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Transfer_Fcn1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Transfer_Fcn_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="gear_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Unit_Delay3_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
         <namespace name="m" comment="" interface="">
           <namespace name="_s_to_km" comment="" interface="">
@@ -2797,6 +2797,7 @@
           </namespace>
         </namespace>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Clock_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Delay_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="MATLAB_Function_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Rate_Limiter1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Rate_Transition1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
@@ -3115,6 +3116,11 @@
         </namespace>
         <namespace name="PID_Speed_Controller" comment="" interface="">
           <namespace name="PID_Controller1" comment="" interface="">
+            <namespace name="Saturation" comment="" interface="">
+              <namespace name="Enabled" comment="" interface="">
+                <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Saturation_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+              </namespace>
+            </namespace>
             <namespace name="Anti_windup" comment="" interface="">
               <namespace name="Back_Calculation" comment="" interface="">
                 <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="SumI4_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
@@ -3134,7 +3140,6 @@
           </namespace>
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Add_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Clock_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
         <namespace name="Signal_Input1" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="S_Function_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
@@ -3145,7 +3150,6 @@
         <namespace name="Signal_Input4" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="S_Function_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
-        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Delay_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Switch2_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
       </namespace>
       <namespace name="Inverter" comment="" interface="">
@@ -3596,9 +3600,6 @@
               </namespace>
               <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="MATLAB_Function_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
             </namespace>
-            <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Switch_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-          </namespace>
-          <namespace name="motor" comment="" interface="">
             <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Switch_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
           </namespace>
           <namespace name="transmission" comment="" interface="">

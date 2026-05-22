@@ -189,24 +189,24 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_f(const NeDynamicSystem *LC, const
   intrm_sf_mf_90 = ((size_t)t99->mQ.mX[9ULL] == 1ULL);
   t58[0ULL] = t99->mU.mX[4ULL] * t99->mU.mX[8ULL];
   out->mF.mX[77ULL] = (real_T)(t99->mM.mX[210ULL] != 0) * 1600.0;
-  out->mF.mX[86ULL] = (real_T)(t99->mM.mX[219ULL] != 0) * 1600.0;
-  out->mF.mX[89ULL] = (real_T)(t99->mM.mX[220ULL] != 0) * 1600.0;
-  out->mF.mX[92ULL] = (real_T)(t99->mM.mX[221ULL] != 0) * 1600.0;
-  out->mF.mX[95ULL] = (real_T)(t99->mM.mX[222ULL] != 0) * 1600.0;
-  out->mF.mX[98ULL] = (real_T)(t99->mM.mX[223ULL] != 0) * 1600.0;
+  out->mF.mX[86ULL] = (real_T)(t99->mM.mX[218ULL] != 0) * 1600.0;
+  out->mF.mX[89ULL] = (real_T)(t99->mM.mX[219ULL] != 0) * 1600.0;
+  out->mF.mX[92ULL] = (real_T)(t99->mM.mX[220ULL] != 0) * 1600.0;
+  out->mF.mX[95ULL] = (real_T)(t99->mM.mX[221ULL] != 0) * 1600.0;
+  out->mF.mX[98ULL] = (real_T)(t99->mM.mX[222ULL] != 0) * 1600.0;
   out->mF.mX[80ULL] = (real_T)(t99->mM.mX[211ULL] != 0) * 1600.0;
   out->mF.mX[74ULL] = (real_T)(t99->mM.mX[215ULL] != 0) * 1600.0;
   out->mF.mX[40ULL] = (t99->mU.mX[11ULL] * 1.0E-5 - 1.1) * (real_T)(t99->mM.mX
-    [217ULL] != 0) * 0.005145928515 * 8800.0;
+    [216ULL] != 0) * 0.005145928515 * 8800.0;
   out->mF.mX[43ULL] = (t99->mU.mX[10ULL] * 1.0E-5 - 1.1) * (real_T)(t99->mM.mX
-    [224ULL] != 0) * 0.005145928515 * 8800.0;
-  out->mF.mX[50ULL] = (t99->mU.mX[15ULL] * 1.0E-5 - 1.1) * (real_T)(t99->mM.mX
+    [223ULL] != 0) * 0.005145928515 * 8800.0;
+  out->mF.mX[50ULL] = (t99->mU.mX[13ULL] * 1.0E-5 - 1.1) * (real_T)(t99->mM.mX
     [212ULL] != 0) * 0.005145928515 * 8800.0;
-  out->mF.mX[53ULL] = (t99->mU.mX[17ULL] * 1.0E-5 - 1.1) * (real_T)(t99->mM.mX
+  out->mF.mX[53ULL] = (t99->mU.mX[15ULL] * 1.0E-5 - 1.1) * (real_T)(t99->mM.mX
     [213ULL] != 0) * 0.005145928515 * 8800.0;
-  out->mF.mX[56ULL] = (t99->mU.mX[16ULL] * 1.0E-5 - 1.1) * (real_T)(t99->mM.mX
+  out->mF.mX[56ULL] = (t99->mU.mX[14ULL] * 1.0E-5 - 1.1) * (real_T)(t99->mM.mX
     [214ULL] != 0) * 0.005145928515 * 8800.0;
-  out->mF.mX[83ULL] = (real_T)(t99->mM.mX[218ULL] != 0) * 1600.0;
+  out->mF.mX[83ULL] = (real_T)(t99->mM.mX[217ULL] != 0) * 1600.0;
   t38[0] = 2ULL;
   t39[0] = 1ULL;
   tlu2_linear_linear_prelookup(&t6.mField0[0ULL], &t6.mField1[0ULL],

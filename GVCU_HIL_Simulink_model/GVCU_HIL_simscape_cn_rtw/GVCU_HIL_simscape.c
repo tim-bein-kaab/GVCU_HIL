@@ -7,9 +7,9 @@
  *
  * Code generation for model "GVCU_HIL_simscape".
  *
- * Model version              : 7.78
+ * Model version              : 7.79
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Fri May 22 11:33:14 2026
+ * C source code generated on : Fri May 22 15:18:20 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -22,14 +22,14 @@
 #include "coder_posix_time.h"
 #include "rtwtypes.h"
 #include <string.h>
+#include <math.h>
 #include "GVCU_HIL_simscape_private.h"
 #include "rt_nonfinite.h"
-#include <math.h>
 #include <stddef.h>
 #include "rt_logging_mmi.h"
 #include "GVCU_HIL_simscape_capi.h"
 #include "zero_crossing_types.h"
-#define GVCU_HIL_simscape_period       (0.0002)
+#define GVCU_HIL_simscape_period       (0.001)
 
 const real_T GVCU_HIL_simscape_RGND = 0.0;/* real_T ground */
 
@@ -490,61 +490,47 @@ static void rate_scheduler(void)
    * counter is reset when it reaches its limit (zero means run).
    */
   (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2])++;
-  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2]) > 1) {/* Sample time: [0.0004s, 0.0s] */
+  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2]) > 1) {/* Sample time: [0.002s, 0.0s] */
     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] = 0;
   }
 
   GVCU_HIL_simscape_M->Timing.sampleHits[2] =
     (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0) ? 1 : 0;
   (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[3])++;
-  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[3]) > 4) {/* Sample time: [0.001s, 0.0s] */
+  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[3]) > 3) {/* Sample time: [0.004s, 0.0s] */
     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[3] = 0;
   }
 
   GVCU_HIL_simscape_M->Timing.sampleHits[3] =
     (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[3] == 0) ? 1 : 0;
   (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4])++;
-  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4]) > 9) {/* Sample time: [0.002s, 0.0s] */
+  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4]) > 5) {/* Sample time: [0.006s, 0.0s] */
     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] = 0;
   }
 
   GVCU_HIL_simscape_M->Timing.sampleHits[4] =
     (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0) ? 1 : 0;
   (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[5])++;
-  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[5]) > 19) {/* Sample time: [0.004s, 0.0s] */
+  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[5]) > 9) {/* Sample time: [0.01s, 0.0s] */
     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[5] = 0;
   }
 
   GVCU_HIL_simscape_M->Timing.sampleHits[5] =
     (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[5] == 0) ? 1 : 0;
   (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6])++;
-  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6]) > 24) {/* Sample time: [0.005s, 0.0s] */
+  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6]) > 99) {/* Sample time: [0.1s, 0.0s] */
     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6] = 0;
   }
 
   GVCU_HIL_simscape_M->Timing.sampleHits[6] =
     (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6] == 0) ? 1 : 0;
   (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7])++;
-  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7]) > 49) {/* Sample time: [0.01s, 0.0s] */
+  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7]) > 999) {/* Sample time: [1.0s, 0.0s] */
     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7] = 0;
   }
 
   GVCU_HIL_simscape_M->Timing.sampleHits[7] =
     (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7] == 0) ? 1 : 0;
-  (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[8])++;
-  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[8]) > 499) {/* Sample time: [0.1s, 0.0s] */
-    GVCU_HIL_simscape_M->Timing.TaskCounters.TID[8] = 0;
-  }
-
-  GVCU_HIL_simscape_M->Timing.sampleHits[8] =
-    (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[8] == 0) ? 1 : 0;
-  (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[9])++;
-  if ((GVCU_HIL_simscape_M->Timing.TaskCounters.TID[9]) > 4999) {/* Sample time: [1.0s, 0.0s] */
-    GVCU_HIL_simscape_M->Timing.TaskCounters.TID[9] = 0;
-  }
-
-  GVCU_HIL_simscape_M->Timing.sampleHits[9] =
-    (GVCU_HIL_simscape_M->Timing.TaskCounters.TID[9] == 0) ? 1 : 0;
 }
 
 /* Projection for root system: '<Root>' */
@@ -844,7 +830,7 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   real_T *f2 = id->f[2];
   real_T hB[3];
   int_T i;
-  int_T nXc = 109;
+  int_T nXc = 107;
   rtsiSetSimTimeStep(si,MINOR_TIME_STEP);
 
   /* Save the state values at time t in y, we'll use x as ynew. */
@@ -1008,36 +994,36 @@ void GVCU_HIL_simscape_output(void)
   char *msg_q;
   char *msg_r;
   char *msg_s;
-  real_T tmp_6[462];
-  real_T tmp_a[462];
-  real_T tmp_c[462];
-  real_T tmp_e[462];
-  real_T tmp_g[462];
+  real_T tmp_7[453];
+  real_T tmp_b[453];
+  real_T tmp_d[453];
+  real_T tmp_f[453];
+  real_T tmp_h[453];
   real_T tmp_2[189];
-  real_T tmp_8[189];
+  real_T tmp_9[189];
   real_T tmp_0[160];
-  real_T tmp_4[108];
-  real_T tmp_1a[56];
-  real_T tmp_1c[56];
-  real_T tmp_1e[56];
-  real_T tmp_1g[56];
-  real_T tmp_1i[56];
-  real_T tmp_1k[56];
-  real_T tmp_1m[56];
-  real_T tmp_k[50];
-  real_T tmp_m[50];
-  real_T tmp_o[50];
-  real_T tmp_q[50];
-  real_T tmp_s[50];
-  real_T tmp_u[50];
-  real_T tmp_18[44];
-  real_T tmp_10[41];
-  real_T tmp_12[41];
-  real_T tmp_14[41];
-  real_T tmp_16[41];
-  real_T tmp_y[41];
-  real_T tmp_i[40];
-  real_T tmp_w[36];
+  real_T tmp_5[100];
+  real_T tmp_1b[56];
+  real_T tmp_1d[56];
+  real_T tmp_1f[56];
+  real_T tmp_1h[56];
+  real_T tmp_1j[56];
+  real_T tmp_1l[56];
+  real_T tmp_1n[56];
+  real_T tmp_l[50];
+  real_T tmp_n[50];
+  real_T tmp_p[50];
+  real_T tmp_r[50];
+  real_T tmp_t[50];
+  real_T tmp_v[50];
+  real_T tmp_19[44];
+  real_T tmp_11[41];
+  real_T tmp_13[41];
+  real_T tmp_15[41];
+  real_T tmp_17[41];
+  real_T tmp_z[41];
+  real_T tmp_j[40];
+  real_T tmp_x[36];
   real_T rtb_OUTPUT_5_2[4];
   real_T rtb_OUTPUT_3_1[3];
   real_T rtb_OUTPUT_3_4[3];
@@ -1045,41 +1031,39 @@ void GVCU_HIL_simscape_output(void)
   real_T rtb_OUTPUT_5_5[3];
   real_T rtb_OUTPUT_3_0[2];
   real_T rtb_OUTPUT_5_0[2];
-  real_T b_xtmp;
-  real_T idx;
-  real_T rateLimiterRate;
-  real_T rtb_IntegralGain_i;
-  real_T rtb_Integrator_m;
+  real_T rtb_DeadZone;
+  real_T rtb_Delay;
+  real_T rtb_Delay1;
   real_T rtb_OUTPUT_2_1;
   real_T rtb_OUTPUT_2_2;
   real_T rtb_OUTPUT_2_3;
   real_T rtb_OUTPUT_2_4;
   real_T rtb_OUTPUT_4_3;
   real_T rtb_OUTPUT_4_4;
-  real_T rtb_ProportionalGain;
+  real_T rtb_ProportionalGain_p;
+  real_T rtb_Saturation;
   real_T rtb_Saturation1;
-  real_T rtb_Saturation_aq;
   real_T rtb_Saturation_b;
   real_T rtb_Saturation_ez;
   real_T rtb_Saturation_f;
   real_T rtb_Saturation_m;
   real_T rtb_Subtract;
+  real_T rtb_Subtract1_d;
   real_T rtb_Subtract2;
   real_T rtb_Subtract3;
-  real_T rtb_Sum1;
-  real_T rtb_Sum_d4;
+  real_T rtb_Subtract_n;
+  real_T rtb_Sum_b;
+  real_T rtb_Sum_d;
   real_T rtb_Sum_e;
   real_T rtb_Sum_fd;
   real_T rtb_Sum_g;
   real_T rtb_Sum_n;
   real_T rtb_TransferFcn;
   real_T rtb_TransferFcn_d;
+  real_T rtb_TransferFcn_k;
   real_T rtb_V_b;
-  real_T rtb_brake_out;
   real_T rtb_u19mm;
   real_T rtb_uDLookupTable;
-  real_T rtb_uto1;
-  real_T t_rel;
   real_T time;
   real_T time_0;
   real_T time_1;
@@ -1142,7 +1126,6 @@ void GVCU_HIL_simscape_output(void)
   real_T time_x;
   real_T time_y;
   real_T time_z;
-  real_T xtmp;
   int32_T b_high_i;
   int32_T b_low_ip1;
   int32_T b_mid_i;
@@ -1177,44 +1160,42 @@ void GVCU_HIL_simscape_output(void)
   int32_T isHit_p;
   int32_T n;
   int_T tmp_3[42];
-  int_T tmp_9[42];
+  int_T tmp_a[42];
   int_T tmp_1[41];
-  int_T tmp_7[29];
-  int_T tmp_b[29];
-  int_T tmp_d[29];
-  int_T tmp_f[29];
-  int_T tmp_h[29];
-  int_T tmp_5[28];
-  int_T tmp_1b[13];
-  int_T tmp_1d[13];
-  int_T tmp_1f[13];
-  int_T tmp_1h[13];
-  int_T tmp_1j[13];
-  int_T tmp_1l[13];
-  int_T tmp_1n[13];
-  int_T tmp_19[12];
-  int_T tmp_l[12];
-  int_T tmp_n[12];
-  int_T tmp_p[12];
-  int_T tmp_r[12];
-  int_T tmp_t[12];
-  int_T tmp_v[12];
-  int_T tmp_11[11];
-  int_T tmp_13[11];
-  int_T tmp_15[11];
-  int_T tmp_17[11];
-  int_T tmp_j[11];
-  int_T tmp_z[11];
-  int_T tmp_x[10];
+  int_T tmp_8[27];
+  int_T tmp_c[27];
+  int_T tmp_e[27];
+  int_T tmp_g[27];
+  int_T tmp_i[27];
+  int_T tmp_6[26];
+  int_T tmp_1c[13];
+  int_T tmp_1e[13];
+  int_T tmp_1g[13];
+  int_T tmp_1i[13];
+  int_T tmp_1k[13];
+  int_T tmp_1m[13];
+  int_T tmp_1o[13];
+  int_T tmp_1a[12];
+  int_T tmp_m[12];
+  int_T tmp_o[12];
+  int_T tmp_q[12];
+  int_T tmp_s[12];
+  int_T tmp_u[12];
+  int_T tmp_w[12];
+  int_T tmp_10[11];
+  int_T tmp_12[11];
+  int_T tmp_14[11];
+  int_T tmp_16[11];
+  int_T tmp_18[11];
+  int_T tmp_k[11];
+  int_T tmp_y[10];
+  int8_T tmp_1q;
   int8_T tmp_1r;
-  int8_T tmp_1s;
+  boolean_T didZcEventOccur;
   boolean_T first_output;
-  boolean_T rtb_LowerRelop1_i;
-  boolean_T rtb_RelationalOperator;
   boolean_T tmp;
-  boolean_T tmp_1o;
   boolean_T tmp_1p;
-  boolean_T tmp_1q;
+  boolean_T tmp_4;
   if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M)) {
     /* set solver stop time */
     if (!(GVCU_HIL_simscape_M->Timing.clockTick0+1)) {
@@ -1316,9 +1297,9 @@ void GVCU_HIL_simscape_output(void)
    *  RateTransition: '<S4>/Rate Transition8'
    *  RateTransition: '<S4>/Rate Transition9'
    */
-  tmp_1o = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+  tmp_1p = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
             GVCU_HIL_simscape_M->Timing.TaskCounters.TID[1] == 0);
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (anorsimstepinitshmem): '<S7>/S-Function' */
 
     /* Level2 S-Function Block: '<S7>/S-Function' (anorsimstepinitshmem) */
@@ -1330,10 +1311,11 @@ void GVCU_HIL_simscape_output(void)
 
   /* RateTransition: '<S4>/Rate Transition10' incorporates:
    *  RateTransition: '<S4>/Rate Transition11'
+   *  RateTransition: '<S4>/Rate Transition13'
    */
-  rtb_RelationalOperator = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-    GVCU_HIL_simscape_M->Timing.TaskCounters.TID[5] == 0);
-  if (rtb_RelationalOperator) {
+  didZcEventOccur = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[3] == 0);
+  if (didZcEventOccur) {
     /* Constant: '<S4>/Constant10' */
     GVCU_HIL_simscape_B.e2e_alive_counter_disabled =
       GVCU_HIL_simscape_P.Constant10_Value;
@@ -1344,8 +1326,8 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_20_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_20_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_20_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_20_1_1_Buffer0;
@@ -1377,8 +1359,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_20_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_21_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_21_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_21_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_21_1_1_Buffer0;
@@ -1410,8 +1392,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_21_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_17_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_17_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_17_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_17_1_1_Buffer0;
@@ -1443,8 +1425,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_17_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_18_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_18_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_18_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_18_1_1_Buffer0;
@@ -1476,8 +1458,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_18_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_19_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_19_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_19_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_19_1_1_Buffer0;
@@ -1509,8 +1491,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_19_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_31_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_31_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_31_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_31_1_1_Buffer0;
@@ -1542,8 +1524,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_31_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_32_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_32_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_32_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_32_1_1_Buffer0;
@@ -1575,8 +1557,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_32_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_28_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_28_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_28_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_28_1_1_Buffer0;
@@ -1608,8 +1590,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_28_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_29_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_29_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_29_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_29_1_1_Buffer0;
@@ -1641,8 +1623,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_29_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_30_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_30_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_30_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_30_1_1_Buffer0;
@@ -1674,8 +1656,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_30_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_42_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_42_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_42_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_42_1_1_Buffer0;
@@ -1707,8 +1689,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_42_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_43_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_43_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_43_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_43_1_1_Buffer0;
@@ -1740,8 +1722,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_43_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_39_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_39_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_39_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_39_1_1_Buffer0;
@@ -1773,8 +1755,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_39_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_40_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_40_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_40_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_40_1_1_Buffer0;
@@ -1806,8 +1788,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_40_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_41_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_41_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_41_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_41_1_1_Buffer0;
@@ -1839,8 +1821,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_41_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_53_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_53_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_53_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_53_1_1_Buffer0;
@@ -1872,8 +1854,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_53_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_54_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_54_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_54_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_54_1_1_Buffer0;
@@ -1905,8 +1887,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_54_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_50_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_50_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_50_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_50_1_1_Buffer0;
@@ -1938,8 +1920,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_50_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_51_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_51_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_51_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_51_1_1_Buffer0;
@@ -1971,8 +1953,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_51_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_52_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_52_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_52_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_52_1_1_Buffer0;
@@ -2004,8 +1986,8 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_52_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_57_1_1' */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     /* RateTransition: '<S291>/RATE_TRANSITION_57_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_57_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_57_1_1_Buffer0;
@@ -2627,8 +2609,7 @@ void GVCU_HIL_simscape_output(void)
    *  RateTransition: '<S291>/RATE_TRANSITION_7_1_1'
    *  RateTransition: '<S291>/RATE_TRANSITION_8_1_1'
    *  RateTransition: '<S291>/RATE_TRANSITION_9_1_1'
-   *  SimscapeInputBlock: '<S291>/INPUT_18_1_1'
-   *  SimscapeInputBlock: '<S291>/INPUT_24_1_1'
+   *  SimscapeInputBlock: '<S291>/INPUT_22_1_1'
    *  SimscapeInputBlock: '<S291>/INTERNAL_10_1_1'
    *  SimscapeInputBlock: '<S291>/INTERNAL_11_1_1'
    *  SimscapeInputBlock: '<S291>/INTERNAL_12_1_1'
@@ -2663,14 +2644,14 @@ void GVCU_HIL_simscape_output(void)
    *  SimscapeInputBlock: '<S291>/INTERNAL_8_1_1'
    *  SimscapeInputBlock: '<S291>/INTERNAL_9_1_1'
    */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0)) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_22_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[11];
   }
 
   tmp = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-         GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0);
+         GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0);
   if (tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_22_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_22_1_1 =
@@ -2691,7 +2672,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_33_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_33_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[14];
   }
@@ -2718,7 +2699,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_44_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_44_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[17];
   }
@@ -2745,9 +2726,20 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_55_1_1' */
-  if (tmp_1o && tmp) {
-    GVCU_HIL_simscape_DW.RATE_TRANSITION_55_1_1_Buffer =
-      GVCU_HIL_simscape_B.OUTPUT_1_0[20];
+  if (tmp_1p) {
+    if (tmp) {
+      GVCU_HIL_simscape_DW.RATE_TRANSITION_55_1_1_Buffer =
+        GVCU_HIL_simscape_B.OUTPUT_1_0[20];
+    }
+
+    /* Delay: '<S2>/Delay1' */
+    rtb_Delay1 = GVCU_HIL_simscape_DW.Delay1_DSTATE[0];
+
+    /* Gain: '<S2>/Gain1' incorporates:
+     *  Delay: '<S2>/Delay1'
+     */
+    GVCU_HIL_simscape_B.DecelCmd = GVCU_HIL_simscape_P.Gain1_Gain *
+      GVCU_HIL_simscape_DW.Delay1_DSTATE[0];
   }
 
   if (tmp) {
@@ -2771,862 +2763,11 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.INTERNAL_55_1_1_SimscapeInterna[0];
   }
 
-  /* Clock: '<S2>/Clock' */
-  GVCU_HIL_simscape_B.Clock = time_tmp_tmp;
-  if (tmp_1o) {
-    /* S-Function (sysvarin): '<S36>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar, 1,
-         &GVCU_HIL_simscape_B.SFunction_h, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarin): '<S35>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_l, 1,
-         &GVCU_HIL_simscape_B.SFunction_n, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
-    }
-
-    /* RateTransition: '<S2>/0.01s' */
-    if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-        GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7] == 0) {
-      GVCU_HIL_simscape_DW.u01s_Buffer = GVCU_HIL_simscape_B.SFunction_n;
-    }
-  }
-
-  /* RateTransition: '<S2>/0.01s' incorporates:
-   *  RateTransition: '<S2>/Rate Transition'
-   *  RateTransition: '<S2>/Rate Transition1'
-   */
-  tmp_1q = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-            GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7] == 0);
-  if (tmp_1q) {
-    /* RateTransition: '<S2>/0.01s' */
-    GVCU_HIL_simscape_B.u01s = GVCU_HIL_simscape_DW.u01s_Buffer;
-  }
-
-  if (tmp_1o) {
-    /* S-Function (sysvarin): '<S37>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_c, 1,
-         &GVCU_HIL_simscape_B.SFunction_p, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarin): '<S47>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_m, 1,
-         &GVCU_HIL_simscape_B.SFunction_l, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarin): '<S48>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_p, 1,
-         &GVCU_HIL_simscape_B.SFunction_o, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarin): '<S49>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_p0, 1,
-         &GVCU_HIL_simscape_B.SFunction_oj, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarin): '<S50>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_b, 1,
-         &GVCU_HIL_simscape_B.SFunction_h0, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
-    }
-  }
-
-  /* Step: '<S31>/Step' */
-  if (time_tmp < GVCU_HIL_simscape_P.Step_Time) {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_Y0;
-  } else {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_YFinal;
-  }
-
-  /* Step: '<S31>/Step1' */
-  if (time_tmp < GVCU_HIL_simscape_P.Step1_Time) {
-    rtb_Integrator_m = GVCU_HIL_simscape_P.Step1_Y0;
-  } else {
-    rtb_Integrator_m = GVCU_HIL_simscape_P.Step1_YFinal;
-  }
-
-  /* Sum: '<S31>/Add' incorporates:
-   *  Step: '<S31>/Step'
-   *  Step: '<S31>/Step1'
-   *  Sum: '<S31>/Subtract1'
-   */
-  GVCU_HIL_simscape_B.Add = (rateLimiterRate - rtb_Integrator_m) +
-    GVCU_HIL_simscape_B.SFunction_h0;
-  if (tmp_1o) {
-    /* MATLAB Function: '<S31>/MATLAB Function2' */
-    rtb_Integrator_m = GVCU_HIL_simscape_B.SFunction_l;
-    idx = GVCU_HIL_simscape_B.SFunction_o;
-    rtb_Sum1 = GVCU_HIL_simscape_B.SFunction_oj;
-    rtb_uto1 = GVCU_HIL_simscape_B.Add;
-    if (!GVCU_HIL_simscape_DW.main_state_not_empty) {
-      GVCU_HIL_simscape_DW.main_state_not_empty = true;
-      GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                            &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-    }
-
-    if ((idx != 0.0) && !(GVCU_HIL_simscape_DW.prev_trans_park_neutral != 0.0))
-    {
-      GVCU_HIL_simscape_DW.pending_park_neutral = 1.0;
-    }
-
-    if ((rtb_Sum1 != 0.0) && !(GVCU_HIL_simscape_DW.prev_trans_neutral_drive !=
-         0.0)) {
-      GVCU_HIL_simscape_DW.pending_neutral_drive = 1.0;
-    }
-
-    if ((rtb_uto1 != 0.0) && !(GVCU_HIL_simscape_DW.prev_trans_park_drive != 0.0))
-    {
-      GVCU_HIL_simscape_DW.pending_park_drive = 1.0;
-    }
-
-    GVCU_HIL_simscape_DW.prev_trans_park_neutral = idx;
-    GVCU_HIL_simscape_DW.prev_trans_neutral_drive = rtb_Sum1;
-    GVCU_HIL_simscape_DW.prev_trans_park_drive = rtb_uto1;
-    if (GVCU_HIL_simscape_DW.main_state == 0.0) {
-      if (GVCU_HIL_simscape_DW.pending_park_drive != 0.0) {
-        GVCU_HIL_simscape_DW.main_state = 3.0;
-        GVCU_HIL_simscape_DW.sub_state = 0.0;
-        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        GVCU_HIL_simscape_DW.pending_park_drive = 0.0;
-      } else if (GVCU_HIL_simscape_DW.pending_park_neutral != 0.0) {
-        GVCU_HIL_simscape_DW.main_state = 1.0;
-        GVCU_HIL_simscape_DW.sub_state = 0.0;
-        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        GVCU_HIL_simscape_DW.pending_park_neutral = 0.0;
-      } else if (GVCU_HIL_simscape_DW.pending_neutral_drive != 0.0) {
-        GVCU_HIL_simscape_DW.main_state = 2.0;
-        GVCU_HIL_simscape_DW.sub_state = 0.0;
-        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        GVCU_HIL_simscape_DW.pending_neutral_drive = 0.0;
-      }
-    }
-
-    switch ((int32_T)GVCU_HIL_simscape_DW.main_state) {
-     case 0:
-      GVCU_HIL_simscape_DW.brake_switch_internal = 1.0;
-      GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-      GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-      break;
-
-     case 1:
-      rtb_Integrator_m = 0.0;
-      switch ((int32_T)GVCU_HIL_simscape_DW.sub_state) {
-       case 0:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        GVCU_HIL_simscape_DW.sub_state = 1.0;
-        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        break;
-
-       case 1:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 2.0;
-        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
-             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 1.0) {
-          GVCU_HIL_simscape_DW.sub_state = 2.0;
-          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        }
-        break;
-
-       case 2:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
-             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 0.2) {
-          GVCU_HIL_simscape_DW.sub_state = 3.0;
-        }
-        break;
-
-       case 3:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        GVCU_HIL_simscape_DW.main_state = 0.0;
-        GVCU_HIL_simscape_DW.sub_state = 0.0;
-        break;
-      }
-      break;
-
-     case 2:
-      rtb_Integrator_m = 0.0;
-      switch ((int32_T)GVCU_HIL_simscape_DW.sub_state) {
-       case 0:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        GVCU_HIL_simscape_DW.sub_state = 1.0;
-        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        break;
-
-       case 1:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
-             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 1.0) {
-          GVCU_HIL_simscape_DW.sub_state = 2.0;
-          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        }
-        break;
-
-       case 2:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
-             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 0.2) {
-          GVCU_HIL_simscape_DW.sub_state = 3.0;
-        }
-        break;
-
-       case 3:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        GVCU_HIL_simscape_DW.main_state = 0.0;
-        GVCU_HIL_simscape_DW.sub_state = 0.0;
-        break;
-      }
-      break;
-
-     case 3:
-      rtb_Integrator_m = 0.0;
-      switch ((int32_T)GVCU_HIL_simscape_DW.sub_state) {
-       case 0:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        GVCU_HIL_simscape_DW.sub_state = 1.0;
-        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        break;
-
-       case 1:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 2.0;
-        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
-             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 1.0) {
-          GVCU_HIL_simscape_DW.sub_state = 2.0;
-          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        }
-        break;
-
-       case 2:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
-             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 0.2) {
-          GVCU_HIL_simscape_DW.sub_state = 3.0;
-          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        }
-        break;
-
-       case 3:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
-             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 1.0) {
-          GVCU_HIL_simscape_DW.sub_state = 4.0;
-          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
-                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
-        }
-        break;
-
-       case 4:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
-             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 0.2) {
-          GVCU_HIL_simscape_DW.sub_state = 5.0;
-        }
-        break;
-
-       case 5:
-        GVCU_HIL_simscape_DW.brake_switch_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
-        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
-        GVCU_HIL_simscape_DW.main_state = 0.0;
-        GVCU_HIL_simscape_DW.sub_state = 0.0;
-        break;
-      }
-      break;
-    }
-
-    GVCU_HIL_simscape_B.brake_switch =
-      GVCU_HIL_simscape_DW.brake_switch_internal;
-    GVCU_HIL_simscape_B.btn_paddle_ri =
-      GVCU_HIL_simscape_DW.btn_paddle_ri_internal;
-    GVCU_HIL_simscape_B.btn_paddle_le =
-      GVCU_HIL_simscape_DW.btn_paddle_le_internal;
-    GVCU_HIL_simscape_B.ign = 7.0;
-
-    /* Gain: '<S31>/km//h to m//s' incorporates:
-     *  MATLAB Function: '<S31>/MATLAB Function2'
-     */
-    rtb_Integrator_m *= GVCU_HIL_simscape_P.kmhtoms_Gain;
-
-    /* RateLimiter: '<S31>/Rate Limiter' */
-    rateLimiterRate = rtb_Integrator_m - GVCU_HIL_simscape_DW.PrevY;
-    if (rateLimiterRate > GVCU_HIL_simscape_P.RateLimiter_RisingLim *
-        GVCU_HIL_simscape_period) {
-      rtb_Integrator_m = GVCU_HIL_simscape_P.RateLimiter_RisingLim *
-        GVCU_HIL_simscape_period + GVCU_HIL_simscape_DW.PrevY;
-    } else if (rateLimiterRate < GVCU_HIL_simscape_P.RateLimiter_FallingLim *
-               GVCU_HIL_simscape_period) {
-      rtb_Integrator_m = GVCU_HIL_simscape_P.RateLimiter_FallingLim *
-        GVCU_HIL_simscape_period + GVCU_HIL_simscape_DW.PrevY;
-    }
-
-    GVCU_HIL_simscape_DW.PrevY = rtb_Integrator_m;
-
-    /* End of RateLimiter: '<S31>/Rate Limiter' */
-
-    /* MATLAB Function: '<S2>/MATLAB Function' incorporates:
-     *  Constant: '<S2>/Constant1'
-     *  Constant: '<S2>/Constant2'
-     *  Constant: '<S2>/Constant7'
-     *  Constant: '<S2>/Constant8'
-     *  Constant: '<S2>/Constant9'
-     */
-    idx = rt_roundd_snf(GVCU_HIL_simscape_B.SFunction_p);
-    if (rtIsNaN(idx) || ((idx < 1.0) || (idx > 14.0))) {
-      idx = 4.0;
-    }
-
-    if (((GVCU_HIL_simscape_B.SFunction_h == 2.0) ||
-         (GVCU_HIL_simscape_B.SFunction_h == 3.0)) &&
-        (GVCU_HIL_simscape_DW.last_mode_f != GVCU_HIL_simscape_B.SFunction_h)) {
-      GVCU_HIL_simscape_DW.t_mode_start_e = GVCU_HIL_simscape_B.Clock;
-    }
-
-    if ((GVCU_HIL_simscape_B.SFunction_h == 3.0) &&
-        (GVCU_HIL_simscape_DW.last_cycle != idx)) {
-      GVCU_HIL_simscape_DW.t_mode_start_e = GVCU_HIL_simscape_B.Clock;
-    }
-
-    GVCU_HIL_simscape_DW.last_mode_f = GVCU_HIL_simscape_B.SFunction_h;
-    GVCU_HIL_simscape_DW.last_cycle = idx;
-    GVCU_HIL_simscape_B.cycle_time_remaining = 0.0;
-    GVCU_HIL_simscape_B.cycle_finished = 0.0;
-    if ((GVCU_HIL_simscape_B.SFunction_h == 2.0) &&
-        (GVCU_HIL_simscape_DW.t_mode_start_e >= 0.0)) {
-      b_xtmp = fmin(GVCU_HIL_simscape_B.Clock -
-                    GVCU_HIL_simscape_DW.t_mode_start_e,
-                    GVCU_HIL_simscape_P.veh_speed_time[2120]);
-      memcpy(&GVCU_HIL_simscape_B.x_c[0], &GVCU_HIL_simscape_P.veh_speed_time[0],
-             2121U * sizeof(real_T));
-      memcpy(&GVCU_HIL_simscape_B.y_m[0], &GVCU_HIL_simscape_P.veh_speed_data[0],
-             2121U * sizeof(real_T));
-      rtb_Integrator_m = GVCU_HIL_simscape_P.veh_speed_data[2120];
-      if (GVCU_HIL_simscape_P.veh_speed_time[1] <
-          GVCU_HIL_simscape_P.veh_speed_time[0]) {
-        for (b_high_i = 0; b_high_i < 1060; b_high_i++) {
-          xtmp = GVCU_HIL_simscape_B.x_c[b_high_i];
-          GVCU_HIL_simscape_B.x_c[b_high_i] = GVCU_HIL_simscape_B.x_c[2120 -
-            b_high_i];
-          GVCU_HIL_simscape_B.x_c[2120 - b_high_i] = xtmp;
-          xtmp = GVCU_HIL_simscape_B.y_m[b_high_i];
-          GVCU_HIL_simscape_B.y_m[b_high_i] = GVCU_HIL_simscape_B.y_m[2120 -
-            b_high_i];
-          GVCU_HIL_simscape_B.y_m[2120 - b_high_i] = xtmp;
-        }
-      }
-
-      if (rtIsNaN(b_xtmp)) {
-        rtb_Integrator_m = (rtNaN);
-      } else if (!(b_xtmp > GVCU_HIL_simscape_B.x_c[2120]) && !(b_xtmp <
-                  GVCU_HIL_simscape_B.x_c[0])) {
-        b_high_i = 1;
-        n = 2;
-        b_low_ip1 = 2121;
-        while (b_low_ip1 > n) {
-          b_mid_i = (b_high_i + b_low_ip1) >> 1;
-          if (b_xtmp >= GVCU_HIL_simscape_B.x_c[b_mid_i - 1]) {
-            b_high_i = b_mid_i;
-            n = b_mid_i + 1;
-          } else {
-            b_low_ip1 = b_mid_i;
-          }
-        }
-
-        xtmp = GVCU_HIL_simscape_B.x_c[b_high_i - 1];
-        b_xtmp = (b_xtmp - xtmp) / (GVCU_HIL_simscape_B.x_c[b_high_i] - xtmp);
-        if (b_xtmp == 0.0) {
-          rtb_Integrator_m = GVCU_HIL_simscape_B.y_m[b_high_i - 1];
-        } else if (b_xtmp == 1.0) {
-          rtb_Integrator_m = GVCU_HIL_simscape_B.y_m[b_high_i];
-        } else if (GVCU_HIL_simscape_B.y_m[b_high_i - 1] ==
-                   GVCU_HIL_simscape_B.y_m[b_high_i]) {
-          rtb_Integrator_m = GVCU_HIL_simscape_B.y_m[b_high_i - 1];
-        } else {
-          rtb_Integrator_m = (1.0 - b_xtmp) * GVCU_HIL_simscape_B.y_m[b_high_i -
-            1] + b_xtmp * GVCU_HIL_simscape_B.y_m[b_high_i];
-        }
-      }
-    } else if ((GVCU_HIL_simscape_B.SFunction_h == 3.0) &&
-               (GVCU_HIL_simscape_DW.t_mode_start_e >= 0.0)) {
-      b_high_i = (int32_T)idx;
-      rateLimiterRate = rt_roundd_snf(GVCU_HIL_simscape_P.cycle_len[b_high_i - 1]);
-      if (rateLimiterRate < 2.147483648E+9) {
-        if (rateLimiterRate >= -2.147483648E+9) {
-          b_mid_i = (int32_T)rateLimiterRate;
-          n = b_mid_i;
-        } else {
-          b_mid_i = MIN_int32_T;
-          n = MIN_int32_T;
-        }
-      } else {
-        b_mid_i = MAX_int32_T;
-        n = MAX_int32_T;
-      }
-
-      n--;
-      t_rel = GVCU_HIL_simscape_B.Clock - GVCU_HIL_simscape_DW.t_mode_start_e;
-      cycle_time_remaining_tmp_tmp = (b_high_i - 1) * 1875;
-      b_low_ip1 = (cycle_time_remaining_tmp_tmp + b_mid_i) - 1;
-      GVCU_HIL_simscape_B.cycle_time_remaining = fmax
-        (GVCU_HIL_simscape_P.cycle_time_matrix[b_low_ip1] - t_rel, 0.0);
-      if (t_rel >= GVCU_HIL_simscape_P.cycle_time_matrix[b_low_ip1]) {
-        GVCU_HIL_simscape_B.cycle_finished = 1.0;
-        t_rel = GVCU_HIL_simscape_P.cycle_time_matrix[b_low_ip1];
-      }
-
-      for (b_high_i = 0; b_high_i <= n; b_high_i++) {
-        b_x_tmp = cycle_time_remaining_tmp_tmp + b_high_i;
-        GVCU_HIL_simscape_B.b_x_data[b_high_i] =
-          GVCU_HIL_simscape_P.cycle_time_matrix[b_x_tmp];
-        GVCU_HIL_simscape_B.b_y_data[b_high_i] =
-          GVCU_HIL_simscape_P.cycle_speed_matrix[b_x_tmp];
-      }
-
-      rtb_Integrator_m = GVCU_HIL_simscape_P.cycle_speed_matrix[b_low_ip1];
-      if (GVCU_HIL_simscape_P.cycle_time_matrix[cycle_time_remaining_tmp_tmp + 1]
-          < GVCU_HIL_simscape_P.cycle_time_matrix[cycle_time_remaining_tmp_tmp])
-      {
-        b_low_ip1 = (uint16_T)(b_mid_i >> 1);
-        for (b_high_i = 0; b_high_i < b_low_ip1; b_high_i++) {
-          b_xtmp = GVCU_HIL_simscape_B.b_x_data[b_high_i];
-          b_x_tmp = (b_mid_i - b_high_i) - 1;
-          GVCU_HIL_simscape_B.b_x_data[b_high_i] =
-            GVCU_HIL_simscape_B.b_x_data[b_x_tmp];
-          GVCU_HIL_simscape_B.b_x_data[b_x_tmp] = b_xtmp;
-        }
-
-        for (b_high_i = 0; b_high_i <= n; b_high_i++) {
-          GVCU_HIL_simscape_B.b_y_data[b_high_i] =
-            GVCU_HIL_simscape_P.cycle_speed_matrix[cycle_time_remaining_tmp_tmp
-            + b_high_i];
-        }
-
-        if (b_mid_i > 1) {
-          for (b_high_i = 0; b_high_i < b_low_ip1; b_high_i++) {
-            b_xtmp = GVCU_HIL_simscape_B.b_y_data[b_high_i];
-            n = (b_mid_i - b_high_i) - 1;
-            GVCU_HIL_simscape_B.b_y_data[b_high_i] =
-              GVCU_HIL_simscape_B.b_y_data[n];
-            GVCU_HIL_simscape_B.b_y_data[n] = b_xtmp;
-          }
-        }
-      }
-
-      if (rtIsNaN(t_rel)) {
-        rtb_Integrator_m = (rtNaN);
-      } else if (!(t_rel > GVCU_HIL_simscape_B.b_x_data[b_mid_i - 1]) && !(t_rel
-                  < GVCU_HIL_simscape_B.b_x_data[0])) {
-        b_high_i = b_mid_i;
-        n = 1;
-        b_low_ip1 = 2;
-        while (b_high_i > b_low_ip1) {
-          b_mid_i = (n >> 1) + (b_high_i >> 1);
-          if ((((uint32_T)n & 1U) == 1U) && (((uint32_T)b_high_i & 1U) == 1U)) {
-            b_mid_i++;
-          }
-
-          if (t_rel >= GVCU_HIL_simscape_B.b_x_data[b_mid_i - 1]) {
-            n = b_mid_i;
-            b_low_ip1 = b_mid_i + 1;
-          } else {
-            b_high_i = b_mid_i;
-          }
-        }
-
-        b_xtmp = GVCU_HIL_simscape_B.b_x_data[n - 1];
-        t_rel = (t_rel - b_xtmp) / (GVCU_HIL_simscape_B.b_x_data[n] - b_xtmp);
-        if (t_rel == 0.0) {
-          rtb_Integrator_m = GVCU_HIL_simscape_B.b_y_data[n - 1];
-        } else if (t_rel == 1.0) {
-          rtb_Integrator_m = GVCU_HIL_simscape_B.b_y_data[n];
-        } else if (GVCU_HIL_simscape_B.b_y_data[n - 1] ==
-                   GVCU_HIL_simscape_B.b_y_data[n]) {
-          rtb_Integrator_m = GVCU_HIL_simscape_B.b_y_data[n - 1];
-        } else {
-          rtb_Integrator_m = (1.0 - t_rel) * GVCU_HIL_simscape_B.b_y_data[n - 1]
-            + t_rel * GVCU_HIL_simscape_B.b_y_data[n];
-        }
-      }
-    }
-
-    /* End of MATLAB Function: '<S2>/MATLAB Function' */
-
-    /* Saturate: '<S2>/Saturation' */
-    if (rtb_Integrator_m > GVCU_HIL_simscape_P.Saturation_UpperSat) {
-      /* Saturate: '<S2>/Saturation' */
-      GVCU_HIL_simscape_B.Saturation = GVCU_HIL_simscape_P.Saturation_UpperSat;
-    } else if (rtb_Integrator_m < GVCU_HIL_simscape_P.Saturation_LowerSat) {
-      /* Saturate: '<S2>/Saturation' */
-      GVCU_HIL_simscape_B.Saturation = GVCU_HIL_simscape_P.Saturation_LowerSat;
-    } else {
-      /* Saturate: '<S2>/Saturation' */
-      GVCU_HIL_simscape_B.Saturation = rtb_Integrator_m;
-    }
-
-    /* End of Saturate: '<S2>/Saturation' */
-  }
-
-  /* Sum: '<S52>/Subtract' */
-  GVCU_HIL_simscape_B.Subtract = GVCU_HIL_simscape_B.OUTPUT_1_0[79] -
-    GVCU_HIL_simscape_B.Saturation;
-  if (tmp_1o) {
-    /* Gain: '<S97>/Proportional Gain' */
-    rtb_ProportionalGain = GVCU_HIL_simscape_P.PIController_P *
-      GVCU_HIL_simscape_B.Subtract;
-  }
-
-  /* Relay: '<S52>/Relay' */
-  if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_simscape_M->solverInfo)) {
-    GVCU_HIL_simscape_DW.Relay_Mode = ((GVCU_HIL_simscape_B.Subtract >=
-      GVCU_HIL_simscape_P.Relay_OnVal) || (!(GVCU_HIL_simscape_B.Subtract <=
-      GVCU_HIL_simscape_P.Relay_OffVal) && GVCU_HIL_simscape_DW.Relay_Mode));
-  }
-
-  if (GVCU_HIL_simscape_DW.Relay_Mode) {
-    /* Relay: '<S52>/Relay' */
-    GVCU_HIL_simscape_B.Relay = GVCU_HIL_simscape_P.Relay_YOn;
-  } else {
-    /* Relay: '<S52>/Relay' */
-    GVCU_HIL_simscape_B.Relay = GVCU_HIL_simscape_P.Relay_YOff;
-  }
-
-  /* End of Relay: '<S52>/Relay' */
-  if (tmp_1o) {
-    /* DiscreteIntegrator: '<S92>/Integrator' */
-    if ((GVCU_HIL_simscape_B.Relay != 0.0) ||
-        (GVCU_HIL_simscape_DW.Integrator_PrevResetState != 0)) {
-      GVCU_HIL_simscape_DW.Integrator_DSTATE =
-        GVCU_HIL_simscape_P.PIController_InitialConditionFo;
-    }
-
-    /* Sum: '<S101>/Sum' incorporates:
-     *  DiscreteIntegrator: '<S92>/Integrator'
-     */
-    rtb_IntegralGain_i = rtb_ProportionalGain +
-      GVCU_HIL_simscape_DW.Integrator_DSTATE;
-
-    /* Saturate: '<S99>/Saturation' */
-    if (rtb_IntegralGain_i > GVCU_HIL_simscape_P.PIController_UpperSaturationLim)
-    {
-      rtb_V_b = GVCU_HIL_simscape_P.PIController_UpperSaturationLim;
-    } else if (rtb_IntegralGain_i <
-               GVCU_HIL_simscape_P.PIController_LowerSaturationLim) {
-      rtb_V_b = GVCU_HIL_simscape_P.PIController_LowerSaturationLim;
-    } else {
-      rtb_V_b = rtb_IntegralGain_i;
-    }
-
-    /* End of Saturate: '<S99>/Saturation' */
-
-    /* Switch: '<S32>/Switch3' */
-    if (GVCU_HIL_simscape_B.u01s > GVCU_HIL_simscape_P.Switch3_Threshold) {
-      /* Switch: '<S32>/Switch3' */
-      GVCU_HIL_simscape_B.Switch3 = GVCU_HIL_simscape_B.u01s;
-    } else {
-      /* Switch: '<S32>/Switch3' */
-      GVCU_HIL_simscape_B.Switch3 = rtb_V_b;
-    }
-
-    /* End of Switch: '<S32>/Switch3' */
-  }
-
-  /* Switch: '<S32>/Switch1' */
-  if (GVCU_HIL_simscape_B.Switch3 > GVCU_HIL_simscape_P.Switch1_Threshold) {
-    rtb_Integrator_m = GVCU_HIL_simscape_B.OUTPUT_1_0[79];
-  } else {
-    rtb_Integrator_m = GVCU_HIL_simscape_B.Saturation;
-  }
-
-  /* End of Switch: '<S32>/Switch1' */
-
-  /* Integrator: '<S110>/Integrator' */
-  idx = GVCU_HIL_simscape_X.Integrator_CSTATE;
-  if (tmp_1o) {
-    /* RelationalOperator: '<S51>/Compare' incorporates:
-     *  Constant: '<S51>/Constant'
-     */
-    GVCU_HIL_simscape_B.Compare = (GVCU_HIL_simscape_B.Switch3 >
-      GVCU_HIL_simscape_P.CompareToConstant_const);
-  }
-
-  /* Integrator: '<S32>/Integrator1' */
-  /* Limited  Integrator  */
-  if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_simscape_M->solverInfo)) {
-    first_output = (((GVCU_HIL_simscape_PrevZCX.Integrator1_Reset_ZCE ==
-                      POS_ZCSIG) != (int32_T)GVCU_HIL_simscape_B.Compare) &&
-                    (GVCU_HIL_simscape_PrevZCX.Integrator1_Reset_ZCE !=
-                     UNINITIALIZED_ZCSIG));
-    GVCU_HIL_simscape_PrevZCX.Integrator1_Reset_ZCE =
-      GVCU_HIL_simscape_B.Compare;
-
-    /* evaluate zero-crossings and the level of the reset signal */
-    if (first_output || GVCU_HIL_simscape_B.Compare) {
-      GVCU_HIL_simscape_X.Integrator1_CSTATE =
-        GVCU_HIL_simscape_P.Integrator1_IC;
-    }
-  }
-
-  if (GVCU_HIL_simscape_X.Integrator1_CSTATE >=
-      GVCU_HIL_simscape_P.Integrator1_UpperSat) {
-    GVCU_HIL_simscape_X.Integrator1_CSTATE =
-      GVCU_HIL_simscape_P.Integrator1_UpperSat;
-  } else if (GVCU_HIL_simscape_X.Integrator1_CSTATE <=
-             GVCU_HIL_simscape_P.Integrator1_LowerSat) {
-    GVCU_HIL_simscape_X.Integrator1_CSTATE =
-      GVCU_HIL_simscape_P.Integrator1_LowerSat;
-  }
-
-  /* Sum: '<S32>/Sum1' incorporates:
-   *  Gain: '<S32>/Kff'
-   *  Gain: '<S32>/kp'
-   *  Integrator: '<S110>/Integrator'
-   *  Integrator: '<S32>/Integrator1'
-   */
-  rtb_Sum1 = (GVCU_HIL_simscape_P.Kff_Gain * rtb_Integrator_m +
-              GVCU_HIL_simscape_P.kp_Gain *
-              GVCU_HIL_simscape_X.Integrator_CSTATE) +
-    GVCU_HIL_simscape_X.Integrator1_CSTATE;
-
-  /* Saturate: '<S32>/0 to 1 ' */
-  if (rtb_Sum1 > GVCU_HIL_simscape_P.uto1_UpperSat) {
-    rtb_uto1 = GVCU_HIL_simscape_P.uto1_UpperSat;
-  } else if (rtb_Sum1 < GVCU_HIL_simscape_P.uto1_LowerSat) {
-    rtb_uto1 = GVCU_HIL_simscape_P.uto1_LowerSat;
-  } else {
-    rtb_uto1 = rtb_Sum1;
-  }
-
-  /* End of Saturate: '<S32>/0 to 1 ' */
-
-  /* Gain: '<S32>/Gain' */
-  t_rel = GVCU_HIL_simscape_P.Gain_Gain_a * rtb_uto1;
-
-  /* RateLimiter: '<S2>/Rate Limiter1' */
-  if (GVCU_HIL_simscape_DW.LastMajorTime == (rtInf)) {
-    /* RateLimiter: '<S2>/Rate Limiter1' */
-    GVCU_HIL_simscape_B.RateLimiter1 = t_rel;
-  } else {
-    b_xtmp = time_tmp - GVCU_HIL_simscape_DW.LastMajorTime;
-    if (GVCU_HIL_simscape_DW.LastMajorTime == time_tmp) {
-      if (GVCU_HIL_simscape_DW.PrevLimited) {
-        /* RateLimiter: '<S2>/Rate Limiter1' */
-        GVCU_HIL_simscape_B.RateLimiter1 = GVCU_HIL_simscape_DW.PrevY_m;
-      } else {
-        /* RateLimiter: '<S2>/Rate Limiter1' */
-        GVCU_HIL_simscape_B.RateLimiter1 = t_rel;
-      }
-    } else {
-      xtmp = b_xtmp * GVCU_HIL_simscape_P.RateLimiter1_RisingLim;
-      rateLimiterRate = t_rel - GVCU_HIL_simscape_DW.PrevY_m;
-      if (rateLimiterRate > xtmp) {
-        /* RateLimiter: '<S2>/Rate Limiter1' */
-        GVCU_HIL_simscape_B.RateLimiter1 = GVCU_HIL_simscape_DW.PrevY_m + xtmp;
-        first_output = true;
-      } else {
-        b_xtmp *= GVCU_HIL_simscape_P.RateLimiter1_FallingLim;
-        if (rateLimiterRate < b_xtmp) {
-          /* RateLimiter: '<S2>/Rate Limiter1' */
-          GVCU_HIL_simscape_B.RateLimiter1 = GVCU_HIL_simscape_DW.PrevY_m +
-            b_xtmp;
-          first_output = true;
-        } else {
-          /* RateLimiter: '<S2>/Rate Limiter1' */
-          GVCU_HIL_simscape_B.RateLimiter1 = t_rel;
-          first_output = false;
-        }
-      }
-
-      if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_simscape_M->solverInfo)) {
-        GVCU_HIL_simscape_DW.PrevLimited = first_output;
-      }
-    }
-  }
-
-  if (tmp_1o) {
-    /* MATLAB Function: '<S2>/MATLAB Function1' incorporates:
-     *  Constant: '<S2>/Constant3'
-     *  Constant: '<S2>/Constant4'
-     *  Constant: '<S2>/Constant5'
-     *  Constant: '<S2>/Constant6'
-     */
-    if ((GVCU_HIL_simscape_B.SFunction_h == 1.0) &&
-        (GVCU_HIL_simscape_DW.last_mode != 1.0)) {
-      GVCU_HIL_simscape_DW.t_mode_start = GVCU_HIL_simscape_B.Clock;
-    }
-
-    GVCU_HIL_simscape_DW.last_mode = GVCU_HIL_simscape_B.SFunction_h;
-    if ((GVCU_HIL_simscape_B.SFunction_h == 1.0) &&
-        (GVCU_HIL_simscape_DW.t_mode_start >= 0.0)) {
-      t_rel = GVCU_HIL_simscape_B.Clock - GVCU_HIL_simscape_DW.t_mode_start;
-      b_xtmp = fmin(t_rel, GVCU_HIL_simscape_P.acc_pedal_time[10607]);
-      memcpy(&GVCU_HIL_simscape_B.x[0], &GVCU_HIL_simscape_P.acc_pedal_time[0],
-             10608U * sizeof(real_T));
-      memcpy(&GVCU_HIL_simscape_B.y[0], &GVCU_HIL_simscape_P.acc_pedal_data[0],
-             10608U * sizeof(real_T));
-      GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_P.acc_pedal_data[10607];
-      if (GVCU_HIL_simscape_P.acc_pedal_time[1] <
-          GVCU_HIL_simscape_P.acc_pedal_time[0]) {
-        for (b_high_i = 0; b_high_i < 5304; b_high_i++) {
-          xtmp = GVCU_HIL_simscape_B.x[b_high_i];
-          GVCU_HIL_simscape_B.x[b_high_i] = GVCU_HIL_simscape_B.x[10607 -
-            b_high_i];
-          GVCU_HIL_simscape_B.x[10607 - b_high_i] = xtmp;
-          xtmp = GVCU_HIL_simscape_B.y[b_high_i];
-          GVCU_HIL_simscape_B.y[b_high_i] = GVCU_HIL_simscape_B.y[10607 -
-            b_high_i];
-          GVCU_HIL_simscape_B.y[10607 - b_high_i] = xtmp;
-        }
-      }
-
-      if (rtIsNaN(b_xtmp)) {
-        GVCU_HIL_simscape_B.pedal_out = (rtNaN);
-      } else if (!(b_xtmp > GVCU_HIL_simscape_B.x[10607]) && !(b_xtmp <
-                  GVCU_HIL_simscape_B.x[0])) {
-        b_high_i = 1;
-        n = 2;
-        b_low_ip1 = 10608;
-        while (b_low_ip1 > n) {
-          b_mid_i = (b_high_i + b_low_ip1) >> 1;
-          if (b_xtmp >= GVCU_HIL_simscape_B.x[b_mid_i - 1]) {
-            b_high_i = b_mid_i;
-            n = b_mid_i + 1;
-          } else {
-            b_low_ip1 = b_mid_i;
-          }
-        }
-
-        xtmp = GVCU_HIL_simscape_B.x[b_high_i - 1];
-        b_xtmp = (b_xtmp - xtmp) / (GVCU_HIL_simscape_B.x[b_high_i] - xtmp);
-        if (b_xtmp == 0.0) {
-          GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_B.y[b_high_i - 1];
-        } else if (b_xtmp == 1.0) {
-          GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_B.y[b_high_i];
-        } else if (GVCU_HIL_simscape_B.y[b_high_i - 1] ==
-                   GVCU_HIL_simscape_B.y[b_high_i]) {
-          GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_B.y[b_high_i - 1];
-        } else {
-          GVCU_HIL_simscape_B.pedal_out = (1.0 - b_xtmp) *
-            GVCU_HIL_simscape_B.y[b_high_i - 1] + b_xtmp *
-            GVCU_HIL_simscape_B.y[b_high_i];
-        }
-      }
-
-      t_rel = fmin(t_rel, GVCU_HIL_simscape_P.brk_pedal_time[2120]);
-      memcpy(&GVCU_HIL_simscape_B.x_c[0], &GVCU_HIL_simscape_P.brk_pedal_time[0],
-             2121U * sizeof(real_T));
-      memcpy(&GVCU_HIL_simscape_B.y_m[0], &GVCU_HIL_simscape_P.brk_pedal_data[0],
-             2121U * sizeof(real_T));
-      rtb_brake_out = GVCU_HIL_simscape_P.brk_pedal_data[2120];
-      if (GVCU_HIL_simscape_P.brk_pedal_time[1] <
-          GVCU_HIL_simscape_P.brk_pedal_time[0]) {
-        for (b_high_i = 0; b_high_i < 1060; b_high_i++) {
-          b_xtmp = GVCU_HIL_simscape_B.x_c[b_high_i];
-          GVCU_HIL_simscape_B.x_c[b_high_i] = GVCU_HIL_simscape_B.x_c[2120 -
-            b_high_i];
-          GVCU_HIL_simscape_B.x_c[2120 - b_high_i] = b_xtmp;
-          b_xtmp = GVCU_HIL_simscape_B.y_m[b_high_i];
-          GVCU_HIL_simscape_B.y_m[b_high_i] = GVCU_HIL_simscape_B.y_m[2120 -
-            b_high_i];
-          GVCU_HIL_simscape_B.y_m[2120 - b_high_i] = b_xtmp;
-        }
-      }
-
-      if (rtIsNaN(t_rel)) {
-        rtb_brake_out = (rtNaN);
-      } else if (!(t_rel > GVCU_HIL_simscape_B.x_c[2120]) && !(t_rel <
-                  GVCU_HIL_simscape_B.x_c[0])) {
-        n = 1;
-        b_low_ip1 = 2;
-        b_high_i = 2121;
-        while (b_high_i > b_low_ip1) {
-          b_mid_i = (n + b_high_i) >> 1;
-          if (t_rel >= GVCU_HIL_simscape_B.x_c[b_mid_i - 1]) {
-            n = b_mid_i;
-            b_low_ip1 = b_mid_i + 1;
-          } else {
-            b_high_i = b_mid_i;
-          }
-        }
-
-        b_xtmp = GVCU_HIL_simscape_B.x_c[n - 1];
-        t_rel = (t_rel - b_xtmp) / (GVCU_HIL_simscape_B.x_c[n] - b_xtmp);
-        if (t_rel == 0.0) {
-          rtb_brake_out = GVCU_HIL_simscape_B.y_m[n - 1];
-        } else if (t_rel == 1.0) {
-          rtb_brake_out = GVCU_HIL_simscape_B.y_m[n];
-        } else if (GVCU_HIL_simscape_B.y_m[n - 1] == GVCU_HIL_simscape_B.y_m[n])
-        {
-          rtb_brake_out = GVCU_HIL_simscape_B.y_m[n - 1];
-        } else {
-          rtb_brake_out = (1.0 - t_rel) * GVCU_HIL_simscape_B.y_m[n - 1] + t_rel
-            * GVCU_HIL_simscape_B.y_m[n];
-        }
-      }
-    } else {
-      GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_B.RateLimiter1;
-
-      /* Switch: '<S32>/Switch' incorporates:
-       *  Constant: '<S32>/Constant'
-       */
-      if (GVCU_HIL_simscape_B.Switch3 > GVCU_HIL_simscape_P.Switch_Threshold) {
-        rtb_brake_out = GVCU_HIL_simscape_B.Switch3;
-      } else {
-        rtb_brake_out = GVCU_HIL_simscape_P.Constant_Value;
-      }
-
-      /* End of Switch: '<S32>/Switch' */
-    }
-
-    /* End of MATLAB Function: '<S2>/MATLAB Function1' */
-
-    /* Gain: '<S2>/Gain1' */
-    GVCU_HIL_simscape_B.DecelCmd = GVCU_HIL_simscape_P.Gain1_Gain *
-      rtb_brake_out;
-  }
-
   /* Sum: '<S623>/Subtract' incorporates:
    *  Constant: '<S623>/Constant'
    *  TransferFcn: '<S623>/Transfer Fcn'
    */
-  rtb_ProportionalGain = GVCU_HIL_simscape_P.TransferFcn_C *
+  rtb_Subtract_n = GVCU_HIL_simscape_P.TransferFcn_C *
     GVCU_HIL_simscape_X.TransferFcn_CSTATE -
     GVCU_HIL_simscape_P.Constant_Value_o;
 
@@ -3636,24 +2777,24 @@ void GVCU_HIL_simscape_output(void)
    *  Sum: '<S667>/SumD'
    */
   GVCU_HIL_simscape_B.FilterCoefficient = (GVCU_HIL_simscape_P.PIDController_D *
-    rtb_ProportionalGain - GVCU_HIL_simscape_X.Filter_CSTATE) *
+    rtb_Subtract_n - GVCU_HIL_simscape_X.Filter_CSTATE) *
     GVCU_HIL_simscape_P.PIDController_N;
 
   /* Sum: '<S681>/Sum' incorporates:
    *  Gain: '<S677>/Proportional Gain'
    *  Integrator: '<S672>/Integrator'
    */
-  b_xtmp = (GVCU_HIL_simscape_P.PIDController_P * rtb_ProportionalGain +
-            GVCU_HIL_simscape_X.Integrator_CSTATE_d) +
+  rtb_Sum_b = (GVCU_HIL_simscape_P.PIDController_P * rtb_Subtract_n +
+               GVCU_HIL_simscape_X.Integrator_CSTATE) +
     GVCU_HIL_simscape_B.FilterCoefficient;
 
   /* Saturate: '<S679>/Saturation' */
-  if (b_xtmp > GVCU_HIL_simscape_P.PIDController_UpperSaturationLi) {
-    xtmp = GVCU_HIL_simscape_P.PIDController_UpperSaturationLi;
-  } else if (b_xtmp < GVCU_HIL_simscape_P.PIDController_LowerSaturationLi) {
-    xtmp = GVCU_HIL_simscape_P.PIDController_LowerSaturationLi;
+  if (rtb_Sum_b > GVCU_HIL_simscape_P.PIDController_UpperSaturationLi) {
+    rtb_Saturation = GVCU_HIL_simscape_P.PIDController_UpperSaturationLi;
+  } else if (rtb_Sum_b < GVCU_HIL_simscape_P.PIDController_LowerSaturationLi) {
+    rtb_Saturation = GVCU_HIL_simscape_P.PIDController_LowerSaturationLi;
   } else {
-    xtmp = b_xtmp;
+    rtb_Saturation = rtb_Sum_b;
   }
 
   /* End of Saturate: '<S679>/Saturation' */
@@ -3662,7 +2803,7 @@ void GVCU_HIL_simscape_output(void)
    *  Constant: '<S623>/Constant'
    *  TransferFcn: '<S623>/Transfer Fcn1'
    */
-  t_rel = GVCU_HIL_simscape_P.TransferFcn1_C *
+  rtb_Subtract1_d = GVCU_HIL_simscape_P.TransferFcn1_C *
     GVCU_HIL_simscape_X.TransferFcn1_CSTATE -
     GVCU_HIL_simscape_P.Constant_Value_o;
 
@@ -3672,24 +2813,24 @@ void GVCU_HIL_simscape_output(void)
    *  Sum: '<S719>/SumD'
    */
   GVCU_HIL_simscape_B.FilterCoefficient_i =
-    (GVCU_HIL_simscape_P.PIDController1_D * t_rel -
+    (GVCU_HIL_simscape_P.PIDController1_D * rtb_Subtract1_d -
      GVCU_HIL_simscape_X.Filter_CSTATE_h) * GVCU_HIL_simscape_P.PIDController1_N;
 
   /* Sum: '<S733>/Sum' incorporates:
    *  Gain: '<S729>/Proportional Gain'
    *  Integrator: '<S724>/Integrator'
    */
-  rtb_Sum_d4 = (GVCU_HIL_simscape_P.PIDController1_P * t_rel +
-                GVCU_HIL_simscape_X.Integrator_CSTATE_p) +
+  rtb_Sum_d = (GVCU_HIL_simscape_P.PIDController1_P * rtb_Subtract1_d +
+               GVCU_HIL_simscape_X.Integrator_CSTATE_p) +
     GVCU_HIL_simscape_B.FilterCoefficient_i;
 
   /* Saturate: '<S731>/Saturation' */
-  if (rtb_Sum_d4 > GVCU_HIL_simscape_P.PIDController1_UpperSaturationL) {
+  if (rtb_Sum_d > GVCU_HIL_simscape_P.PIDController1_UpperSaturationL) {
     rtb_Saturation_ez = GVCU_HIL_simscape_P.PIDController1_UpperSaturationL;
-  } else if (rtb_Sum_d4 < GVCU_HIL_simscape_P.PIDController1_LowerSaturationL) {
+  } else if (rtb_Sum_d < GVCU_HIL_simscape_P.PIDController1_LowerSaturationL) {
     rtb_Saturation_ez = GVCU_HIL_simscape_P.PIDController1_LowerSaturationL;
   } else {
-    rtb_Saturation_ez = rtb_Sum_d4;
+    rtb_Saturation_ez = rtb_Sum_d;
   }
 
   /* End of Saturate: '<S731>/Saturation' */
@@ -3770,7 +2911,7 @@ void GVCU_HIL_simscape_output(void)
    *  Constant: '<S2>/Constant15'
    */
   if (GVCU_HIL_simscape_P.Constant15_Value == 1.0) {
-    GVCU_HIL_simscape_B.decel_FL = GVCU_HIL_simscape_B.DecelCmd * xtmp;
+    GVCU_HIL_simscape_B.decel_FL = GVCU_HIL_simscape_B.DecelCmd * rtb_Saturation;
     GVCU_HIL_simscape_B.decel_FR = GVCU_HIL_simscape_B.DecelCmd *
       rtb_Saturation_ez;
     GVCU_HIL_simscape_B.decel_RL = GVCU_HIL_simscape_B.DecelCmd *
@@ -3901,10 +3042,6 @@ void GVCU_HIL_simscape_output(void)
   GVCU_HIL_simscape_B.INPUT_10_1_1[3] = 0.0;
 
   /* End of SimscapeInputBlock: '<S291>/INPUT_10_1_1' */
-  if (tmp_1o) {
-    /* Gain: '<S2>/Gain' */
-    rtb_V_b = GVCU_HIL_simscape_P.Gain_Gain_p * GVCU_HIL_simscape_B.pedal_out;
-  }
 
   /* TransferFcn: '<S43>/Transfer Fcn' */
   GVCU_HIL_simscape_B.TransferFcn = 0.0;
@@ -3917,23 +3054,25 @@ void GVCU_HIL_simscape_output(void)
     GVCU_HIL_simscape_X.TransferFcn1_CSTATE_f;
 
   /* Clock: '<S43>/Clock' */
-  GVCU_HIL_simscape_B.Clock_b = time_tmp_tmp;
-  tmp_1p = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-            GVCU_HIL_simscape_M->Timing.TaskCounters.TID[3] == 0);
+  GVCU_HIL_simscape_B.Clock = time_tmp_tmp;
+  if (tmp) {
+    /* UnitDelay: '<S43>/Unit Delay3' */
+    GVCU_HIL_simscape_B.UnitDelay3 = GVCU_HIL_simscape_DW.UnitDelay3_DSTATE;
+  }
+
   if (tmp_1p) {
-    /* MATLAB Function: '<S43>/gear' incorporates:
+    /* MATLAB Function: '<S43>/MATLAB Function' incorporates:
      *  Constant: '<S43>/Constant'
      *  Constant: '<S43>/Constant1'
      *  Constant: '<S43>/Constant2'
      *  Constant: '<S43>/Constant3'
-     *  UnitDelay: '<S43>/Unit Delay3'
      */
-    rtb_Subtract = GVCU_HIL_simscape_DW.UnitDelay3_DSTATE;
-    if (GVCU_HIL_simscape_DW.UnitDelay3_DSTATE == 0.0) {
+    rtb_Subtract = GVCU_HIL_simscape_B.UnitDelay3;
+    if (GVCU_HIL_simscape_B.UnitDelay3 == 0.0) {
       rtb_Subtract = 1.0;
     }
 
-    if (GVCU_HIL_simscape_B.Clock_b - GVCU_HIL_simscape_DW.last_time >=
+    if (GVCU_HIL_simscape_B.Clock - GVCU_HIL_simscape_DW.last_time >=
         GVCU_HIL_simscape_P.Constant3_Value_l) {
       if ((GVCU_HIL_simscape_B.TransferFcn >
            GVCU_HIL_simscape_P.Constant1_Value_db * 3.141592653589793 / 30.0) &&
@@ -3947,19 +3086,19 @@ void GVCU_HIL_simscape_output(void)
         rtb_Subtract--;
       }
 
-      GVCU_HIL_simscape_DW.last_time = GVCU_HIL_simscape_B.Clock_b;
+      GVCU_HIL_simscape_DW.last_time = GVCU_HIL_simscape_B.Clock;
     }
 
     GVCU_HIL_simscape_B.GearCmd = rtb_Subtract;
 
-    /* End of MATLAB Function: '<S43>/gear' */
-  }
+    /* End of MATLAB Function: '<S43>/MATLAB Function' */
 
-  if (tmp_1o) {
     /* Switch: '<S616>/Switch' */
-    if (GVCU_HIL_simscape_B.GearCmd > GVCU_HIL_simscape_P.Switch_Threshold_j) {
-      /* Switch: '<S616>/Switch' */
-      GVCU_HIL_simscape_B.Switch = rtb_V_b;
+    if (GVCU_HIL_simscape_B.GearCmd > GVCU_HIL_simscape_P.Switch_Threshold) {
+      /* Switch: '<S616>/Switch' incorporates:
+       *  Constant: '<S616>/Constant1'
+       */
+      GVCU_HIL_simscape_B.Switch = GVCU_HIL_simscape_P.Constant1_Value_b;
     } else {
       /* Switch: '<S616>/Switch' incorporates:
        *  Constant: '<S616>/Constant'
@@ -3970,19 +3109,21 @@ void GVCU_HIL_simscape_output(void)
     /* End of Switch: '<S616>/Switch' */
   }
 
+  /* TransferFcn: '<S857>/Transfer Fcn2' */
+  rtb_uDLookupTable = GVCU_HIL_simscape_P.TransferFcn2_C_o *
+    GVCU_HIL_simscape_X.TransferFcn2_CSTATE_l;
+
   /* Sum: '<S857>/Subtract' incorporates:
    *  Constant: '<S857>/Constant'
    *  Constant: '<S857>/Constant1'
    *  Product: '<S857>/Divide'
    *  Sum: '<S857>/Add'
-   *  TransferFcn: '<S857>/Transfer Fcn2'
    *  TransferFcn: '<S857>/Transfer Fcn3'
    */
-  rtb_Subtract = (GVCU_HIL_simscape_P.TransferFcn2_C_o *
-                  GVCU_HIL_simscape_X.TransferFcn2_CSTATE_l +
-                  GVCU_HIL_simscape_P.TransferFcn3_C_i *
-                  GVCU_HIL_simscape_X.TransferFcn3_CSTATE_j) /
-    GVCU_HIL_simscape_P.Constant1_Value_o - GVCU_HIL_simscape_P.Constant_Value_d;
+  rtb_Subtract = (GVCU_HIL_simscape_P.TransferFcn3_C_i *
+                  GVCU_HIL_simscape_X.TransferFcn3_CSTATE_j + rtb_uDLookupTable)
+    / GVCU_HIL_simscape_P.Constant1_Value_o -
+    GVCU_HIL_simscape_P.Constant_Value_d;
 
   /* Gain: '<S905>/Filter Coefficient' incorporates:
    *  Gain: '<S895>/Derivative Gain'
@@ -4113,42 +3254,25 @@ void GVCU_HIL_simscape_output(void)
   /* End of Switch: '<S27>/Switch2' */
 
   /* Saturate: '<S1>/Saturation' */
-  if (rtb_uDLookupTable > GVCU_HIL_simscape_P.Saturation_UpperSat_k) {
+  if (rtb_uDLookupTable > GVCU_HIL_simscape_P.Saturation_UpperSat) {
     /* Saturate: '<S1>/Saturation' */
-    GVCU_HIL_simscape_B.Saturation_m = GVCU_HIL_simscape_P.Saturation_UpperSat_k;
-  } else if (rtb_uDLookupTable < GVCU_HIL_simscape_P.Saturation_LowerSat_e) {
+    GVCU_HIL_simscape_B.Saturation = GVCU_HIL_simscape_P.Saturation_UpperSat;
+  } else if (rtb_uDLookupTable < GVCU_HIL_simscape_P.Saturation_LowerSat) {
     /* Saturate: '<S1>/Saturation' */
-    GVCU_HIL_simscape_B.Saturation_m = GVCU_HIL_simscape_P.Saturation_LowerSat_e;
+    GVCU_HIL_simscape_B.Saturation = GVCU_HIL_simscape_P.Saturation_LowerSat;
   } else {
     /* Saturate: '<S1>/Saturation' */
-    GVCU_HIL_simscape_B.Saturation_m = rtb_uDLookupTable;
+    GVCU_HIL_simscape_B.Saturation = rtb_uDLookupTable;
   }
 
   /* End of Saturate: '<S1>/Saturation' */
 
   /* SimscapeInputBlock: '<S291>/INPUT_16_1_1' */
-  GVCU_HIL_simscape_B.INPUT_16_1_1[0] = GVCU_HIL_simscape_B.Saturation_m;
+  GVCU_HIL_simscape_B.INPUT_16_1_1[0] = GVCU_HIL_simscape_B.Saturation;
   GVCU_HIL_simscape_B.INPUT_16_1_1[1] = 0.0;
   GVCU_HIL_simscape_B.INPUT_16_1_1[2] = 0.0;
   GVCU_HIL_simscape_B.INPUT_16_1_1[3] = 0.0;
-
-  /* SimscapeInputBlock: '<S291>/INPUT_18_1_1' */
-  if (tmp) {
-    GVCU_HIL_simscape_B.INPUT_18_1_1[0] = GVCU_HIL_simscape_B.GearCmd;
-    GVCU_HIL_simscape_B.INPUT_18_1_1[1] = 0.0;
-    GVCU_HIL_simscape_B.INPUT_18_1_1[2] = 0.0;
-    GVCU_HIL_simscape_DW.INPUT_18_1_1_SimscapeInternalDi[0] =
-      !(GVCU_HIL_simscape_B.INPUT_18_1_1[0] ==
-        GVCU_HIL_simscape_DW.INPUT_18_1_1_SimscapeInternalDi[1]);
-    GVCU_HIL_simscape_DW.INPUT_18_1_1_SimscapeInternalDi[1] =
-      GVCU_HIL_simscape_B.INPUT_18_1_1[0];
-    GVCU_HIL_simscape_B.INPUT_18_1_1[0] =
-      GVCU_HIL_simscape_DW.INPUT_18_1_1_SimscapeInternalDi[1];
-    GVCU_HIL_simscape_B.INPUT_18_1_1[3] =
-      GVCU_HIL_simscape_DW.INPUT_18_1_1_SimscapeInternalDi[0];
-  }
-
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* Lookup_n-D: '<S216>/Max Torque Limit' */
     GVCU_HIL_simscape_B.MaxTorqueLimit = look1_binlcapw(0.0,
       GVCU_HIL_simscape_P.MaxTorqueLimit_bp01Data,
@@ -4182,10 +3306,10 @@ void GVCU_HIL_simscape_output(void)
   /* End of Switch: '<S221>/Switch2' */
   if (tmp) {
     /* Delay: '<S6>/Delay' */
-    GVCU_HIL_simscape_B.Delay = GVCU_HIL_simscape_DW.Delay_DSTATE[0];
+    rtb_Delay = GVCU_HIL_simscape_DW.Delay_DSTATE[0];
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sigin): '<S192>/S-Function' */
 
     /* Level2 S-Function Block: '<S192>/S-Function' (sigin) */
@@ -4195,21 +3319,21 @@ void GVCU_HIL_simscape_output(void)
     }
 
     /* RateLimiter: '<S6>/Rate Limiter' */
-    rateLimiterRate = GVCU_HIL_simscape_B.SFunction_g -
-      GVCU_HIL_simscape_DW.PrevY_o;
-    if (rateLimiterRate > GVCU_HIL_simscape_P.RateLimiter_RisingLim_l *
+    rtb_Saturation1 = GVCU_HIL_simscape_B.SFunction_g -
+      GVCU_HIL_simscape_DW.PrevY;
+    if (rtb_Saturation1 > GVCU_HIL_simscape_P.RateLimiter_RisingLim *
         GVCU_HIL_simscape_period) {
-      rtb_Saturation1 = GVCU_HIL_simscape_P.RateLimiter_RisingLim_l *
-        GVCU_HIL_simscape_period + GVCU_HIL_simscape_DW.PrevY_o;
-    } else if (rateLimiterRate < GVCU_HIL_simscape_P.RateLimiter_FallingLim_k *
+      rtb_Saturation1 = GVCU_HIL_simscape_P.RateLimiter_RisingLim *
+        GVCU_HIL_simscape_period + GVCU_HIL_simscape_DW.PrevY;
+    } else if (rtb_Saturation1 < GVCU_HIL_simscape_P.RateLimiter_FallingLim *
                GVCU_HIL_simscape_period) {
-      rtb_Saturation1 = GVCU_HIL_simscape_P.RateLimiter_FallingLim_k *
-        GVCU_HIL_simscape_period + GVCU_HIL_simscape_DW.PrevY_o;
+      rtb_Saturation1 = GVCU_HIL_simscape_P.RateLimiter_FallingLim *
+        GVCU_HIL_simscape_period + GVCU_HIL_simscape_DW.PrevY;
     } else {
       rtb_Saturation1 = GVCU_HIL_simscape_B.SFunction_g;
     }
 
-    GVCU_HIL_simscape_DW.PrevY_o = rtb_Saturation1;
+    GVCU_HIL_simscape_DW.PrevY = rtb_Saturation1;
 
     /* End of RateLimiter: '<S6>/Rate Limiter' */
 
@@ -4220,25 +3344,29 @@ void GVCU_HIL_simscape_output(void)
     GVCU_HIL_simscape_B.rpm = rtb_Saturation1;
   }
 
+  /* RateTransition: '<S2>/Rate Transition' incorporates:
+   *  RateTransition: '<S2>/0.01s'
+   *  RateTransition: '<S2>/Rate Transition1'
+   */
   first_output = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                  GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0);
+                  GVCU_HIL_simscape_M->Timing.TaskCounters.TID[5] == 0);
   if (first_output) {
     /* Gain: '<S264>/Proportional Gain' */
     rtb_Sum_fd = GVCU_HIL_simscape_P.PIDController1_P_e *
       GVCU_HIL_simscape_B.rpm;
 
     /* Sum: '<S269>/Sum Fdbk' */
-    rtb_TransferFcn_d = rtb_Sum_fd + GVCU_HIL_simscape_DW.Integrator_DSTATE_d;
+    rtb_TransferFcn_d = rtb_Sum_fd + GVCU_HIL_simscape_DW.Integrator_DSTATE;
 
     /* Saturate: '<S267>/Saturation' */
     if (rtb_TransferFcn_d > GVCU_HIL_simscape_P.PIDController1_UpperSaturatio_f)
     {
-      rateLimiterRate = GVCU_HIL_simscape_P.PIDController1_UpperSaturatio_f;
+      rtb_TransferFcn_k = GVCU_HIL_simscape_P.PIDController1_UpperSaturatio_f;
     } else if (rtb_TransferFcn_d <
                GVCU_HIL_simscape_P.PIDController1_LowerSaturatio_l) {
-      rateLimiterRate = GVCU_HIL_simscape_P.PIDController1_LowerSaturatio_l;
+      rtb_TransferFcn_k = GVCU_HIL_simscape_P.PIDController1_LowerSaturatio_l;
     } else {
-      rateLimiterRate = rtb_TransferFcn_d;
+      rtb_TransferFcn_k = rtb_TransferFcn_d;
     }
 
     /* Sum: '<S251>/SumI4' incorporates:
@@ -4247,14 +3375,14 @@ void GVCU_HIL_simscape_output(void)
      *  Saturate: '<S267>/Saturation'
      *  Sum: '<S251>/SumI2'
      */
-    GVCU_HIL_simscape_B.SumI4 = (rateLimiterRate - rtb_TransferFcn_d) *
+    GVCU_HIL_simscape_B.SumI4 = (rtb_TransferFcn_k - rtb_TransferFcn_d) *
       GVCU_HIL_simscape_P.PIDController1_Kb +
       GVCU_HIL_simscape_P.PIDController1_I * GVCU_HIL_simscape_B.rpm;
   }
 
   /* Clock: '<S191>/Clock' */
   GVCU_HIL_simscape_B.Clock_p = time_tmp_tmp;
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* MATLAB Function: '<S191>/MATLAB Function' */
     if (fabs(rtb_Saturation1) < 2.094) {
       if (GVCU_HIL_simscape_DW.stop_ts == 0.0) {
@@ -4288,21 +3416,21 @@ void GVCU_HIL_simscape_output(void)
      *  Constant: '<S189>/Constant'
      *  RelationalOperator: '<S189>/Compare'
      */
-    GVCU_HIL_simscape_B.Add_f = (real_T)(GVCU_HIL_simscape_B.SFunction_p4 <
-      GVCU_HIL_simscape_P.CompareToConstant_const_j) + rtb_Saturation1;
+    GVCU_HIL_simscape_B.Add = (real_T)(GVCU_HIL_simscape_B.SFunction_p <
+      GVCU_HIL_simscape_P.CompareToConstant_const) + rtb_Saturation1;
   }
 
   if (first_output) {
     /* DiscreteIntegrator: '<S259>/Integrator' */
-    if ((GVCU_HIL_simscape_B.Add_f != 0.0) ||
-        (GVCU_HIL_simscape_DW.Integrator_PrevResetState_c != 0)) {
-      GVCU_HIL_simscape_DW.Integrator_DSTATE_d =
+    if ((GVCU_HIL_simscape_B.Add != 0.0) ||
+        (GVCU_HIL_simscape_DW.Integrator_PrevResetState != 0)) {
+      GVCU_HIL_simscape_DW.Integrator_DSTATE =
         GVCU_HIL_simscape_P.PIDController1_InitialConditi_o;
     }
 
     /* DiscreteIntegrator: '<S259>/Integrator' */
-    GVCU_HIL_simscape_B.Integrator = GVCU_HIL_simscape_P.Integrator_gainval_e *
-      GVCU_HIL_simscape_B.SumI4 + GVCU_HIL_simscape_DW.Integrator_DSTATE_d;
+    GVCU_HIL_simscape_B.Integrator = GVCU_HIL_simscape_P.Integrator_gainval *
+      GVCU_HIL_simscape_B.SumI4 + GVCU_HIL_simscape_DW.Integrator_DSTATE;
 
     /* DiscreteIntegrator: '<S259>/Integrator' */
     if (GVCU_HIL_simscape_B.Integrator >
@@ -4318,53 +3446,56 @@ void GVCU_HIL_simscape_output(void)
     }
 
     /* Sum: '<S268>/Sum' */
-    rtb_Saturation_aq = rtb_Sum_fd + GVCU_HIL_simscape_B.Integrator;
+    rtb_TransferFcn_k = rtb_Sum_fd + GVCU_HIL_simscape_B.Integrator;
 
     /* Saturate: '<S266>/Saturation' */
-    if (rtb_Saturation_aq > GVCU_HIL_simscape_P.PIDController1_UpperSaturatio_f)
+    if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.PIDController1_UpperSaturatio_f)
     {
-      rtb_Saturation_aq = GVCU_HIL_simscape_P.PIDController1_UpperSaturatio_f;
-    } else if (rtb_Saturation_aq <
+      /* Saturate: '<S266>/Saturation' */
+      GVCU_HIL_simscape_B.Saturation_c =
+        GVCU_HIL_simscape_P.PIDController1_UpperSaturatio_f;
+    } else if (rtb_TransferFcn_k <
                GVCU_HIL_simscape_P.PIDController1_LowerSaturatio_l) {
-      rtb_Saturation_aq = GVCU_HIL_simscape_P.PIDController1_LowerSaturatio_l;
+      /* Saturate: '<S266>/Saturation' */
+      GVCU_HIL_simscape_B.Saturation_c =
+        GVCU_HIL_simscape_P.PIDController1_LowerSaturatio_l;
+    } else {
+      /* Saturate: '<S266>/Saturation' */
+      GVCU_HIL_simscape_B.Saturation_c = rtb_TransferFcn_k;
     }
 
     /* End of Saturate: '<S266>/Saturation' */
-
-    /* RelationalOperator: '<S224>/LowerRelop1' */
-    rtb_LowerRelop1_i = (rtb_Saturation_aq > GVCU_HIL_simscape_B.Delay);
   }
 
   if (tmp) {
-    /* Gain: '<S191>/Gain' */
-    GVCU_HIL_simscape_B.Gain_i = GVCU_HIL_simscape_P.Gain_Gain_b *
-      GVCU_HIL_simscape_B.Delay;
-  }
-
-  if (first_output) {
     /* Switch: '<S224>/Switch2' incorporates:
-     *  RelationalOperator: '<S224>/UpperRelop'
-     *  Switch: '<S224>/Switch'
+     *  RelationalOperator: '<S224>/LowerRelop1'
      */
-    if (rtb_LowerRelop1_i) {
+    if (GVCU_HIL_simscape_B.Saturation_c > rtb_Delay) {
       /* Switch: '<S224>/Switch2' */
-      GVCU_HIL_simscape_B.Switch2 = GVCU_HIL_simscape_B.Delay;
-    } else if (rtb_Saturation_aq < GVCU_HIL_simscape_B.Gain_i) {
-      /* Switch: '<S224>/Switch' incorporates:
-       *  Switch: '<S224>/Switch2'
-       */
-      GVCU_HIL_simscape_B.Switch2 = GVCU_HIL_simscape_B.Gain_i;
+      GVCU_HIL_simscape_B.Switch2 = rtb_Delay;
     } else {
-      /* Switch: '<S224>/Switch2' incorporates:
-       *  Switch: '<S224>/Switch'
+      /* Gain: '<S191>/Gain' */
+      rtb_Delay *= GVCU_HIL_simscape_P.Gain_Gain_b;
+
+      /* Switch: '<S224>/Switch' incorporates:
+       *  RelationalOperator: '<S224>/UpperRelop'
        */
-      GVCU_HIL_simscape_B.Switch2 = rtb_Saturation_aq;
+      if (GVCU_HIL_simscape_B.Saturation_c < rtb_Delay) {
+        /* Switch: '<S224>/Switch2' */
+        GVCU_HIL_simscape_B.Switch2 = rtb_Delay;
+      } else {
+        /* Switch: '<S224>/Switch2' */
+        GVCU_HIL_simscape_B.Switch2 = GVCU_HIL_simscape_B.Saturation_c;
+      }
+
+      /* End of Switch: '<S224>/Switch' */
     }
 
     /* End of Switch: '<S224>/Switch2' */
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sigin): '<S193>/S-Function' */
 
     /* Level2 S-Function Block: '<S193>/S-Function' (sigin) */
@@ -4374,7 +3505,7 @@ void GVCU_HIL_simscape_output(void)
     }
 
     /* Switch: '<S6>/Switch2' */
-    if (GVCU_HIL_simscape_B.SFunction_p4 >
+    if (GVCU_HIL_simscape_B.SFunction_p >
         GVCU_HIL_simscape_P.Switch2_Threshold_i4) {
       /* Switch: '<S6>/Switch2' incorporates:
        *  Sum: '<S191>/Add1'
@@ -4405,77 +3536,39 @@ void GVCU_HIL_simscape_output(void)
     }
 
     /* End of Switch: '<S190>/Switch' */
-
-    /* Switch: '<S618>/Switch' */
-    if (GVCU_HIL_simscape_B.GearCmd != 0.0) {
-      /* Switch: '<S618>/Switch' */
-      GVCU_HIL_simscape_B.Switch_k = rtb_V_b;
-    } else {
-      /* Switch: '<S618>/Switch' incorporates:
-       *  Constant: '<S618>/Constant'
-       */
-      GVCU_HIL_simscape_B.Switch_k = GVCU_HIL_simscape_P.Constant_Value_k;
-    }
-
-    /* End of Switch: '<S618>/Switch' */
   }
 
   /* Product: '<S190>/Product1' */
   GVCU_HIL_simscape_B.EMTrq = rtb_uDLookupTable * GVCU_HIL_simscape_B.uor1;
 
-  /* SimscapeInputBlock: '<S291>/INPUT_19_1_1' */
-  GVCU_HIL_simscape_B.INPUT_19_1_1[0] = GVCU_HIL_simscape_B.EMTrq;
-  GVCU_HIL_simscape_B.INPUT_19_1_1[1] = 0.0;
-  GVCU_HIL_simscape_B.INPUT_19_1_1[2] = 0.0;
-  GVCU_HIL_simscape_B.INPUT_19_1_1[3] = 0.0;
+  /* SimscapeInputBlock: '<S291>/INPUT_18_1_1' */
+  GVCU_HIL_simscape_B.INPUT_18_1_1[0] = GVCU_HIL_simscape_B.EMTrq;
+  GVCU_HIL_simscape_B.INPUT_18_1_1[1] = 0.0;
+  GVCU_HIL_simscape_B.INPUT_18_1_1[2] = 0.0;
+  GVCU_HIL_simscape_B.INPUT_18_1_1[3] = 0.0;
 
-  /* SimscapeInputBlock: '<S291>/INPUT_20_1_1' */
-  if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M)) {
-    GVCU_HIL_simscape_DW.INPUT_20_1_1_SimscapeInternalDi =
-      GVCU_HIL_simscape_B.Switch_k;
-  }
-
-  if (GVCU_HIL_simscape_DW.INPUT_20_1_1_SimscapeInternalFi == 0.0) {
-    GVCU_HIL_simscape_DW.INPUT_20_1_1_SimscapeInternalFi = 1.0;
-    GVCU_HIL_simscape_X.GVCU_HIL_simscapevehiclepower_p[0] =
-      GVCU_HIL_simscape_DW.INPUT_20_1_1_SimscapeInternalDi;
-    GVCU_HIL_simscape_X.GVCU_HIL_simscapevehiclepower_p[1] = 0.0;
-  }
-
-  GVCU_HIL_simscape_B.INPUT_20_1_1[0] =
-    GVCU_HIL_simscape_X.GVCU_HIL_simscapevehiclepower_p[0];
-  GVCU_HIL_simscape_B.INPUT_20_1_1[1] =
-    GVCU_HIL_simscape_X.GVCU_HIL_simscapevehiclepower_p[1];
-  GVCU_HIL_simscape_B.INPUT_20_1_1[2] =
-    ((GVCU_HIL_simscape_DW.INPUT_20_1_1_SimscapeInternalDi -
-      GVCU_HIL_simscape_X.GVCU_HIL_simscapevehiclepower_p[0]) * 1000.0 - 2.0 *
-     GVCU_HIL_simscape_X.GVCU_HIL_simscapevehiclepower_p[1]) * 1000.0;
-  GVCU_HIL_simscape_B.INPUT_20_1_1[3] = 0.0;
-
-  /* End of SimscapeInputBlock: '<S291>/INPUT_20_1_1' */
-
-  /* SimscapeInputBlock: '<S291>/INPUT_21_1_1' incorporates:
+  /* SimscapeInputBlock: '<S291>/INPUT_19_1_1' incorporates:
    *  Constant: '<S1>/Zero1'
    */
   if (tmp) {
-    GVCU_HIL_simscape_B.INPUT_21_1_1[0] = GVCU_HIL_simscape_P.Zero1_Value;
-    GVCU_HIL_simscape_B.INPUT_21_1_1[1] = 0.0;
-    GVCU_HIL_simscape_B.INPUT_21_1_1[2] = 0.0;
-    GVCU_HIL_simscape_DW.INPUT_21_1_1_SimscapeInternalDi[0] =
-      !(GVCU_HIL_simscape_B.INPUT_21_1_1[0] ==
-        GVCU_HIL_simscape_DW.INPUT_21_1_1_SimscapeInternalDi[1]);
-    GVCU_HIL_simscape_DW.INPUT_21_1_1_SimscapeInternalDi[1] =
-      GVCU_HIL_simscape_B.INPUT_21_1_1[0];
-    GVCU_HIL_simscape_B.INPUT_21_1_1[0] =
-      GVCU_HIL_simscape_DW.INPUT_21_1_1_SimscapeInternalDi[1];
-    GVCU_HIL_simscape_B.INPUT_21_1_1[3] =
-      GVCU_HIL_simscape_DW.INPUT_21_1_1_SimscapeInternalDi[0];
+    GVCU_HIL_simscape_B.INPUT_19_1_1[0] = GVCU_HIL_simscape_P.Zero1_Value;
+    GVCU_HIL_simscape_B.INPUT_19_1_1[1] = 0.0;
+    GVCU_HIL_simscape_B.INPUT_19_1_1[2] = 0.0;
+    GVCU_HIL_simscape_DW.INPUT_19_1_1_SimscapeInternalDi[0] =
+      !(GVCU_HIL_simscape_B.INPUT_19_1_1[0] ==
+        GVCU_HIL_simscape_DW.INPUT_19_1_1_SimscapeInternalDi[1]);
+    GVCU_HIL_simscape_DW.INPUT_19_1_1_SimscapeInternalDi[1] =
+      GVCU_HIL_simscape_B.INPUT_19_1_1[0];
+    GVCU_HIL_simscape_B.INPUT_19_1_1[0] =
+      GVCU_HIL_simscape_DW.INPUT_19_1_1_SimscapeInternalDi[1];
+    GVCU_HIL_simscape_B.INPUT_19_1_1[3] =
+      GVCU_HIL_simscape_DW.INPUT_19_1_1_SimscapeInternalDi[0];
   }
 
-  /* End of SimscapeInputBlock: '<S291>/INPUT_21_1_1' */
+  /* End of SimscapeInputBlock: '<S291>/INPUT_19_1_1' */
 
   /* TransferFcn: '<S30>/Transfer Fcn' */
-  rtb_V_b = GVCU_HIL_simscape_P.TransferFcn_C_f *
+  rtb_TransferFcn_k = GVCU_HIL_simscape_P.TransferFcn_C_f *
     GVCU_HIL_simscape_X.TransferFcn_CSTATE_l;
 
   /* Switch: '<S30>/Switch2' incorporates:
@@ -4485,42 +3578,43 @@ void GVCU_HIL_simscape_output(void)
    *  Lookup_n-D: '<S30>/1-D Lookup Table9'
    *  TransferFcn: '<S30>/Transfer Fcn'
    */
-  if (rtb_V_b > GVCU_HIL_simscape_P.Switch2_Threshold_f) {
-    rtb_V_b = GVCU_HIL_simscape_P.Gain_Gain_k * look1_binlxpw(look1_binlxpw
-      (rtb_V_b, GVCU_HIL_simscape_P.uDLookupTable9_bp01Data_b,
-       GVCU_HIL_simscape_P.uDLookupTable9_tableData_e, 3U),
-      GVCU_HIL_simscape_P.uDLookupTable2_bp01Data_e,
-      GVCU_HIL_simscape_P.uDLookupTable2_tableData_j, 3U);
+  if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.Switch2_Threshold_f) {
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Gain_Gain_k * look1_binlxpw
+      (look1_binlxpw(rtb_TransferFcn_k,
+                     GVCU_HIL_simscape_P.uDLookupTable9_bp01Data_b,
+                     GVCU_HIL_simscape_P.uDLookupTable9_tableData_e, 3U),
+       GVCU_HIL_simscape_P.uDLookupTable2_bp01Data_e,
+       GVCU_HIL_simscape_P.uDLookupTable2_tableData_j, 3U);
   } else {
-    rtb_V_b = GVCU_HIL_simscape_P.Constant_Value_lc;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Constant_Value_lc;
   }
 
   /* End of Switch: '<S30>/Switch2' */
 
   /* Saturate: '<S1>/Saturation3' */
-  if (rtb_V_b > GVCU_HIL_simscape_P.Saturation3_UpperSat) {
+  if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.Saturation3_UpperSat) {
     /* Saturate: '<S1>/Saturation3' */
     GVCU_HIL_simscape_B.prs_to_voltage =
       GVCU_HIL_simscape_P.Saturation3_UpperSat;
-  } else if (rtb_V_b < GVCU_HIL_simscape_P.Saturation3_LowerSat) {
+  } else if (rtb_TransferFcn_k < GVCU_HIL_simscape_P.Saturation3_LowerSat) {
     /* Saturate: '<S1>/Saturation3' */
     GVCU_HIL_simscape_B.prs_to_voltage =
       GVCU_HIL_simscape_P.Saturation3_LowerSat;
   } else {
     /* Saturate: '<S1>/Saturation3' */
-    GVCU_HIL_simscape_B.prs_to_voltage = rtb_V_b;
+    GVCU_HIL_simscape_B.prs_to_voltage = rtb_TransferFcn_k;
   }
 
   /* End of Saturate: '<S1>/Saturation3' */
 
-  /* SimscapeInputBlock: '<S291>/INPUT_23_1_1' */
-  GVCU_HIL_simscape_B.INPUT_23_1_1[0] = GVCU_HIL_simscape_B.prs_to_voltage;
-  GVCU_HIL_simscape_B.INPUT_23_1_1[1] = 0.0;
-  GVCU_HIL_simscape_B.INPUT_23_1_1[2] = 0.0;
-  GVCU_HIL_simscape_B.INPUT_23_1_1[3] = 0.0;
+  /* SimscapeInputBlock: '<S291>/INPUT_21_1_1' */
+  GVCU_HIL_simscape_B.INPUT_21_1_1[0] = GVCU_HIL_simscape_B.prs_to_voltage;
+  GVCU_HIL_simscape_B.INPUT_21_1_1[1] = 0.0;
+  GVCU_HIL_simscape_B.INPUT_21_1_1[2] = 0.0;
+  GVCU_HIL_simscape_B.INPUT_21_1_1[3] = 0.0;
 
   /* TransferFcn: '<S29>/Transfer Fcn' */
-  rtb_V_b = GVCU_HIL_simscape_P.TransferFcn_C_n4 *
+  rtb_TransferFcn_d = GVCU_HIL_simscape_P.TransferFcn_C_n4 *
     GVCU_HIL_simscape_X.TransferFcn_CSTATE_m;
 
   /* Switch: '<S29>/Switch2' incorporates:
@@ -4530,135 +3624,166 @@ void GVCU_HIL_simscape_output(void)
    *  Lookup_n-D: '<S29>/1-D Lookup Table9'
    *  TransferFcn: '<S29>/Transfer Fcn'
    */
-  if (rtb_V_b > GVCU_HIL_simscape_P.Switch2_Threshold_p) {
-    rtb_V_b = GVCU_HIL_simscape_P.Gain_Gain_e * look1_binlxpw(look1_binlxpw
-      (rtb_V_b, GVCU_HIL_simscape_P.uDLookupTable9_bp01Data_a,
-       GVCU_HIL_simscape_P.uDLookupTable9_tableData_a, 3U),
-      GVCU_HIL_simscape_P.uDLookupTable2_bp01Data_p,
-      GVCU_HIL_simscape_P.uDLookupTable2_tableData_d, 3U);
+  if (rtb_TransferFcn_d > GVCU_HIL_simscape_P.Switch2_Threshold_p) {
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Gain_Gain_e * look1_binlxpw
+      (look1_binlxpw(rtb_TransferFcn_d,
+                     GVCU_HIL_simscape_P.uDLookupTable9_bp01Data_a,
+                     GVCU_HIL_simscape_P.uDLookupTable9_tableData_a, 3U),
+       GVCU_HIL_simscape_P.uDLookupTable2_bp01Data_p,
+       GVCU_HIL_simscape_P.uDLookupTable2_tableData_d, 3U);
   } else {
-    rtb_V_b = GVCU_HIL_simscape_P.Constant_Value_do;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Constant_Value_do;
   }
 
   /* End of Switch: '<S29>/Switch2' */
 
   /* Saturate: '<S1>/Saturation2' */
-  if (rtb_V_b > GVCU_HIL_simscape_P.Saturation2_UpperSat) {
+  if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.Saturation2_UpperSat) {
     /* Saturate: '<S1>/Saturation2' */
     GVCU_HIL_simscape_B.Saturation2 = GVCU_HIL_simscape_P.Saturation2_UpperSat;
-  } else if (rtb_V_b < GVCU_HIL_simscape_P.Saturation2_LowerSat) {
+  } else if (rtb_TransferFcn_k < GVCU_HIL_simscape_P.Saturation2_LowerSat) {
     /* Saturate: '<S1>/Saturation2' */
     GVCU_HIL_simscape_B.Saturation2 = GVCU_HIL_simscape_P.Saturation2_LowerSat;
   } else {
     /* Saturate: '<S1>/Saturation2' */
-    GVCU_HIL_simscape_B.Saturation2 = rtb_V_b;
+    GVCU_HIL_simscape_B.Saturation2 = rtb_TransferFcn_k;
   }
 
   /* End of Saturate: '<S1>/Saturation2' */
 
-  /* SimscapeInputBlock: '<S291>/INPUT_22_1_1' */
-  GVCU_HIL_simscape_B.INPUT_22_1_1[0] = GVCU_HIL_simscape_B.Saturation2;
-  GVCU_HIL_simscape_B.INPUT_22_1_1[1] = 0.0;
-  GVCU_HIL_simscape_B.INPUT_22_1_1[2] = 0.0;
-  GVCU_HIL_simscape_B.INPUT_22_1_1[3] = 0.0;
-  if (tmp_1o) {
-    /* MultiPortSwitch: '<S967>/Multiport Switch' */
+  /* SimscapeInputBlock: '<S291>/INPUT_20_1_1' */
+  GVCU_HIL_simscape_B.INPUT_20_1_1[0] = GVCU_HIL_simscape_B.Saturation2;
+  GVCU_HIL_simscape_B.INPUT_20_1_1[1] = 0.0;
+  GVCU_HIL_simscape_B.INPUT_20_1_1[2] = 0.0;
+  GVCU_HIL_simscape_B.INPUT_20_1_1[3] = 0.0;
+  if (tmp_1p) {
+    /* MultiPortSwitch: '<S962>/Multiport Switch' */
     switch ((int32_T)GVCU_HIL_simscape_B.GearCmd) {
      case -1:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 4'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 4'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear4_Value[0], 9U * sizeof(real_T));
       break;
 
      case 0:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 1'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 1'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear1_Value[0], 9U * sizeof(real_T));
       break;
 
      case 1:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 2'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 2'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear2_Value[0], 9U * sizeof(real_T));
       break;
 
      case 2:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 3'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 3'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear3_Value[0], 9U * sizeof(real_T));
       break;
 
      case 3:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 5'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 5'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear5_Value[0], 9U * sizeof(real_T));
       break;
 
      case 4:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 6'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 6'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear6_Value[0], 9U * sizeof(real_T));
       break;
 
      case 5:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 7'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 7'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear7_Value[0], 9U * sizeof(real_T));
       break;
 
      case 6:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 8'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 8'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear8_Value[0], 9U * sizeof(real_T));
       break;
 
      case 7:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 9'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 9'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear9_Value[0], 9U * sizeof(real_T));
       break;
 
      case 8:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 10'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 10'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear10_Value[0], 9U * sizeof(real_T));
       break;
 
      default:
-      /* MultiPortSwitch: '<S967>/Multiport Switch' incorporates:
-       *  Constant: '<S967>/Clutches Gear 11'
+      /* MultiPortSwitch: '<S962>/Multiport Switch' incorporates:
+       *  Constant: '<S962>/Clutches Gear 11'
        */
       memcpy(&GVCU_HIL_simscape_B.MultiportSwitch[0],
              &GVCU_HIL_simscape_P.ClutchesGear11_Value[0], 9U * sizeof(real_T));
       break;
     }
 
-    /* End of MultiPortSwitch: '<S967>/Multiport Switch' */
+    /* End of MultiPortSwitch: '<S962>/Multiport Switch' */
   }
 
-  /* SimscapeInputBlock: '<S291>/INPUT_24_1_1' */
+  /* SimscapeInputBlock: '<S291>/INPUT_22_1_1' */
   if (tmp) {
-    GVCU_HIL_simscape_B.INPUT_24_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[1];
+    GVCU_HIL_simscape_B.INPUT_22_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[1];
+    GVCU_HIL_simscape_B.INPUT_22_1_1[1] = 0.0;
+    GVCU_HIL_simscape_B.INPUT_22_1_1[2] = 0.0;
+    GVCU_HIL_simscape_DW.INPUT_22_1_1_SimscapeInternalDi[0] =
+      !(GVCU_HIL_simscape_B.INPUT_22_1_1[0] ==
+        GVCU_HIL_simscape_DW.INPUT_22_1_1_SimscapeInternalDi[1]);
+    GVCU_HIL_simscape_DW.INPUT_22_1_1_SimscapeInternalDi[1] =
+      GVCU_HIL_simscape_B.INPUT_22_1_1[0];
+    GVCU_HIL_simscape_B.INPUT_22_1_1[0] =
+      GVCU_HIL_simscape_DW.INPUT_22_1_1_SimscapeInternalDi[1];
+    GVCU_HIL_simscape_B.INPUT_22_1_1[3] =
+      GVCU_HIL_simscape_DW.INPUT_22_1_1_SimscapeInternalDi[0];
+
+    /* SimscapeInputBlock: '<S291>/INPUT_23_1_1' incorporates:
+     *  SimscapeInputBlock: '<S291>/INPUT_22_1_1'
+     */
+    GVCU_HIL_simscape_B.INPUT_23_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[0];
+    GVCU_HIL_simscape_B.INPUT_23_1_1[1] = 0.0;
+    GVCU_HIL_simscape_B.INPUT_23_1_1[2] = 0.0;
+    GVCU_HIL_simscape_DW.INPUT_23_1_1_SimscapeInternalDi[0] =
+      !(GVCU_HIL_simscape_B.INPUT_23_1_1[0] ==
+        GVCU_HIL_simscape_DW.INPUT_23_1_1_SimscapeInternalDi[1]);
+    GVCU_HIL_simscape_DW.INPUT_23_1_1_SimscapeInternalDi[1] =
+      GVCU_HIL_simscape_B.INPUT_23_1_1[0];
+    GVCU_HIL_simscape_B.INPUT_23_1_1[0] =
+      GVCU_HIL_simscape_DW.INPUT_23_1_1_SimscapeInternalDi[1];
+    GVCU_HIL_simscape_B.INPUT_23_1_1[3] =
+      GVCU_HIL_simscape_DW.INPUT_23_1_1_SimscapeInternalDi[0];
+
+    /* SimscapeInputBlock: '<S291>/INPUT_24_1_1' */
+    GVCU_HIL_simscape_B.INPUT_24_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[3];
     GVCU_HIL_simscape_B.INPUT_24_1_1[1] = 0.0;
     GVCU_HIL_simscape_B.INPUT_24_1_1[2] = 0.0;
     GVCU_HIL_simscape_DW.INPUT_24_1_1_SimscapeInternalDi[0] =
@@ -4671,10 +3796,8 @@ void GVCU_HIL_simscape_output(void)
     GVCU_HIL_simscape_B.INPUT_24_1_1[3] =
       GVCU_HIL_simscape_DW.INPUT_24_1_1_SimscapeInternalDi[0];
 
-    /* SimscapeInputBlock: '<S291>/INPUT_25_1_1' incorporates:
-     *  SimscapeInputBlock: '<S291>/INPUT_24_1_1'
-     */
-    GVCU_HIL_simscape_B.INPUT_25_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[0];
+    /* SimscapeInputBlock: '<S291>/INPUT_25_1_1' */
+    GVCU_HIL_simscape_B.INPUT_25_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[4];
     GVCU_HIL_simscape_B.INPUT_25_1_1[1] = 0.0;
     GVCU_HIL_simscape_B.INPUT_25_1_1[2] = 0.0;
     GVCU_HIL_simscape_DW.INPUT_25_1_1_SimscapeInternalDi[0] =
@@ -4688,7 +3811,7 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.INPUT_25_1_1_SimscapeInternalDi[0];
 
     /* SimscapeInputBlock: '<S291>/INPUT_26_1_1' */
-    GVCU_HIL_simscape_B.INPUT_26_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[3];
+    GVCU_HIL_simscape_B.INPUT_26_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[5];
     GVCU_HIL_simscape_B.INPUT_26_1_1[1] = 0.0;
     GVCU_HIL_simscape_B.INPUT_26_1_1[2] = 0.0;
     GVCU_HIL_simscape_DW.INPUT_26_1_1_SimscapeInternalDi[0] =
@@ -4702,7 +3825,7 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.INPUT_26_1_1_SimscapeInternalDi[0];
 
     /* SimscapeInputBlock: '<S291>/INPUT_27_1_1' */
-    GVCU_HIL_simscape_B.INPUT_27_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[4];
+    GVCU_HIL_simscape_B.INPUT_27_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[6];
     GVCU_HIL_simscape_B.INPUT_27_1_1[1] = 0.0;
     GVCU_HIL_simscape_B.INPUT_27_1_1[2] = 0.0;
     GVCU_HIL_simscape_DW.INPUT_27_1_1_SimscapeInternalDi[0] =
@@ -4716,7 +3839,7 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.INPUT_27_1_1_SimscapeInternalDi[0];
 
     /* SimscapeInputBlock: '<S291>/INPUT_28_1_1' */
-    GVCU_HIL_simscape_B.INPUT_28_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[5];
+    GVCU_HIL_simscape_B.INPUT_28_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[2];
     GVCU_HIL_simscape_B.INPUT_28_1_1[1] = 0.0;
     GVCU_HIL_simscape_B.INPUT_28_1_1[2] = 0.0;
     GVCU_HIL_simscape_DW.INPUT_28_1_1_SimscapeInternalDi[0] =
@@ -4730,7 +3853,7 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.INPUT_28_1_1_SimscapeInternalDi[0];
 
     /* SimscapeInputBlock: '<S291>/INPUT_29_1_1' */
-    GVCU_HIL_simscape_B.INPUT_29_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[6];
+    GVCU_HIL_simscape_B.INPUT_29_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[7];
     GVCU_HIL_simscape_B.INPUT_29_1_1[1] = 0.0;
     GVCU_HIL_simscape_B.INPUT_29_1_1[2] = 0.0;
     GVCU_HIL_simscape_DW.INPUT_29_1_1_SimscapeInternalDi[0] =
@@ -4744,7 +3867,7 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.INPUT_29_1_1_SimscapeInternalDi[0];
 
     /* SimscapeInputBlock: '<S291>/INPUT_30_1_1' */
-    GVCU_HIL_simscape_B.INPUT_30_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[2];
+    GVCU_HIL_simscape_B.INPUT_30_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[8];
     GVCU_HIL_simscape_B.INPUT_30_1_1[1] = 0.0;
     GVCU_HIL_simscape_B.INPUT_30_1_1[2] = 0.0;
     GVCU_HIL_simscape_DW.INPUT_30_1_1_SimscapeInternalDi[0] =
@@ -4757,36 +3880,9 @@ void GVCU_HIL_simscape_output(void)
     GVCU_HIL_simscape_B.INPUT_30_1_1[3] =
       GVCU_HIL_simscape_DW.INPUT_30_1_1_SimscapeInternalDi[0];
 
-    /* SimscapeInputBlock: '<S291>/INPUT_31_1_1' */
-    GVCU_HIL_simscape_B.INPUT_31_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[7];
-    GVCU_HIL_simscape_B.INPUT_31_1_1[1] = 0.0;
-    GVCU_HIL_simscape_B.INPUT_31_1_1[2] = 0.0;
-    GVCU_HIL_simscape_DW.INPUT_31_1_1_SimscapeInternalDi[0] =
-      !(GVCU_HIL_simscape_B.INPUT_31_1_1[0] ==
-        GVCU_HIL_simscape_DW.INPUT_31_1_1_SimscapeInternalDi[1]);
-    GVCU_HIL_simscape_DW.INPUT_31_1_1_SimscapeInternalDi[1] =
-      GVCU_HIL_simscape_B.INPUT_31_1_1[0];
-    GVCU_HIL_simscape_B.INPUT_31_1_1[0] =
-      GVCU_HIL_simscape_DW.INPUT_31_1_1_SimscapeInternalDi[1];
-    GVCU_HIL_simscape_B.INPUT_31_1_1[3] =
-      GVCU_HIL_simscape_DW.INPUT_31_1_1_SimscapeInternalDi[0];
-
-    /* SimscapeInputBlock: '<S291>/INPUT_32_1_1' */
-    GVCU_HIL_simscape_B.INPUT_32_1_1[0] = GVCU_HIL_simscape_B.MultiportSwitch[8];
-    GVCU_HIL_simscape_B.INPUT_32_1_1[1] = 0.0;
-    GVCU_HIL_simscape_B.INPUT_32_1_1[2] = 0.0;
-    GVCU_HIL_simscape_DW.INPUT_32_1_1_SimscapeInternalDi[0] =
-      !(GVCU_HIL_simscape_B.INPUT_32_1_1[0] ==
-        GVCU_HIL_simscape_DW.INPUT_32_1_1_SimscapeInternalDi[1]);
-    GVCU_HIL_simscape_DW.INPUT_32_1_1_SimscapeInternalDi[1] =
-      GVCU_HIL_simscape_B.INPUT_32_1_1[0];
-    GVCU_HIL_simscape_B.INPUT_32_1_1[0] =
-      GVCU_HIL_simscape_DW.INPUT_32_1_1_SimscapeInternalDi[1];
-    GVCU_HIL_simscape_B.INPUT_32_1_1[3] =
-      GVCU_HIL_simscape_DW.INPUT_32_1_1_SimscapeInternalDi[0];
-
     /* SimscapeExecutionBlock: '<S291>/STATE_2' incorporates:
      *  SimscapeExecutionBlock: '<S291>/OUTPUT_2_0'
+     *  SimscapeExecutionBlock: '<S291>/STATE_1'
      */
     simulationData = (NeslSimulationData *)GVCU_HIL_simscape_DW.STATE_2_SimData;
     time_3 = time_tmp_tmp;
@@ -4797,7 +3893,7 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mDiscStates.mN = 521;
     simulationData->mData->mDiscStates.mX =
       &GVCU_HIL_simscape_DW.STATE_2_Discrete[0];
-    simulationData->mData->mModeVector.mN = 225;
+    simulationData->mData->mModeVector.mN = 224;
     simulationData->mData->mModeVector.mX = &GVCU_HIL_simscape_DW.STATE_2_Modes
       [0];
     simulationData->mData->mSwitchingCoeffs.mN = 0;
@@ -4806,165 +3902,155 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.STATE_2_JacobElems;
-    first_output = false;
-    simulationData->mData->mFoundZcEvents = first_output;
+    tmp_4 = false;
+    simulationData->mData->mFoundZcEvents = tmp_4;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    first_output = false;
-    simulationData->mData->mIsSolverAssertCheck = first_output;
+    tmp_4 = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_4;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_5[0] = 0;
-    tmp_4[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
-    tmp_4[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
-    tmp_4[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
-    tmp_4[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
-    tmp_5[1] = 4;
-    tmp_4[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
-    tmp_4[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
-    tmp_4[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
-    tmp_4[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
-    tmp_5[2] = 8;
-    tmp_4[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
-    tmp_4[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
-    tmp_4[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
-    tmp_4[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
-    tmp_5[3] = 12;
-    tmp_4[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
-    tmp_4[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
-    tmp_4[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
-    tmp_4[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
-    tmp_5[4] = 16;
-    tmp_4[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
-    tmp_4[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
-    tmp_4[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
-    tmp_4[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
-    tmp_5[5] = 20;
-    tmp_4[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
-    tmp_4[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
-    tmp_4[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
-    tmp_4[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
-    tmp_5[6] = 24;
-    tmp_4[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
-    tmp_4[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
-    tmp_4[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
-    tmp_4[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
-    tmp_5[7] = 28;
-    tmp_4[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
-    tmp_4[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
-    tmp_4[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
-    tmp_4[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
-    tmp_5[8] = 32;
-    tmp_4[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
-    tmp_4[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
-    tmp_4[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
-    tmp_4[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
-    tmp_5[9] = 36;
-    tmp_4[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
-    tmp_4[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
-    tmp_4[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
-    tmp_4[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
-    tmp_5[10] = 40;
-    tmp_4[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
-    tmp_4[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
-    tmp_4[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
-    tmp_4[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
-    tmp_5[11] = 44;
-    tmp_4[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
-    tmp_4[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
-    tmp_4[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
-    tmp_4[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
-    tmp_5[12] = 48;
-    tmp_4[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
-    tmp_4[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
-    tmp_4[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
-    tmp_4[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
-    tmp_5[13] = 52;
-    tmp_4[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
-    tmp_4[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
-    tmp_4[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
-    tmp_4[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
-    tmp_5[14] = 56;
-    tmp_4[56] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
-    tmp_4[57] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
-    tmp_4[58] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
-    tmp_4[59] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
-    tmp_5[15] = 60;
-    tmp_4[60] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
-    tmp_4[61] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
-    tmp_4[62] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
-    tmp_4[63] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
-    tmp_5[16] = 64;
-    tmp_4[64] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
-    tmp_4[65] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
-    tmp_4[66] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
-    tmp_4[67] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
-    tmp_5[17] = 68;
-    tmp_4[68] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
-    tmp_4[69] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
-    tmp_4[70] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
-    tmp_4[71] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
-    tmp_5[18] = 72;
-    tmp_4[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
-    tmp_4[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
-    tmp_4[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
-    tmp_4[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
-    tmp_5[19] = 76;
-    tmp_4[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
-    tmp_4[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
-    tmp_4[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
-    tmp_4[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
-    tmp_5[20] = 80;
-    tmp_4[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
-    tmp_4[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
-    tmp_4[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
-    tmp_4[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
-    tmp_5[21] = 84;
-    tmp_4[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
-    tmp_4[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
-    tmp_4[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
-    tmp_4[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
-    tmp_5[22] = 88;
-    tmp_4[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
-    tmp_4[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
-    tmp_4[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
-    tmp_4[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
-    tmp_5[23] = 92;
-    tmp_4[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
-    tmp_4[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
-    tmp_4[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
-    tmp_4[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
-    tmp_5[24] = 96;
-    tmp_4[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
-    tmp_4[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
-    tmp_4[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
-    tmp_4[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
-    tmp_5[25] = 100;
-    tmp_4[100] = GVCU_HIL_simscape_B.INPUT_31_1_1[0];
-    tmp_4[101] = GVCU_HIL_simscape_B.INPUT_31_1_1[1];
-    tmp_4[102] = GVCU_HIL_simscape_B.INPUT_31_1_1[2];
-    tmp_4[103] = GVCU_HIL_simscape_B.INPUT_31_1_1[3];
-    tmp_5[26] = 104;
-    tmp_4[104] = GVCU_HIL_simscape_B.INPUT_32_1_1[0];
-    tmp_4[105] = GVCU_HIL_simscape_B.INPUT_32_1_1[1];
-    tmp_4[106] = GVCU_HIL_simscape_B.INPUT_32_1_1[2];
-    tmp_4[107] = GVCU_HIL_simscape_B.INPUT_32_1_1[3];
-    tmp_5[27] = 108;
-    simulationData->mData->mInputValues.mN = 108;
-    simulationData->mData->mInputValues.mX = &tmp_4[0];
-    simulationData->mData->mInputOffsets.mN = 28;
-    simulationData->mData->mInputOffsets.mX = &tmp_5[0];
-    simulationData->mData->mOutputs.mN = 354;
+    tmp_6[0] = 0;
+    tmp_5[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
+    tmp_5[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
+    tmp_5[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
+    tmp_5[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
+    tmp_6[1] = 4;
+    tmp_5[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
+    tmp_5[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
+    tmp_5[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
+    tmp_5[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
+    tmp_6[2] = 8;
+    tmp_5[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
+    tmp_5[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
+    tmp_5[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
+    tmp_5[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
+    tmp_6[3] = 12;
+    tmp_5[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
+    tmp_5[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
+    tmp_5[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
+    tmp_5[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
+    tmp_6[4] = 16;
+    tmp_5[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
+    tmp_5[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
+    tmp_5[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
+    tmp_5[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
+    tmp_6[5] = 20;
+    tmp_5[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
+    tmp_5[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
+    tmp_5[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
+    tmp_5[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
+    tmp_6[6] = 24;
+    tmp_5[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
+    tmp_5[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
+    tmp_5[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
+    tmp_5[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
+    tmp_6[7] = 28;
+    tmp_5[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
+    tmp_5[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
+    tmp_5[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
+    tmp_5[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
+    tmp_6[8] = 32;
+    tmp_5[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
+    tmp_5[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
+    tmp_5[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
+    tmp_5[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
+    tmp_6[9] = 36;
+    tmp_5[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
+    tmp_5[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
+    tmp_5[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
+    tmp_5[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
+    tmp_6[10] = 40;
+    tmp_5[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
+    tmp_5[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
+    tmp_5[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
+    tmp_5[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
+    tmp_6[11] = 44;
+    tmp_5[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
+    tmp_5[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
+    tmp_5[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
+    tmp_5[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
+    tmp_6[12] = 48;
+    tmp_5[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
+    tmp_5[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
+    tmp_5[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
+    tmp_5[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
+    tmp_6[13] = 52;
+    tmp_5[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
+    tmp_5[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
+    tmp_5[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
+    tmp_5[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
+    tmp_6[14] = 56;
+    tmp_5[56] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
+    tmp_5[57] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
+    tmp_5[58] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
+    tmp_5[59] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
+    tmp_6[15] = 60;
+    tmp_5[60] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
+    tmp_5[61] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
+    tmp_5[62] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
+    tmp_5[63] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
+    tmp_6[16] = 64;
+    tmp_5[64] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
+    tmp_5[65] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
+    tmp_5[66] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
+    tmp_5[67] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
+    tmp_6[17] = 68;
+    tmp_5[68] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
+    tmp_5[69] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
+    tmp_5[70] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
+    tmp_5[71] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
+    tmp_6[18] = 72;
+    tmp_5[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
+    tmp_5[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
+    tmp_5[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
+    tmp_5[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
+    tmp_6[19] = 76;
+    tmp_5[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
+    tmp_5[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
+    tmp_5[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
+    tmp_5[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
+    tmp_6[20] = 80;
+    tmp_5[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
+    tmp_5[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
+    tmp_5[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
+    tmp_5[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
+    tmp_6[21] = 84;
+    tmp_5[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
+    tmp_5[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
+    tmp_5[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
+    tmp_5[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
+    tmp_6[22] = 88;
+    tmp_5[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
+    tmp_5[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
+    tmp_5[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
+    tmp_5[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
+    tmp_6[23] = 92;
+    tmp_5[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
+    tmp_5[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
+    tmp_5[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
+    tmp_5[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
+    tmp_6[24] = 96;
+    tmp_5[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
+    tmp_5[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
+    tmp_5[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
+    tmp_5[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
+    tmp_6[25] = 100;
+    simulationData->mData->mInputValues.mN = 100;
+    simulationData->mData->mInputValues.mX = &tmp_5[0];
+    simulationData->mData->mInputOffsets.mN = 26;
+    simulationData->mData->mInputOffsets.mX = &tmp_6[0];
+    simulationData->mData->mOutputs.mN = 353;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.STATE_2[0];
     simulationData->mData->mTolerances.mN = 0;
     simulationData->mData->mTolerances.mX = NULL;
     simulationData->mData->mCstateHasChanged = false;
     simulationData->mData->mDstateHasChanged = false;
-    rtb_V_b = GVCU_HIL_simscape_M->Timing.t[4];
-    time_4 = rtb_V_b;
+    rtb_TransferFcn_d = GVCU_HIL_simscape_M->Timing.t[2];
+    time_4 = rtb_TransferFcn_d;
     simulationData->mData->mTime.mN = 1;
     simulationData->mData->mTime.mX = &time_4;
     isHit = 0;
@@ -4979,8 +4065,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.STATE_2_Simulator, NESL_SIM_OUTPUTS, simulationData,
       diagnosticManager);
     if (b_high_i != 0) {
-      first_output = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (first_output) {
+      tmp_4 = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_4) {
         msg_1 = rtw_diagnostics_msg(diagnosticTree_1);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_1);
       }
@@ -5249,7 +4335,9 @@ void GVCU_HIL_simscape_output(void)
 
     /* End of SimscapeExecutionBlock: '<S291>/STATE_2' */
 
-    /* SimscapeExecutionBlock: '<S291>/OUTPUT_2_0' */
+    /* SimscapeExecutionBlock: '<S291>/OUTPUT_2_0' incorporates:
+     *  SimscapeExecutionBlock: '<S291>/STATE_1'
+     */
     simulationData = (NeslSimulationData *)
       GVCU_HIL_simscape_DW.OUTPUT_2_0_SimData;
     time_5 = time_tmp_tmp;
@@ -5269,166 +4357,156 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_2_0_JacobElems;
-    first_output = false;
-    simulationData->mData->mFoundZcEvents = first_output;
+    tmp_4 = false;
+    simulationData->mData->mFoundZcEvents = tmp_4;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    first_output = false;
-    simulationData->mData->mIsSolverAssertCheck = first_output;
+    tmp_4 = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_4;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_7[0] = 0;
-    tmp_6[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
-    tmp_6[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
-    tmp_6[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
-    tmp_6[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
-    tmp_7[1] = 4;
-    tmp_6[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
-    tmp_6[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
-    tmp_6[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
-    tmp_6[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
-    tmp_7[2] = 8;
-    tmp_6[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
-    tmp_6[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
-    tmp_6[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
-    tmp_6[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
-    tmp_7[3] = 12;
-    tmp_6[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
-    tmp_6[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
-    tmp_6[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
-    tmp_6[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
-    tmp_7[4] = 16;
-    tmp_6[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
-    tmp_6[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
-    tmp_6[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
-    tmp_6[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
-    tmp_7[5] = 20;
-    tmp_6[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
-    tmp_6[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
-    tmp_6[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
-    tmp_6[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
-    tmp_7[6] = 24;
-    tmp_6[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
-    tmp_6[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
-    tmp_6[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
-    tmp_6[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
-    tmp_7[7] = 28;
-    tmp_6[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
-    tmp_6[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
-    tmp_6[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
-    tmp_6[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
-    tmp_7[8] = 32;
-    tmp_6[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
-    tmp_6[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
-    tmp_6[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
-    tmp_6[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
-    tmp_7[9] = 36;
-    tmp_6[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
-    tmp_6[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
-    tmp_6[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
-    tmp_6[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
-    tmp_7[10] = 40;
-    tmp_6[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
-    tmp_6[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
-    tmp_6[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
-    tmp_6[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
-    tmp_7[11] = 44;
-    tmp_6[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
-    tmp_6[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
-    tmp_6[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
-    tmp_6[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
-    tmp_7[12] = 48;
-    tmp_6[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
-    tmp_6[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
-    tmp_6[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
-    tmp_6[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
-    tmp_7[13] = 52;
-    tmp_6[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
-    tmp_6[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
-    tmp_6[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
-    tmp_6[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
-    tmp_7[14] = 56;
-    tmp_6[56] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
-    tmp_6[57] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
-    tmp_6[58] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
-    tmp_6[59] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
-    tmp_7[15] = 60;
-    tmp_6[60] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
-    tmp_6[61] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
-    tmp_6[62] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
-    tmp_6[63] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
-    tmp_7[16] = 64;
-    tmp_6[64] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
-    tmp_6[65] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
-    tmp_6[66] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
-    tmp_6[67] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
-    tmp_7[17] = 68;
-    tmp_6[68] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
-    tmp_6[69] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
-    tmp_6[70] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
-    tmp_6[71] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
-    tmp_7[18] = 72;
-    tmp_6[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
-    tmp_6[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
-    tmp_6[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
-    tmp_6[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
-    tmp_7[19] = 76;
-    tmp_6[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
-    tmp_6[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
-    tmp_6[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
-    tmp_6[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
-    tmp_7[20] = 80;
-    tmp_6[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
-    tmp_6[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
-    tmp_6[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
-    tmp_6[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
-    tmp_7[21] = 84;
-    tmp_6[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
-    tmp_6[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
-    tmp_6[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
-    tmp_6[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
-    tmp_7[22] = 88;
-    tmp_6[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
-    tmp_6[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
-    tmp_6[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
-    tmp_6[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
-    tmp_7[23] = 92;
-    tmp_6[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
-    tmp_6[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
-    tmp_6[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
-    tmp_6[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
-    tmp_7[24] = 96;
-    tmp_6[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
-    tmp_6[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
-    tmp_6[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
-    tmp_6[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
-    tmp_7[25] = 100;
-    tmp_6[100] = GVCU_HIL_simscape_B.INPUT_31_1_1[0];
-    tmp_6[101] = GVCU_HIL_simscape_B.INPUT_31_1_1[1];
-    tmp_6[102] = GVCU_HIL_simscape_B.INPUT_31_1_1[2];
-    tmp_6[103] = GVCU_HIL_simscape_B.INPUT_31_1_1[3];
-    tmp_7[26] = 104;
-    tmp_6[104] = GVCU_HIL_simscape_B.INPUT_32_1_1[0];
-    tmp_6[105] = GVCU_HIL_simscape_B.INPUT_32_1_1[1];
-    tmp_6[106] = GVCU_HIL_simscape_B.INPUT_32_1_1[2];
-    tmp_6[107] = GVCU_HIL_simscape_B.INPUT_32_1_1[3];
-    tmp_7[27] = 108;
-    memcpy(&tmp_6[108], &GVCU_HIL_simscape_B.STATE_2[0], 354U * sizeof(real_T));
-    tmp_7[28] = 462;
-    simulationData->mData->mInputValues.mN = 462;
-    simulationData->mData->mInputValues.mX = &tmp_6[0];
-    simulationData->mData->mInputOffsets.mN = 29;
-    simulationData->mData->mInputOffsets.mX = &tmp_7[0];
+    tmp_8[0] = 0;
+    tmp_7[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
+    tmp_7[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
+    tmp_7[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
+    tmp_7[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
+    tmp_8[1] = 4;
+    tmp_7[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
+    tmp_7[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
+    tmp_7[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
+    tmp_7[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
+    tmp_8[2] = 8;
+    tmp_7[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
+    tmp_7[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
+    tmp_7[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
+    tmp_7[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
+    tmp_8[3] = 12;
+    tmp_7[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
+    tmp_7[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
+    tmp_7[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
+    tmp_7[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
+    tmp_8[4] = 16;
+    tmp_7[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
+    tmp_7[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
+    tmp_7[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
+    tmp_7[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
+    tmp_8[5] = 20;
+    tmp_7[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
+    tmp_7[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
+    tmp_7[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
+    tmp_7[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
+    tmp_8[6] = 24;
+    tmp_7[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
+    tmp_7[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
+    tmp_7[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
+    tmp_7[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
+    tmp_8[7] = 28;
+    tmp_7[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
+    tmp_7[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
+    tmp_7[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
+    tmp_7[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
+    tmp_8[8] = 32;
+    tmp_7[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
+    tmp_7[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
+    tmp_7[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
+    tmp_7[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
+    tmp_8[9] = 36;
+    tmp_7[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
+    tmp_7[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
+    tmp_7[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
+    tmp_7[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
+    tmp_8[10] = 40;
+    tmp_7[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
+    tmp_7[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
+    tmp_7[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
+    tmp_7[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
+    tmp_8[11] = 44;
+    tmp_7[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
+    tmp_7[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
+    tmp_7[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
+    tmp_7[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
+    tmp_8[12] = 48;
+    tmp_7[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
+    tmp_7[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
+    tmp_7[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
+    tmp_7[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
+    tmp_8[13] = 52;
+    tmp_7[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
+    tmp_7[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
+    tmp_7[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
+    tmp_7[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
+    tmp_8[14] = 56;
+    tmp_7[56] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
+    tmp_7[57] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
+    tmp_7[58] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
+    tmp_7[59] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
+    tmp_8[15] = 60;
+    tmp_7[60] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
+    tmp_7[61] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
+    tmp_7[62] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
+    tmp_7[63] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
+    tmp_8[16] = 64;
+    tmp_7[64] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
+    tmp_7[65] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
+    tmp_7[66] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
+    tmp_7[67] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
+    tmp_8[17] = 68;
+    tmp_7[68] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
+    tmp_7[69] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
+    tmp_7[70] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
+    tmp_7[71] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
+    tmp_8[18] = 72;
+    tmp_7[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
+    tmp_7[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
+    tmp_7[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
+    tmp_7[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
+    tmp_8[19] = 76;
+    tmp_7[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
+    tmp_7[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
+    tmp_7[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
+    tmp_7[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
+    tmp_8[20] = 80;
+    tmp_7[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
+    tmp_7[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
+    tmp_7[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
+    tmp_7[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
+    tmp_8[21] = 84;
+    tmp_7[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
+    tmp_7[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
+    tmp_7[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
+    tmp_7[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
+    tmp_8[22] = 88;
+    tmp_7[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
+    tmp_7[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
+    tmp_7[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
+    tmp_7[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
+    tmp_8[23] = 92;
+    tmp_7[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
+    tmp_7[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
+    tmp_7[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
+    tmp_7[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
+    tmp_8[24] = 96;
+    tmp_7[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
+    tmp_7[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
+    tmp_7[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
+    tmp_7[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
+    tmp_8[25] = 100;
+    memcpy(&tmp_7[100], &GVCU_HIL_simscape_B.STATE_2[0], 353U * sizeof(real_T));
+    tmp_8[26] = 453;
+    simulationData->mData->mInputValues.mN = 453;
+    simulationData->mData->mInputValues.mX = &tmp_7[0];
+    simulationData->mData->mInputOffsets.mN = 27;
+    simulationData->mData->mInputOffsets.mX = &tmp_8[0];
     simulationData->mData->mOutputs.mN = 19;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.OUTPUT_2_0[0];
     simulationData->mData->mTolerances.mN = 0;
     simulationData->mData->mTolerances.mX = NULL;
     simulationData->mData->mCstateHasChanged = false;
     simulationData->mData->mDstateHasChanged = false;
-    time_6 = rtb_V_b;
+    time_6 = rtb_TransferFcn_d;
     simulationData->mData->mTime.mN = 1;
     simulationData->mData->mTime.mX = &time_6;
     isHit_0 = 0;
@@ -5443,8 +4521,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_2_0_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      first_output = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (first_output) {
+      tmp_4 = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_4) {
         msg_2 = rtw_diagnostics_msg(diagnosticTree_2);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_2);
       }
@@ -5457,7 +4535,7 @@ void GVCU_HIL_simscape_output(void)
     /* RateTransition: '<S4>/Rate Transition10' incorporates:
      *  Gain: '<S4>/Gain'
      */
-    if (rtb_RelationalOperator) {
+    if (didZcEventOccur) {
       GVCU_HIL_simscape_DW.RateTransition10_Buffer =
         GVCU_HIL_simscape_P.Gain_Gain_j * GVCU_HIL_simscape_B.rpm_c;
     }
@@ -5468,7 +4546,7 @@ void GVCU_HIL_simscape_output(void)
    *  Constant: '<S4>/Constant36'
    *  Constant: '<S4>/Constant4'
    */
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* Saturate: '<S4>/Saturation2' */
     if (GVCU_HIL_simscape_DW.RateTransition10_Buffer >
         GVCU_HIL_simscape_P.Saturation2_UpperSat_a) {
@@ -5501,27 +4579,27 @@ void GVCU_HIL_simscape_output(void)
     /* Level2 S-Function Block: '<S155>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_simscape_M->childSfunctions[4];
-      sfcnOutputs(rts,5);
+      sfcnOutputs(rts,3);
     }
   }
 
   if (tmp) {
     /* Gain: '<S4>/Gain1' */
-    rtb_V_b = GVCU_HIL_simscape_P.Gain1_Gain_a * GVCU_HIL_simscape_B.OUTPUT_2_0
-      [14];
+    rtb_TransferFcn_d = GVCU_HIL_simscape_P.Gain1_Gain_a *
+      GVCU_HIL_simscape_B.OUTPUT_2_0[14];
 
     /* Saturate: '<S4>/Saturation' */
-    if (rtb_V_b > GVCU_HIL_simscape_P.Saturation_UpperSat_km) {
+    if (rtb_TransferFcn_d > GVCU_HIL_simscape_P.Saturation_UpperSat_k) {
       /* Saturate: '<S4>/Saturation' */
       GVCU_HIL_simscape_B.actual_torque =
-        GVCU_HIL_simscape_P.Saturation_UpperSat_km;
-    } else if (rtb_V_b < GVCU_HIL_simscape_P.Saturation_LowerSat_ek) {
+        GVCU_HIL_simscape_P.Saturation_UpperSat_k;
+    } else if (rtb_TransferFcn_d < GVCU_HIL_simscape_P.Saturation_LowerSat_e) {
       /* Saturate: '<S4>/Saturation' */
       GVCU_HIL_simscape_B.actual_torque =
-        GVCU_HIL_simscape_P.Saturation_LowerSat_ek;
+        GVCU_HIL_simscape_P.Saturation_LowerSat_e;
     } else {
       /* Saturate: '<S4>/Saturation' */
-      GVCU_HIL_simscape_B.actual_torque = rtb_V_b;
+      GVCU_HIL_simscape_B.actual_torque = rtb_TransferFcn_d;
     }
 
     /* End of Saturate: '<S4>/Saturation' */
@@ -5532,9 +4610,7 @@ void GVCU_HIL_simscape_output(void)
     GVCU_HIL_simscape_B.uDLookupTable = look1_binlcapw(fabs
       (GVCU_HIL_simscape_B.rpm_c), GVCU_HIL_simscape_P.uDLookupTable_bp01Data,
       GVCU_HIL_simscape_P.uDLookupTable_tableData, 5U);
-  }
 
-  if (tmp_1p) {
     /* Constant: '<S4>/Constant37' */
     GVCU_HIL_simscape_B.e2e_alive_counter_disabled_h =
       GVCU_HIL_simscape_P.Constant37_Value;
@@ -5544,51 +4620,44 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_P.Constant38_Value;
   }
 
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6] == 0)) {
+  if (tmp_1p && didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition13' */
     /* Gain: '<S4>/Gain2' */
-    rtb_V_b = GVCU_HIL_simscape_P.Gain2_Gain_o * GVCU_HIL_simscape_B.SFunction_e;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Gain2_Gain_o *
+      GVCU_HIL_simscape_B.SFunction_e;
 
     /* Saturate: '<S4>/Saturation1' */
-    if (rtb_V_b > GVCU_HIL_simscape_P.Saturation1_UpperSat_g) {
+    if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.Saturation1_UpperSat_g) {
       GVCU_HIL_simscape_DW.RateTransition13_Buffer =
         GVCU_HIL_simscape_P.Saturation1_UpperSat_g;
-    } else if (rtb_V_b < GVCU_HIL_simscape_P.Saturation1_LowerSat_h) {
+    } else if (rtb_TransferFcn_k < GVCU_HIL_simscape_P.Saturation1_LowerSat_h) {
       GVCU_HIL_simscape_DW.RateTransition13_Buffer =
         GVCU_HIL_simscape_P.Saturation1_LowerSat_h;
     } else {
-      GVCU_HIL_simscape_DW.RateTransition13_Buffer = rtb_V_b;
+      GVCU_HIL_simscape_DW.RateTransition13_Buffer = rtb_TransferFcn_k;
     }
 
     /* End of Saturate: '<S4>/Saturation1' */
   }
 
-  /* RateTransition: '<S4>/Rate Transition13' incorporates:
-   *  RateTransition: '<S1>/Rate Transition'
-   *  RateTransition: '<S1>/Rate Transition1'
-   *  RateTransition: '<S1>/Rate Transition2'
-   *  RateTransition: '<S1>/Rate Transition3'
-   */
-  first_output = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                  GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6] == 0);
-  if (first_output) {
+  /* RateTransition: '<S4>/Rate Transition13' */
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition13' */
     GVCU_HIL_simscape_B.requested_torque =
       GVCU_HIL_simscape_DW.RateTransition13_Buffer;
   }
 
-  if (tmp_1p) {
+  if (tmp) {
     /* S-Function (sigout): '<S159>/S-Function_1' */
 
     /* Level2 S-Function Block: '<S159>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_simscape_M->childSfunctions[5];
-      sfcnOutputs(rts,3);
+      sfcnOutputs(rts,2);
     }
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* Constant: '<S4>/Constant5' */
     GVCU_HIL_simscape_B.e2e_alive_counter_disabled_j =
       GVCU_HIL_simscape_P.Constant5_Value;
@@ -5600,16 +4669,17 @@ void GVCU_HIL_simscape_output(void)
 
   if (tmp) {
     /* Product: '<S4>/Product' */
-    rtb_V_b = GVCU_HIL_simscape_B.OUTPUT_2_0[14] * GVCU_HIL_simscape_B.rpm_c;
+    rtb_TransferFcn_d = GVCU_HIL_simscape_B.OUTPUT_2_0[14] *
+      GVCU_HIL_simscape_B.rpm_c;
 
     /* RateTransition: '<S4>/Rate Transition11' */
-    if (rtb_RelationalOperator) {
-      GVCU_HIL_simscape_DW.RateTransition11_Buffer = rtb_V_b;
+    if (didZcEventOccur) {
+      GVCU_HIL_simscape_DW.RateTransition11_Buffer = rtb_TransferFcn_d;
     }
   }
 
   /* RateTransition: '<S4>/Rate Transition11' */
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition11' */
     GVCU_HIL_simscape_B.mechanical_pwr_out =
       GVCU_HIL_simscape_DW.RateTransition11_Buffer;
@@ -5619,11 +4689,11 @@ void GVCU_HIL_simscape_output(void)
     /* Level2 S-Function Block: '<S161>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_simscape_M->childSfunctions[6];
-      sfcnOutputs(rts,5);
+      sfcnOutputs(rts,3);
     }
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sigin): '<S165>/S-Function' */
 
     /* Level2 S-Function Block: '<S165>/S-Function' (sigin) */
@@ -5641,21 +4711,21 @@ void GVCU_HIL_simscape_output(void)
   /* RateTransition: '<S4>/Rate Transition15' incorporates:
    *  RateTransition: '<S4>/Rate Transition14'
    */
-  if (tmp_1o && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[8] == 0)) {
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6] == 0)) {
     GVCU_HIL_simscape_DW.RateTransition15_Buffer =
       GVCU_HIL_simscape_B.TransferFcn_m;
   }
 
-  rtb_RelationalOperator = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-    GVCU_HIL_simscape_M->Timing.TaskCounters.TID[8] == 0);
-  if (rtb_RelationalOperator) {
+  didZcEventOccur = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6] == 0);
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition15' */
     GVCU_HIL_simscape_B.dc_current =
       GVCU_HIL_simscape_DW.RateTransition15_Buffer;
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* Switch: '<S201>/Switch' incorporates:
      *  Constant: '<S197>/Constant1'
      */
@@ -5694,22 +4764,23 @@ void GVCU_HIL_simscape_output(void)
    *  Constant: '<S202>/Constant1'
    *  Integrator: '<S201>/Integrator Limited'
    */
-  rtb_V_b = GVCU_HIL_simscape_X.IntegratorLimited_CSTATE /
+  rtb_TransferFcn_k = GVCU_HIL_simscape_X.IntegratorLimited_CSTATE /
     GVCU_HIL_simscape_P.DatasheetBattery2_BattChargeMax;
 
   /* Gain: '<S203>/Gain1' incorporates:
    *  Constant: '<S190>/Temperature1'
    *  Gain: '<S203>/Gain2'
+   *  Integrator: '<S110>/Integrator'
    *  Lookup_n-D: '<S206>/Em LUT'
    *  Lookup_n-D: '<S207>/R LUT'
    *  Product: '<S203>/Product'
    *  Sum: '<S203>/Subtract'
    */
-  GVCU_HIL_simscape_B.Gain1 = (look1_binlcapw(rtb_V_b,
+  GVCU_HIL_simscape_B.Gain1 = (look1_binlcapw(rtb_TransferFcn_k,
     GVCU_HIL_simscape_P.DatasheetBattery2_SOCEmBp,
     GVCU_HIL_simscape_P.DatasheetBattery2_Em, 9U) - 1.0 /
     GVCU_HIL_simscape_P.DatasheetBattery2_Np * GVCU_HIL_simscape_B.TransferFcn_m
-    * look2_binlcapw(GVCU_HIL_simscape_P.Temperature1_Value, rtb_V_b,
+    * look2_binlcapw(GVCU_HIL_simscape_P.Temperature1_Value, rtb_TransferFcn_k,
                      GVCU_HIL_simscape_P.DatasheetBattery2_BattTempBp,
                      GVCU_HIL_simscape_P.DatasheetBattery2_SOCRintBp,
                      GVCU_HIL_simscape_P.DatasheetBattery2_RInt,
@@ -5725,8 +4796,8 @@ void GVCU_HIL_simscape_output(void)
    *  Constant: '<S4>/Constant19'
    *  Constant: '<S4>/Constant9'
    */
-  if (tmp_1o) {
-    if (rtb_RelationalOperator) {
+  if (tmp_1p) {
+    if (didZcEventOccur) {
       GVCU_HIL_simscape_DW.RateTransition14_Buffer = GVCU_HIL_simscape_B.Gain1;
     }
 
@@ -5744,7 +4815,7 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_P.Constant19_Value;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition14' */
     GVCU_HIL_simscape_B.dc_voltage =
       GVCU_HIL_simscape_DW.RateTransition14_Buffer;
@@ -5761,7 +4832,7 @@ void GVCU_HIL_simscape_output(void)
      GVCU_HIL_simscape_DW.TransportDelay1_IWORK[0],
      GVCU_HIL_simscape_DW.TransportDelay1_IWORK[1],
      GVCU_HIL_simscape_P.TransportDelay1_InitOutput,true,false);
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* Constant: '<S4>/Constant6' */
     GVCU_HIL_simscape_B.torque_limit_reason =
       GVCU_HIL_simscape_P.Constant6_Value;
@@ -6032,7 +5103,7 @@ void GVCU_HIL_simscape_output(void)
      *  Constant: '<S4>/Constant20'
      */
     if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-        GVCU_HIL_simscape_M->Timing.TaskCounters.TID[9] == 0) {
+        GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7] == 0) {
       GVCU_HIL_simscape_DW.RateTransition_Buffer_j =
         GVCU_HIL_simscape_P.Constant20_Value_c;
     }
@@ -6049,9 +5120,9 @@ void GVCU_HIL_simscape_output(void)
    *  RateTransition: '<S4>/Rate Transition8'
    *  RateTransition: '<S4>/Rate Transition9'
    */
-  rtb_RelationalOperator = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-    GVCU_HIL_simscape_M->Timing.TaskCounters.TID[9] == 0);
-  if (rtb_RelationalOperator) {
+  didZcEventOccur = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7] == 0);
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition' */
     GVCU_HIL_simscape_B.coolant_temp =
       GVCU_HIL_simscape_DW.RateTransition_Buffer_j;
@@ -6060,12 +5131,12 @@ void GVCU_HIL_simscape_output(void)
   /* RateTransition: '<S4>/Rate Transition1' incorporates:
    *  Constant: '<S4>/Constant21'
    */
-  if (tmp_1o && rtb_RelationalOperator) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition1_Buffer_c =
       GVCU_HIL_simscape_P.Constant21_Value_i;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition1' */
     GVCU_HIL_simscape_B.dc_cap_temp_1 =
       GVCU_HIL_simscape_DW.RateTransition1_Buffer_c;
@@ -6074,12 +5145,12 @@ void GVCU_HIL_simscape_output(void)
   /* RateTransition: '<S4>/Rate Transition2' incorporates:
    *  Constant: '<S4>/Constant22'
    */
-  if (tmp_1o && rtb_RelationalOperator) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition2_Buffer =
       GVCU_HIL_simscape_P.Constant22_Value;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition2' */
     GVCU_HIL_simscape_B.dc_cap_temp_2 =
       GVCU_HIL_simscape_DW.RateTransition2_Buffer;
@@ -6090,12 +5161,12 @@ void GVCU_HIL_simscape_output(void)
    *  Constant: '<S4>/Constant24'
    *  Constant: '<S4>/Constant25'
    */
-  if (tmp_1o && rtb_RelationalOperator) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition3_Buffer =
       GVCU_HIL_simscape_P.Constant23_Value;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition3' */
     GVCU_HIL_simscape_B.driver_board_temp_max =
       GVCU_HIL_simscape_DW.RateTransition3_Buffer;
@@ -6108,12 +5179,12 @@ void GVCU_HIL_simscape_output(void)
   /* RateTransition: '<S4>/Rate Transition4' incorporates:
    *  Constant: '<S4>/Constant26'
    */
-  if (tmp_1o && rtb_RelationalOperator) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition4_Buffer =
       GVCU_HIL_simscape_P.Constant26_Value;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition4' */
     GVCU_HIL_simscape_B.mosfet_temp_max =
       GVCU_HIL_simscape_DW.RateTransition4_Buffer;
@@ -6124,12 +5195,12 @@ void GVCU_HIL_simscape_output(void)
    *  Constant: '<S4>/Constant32'
    *  Constant: '<S4>/Constant33'
    */
-  if (tmp_1o && rtb_RelationalOperator) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition5_Buffer =
       GVCU_HIL_simscape_P.Constant27_Value;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition5' */
     GVCU_HIL_simscape_B.pcb_temp = GVCU_HIL_simscape_DW.RateTransition5_Buffer;
 
@@ -6138,7 +5209,7 @@ void GVCU_HIL_simscape_output(void)
     /* Level2 S-Function Block: '<S157>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_simscape_M->childSfunctions[13];
-      sfcnOutputs(rts,9);
+      sfcnOutputs(rts,7);
     }
 
     GVCU_HIL_simscape_B.e2e_alive_counter_disabled_e =
@@ -6150,12 +5221,12 @@ void GVCU_HIL_simscape_output(void)
   /* RateTransition: '<S4>/Rate Transition6' incorporates:
    *  Constant: '<S4>/Constant28'
    */
-  if (tmp_1o && rtb_RelationalOperator) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition6_Buffer =
       GVCU_HIL_simscape_P.Constant28_Value;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition6' */
     GVCU_HIL_simscape_B.motor_temp_a1 =
       GVCU_HIL_simscape_DW.RateTransition6_Buffer;
@@ -6164,12 +5235,12 @@ void GVCU_HIL_simscape_output(void)
   /* RateTransition: '<S4>/Rate Transition7' incorporates:
    *  Constant: '<S4>/Constant29'
    */
-  if (tmp_1o && rtb_RelationalOperator) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition7_Buffer =
       GVCU_HIL_simscape_P.Constant29_Value;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition7' */
     GVCU_HIL_simscape_B.motor_temp_a2 =
       GVCU_HIL_simscape_DW.RateTransition7_Buffer;
@@ -6178,12 +5249,12 @@ void GVCU_HIL_simscape_output(void)
   /* RateTransition: '<S4>/Rate Transition8' incorporates:
    *  Constant: '<S4>/Constant30'
    */
-  if (tmp_1o && rtb_RelationalOperator) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition8_Buffer =
       GVCU_HIL_simscape_P.Constant30_Value;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition8' */
     GVCU_HIL_simscape_B.motor_temp_a3 =
       GVCU_HIL_simscape_DW.RateTransition8_Buffer;
@@ -6192,12 +5263,12 @@ void GVCU_HIL_simscape_output(void)
   /* RateTransition: '<S4>/Rate Transition9' incorporates:
    *  Constant: '<S4>/Constant31'
    */
-  if (tmp_1o && rtb_RelationalOperator) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition9_Buffer =
       GVCU_HIL_simscape_P.Constant31_Value;
   }
 
-  if (rtb_RelationalOperator) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S4>/Rate Transition9' */
     GVCU_HIL_simscape_B.motor_temp_a4 =
       GVCU_HIL_simscape_DW.RateTransition9_Buffer;
@@ -6207,11 +5278,11 @@ void GVCU_HIL_simscape_output(void)
     /* Level2 S-Function Block: '<S158>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_simscape_M->childSfunctions[14];
-      sfcnOutputs(rts,9);
+      sfcnOutputs(rts,7);
     }
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* Constant: '<S4>/Constant89' */
     GVCU_HIL_simscape_B.ac_i_sensor_calibration =
       GVCU_HIL_simscape_P.Constant89_Value;
@@ -6326,22 +5397,24 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* Abs: '<S8>/Abs' */
-  rtb_V_b = fabs(GVCU_HIL_simscape_B.OUTPUT_1_0[24]);
+  rtb_TransferFcn_d = fabs(GVCU_HIL_simscape_B.OUTPUT_1_0[24]);
 
   /* Saturate: '<S8>/Saturation' */
-  if (rtb_V_b > GVCU_HIL_simscape_P.Saturation_UpperSat_h) {
+  if (rtb_TransferFcn_d > GVCU_HIL_simscape_P.Saturation_UpperSat_h) {
     /* Saturate: '<S8>/Saturation' */
-    GVCU_HIL_simscape_B.Saturation_c = GVCU_HIL_simscape_P.Saturation_UpperSat_h;
-  } else if (rtb_V_b < GVCU_HIL_simscape_P.Saturation_LowerSat_n) {
+    GVCU_HIL_simscape_B.Saturation_cd =
+      GVCU_HIL_simscape_P.Saturation_UpperSat_h;
+  } else if (rtb_TransferFcn_d < GVCU_HIL_simscape_P.Saturation_LowerSat_n) {
     /* Saturate: '<S8>/Saturation' */
-    GVCU_HIL_simscape_B.Saturation_c = GVCU_HIL_simscape_P.Saturation_LowerSat_n;
+    GVCU_HIL_simscape_B.Saturation_cd =
+      GVCU_HIL_simscape_P.Saturation_LowerSat_n;
   } else {
     /* Saturate: '<S8>/Saturation' */
-    GVCU_HIL_simscape_B.Saturation_c = rtb_V_b;
+    GVCU_HIL_simscape_B.Saturation_cd = rtb_TransferFcn_d;
   }
 
   /* End of Saturate: '<S8>/Saturation' */
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sigout): '<S278>/S-Function' */
 
     /* Level2 S-Function Block: '<S278>/S-Function' (sigout) */
@@ -6352,24 +5425,24 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* Abs: '<S8>/Abs1' */
-  rtb_V_b = fabs(GVCU_HIL_simscape_B.OUTPUT_1_0[31]);
+  rtb_TransferFcn_d = fabs(GVCU_HIL_simscape_B.OUTPUT_1_0[31]);
 
   /* Saturate: '<S8>/Saturation1' */
-  if (rtb_V_b > GVCU_HIL_simscape_P.Saturation1_UpperSat_c) {
+  if (rtb_TransferFcn_d > GVCU_HIL_simscape_P.Saturation1_UpperSat_c) {
     /* Saturate: '<S8>/Saturation1' */
     GVCU_HIL_simscape_B.Saturation1_i =
       GVCU_HIL_simscape_P.Saturation1_UpperSat_c;
-  } else if (rtb_V_b < GVCU_HIL_simscape_P.Saturation1_LowerSat_g) {
+  } else if (rtb_TransferFcn_d < GVCU_HIL_simscape_P.Saturation1_LowerSat_g) {
     /* Saturate: '<S8>/Saturation1' */
     GVCU_HIL_simscape_B.Saturation1_i =
       GVCU_HIL_simscape_P.Saturation1_LowerSat_g;
   } else {
     /* Saturate: '<S8>/Saturation1' */
-    GVCU_HIL_simscape_B.Saturation1_i = rtb_V_b;
+    GVCU_HIL_simscape_B.Saturation1_i = rtb_TransferFcn_d;
   }
 
   /* End of Saturate: '<S8>/Saturation1' */
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sigout): '<S279>/S-Function' */
 
     /* Level2 S-Function Block: '<S279>/S-Function' (sigout) */
@@ -6391,7 +5464,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* End of MATLAB Function: '<S8>/MATLAB Function2' */
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sigout): '<S280>/S-Function' */
 
     /* Level2 S-Function Block: '<S280>/S-Function' (sigout) */
@@ -6410,24 +5483,24 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* Abs: '<S8>/Abs2' */
-  rtb_V_b = fabs(GVCU_HIL_simscape_B.OUTPUT_1_0[38]);
+  rtb_TransferFcn_d = fabs(GVCU_HIL_simscape_B.OUTPUT_1_0[38]);
 
   /* Saturate: '<S8>/Saturation2' */
-  if (rtb_V_b > GVCU_HIL_simscape_P.Saturation2_UpperSat_p) {
+  if (rtb_TransferFcn_d > GVCU_HIL_simscape_P.Saturation2_UpperSat_p) {
     /* Saturate: '<S8>/Saturation2' */
     GVCU_HIL_simscape_B.Saturation2_p =
       GVCU_HIL_simscape_P.Saturation2_UpperSat_p;
-  } else if (rtb_V_b < GVCU_HIL_simscape_P.Saturation2_LowerSat_b) {
+  } else if (rtb_TransferFcn_d < GVCU_HIL_simscape_P.Saturation2_LowerSat_b) {
     /* Saturate: '<S8>/Saturation2' */
     GVCU_HIL_simscape_B.Saturation2_p =
       GVCU_HIL_simscape_P.Saturation2_LowerSat_b;
   } else {
     /* Saturate: '<S8>/Saturation2' */
-    GVCU_HIL_simscape_B.Saturation2_p = rtb_V_b;
+    GVCU_HIL_simscape_B.Saturation2_p = rtb_TransferFcn_d;
   }
 
   /* End of Saturate: '<S8>/Saturation2' */
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sigout): '<S282>/S-Function' */
 
     /* Level2 S-Function Block: '<S282>/S-Function' (sigout) */
@@ -6438,22 +5511,22 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* Abs: '<S8>/Abs3' */
-  rtb_V_b = fabs(GVCU_HIL_simscape_B.OUTPUT_1_0[45]);
+  rtb_TransferFcn_d = fabs(GVCU_HIL_simscape_B.OUTPUT_1_0[45]);
 
   /* Saturate: '<S8>/Saturation3' */
-  if (rtb_V_b > GVCU_HIL_simscape_P.Saturation3_UpperSat_a) {
+  if (rtb_TransferFcn_d > GVCU_HIL_simscape_P.Saturation3_UpperSat_a) {
     /* Saturate: '<S8>/Saturation3' */
     GVCU_HIL_simscape_B.Saturation3 = GVCU_HIL_simscape_P.Saturation3_UpperSat_a;
-  } else if (rtb_V_b < GVCU_HIL_simscape_P.Saturation3_LowerSat_d) {
+  } else if (rtb_TransferFcn_d < GVCU_HIL_simscape_P.Saturation3_LowerSat_d) {
     /* Saturate: '<S8>/Saturation3' */
     GVCU_HIL_simscape_B.Saturation3 = GVCU_HIL_simscape_P.Saturation3_LowerSat_d;
   } else {
     /* Saturate: '<S8>/Saturation3' */
-    GVCU_HIL_simscape_B.Saturation3 = rtb_V_b;
+    GVCU_HIL_simscape_B.Saturation3 = rtb_TransferFcn_d;
   }
 
   /* End of Saturate: '<S8>/Saturation3' */
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sigout): '<S283>/S-Function' */
 
     /* Level2 S-Function Block: '<S283>/S-Function' (sigout) */
@@ -6521,6 +5594,506 @@ void GVCU_HIL_simscape_output(void)
       SimStruct *rts = GVCU_HIL_simscape_M->childSfunctions[27];
       sfcnOutputs(rts,0);
     }
+  }
+
+  /* Clock: '<S2>/Clock' */
+  GVCU_HIL_simscape_B.Clock_g = time_tmp_tmp;
+  if (tmp_1p) {
+    /* S-Function (sysvarin): '<S36>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar, 1,
+         &GVCU_HIL_simscape_B.SFunction_h, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarin): '<S37>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_c, 1,
+         &GVCU_HIL_simscape_B.SFunction_p0, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarin): '<S47>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_m, 1,
+         &GVCU_HIL_simscape_B.SFunction_l, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarin): '<S48>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_p, 1,
+         &GVCU_HIL_simscape_B.SFunction_o, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarin): '<S49>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_p0, 1,
+         &GVCU_HIL_simscape_B.SFunction_oj, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarin): '<S50>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_b, 1,
+         &GVCU_HIL_simscape_B.SFunction_h0, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
+    }
+  }
+
+  /* Step: '<S31>/Step' */
+  if (time_tmp < GVCU_HIL_simscape_P.Step_Time) {
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_Y0;
+  } else {
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_YFinal;
+  }
+
+  /* Step: '<S31>/Step1' */
+  if (time_tmp < GVCU_HIL_simscape_P.Step1_Time) {
+    rtb_Delay = GVCU_HIL_simscape_P.Step1_Y0;
+  } else {
+    rtb_Delay = GVCU_HIL_simscape_P.Step1_YFinal;
+  }
+
+  /* Sum: '<S31>/Add' incorporates:
+   *  Step: '<S31>/Step'
+   *  Step: '<S31>/Step1'
+   *  Sum: '<S31>/Subtract1'
+   */
+  GVCU_HIL_simscape_B.Add_j = (rtb_TransferFcn_k - rtb_Delay) +
+    GVCU_HIL_simscape_B.SFunction_h0;
+  if (tmp_1p) {
+    /* MATLAB Function: '<S31>/MATLAB Function2' */
+    rtb_V_b = GVCU_HIL_simscape_B.SFunction_l;
+    rtb_TransferFcn_d = GVCU_HIL_simscape_B.SFunction_o;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_B.SFunction_oj;
+    rtb_Delay = GVCU_HIL_simscape_B.Add_j;
+    if (!GVCU_HIL_simscape_DW.main_state_not_empty) {
+      GVCU_HIL_simscape_DW.main_state_not_empty = true;
+      GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                            &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+    }
+
+    if ((rtb_TransferFcn_d != 0.0) &&
+        !(GVCU_HIL_simscape_DW.prev_trans_park_neutral != 0.0)) {
+      GVCU_HIL_simscape_DW.pending_park_neutral = 1.0;
+    }
+
+    if ((rtb_TransferFcn_k != 0.0) &&
+        !(GVCU_HIL_simscape_DW.prev_trans_neutral_drive != 0.0)) {
+      GVCU_HIL_simscape_DW.pending_neutral_drive = 1.0;
+    }
+
+    if ((rtb_Delay != 0.0) && !(GVCU_HIL_simscape_DW.prev_trans_park_drive !=
+         0.0)) {
+      GVCU_HIL_simscape_DW.pending_park_drive = 1.0;
+    }
+
+    GVCU_HIL_simscape_DW.prev_trans_park_neutral = rtb_TransferFcn_d;
+    GVCU_HIL_simscape_DW.prev_trans_neutral_drive = rtb_TransferFcn_k;
+    GVCU_HIL_simscape_DW.prev_trans_park_drive = rtb_Delay;
+    if (GVCU_HIL_simscape_DW.main_state == 0.0) {
+      if (GVCU_HIL_simscape_DW.pending_park_drive != 0.0) {
+        GVCU_HIL_simscape_DW.main_state = 3.0;
+        GVCU_HIL_simscape_DW.sub_state = 0.0;
+        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        GVCU_HIL_simscape_DW.pending_park_drive = 0.0;
+      } else if (GVCU_HIL_simscape_DW.pending_park_neutral != 0.0) {
+        GVCU_HIL_simscape_DW.main_state = 1.0;
+        GVCU_HIL_simscape_DW.sub_state = 0.0;
+        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        GVCU_HIL_simscape_DW.pending_park_neutral = 0.0;
+      } else if (GVCU_HIL_simscape_DW.pending_neutral_drive != 0.0) {
+        GVCU_HIL_simscape_DW.main_state = 2.0;
+        GVCU_HIL_simscape_DW.sub_state = 0.0;
+        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        GVCU_HIL_simscape_DW.pending_neutral_drive = 0.0;
+      }
+    }
+
+    switch ((int32_T)GVCU_HIL_simscape_DW.main_state) {
+     case 0:
+      GVCU_HIL_simscape_DW.brake_switch_internal = 1.0;
+      GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+      GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+      break;
+
+     case 1:
+      rtb_V_b = 0.0;
+      switch ((int32_T)GVCU_HIL_simscape_DW.sub_state) {
+       case 0:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        GVCU_HIL_simscape_DW.sub_state = 1.0;
+        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        break;
+
+       case 1:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 2.0;
+        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
+             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 1.0) {
+          GVCU_HIL_simscape_DW.sub_state = 2.0;
+          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        }
+        break;
+
+       case 2:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
+             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 0.2) {
+          GVCU_HIL_simscape_DW.sub_state = 3.0;
+        }
+        break;
+
+       case 3:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        GVCU_HIL_simscape_DW.main_state = 0.0;
+        GVCU_HIL_simscape_DW.sub_state = 0.0;
+        break;
+      }
+      break;
+
+     case 2:
+      rtb_V_b = 0.0;
+      switch ((int32_T)GVCU_HIL_simscape_DW.sub_state) {
+       case 0:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        GVCU_HIL_simscape_DW.sub_state = 1.0;
+        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        break;
+
+       case 1:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
+             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 1.0) {
+          GVCU_HIL_simscape_DW.sub_state = 2.0;
+          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        }
+        break;
+
+       case 2:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
+             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 0.2) {
+          GVCU_HIL_simscape_DW.sub_state = 3.0;
+        }
+        break;
+
+       case 3:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        GVCU_HIL_simscape_DW.main_state = 0.0;
+        GVCU_HIL_simscape_DW.sub_state = 0.0;
+        break;
+      }
+      break;
+
+     case 3:
+      rtb_V_b = 0.0;
+      switch ((int32_T)GVCU_HIL_simscape_DW.sub_state) {
+       case 0:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        GVCU_HIL_simscape_DW.sub_state = 1.0;
+        GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                              &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        break;
+
+       case 1:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 2.0;
+        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
+             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 1.0) {
+          GVCU_HIL_simscape_DW.sub_state = 2.0;
+          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        }
+        break;
+
+       case 2:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
+             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 0.2) {
+          GVCU_HIL_simscape_DW.sub_state = 3.0;
+          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        }
+        break;
+
+       case 3:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
+             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 1.0) {
+          GVCU_HIL_simscape_DW.sub_state = 4.0;
+          GVCU_HIL_simscape_tic(&GVCU_HIL_simscape_DW.t_start.tv_sec,
+                                &GVCU_HIL_simscape_DW.t_start.tv_nsec);
+        }
+        break;
+
+       case 4:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 2.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        if (GVCU_HIL_simscape_toc(GVCU_HIL_simscape_DW.t_start.tv_sec,
+             GVCU_HIL_simscape_DW.t_start.tv_nsec) >= 0.2) {
+          GVCU_HIL_simscape_DW.sub_state = 5.0;
+        }
+        break;
+
+       case 5:
+        GVCU_HIL_simscape_DW.brake_switch_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_ri_internal = 1.0;
+        GVCU_HIL_simscape_DW.btn_paddle_le_internal = 1.0;
+        GVCU_HIL_simscape_DW.main_state = 0.0;
+        GVCU_HIL_simscape_DW.sub_state = 0.0;
+        break;
+      }
+      break;
+    }
+
+    GVCU_HIL_simscape_B.brake_switch =
+      GVCU_HIL_simscape_DW.brake_switch_internal;
+    GVCU_HIL_simscape_B.btn_paddle_ri =
+      GVCU_HIL_simscape_DW.btn_paddle_ri_internal;
+    GVCU_HIL_simscape_B.btn_paddle_le =
+      GVCU_HIL_simscape_DW.btn_paddle_le_internal;
+    GVCU_HIL_simscape_B.ign = 7.0;
+
+    /* Gain: '<S31>/km//h to m//s' incorporates:
+     *  MATLAB Function: '<S31>/MATLAB Function2'
+     */
+    rtb_V_b *= GVCU_HIL_simscape_P.kmhtoms_Gain;
+
+    /* RateLimiter: '<S31>/Rate Limiter' */
+    rtb_Saturation1 = rtb_V_b - GVCU_HIL_simscape_DW.PrevY_n;
+    if (rtb_Saturation1 > GVCU_HIL_simscape_P.RateLimiter_RisingLim_n *
+        GVCU_HIL_simscape_period) {
+      rtb_V_b = GVCU_HIL_simscape_P.RateLimiter_RisingLim_n *
+        GVCU_HIL_simscape_period + GVCU_HIL_simscape_DW.PrevY_n;
+    } else if (rtb_Saturation1 < GVCU_HIL_simscape_P.RateLimiter_FallingLim_p *
+               GVCU_HIL_simscape_period) {
+      rtb_V_b = GVCU_HIL_simscape_P.RateLimiter_FallingLim_p *
+        GVCU_HIL_simscape_period + GVCU_HIL_simscape_DW.PrevY_n;
+    }
+
+    GVCU_HIL_simscape_DW.PrevY_n = rtb_V_b;
+
+    /* End of RateLimiter: '<S31>/Rate Limiter' */
+
+    /* MATLAB Function: '<S2>/MATLAB Function' incorporates:
+     *  Constant: '<S2>/Constant1'
+     *  Constant: '<S2>/Constant2'
+     *  Constant: '<S2>/Constant7'
+     *  Constant: '<S2>/Constant8'
+     *  Constant: '<S2>/Constant9'
+     */
+    rtb_Delay = rt_roundd_snf(GVCU_HIL_simscape_B.SFunction_p0);
+    if (rtIsNaN(rtb_Delay) || ((rtb_Delay < 1.0) || (rtb_Delay > 14.0))) {
+      rtb_Delay = 4.0;
+    }
+
+    if (((GVCU_HIL_simscape_B.SFunction_h == 2.0) ||
+         (GVCU_HIL_simscape_B.SFunction_h == 3.0)) &&
+        (GVCU_HIL_simscape_DW.last_mode_f != GVCU_HIL_simscape_B.SFunction_h)) {
+      GVCU_HIL_simscape_DW.t_mode_start_e = GVCU_HIL_simscape_B.Clock_g;
+    }
+
+    if ((GVCU_HIL_simscape_B.SFunction_h == 3.0) &&
+        (GVCU_HIL_simscape_DW.last_cycle != rtb_Delay)) {
+      GVCU_HIL_simscape_DW.t_mode_start_e = GVCU_HIL_simscape_B.Clock_g;
+    }
+
+    GVCU_HIL_simscape_DW.last_mode_f = GVCU_HIL_simscape_B.SFunction_h;
+    GVCU_HIL_simscape_DW.last_cycle = rtb_Delay;
+    GVCU_HIL_simscape_B.cycle_time_remaining = 0.0;
+    GVCU_HIL_simscape_B.cycle_finished = 0.0;
+    if ((GVCU_HIL_simscape_B.SFunction_h == 2.0) &&
+        (GVCU_HIL_simscape_DW.t_mode_start_e >= 0.0)) {
+      rtb_TransferFcn_k = fmin(GVCU_HIL_simscape_B.Clock_g -
+        GVCU_HIL_simscape_DW.t_mode_start_e, GVCU_HIL_simscape_P.veh_speed_time
+        [2120]);
+      memcpy(&GVCU_HIL_simscape_B.x_c[0], &GVCU_HIL_simscape_P.veh_speed_time[0],
+             2121U * sizeof(real_T));
+      memcpy(&GVCU_HIL_simscape_B.y_m[0], &GVCU_HIL_simscape_P.veh_speed_data[0],
+             2121U * sizeof(real_T));
+      rtb_V_b = GVCU_HIL_simscape_P.veh_speed_data[2120];
+      if (GVCU_HIL_simscape_P.veh_speed_time[1] <
+          GVCU_HIL_simscape_P.veh_speed_time[0]) {
+        for (b_high_i = 0; b_high_i < 1060; b_high_i++) {
+          rtb_Delay = GVCU_HIL_simscape_B.x_c[b_high_i];
+          GVCU_HIL_simscape_B.x_c[b_high_i] = GVCU_HIL_simscape_B.x_c[2120 -
+            b_high_i];
+          GVCU_HIL_simscape_B.x_c[2120 - b_high_i] = rtb_Delay;
+          rtb_Delay = GVCU_HIL_simscape_B.y_m[b_high_i];
+          GVCU_HIL_simscape_B.y_m[b_high_i] = GVCU_HIL_simscape_B.y_m[2120 -
+            b_high_i];
+          GVCU_HIL_simscape_B.y_m[2120 - b_high_i] = rtb_Delay;
+        }
+      }
+
+      if (rtIsNaN(rtb_TransferFcn_k)) {
+        rtb_V_b = (rtNaN);
+      } else if (!(rtb_TransferFcn_k > GVCU_HIL_simscape_B.x_c[2120]) &&
+                 !(rtb_TransferFcn_k < GVCU_HIL_simscape_B.x_c[0])) {
+        b_high_i = 1;
+        n = 2;
+        b_low_ip1 = 2121;
+        while (b_low_ip1 > n) {
+          b_mid_i = (b_high_i + b_low_ip1) >> 1;
+          if (rtb_TransferFcn_k >= GVCU_HIL_simscape_B.x_c[b_mid_i - 1]) {
+            b_high_i = b_mid_i;
+            n = b_mid_i + 1;
+          } else {
+            b_low_ip1 = b_mid_i;
+          }
+        }
+
+        rtb_V_b = GVCU_HIL_simscape_B.x_c[b_high_i - 1];
+        rtb_V_b = (rtb_TransferFcn_k - rtb_V_b) /
+          (GVCU_HIL_simscape_B.x_c[b_high_i] - rtb_V_b);
+        if (rtb_V_b == 0.0) {
+          rtb_V_b = GVCU_HIL_simscape_B.y_m[b_high_i - 1];
+        } else if (rtb_V_b == 1.0) {
+          rtb_V_b = GVCU_HIL_simscape_B.y_m[b_high_i];
+        } else if (GVCU_HIL_simscape_B.y_m[b_high_i - 1] ==
+                   GVCU_HIL_simscape_B.y_m[b_high_i]) {
+          rtb_V_b = GVCU_HIL_simscape_B.y_m[b_high_i - 1];
+        } else {
+          rtb_V_b = (1.0 - rtb_V_b) * GVCU_HIL_simscape_B.y_m[b_high_i - 1] +
+            rtb_V_b * GVCU_HIL_simscape_B.y_m[b_high_i];
+        }
+      }
+    } else if ((GVCU_HIL_simscape_B.SFunction_h == 3.0) &&
+               (GVCU_HIL_simscape_DW.t_mode_start_e >= 0.0)) {
+      b_high_i = (int32_T)rtb_Delay;
+      rtb_TransferFcn_k = rt_roundd_snf(GVCU_HIL_simscape_P.cycle_len[b_high_i -
+        1]);
+      if (rtb_TransferFcn_k < 2.147483648E+9) {
+        if (rtb_TransferFcn_k >= -2.147483648E+9) {
+          b_mid_i = (int32_T)rtb_TransferFcn_k;
+          n = b_mid_i;
+        } else {
+          b_mid_i = MIN_int32_T;
+          n = MIN_int32_T;
+        }
+      } else {
+        b_mid_i = MAX_int32_T;
+        n = MAX_int32_T;
+      }
+
+      n--;
+      rtb_TransferFcn_d = GVCU_HIL_simscape_B.Clock_g -
+        GVCU_HIL_simscape_DW.t_mode_start_e;
+      cycle_time_remaining_tmp_tmp = (b_high_i - 1) * 1875;
+      b_low_ip1 = (cycle_time_remaining_tmp_tmp + b_mid_i) - 1;
+      GVCU_HIL_simscape_B.cycle_time_remaining = fmax
+        (GVCU_HIL_simscape_P.cycle_time_matrix[b_low_ip1] - rtb_TransferFcn_d,
+         0.0);
+      if (rtb_TransferFcn_d >= GVCU_HIL_simscape_P.cycle_time_matrix[b_low_ip1])
+      {
+        GVCU_HIL_simscape_B.cycle_finished = 1.0;
+        rtb_TransferFcn_d = GVCU_HIL_simscape_P.cycle_time_matrix[b_low_ip1];
+      }
+
+      for (b_high_i = 0; b_high_i <= n; b_high_i++) {
+        b_x_tmp = cycle_time_remaining_tmp_tmp + b_high_i;
+        GVCU_HIL_simscape_B.b_x_data[b_high_i] =
+          GVCU_HIL_simscape_P.cycle_time_matrix[b_x_tmp];
+        GVCU_HIL_simscape_B.b_y_data[b_high_i] =
+          GVCU_HIL_simscape_P.cycle_speed_matrix[b_x_tmp];
+      }
+
+      rtb_V_b = GVCU_HIL_simscape_P.cycle_speed_matrix[b_low_ip1];
+      if (GVCU_HIL_simscape_P.cycle_time_matrix[cycle_time_remaining_tmp_tmp + 1]
+          < GVCU_HIL_simscape_P.cycle_time_matrix[cycle_time_remaining_tmp_tmp])
+      {
+        b_low_ip1 = (uint16_T)(b_mid_i >> 1);
+        for (b_high_i = 0; b_high_i < b_low_ip1; b_high_i++) {
+          rtb_TransferFcn_k = GVCU_HIL_simscape_B.b_x_data[b_high_i];
+          b_x_tmp = (b_mid_i - b_high_i) - 1;
+          GVCU_HIL_simscape_B.b_x_data[b_high_i] =
+            GVCU_HIL_simscape_B.b_x_data[b_x_tmp];
+          GVCU_HIL_simscape_B.b_x_data[b_x_tmp] = rtb_TransferFcn_k;
+        }
+
+        for (b_high_i = 0; b_high_i <= n; b_high_i++) {
+          GVCU_HIL_simscape_B.b_y_data[b_high_i] =
+            GVCU_HIL_simscape_P.cycle_speed_matrix[cycle_time_remaining_tmp_tmp
+            + b_high_i];
+        }
+
+        if (b_mid_i > 1) {
+          for (b_high_i = 0; b_high_i < b_low_ip1; b_high_i++) {
+            rtb_TransferFcn_k = GVCU_HIL_simscape_B.b_y_data[b_high_i];
+            n = (b_mid_i - b_high_i) - 1;
+            GVCU_HIL_simscape_B.b_y_data[b_high_i] =
+              GVCU_HIL_simscape_B.b_y_data[n];
+            GVCU_HIL_simscape_B.b_y_data[n] = rtb_TransferFcn_k;
+          }
+        }
+      }
+
+      if (rtIsNaN(rtb_TransferFcn_d)) {
+        rtb_V_b = (rtNaN);
+      } else if (!(rtb_TransferFcn_d > GVCU_HIL_simscape_B.b_x_data[b_mid_i - 1])
+                 && !(rtb_TransferFcn_d < GVCU_HIL_simscape_B.b_x_data[0])) {
+        b_high_i = b_mid_i;
+        n = 1;
+        b_low_ip1 = 2;
+        while (b_high_i > b_low_ip1) {
+          b_mid_i = (n >> 1) + (b_high_i >> 1);
+          if ((((uint32_T)n & 1U) == 1U) && (((uint32_T)b_high_i & 1U) == 1U)) {
+            b_mid_i++;
+          }
+
+          if (rtb_TransferFcn_d >= GVCU_HIL_simscape_B.b_x_data[b_mid_i - 1]) {
+            n = b_mid_i;
+            b_low_ip1 = b_mid_i + 1;
+          } else {
+            b_high_i = b_mid_i;
+          }
+        }
+
+        rtb_V_b = GVCU_HIL_simscape_B.b_x_data[n - 1];
+        rtb_V_b = (rtb_TransferFcn_d - rtb_V_b) /
+          (GVCU_HIL_simscape_B.b_x_data[n] - rtb_V_b);
+        if (rtb_V_b == 0.0) {
+          rtb_V_b = GVCU_HIL_simscape_B.b_y_data[n - 1];
+        } else if (rtb_V_b == 1.0) {
+          rtb_V_b = GVCU_HIL_simscape_B.b_y_data[n];
+        } else if (GVCU_HIL_simscape_B.b_y_data[n - 1] ==
+                   GVCU_HIL_simscape_B.b_y_data[n]) {
+          rtb_V_b = GVCU_HIL_simscape_B.b_y_data[n - 1];
+        } else {
+          rtb_V_b = (1.0 - rtb_V_b) * GVCU_HIL_simscape_B.b_y_data[n - 1] +
+            rtb_V_b * GVCU_HIL_simscape_B.b_y_data[n];
+        }
+      }
+    }
+
+    /* End of MATLAB Function: '<S2>/MATLAB Function' */
 
     /* S-Function (sysvarout): '<S38>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_b4, 1,
@@ -6534,19 +6107,22 @@ void GVCU_HIL_simscape_output(void)
       rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
     }
 
+    /* Delay: '<S2>/Delay' */
+    GVCU_HIL_simscape_B.Delay = GVCU_HIL_simscape_DW.Delay_DSTATE_n[0];
+
     /* RateTransition: '<S2>/Rate Transition' incorporates:
+     *  Delay: '<S2>/Delay'
      *  Lookup_n-D: '<S2>/1-D Lookup Table'
      */
-    if (tmp_1q) {
+    if (first_output) {
       GVCU_HIL_simscape_DW.RateTransition_Buffer = look1_binlxpw
-        (GVCU_HIL_simscape_B.pedal_out,
-         GVCU_HIL_simscape_P.uDLookupTable_bp01Data_j,
+        (GVCU_HIL_simscape_B.Delay, GVCU_HIL_simscape_P.uDLookupTable_bp01Data_j,
          GVCU_HIL_simscape_P.uDLookupTable_tableData_m, 99U);
     }
   }
 
   /* RateTransition: '<S2>/Rate Transition' */
-  if (tmp_1q) {
+  if (first_output) {
     /* RateTransition: '<S2>/Rate Transition' */
     GVCU_HIL_simscape_B.RateTransition =
       GVCU_HIL_simscape_DW.RateTransition_Buffer;
@@ -6558,18 +6134,18 @@ void GVCU_HIL_simscape_output(void)
     }
   }
 
-  if (tmp_1o && tmp_1q) {
+  if (tmp_1p && first_output) {
     /* RateTransition: '<S2>/Rate Transition1' incorporates:
+     *  Delay: '<S2>/Delay'
      *  Lookup_n-D: '<S2>/1-D Lookup Table2'
      */
     GVCU_HIL_simscape_DW.RateTransition1_Buffer = look1_binlxpw
-      (GVCU_HIL_simscape_B.pedal_out,
-       GVCU_HIL_simscape_P.uDLookupTable2_bp01Data_d,
+      (GVCU_HIL_simscape_B.Delay, GVCU_HIL_simscape_P.uDLookupTable2_bp01Data_d,
        GVCU_HIL_simscape_P.uDLookupTable2_tableData_p, 99U);
   }
 
   /* RateTransition: '<S2>/Rate Transition1' */
-  if (tmp_1q) {
+  if (first_output) {
     /* RateTransition: '<S2>/Rate Transition1' */
     GVCU_HIL_simscape_B.RateTransition1 =
       GVCU_HIL_simscape_DW.RateTransition1_Buffer;
@@ -6581,9 +6157,11 @@ void GVCU_HIL_simscape_output(void)
     }
   }
 
-  if (tmp_1o) {
-    /* Lookup_n-D: '<S2>/1-D Lookup Table3' */
-    rtb_u19mm = look1_binlxpw(rtb_brake_out,
+  if (tmp_1p) {
+    /* Lookup_n-D: '<S2>/1-D Lookup Table3' incorporates:
+     *  Delay: '<S2>/Delay1'
+     */
+    rtb_u19mm = look1_binlxpw(rtb_Delay1,
       GVCU_HIL_simscape_P.uDLookupTable3_bp01Data,
       GVCU_HIL_simscape_P.uDLookupTable3_tableData, 3U);
 
@@ -6596,6 +6174,25 @@ void GVCU_HIL_simscape_output(void)
 
     /* End of Saturate: '<S2>/0 - 19 mm' */
 
+    /* S-Function (sysvarin): '<S35>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_l, 1,
+         &GVCU_HIL_simscape_B.SFunction_n, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
+    }
+
+    /* RateTransition: '<S2>/0.01s' */
+    if (first_output) {
+      GVCU_HIL_simscape_DW.u01s_Buffer = GVCU_HIL_simscape_B.SFunction_n;
+    }
+  }
+
+  /* RateTransition: '<S2>/0.01s' */
+  if (first_output) {
+    /* RateTransition: '<S2>/0.01s' */
+    GVCU_HIL_simscape_B.u01s = GVCU_HIL_simscape_DW.u01s_Buffer;
+  }
+
+  if (tmp_1p) {
     /* Lookup_n-D: '<S2>/1-D Lookup Table4' incorporates:
      *  Constant: '<S2>/Constant10'
      */
@@ -6620,49 +6217,188 @@ void GVCU_HIL_simscape_output(void)
       sfcnOutputs(rts,0);
     }
 
+    /* Saturate: '<S2>/Saturation' */
+    if (rtb_V_b > GVCU_HIL_simscape_P.Saturation_UpperSat_f) {
+      /* Saturate: '<S2>/Saturation' */
+      GVCU_HIL_simscape_B.Saturation_d =
+        GVCU_HIL_simscape_P.Saturation_UpperSat_f;
+    } else if (rtb_V_b < GVCU_HIL_simscape_P.Saturation_LowerSat_c) {
+      /* Saturate: '<S2>/Saturation' */
+      GVCU_HIL_simscape_B.Saturation_d =
+        GVCU_HIL_simscape_P.Saturation_LowerSat_c;
+    } else {
+      /* Saturate: '<S2>/Saturation' */
+      GVCU_HIL_simscape_B.Saturation_d = rtb_V_b;
+    }
+
+    /* End of Saturate: '<S2>/Saturation' */
+  }
+
+  /* Sum: '<S52>/Subtract' */
+  GVCU_HIL_simscape_B.Subtract = GVCU_HIL_simscape_B.OUTPUT_1_0[79] -
+    GVCU_HIL_simscape_B.Saturation_d;
+  if (tmp_1p) {
+    /* Gain: '<S97>/Proportional Gain' */
+    rtb_ProportionalGain_p = GVCU_HIL_simscape_P.PIController_P *
+      GVCU_HIL_simscape_B.Subtract;
+  }
+
+  /* Relay: '<S52>/Relay' */
+  if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_simscape_M->solverInfo)) {
+    GVCU_HIL_simscape_DW.Relay_Mode = ((GVCU_HIL_simscape_B.Subtract >=
+      GVCU_HIL_simscape_P.Relay_OnVal) || (!(GVCU_HIL_simscape_B.Subtract <=
+      GVCU_HIL_simscape_P.Relay_OffVal) && GVCU_HIL_simscape_DW.Relay_Mode));
+  }
+
+  if (GVCU_HIL_simscape_DW.Relay_Mode) {
+    /* Relay: '<S52>/Relay' */
+    GVCU_HIL_simscape_B.Relay = GVCU_HIL_simscape_P.Relay_YOn;
+  } else {
+    /* Relay: '<S52>/Relay' */
+    GVCU_HIL_simscape_B.Relay = GVCU_HIL_simscape_P.Relay_YOff;
+  }
+
+  /* End of Relay: '<S52>/Relay' */
+  if (tmp_1p) {
+    /* DiscreteIntegrator: '<S92>/Integrator' */
+    if ((GVCU_HIL_simscape_B.Relay != 0.0) ||
+        (GVCU_HIL_simscape_DW.Integrator_PrevResetState_n != 0)) {
+      GVCU_HIL_simscape_DW.Integrator_DSTATE_i =
+        GVCU_HIL_simscape_P.PIController_InitialConditionFo;
+    }
+
+    /* Sum: '<S101>/Sum' incorporates:
+     *  DiscreteIntegrator: '<S92>/Integrator'
+     */
+    rtb_DeadZone = rtb_ProportionalGain_p +
+      GVCU_HIL_simscape_DW.Integrator_DSTATE_i;
+
+    /* Switch: '<S32>/Switch3' incorporates:
+     *  Saturate: '<S99>/Saturation'
+     */
+    if (GVCU_HIL_simscape_B.u01s > GVCU_HIL_simscape_P.Switch3_Threshold) {
+      /* Switch: '<S32>/Switch3' */
+      GVCU_HIL_simscape_B.Switch3 = GVCU_HIL_simscape_B.u01s;
+    } else if (rtb_DeadZone >
+               GVCU_HIL_simscape_P.PIController_UpperSaturationLim) {
+      /* Saturate: '<S99>/Saturation' incorporates:
+       *  Switch: '<S32>/Switch3'
+       */
+      GVCU_HIL_simscape_B.Switch3 =
+        GVCU_HIL_simscape_P.PIController_UpperSaturationLim;
+    } else if (rtb_DeadZone <
+               GVCU_HIL_simscape_P.PIController_LowerSaturationLim) {
+      /* Saturate: '<S99>/Saturation' incorporates:
+       *  Switch: '<S32>/Switch3'
+       */
+      GVCU_HIL_simscape_B.Switch3 =
+        GVCU_HIL_simscape_P.PIController_LowerSaturationLim;
+    } else {
+      /* Switch: '<S32>/Switch3' incorporates:
+       *  Saturate: '<S99>/Saturation'
+       */
+      GVCU_HIL_simscape_B.Switch3 = rtb_DeadZone;
+    }
+
+    /* End of Switch: '<S32>/Switch3' */
+
     /* S-Function (sysvarout): '<S54>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_d, 1,
          &GVCU_HIL_simscape_B.Switch3, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
     }
+  }
 
+  /* Switch: '<S32>/Switch1' */
+  if (GVCU_HIL_simscape_B.Switch3 > GVCU_HIL_simscape_P.Switch1_Threshold) {
+    rtb_TransferFcn_d = GVCU_HIL_simscape_B.OUTPUT_1_0[79];
+  } else {
+    rtb_TransferFcn_d = GVCU_HIL_simscape_B.Saturation_d;
+  }
+
+  /* End of Switch: '<S32>/Switch1' */
+  if (tmp_1p) {
+    /* RelationalOperator: '<S51>/Compare' incorporates:
+     *  Constant: '<S51>/Constant'
+     */
+    GVCU_HIL_simscape_B.Compare = (GVCU_HIL_simscape_B.Switch3 >
+      GVCU_HIL_simscape_P.CompareToConstant_const_c);
+  }
+
+  /* Integrator: '<S32>/Integrator1' */
+  /* Limited  Integrator  */
+  if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_simscape_M->solverInfo)) {
+    didZcEventOccur = (((GVCU_HIL_simscape_PrevZCX.Integrator1_Reset_ZCE ==
+                         POS_ZCSIG) != (int32_T)GVCU_HIL_simscape_B.Compare) &&
+                       (GVCU_HIL_simscape_PrevZCX.Integrator1_Reset_ZCE !=
+                        UNINITIALIZED_ZCSIG));
+    GVCU_HIL_simscape_PrevZCX.Integrator1_Reset_ZCE =
+      GVCU_HIL_simscape_B.Compare;
+
+    /* evaluate zero-crossings and the level of the reset signal */
+    if (didZcEventOccur || GVCU_HIL_simscape_B.Compare) {
+      GVCU_HIL_simscape_X.Integrator1_CSTATE =
+        GVCU_HIL_simscape_P.Integrator1_IC;
+    }
+  }
+
+  if (GVCU_HIL_simscape_X.Integrator1_CSTATE >=
+      GVCU_HIL_simscape_P.Integrator1_UpperSat) {
+    GVCU_HIL_simscape_X.Integrator1_CSTATE =
+      GVCU_HIL_simscape_P.Integrator1_UpperSat;
+  } else if (GVCU_HIL_simscape_X.Integrator1_CSTATE <=
+             GVCU_HIL_simscape_P.Integrator1_LowerSat) {
+    GVCU_HIL_simscape_X.Integrator1_CSTATE =
+      GVCU_HIL_simscape_P.Integrator1_LowerSat;
+  }
+
+  /* Sum: '<S32>/Sum1' incorporates:
+   *  Gain: '<S32>/Kff'
+   *  Gain: '<S32>/kp'
+   *  Integrator: '<S110>/Integrator'
+   *  Integrator: '<S32>/Integrator1'
+   */
+  rtb_ProportionalGain_p = (GVCU_HIL_simscape_P.Kff_Gain * rtb_TransferFcn_d +
+    GVCU_HIL_simscape_P.kp_Gain * GVCU_HIL_simscape_X.Integrator_CSTATE_i0) +
+    GVCU_HIL_simscape_X.Integrator1_CSTATE;
+
+  /* Saturate: '<S32>/0 to 1 ' */
+  if (rtb_ProportionalGain_p > GVCU_HIL_simscape_P.uto1_UpperSat) {
+    rtb_V_b = GVCU_HIL_simscape_P.uto1_UpperSat;
+  } else if (rtb_ProportionalGain_p < GVCU_HIL_simscape_P.uto1_LowerSat) {
+    rtb_V_b = GVCU_HIL_simscape_P.uto1_LowerSat;
+  } else {
+    rtb_V_b = rtb_ProportionalGain_p;
+  }
+
+  /* End of Saturate: '<S32>/0 to 1 ' */
+  if (tmp_1p) {
     /* DeadZone: '<S84>/DeadZone' */
-    if (rtb_IntegralGain_i > GVCU_HIL_simscape_P.PIController_UpperSaturationLim)
-    {
-      rtb_IntegralGain_i -= GVCU_HIL_simscape_P.PIController_UpperSaturationLim;
-    } else if (rtb_IntegralGain_i >=
+    if (rtb_DeadZone > GVCU_HIL_simscape_P.PIController_UpperSaturationLim) {
+      rtb_DeadZone -= GVCU_HIL_simscape_P.PIController_UpperSaturationLim;
+    } else if (rtb_DeadZone >=
                GVCU_HIL_simscape_P.PIController_LowerSaturationLim) {
-      rtb_IntegralGain_i = 0.0;
+      rtb_DeadZone = 0.0;
     } else {
-      rtb_IntegralGain_i -= GVCU_HIL_simscape_P.PIController_LowerSaturationLim;
+      rtb_DeadZone -= GVCU_HIL_simscape_P.PIController_LowerSaturationLim;
     }
 
     /* End of DeadZone: '<S84>/DeadZone' */
 
-    /* RelationalOperator: '<S82>/Relational Operator' incorporates:
-     *  Constant: '<S82>/Clamping_zero'
-     */
-    rtb_RelationalOperator = (GVCU_HIL_simscape_P.Clamping_zero_Value !=
-      rtb_IntegralGain_i);
-
-    /* RelationalOperator: '<S82>/fix for DT propagation issue' incorporates:
-     *  Constant: '<S82>/Clamping_zero'
-     */
-    rtb_LowerRelop1_i = (rtb_IntegralGain_i >
-                         GVCU_HIL_simscape_P.Clamping_zero_Value);
-
     /* Gain: '<S89>/Integral Gain' */
-    rtb_IntegralGain_i = GVCU_HIL_simscape_P.PIController_I *
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.PIController_I *
       GVCU_HIL_simscape_B.Subtract;
 
     /* Switch: '<S82>/Switch1' incorporates:
+     *  Constant: '<S82>/Clamping_zero'
      *  Constant: '<S82>/Constant'
      *  Constant: '<S82>/Constant2'
+     *  RelationalOperator: '<S82>/fix for DT propagation issue'
      */
-    if (rtb_LowerRelop1_i) {
-      tmp_1r = GVCU_HIL_simscape_P.Constant_Value_g;
+    if (rtb_DeadZone > GVCU_HIL_simscape_P.Clamping_zero_Value) {
+      tmp_1q = GVCU_HIL_simscape_P.Constant_Value_g;
     } else {
-      tmp_1r = GVCU_HIL_simscape_P.Constant2_Value_f;
+      tmp_1q = GVCU_HIL_simscape_P.Constant2_Value_f;
     }
 
     /* Switch: '<S82>/Switch2' incorporates:
@@ -6671,26 +6407,29 @@ void GVCU_HIL_simscape_output(void)
      *  Constant: '<S82>/Constant4'
      *  RelationalOperator: '<S82>/fix for DT propagation issue1'
      */
-    if (rtb_IntegralGain_i > GVCU_HIL_simscape_P.Clamping_zero_Value) {
-      tmp_1s = GVCU_HIL_simscape_P.Constant3_Value_g;
+    if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.Clamping_zero_Value) {
+      tmp_1r = GVCU_HIL_simscape_P.Constant3_Value_g;
     } else {
-      tmp_1s = GVCU_HIL_simscape_P.Constant4_Value_j;
+      tmp_1r = GVCU_HIL_simscape_P.Constant4_Value_j;
     }
 
     /* Switch: '<S82>/Switch' incorporates:
+     *  Constant: '<S82>/Clamping_zero'
      *  Logic: '<S82>/AND3'
      *  RelationalOperator: '<S82>/Equal1'
+     *  RelationalOperator: '<S82>/Relational Operator'
      *  Switch: '<S82>/Switch1'
      *  Switch: '<S82>/Switch2'
      */
-    if (rtb_RelationalOperator && (tmp_1r == tmp_1s)) {
+    if ((GVCU_HIL_simscape_P.Clamping_zero_Value != rtb_DeadZone) && (tmp_1q ==
+         tmp_1r)) {
       /* Switch: '<S82>/Switch' incorporates:
        *  Constant: '<S82>/Constant1'
        */
       GVCU_HIL_simscape_B.Switch_i = GVCU_HIL_simscape_P.Constant1_Value_d;
     } else {
       /* Switch: '<S82>/Switch' */
-      GVCU_HIL_simscape_B.Switch_i = rtb_IntegralGain_i;
+      GVCU_HIL_simscape_B.Switch_i = rtb_TransferFcn_k;
     }
 
     /* End of Switch: '<S82>/Switch' */
@@ -6701,36 +6440,228 @@ void GVCU_HIL_simscape_output(void)
     GVCU_HIL_simscape_B.Divide = 1.0 / GVCU_HIL_simscape_P.tauerr_Value;
   }
 
+  /* Gain: '<S32>/Gain' */
+  rtb_DeadZone = GVCU_HIL_simscape_P.Gain_Gain_a * rtb_V_b;
+
   /* Sum: '<S32>/Subtract' */
-  rtb_Integrator_m -= GVCU_HIL_simscape_B.OUTPUT_1_0[79];
+  rtb_TransferFcn_d -= GVCU_HIL_simscape_B.OUTPUT_1_0[79];
 
   /* Product: '<S110>/Product' incorporates:
+   *  Integrator: '<S110>/Integrator'
    *  Sum: '<S110>/Sum'
    */
-  GVCU_HIL_simscape_B.Product = (rtb_Integrator_m - idx) *
-    GVCU_HIL_simscape_B.Divide;
+  GVCU_HIL_simscape_B.Product = (rtb_TransferFcn_d -
+    GVCU_HIL_simscape_X.Integrator_CSTATE_i0) * GVCU_HIL_simscape_B.Divide;
 
   /* Switch: '<S32>/Switch2' incorporates:
    *  Constant: '<S32>/Constant1'
    *  Sum: '<S32>/Subtract1'
    */
   if (GVCU_HIL_simscape_B.Switch3 > GVCU_HIL_simscape_P.Switch2_Threshold_h) {
-    rateLimiterRate = GVCU_HIL_simscape_P.Constant1_Value_i;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Constant1_Value_i;
   } else {
-    rateLimiterRate = rtb_uto1 - rtb_Sum1;
+    rtb_TransferFcn_k = rtb_V_b - rtb_ProportionalGain_p;
   }
 
   /* Sum: '<S32>/Sum8' incorporates:
    *  Gain: '<S32>/Kaw'
    *  Gain: '<S32>/Ki'
+   *  Integrator: '<S110>/Integrator'
    *  Switch: '<S32>/Switch2'
    */
-  GVCU_HIL_simscape_B.Sum8 = GVCU_HIL_simscape_P.Ki_Gain * idx +
-    GVCU_HIL_simscape_P.Kaw_Gain * rateLimiterRate;
-  if (tmp_1o) {
+  GVCU_HIL_simscape_B.Sum8 = GVCU_HIL_simscape_P.Ki_Gain *
+    GVCU_HIL_simscape_X.Integrator_CSTATE_i0 + GVCU_HIL_simscape_P.Kaw_Gain *
+    rtb_TransferFcn_k;
+
+  /* RateLimiter: '<S2>/Rate Limiter1' */
+  if (GVCU_HIL_simscape_DW.LastMajorTime == (rtInf)) {
+    /* RateLimiter: '<S2>/Rate Limiter1' */
+    GVCU_HIL_simscape_B.RateLimiter1 = rtb_DeadZone;
+  } else {
+    rtb_ProportionalGain_p = time_tmp - GVCU_HIL_simscape_DW.LastMajorTime;
+    if (GVCU_HIL_simscape_DW.LastMajorTime == time_tmp) {
+      if (GVCU_HIL_simscape_DW.PrevLimited) {
+        /* RateLimiter: '<S2>/Rate Limiter1' */
+        GVCU_HIL_simscape_B.RateLimiter1 = GVCU_HIL_simscape_DW.PrevY_m;
+      } else {
+        /* RateLimiter: '<S2>/Rate Limiter1' */
+        GVCU_HIL_simscape_B.RateLimiter1 = rtb_DeadZone;
+      }
+    } else {
+      rtb_V_b = rtb_ProportionalGain_p *
+        GVCU_HIL_simscape_P.RateLimiter1_RisingLim;
+      rtb_Saturation1 = rtb_DeadZone - GVCU_HIL_simscape_DW.PrevY_m;
+      if (rtb_Saturation1 > rtb_V_b) {
+        /* RateLimiter: '<S2>/Rate Limiter1' */
+        GVCU_HIL_simscape_B.RateLimiter1 = GVCU_HIL_simscape_DW.PrevY_m +
+          rtb_V_b;
+        didZcEventOccur = true;
+      } else {
+        rtb_ProportionalGain_p *= GVCU_HIL_simscape_P.RateLimiter1_FallingLim;
+        if (rtb_Saturation1 < rtb_ProportionalGain_p) {
+          /* RateLimiter: '<S2>/Rate Limiter1' */
+          GVCU_HIL_simscape_B.RateLimiter1 = GVCU_HIL_simscape_DW.PrevY_m +
+            rtb_ProportionalGain_p;
+          didZcEventOccur = true;
+        } else {
+          /* RateLimiter: '<S2>/Rate Limiter1' */
+          GVCU_HIL_simscape_B.RateLimiter1 = rtb_DeadZone;
+          didZcEventOccur = false;
+        }
+      }
+
+      if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_simscape_M->solverInfo)) {
+        GVCU_HIL_simscape_DW.PrevLimited = didZcEventOccur;
+      }
+    }
+  }
+
+  if (tmp_1p) {
+    /* Switch: '<S32>/Switch' incorporates:
+     *  Constant: '<S32>/Constant'
+     */
+    if (GVCU_HIL_simscape_B.Switch3 > GVCU_HIL_simscape_P.Switch_Threshold_ak) {
+      rtb_TransferFcn_d = GVCU_HIL_simscape_B.Switch3;
+    } else {
+      rtb_TransferFcn_d = GVCU_HIL_simscape_P.Constant_Value;
+    }
+
+    /* End of Switch: '<S32>/Switch' */
+
+    /* MATLAB Function: '<S2>/MATLAB Function1' incorporates:
+     *  Constant: '<S2>/Constant3'
+     *  Constant: '<S2>/Constant4'
+     *  Constant: '<S2>/Constant5'
+     *  Constant: '<S2>/Constant6'
+     */
+    if ((GVCU_HIL_simscape_B.SFunction_h == 1.0) &&
+        (GVCU_HIL_simscape_DW.last_mode != 1.0)) {
+      GVCU_HIL_simscape_DW.t_mode_start = GVCU_HIL_simscape_B.Clock_g;
+    }
+
+    GVCU_HIL_simscape_DW.last_mode = GVCU_HIL_simscape_B.SFunction_h;
+    if ((GVCU_HIL_simscape_B.SFunction_h == 1.0) &&
+        (GVCU_HIL_simscape_DW.t_mode_start >= 0.0)) {
+      rtb_TransferFcn_d = GVCU_HIL_simscape_B.Clock_g -
+        GVCU_HIL_simscape_DW.t_mode_start;
+      rtb_TransferFcn_k = fmin(rtb_TransferFcn_d,
+        GVCU_HIL_simscape_P.acc_pedal_time[10607]);
+      memcpy(&GVCU_HIL_simscape_B.x[0], &GVCU_HIL_simscape_P.acc_pedal_time[0],
+             10608U * sizeof(real_T));
+      memcpy(&GVCU_HIL_simscape_B.y[0], &GVCU_HIL_simscape_P.acc_pedal_data[0],
+             10608U * sizeof(real_T));
+      GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_P.acc_pedal_data[10607];
+      if (GVCU_HIL_simscape_P.acc_pedal_time[1] <
+          GVCU_HIL_simscape_P.acc_pedal_time[0]) {
+        for (b_high_i = 0; b_high_i < 5304; b_high_i++) {
+          rtb_Delay = GVCU_HIL_simscape_B.x[b_high_i];
+          GVCU_HIL_simscape_B.x[b_high_i] = GVCU_HIL_simscape_B.x[10607 -
+            b_high_i];
+          GVCU_HIL_simscape_B.x[10607 - b_high_i] = rtb_Delay;
+          rtb_Delay = GVCU_HIL_simscape_B.y[b_high_i];
+          GVCU_HIL_simscape_B.y[b_high_i] = GVCU_HIL_simscape_B.y[10607 -
+            b_high_i];
+          GVCU_HIL_simscape_B.y[10607 - b_high_i] = rtb_Delay;
+        }
+      }
+
+      if (rtIsNaN(rtb_TransferFcn_k)) {
+        GVCU_HIL_simscape_B.pedal_out = (rtNaN);
+      } else if (!(rtb_TransferFcn_k > GVCU_HIL_simscape_B.x[10607]) &&
+                 !(rtb_TransferFcn_k < GVCU_HIL_simscape_B.x[0])) {
+        b_high_i = 1;
+        n = 2;
+        b_low_ip1 = 10608;
+        while (b_low_ip1 > n) {
+          b_mid_i = (b_high_i + b_low_ip1) >> 1;
+          if (rtb_TransferFcn_k >= GVCU_HIL_simscape_B.x[b_mid_i - 1]) {
+            b_high_i = b_mid_i;
+            n = b_mid_i + 1;
+          } else {
+            b_low_ip1 = b_mid_i;
+          }
+        }
+
+        rtb_V_b = GVCU_HIL_simscape_B.x[b_high_i - 1];
+        rtb_V_b = (rtb_TransferFcn_k - rtb_V_b) /
+          (GVCU_HIL_simscape_B.x[b_high_i] - rtb_V_b);
+        if (rtb_V_b == 0.0) {
+          GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_B.y[b_high_i - 1];
+        } else if (rtb_V_b == 1.0) {
+          GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_B.y[b_high_i];
+        } else if (GVCU_HIL_simscape_B.y[b_high_i - 1] ==
+                   GVCU_HIL_simscape_B.y[b_high_i]) {
+          GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_B.y[b_high_i - 1];
+        } else {
+          GVCU_HIL_simscape_B.pedal_out = (1.0 - rtb_V_b) *
+            GVCU_HIL_simscape_B.y[b_high_i - 1] + rtb_V_b *
+            GVCU_HIL_simscape_B.y[b_high_i];
+        }
+      }
+
+      rtb_TransferFcn_d = fmin(rtb_TransferFcn_d,
+        GVCU_HIL_simscape_P.brk_pedal_time[2120]);
+      memcpy(&GVCU_HIL_simscape_B.x_c[0], &GVCU_HIL_simscape_P.brk_pedal_time[0],
+             2121U * sizeof(real_T));
+      memcpy(&GVCU_HIL_simscape_B.y_m[0], &GVCU_HIL_simscape_P.brk_pedal_data[0],
+             2121U * sizeof(real_T));
+      GVCU_HIL_simscape_B.brake_out = GVCU_HIL_simscape_P.brk_pedal_data[2120];
+      if (GVCU_HIL_simscape_P.brk_pedal_time[1] <
+          GVCU_HIL_simscape_P.brk_pedal_time[0]) {
+        for (b_high_i = 0; b_high_i < 1060; b_high_i++) {
+          rtb_TransferFcn_k = GVCU_HIL_simscape_B.x_c[b_high_i];
+          GVCU_HIL_simscape_B.x_c[b_high_i] = GVCU_HIL_simscape_B.x_c[2120 -
+            b_high_i];
+          GVCU_HIL_simscape_B.x_c[2120 - b_high_i] = rtb_TransferFcn_k;
+          rtb_TransferFcn_k = GVCU_HIL_simscape_B.y_m[b_high_i];
+          GVCU_HIL_simscape_B.y_m[b_high_i] = GVCU_HIL_simscape_B.y_m[2120 -
+            b_high_i];
+          GVCU_HIL_simscape_B.y_m[2120 - b_high_i] = rtb_TransferFcn_k;
+        }
+      }
+
+      if (rtIsNaN(rtb_TransferFcn_d)) {
+        GVCU_HIL_simscape_B.brake_out = (rtNaN);
+      } else if (!(rtb_TransferFcn_d > GVCU_HIL_simscape_B.x_c[2120]) &&
+                 !(rtb_TransferFcn_d < GVCU_HIL_simscape_B.x_c[0])) {
+        n = 1;
+        b_low_ip1 = 2;
+        b_high_i = 2121;
+        while (b_high_i > b_low_ip1) {
+          b_mid_i = (n + b_high_i) >> 1;
+          if (rtb_TransferFcn_d >= GVCU_HIL_simscape_B.x_c[b_mid_i - 1]) {
+            n = b_mid_i;
+            b_low_ip1 = b_mid_i + 1;
+          } else {
+            b_high_i = b_mid_i;
+          }
+        }
+
+        rtb_V_b = GVCU_HIL_simscape_B.x_c[n - 1];
+        rtb_V_b = (rtb_TransferFcn_d - rtb_V_b) / (GVCU_HIL_simscape_B.x_c[n] -
+          rtb_V_b);
+        if (rtb_V_b == 0.0) {
+          GVCU_HIL_simscape_B.brake_out = GVCU_HIL_simscape_B.y_m[n - 1];
+        } else if (rtb_V_b == 1.0) {
+          GVCU_HIL_simscape_B.brake_out = GVCU_HIL_simscape_B.y_m[n];
+        } else if (GVCU_HIL_simscape_B.y_m[n - 1] == GVCU_HIL_simscape_B.y_m[n])
+        {
+          GVCU_HIL_simscape_B.brake_out = GVCU_HIL_simscape_B.y_m[n - 1];
+        } else {
+          GVCU_HIL_simscape_B.brake_out = (1.0 - rtb_V_b) *
+            GVCU_HIL_simscape_B.y_m[n - 1] + rtb_V_b * GVCU_HIL_simscape_B.y_m[n];
+        }
+      }
+    } else {
+      GVCU_HIL_simscape_B.pedal_out = GVCU_HIL_simscape_B.RateLimiter1;
+      GVCU_HIL_simscape_B.brake_out = rtb_TransferFcn_d;
+    }
+
+    /* End of MATLAB Function: '<S2>/MATLAB Function1' */
+
     /* Gain: '<S2>/m//s to km//h' */
     GVCU_HIL_simscape_B.kmh = GVCU_HIL_simscape_P.mstokmh_Gain *
-      GVCU_HIL_simscape_B.Saturation;
+      GVCU_HIL_simscape_B.Saturation_d;
   }
 
   /* Gain: '<S201>/Gain1' */
@@ -6739,12 +6670,12 @@ void GVCU_HIL_simscape_output(void)
 
   /* Saturate: '<S212>/Saturation' */
   if (GVCU_HIL_simscape_B.Gain1 > GVCU_HIL_simscape_P.Saturation_UpperSat_hi) {
-    rateLimiterRate = GVCU_HIL_simscape_P.Saturation_UpperSat_hi;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Saturation_UpperSat_hi;
   } else if (GVCU_HIL_simscape_B.Gain1 <
              GVCU_HIL_simscape_P.Saturation_LowerSat_ez) {
-    rateLimiterRate = GVCU_HIL_simscape_P.Saturation_LowerSat_ez;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Saturation_LowerSat_ez;
   } else {
-    rateLimiterRate = GVCU_HIL_simscape_B.Gain1;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_B.Gain1;
   }
 
   /* Product: '<S212>/Divide' incorporates:
@@ -6757,8 +6688,8 @@ void GVCU_HIL_simscape_output(void)
     rtb_uDLookupTable, GVCU_HIL_simscape_P.uDLookupTable_bp01Data_c,
     GVCU_HIL_simscape_P.uDLookupTable_bp02Data,
     GVCU_HIL_simscape_P.uDLookupTable_tableData_n,
-    GVCU_HIL_simscape_P.uDLookupTable_maxIndex, 45U)) / rateLimiterRate;
-  if (tmp_1o) {
+    GVCU_HIL_simscape_P.uDLookupTable_maxIndex, 45U)) / rtb_TransferFcn_k;
+  if (tmp_1p) {
     /* Product: '<S190>/Product' */
     GVCU_HIL_simscape_B.Product_o = GVCU_HIL_simscape_B.Switch2_i *
       GVCU_HIL_simscape_B.uor1;
@@ -6770,16 +6701,16 @@ void GVCU_HIL_simscape_output(void)
   /* Gain: '<S613>/Gain5' */
   GVCU_HIL_simscape_B.vx = GVCU_HIL_simscape_P.Gain5_Gain *
     GVCU_HIL_simscape_B.OUTPUT_1_0[79];
-  if (tmp_1o) {
+  if (tmp_1p) {
   }
 
   if (tmp) {
     /* Gain: '<S622>/Gain6' */
-    rtb_IntegralGain_i = GVCU_HIL_simscape_P.Gain6_Gain *
+    rtb_uDLookupTable = GVCU_HIL_simscape_P.Gain6_Gain *
       GVCU_HIL_simscape_B.OUTPUT_2_0[9];
 
     /* Gain: '<S622>/Gain' */
-    rtb_IntegralGain_i *= GVCU_HIL_simscape_P.Gain_Gain_m;
+    rtb_uDLookupTable *= GVCU_HIL_simscape_P.Gain_Gain_m;
   }
 
   /* Sum: '<S664>/SumI4' incorporates:
@@ -6787,18 +6718,18 @@ void GVCU_HIL_simscape_output(void)
    *  Gain: '<S669>/Integral Gain'
    *  Sum: '<S664>/SumI2'
    */
-  GVCU_HIL_simscape_B.SumI4_c = (xtmp - b_xtmp) *
+  GVCU_HIL_simscape_B.SumI4_c = (rtb_Saturation - rtb_Sum_b) *
     GVCU_HIL_simscape_P.PIDController_Kb + GVCU_HIL_simscape_P.PIDController_I *
-    rtb_ProportionalGain;
+    rtb_Subtract_n;
 
   /* Sum: '<S716>/SumI4' incorporates:
    *  Gain: '<S716>/Kb'
    *  Gain: '<S721>/Integral Gain'
    *  Sum: '<S716>/SumI2'
    */
-  GVCU_HIL_simscape_B.SumI4_e = (rtb_Saturation_ez - rtb_Sum_d4) *
+  GVCU_HIL_simscape_B.SumI4_e = (rtb_Saturation_ez - rtb_Sum_d) *
     GVCU_HIL_simscape_P.PIDController1_Kb_c +
-    GVCU_HIL_simscape_P.PIDController1_I_o * t_rel;
+    GVCU_HIL_simscape_P.PIDController1_I_o * rtb_Subtract1_d;
 
   /* Sum: '<S768>/SumI4' incorporates:
    *  Gain: '<S768>/Kb'
@@ -6829,35 +6760,42 @@ void GVCU_HIL_simscape_output(void)
 
   /* Step: '<S17>/Step' */
   if (time_tmp < GVCU_HIL_simscape_P.Step_Time_j) {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_Y0_d;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_Y0_d;
   } else {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_YFinal_a;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_YFinal_a;
   }
 
   /* Switch: '<S17>/Switch' incorporates:
    *  Constant: '<S17>/Offset setting'
    *  Step: '<S17>/Step'
    */
-  if (rateLimiterRate > GVCU_HIL_simscape_P.Switch_Threshold_m) {
-    rateLimiterRate = GVCU_HIL_simscape_B.Saturation_m;
+  if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.Switch_Threshold_m) {
+    rtb_TransferFcn_k = GVCU_HIL_simscape_B.Saturation;
   } else {
-    rateLimiterRate = GVCU_HIL_simscape_P.Offsetsetting_Value;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Offsetsetting_Value;
   }
 
   /* Lookup_n-D: '<S1>/1-D Lookup Table4' incorporates:
    *  Switch: '<S17>/Switch'
    */
-  GVCU_HIL_simscape_B.prs_to_voltage_m = look1_binlxpw(rateLimiterRate,
+  GVCU_HIL_simscape_B.prs_to_voltage_m = look1_binlxpw(rtb_TransferFcn_k,
     GVCU_HIL_simscape_P.uDLookupTable4_bp01Data_d,
     GVCU_HIL_simscape_P.uDLookupTable4_tableData_n, 99U);
 
-  /* RateTransition: '<S1>/Rate Transition' */
-  if (tmp_1o && first_output) {
+  /* RateTransition: '<S1>/Rate Transition' incorporates:
+   *  RateTransition: '<S1>/Rate Transition1'
+   *  RateTransition: '<S1>/Rate Transition2'
+   *  RateTransition: '<S1>/Rate Transition3'
+   */
+  if (tmp_1p && (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                 GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0)) {
     GVCU_HIL_simscape_DW.RateTransition_Buffer_b =
       GVCU_HIL_simscape_B.prs_to_voltage_m;
   }
 
-  if (first_output) {
+  didZcEventOccur = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+                     GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0);
+  if (didZcEventOccur) {
     /* RateTransition: '<S1>/Rate Transition' */
     GVCU_HIL_simscape_B.RateTransition_f =
       GVCU_HIL_simscape_DW.RateTransition_Buffer_b;
@@ -6869,7 +6807,7 @@ void GVCU_HIL_simscape_output(void)
     }
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sysvarin): '<S18>/S-Function' */
     if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_e, 1,
          &GVCU_HIL_simscape_B.SFunction_bw, 0) != 0) {
@@ -6879,35 +6817,35 @@ void GVCU_HIL_simscape_output(void)
 
   /* Step: '<S16>/Step' */
   if (time_tmp < GVCU_HIL_simscape_P.Step_Time_p) {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_Y0_l;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_Y0_l;
   } else {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_YFinal_h;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_YFinal_h;
   }
 
   /* Switch: '<S16>/Switch' incorporates:
    *  Constant: '<S16>/Offset setting'
    *  Step: '<S16>/Step'
    */
-  if (rateLimiterRate > GVCU_HIL_simscape_P.Switch_Threshold_h) {
-    rateLimiterRate = GVCU_HIL_simscape_B.Saturation1;
+  if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.Switch_Threshold_h) {
+    rtb_TransferFcn_k = GVCU_HIL_simscape_B.Saturation1;
   } else {
-    rateLimiterRate = GVCU_HIL_simscape_P.Offsetsetting_Value_i;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Offsetsetting_Value_i;
   }
 
   /* Lookup_n-D: '<S1>/1-D Lookup Table6' incorporates:
    *  Switch: '<S16>/Switch'
    */
-  GVCU_HIL_simscape_B.prs_to_voltage_e = look1_binlxpw(rateLimiterRate,
+  GVCU_HIL_simscape_B.prs_to_voltage_e = look1_binlxpw(rtb_TransferFcn_k,
     GVCU_HIL_simscape_P.uDLookupTable6_bp01Data,
     GVCU_HIL_simscape_P.uDLookupTable6_tableData, 99U);
 
   /* RateTransition: '<S1>/Rate Transition1' */
-  if (tmp_1o && first_output) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition1_Buffer_d =
       GVCU_HIL_simscape_B.prs_to_voltage_e;
   }
 
-  if (first_output) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S1>/Rate Transition1' */
     GVCU_HIL_simscape_B.RateTransition1_k =
       GVCU_HIL_simscape_DW.RateTransition1_Buffer_d;
@@ -6919,7 +6857,7 @@ void GVCU_HIL_simscape_output(void)
     }
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sysvarin): '<S19>/S-Function' */
     if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_a3, 1,
          &GVCU_HIL_simscape_B.SFunction_a, 0) != 0) {
@@ -6929,35 +6867,35 @@ void GVCU_HIL_simscape_output(void)
 
   /* Step: '<S15>/Step' */
   if (time_tmp < GVCU_HIL_simscape_P.Step_Time_h) {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_Y0_p;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_Y0_p;
   } else {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_YFinal_hf;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_YFinal_hf;
   }
 
   /* Switch: '<S15>/Switch' incorporates:
    *  Constant: '<S15>/Offset setting'
    *  Step: '<S15>/Step'
    */
-  if (rateLimiterRate > GVCU_HIL_simscape_P.Switch_Threshold_p) {
-    rateLimiterRate = GVCU_HIL_simscape_B.Saturation2;
+  if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.Switch_Threshold_p) {
+    rtb_TransferFcn_k = GVCU_HIL_simscape_B.Saturation2;
   } else {
-    rateLimiterRate = GVCU_HIL_simscape_P.Offsetsetting_Value_d;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Offsetsetting_Value_d;
   }
 
   /* Lookup_n-D: '<S1>/1-D Lookup Table7' incorporates:
    *  Switch: '<S15>/Switch'
    */
-  GVCU_HIL_simscape_B.prs_to_voltage_c = look1_binlxpw(rateLimiterRate,
+  GVCU_HIL_simscape_B.prs_to_voltage_c = look1_binlxpw(rtb_TransferFcn_k,
     GVCU_HIL_simscape_P.uDLookupTable7_bp01Data,
     GVCU_HIL_simscape_P.uDLookupTable7_tableData, 99U);
 
   /* RateTransition: '<S1>/Rate Transition2' */
-  if (tmp_1o && first_output) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition2_Buffer_g =
       GVCU_HIL_simscape_B.prs_to_voltage_c;
   }
 
-  if (first_output) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S1>/Rate Transition2' */
     GVCU_HIL_simscape_B.RateTransition2 =
       GVCU_HIL_simscape_DW.RateTransition2_Buffer_g;
@@ -6969,7 +6907,7 @@ void GVCU_HIL_simscape_output(void)
     }
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sysvarin): '<S20>/S-Function' */
     if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_oc, 1,
          &GVCU_HIL_simscape_B.SFunction_d, 0) != 0) {
@@ -6979,35 +6917,35 @@ void GVCU_HIL_simscape_output(void)
 
   /* Step: '<S14>/Step' */
   if (time_tmp < GVCU_HIL_simscape_P.Step_Time_c) {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_Y0_g;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_Y0_g;
   } else {
-    rateLimiterRate = GVCU_HIL_simscape_P.Step_YFinal_e;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Step_YFinal_e;
   }
 
   /* Switch: '<S14>/Switch' incorporates:
    *  Constant: '<S14>/Offset setting'
    *  Step: '<S14>/Step'
    */
-  if (rateLimiterRate > GVCU_HIL_simscape_P.Switch_Threshold_l) {
-    rateLimiterRate = GVCU_HIL_simscape_B.prs_to_voltage;
+  if (rtb_TransferFcn_k > GVCU_HIL_simscape_P.Switch_Threshold_l) {
+    rtb_TransferFcn_k = GVCU_HIL_simscape_B.prs_to_voltage;
   } else {
-    rateLimiterRate = GVCU_HIL_simscape_P.Offsetsetting_Value_m;
+    rtb_TransferFcn_k = GVCU_HIL_simscape_P.Offsetsetting_Value_m;
   }
 
   /* Lookup_n-D: '<S1>/1-D Lookup Table8' incorporates:
    *  Switch: '<S14>/Switch'
    */
-  GVCU_HIL_simscape_B.prs_to_voltage_j = look1_binlxpw(rateLimiterRate,
+  GVCU_HIL_simscape_B.prs_to_voltage_j = look1_binlxpw(rtb_TransferFcn_k,
     GVCU_HIL_simscape_P.uDLookupTable8_bp01Data,
     GVCU_HIL_simscape_P.uDLookupTable8_tableData, 99U);
 
   /* RateTransition: '<S1>/Rate Transition3' */
-  if (tmp_1o && first_output) {
+  if (tmp_1p && didZcEventOccur) {
     GVCU_HIL_simscape_DW.RateTransition3_Buffer_d =
       GVCU_HIL_simscape_B.prs_to_voltage_j;
   }
 
-  if (first_output) {
+  if (didZcEventOccur) {
     /* RateTransition: '<S1>/Rate Transition3' */
     GVCU_HIL_simscape_B.RateTransition3 =
       GVCU_HIL_simscape_DW.RateTransition3_Buffer_d;
@@ -7019,7 +6957,7 @@ void GVCU_HIL_simscape_output(void)
     }
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sysvarin): '<S21>/S-Function' */
     if (cnGetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_cj, 1,
          &GVCU_HIL_simscape_B.SFunction_ck, 0) != 0) {
@@ -7036,7 +6974,7 @@ void GVCU_HIL_simscape_output(void)
     GVCU_HIL_simscape_B.Step = GVCU_HIL_simscape_P.Step_YFinal_b;
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sysvarout): '<S22>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_cw, 1,
          &GVCU_HIL_simscape_B.Step, 0) != 0) {
@@ -7072,7 +7010,7 @@ void GVCU_HIL_simscape_output(void)
      *  Constant: '<S115>/Constant'
      *  RelationalOperator: '<S115>/Compare'
      */
-    GVCU_HIL_simscape_B.brake_pedal_applied = (real_T)(rtb_brake_out >
+    GVCU_HIL_simscape_B.brake_pedal_applied = (real_T)(rtb_Delay1 >
       GVCU_HIL_simscape_P.CompareToConstant_const_l) +
       GVCU_HIL_simscape_B.brake_switch;
 
@@ -7130,7 +7068,7 @@ void GVCU_HIL_simscape_output(void)
      GVCU_HIL_simscape_DW.TransportDelay_IWORK[0],
      GVCU_HIL_simscape_DW.TransportDelay_IWORK[1],
      GVCU_HIL_simscape_P.TransportDelay_InitOutput,true,false);
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* Constant: '<S3>/Zero167' */
     GVCU_HIL_simscape_B.dcdc_contactor = GVCU_HIL_simscape_P.Zero167_Value;
 
@@ -7658,17 +7596,17 @@ void GVCU_HIL_simscape_output(void)
     }
 
     /* Saturate: '<S3>/Saturation' */
-    if (rtb_brake_out > GVCU_HIL_simscape_P.Saturation_UpperSat_o) {
+    if (rtb_Delay1 > GVCU_HIL_simscape_P.Saturation_UpperSat_o) {
       /* Saturate: '<S3>/Saturation' */
       GVCU_HIL_simscape_B.brake_pedal_travel_perc =
         GVCU_HIL_simscape_P.Saturation_UpperSat_o;
-    } else if (rtb_brake_out < GVCU_HIL_simscape_P.Saturation_LowerSat_d) {
+    } else if (rtb_Delay1 < GVCU_HIL_simscape_P.Saturation_LowerSat_d) {
       /* Saturate: '<S3>/Saturation' */
       GVCU_HIL_simscape_B.brake_pedal_travel_perc =
         GVCU_HIL_simscape_P.Saturation_LowerSat_d;
     } else {
       /* Saturate: '<S3>/Saturation' */
-      GVCU_HIL_simscape_B.brake_pedal_travel_perc = rtb_brake_out;
+      GVCU_HIL_simscape_B.brake_pedal_travel_perc = rtb_Delay1;
     }
 
     /* End of Saturate: '<S3>/Saturation' */
@@ -7747,7 +7685,7 @@ void GVCU_HIL_simscape_output(void)
 
     /* S-Function (sysvarout): '<S168>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_n, 1,
-         &GVCU_HIL_simscape_B.pedal_out, 0) != 0) {
+         &GVCU_HIL_simscape_B.Delay, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
     }
 
@@ -7813,7 +7751,7 @@ void GVCU_HIL_simscape_output(void)
 
     /* S-Function (sysvarout): '<S178>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_lv, 1,
-         &GVCU_HIL_simscape_B.Saturation_m, 0) != 0) {
+         &GVCU_HIL_simscape_B.Saturation, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_simscape_M, cnGetErrorMessage());
     }
 
@@ -7836,7 +7774,7 @@ void GVCU_HIL_simscape_output(void)
     }
   }
 
-  if (tmp_1q) {
+  if (first_output) {
     /* S-Function (sysvarout): '<S182>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_da, 1,
          &GVCU_HIL_simscape_B.u01s, 0) != 0) {
@@ -7844,7 +7782,7 @@ void GVCU_HIL_simscape_output(void)
     }
   }
 
-  if (tmp_1o) {
+  if (tmp_1p) {
     /* S-Function (sysvarout): '<S185>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_simscape_DW.SFunction_SysVar_dc, 1,
          ((const real_T*) &GVCU_HIL_simscape_RGND), 0) != 0) {
@@ -7879,7 +7817,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_16_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_16_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_16_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_16_1_1_Buffer0;
@@ -7906,7 +7844,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_16_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_23_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_23_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_23_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_23_1_1_Buffer0;
@@ -7933,7 +7871,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_23_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_27_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_27_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_27_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_27_1_1_Buffer0;
@@ -7960,7 +7898,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_27_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_34_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_34_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_34_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_34_1_1_Buffer0;
@@ -7987,7 +7925,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_34_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_38_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_38_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_38_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_38_1_1_Buffer0;
@@ -8014,7 +7952,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_38_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_45_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_45_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_45_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_45_1_1_Buffer0;
@@ -8041,7 +7979,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_45_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_49_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_49_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_49_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_49_1_1_Buffer0;
@@ -8068,7 +8006,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_49_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_56_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_56_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_56_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_56_1_1_Buffer0;
@@ -8095,7 +8033,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_56_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_3_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_3_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_3_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_3_1_1_Buffer0;
@@ -8122,7 +8060,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_3_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_1_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_1_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_1_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_1_1_1_Buffer0;
@@ -8149,7 +8087,7 @@ void GVCU_HIL_simscape_output(void)
   /* End of SimscapeInputBlock: '<S291>/INTERNAL_1_1_1' */
 
   /* RateTransition: '<S291>/RATE_TRANSITION_2_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     /* RateTransition: '<S291>/RATE_TRANSITION_2_1_1' */
     GVCU_HIL_simscape_B.RATE_TRANSITION_2_1_1 =
       GVCU_HIL_simscape_DW.RATE_TRANSITION_2_1_1_Buffer0;
@@ -8199,7 +8137,7 @@ void GVCU_HIL_simscape_output(void)
   /* SimscapeInputBlock: '<S291>/INPUT_2_1_1' incorporates:
    *  Constant: '<S11>/Constant1'
    */
-  GVCU_HIL_simscape_B.INPUT_2_1_1[0] = GVCU_HIL_simscape_P.Constant1_Value_b;
+  GVCU_HIL_simscape_B.INPUT_2_1_1[0] = GVCU_HIL_simscape_P.Constant1_Value_b3;
   GVCU_HIL_simscape_B.INPUT_2_1_1[1] = 0.0;
   GVCU_HIL_simscape_B.INPUT_2_1_1[2] = 0.0;
   if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M)) {
@@ -8365,7 +8303,7 @@ void GVCU_HIL_simscape_output(void)
   GVCU_HIL_simscape_B.INPUT_9_1_1[3] = 0.0;
 
   /* RateTransition: '<S291>/RATE_TRANSITION_10_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_10_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[55];
   }
@@ -8392,7 +8330,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_11_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_11_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[56];
   }
@@ -8419,7 +8357,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_12_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_12_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[57];
   }
@@ -8463,226 +8401,226 @@ void GVCU_HIL_simscape_output(void)
   simulationData->mData->mJacobianElems.mN = 0;
   simulationData->mData->mJacobianElems.mX =
     &GVCU_HIL_simscape_DW.OUTPUT_1_1_JacobElems;
-  rtb_RelationalOperator = false;
-  simulationData->mData->mFoundZcEvents = rtb_RelationalOperator;
+  didZcEventOccur = false;
+  simulationData->mData->mFoundZcEvents = didZcEventOccur;
   simulationData->mData->mHadEvents = false;
   simulationData->mData->mIsMajorTimeStep = rtmIsMajorTimeStep
     (GVCU_HIL_simscape_M);
-  rtb_RelationalOperator = false;
-  simulationData->mData->mIsSolverAssertCheck = rtb_RelationalOperator;
+  didZcEventOccur = false;
+  simulationData->mData->mIsSolverAssertCheck = didZcEventOccur;
   simulationData->mData->mIsSolverCheckingCIC = false;
   simulationData->mData->mIsComputingJacobian = false;
   simulationData->mData->mIsEvaluatingF0 = false;
   simulationData->mData->mIsSolverRequestingReset = false;
   simulationData->mData->mIsModeUpdateTimeStep = rtsiIsModeUpdateTimeStep
     (&GVCU_HIL_simscape_M->solverInfo);
-  tmp_9[0] = 0;
-  tmp_8[0] = GVCU_HIL_simscape_B.INTERNAL_20_1_1[0];
-  tmp_8[1] = GVCU_HIL_simscape_B.INTERNAL_20_1_1[1];
-  tmp_8[2] = GVCU_HIL_simscape_B.INTERNAL_20_1_1[2];
-  tmp_8[3] = GVCU_HIL_simscape_B.INTERNAL_20_1_1[3];
-  tmp_9[1] = 4;
-  tmp_8[4] = GVCU_HIL_simscape_B.INTERNAL_21_1_1[0];
-  tmp_8[5] = GVCU_HIL_simscape_B.INTERNAL_21_1_1[1];
-  tmp_8[6] = GVCU_HIL_simscape_B.INTERNAL_21_1_1[2];
-  tmp_8[7] = GVCU_HIL_simscape_B.INTERNAL_21_1_1[3];
-  tmp_9[2] = 8;
-  tmp_8[8] = GVCU_HIL_simscape_B.INTERNAL_16_1_1[0];
-  tmp_8[9] = GVCU_HIL_simscape_B.INTERNAL_16_1_1[1];
-  tmp_8[10] = GVCU_HIL_simscape_B.INTERNAL_16_1_1[2];
-  tmp_8[11] = GVCU_HIL_simscape_B.INTERNAL_16_1_1[3];
-  tmp_9[3] = 12;
-  tmp_8[12] = GVCU_HIL_simscape_B.INTERNAL_17_1_1[0];
-  tmp_8[13] = GVCU_HIL_simscape_B.INTERNAL_17_1_1[1];
-  tmp_8[14] = GVCU_HIL_simscape_B.INTERNAL_17_1_1[2];
-  tmp_8[15] = GVCU_HIL_simscape_B.INTERNAL_17_1_1[3];
-  tmp_9[4] = 16;
-  tmp_8[16] = GVCU_HIL_simscape_B.INTERNAL_18_1_1[0];
-  tmp_8[17] = GVCU_HIL_simscape_B.INTERNAL_18_1_1[1];
-  tmp_8[18] = GVCU_HIL_simscape_B.INTERNAL_18_1_1[2];
-  tmp_8[19] = GVCU_HIL_simscape_B.INTERNAL_18_1_1[3];
-  tmp_9[5] = 20;
-  tmp_8[20] = GVCU_HIL_simscape_B.INTERNAL_19_1_1[0];
-  tmp_8[21] = GVCU_HIL_simscape_B.INTERNAL_19_1_1[1];
-  tmp_8[22] = GVCU_HIL_simscape_B.INTERNAL_19_1_1[2];
-  tmp_8[23] = GVCU_HIL_simscape_B.INTERNAL_19_1_1[3];
-  tmp_9[6] = 24;
-  tmp_8[24] = GVCU_HIL_simscape_B.INTERNAL_23_1_1[0];
-  tmp_8[25] = GVCU_HIL_simscape_B.INTERNAL_23_1_1[1];
-  tmp_8[26] = GVCU_HIL_simscape_B.INTERNAL_23_1_1[2];
-  tmp_8[27] = GVCU_HIL_simscape_B.INTERNAL_23_1_1[3];
-  tmp_9[7] = 28;
-  tmp_8[28] = GVCU_HIL_simscape_B.INTERNAL_31_1_1[0];
-  tmp_8[29] = GVCU_HIL_simscape_B.INTERNAL_31_1_1[1];
-  tmp_8[30] = GVCU_HIL_simscape_B.INTERNAL_31_1_1[2];
-  tmp_8[31] = GVCU_HIL_simscape_B.INTERNAL_31_1_1[3];
-  tmp_9[8] = 32;
-  tmp_8[32] = GVCU_HIL_simscape_B.INTERNAL_32_1_1[0];
-  tmp_8[33] = GVCU_HIL_simscape_B.INTERNAL_32_1_1[1];
-  tmp_8[34] = GVCU_HIL_simscape_B.INTERNAL_32_1_1[2];
-  tmp_8[35] = GVCU_HIL_simscape_B.INTERNAL_32_1_1[3];
-  tmp_9[9] = 36;
-  tmp_8[36] = GVCU_HIL_simscape_B.INTERNAL_27_1_1[0];
-  tmp_8[37] = GVCU_HIL_simscape_B.INTERNAL_27_1_1[1];
-  tmp_8[38] = GVCU_HIL_simscape_B.INTERNAL_27_1_1[2];
-  tmp_8[39] = GVCU_HIL_simscape_B.INTERNAL_27_1_1[3];
-  tmp_9[10] = 40;
-  tmp_8[40] = GVCU_HIL_simscape_B.INTERNAL_28_1_1[0];
-  tmp_8[41] = GVCU_HIL_simscape_B.INTERNAL_28_1_1[1];
-  tmp_8[42] = GVCU_HIL_simscape_B.INTERNAL_28_1_1[2];
-  tmp_8[43] = GVCU_HIL_simscape_B.INTERNAL_28_1_1[3];
-  tmp_9[11] = 44;
-  tmp_8[44] = GVCU_HIL_simscape_B.INTERNAL_29_1_1[0];
-  tmp_8[45] = GVCU_HIL_simscape_B.INTERNAL_29_1_1[1];
-  tmp_8[46] = GVCU_HIL_simscape_B.INTERNAL_29_1_1[2];
-  tmp_8[47] = GVCU_HIL_simscape_B.INTERNAL_29_1_1[3];
-  tmp_9[12] = 48;
-  tmp_8[48] = GVCU_HIL_simscape_B.INTERNAL_30_1_1[0];
-  tmp_8[49] = GVCU_HIL_simscape_B.INTERNAL_30_1_1[1];
-  tmp_8[50] = GVCU_HIL_simscape_B.INTERNAL_30_1_1[2];
-  tmp_8[51] = GVCU_HIL_simscape_B.INTERNAL_30_1_1[3];
-  tmp_9[13] = 52;
-  tmp_8[52] = GVCU_HIL_simscape_B.INTERNAL_34_1_1[0];
-  tmp_8[53] = GVCU_HIL_simscape_B.INTERNAL_34_1_1[1];
-  tmp_8[54] = GVCU_HIL_simscape_B.INTERNAL_34_1_1[2];
-  tmp_8[55] = GVCU_HIL_simscape_B.INTERNAL_34_1_1[3];
-  tmp_9[14] = 56;
-  tmp_8[56] = GVCU_HIL_simscape_B.INTERNAL_42_1_1[0];
-  tmp_8[57] = GVCU_HIL_simscape_B.INTERNAL_42_1_1[1];
-  tmp_8[58] = GVCU_HIL_simscape_B.INTERNAL_42_1_1[2];
-  tmp_8[59] = GVCU_HIL_simscape_B.INTERNAL_42_1_1[3];
-  tmp_9[15] = 60;
-  tmp_8[60] = GVCU_HIL_simscape_B.INTERNAL_43_1_1[0];
-  tmp_8[61] = GVCU_HIL_simscape_B.INTERNAL_43_1_1[1];
-  tmp_8[62] = GVCU_HIL_simscape_B.INTERNAL_43_1_1[2];
-  tmp_8[63] = GVCU_HIL_simscape_B.INTERNAL_43_1_1[3];
-  tmp_9[16] = 64;
-  tmp_8[64] = GVCU_HIL_simscape_B.INTERNAL_38_1_1[0];
-  tmp_8[65] = GVCU_HIL_simscape_B.INTERNAL_38_1_1[1];
-  tmp_8[66] = GVCU_HIL_simscape_B.INTERNAL_38_1_1[2];
-  tmp_8[67] = GVCU_HIL_simscape_B.INTERNAL_38_1_1[3];
-  tmp_9[17] = 68;
-  tmp_8[68] = GVCU_HIL_simscape_B.INTERNAL_39_1_1[0];
-  tmp_8[69] = GVCU_HIL_simscape_B.INTERNAL_39_1_1[1];
-  tmp_8[70] = GVCU_HIL_simscape_B.INTERNAL_39_1_1[2];
-  tmp_8[71] = GVCU_HIL_simscape_B.INTERNAL_39_1_1[3];
-  tmp_9[18] = 72;
-  tmp_8[72] = GVCU_HIL_simscape_B.INTERNAL_40_1_1[0];
-  tmp_8[73] = GVCU_HIL_simscape_B.INTERNAL_40_1_1[1];
-  tmp_8[74] = GVCU_HIL_simscape_B.INTERNAL_40_1_1[2];
-  tmp_8[75] = GVCU_HIL_simscape_B.INTERNAL_40_1_1[3];
-  tmp_9[19] = 76;
-  tmp_8[76] = GVCU_HIL_simscape_B.INTERNAL_41_1_1[0];
-  tmp_8[77] = GVCU_HIL_simscape_B.INTERNAL_41_1_1[1];
-  tmp_8[78] = GVCU_HIL_simscape_B.INTERNAL_41_1_1[2];
-  tmp_8[79] = GVCU_HIL_simscape_B.INTERNAL_41_1_1[3];
-  tmp_9[20] = 80;
-  tmp_8[80] = GVCU_HIL_simscape_B.INTERNAL_45_1_1[0];
-  tmp_8[81] = GVCU_HIL_simscape_B.INTERNAL_45_1_1[1];
-  tmp_8[82] = GVCU_HIL_simscape_B.INTERNAL_45_1_1[2];
-  tmp_8[83] = GVCU_HIL_simscape_B.INTERNAL_45_1_1[3];
-  tmp_9[21] = 84;
-  tmp_8[84] = GVCU_HIL_simscape_B.INTERNAL_53_1_1[0];
-  tmp_8[85] = GVCU_HIL_simscape_B.INTERNAL_53_1_1[1];
-  tmp_8[86] = GVCU_HIL_simscape_B.INTERNAL_53_1_1[2];
-  tmp_8[87] = GVCU_HIL_simscape_B.INTERNAL_53_1_1[3];
-  tmp_9[22] = 88;
-  tmp_8[88] = GVCU_HIL_simscape_B.INTERNAL_54_1_1[0];
-  tmp_8[89] = GVCU_HIL_simscape_B.INTERNAL_54_1_1[1];
-  tmp_8[90] = GVCU_HIL_simscape_B.INTERNAL_54_1_1[2];
-  tmp_8[91] = GVCU_HIL_simscape_B.INTERNAL_54_1_1[3];
-  tmp_9[23] = 92;
-  tmp_8[92] = GVCU_HIL_simscape_B.INTERNAL_49_1_1[0];
-  tmp_8[93] = GVCU_HIL_simscape_B.INTERNAL_49_1_1[1];
-  tmp_8[94] = GVCU_HIL_simscape_B.INTERNAL_49_1_1[2];
-  tmp_8[95] = GVCU_HIL_simscape_B.INTERNAL_49_1_1[3];
-  tmp_9[24] = 96;
-  tmp_8[96] = GVCU_HIL_simscape_B.INTERNAL_50_1_1[0];
-  tmp_8[97] = GVCU_HIL_simscape_B.INTERNAL_50_1_1[1];
-  tmp_8[98] = GVCU_HIL_simscape_B.INTERNAL_50_1_1[2];
-  tmp_8[99] = GVCU_HIL_simscape_B.INTERNAL_50_1_1[3];
-  tmp_9[25] = 100;
-  tmp_8[100] = GVCU_HIL_simscape_B.INTERNAL_51_1_1[0];
-  tmp_8[101] = GVCU_HIL_simscape_B.INTERNAL_51_1_1[1];
-  tmp_8[102] = GVCU_HIL_simscape_B.INTERNAL_51_1_1[2];
-  tmp_8[103] = GVCU_HIL_simscape_B.INTERNAL_51_1_1[3];
-  tmp_9[26] = 104;
-  tmp_8[104] = GVCU_HIL_simscape_B.INTERNAL_52_1_1[0];
-  tmp_8[105] = GVCU_HIL_simscape_B.INTERNAL_52_1_1[1];
-  tmp_8[106] = GVCU_HIL_simscape_B.INTERNAL_52_1_1[2];
-  tmp_8[107] = GVCU_HIL_simscape_B.INTERNAL_52_1_1[3];
-  tmp_9[27] = 108;
-  tmp_8[108] = GVCU_HIL_simscape_B.INTERNAL_56_1_1[0];
-  tmp_8[109] = GVCU_HIL_simscape_B.INTERNAL_56_1_1[1];
-  tmp_8[110] = GVCU_HIL_simscape_B.INTERNAL_56_1_1[2];
-  tmp_8[111] = GVCU_HIL_simscape_B.INTERNAL_56_1_1[3];
-  tmp_9[28] = 112;
-  tmp_8[112] = GVCU_HIL_simscape_B.INTERNAL_57_1_1[0];
-  tmp_8[113] = GVCU_HIL_simscape_B.INTERNAL_57_1_1[1];
-  tmp_8[114] = GVCU_HIL_simscape_B.INTERNAL_57_1_1[2];
-  tmp_8[115] = GVCU_HIL_simscape_B.INTERNAL_57_1_1[3];
-  tmp_9[29] = 116;
-  tmp_8[116] = GVCU_HIL_simscape_B.INTERNAL_3_1_1[0];
-  tmp_8[117] = GVCU_HIL_simscape_B.INTERNAL_3_1_1[1];
-  tmp_8[118] = GVCU_HIL_simscape_B.INTERNAL_3_1_1[2];
-  tmp_8[119] = GVCU_HIL_simscape_B.INTERNAL_3_1_1[3];
-  tmp_9[30] = 120;
-  tmp_8[120] = GVCU_HIL_simscape_B.INTERNAL_1_1_1[0];
-  tmp_8[121] = GVCU_HIL_simscape_B.INTERNAL_1_1_1[1];
-  tmp_8[122] = GVCU_HIL_simscape_B.INTERNAL_1_1_1[2];
-  tmp_8[123] = GVCU_HIL_simscape_B.INTERNAL_1_1_1[3];
-  tmp_9[31] = 124;
-  tmp_8[124] = GVCU_HIL_simscape_B.INTERNAL_2_1_1[0];
-  tmp_8[125] = GVCU_HIL_simscape_B.INTERNAL_2_1_1[1];
-  tmp_8[126] = GVCU_HIL_simscape_B.INTERNAL_2_1_1[2];
-  tmp_8[127] = GVCU_HIL_simscape_B.INTERNAL_2_1_1[3];
-  tmp_9[32] = 128;
-  tmp_8[128] = GVCU_HIL_simscape_B.INPUT_1_1_1[0];
-  tmp_8[129] = GVCU_HIL_simscape_B.INPUT_1_1_1[1];
-  tmp_8[130] = GVCU_HIL_simscape_B.INPUT_1_1_1[2];
-  tmp_8[131] = GVCU_HIL_simscape_B.INPUT_1_1_1[3];
-  tmp_9[33] = 132;
-  tmp_8[132] = GVCU_HIL_simscape_B.INPUT_2_1_1[0];
-  tmp_8[133] = GVCU_HIL_simscape_B.INPUT_2_1_1[1];
-  tmp_8[134] = GVCU_HIL_simscape_B.INPUT_2_1_1[2];
-  tmp_8[135] = GVCU_HIL_simscape_B.INPUT_2_1_1[3];
-  tmp_9[34] = 136;
-  tmp_8[136] = GVCU_HIL_simscape_B.INPUT_3_1_1[0];
-  tmp_8[137] = GVCU_HIL_simscape_B.INPUT_3_1_1[1];
-  tmp_8[138] = GVCU_HIL_simscape_B.INPUT_3_1_1[2];
-  tmp_8[139] = GVCU_HIL_simscape_B.INPUT_3_1_1[3];
-  tmp_9[35] = 140;
-  tmp_8[140] = GVCU_HIL_simscape_B.INPUT_4_1_1[0];
-  tmp_8[141] = GVCU_HIL_simscape_B.INPUT_4_1_1[1];
-  tmp_8[142] = GVCU_HIL_simscape_B.INPUT_4_1_1[2];
-  tmp_8[143] = GVCU_HIL_simscape_B.INPUT_4_1_1[3];
-  tmp_9[36] = 144;
-  tmp_8[144] = GVCU_HIL_simscape_B.INPUT_5_1_1[0];
-  tmp_8[145] = GVCU_HIL_simscape_B.INPUT_5_1_1[1];
-  tmp_8[146] = GVCU_HIL_simscape_B.INPUT_5_1_1[2];
-  tmp_8[147] = GVCU_HIL_simscape_B.INPUT_5_1_1[3];
-  tmp_9[37] = 148;
-  tmp_8[148] = GVCU_HIL_simscape_B.INPUT_6_1_1[0];
-  tmp_8[149] = GVCU_HIL_simscape_B.INPUT_6_1_1[1];
-  tmp_8[150] = GVCU_HIL_simscape_B.INPUT_6_1_1[2];
-  tmp_8[151] = GVCU_HIL_simscape_B.INPUT_6_1_1[3];
-  tmp_9[38] = 152;
-  tmp_8[152] = GVCU_HIL_simscape_B.INPUT_7_1_1[0];
-  tmp_8[153] = GVCU_HIL_simscape_B.INPUT_7_1_1[1];
-  tmp_8[154] = GVCU_HIL_simscape_B.INPUT_7_1_1[2];
-  tmp_8[155] = GVCU_HIL_simscape_B.INPUT_7_1_1[3];
-  tmp_9[39] = 156;
-  tmp_8[156] = GVCU_HIL_simscape_B.INPUT_8_1_1[0];
-  tmp_8[157] = GVCU_HIL_simscape_B.INPUT_8_1_1[1];
-  tmp_8[158] = GVCU_HIL_simscape_B.INPUT_8_1_1[2];
-  tmp_8[159] = GVCU_HIL_simscape_B.INPUT_8_1_1[3];
-  tmp_9[40] = 160;
-  memcpy(&tmp_8[160], &GVCU_HIL_simscape_B.STATE_1[0], 29U * sizeof(real_T));
-  tmp_9[41] = 189;
+  tmp_a[0] = 0;
+  tmp_9[0] = GVCU_HIL_simscape_B.INTERNAL_20_1_1[0];
+  tmp_9[1] = GVCU_HIL_simscape_B.INTERNAL_20_1_1[1];
+  tmp_9[2] = GVCU_HIL_simscape_B.INTERNAL_20_1_1[2];
+  tmp_9[3] = GVCU_HIL_simscape_B.INTERNAL_20_1_1[3];
+  tmp_a[1] = 4;
+  tmp_9[4] = GVCU_HIL_simscape_B.INTERNAL_21_1_1[0];
+  tmp_9[5] = GVCU_HIL_simscape_B.INTERNAL_21_1_1[1];
+  tmp_9[6] = GVCU_HIL_simscape_B.INTERNAL_21_1_1[2];
+  tmp_9[7] = GVCU_HIL_simscape_B.INTERNAL_21_1_1[3];
+  tmp_a[2] = 8;
+  tmp_9[8] = GVCU_HIL_simscape_B.INTERNAL_16_1_1[0];
+  tmp_9[9] = GVCU_HIL_simscape_B.INTERNAL_16_1_1[1];
+  tmp_9[10] = GVCU_HIL_simscape_B.INTERNAL_16_1_1[2];
+  tmp_9[11] = GVCU_HIL_simscape_B.INTERNAL_16_1_1[3];
+  tmp_a[3] = 12;
+  tmp_9[12] = GVCU_HIL_simscape_B.INTERNAL_17_1_1[0];
+  tmp_9[13] = GVCU_HIL_simscape_B.INTERNAL_17_1_1[1];
+  tmp_9[14] = GVCU_HIL_simscape_B.INTERNAL_17_1_1[2];
+  tmp_9[15] = GVCU_HIL_simscape_B.INTERNAL_17_1_1[3];
+  tmp_a[4] = 16;
+  tmp_9[16] = GVCU_HIL_simscape_B.INTERNAL_18_1_1[0];
+  tmp_9[17] = GVCU_HIL_simscape_B.INTERNAL_18_1_1[1];
+  tmp_9[18] = GVCU_HIL_simscape_B.INTERNAL_18_1_1[2];
+  tmp_9[19] = GVCU_HIL_simscape_B.INTERNAL_18_1_1[3];
+  tmp_a[5] = 20;
+  tmp_9[20] = GVCU_HIL_simscape_B.INTERNAL_19_1_1[0];
+  tmp_9[21] = GVCU_HIL_simscape_B.INTERNAL_19_1_1[1];
+  tmp_9[22] = GVCU_HIL_simscape_B.INTERNAL_19_1_1[2];
+  tmp_9[23] = GVCU_HIL_simscape_B.INTERNAL_19_1_1[3];
+  tmp_a[6] = 24;
+  tmp_9[24] = GVCU_HIL_simscape_B.INTERNAL_23_1_1[0];
+  tmp_9[25] = GVCU_HIL_simscape_B.INTERNAL_23_1_1[1];
+  tmp_9[26] = GVCU_HIL_simscape_B.INTERNAL_23_1_1[2];
+  tmp_9[27] = GVCU_HIL_simscape_B.INTERNAL_23_1_1[3];
+  tmp_a[7] = 28;
+  tmp_9[28] = GVCU_HIL_simscape_B.INTERNAL_31_1_1[0];
+  tmp_9[29] = GVCU_HIL_simscape_B.INTERNAL_31_1_1[1];
+  tmp_9[30] = GVCU_HIL_simscape_B.INTERNAL_31_1_1[2];
+  tmp_9[31] = GVCU_HIL_simscape_B.INTERNAL_31_1_1[3];
+  tmp_a[8] = 32;
+  tmp_9[32] = GVCU_HIL_simscape_B.INTERNAL_32_1_1[0];
+  tmp_9[33] = GVCU_HIL_simscape_B.INTERNAL_32_1_1[1];
+  tmp_9[34] = GVCU_HIL_simscape_B.INTERNAL_32_1_1[2];
+  tmp_9[35] = GVCU_HIL_simscape_B.INTERNAL_32_1_1[3];
+  tmp_a[9] = 36;
+  tmp_9[36] = GVCU_HIL_simscape_B.INTERNAL_27_1_1[0];
+  tmp_9[37] = GVCU_HIL_simscape_B.INTERNAL_27_1_1[1];
+  tmp_9[38] = GVCU_HIL_simscape_B.INTERNAL_27_1_1[2];
+  tmp_9[39] = GVCU_HIL_simscape_B.INTERNAL_27_1_1[3];
+  tmp_a[10] = 40;
+  tmp_9[40] = GVCU_HIL_simscape_B.INTERNAL_28_1_1[0];
+  tmp_9[41] = GVCU_HIL_simscape_B.INTERNAL_28_1_1[1];
+  tmp_9[42] = GVCU_HIL_simscape_B.INTERNAL_28_1_1[2];
+  tmp_9[43] = GVCU_HIL_simscape_B.INTERNAL_28_1_1[3];
+  tmp_a[11] = 44;
+  tmp_9[44] = GVCU_HIL_simscape_B.INTERNAL_29_1_1[0];
+  tmp_9[45] = GVCU_HIL_simscape_B.INTERNAL_29_1_1[1];
+  tmp_9[46] = GVCU_HIL_simscape_B.INTERNAL_29_1_1[2];
+  tmp_9[47] = GVCU_HIL_simscape_B.INTERNAL_29_1_1[3];
+  tmp_a[12] = 48;
+  tmp_9[48] = GVCU_HIL_simscape_B.INTERNAL_30_1_1[0];
+  tmp_9[49] = GVCU_HIL_simscape_B.INTERNAL_30_1_1[1];
+  tmp_9[50] = GVCU_HIL_simscape_B.INTERNAL_30_1_1[2];
+  tmp_9[51] = GVCU_HIL_simscape_B.INTERNAL_30_1_1[3];
+  tmp_a[13] = 52;
+  tmp_9[52] = GVCU_HIL_simscape_B.INTERNAL_34_1_1[0];
+  tmp_9[53] = GVCU_HIL_simscape_B.INTERNAL_34_1_1[1];
+  tmp_9[54] = GVCU_HIL_simscape_B.INTERNAL_34_1_1[2];
+  tmp_9[55] = GVCU_HIL_simscape_B.INTERNAL_34_1_1[3];
+  tmp_a[14] = 56;
+  tmp_9[56] = GVCU_HIL_simscape_B.INTERNAL_42_1_1[0];
+  tmp_9[57] = GVCU_HIL_simscape_B.INTERNAL_42_1_1[1];
+  tmp_9[58] = GVCU_HIL_simscape_B.INTERNAL_42_1_1[2];
+  tmp_9[59] = GVCU_HIL_simscape_B.INTERNAL_42_1_1[3];
+  tmp_a[15] = 60;
+  tmp_9[60] = GVCU_HIL_simscape_B.INTERNAL_43_1_1[0];
+  tmp_9[61] = GVCU_HIL_simscape_B.INTERNAL_43_1_1[1];
+  tmp_9[62] = GVCU_HIL_simscape_B.INTERNAL_43_1_1[2];
+  tmp_9[63] = GVCU_HIL_simscape_B.INTERNAL_43_1_1[3];
+  tmp_a[16] = 64;
+  tmp_9[64] = GVCU_HIL_simscape_B.INTERNAL_38_1_1[0];
+  tmp_9[65] = GVCU_HIL_simscape_B.INTERNAL_38_1_1[1];
+  tmp_9[66] = GVCU_HIL_simscape_B.INTERNAL_38_1_1[2];
+  tmp_9[67] = GVCU_HIL_simscape_B.INTERNAL_38_1_1[3];
+  tmp_a[17] = 68;
+  tmp_9[68] = GVCU_HIL_simscape_B.INTERNAL_39_1_1[0];
+  tmp_9[69] = GVCU_HIL_simscape_B.INTERNAL_39_1_1[1];
+  tmp_9[70] = GVCU_HIL_simscape_B.INTERNAL_39_1_1[2];
+  tmp_9[71] = GVCU_HIL_simscape_B.INTERNAL_39_1_1[3];
+  tmp_a[18] = 72;
+  tmp_9[72] = GVCU_HIL_simscape_B.INTERNAL_40_1_1[0];
+  tmp_9[73] = GVCU_HIL_simscape_B.INTERNAL_40_1_1[1];
+  tmp_9[74] = GVCU_HIL_simscape_B.INTERNAL_40_1_1[2];
+  tmp_9[75] = GVCU_HIL_simscape_B.INTERNAL_40_1_1[3];
+  tmp_a[19] = 76;
+  tmp_9[76] = GVCU_HIL_simscape_B.INTERNAL_41_1_1[0];
+  tmp_9[77] = GVCU_HIL_simscape_B.INTERNAL_41_1_1[1];
+  tmp_9[78] = GVCU_HIL_simscape_B.INTERNAL_41_1_1[2];
+  tmp_9[79] = GVCU_HIL_simscape_B.INTERNAL_41_1_1[3];
+  tmp_a[20] = 80;
+  tmp_9[80] = GVCU_HIL_simscape_B.INTERNAL_45_1_1[0];
+  tmp_9[81] = GVCU_HIL_simscape_B.INTERNAL_45_1_1[1];
+  tmp_9[82] = GVCU_HIL_simscape_B.INTERNAL_45_1_1[2];
+  tmp_9[83] = GVCU_HIL_simscape_B.INTERNAL_45_1_1[3];
+  tmp_a[21] = 84;
+  tmp_9[84] = GVCU_HIL_simscape_B.INTERNAL_53_1_1[0];
+  tmp_9[85] = GVCU_HIL_simscape_B.INTERNAL_53_1_1[1];
+  tmp_9[86] = GVCU_HIL_simscape_B.INTERNAL_53_1_1[2];
+  tmp_9[87] = GVCU_HIL_simscape_B.INTERNAL_53_1_1[3];
+  tmp_a[22] = 88;
+  tmp_9[88] = GVCU_HIL_simscape_B.INTERNAL_54_1_1[0];
+  tmp_9[89] = GVCU_HIL_simscape_B.INTERNAL_54_1_1[1];
+  tmp_9[90] = GVCU_HIL_simscape_B.INTERNAL_54_1_1[2];
+  tmp_9[91] = GVCU_HIL_simscape_B.INTERNAL_54_1_1[3];
+  tmp_a[23] = 92;
+  tmp_9[92] = GVCU_HIL_simscape_B.INTERNAL_49_1_1[0];
+  tmp_9[93] = GVCU_HIL_simscape_B.INTERNAL_49_1_1[1];
+  tmp_9[94] = GVCU_HIL_simscape_B.INTERNAL_49_1_1[2];
+  tmp_9[95] = GVCU_HIL_simscape_B.INTERNAL_49_1_1[3];
+  tmp_a[24] = 96;
+  tmp_9[96] = GVCU_HIL_simscape_B.INTERNAL_50_1_1[0];
+  tmp_9[97] = GVCU_HIL_simscape_B.INTERNAL_50_1_1[1];
+  tmp_9[98] = GVCU_HIL_simscape_B.INTERNAL_50_1_1[2];
+  tmp_9[99] = GVCU_HIL_simscape_B.INTERNAL_50_1_1[3];
+  tmp_a[25] = 100;
+  tmp_9[100] = GVCU_HIL_simscape_B.INTERNAL_51_1_1[0];
+  tmp_9[101] = GVCU_HIL_simscape_B.INTERNAL_51_1_1[1];
+  tmp_9[102] = GVCU_HIL_simscape_B.INTERNAL_51_1_1[2];
+  tmp_9[103] = GVCU_HIL_simscape_B.INTERNAL_51_1_1[3];
+  tmp_a[26] = 104;
+  tmp_9[104] = GVCU_HIL_simscape_B.INTERNAL_52_1_1[0];
+  tmp_9[105] = GVCU_HIL_simscape_B.INTERNAL_52_1_1[1];
+  tmp_9[106] = GVCU_HIL_simscape_B.INTERNAL_52_1_1[2];
+  tmp_9[107] = GVCU_HIL_simscape_B.INTERNAL_52_1_1[3];
+  tmp_a[27] = 108;
+  tmp_9[108] = GVCU_HIL_simscape_B.INTERNAL_56_1_1[0];
+  tmp_9[109] = GVCU_HIL_simscape_B.INTERNAL_56_1_1[1];
+  tmp_9[110] = GVCU_HIL_simscape_B.INTERNAL_56_1_1[2];
+  tmp_9[111] = GVCU_HIL_simscape_B.INTERNAL_56_1_1[3];
+  tmp_a[28] = 112;
+  tmp_9[112] = GVCU_HIL_simscape_B.INTERNAL_57_1_1[0];
+  tmp_9[113] = GVCU_HIL_simscape_B.INTERNAL_57_1_1[1];
+  tmp_9[114] = GVCU_HIL_simscape_B.INTERNAL_57_1_1[2];
+  tmp_9[115] = GVCU_HIL_simscape_B.INTERNAL_57_1_1[3];
+  tmp_a[29] = 116;
+  tmp_9[116] = GVCU_HIL_simscape_B.INTERNAL_3_1_1[0];
+  tmp_9[117] = GVCU_HIL_simscape_B.INTERNAL_3_1_1[1];
+  tmp_9[118] = GVCU_HIL_simscape_B.INTERNAL_3_1_1[2];
+  tmp_9[119] = GVCU_HIL_simscape_B.INTERNAL_3_1_1[3];
+  tmp_a[30] = 120;
+  tmp_9[120] = GVCU_HIL_simscape_B.INTERNAL_1_1_1[0];
+  tmp_9[121] = GVCU_HIL_simscape_B.INTERNAL_1_1_1[1];
+  tmp_9[122] = GVCU_HIL_simscape_B.INTERNAL_1_1_1[2];
+  tmp_9[123] = GVCU_HIL_simscape_B.INTERNAL_1_1_1[3];
+  tmp_a[31] = 124;
+  tmp_9[124] = GVCU_HIL_simscape_B.INTERNAL_2_1_1[0];
+  tmp_9[125] = GVCU_HIL_simscape_B.INTERNAL_2_1_1[1];
+  tmp_9[126] = GVCU_HIL_simscape_B.INTERNAL_2_1_1[2];
+  tmp_9[127] = GVCU_HIL_simscape_B.INTERNAL_2_1_1[3];
+  tmp_a[32] = 128;
+  tmp_9[128] = GVCU_HIL_simscape_B.INPUT_1_1_1[0];
+  tmp_9[129] = GVCU_HIL_simscape_B.INPUT_1_1_1[1];
+  tmp_9[130] = GVCU_HIL_simscape_B.INPUT_1_1_1[2];
+  tmp_9[131] = GVCU_HIL_simscape_B.INPUT_1_1_1[3];
+  tmp_a[33] = 132;
+  tmp_9[132] = GVCU_HIL_simscape_B.INPUT_2_1_1[0];
+  tmp_9[133] = GVCU_HIL_simscape_B.INPUT_2_1_1[1];
+  tmp_9[134] = GVCU_HIL_simscape_B.INPUT_2_1_1[2];
+  tmp_9[135] = GVCU_HIL_simscape_B.INPUT_2_1_1[3];
+  tmp_a[34] = 136;
+  tmp_9[136] = GVCU_HIL_simscape_B.INPUT_3_1_1[0];
+  tmp_9[137] = GVCU_HIL_simscape_B.INPUT_3_1_1[1];
+  tmp_9[138] = GVCU_HIL_simscape_B.INPUT_3_1_1[2];
+  tmp_9[139] = GVCU_HIL_simscape_B.INPUT_3_1_1[3];
+  tmp_a[35] = 140;
+  tmp_9[140] = GVCU_HIL_simscape_B.INPUT_4_1_1[0];
+  tmp_9[141] = GVCU_HIL_simscape_B.INPUT_4_1_1[1];
+  tmp_9[142] = GVCU_HIL_simscape_B.INPUT_4_1_1[2];
+  tmp_9[143] = GVCU_HIL_simscape_B.INPUT_4_1_1[3];
+  tmp_a[36] = 144;
+  tmp_9[144] = GVCU_HIL_simscape_B.INPUT_5_1_1[0];
+  tmp_9[145] = GVCU_HIL_simscape_B.INPUT_5_1_1[1];
+  tmp_9[146] = GVCU_HIL_simscape_B.INPUT_5_1_1[2];
+  tmp_9[147] = GVCU_HIL_simscape_B.INPUT_5_1_1[3];
+  tmp_a[37] = 148;
+  tmp_9[148] = GVCU_HIL_simscape_B.INPUT_6_1_1[0];
+  tmp_9[149] = GVCU_HIL_simscape_B.INPUT_6_1_1[1];
+  tmp_9[150] = GVCU_HIL_simscape_B.INPUT_6_1_1[2];
+  tmp_9[151] = GVCU_HIL_simscape_B.INPUT_6_1_1[3];
+  tmp_a[38] = 152;
+  tmp_9[152] = GVCU_HIL_simscape_B.INPUT_7_1_1[0];
+  tmp_9[153] = GVCU_HIL_simscape_B.INPUT_7_1_1[1];
+  tmp_9[154] = GVCU_HIL_simscape_B.INPUT_7_1_1[2];
+  tmp_9[155] = GVCU_HIL_simscape_B.INPUT_7_1_1[3];
+  tmp_a[39] = 156;
+  tmp_9[156] = GVCU_HIL_simscape_B.INPUT_8_1_1[0];
+  tmp_9[157] = GVCU_HIL_simscape_B.INPUT_8_1_1[1];
+  tmp_9[158] = GVCU_HIL_simscape_B.INPUT_8_1_1[2];
+  tmp_9[159] = GVCU_HIL_simscape_B.INPUT_8_1_1[3];
+  tmp_a[40] = 160;
+  memcpy(&tmp_9[160], &GVCU_HIL_simscape_B.STATE_1[0], 29U * sizeof(real_T));
+  tmp_a[41] = 189;
   simulationData->mData->mInputValues.mN = 189;
-  simulationData->mData->mInputValues.mX = &tmp_8[0];
+  simulationData->mData->mInputValues.mX = &tmp_9[0];
   simulationData->mData->mInputOffsets.mN = 42;
-  simulationData->mData->mInputOffsets.mX = &tmp_9[0];
+  simulationData->mData->mInputOffsets.mX = &tmp_a[0];
   simulationData->mData->mOutputs.mN = 54;
   simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.OUTPUT_1_1[0];
   simulationData->mData->mTolerances.mN = 0;
@@ -8703,16 +8641,16 @@ void GVCU_HIL_simscape_output(void)
     GVCU_HIL_simscape_DW.OUTPUT_1_1_Simulator, NESL_SIM_OUTPUTS, simulationData,
     diagnosticManager);
   if (b_high_i != 0) {
-    rtb_RelationalOperator = error_buffer_is_empty(rtmGetErrorStatus
+    didZcEventOccur = error_buffer_is_empty(rtmGetErrorStatus
       (GVCU_HIL_simscape_M));
-    if (rtb_RelationalOperator) {
+    if (didZcEventOccur) {
       msg_3 = rtw_diagnostics_msg(diagnosticTree_3);
       rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_3);
     }
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_13_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_13_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[3];
   }
@@ -8739,7 +8677,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_13_1_2' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_13_1_2_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[4];
   }
@@ -8766,7 +8704,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_13_1_3' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_13_1_3_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[5];
   }
@@ -8793,7 +8731,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_14_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_14_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[9];
   }
@@ -8820,7 +8758,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_15_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_15_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[10];
   }
@@ -8847,7 +8785,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_24_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_24_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[6];
   }
@@ -8874,7 +8812,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_24_1_2' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_24_1_2_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[7];
   }
@@ -8901,7 +8839,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_24_1_3' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_24_1_3_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[8];
   }
@@ -8928,7 +8866,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_25_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_25_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[12];
   }
@@ -8955,7 +8893,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_26_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_26_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[13];
   }
@@ -8982,7 +8920,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_35_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_35_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[9];
   }
@@ -9009,7 +8947,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_35_1_2' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_35_1_2_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[10];
   }
@@ -9036,7 +8974,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_35_1_3' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_35_1_3_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[11];
   }
@@ -9063,7 +9001,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_36_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_36_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[15];
   }
@@ -9090,7 +9028,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_37_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_37_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[16];
   }
@@ -9117,7 +9055,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_46_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_46_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[12];
   }
@@ -9144,7 +9082,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_46_1_2' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_46_1_2_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[13];
   }
@@ -9171,7 +9109,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_46_1_3' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_46_1_3_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_1[14];
   }
@@ -9198,7 +9136,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_47_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_47_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[18];
   }
@@ -9225,7 +9163,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_48_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_48_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[19];
   }
@@ -9252,7 +9190,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_4_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_4_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[49];
   }
@@ -9279,7 +9217,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_5_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_5_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[50];
   }
@@ -9306,7 +9244,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_6_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_6_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[51];
   }
@@ -9333,7 +9271,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_7_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_7_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[52];
   }
@@ -9360,7 +9298,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_8_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_8_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[53];
   }
@@ -9387,7 +9325,7 @@ void GVCU_HIL_simscape_output(void)
   }
 
   /* RateTransition: '<S291>/RATE_TRANSITION_9_1_1' */
-  if (tmp_1o && tmp) {
+  if (tmp_1p && tmp) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_9_1_1_Buffer =
       GVCU_HIL_simscape_B.OUTPUT_1_0[54];
   }
@@ -9457,166 +9395,156 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_2_1_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_b[0] = 0;
-    tmp_a[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
-    tmp_a[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
-    tmp_a[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
-    tmp_a[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
-    tmp_b[1] = 4;
-    tmp_a[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
-    tmp_a[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
-    tmp_a[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
-    tmp_a[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
-    tmp_b[2] = 8;
-    tmp_a[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
-    tmp_a[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
-    tmp_a[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
-    tmp_a[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
-    tmp_b[3] = 12;
-    tmp_a[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
-    tmp_a[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
-    tmp_a[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
-    tmp_a[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
-    tmp_b[4] = 16;
-    tmp_a[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
-    tmp_a[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
-    tmp_a[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
-    tmp_a[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
-    tmp_b[5] = 20;
-    tmp_a[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
-    tmp_a[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
-    tmp_a[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
-    tmp_a[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
-    tmp_b[6] = 24;
-    tmp_a[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
-    tmp_a[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
-    tmp_a[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
-    tmp_a[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
-    tmp_b[7] = 28;
-    tmp_a[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
-    tmp_a[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
-    tmp_a[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
-    tmp_a[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
-    tmp_b[8] = 32;
-    tmp_a[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
-    tmp_a[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
-    tmp_a[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
-    tmp_a[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
-    tmp_b[9] = 36;
-    tmp_a[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
-    tmp_a[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
-    tmp_a[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
-    tmp_a[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
-    tmp_b[10] = 40;
-    tmp_a[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
-    tmp_a[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
-    tmp_a[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
-    tmp_a[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
-    tmp_b[11] = 44;
-    tmp_a[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
-    tmp_a[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
-    tmp_a[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
-    tmp_a[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
-    tmp_b[12] = 48;
-    tmp_a[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
-    tmp_a[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
-    tmp_a[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
-    tmp_a[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
-    tmp_b[13] = 52;
-    tmp_a[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
-    tmp_a[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
-    tmp_a[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
-    tmp_a[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
-    tmp_b[14] = 56;
-    tmp_a[56] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
-    tmp_a[57] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
-    tmp_a[58] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
-    tmp_a[59] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
-    tmp_b[15] = 60;
-    tmp_a[60] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
-    tmp_a[61] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
-    tmp_a[62] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
-    tmp_a[63] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
-    tmp_b[16] = 64;
-    tmp_a[64] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
-    tmp_a[65] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
-    tmp_a[66] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
-    tmp_a[67] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
-    tmp_b[17] = 68;
-    tmp_a[68] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
-    tmp_a[69] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
-    tmp_a[70] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
-    tmp_a[71] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
-    tmp_b[18] = 72;
-    tmp_a[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
-    tmp_a[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
-    tmp_a[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
-    tmp_a[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
-    tmp_b[19] = 76;
-    tmp_a[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
-    tmp_a[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
-    tmp_a[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
-    tmp_a[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
-    tmp_b[20] = 80;
-    tmp_a[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
-    tmp_a[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
-    tmp_a[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
-    tmp_a[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
-    tmp_b[21] = 84;
-    tmp_a[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
-    tmp_a[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
-    tmp_a[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
-    tmp_a[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
-    tmp_b[22] = 88;
-    tmp_a[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
-    tmp_a[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
-    tmp_a[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
-    tmp_a[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
-    tmp_b[23] = 92;
-    tmp_a[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
-    tmp_a[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
-    tmp_a[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
-    tmp_a[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
-    tmp_b[24] = 96;
-    tmp_a[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
-    tmp_a[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
-    tmp_a[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
-    tmp_a[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
-    tmp_b[25] = 100;
-    tmp_a[100] = GVCU_HIL_simscape_B.INPUT_31_1_1[0];
-    tmp_a[101] = GVCU_HIL_simscape_B.INPUT_31_1_1[1];
-    tmp_a[102] = GVCU_HIL_simscape_B.INPUT_31_1_1[2];
-    tmp_a[103] = GVCU_HIL_simscape_B.INPUT_31_1_1[3];
-    tmp_b[26] = 104;
-    tmp_a[104] = GVCU_HIL_simscape_B.INPUT_32_1_1[0];
-    tmp_a[105] = GVCU_HIL_simscape_B.INPUT_32_1_1[1];
-    tmp_a[106] = GVCU_HIL_simscape_B.INPUT_32_1_1[2];
-    tmp_a[107] = GVCU_HIL_simscape_B.INPUT_32_1_1[3];
-    tmp_b[27] = 108;
-    memcpy(&tmp_a[108], &GVCU_HIL_simscape_B.STATE_2[0], 354U * sizeof(real_T));
-    tmp_b[28] = 462;
-    simulationData->mData->mInputValues.mN = 462;
-    simulationData->mData->mInputValues.mX = &tmp_a[0];
-    simulationData->mData->mInputOffsets.mN = 29;
-    simulationData->mData->mInputOffsets.mX = &tmp_b[0];
+    tmp_c[0] = 0;
+    tmp_b[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
+    tmp_b[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
+    tmp_b[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
+    tmp_b[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
+    tmp_c[1] = 4;
+    tmp_b[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
+    tmp_b[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
+    tmp_b[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
+    tmp_b[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
+    tmp_c[2] = 8;
+    tmp_b[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
+    tmp_b[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
+    tmp_b[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
+    tmp_b[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
+    tmp_c[3] = 12;
+    tmp_b[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
+    tmp_b[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
+    tmp_b[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
+    tmp_b[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
+    tmp_c[4] = 16;
+    tmp_b[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
+    tmp_b[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
+    tmp_b[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
+    tmp_b[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
+    tmp_c[5] = 20;
+    tmp_b[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
+    tmp_b[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
+    tmp_b[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
+    tmp_b[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
+    tmp_c[6] = 24;
+    tmp_b[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
+    tmp_b[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
+    tmp_b[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
+    tmp_b[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
+    tmp_c[7] = 28;
+    tmp_b[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
+    tmp_b[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
+    tmp_b[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
+    tmp_b[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
+    tmp_c[8] = 32;
+    tmp_b[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
+    tmp_b[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
+    tmp_b[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
+    tmp_b[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
+    tmp_c[9] = 36;
+    tmp_b[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
+    tmp_b[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
+    tmp_b[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
+    tmp_b[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
+    tmp_c[10] = 40;
+    tmp_b[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
+    tmp_b[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
+    tmp_b[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
+    tmp_b[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
+    tmp_c[11] = 44;
+    tmp_b[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
+    tmp_b[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
+    tmp_b[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
+    tmp_b[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
+    tmp_c[12] = 48;
+    tmp_b[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
+    tmp_b[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
+    tmp_b[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
+    tmp_b[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
+    tmp_c[13] = 52;
+    tmp_b[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
+    tmp_b[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
+    tmp_b[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
+    tmp_b[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
+    tmp_c[14] = 56;
+    tmp_b[56] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
+    tmp_b[57] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
+    tmp_b[58] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
+    tmp_b[59] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
+    tmp_c[15] = 60;
+    tmp_b[60] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
+    tmp_b[61] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
+    tmp_b[62] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
+    tmp_b[63] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
+    tmp_c[16] = 64;
+    tmp_b[64] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
+    tmp_b[65] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
+    tmp_b[66] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
+    tmp_b[67] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
+    tmp_c[17] = 68;
+    tmp_b[68] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
+    tmp_b[69] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
+    tmp_b[70] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
+    tmp_b[71] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
+    tmp_c[18] = 72;
+    tmp_b[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
+    tmp_b[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
+    tmp_b[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
+    tmp_b[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
+    tmp_c[19] = 76;
+    tmp_b[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
+    tmp_b[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
+    tmp_b[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
+    tmp_b[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
+    tmp_c[20] = 80;
+    tmp_b[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
+    tmp_b[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
+    tmp_b[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
+    tmp_b[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
+    tmp_c[21] = 84;
+    tmp_b[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
+    tmp_b[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
+    tmp_b[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
+    tmp_b[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
+    tmp_c[22] = 88;
+    tmp_b[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
+    tmp_b[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
+    tmp_b[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
+    tmp_b[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
+    tmp_c[23] = 92;
+    tmp_b[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
+    tmp_b[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
+    tmp_b[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
+    tmp_b[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
+    tmp_c[24] = 96;
+    tmp_b[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
+    tmp_b[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
+    tmp_b[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
+    tmp_b[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
+    tmp_c[25] = 100;
+    memcpy(&tmp_b[100], &GVCU_HIL_simscape_B.STATE_2[0], 353U * sizeof(real_T));
+    tmp_c[26] = 453;
+    simulationData->mData->mInputValues.mN = 453;
+    simulationData->mData->mInputValues.mX = &tmp_b[0];
+    simulationData->mData->mInputOffsets.mN = 27;
+    simulationData->mData->mInputOffsets.mX = &tmp_c[0];
     simulationData->mData->mOutputs.mN = 1;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_2_1;
     simulationData->mData->mTolerances.mN = 0;
     simulationData->mData->mTolerances.mX = NULL;
     simulationData->mData->mCstateHasChanged = false;
     simulationData->mData->mDstateHasChanged = false;
-    time_tmp = GVCU_HIL_simscape_M->Timing.t[4];
+    time_tmp = GVCU_HIL_simscape_M->Timing.t[2];
     time_a = time_tmp;
     simulationData->mData->mTime.mN = 1;
     simulationData->mData->mTime.mX = &time_a;
@@ -9632,8 +9560,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_2_1_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_4 = rtw_diagnostics_msg(diagnosticTree_4);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_4);
       }
@@ -9661,159 +9589,149 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_2_2_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_d[0] = 0;
-    tmp_c[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
-    tmp_c[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
-    tmp_c[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
-    tmp_c[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
-    tmp_d[1] = 4;
-    tmp_c[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
-    tmp_c[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
-    tmp_c[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
-    tmp_c[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
-    tmp_d[2] = 8;
-    tmp_c[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
-    tmp_c[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
-    tmp_c[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
-    tmp_c[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
-    tmp_d[3] = 12;
-    tmp_c[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
-    tmp_c[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
-    tmp_c[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
-    tmp_c[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
-    tmp_d[4] = 16;
-    tmp_c[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
-    tmp_c[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
-    tmp_c[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
-    tmp_c[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
-    tmp_d[5] = 20;
-    tmp_c[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
-    tmp_c[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
-    tmp_c[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
-    tmp_c[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
-    tmp_d[6] = 24;
-    tmp_c[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
-    tmp_c[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
-    tmp_c[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
-    tmp_c[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
-    tmp_d[7] = 28;
-    tmp_c[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
-    tmp_c[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
-    tmp_c[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
-    tmp_c[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
-    tmp_d[8] = 32;
-    tmp_c[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
-    tmp_c[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
-    tmp_c[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
-    tmp_c[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
-    tmp_d[9] = 36;
-    tmp_c[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
-    tmp_c[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
-    tmp_c[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
-    tmp_c[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
-    tmp_d[10] = 40;
-    tmp_c[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
-    tmp_c[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
-    tmp_c[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
-    tmp_c[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
-    tmp_d[11] = 44;
-    tmp_c[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
-    tmp_c[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
-    tmp_c[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
-    tmp_c[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
-    tmp_d[12] = 48;
-    tmp_c[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
-    tmp_c[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
-    tmp_c[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
-    tmp_c[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
-    tmp_d[13] = 52;
-    tmp_c[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
-    tmp_c[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
-    tmp_c[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
-    tmp_c[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
-    tmp_d[14] = 56;
-    tmp_c[56] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
-    tmp_c[57] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
-    tmp_c[58] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
-    tmp_c[59] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
-    tmp_d[15] = 60;
-    tmp_c[60] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
-    tmp_c[61] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
-    tmp_c[62] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
-    tmp_c[63] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
-    tmp_d[16] = 64;
-    tmp_c[64] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
-    tmp_c[65] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
-    tmp_c[66] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
-    tmp_c[67] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
-    tmp_d[17] = 68;
-    tmp_c[68] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
-    tmp_c[69] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
-    tmp_c[70] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
-    tmp_c[71] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
-    tmp_d[18] = 72;
-    tmp_c[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
-    tmp_c[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
-    tmp_c[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
-    tmp_c[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
-    tmp_d[19] = 76;
-    tmp_c[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
-    tmp_c[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
-    tmp_c[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
-    tmp_c[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
-    tmp_d[20] = 80;
-    tmp_c[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
-    tmp_c[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
-    tmp_c[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
-    tmp_c[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
-    tmp_d[21] = 84;
-    tmp_c[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
-    tmp_c[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
-    tmp_c[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
-    tmp_c[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
-    tmp_d[22] = 88;
-    tmp_c[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
-    tmp_c[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
-    tmp_c[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
-    tmp_c[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
-    tmp_d[23] = 92;
-    tmp_c[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
-    tmp_c[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
-    tmp_c[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
-    tmp_c[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
-    tmp_d[24] = 96;
-    tmp_c[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
-    tmp_c[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
-    tmp_c[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
-    tmp_c[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
-    tmp_d[25] = 100;
-    tmp_c[100] = GVCU_HIL_simscape_B.INPUT_31_1_1[0];
-    tmp_c[101] = GVCU_HIL_simscape_B.INPUT_31_1_1[1];
-    tmp_c[102] = GVCU_HIL_simscape_B.INPUT_31_1_1[2];
-    tmp_c[103] = GVCU_HIL_simscape_B.INPUT_31_1_1[3];
-    tmp_d[26] = 104;
-    tmp_c[104] = GVCU_HIL_simscape_B.INPUT_32_1_1[0];
-    tmp_c[105] = GVCU_HIL_simscape_B.INPUT_32_1_1[1];
-    tmp_c[106] = GVCU_HIL_simscape_B.INPUT_32_1_1[2];
-    tmp_c[107] = GVCU_HIL_simscape_B.INPUT_32_1_1[3];
-    tmp_d[27] = 108;
-    memcpy(&tmp_c[108], &GVCU_HIL_simscape_B.STATE_2[0], 354U * sizeof(real_T));
-    tmp_d[28] = 462;
-    simulationData->mData->mInputValues.mN = 462;
-    simulationData->mData->mInputValues.mX = &tmp_c[0];
-    simulationData->mData->mInputOffsets.mN = 29;
-    simulationData->mData->mInputOffsets.mX = &tmp_d[0];
+    tmp_e[0] = 0;
+    tmp_d[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
+    tmp_d[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
+    tmp_d[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
+    tmp_d[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
+    tmp_e[1] = 4;
+    tmp_d[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
+    tmp_d[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
+    tmp_d[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
+    tmp_d[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
+    tmp_e[2] = 8;
+    tmp_d[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
+    tmp_d[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
+    tmp_d[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
+    tmp_d[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
+    tmp_e[3] = 12;
+    tmp_d[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
+    tmp_d[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
+    tmp_d[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
+    tmp_d[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
+    tmp_e[4] = 16;
+    tmp_d[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
+    tmp_d[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
+    tmp_d[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
+    tmp_d[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
+    tmp_e[5] = 20;
+    tmp_d[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
+    tmp_d[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
+    tmp_d[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
+    tmp_d[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
+    tmp_e[6] = 24;
+    tmp_d[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
+    tmp_d[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
+    tmp_d[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
+    tmp_d[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
+    tmp_e[7] = 28;
+    tmp_d[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
+    tmp_d[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
+    tmp_d[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
+    tmp_d[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
+    tmp_e[8] = 32;
+    tmp_d[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
+    tmp_d[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
+    tmp_d[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
+    tmp_d[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
+    tmp_e[9] = 36;
+    tmp_d[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
+    tmp_d[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
+    tmp_d[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
+    tmp_d[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
+    tmp_e[10] = 40;
+    tmp_d[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
+    tmp_d[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
+    tmp_d[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
+    tmp_d[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
+    tmp_e[11] = 44;
+    tmp_d[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
+    tmp_d[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
+    tmp_d[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
+    tmp_d[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
+    tmp_e[12] = 48;
+    tmp_d[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
+    tmp_d[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
+    tmp_d[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
+    tmp_d[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
+    tmp_e[13] = 52;
+    tmp_d[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
+    tmp_d[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
+    tmp_d[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
+    tmp_d[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
+    tmp_e[14] = 56;
+    tmp_d[56] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
+    tmp_d[57] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
+    tmp_d[58] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
+    tmp_d[59] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
+    tmp_e[15] = 60;
+    tmp_d[60] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
+    tmp_d[61] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
+    tmp_d[62] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
+    tmp_d[63] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
+    tmp_e[16] = 64;
+    tmp_d[64] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
+    tmp_d[65] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
+    tmp_d[66] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
+    tmp_d[67] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
+    tmp_e[17] = 68;
+    tmp_d[68] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
+    tmp_d[69] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
+    tmp_d[70] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
+    tmp_d[71] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
+    tmp_e[18] = 72;
+    tmp_d[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
+    tmp_d[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
+    tmp_d[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
+    tmp_d[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
+    tmp_e[19] = 76;
+    tmp_d[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
+    tmp_d[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
+    tmp_d[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
+    tmp_d[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
+    tmp_e[20] = 80;
+    tmp_d[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
+    tmp_d[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
+    tmp_d[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
+    tmp_d[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
+    tmp_e[21] = 84;
+    tmp_d[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
+    tmp_d[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
+    tmp_d[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
+    tmp_d[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
+    tmp_e[22] = 88;
+    tmp_d[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
+    tmp_d[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
+    tmp_d[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
+    tmp_d[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
+    tmp_e[23] = 92;
+    tmp_d[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
+    tmp_d[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
+    tmp_d[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
+    tmp_d[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
+    tmp_e[24] = 96;
+    tmp_d[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
+    tmp_d[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
+    tmp_d[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
+    tmp_d[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
+    tmp_e[25] = 100;
+    memcpy(&tmp_d[100], &GVCU_HIL_simscape_B.STATE_2[0], 353U * sizeof(real_T));
+    tmp_e[26] = 453;
+    simulationData->mData->mInputValues.mN = 453;
+    simulationData->mData->mInputValues.mX = &tmp_d[0];
+    simulationData->mData->mInputOffsets.mN = 27;
+    simulationData->mData->mInputOffsets.mX = &tmp_e[0];
     simulationData->mData->mOutputs.mN = 1;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_2_2;
     simulationData->mData->mTolerances.mN = 0;
@@ -9835,8 +9753,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_2_2_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_5 = rtw_diagnostics_msg(diagnosticTree_5);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_5);
       }
@@ -9862,159 +9780,149 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_2_3_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_f[0] = 0;
-    tmp_e[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
-    tmp_e[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
-    tmp_e[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
-    tmp_e[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
-    tmp_f[1] = 4;
-    tmp_e[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
-    tmp_e[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
-    tmp_e[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
-    tmp_e[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
-    tmp_f[2] = 8;
-    tmp_e[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
-    tmp_e[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
-    tmp_e[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
-    tmp_e[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
-    tmp_f[3] = 12;
-    tmp_e[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
-    tmp_e[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
-    tmp_e[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
-    tmp_e[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
-    tmp_f[4] = 16;
-    tmp_e[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
-    tmp_e[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
-    tmp_e[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
-    tmp_e[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
-    tmp_f[5] = 20;
-    tmp_e[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
-    tmp_e[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
-    tmp_e[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
-    tmp_e[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
-    tmp_f[6] = 24;
-    tmp_e[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
-    tmp_e[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
-    tmp_e[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
-    tmp_e[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
-    tmp_f[7] = 28;
-    tmp_e[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
-    tmp_e[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
-    tmp_e[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
-    tmp_e[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
-    tmp_f[8] = 32;
-    tmp_e[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
-    tmp_e[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
-    tmp_e[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
-    tmp_e[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
-    tmp_f[9] = 36;
-    tmp_e[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
-    tmp_e[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
-    tmp_e[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
-    tmp_e[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
-    tmp_f[10] = 40;
-    tmp_e[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
-    tmp_e[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
-    tmp_e[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
-    tmp_e[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
-    tmp_f[11] = 44;
-    tmp_e[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
-    tmp_e[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
-    tmp_e[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
-    tmp_e[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
-    tmp_f[12] = 48;
-    tmp_e[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
-    tmp_e[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
-    tmp_e[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
-    tmp_e[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
-    tmp_f[13] = 52;
-    tmp_e[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
-    tmp_e[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
-    tmp_e[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
-    tmp_e[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
-    tmp_f[14] = 56;
-    tmp_e[56] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
-    tmp_e[57] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
-    tmp_e[58] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
-    tmp_e[59] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
-    tmp_f[15] = 60;
-    tmp_e[60] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
-    tmp_e[61] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
-    tmp_e[62] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
-    tmp_e[63] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
-    tmp_f[16] = 64;
-    tmp_e[64] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
-    tmp_e[65] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
-    tmp_e[66] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
-    tmp_e[67] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
-    tmp_f[17] = 68;
-    tmp_e[68] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
-    tmp_e[69] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
-    tmp_e[70] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
-    tmp_e[71] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
-    tmp_f[18] = 72;
-    tmp_e[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
-    tmp_e[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
-    tmp_e[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
-    tmp_e[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
-    tmp_f[19] = 76;
-    tmp_e[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
-    tmp_e[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
-    tmp_e[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
-    tmp_e[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
-    tmp_f[20] = 80;
-    tmp_e[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
-    tmp_e[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
-    tmp_e[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
-    tmp_e[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
-    tmp_f[21] = 84;
-    tmp_e[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
-    tmp_e[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
-    tmp_e[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
-    tmp_e[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
-    tmp_f[22] = 88;
-    tmp_e[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
-    tmp_e[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
-    tmp_e[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
-    tmp_e[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
-    tmp_f[23] = 92;
-    tmp_e[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
-    tmp_e[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
-    tmp_e[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
-    tmp_e[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
-    tmp_f[24] = 96;
-    tmp_e[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
-    tmp_e[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
-    tmp_e[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
-    tmp_e[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
-    tmp_f[25] = 100;
-    tmp_e[100] = GVCU_HIL_simscape_B.INPUT_31_1_1[0];
-    tmp_e[101] = GVCU_HIL_simscape_B.INPUT_31_1_1[1];
-    tmp_e[102] = GVCU_HIL_simscape_B.INPUT_31_1_1[2];
-    tmp_e[103] = GVCU_HIL_simscape_B.INPUT_31_1_1[3];
-    tmp_f[26] = 104;
-    tmp_e[104] = GVCU_HIL_simscape_B.INPUT_32_1_1[0];
-    tmp_e[105] = GVCU_HIL_simscape_B.INPUT_32_1_1[1];
-    tmp_e[106] = GVCU_HIL_simscape_B.INPUT_32_1_1[2];
-    tmp_e[107] = GVCU_HIL_simscape_B.INPUT_32_1_1[3];
-    tmp_f[27] = 108;
-    memcpy(&tmp_e[108], &GVCU_HIL_simscape_B.STATE_2[0], 354U * sizeof(real_T));
-    tmp_f[28] = 462;
-    simulationData->mData->mInputValues.mN = 462;
-    simulationData->mData->mInputValues.mX = &tmp_e[0];
-    simulationData->mData->mInputOffsets.mN = 29;
-    simulationData->mData->mInputOffsets.mX = &tmp_f[0];
+    tmp_g[0] = 0;
+    tmp_f[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
+    tmp_f[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
+    tmp_f[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
+    tmp_f[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
+    tmp_g[1] = 4;
+    tmp_f[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
+    tmp_f[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
+    tmp_f[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
+    tmp_f[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
+    tmp_g[2] = 8;
+    tmp_f[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
+    tmp_f[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
+    tmp_f[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
+    tmp_f[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
+    tmp_g[3] = 12;
+    tmp_f[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
+    tmp_f[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
+    tmp_f[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
+    tmp_f[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
+    tmp_g[4] = 16;
+    tmp_f[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
+    tmp_f[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
+    tmp_f[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
+    tmp_f[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
+    tmp_g[5] = 20;
+    tmp_f[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
+    tmp_f[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
+    tmp_f[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
+    tmp_f[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
+    tmp_g[6] = 24;
+    tmp_f[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
+    tmp_f[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
+    tmp_f[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
+    tmp_f[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
+    tmp_g[7] = 28;
+    tmp_f[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
+    tmp_f[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
+    tmp_f[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
+    tmp_f[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
+    tmp_g[8] = 32;
+    tmp_f[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
+    tmp_f[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
+    tmp_f[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
+    tmp_f[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
+    tmp_g[9] = 36;
+    tmp_f[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
+    tmp_f[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
+    tmp_f[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
+    tmp_f[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
+    tmp_g[10] = 40;
+    tmp_f[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
+    tmp_f[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
+    tmp_f[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
+    tmp_f[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
+    tmp_g[11] = 44;
+    tmp_f[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
+    tmp_f[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
+    tmp_f[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
+    tmp_f[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
+    tmp_g[12] = 48;
+    tmp_f[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
+    tmp_f[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
+    tmp_f[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
+    tmp_f[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
+    tmp_g[13] = 52;
+    tmp_f[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
+    tmp_f[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
+    tmp_f[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
+    tmp_f[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
+    tmp_g[14] = 56;
+    tmp_f[56] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
+    tmp_f[57] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
+    tmp_f[58] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
+    tmp_f[59] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
+    tmp_g[15] = 60;
+    tmp_f[60] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
+    tmp_f[61] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
+    tmp_f[62] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
+    tmp_f[63] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
+    tmp_g[16] = 64;
+    tmp_f[64] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
+    tmp_f[65] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
+    tmp_f[66] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
+    tmp_f[67] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
+    tmp_g[17] = 68;
+    tmp_f[68] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
+    tmp_f[69] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
+    tmp_f[70] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
+    tmp_f[71] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
+    tmp_g[18] = 72;
+    tmp_f[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
+    tmp_f[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
+    tmp_f[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
+    tmp_f[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
+    tmp_g[19] = 76;
+    tmp_f[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
+    tmp_f[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
+    tmp_f[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
+    tmp_f[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
+    tmp_g[20] = 80;
+    tmp_f[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
+    tmp_f[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
+    tmp_f[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
+    tmp_f[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
+    tmp_g[21] = 84;
+    tmp_f[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
+    tmp_f[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
+    tmp_f[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
+    tmp_f[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
+    tmp_g[22] = 88;
+    tmp_f[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
+    tmp_f[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
+    tmp_f[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
+    tmp_f[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
+    tmp_g[23] = 92;
+    tmp_f[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
+    tmp_f[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
+    tmp_f[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
+    tmp_f[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
+    tmp_g[24] = 96;
+    tmp_f[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
+    tmp_f[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
+    tmp_f[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
+    tmp_f[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
+    tmp_g[25] = 100;
+    memcpy(&tmp_f[100], &GVCU_HIL_simscape_B.STATE_2[0], 353U * sizeof(real_T));
+    tmp_g[26] = 453;
+    simulationData->mData->mInputValues.mN = 453;
+    simulationData->mData->mInputValues.mX = &tmp_f[0];
+    simulationData->mData->mInputOffsets.mN = 27;
+    simulationData->mData->mInputOffsets.mX = &tmp_g[0];
     simulationData->mData->mOutputs.mN = 1;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_2_3;
     simulationData->mData->mTolerances.mN = 0;
@@ -10036,8 +9944,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_2_3_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_6 = rtw_diagnostics_msg(diagnosticTree_6);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_6);
       }
@@ -10063,159 +9971,149 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_2_4_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_h[0] = 0;
-    tmp_g[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
-    tmp_g[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
-    tmp_g[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
-    tmp_g[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
-    tmp_h[1] = 4;
-    tmp_g[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
-    tmp_g[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
-    tmp_g[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
-    tmp_g[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
-    tmp_h[2] = 8;
-    tmp_g[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
-    tmp_g[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
-    tmp_g[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
-    tmp_g[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
-    tmp_h[3] = 12;
-    tmp_g[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
-    tmp_g[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
-    tmp_g[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
-    tmp_g[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
-    tmp_h[4] = 16;
-    tmp_g[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
-    tmp_g[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
-    tmp_g[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
-    tmp_g[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
-    tmp_h[5] = 20;
-    tmp_g[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
-    tmp_g[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
-    tmp_g[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
-    tmp_g[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
-    tmp_h[6] = 24;
-    tmp_g[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
-    tmp_g[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
-    tmp_g[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
-    tmp_g[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
-    tmp_h[7] = 28;
-    tmp_g[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
-    tmp_g[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
-    tmp_g[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
-    tmp_g[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
-    tmp_h[8] = 32;
-    tmp_g[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
-    tmp_g[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
-    tmp_g[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
-    tmp_g[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
-    tmp_h[9] = 36;
-    tmp_g[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
-    tmp_g[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
-    tmp_g[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
-    tmp_g[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
-    tmp_h[10] = 40;
-    tmp_g[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
-    tmp_g[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
-    tmp_g[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
-    tmp_g[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
-    tmp_h[11] = 44;
-    tmp_g[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
-    tmp_g[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
-    tmp_g[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
-    tmp_g[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
-    tmp_h[12] = 48;
-    tmp_g[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
-    tmp_g[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
-    tmp_g[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
-    tmp_g[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
-    tmp_h[13] = 52;
-    tmp_g[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
-    tmp_g[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
-    tmp_g[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
-    tmp_g[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
-    tmp_h[14] = 56;
-    tmp_g[56] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
-    tmp_g[57] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
-    tmp_g[58] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
-    tmp_g[59] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
-    tmp_h[15] = 60;
-    tmp_g[60] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
-    tmp_g[61] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
-    tmp_g[62] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
-    tmp_g[63] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
-    tmp_h[16] = 64;
-    tmp_g[64] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
-    tmp_g[65] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
-    tmp_g[66] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
-    tmp_g[67] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
-    tmp_h[17] = 68;
-    tmp_g[68] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
-    tmp_g[69] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
-    tmp_g[70] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
-    tmp_g[71] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
-    tmp_h[18] = 72;
-    tmp_g[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
-    tmp_g[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
-    tmp_g[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
-    tmp_g[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
-    tmp_h[19] = 76;
-    tmp_g[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
-    tmp_g[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
-    tmp_g[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
-    tmp_g[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
-    tmp_h[20] = 80;
-    tmp_g[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
-    tmp_g[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
-    tmp_g[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
-    tmp_g[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
-    tmp_h[21] = 84;
-    tmp_g[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
-    tmp_g[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
-    tmp_g[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
-    tmp_g[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
-    tmp_h[22] = 88;
-    tmp_g[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
-    tmp_g[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
-    tmp_g[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
-    tmp_g[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
-    tmp_h[23] = 92;
-    tmp_g[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
-    tmp_g[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
-    tmp_g[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
-    tmp_g[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
-    tmp_h[24] = 96;
-    tmp_g[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
-    tmp_g[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
-    tmp_g[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
-    tmp_g[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
-    tmp_h[25] = 100;
-    tmp_g[100] = GVCU_HIL_simscape_B.INPUT_31_1_1[0];
-    tmp_g[101] = GVCU_HIL_simscape_B.INPUT_31_1_1[1];
-    tmp_g[102] = GVCU_HIL_simscape_B.INPUT_31_1_1[2];
-    tmp_g[103] = GVCU_HIL_simscape_B.INPUT_31_1_1[3];
-    tmp_h[26] = 104;
-    tmp_g[104] = GVCU_HIL_simscape_B.INPUT_32_1_1[0];
-    tmp_g[105] = GVCU_HIL_simscape_B.INPUT_32_1_1[1];
-    tmp_g[106] = GVCU_HIL_simscape_B.INPUT_32_1_1[2];
-    tmp_g[107] = GVCU_HIL_simscape_B.INPUT_32_1_1[3];
-    tmp_h[27] = 108;
-    memcpy(&tmp_g[108], &GVCU_HIL_simscape_B.STATE_2[0], 354U * sizeof(real_T));
-    tmp_h[28] = 462;
-    simulationData->mData->mInputValues.mN = 462;
-    simulationData->mData->mInputValues.mX = &tmp_g[0];
-    simulationData->mData->mInputOffsets.mN = 29;
-    simulationData->mData->mInputOffsets.mX = &tmp_h[0];
+    tmp_i[0] = 0;
+    tmp_h[0] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[0];
+    tmp_h[1] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[1];
+    tmp_h[2] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[2];
+    tmp_h[3] = GVCU_HIL_simscape_B.INTERNAL_22_1_1[3];
+    tmp_i[1] = 4;
+    tmp_h[4] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[0];
+    tmp_h[5] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[1];
+    tmp_h[6] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[2];
+    tmp_h[7] = GVCU_HIL_simscape_B.INTERNAL_33_1_1[3];
+    tmp_i[2] = 8;
+    tmp_h[8] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[0];
+    tmp_h[9] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[1];
+    tmp_h[10] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[2];
+    tmp_h[11] = GVCU_HIL_simscape_B.INTERNAL_44_1_1[3];
+    tmp_i[3] = 12;
+    tmp_h[12] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[0];
+    tmp_h[13] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[1];
+    tmp_h[14] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[2];
+    tmp_h[15] = GVCU_HIL_simscape_B.INTERNAL_55_1_1[3];
+    tmp_i[4] = 16;
+    tmp_h[16] = GVCU_HIL_simscape_B.INPUT_11_1_1[0];
+    tmp_h[17] = GVCU_HIL_simscape_B.INPUT_11_1_1[1];
+    tmp_h[18] = GVCU_HIL_simscape_B.INPUT_11_1_1[2];
+    tmp_h[19] = GVCU_HIL_simscape_B.INPUT_11_1_1[3];
+    tmp_i[5] = 20;
+    tmp_h[20] = GVCU_HIL_simscape_B.INPUT_12_1_1[0];
+    tmp_h[21] = GVCU_HIL_simscape_B.INPUT_12_1_1[1];
+    tmp_h[22] = GVCU_HIL_simscape_B.INPUT_12_1_1[2];
+    tmp_h[23] = GVCU_HIL_simscape_B.INPUT_12_1_1[3];
+    tmp_i[6] = 24;
+    tmp_h[24] = GVCU_HIL_simscape_B.INPUT_13_1_1[0];
+    tmp_h[25] = GVCU_HIL_simscape_B.INPUT_13_1_1[1];
+    tmp_h[26] = GVCU_HIL_simscape_B.INPUT_13_1_1[2];
+    tmp_h[27] = GVCU_HIL_simscape_B.INPUT_13_1_1[3];
+    tmp_i[7] = 28;
+    tmp_h[28] = GVCU_HIL_simscape_B.INPUT_14_1_1[0];
+    tmp_h[29] = GVCU_HIL_simscape_B.INPUT_14_1_1[1];
+    tmp_h[30] = GVCU_HIL_simscape_B.INPUT_14_1_1[2];
+    tmp_h[31] = GVCU_HIL_simscape_B.INPUT_14_1_1[3];
+    tmp_i[8] = 32;
+    tmp_h[32] = GVCU_HIL_simscape_B.INPUT_10_1_1[0];
+    tmp_h[33] = GVCU_HIL_simscape_B.INPUT_10_1_1[1];
+    tmp_h[34] = GVCU_HIL_simscape_B.INPUT_10_1_1[2];
+    tmp_h[35] = GVCU_HIL_simscape_B.INPUT_10_1_1[3];
+    tmp_i[9] = 36;
+    tmp_h[36] = GVCU_HIL_simscape_B.INPUT_15_1_1[0];
+    tmp_h[37] = GVCU_HIL_simscape_B.INPUT_15_1_1[1];
+    tmp_h[38] = GVCU_HIL_simscape_B.INPUT_15_1_1[2];
+    tmp_h[39] = GVCU_HIL_simscape_B.INPUT_15_1_1[3];
+    tmp_i[10] = 40;
+    tmp_h[40] = GVCU_HIL_simscape_B.INPUT_17_1_1[0];
+    tmp_h[41] = GVCU_HIL_simscape_B.INPUT_17_1_1[1];
+    tmp_h[42] = GVCU_HIL_simscape_B.INPUT_17_1_1[2];
+    tmp_h[43] = GVCU_HIL_simscape_B.INPUT_17_1_1[3];
+    tmp_i[11] = 44;
+    tmp_h[44] = GVCU_HIL_simscape_B.INPUT_16_1_1[0];
+    tmp_h[45] = GVCU_HIL_simscape_B.INPUT_16_1_1[1];
+    tmp_h[46] = GVCU_HIL_simscape_B.INPUT_16_1_1[2];
+    tmp_h[47] = GVCU_HIL_simscape_B.INPUT_16_1_1[3];
+    tmp_i[12] = 48;
+    tmp_h[48] = GVCU_HIL_simscape_B.INPUT_18_1_1[0];
+    tmp_h[49] = GVCU_HIL_simscape_B.INPUT_18_1_1[1];
+    tmp_h[50] = GVCU_HIL_simscape_B.INPUT_18_1_1[2];
+    tmp_h[51] = GVCU_HIL_simscape_B.INPUT_18_1_1[3];
+    tmp_i[13] = 52;
+    tmp_h[52] = GVCU_HIL_simscape_B.INPUT_19_1_1[0];
+    tmp_h[53] = GVCU_HIL_simscape_B.INPUT_19_1_1[1];
+    tmp_h[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
+    tmp_h[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
+    tmp_i[14] = 56;
+    tmp_h[56] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
+    tmp_h[57] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
+    tmp_h[58] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
+    tmp_h[59] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
+    tmp_i[15] = 60;
+    tmp_h[60] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
+    tmp_h[61] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
+    tmp_h[62] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
+    tmp_h[63] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
+    tmp_i[16] = 64;
+    tmp_h[64] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
+    tmp_h[65] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
+    tmp_h[66] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
+    tmp_h[67] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
+    tmp_i[17] = 68;
+    tmp_h[68] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
+    tmp_h[69] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
+    tmp_h[70] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
+    tmp_h[71] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
+    tmp_i[18] = 72;
+    tmp_h[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
+    tmp_h[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
+    tmp_h[74] = GVCU_HIL_simscape_B.INPUT_24_1_1[2];
+    tmp_h[75] = GVCU_HIL_simscape_B.INPUT_24_1_1[3];
+    tmp_i[19] = 76;
+    tmp_h[76] = GVCU_HIL_simscape_B.INPUT_25_1_1[0];
+    tmp_h[77] = GVCU_HIL_simscape_B.INPUT_25_1_1[1];
+    tmp_h[78] = GVCU_HIL_simscape_B.INPUT_25_1_1[2];
+    tmp_h[79] = GVCU_HIL_simscape_B.INPUT_25_1_1[3];
+    tmp_i[20] = 80;
+    tmp_h[80] = GVCU_HIL_simscape_B.INPUT_26_1_1[0];
+    tmp_h[81] = GVCU_HIL_simscape_B.INPUT_26_1_1[1];
+    tmp_h[82] = GVCU_HIL_simscape_B.INPUT_26_1_1[2];
+    tmp_h[83] = GVCU_HIL_simscape_B.INPUT_26_1_1[3];
+    tmp_i[21] = 84;
+    tmp_h[84] = GVCU_HIL_simscape_B.INPUT_27_1_1[0];
+    tmp_h[85] = GVCU_HIL_simscape_B.INPUT_27_1_1[1];
+    tmp_h[86] = GVCU_HIL_simscape_B.INPUT_27_1_1[2];
+    tmp_h[87] = GVCU_HIL_simscape_B.INPUT_27_1_1[3];
+    tmp_i[22] = 88;
+    tmp_h[88] = GVCU_HIL_simscape_B.INPUT_28_1_1[0];
+    tmp_h[89] = GVCU_HIL_simscape_B.INPUT_28_1_1[1];
+    tmp_h[90] = GVCU_HIL_simscape_B.INPUT_28_1_1[2];
+    tmp_h[91] = GVCU_HIL_simscape_B.INPUT_28_1_1[3];
+    tmp_i[23] = 92;
+    tmp_h[92] = GVCU_HIL_simscape_B.INPUT_29_1_1[0];
+    tmp_h[93] = GVCU_HIL_simscape_B.INPUT_29_1_1[1];
+    tmp_h[94] = GVCU_HIL_simscape_B.INPUT_29_1_1[2];
+    tmp_h[95] = GVCU_HIL_simscape_B.INPUT_29_1_1[3];
+    tmp_i[24] = 96;
+    tmp_h[96] = GVCU_HIL_simscape_B.INPUT_30_1_1[0];
+    tmp_h[97] = GVCU_HIL_simscape_B.INPUT_30_1_1[1];
+    tmp_h[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
+    tmp_h[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
+    tmp_i[25] = 100;
+    memcpy(&tmp_h[100], &GVCU_HIL_simscape_B.STATE_2[0], 353U * sizeof(real_T));
+    tmp_i[26] = 453;
+    simulationData->mData->mInputValues.mN = 453;
+    simulationData->mData->mInputValues.mX = &tmp_h[0];
+    simulationData->mData->mInputOffsets.mN = 27;
+    simulationData->mData->mInputOffsets.mX = &tmp_i[0];
     simulationData->mData->mOutputs.mN = 1;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_2_4;
     simulationData->mData->mTolerances.mN = 0;
@@ -10237,8 +10135,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_2_4_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_7 = rtw_diagnostics_msg(diagnosticTree_7);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_7);
       }
@@ -10262,72 +10160,72 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.STATE_3_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_j[0] = 0;
-    tmp_i[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
-    tmp_i[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
-    tmp_i[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
-    tmp_i[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
-    tmp_j[1] = 4;
-    tmp_i[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
-    tmp_i[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
-    tmp_i[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
-    tmp_i[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
-    tmp_j[2] = 8;
-    tmp_i[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
-    tmp_i[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
-    tmp_i[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
-    tmp_i[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
-    tmp_j[3] = 12;
-    tmp_i[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
-    tmp_i[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
-    tmp_i[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
-    tmp_i[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
-    tmp_j[4] = 16;
-    tmp_i[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
-    tmp_i[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
-    tmp_i[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
-    tmp_i[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
-    tmp_j[5] = 20;
-    tmp_i[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
-    tmp_i[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
-    tmp_i[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
-    tmp_i[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
-    tmp_j[6] = 24;
-    tmp_i[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
-    tmp_i[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
-    tmp_i[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
-    tmp_i[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
-    tmp_j[7] = 28;
-    tmp_i[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
-    tmp_i[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
-    tmp_i[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
-    tmp_i[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
-    tmp_j[8] = 32;
-    tmp_i[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
-    tmp_i[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
-    tmp_i[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
-    tmp_i[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
-    tmp_j[9] = 36;
-    tmp_i[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
-    tmp_i[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
-    tmp_i[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
-    tmp_i[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
-    tmp_j[10] = 40;
+    tmp_k[0] = 0;
+    tmp_j[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
+    tmp_j[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
+    tmp_j[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
+    tmp_j[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
+    tmp_k[1] = 4;
+    tmp_j[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
+    tmp_j[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
+    tmp_j[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
+    tmp_j[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
+    tmp_k[2] = 8;
+    tmp_j[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
+    tmp_j[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
+    tmp_j[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
+    tmp_j[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
+    tmp_k[3] = 12;
+    tmp_j[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
+    tmp_j[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
+    tmp_j[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
+    tmp_j[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
+    tmp_k[4] = 16;
+    tmp_j[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
+    tmp_j[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
+    tmp_j[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
+    tmp_j[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
+    tmp_k[5] = 20;
+    tmp_j[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
+    tmp_j[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
+    tmp_j[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
+    tmp_j[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
+    tmp_k[6] = 24;
+    tmp_j[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
+    tmp_j[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
+    tmp_j[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
+    tmp_j[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
+    tmp_k[7] = 28;
+    tmp_j[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
+    tmp_j[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
+    tmp_j[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
+    tmp_j[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
+    tmp_k[8] = 32;
+    tmp_j[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
+    tmp_j[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
+    tmp_j[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
+    tmp_j[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
+    tmp_k[9] = 36;
+    tmp_j[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
+    tmp_j[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
+    tmp_j[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
+    tmp_j[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
+    tmp_k[10] = 40;
     simulationData->mData->mInputValues.mN = 40;
-    simulationData->mData->mInputValues.mX = &tmp_i[0];
+    simulationData->mData->mInputValues.mX = &tmp_j[0];
     simulationData->mData->mInputOffsets.mN = 11;
-    simulationData->mData->mInputOffsets.mX = &tmp_j[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_k[0];
     simulationData->mData->mOutputs.mN = 10;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.STATE_3[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -10349,8 +10247,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.STATE_3_Simulator, NESL_SIM_OUTPUTS, simulationData,
       diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_8 = rtw_diagnostics_msg(diagnosticTree_8);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_8);
       }
@@ -10397,74 +10295,74 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_3_0_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_l[0] = 0;
-    tmp_k[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
-    tmp_k[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
-    tmp_k[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
-    tmp_k[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
-    tmp_l[1] = 4;
-    tmp_k[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
-    tmp_k[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
-    tmp_k[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
-    tmp_k[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
-    tmp_l[2] = 8;
-    tmp_k[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
-    tmp_k[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
-    tmp_k[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
-    tmp_k[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
-    tmp_l[3] = 12;
-    tmp_k[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
-    tmp_k[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
-    tmp_k[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
-    tmp_k[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
-    tmp_l[4] = 16;
-    tmp_k[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
-    tmp_k[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
-    tmp_k[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
-    tmp_k[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
-    tmp_l[5] = 20;
-    tmp_k[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
-    tmp_k[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
-    tmp_k[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
-    tmp_k[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
-    tmp_l[6] = 24;
-    tmp_k[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
-    tmp_k[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
-    tmp_k[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
-    tmp_k[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
-    tmp_l[7] = 28;
-    tmp_k[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
-    tmp_k[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
-    tmp_k[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
-    tmp_k[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
-    tmp_l[8] = 32;
-    tmp_k[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
-    tmp_k[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
-    tmp_k[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
-    tmp_k[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
-    tmp_l[9] = 36;
-    tmp_k[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
-    tmp_k[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
-    tmp_k[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
-    tmp_k[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
-    tmp_l[10] = 40;
-    memcpy(&tmp_k[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
-    tmp_l[11] = 50;
+    tmp_m[0] = 0;
+    tmp_l[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
+    tmp_l[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
+    tmp_l[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
+    tmp_l[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
+    tmp_m[1] = 4;
+    tmp_l[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
+    tmp_l[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
+    tmp_l[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
+    tmp_l[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
+    tmp_m[2] = 8;
+    tmp_l[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
+    tmp_l[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
+    tmp_l[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
+    tmp_l[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
+    tmp_m[3] = 12;
+    tmp_l[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
+    tmp_l[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
+    tmp_l[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
+    tmp_l[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
+    tmp_m[4] = 16;
+    tmp_l[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
+    tmp_l[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
+    tmp_l[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
+    tmp_l[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
+    tmp_m[5] = 20;
+    tmp_l[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
+    tmp_l[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
+    tmp_l[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
+    tmp_l[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
+    tmp_m[6] = 24;
+    tmp_l[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
+    tmp_l[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
+    tmp_l[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
+    tmp_l[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
+    tmp_m[7] = 28;
+    tmp_l[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
+    tmp_l[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
+    tmp_l[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
+    tmp_l[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
+    tmp_m[8] = 32;
+    tmp_l[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
+    tmp_l[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
+    tmp_l[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
+    tmp_l[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
+    tmp_m[9] = 36;
+    tmp_l[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
+    tmp_l[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
+    tmp_l[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
+    tmp_l[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
+    tmp_m[10] = 40;
+    memcpy(&tmp_l[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
+    tmp_m[11] = 50;
     simulationData->mData->mInputValues.mN = 50;
-    simulationData->mData->mInputValues.mX = &tmp_k[0];
+    simulationData->mData->mInputValues.mX = &tmp_l[0];
     simulationData->mData->mInputOffsets.mN = 12;
-    simulationData->mData->mInputOffsets.mX = &tmp_l[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_m[0];
     simulationData->mData->mOutputs.mN = 2;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_3_0[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -10486,8 +10384,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_3_0_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_9 = rtw_diagnostics_msg(diagnosticTree_9);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_9);
       }
@@ -10513,74 +10411,74 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_3_1_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_n[0] = 0;
-    tmp_m[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
-    tmp_m[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
-    tmp_m[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
-    tmp_m[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
-    tmp_n[1] = 4;
-    tmp_m[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
-    tmp_m[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
-    tmp_m[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
-    tmp_m[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
-    tmp_n[2] = 8;
-    tmp_m[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
-    tmp_m[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
-    tmp_m[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
-    tmp_m[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
-    tmp_n[3] = 12;
-    tmp_m[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
-    tmp_m[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
-    tmp_m[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
-    tmp_m[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
-    tmp_n[4] = 16;
-    tmp_m[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
-    tmp_m[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
-    tmp_m[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
-    tmp_m[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
-    tmp_n[5] = 20;
-    tmp_m[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
-    tmp_m[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
-    tmp_m[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
-    tmp_m[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
-    tmp_n[6] = 24;
-    tmp_m[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
-    tmp_m[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
-    tmp_m[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
-    tmp_m[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
-    tmp_n[7] = 28;
-    tmp_m[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
-    tmp_m[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
-    tmp_m[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
-    tmp_m[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
-    tmp_n[8] = 32;
-    tmp_m[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
-    tmp_m[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
-    tmp_m[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
-    tmp_m[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
-    tmp_n[9] = 36;
-    tmp_m[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
-    tmp_m[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
-    tmp_m[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
-    tmp_m[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
-    tmp_n[10] = 40;
-    memcpy(&tmp_m[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
-    tmp_n[11] = 50;
+    tmp_o[0] = 0;
+    tmp_n[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
+    tmp_n[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
+    tmp_n[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
+    tmp_n[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
+    tmp_o[1] = 4;
+    tmp_n[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
+    tmp_n[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
+    tmp_n[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
+    tmp_n[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
+    tmp_o[2] = 8;
+    tmp_n[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
+    tmp_n[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
+    tmp_n[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
+    tmp_n[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
+    tmp_o[3] = 12;
+    tmp_n[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
+    tmp_n[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
+    tmp_n[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
+    tmp_n[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
+    tmp_o[4] = 16;
+    tmp_n[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
+    tmp_n[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
+    tmp_n[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
+    tmp_n[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
+    tmp_o[5] = 20;
+    tmp_n[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
+    tmp_n[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
+    tmp_n[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
+    tmp_n[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
+    tmp_o[6] = 24;
+    tmp_n[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
+    tmp_n[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
+    tmp_n[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
+    tmp_n[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
+    tmp_o[7] = 28;
+    tmp_n[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
+    tmp_n[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
+    tmp_n[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
+    tmp_n[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
+    tmp_o[8] = 32;
+    tmp_n[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
+    tmp_n[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
+    tmp_n[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
+    tmp_n[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
+    tmp_o[9] = 36;
+    tmp_n[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
+    tmp_n[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
+    tmp_n[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
+    tmp_n[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
+    tmp_o[10] = 40;
+    memcpy(&tmp_n[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
+    tmp_o[11] = 50;
     simulationData->mData->mInputValues.mN = 50;
-    simulationData->mData->mInputValues.mX = &tmp_m[0];
+    simulationData->mData->mInputValues.mX = &tmp_n[0];
     simulationData->mData->mInputOffsets.mN = 12;
-    simulationData->mData->mInputOffsets.mX = &tmp_n[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_o[0];
     simulationData->mData->mOutputs.mN = 3;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_3_1[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -10602,8 +10500,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_3_1_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_a = rtw_diagnostics_msg(diagnosticTree_a);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_a);
       }
@@ -10629,74 +10527,74 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_3_2_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_p[0] = 0;
-    tmp_o[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
-    tmp_o[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
-    tmp_o[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
-    tmp_o[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
-    tmp_p[1] = 4;
-    tmp_o[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
-    tmp_o[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
-    tmp_o[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
-    tmp_o[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
-    tmp_p[2] = 8;
-    tmp_o[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
-    tmp_o[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
-    tmp_o[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
-    tmp_o[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
-    tmp_p[3] = 12;
-    tmp_o[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
-    tmp_o[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
-    tmp_o[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
-    tmp_o[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
-    tmp_p[4] = 16;
-    tmp_o[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
-    tmp_o[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
-    tmp_o[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
-    tmp_o[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
-    tmp_p[5] = 20;
-    tmp_o[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
-    tmp_o[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
-    tmp_o[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
-    tmp_o[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
-    tmp_p[6] = 24;
-    tmp_o[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
-    tmp_o[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
-    tmp_o[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
-    tmp_o[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
-    tmp_p[7] = 28;
-    tmp_o[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
-    tmp_o[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
-    tmp_o[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
-    tmp_o[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
-    tmp_p[8] = 32;
-    tmp_o[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
-    tmp_o[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
-    tmp_o[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
-    tmp_o[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
-    tmp_p[9] = 36;
-    tmp_o[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
-    tmp_o[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
-    tmp_o[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
-    tmp_o[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
-    tmp_p[10] = 40;
-    memcpy(&tmp_o[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
-    tmp_p[11] = 50;
+    tmp_q[0] = 0;
+    tmp_p[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
+    tmp_p[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
+    tmp_p[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
+    tmp_p[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
+    tmp_q[1] = 4;
+    tmp_p[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
+    tmp_p[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
+    tmp_p[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
+    tmp_p[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
+    tmp_q[2] = 8;
+    tmp_p[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
+    tmp_p[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
+    tmp_p[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
+    tmp_p[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
+    tmp_q[3] = 12;
+    tmp_p[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
+    tmp_p[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
+    tmp_p[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
+    tmp_p[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
+    tmp_q[4] = 16;
+    tmp_p[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
+    tmp_p[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
+    tmp_p[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
+    tmp_p[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
+    tmp_q[5] = 20;
+    tmp_p[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
+    tmp_p[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
+    tmp_p[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
+    tmp_p[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
+    tmp_q[6] = 24;
+    tmp_p[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
+    tmp_p[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
+    tmp_p[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
+    tmp_p[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
+    tmp_q[7] = 28;
+    tmp_p[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
+    tmp_p[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
+    tmp_p[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
+    tmp_p[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
+    tmp_q[8] = 32;
+    tmp_p[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
+    tmp_p[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
+    tmp_p[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
+    tmp_p[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
+    tmp_q[9] = 36;
+    tmp_p[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
+    tmp_p[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
+    tmp_p[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
+    tmp_p[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
+    tmp_q[10] = 40;
+    memcpy(&tmp_p[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
+    tmp_q[11] = 50;
     simulationData->mData->mInputValues.mN = 50;
-    simulationData->mData->mInputValues.mX = &tmp_o[0];
+    simulationData->mData->mInputValues.mX = &tmp_p[0];
     simulationData->mData->mInputOffsets.mN = 12;
-    simulationData->mData->mInputOffsets.mX = &tmp_p[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_q[0];
     simulationData->mData->mOutputs.mN = 14;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.OUTPUT_3_2[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -10718,8 +10616,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_3_2_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_b = rtw_diagnostics_msg(diagnosticTree_b);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_b);
       }
@@ -10745,74 +10643,74 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_3_3_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_r[0] = 0;
-    tmp_q[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
-    tmp_q[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
-    tmp_q[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
-    tmp_q[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
-    tmp_r[1] = 4;
-    tmp_q[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
-    tmp_q[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
-    tmp_q[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
-    tmp_q[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
-    tmp_r[2] = 8;
-    tmp_q[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
-    tmp_q[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
-    tmp_q[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
-    tmp_q[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
-    tmp_r[3] = 12;
-    tmp_q[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
-    tmp_q[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
-    tmp_q[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
-    tmp_q[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
-    tmp_r[4] = 16;
-    tmp_q[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
-    tmp_q[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
-    tmp_q[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
-    tmp_q[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
-    tmp_r[5] = 20;
-    tmp_q[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
-    tmp_q[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
-    tmp_q[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
-    tmp_q[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
-    tmp_r[6] = 24;
-    tmp_q[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
-    tmp_q[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
-    tmp_q[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
-    tmp_q[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
-    tmp_r[7] = 28;
-    tmp_q[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
-    tmp_q[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
-    tmp_q[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
-    tmp_q[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
-    tmp_r[8] = 32;
-    tmp_q[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
-    tmp_q[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
-    tmp_q[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
-    tmp_q[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
-    tmp_r[9] = 36;
-    tmp_q[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
-    tmp_q[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
-    tmp_q[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
-    tmp_q[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
-    tmp_r[10] = 40;
-    memcpy(&tmp_q[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
-    tmp_r[11] = 50;
+    tmp_s[0] = 0;
+    tmp_r[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
+    tmp_r[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
+    tmp_r[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
+    tmp_r[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
+    tmp_s[1] = 4;
+    tmp_r[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
+    tmp_r[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
+    tmp_r[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
+    tmp_r[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
+    tmp_s[2] = 8;
+    tmp_r[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
+    tmp_r[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
+    tmp_r[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
+    tmp_r[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
+    tmp_s[3] = 12;
+    tmp_r[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
+    tmp_r[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
+    tmp_r[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
+    tmp_r[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
+    tmp_s[4] = 16;
+    tmp_r[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
+    tmp_r[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
+    tmp_r[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
+    tmp_r[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
+    tmp_s[5] = 20;
+    tmp_r[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
+    tmp_r[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
+    tmp_r[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
+    tmp_r[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
+    tmp_s[6] = 24;
+    tmp_r[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
+    tmp_r[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
+    tmp_r[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
+    tmp_r[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
+    tmp_s[7] = 28;
+    tmp_r[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
+    tmp_r[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
+    tmp_r[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
+    tmp_r[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
+    tmp_s[8] = 32;
+    tmp_r[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
+    tmp_r[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
+    tmp_r[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
+    tmp_r[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
+    tmp_s[9] = 36;
+    tmp_r[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
+    tmp_r[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
+    tmp_r[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
+    tmp_r[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
+    tmp_s[10] = 40;
+    memcpy(&tmp_r[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
+    tmp_s[11] = 50;
     simulationData->mData->mInputValues.mN = 50;
-    simulationData->mData->mInputValues.mX = &tmp_q[0];
+    simulationData->mData->mInputValues.mX = &tmp_r[0];
     simulationData->mData->mInputOffsets.mN = 12;
-    simulationData->mData->mInputOffsets.mX = &tmp_r[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_s[0];
     simulationData->mData->mOutputs.mN = 1;
 
     /* SimscapeExecutionBlock: '<S291>/OUTPUT_3_3' */
@@ -10838,8 +10736,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_3_3_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_c = rtw_diagnostics_msg(diagnosticTree_c);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_c);
       }
@@ -10865,74 +10763,74 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_3_4_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_t[0] = 0;
-    tmp_s[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
-    tmp_s[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
-    tmp_s[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
-    tmp_s[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
-    tmp_t[1] = 4;
-    tmp_s[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
-    tmp_s[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
-    tmp_s[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
-    tmp_s[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
-    tmp_t[2] = 8;
-    tmp_s[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
-    tmp_s[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
-    tmp_s[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
-    tmp_s[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
-    tmp_t[3] = 12;
-    tmp_s[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
-    tmp_s[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
-    tmp_s[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
-    tmp_s[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
-    tmp_t[4] = 16;
-    tmp_s[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
-    tmp_s[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
-    tmp_s[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
-    tmp_s[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
-    tmp_t[5] = 20;
-    tmp_s[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
-    tmp_s[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
-    tmp_s[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
-    tmp_s[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
-    tmp_t[6] = 24;
-    tmp_s[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
-    tmp_s[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
-    tmp_s[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
-    tmp_s[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
-    tmp_t[7] = 28;
-    tmp_s[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
-    tmp_s[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
-    tmp_s[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
-    tmp_s[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
-    tmp_t[8] = 32;
-    tmp_s[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
-    tmp_s[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
-    tmp_s[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
-    tmp_s[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
-    tmp_t[9] = 36;
-    tmp_s[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
-    tmp_s[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
-    tmp_s[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
-    tmp_s[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
-    tmp_t[10] = 40;
-    memcpy(&tmp_s[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
-    tmp_t[11] = 50;
+    tmp_u[0] = 0;
+    tmp_t[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
+    tmp_t[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
+    tmp_t[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
+    tmp_t[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
+    tmp_u[1] = 4;
+    tmp_t[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
+    tmp_t[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
+    tmp_t[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
+    tmp_t[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
+    tmp_u[2] = 8;
+    tmp_t[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
+    tmp_t[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
+    tmp_t[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
+    tmp_t[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
+    tmp_u[3] = 12;
+    tmp_t[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
+    tmp_t[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
+    tmp_t[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
+    tmp_t[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
+    tmp_u[4] = 16;
+    tmp_t[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
+    tmp_t[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
+    tmp_t[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
+    tmp_t[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
+    tmp_u[5] = 20;
+    tmp_t[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
+    tmp_t[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
+    tmp_t[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
+    tmp_t[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
+    tmp_u[6] = 24;
+    tmp_t[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
+    tmp_t[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
+    tmp_t[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
+    tmp_t[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
+    tmp_u[7] = 28;
+    tmp_t[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
+    tmp_t[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
+    tmp_t[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
+    tmp_t[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
+    tmp_u[8] = 32;
+    tmp_t[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
+    tmp_t[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
+    tmp_t[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
+    tmp_t[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
+    tmp_u[9] = 36;
+    tmp_t[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
+    tmp_t[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
+    tmp_t[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
+    tmp_t[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
+    tmp_u[10] = 40;
+    memcpy(&tmp_t[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
+    tmp_u[11] = 50;
     simulationData->mData->mInputValues.mN = 50;
-    simulationData->mData->mInputValues.mX = &tmp_s[0];
+    simulationData->mData->mInputValues.mX = &tmp_t[0];
     simulationData->mData->mInputOffsets.mN = 12;
-    simulationData->mData->mInputOffsets.mX = &tmp_t[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_u[0];
     simulationData->mData->mOutputs.mN = 3;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_3_4[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -10954,8 +10852,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_3_4_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_d = rtw_diagnostics_msg(diagnosticTree_d);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_d);
       }
@@ -10981,74 +10879,74 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_3_5_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_v[0] = 0;
-    tmp_u[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
-    tmp_u[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
-    tmp_u[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
-    tmp_u[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
-    tmp_v[1] = 4;
-    tmp_u[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
-    tmp_u[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
-    tmp_u[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
-    tmp_u[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
-    tmp_v[2] = 8;
-    tmp_u[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
-    tmp_u[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
-    tmp_u[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
-    tmp_u[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
-    tmp_v[3] = 12;
-    tmp_u[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
-    tmp_u[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
-    tmp_u[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
-    tmp_u[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
-    tmp_v[4] = 16;
-    tmp_u[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
-    tmp_u[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
-    tmp_u[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
-    tmp_u[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
-    tmp_v[5] = 20;
-    tmp_u[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
-    tmp_u[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
-    tmp_u[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
-    tmp_u[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
-    tmp_v[6] = 24;
-    tmp_u[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
-    tmp_u[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
-    tmp_u[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
-    tmp_u[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
-    tmp_v[7] = 28;
-    tmp_u[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
-    tmp_u[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
-    tmp_u[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
-    tmp_u[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
-    tmp_v[8] = 32;
-    tmp_u[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
-    tmp_u[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
-    tmp_u[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
-    tmp_u[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
-    tmp_v[9] = 36;
-    tmp_u[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
-    tmp_u[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
-    tmp_u[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
-    tmp_u[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
-    tmp_v[10] = 40;
-    memcpy(&tmp_u[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
-    tmp_v[11] = 50;
+    tmp_w[0] = 0;
+    tmp_v[0] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[0];
+    tmp_v[1] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[1];
+    tmp_v[2] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[2];
+    tmp_v[3] = GVCU_HIL_simscape_B.INTERNAL_36_1_1[3];
+    tmp_w[1] = 4;
+    tmp_v[4] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[0];
+    tmp_v[5] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[1];
+    tmp_v[6] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[2];
+    tmp_v[7] = GVCU_HIL_simscape_B.INTERNAL_47_1_1[3];
+    tmp_w[2] = 8;
+    tmp_v[8] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[0];
+    tmp_v[9] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[1];
+    tmp_v[10] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[2];
+    tmp_v[11] = GVCU_HIL_simscape_B.INTERNAL_35_1_1[3];
+    tmp_w[3] = 12;
+    tmp_v[12] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[0];
+    tmp_v[13] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[1];
+    tmp_v[14] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[2];
+    tmp_v[15] = GVCU_HIL_simscape_B.INTERNAL_35_1_2[3];
+    tmp_w[4] = 16;
+    tmp_v[16] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[0];
+    tmp_v[17] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[1];
+    tmp_v[18] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[2];
+    tmp_v[19] = GVCU_HIL_simscape_B.INTERNAL_35_1_3[3];
+    tmp_w[5] = 20;
+    tmp_v[20] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[0];
+    tmp_v[21] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[1];
+    tmp_v[22] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[2];
+    tmp_v[23] = GVCU_HIL_simscape_B.INTERNAL_37_1_1[3];
+    tmp_w[6] = 24;
+    tmp_v[24] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[0];
+    tmp_v[25] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[1];
+    tmp_v[26] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[2];
+    tmp_v[27] = GVCU_HIL_simscape_B.INTERNAL_46_1_1[3];
+    tmp_w[7] = 28;
+    tmp_v[28] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[0];
+    tmp_v[29] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[1];
+    tmp_v[30] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[2];
+    tmp_v[31] = GVCU_HIL_simscape_B.INTERNAL_46_1_2[3];
+    tmp_w[8] = 32;
+    tmp_v[32] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[0];
+    tmp_v[33] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[1];
+    tmp_v[34] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[2];
+    tmp_v[35] = GVCU_HIL_simscape_B.INTERNAL_46_1_3[3];
+    tmp_w[9] = 36;
+    tmp_v[36] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[0];
+    tmp_v[37] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[1];
+    tmp_v[38] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[2];
+    tmp_v[39] = GVCU_HIL_simscape_B.INTERNAL_48_1_1[3];
+    tmp_w[10] = 40;
+    memcpy(&tmp_v[40], &GVCU_HIL_simscape_B.STATE_3[0], 10U * sizeof(real_T));
+    tmp_w[11] = 50;
     simulationData->mData->mInputValues.mN = 50;
-    simulationData->mData->mInputValues.mX = &tmp_u[0];
+    simulationData->mData->mInputValues.mX = &tmp_v[0];
     simulationData->mData->mInputOffsets.mN = 12;
-    simulationData->mData->mInputOffsets.mX = &tmp_v[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_w[0];
     simulationData->mData->mOutputs.mN = 1;
 
     /* SimscapeExecutionBlock: '<S291>/OUTPUT_3_5' */
@@ -11074,8 +10972,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_3_5_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_e = rtw_diagnostics_msg(diagnosticTree_e);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_e);
       }
@@ -11100,67 +10998,67 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.STATE_4_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_x[0] = 0;
-    tmp_w[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
-    tmp_w[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
-    tmp_w[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
-    tmp_w[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
-    tmp_x[1] = 4;
-    tmp_w[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
-    tmp_w[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
-    tmp_w[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
-    tmp_w[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
-    tmp_x[2] = 8;
-    tmp_w[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
-    tmp_w[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
-    tmp_w[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
-    tmp_w[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
-    tmp_x[3] = 12;
-    tmp_w[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
-    tmp_w[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
-    tmp_w[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
-    tmp_w[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
-    tmp_x[4] = 16;
-    tmp_w[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
-    tmp_w[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
-    tmp_w[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
-    tmp_w[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
-    tmp_x[5] = 20;
-    tmp_w[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
-    tmp_w[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
-    tmp_w[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
-    tmp_w[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
-    tmp_x[6] = 24;
-    tmp_w[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
-    tmp_w[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
-    tmp_w[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
-    tmp_w[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
-    tmp_x[7] = 28;
-    tmp_w[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
-    tmp_w[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
-    tmp_w[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
-    tmp_w[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
-    tmp_x[8] = 32;
-    tmp_w[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
-    tmp_w[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
-    tmp_w[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
-    tmp_w[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
-    tmp_x[9] = 36;
+    tmp_y[0] = 0;
+    tmp_x[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
+    tmp_x[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
+    tmp_x[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
+    tmp_x[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
+    tmp_y[1] = 4;
+    tmp_x[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
+    tmp_x[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
+    tmp_x[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
+    tmp_x[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
+    tmp_y[2] = 8;
+    tmp_x[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
+    tmp_x[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
+    tmp_x[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
+    tmp_x[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
+    tmp_y[3] = 12;
+    tmp_x[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
+    tmp_x[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
+    tmp_x[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
+    tmp_x[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
+    tmp_y[4] = 16;
+    tmp_x[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
+    tmp_x[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
+    tmp_x[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
+    tmp_x[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
+    tmp_y[5] = 20;
+    tmp_x[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
+    tmp_x[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
+    tmp_x[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
+    tmp_x[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
+    tmp_y[6] = 24;
+    tmp_x[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
+    tmp_x[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
+    tmp_x[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
+    tmp_x[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
+    tmp_y[7] = 28;
+    tmp_x[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
+    tmp_x[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
+    tmp_x[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
+    tmp_x[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
+    tmp_y[8] = 32;
+    tmp_x[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
+    tmp_x[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
+    tmp_x[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
+    tmp_x[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
+    tmp_y[9] = 36;
     simulationData->mData->mInputValues.mN = 36;
-    simulationData->mData->mInputValues.mX = &tmp_w[0];
+    simulationData->mData->mInputValues.mX = &tmp_x[0];
     simulationData->mData->mInputOffsets.mN = 10;
-    simulationData->mData->mInputOffsets.mX = &tmp_x[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_y[0];
     simulationData->mData->mOutputs.mN = 5;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.STATE_4[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -11182,8 +11080,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.STATE_4_Simulator, NESL_SIM_OUTPUTS, simulationData,
       diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_f = rtw_diagnostics_msg(diagnosticTree_f);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_f);
       }
@@ -11209,73 +11107,73 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_4_0_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_z[0] = 0;
-    tmp_y[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
-    tmp_y[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
-    tmp_y[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
-    tmp_y[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
-    tmp_z[1] = 4;
-    tmp_y[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
-    tmp_y[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
-    tmp_y[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
-    tmp_y[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
-    tmp_z[2] = 8;
-    tmp_y[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
-    tmp_y[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
-    tmp_y[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
-    tmp_y[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
-    tmp_z[3] = 12;
-    tmp_y[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
-    tmp_y[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
-    tmp_y[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
-    tmp_y[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
-    tmp_z[4] = 16;
-    tmp_y[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
-    tmp_y[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
-    tmp_y[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
-    tmp_y[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
-    tmp_z[5] = 20;
-    tmp_y[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
-    tmp_y[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
-    tmp_y[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
-    tmp_y[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
-    tmp_z[6] = 24;
-    tmp_y[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
-    tmp_y[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
-    tmp_y[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
-    tmp_y[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
-    tmp_z[7] = 28;
-    tmp_y[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
-    tmp_y[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
-    tmp_y[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
-    tmp_y[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
-    tmp_z[8] = 32;
-    tmp_y[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
-    tmp_y[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
-    tmp_y[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
-    tmp_y[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
-    tmp_z[9] = 36;
-    tmp_y[36] = GVCU_HIL_simscape_B.STATE_4[0];
-    tmp_y[37] = GVCU_HIL_simscape_B.STATE_4[1];
-    tmp_y[38] = GVCU_HIL_simscape_B.STATE_4[2];
-    tmp_y[39] = GVCU_HIL_simscape_B.STATE_4[3];
-    tmp_y[40] = GVCU_HIL_simscape_B.STATE_4[4];
-    tmp_z[10] = 41;
+    tmp_10[0] = 0;
+    tmp_z[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
+    tmp_z[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
+    tmp_z[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
+    tmp_z[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
+    tmp_10[1] = 4;
+    tmp_z[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
+    tmp_z[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
+    tmp_z[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
+    tmp_z[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
+    tmp_10[2] = 8;
+    tmp_z[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
+    tmp_z[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
+    tmp_z[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
+    tmp_z[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
+    tmp_10[3] = 12;
+    tmp_z[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
+    tmp_z[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
+    tmp_z[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
+    tmp_z[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
+    tmp_10[4] = 16;
+    tmp_z[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
+    tmp_z[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
+    tmp_z[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
+    tmp_z[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
+    tmp_10[5] = 20;
+    tmp_z[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
+    tmp_z[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
+    tmp_z[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
+    tmp_z[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
+    tmp_10[6] = 24;
+    tmp_z[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
+    tmp_z[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
+    tmp_z[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
+    tmp_z[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
+    tmp_10[7] = 28;
+    tmp_z[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
+    tmp_z[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
+    tmp_z[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
+    tmp_z[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
+    tmp_10[8] = 32;
+    tmp_z[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
+    tmp_z[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
+    tmp_z[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
+    tmp_z[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
+    tmp_10[9] = 36;
+    tmp_z[36] = GVCU_HIL_simscape_B.STATE_4[0];
+    tmp_z[37] = GVCU_HIL_simscape_B.STATE_4[1];
+    tmp_z[38] = GVCU_HIL_simscape_B.STATE_4[2];
+    tmp_z[39] = GVCU_HIL_simscape_B.STATE_4[3];
+    tmp_z[40] = GVCU_HIL_simscape_B.STATE_4[4];
+    tmp_10[10] = 41;
     simulationData->mData->mInputValues.mN = 41;
-    simulationData->mData->mInputValues.mX = &tmp_y[0];
+    simulationData->mData->mInputValues.mX = &tmp_z[0];
     simulationData->mData->mInputOffsets.mN = 11;
-    simulationData->mData->mInputOffsets.mX = &tmp_z[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_10[0];
     simulationData->mData->mOutputs.mN = 2;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.OUTPUT_4_0[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -11297,8 +11195,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_4_0_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_g = rtw_diagnostics_msg(diagnosticTree_g);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_g);
       }
@@ -11324,73 +11222,73 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_4_1_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_11[0] = 0;
-    tmp_10[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
-    tmp_10[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
-    tmp_10[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
-    tmp_10[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
-    tmp_11[1] = 4;
-    tmp_10[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
-    tmp_10[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
-    tmp_10[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
-    tmp_10[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
-    tmp_11[2] = 8;
-    tmp_10[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
-    tmp_10[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
-    tmp_10[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
-    tmp_10[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
-    tmp_11[3] = 12;
-    tmp_10[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
-    tmp_10[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
-    tmp_10[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
-    tmp_10[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
-    tmp_11[4] = 16;
-    tmp_10[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
-    tmp_10[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
-    tmp_10[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
-    tmp_10[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
-    tmp_11[5] = 20;
-    tmp_10[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
-    tmp_10[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
-    tmp_10[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
-    tmp_10[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
-    tmp_11[6] = 24;
-    tmp_10[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
-    tmp_10[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
-    tmp_10[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
-    tmp_10[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
-    tmp_11[7] = 28;
-    tmp_10[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
-    tmp_10[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
-    tmp_10[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
-    tmp_10[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
-    tmp_11[8] = 32;
-    tmp_10[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
-    tmp_10[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
-    tmp_10[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
-    tmp_10[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
-    tmp_11[9] = 36;
-    tmp_10[36] = GVCU_HIL_simscape_B.STATE_4[0];
-    tmp_10[37] = GVCU_HIL_simscape_B.STATE_4[1];
-    tmp_10[38] = GVCU_HIL_simscape_B.STATE_4[2];
-    tmp_10[39] = GVCU_HIL_simscape_B.STATE_4[3];
-    tmp_10[40] = GVCU_HIL_simscape_B.STATE_4[4];
-    tmp_11[10] = 41;
+    tmp_12[0] = 0;
+    tmp_11[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
+    tmp_11[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
+    tmp_11[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
+    tmp_11[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
+    tmp_12[1] = 4;
+    tmp_11[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
+    tmp_11[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
+    tmp_11[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
+    tmp_11[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
+    tmp_12[2] = 8;
+    tmp_11[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
+    tmp_11[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
+    tmp_11[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
+    tmp_11[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
+    tmp_12[3] = 12;
+    tmp_11[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
+    tmp_11[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
+    tmp_11[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
+    tmp_11[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
+    tmp_12[4] = 16;
+    tmp_11[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
+    tmp_11[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
+    tmp_11[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
+    tmp_11[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
+    tmp_12[5] = 20;
+    tmp_11[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
+    tmp_11[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
+    tmp_11[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
+    tmp_11[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
+    tmp_12[6] = 24;
+    tmp_11[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
+    tmp_11[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
+    tmp_11[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
+    tmp_11[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
+    tmp_12[7] = 28;
+    tmp_11[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
+    tmp_11[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
+    tmp_11[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
+    tmp_11[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
+    tmp_12[8] = 32;
+    tmp_11[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
+    tmp_11[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
+    tmp_11[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
+    tmp_11[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
+    tmp_12[9] = 36;
+    tmp_11[36] = GVCU_HIL_simscape_B.STATE_4[0];
+    tmp_11[37] = GVCU_HIL_simscape_B.STATE_4[1];
+    tmp_11[38] = GVCU_HIL_simscape_B.STATE_4[2];
+    tmp_11[39] = GVCU_HIL_simscape_B.STATE_4[3];
+    tmp_11[40] = GVCU_HIL_simscape_B.STATE_4[4];
+    tmp_12[10] = 41;
     simulationData->mData->mInputValues.mN = 41;
-    simulationData->mData->mInputValues.mX = &tmp_10[0];
+    simulationData->mData->mInputValues.mX = &tmp_11[0];
     simulationData->mData->mInputOffsets.mN = 11;
-    simulationData->mData->mInputOffsets.mX = &tmp_11[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_12[0];
     simulationData->mData->mOutputs.mN = 2;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.OUTPUT_4_1[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -11412,8 +11310,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_4_1_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_h = rtw_diagnostics_msg(diagnosticTree_h);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_h);
       }
@@ -11439,73 +11337,73 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_4_2_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_13[0] = 0;
-    tmp_12[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
-    tmp_12[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
-    tmp_12[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
-    tmp_12[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
-    tmp_13[1] = 4;
-    tmp_12[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
-    tmp_12[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
-    tmp_12[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
-    tmp_12[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
-    tmp_13[2] = 8;
-    tmp_12[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
-    tmp_12[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
-    tmp_12[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
-    tmp_12[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
-    tmp_13[3] = 12;
-    tmp_12[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
-    tmp_12[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
-    tmp_12[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
-    tmp_12[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
-    tmp_13[4] = 16;
-    tmp_12[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
-    tmp_12[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
-    tmp_12[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
-    tmp_12[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
-    tmp_13[5] = 20;
-    tmp_12[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
-    tmp_12[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
-    tmp_12[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
-    tmp_12[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
-    tmp_13[6] = 24;
-    tmp_12[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
-    tmp_12[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
-    tmp_12[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
-    tmp_12[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
-    tmp_13[7] = 28;
-    tmp_12[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
-    tmp_12[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
-    tmp_12[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
-    tmp_12[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
-    tmp_13[8] = 32;
-    tmp_12[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
-    tmp_12[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
-    tmp_12[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
-    tmp_12[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
-    tmp_13[9] = 36;
-    tmp_12[36] = GVCU_HIL_simscape_B.STATE_4[0];
-    tmp_12[37] = GVCU_HIL_simscape_B.STATE_4[1];
-    tmp_12[38] = GVCU_HIL_simscape_B.STATE_4[2];
-    tmp_12[39] = GVCU_HIL_simscape_B.STATE_4[3];
-    tmp_12[40] = GVCU_HIL_simscape_B.STATE_4[4];
-    tmp_13[10] = 41;
+    tmp_14[0] = 0;
+    tmp_13[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
+    tmp_13[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
+    tmp_13[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
+    tmp_13[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
+    tmp_14[1] = 4;
+    tmp_13[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
+    tmp_13[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
+    tmp_13[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
+    tmp_13[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
+    tmp_14[2] = 8;
+    tmp_13[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
+    tmp_13[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
+    tmp_13[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
+    tmp_13[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
+    tmp_14[3] = 12;
+    tmp_13[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
+    tmp_13[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
+    tmp_13[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
+    tmp_13[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
+    tmp_14[4] = 16;
+    tmp_13[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
+    tmp_13[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
+    tmp_13[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
+    tmp_13[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
+    tmp_14[5] = 20;
+    tmp_13[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
+    tmp_13[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
+    tmp_13[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
+    tmp_13[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
+    tmp_14[6] = 24;
+    tmp_13[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
+    tmp_13[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
+    tmp_13[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
+    tmp_13[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
+    tmp_14[7] = 28;
+    tmp_13[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
+    tmp_13[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
+    tmp_13[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
+    tmp_13[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
+    tmp_14[8] = 32;
+    tmp_13[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
+    tmp_13[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
+    tmp_13[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
+    tmp_13[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
+    tmp_14[9] = 36;
+    tmp_13[36] = GVCU_HIL_simscape_B.STATE_4[0];
+    tmp_13[37] = GVCU_HIL_simscape_B.STATE_4[1];
+    tmp_13[38] = GVCU_HIL_simscape_B.STATE_4[2];
+    tmp_13[39] = GVCU_HIL_simscape_B.STATE_4[3];
+    tmp_13[40] = GVCU_HIL_simscape_B.STATE_4[4];
+    tmp_14[10] = 41;
     simulationData->mData->mInputValues.mN = 41;
-    simulationData->mData->mInputValues.mX = &tmp_12[0];
+    simulationData->mData->mInputValues.mX = &tmp_13[0];
     simulationData->mData->mInputOffsets.mN = 11;
-    simulationData->mData->mInputOffsets.mX = &tmp_13[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_14[0];
     simulationData->mData->mOutputs.mN = 2;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.OUTPUT_4_2[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -11527,8 +11425,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_4_2_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_i = rtw_diagnostics_msg(diagnosticTree_i);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_i);
       }
@@ -11554,73 +11452,73 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_4_3_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_15[0] = 0;
-    tmp_14[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
-    tmp_14[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
-    tmp_14[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
-    tmp_14[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
-    tmp_15[1] = 4;
-    tmp_14[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
-    tmp_14[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
-    tmp_14[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
-    tmp_14[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
-    tmp_15[2] = 8;
-    tmp_14[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
-    tmp_14[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
-    tmp_14[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
-    tmp_14[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
-    tmp_15[3] = 12;
-    tmp_14[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
-    tmp_14[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
-    tmp_14[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
-    tmp_14[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
-    tmp_15[4] = 16;
-    tmp_14[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
-    tmp_14[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
-    tmp_14[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
-    tmp_14[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
-    tmp_15[5] = 20;
-    tmp_14[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
-    tmp_14[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
-    tmp_14[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
-    tmp_14[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
-    tmp_15[6] = 24;
-    tmp_14[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
-    tmp_14[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
-    tmp_14[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
-    tmp_14[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
-    tmp_15[7] = 28;
-    tmp_14[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
-    tmp_14[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
-    tmp_14[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
-    tmp_14[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
-    tmp_15[8] = 32;
-    tmp_14[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
-    tmp_14[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
-    tmp_14[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
-    tmp_14[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
-    tmp_15[9] = 36;
-    tmp_14[36] = GVCU_HIL_simscape_B.STATE_4[0];
-    tmp_14[37] = GVCU_HIL_simscape_B.STATE_4[1];
-    tmp_14[38] = GVCU_HIL_simscape_B.STATE_4[2];
-    tmp_14[39] = GVCU_HIL_simscape_B.STATE_4[3];
-    tmp_14[40] = GVCU_HIL_simscape_B.STATE_4[4];
-    tmp_15[10] = 41;
+    tmp_16[0] = 0;
+    tmp_15[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
+    tmp_15[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
+    tmp_15[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
+    tmp_15[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
+    tmp_16[1] = 4;
+    tmp_15[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
+    tmp_15[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
+    tmp_15[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
+    tmp_15[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
+    tmp_16[2] = 8;
+    tmp_15[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
+    tmp_15[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
+    tmp_15[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
+    tmp_15[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
+    tmp_16[3] = 12;
+    tmp_15[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
+    tmp_15[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
+    tmp_15[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
+    tmp_15[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
+    tmp_16[4] = 16;
+    tmp_15[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
+    tmp_15[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
+    tmp_15[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
+    tmp_15[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
+    tmp_16[5] = 20;
+    tmp_15[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
+    tmp_15[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
+    tmp_15[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
+    tmp_15[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
+    tmp_16[6] = 24;
+    tmp_15[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
+    tmp_15[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
+    tmp_15[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
+    tmp_15[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
+    tmp_16[7] = 28;
+    tmp_15[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
+    tmp_15[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
+    tmp_15[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
+    tmp_15[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
+    tmp_16[8] = 32;
+    tmp_15[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
+    tmp_15[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
+    tmp_15[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
+    tmp_15[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
+    tmp_16[9] = 36;
+    tmp_15[36] = GVCU_HIL_simscape_B.STATE_4[0];
+    tmp_15[37] = GVCU_HIL_simscape_B.STATE_4[1];
+    tmp_15[38] = GVCU_HIL_simscape_B.STATE_4[2];
+    tmp_15[39] = GVCU_HIL_simscape_B.STATE_4[3];
+    tmp_15[40] = GVCU_HIL_simscape_B.STATE_4[4];
+    tmp_16[10] = 41;
     simulationData->mData->mInputValues.mN = 41;
-    simulationData->mData->mInputValues.mX = &tmp_14[0];
+    simulationData->mData->mInputValues.mX = &tmp_15[0];
     simulationData->mData->mInputOffsets.mN = 11;
-    simulationData->mData->mInputOffsets.mX = &tmp_15[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_16[0];
     simulationData->mData->mOutputs.mN = 1;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_4_3;
     simulationData->mData->mTolerances.mN = 0;
@@ -11642,8 +11540,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_4_3_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_j = rtw_diagnostics_msg(diagnosticTree_j);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_j);
       }
@@ -11669,73 +11567,73 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_4_4_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_17[0] = 0;
-    tmp_16[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
-    tmp_16[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
-    tmp_16[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
-    tmp_16[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
-    tmp_17[1] = 4;
-    tmp_16[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
-    tmp_16[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
-    tmp_16[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
-    tmp_16[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
-    tmp_17[2] = 8;
-    tmp_16[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
-    tmp_16[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
-    tmp_16[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
-    tmp_16[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
-    tmp_17[3] = 12;
-    tmp_16[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
-    tmp_16[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
-    tmp_16[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
-    tmp_16[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
-    tmp_17[4] = 16;
-    tmp_16[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
-    tmp_16[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
-    tmp_16[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
-    tmp_16[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
-    tmp_17[5] = 20;
-    tmp_16[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
-    tmp_16[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
-    tmp_16[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
-    tmp_16[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
-    tmp_17[6] = 24;
-    tmp_16[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
-    tmp_16[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
-    tmp_16[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
-    tmp_16[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
-    tmp_17[7] = 28;
-    tmp_16[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
-    tmp_16[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
-    tmp_16[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
-    tmp_16[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
-    tmp_17[8] = 32;
-    tmp_16[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
-    tmp_16[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
-    tmp_16[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
-    tmp_16[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
-    tmp_17[9] = 36;
-    tmp_16[36] = GVCU_HIL_simscape_B.STATE_4[0];
-    tmp_16[37] = GVCU_HIL_simscape_B.STATE_4[1];
-    tmp_16[38] = GVCU_HIL_simscape_B.STATE_4[2];
-    tmp_16[39] = GVCU_HIL_simscape_B.STATE_4[3];
-    tmp_16[40] = GVCU_HIL_simscape_B.STATE_4[4];
-    tmp_17[10] = 41;
+    tmp_18[0] = 0;
+    tmp_17[0] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[0];
+    tmp_17[1] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[1];
+    tmp_17[2] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[2];
+    tmp_17[3] = GVCU_HIL_simscape_B.INTERNAL_5_1_1[3];
+    tmp_18[1] = 4;
+    tmp_17[4] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[0];
+    tmp_17[5] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[1];
+    tmp_17[6] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[2];
+    tmp_17[7] = GVCU_HIL_simscape_B.INTERNAL_6_1_1[3];
+    tmp_18[2] = 8;
+    tmp_17[8] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[0];
+    tmp_17[9] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[1];
+    tmp_17[10] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[2];
+    tmp_17[11] = GVCU_HIL_simscape_B.INTERNAL_7_1_1[3];
+    tmp_18[3] = 12;
+    tmp_17[12] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[0];
+    tmp_17[13] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[1];
+    tmp_17[14] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[2];
+    tmp_17[15] = GVCU_HIL_simscape_B.INTERNAL_8_1_1[3];
+    tmp_18[4] = 16;
+    tmp_17[16] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[0];
+    tmp_17[17] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[1];
+    tmp_17[18] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[2];
+    tmp_17[19] = GVCU_HIL_simscape_B.INTERNAL_9_1_1[3];
+    tmp_18[5] = 20;
+    tmp_17[20] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[0];
+    tmp_17[21] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[1];
+    tmp_17[22] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[2];
+    tmp_17[23] = GVCU_HIL_simscape_B.INTERNAL_10_1_1[3];
+    tmp_18[6] = 24;
+    tmp_17[24] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[0];
+    tmp_17[25] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[1];
+    tmp_17[26] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[2];
+    tmp_17[27] = GVCU_HIL_simscape_B.INTERNAL_11_1_1[3];
+    tmp_18[7] = 28;
+    tmp_17[28] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[0];
+    tmp_17[29] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[1];
+    tmp_17[30] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[2];
+    tmp_17[31] = GVCU_HIL_simscape_B.INTERNAL_12_1_1[3];
+    tmp_18[8] = 32;
+    tmp_17[32] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[0];
+    tmp_17[33] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[1];
+    tmp_17[34] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[2];
+    tmp_17[35] = GVCU_HIL_simscape_B.INTERNAL_4_1_1[3];
+    tmp_18[9] = 36;
+    tmp_17[36] = GVCU_HIL_simscape_B.STATE_4[0];
+    tmp_17[37] = GVCU_HIL_simscape_B.STATE_4[1];
+    tmp_17[38] = GVCU_HIL_simscape_B.STATE_4[2];
+    tmp_17[39] = GVCU_HIL_simscape_B.STATE_4[3];
+    tmp_17[40] = GVCU_HIL_simscape_B.STATE_4[4];
+    tmp_18[10] = 41;
     simulationData->mData->mInputValues.mN = 41;
-    simulationData->mData->mInputValues.mX = &tmp_16[0];
+    simulationData->mData->mInputValues.mX = &tmp_17[0];
     simulationData->mData->mInputOffsets.mN = 11;
-    simulationData->mData->mInputOffsets.mX = &tmp_17[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_18[0];
     simulationData->mData->mOutputs.mN = 1;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_4_4;
     simulationData->mData->mTolerances.mN = 0;
@@ -11757,8 +11655,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_4_4_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_k = rtw_diagnostics_msg(diagnosticTree_k);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_k);
       }
@@ -11783,77 +11681,77 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.STATE_5_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_19[0] = 0;
-    tmp_18[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
-    tmp_18[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
-    tmp_18[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
-    tmp_18[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
-    tmp_19[1] = 4;
-    tmp_18[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
-    tmp_18[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
-    tmp_18[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
-    tmp_18[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
-    tmp_19[2] = 8;
-    tmp_18[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
-    tmp_18[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
-    tmp_18[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
-    tmp_18[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
-    tmp_19[3] = 12;
-    tmp_18[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
-    tmp_18[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
-    tmp_18[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
-    tmp_18[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
-    tmp_19[4] = 16;
-    tmp_18[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
-    tmp_18[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
-    tmp_18[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
-    tmp_18[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
-    tmp_19[5] = 20;
-    tmp_18[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
-    tmp_18[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
-    tmp_18[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
-    tmp_18[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
-    tmp_19[6] = 24;
-    tmp_18[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
-    tmp_18[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
-    tmp_18[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
-    tmp_18[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
-    tmp_19[7] = 28;
-    tmp_18[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
-    tmp_18[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
-    tmp_18[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
-    tmp_18[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
-    tmp_19[8] = 32;
-    tmp_18[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
-    tmp_18[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
-    tmp_18[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
-    tmp_18[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
-    tmp_19[9] = 36;
-    tmp_18[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
-    tmp_18[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
-    tmp_18[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
-    tmp_18[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
-    tmp_19[10] = 40;
-    tmp_18[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
-    tmp_18[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
-    tmp_18[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
-    tmp_18[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
-    tmp_19[11] = 44;
+    tmp_1a[0] = 0;
+    tmp_19[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
+    tmp_19[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
+    tmp_19[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
+    tmp_19[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
+    tmp_1a[1] = 4;
+    tmp_19[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
+    tmp_19[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
+    tmp_19[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
+    tmp_19[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
+    tmp_1a[2] = 8;
+    tmp_19[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
+    tmp_19[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
+    tmp_19[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
+    tmp_19[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
+    tmp_1a[3] = 12;
+    tmp_19[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
+    tmp_19[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
+    tmp_19[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
+    tmp_19[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
+    tmp_1a[4] = 16;
+    tmp_19[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
+    tmp_19[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
+    tmp_19[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
+    tmp_19[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
+    tmp_1a[5] = 20;
+    tmp_19[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
+    tmp_19[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
+    tmp_19[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
+    tmp_19[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
+    tmp_1a[6] = 24;
+    tmp_19[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
+    tmp_19[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
+    tmp_19[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
+    tmp_19[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
+    tmp_1a[7] = 28;
+    tmp_19[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
+    tmp_19[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
+    tmp_19[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
+    tmp_19[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
+    tmp_1a[8] = 32;
+    tmp_19[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
+    tmp_19[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
+    tmp_19[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
+    tmp_19[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
+    tmp_1a[9] = 36;
+    tmp_19[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
+    tmp_19[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
+    tmp_19[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
+    tmp_19[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
+    tmp_1a[10] = 40;
+    tmp_19[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
+    tmp_19[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
+    tmp_19[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
+    tmp_19[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
+    tmp_1a[11] = 44;
     simulationData->mData->mInputValues.mN = 44;
-    simulationData->mData->mInputValues.mX = &tmp_18[0];
+    simulationData->mData->mInputValues.mX = &tmp_19[0];
     simulationData->mData->mInputOffsets.mN = 12;
-    simulationData->mData->mInputOffsets.mX = &tmp_19[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_1a[0];
     simulationData->mData->mOutputs.mN = 12;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.STATE_5[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -11875,8 +11773,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.STATE_5_Simulator, NESL_SIM_OUTPUTS, simulationData,
       diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_l = rtw_diagnostics_msg(diagnosticTree_l);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_l);
       }
@@ -11923,79 +11821,79 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_5_0_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_1b[0] = 0;
-    tmp_1a[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
-    tmp_1a[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
-    tmp_1a[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
-    tmp_1a[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
-    tmp_1b[1] = 4;
-    tmp_1a[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
-    tmp_1a[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
-    tmp_1a[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
-    tmp_1a[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
-    tmp_1b[2] = 8;
-    tmp_1a[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
-    tmp_1a[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
-    tmp_1a[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
-    tmp_1a[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
-    tmp_1b[3] = 12;
-    tmp_1a[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
-    tmp_1a[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
-    tmp_1a[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
-    tmp_1a[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
-    tmp_1b[4] = 16;
-    tmp_1a[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
-    tmp_1a[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
-    tmp_1a[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
-    tmp_1a[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
-    tmp_1b[5] = 20;
-    tmp_1a[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
-    tmp_1a[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
-    tmp_1a[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
-    tmp_1a[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
-    tmp_1b[6] = 24;
-    tmp_1a[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
-    tmp_1a[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
-    tmp_1a[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
-    tmp_1a[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
-    tmp_1b[7] = 28;
-    tmp_1a[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
-    tmp_1a[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
-    tmp_1a[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
-    tmp_1a[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
-    tmp_1b[8] = 32;
-    tmp_1a[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
-    tmp_1a[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
-    tmp_1a[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
-    tmp_1a[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
-    tmp_1b[9] = 36;
-    tmp_1a[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
-    tmp_1a[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
-    tmp_1a[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
-    tmp_1a[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
-    tmp_1b[10] = 40;
-    tmp_1a[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
-    tmp_1a[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
-    tmp_1a[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
-    tmp_1a[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
-    tmp_1b[11] = 44;
-    memcpy(&tmp_1a[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
-    tmp_1b[12] = 56;
+    tmp_1c[0] = 0;
+    tmp_1b[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
+    tmp_1b[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
+    tmp_1b[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
+    tmp_1b[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
+    tmp_1c[1] = 4;
+    tmp_1b[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
+    tmp_1b[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
+    tmp_1b[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
+    tmp_1b[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
+    tmp_1c[2] = 8;
+    tmp_1b[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
+    tmp_1b[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
+    tmp_1b[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
+    tmp_1b[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
+    tmp_1c[3] = 12;
+    tmp_1b[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
+    tmp_1b[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
+    tmp_1b[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
+    tmp_1b[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
+    tmp_1c[4] = 16;
+    tmp_1b[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
+    tmp_1b[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
+    tmp_1b[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
+    tmp_1b[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
+    tmp_1c[5] = 20;
+    tmp_1b[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
+    tmp_1b[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
+    tmp_1b[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
+    tmp_1b[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
+    tmp_1c[6] = 24;
+    tmp_1b[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
+    tmp_1b[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
+    tmp_1b[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
+    tmp_1b[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
+    tmp_1c[7] = 28;
+    tmp_1b[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
+    tmp_1b[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
+    tmp_1b[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
+    tmp_1b[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
+    tmp_1c[8] = 32;
+    tmp_1b[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
+    tmp_1b[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
+    tmp_1b[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
+    tmp_1b[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
+    tmp_1c[9] = 36;
+    tmp_1b[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
+    tmp_1b[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
+    tmp_1b[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
+    tmp_1b[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
+    tmp_1c[10] = 40;
+    tmp_1b[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
+    tmp_1b[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
+    tmp_1b[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
+    tmp_1b[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
+    tmp_1c[11] = 44;
+    memcpy(&tmp_1b[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
+    tmp_1c[12] = 56;
     simulationData->mData->mInputValues.mN = 56;
-    simulationData->mData->mInputValues.mX = &tmp_1a[0];
+    simulationData->mData->mInputValues.mX = &tmp_1b[0];
     simulationData->mData->mInputOffsets.mN = 13;
-    simulationData->mData->mInputOffsets.mX = &tmp_1b[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_1c[0];
     simulationData->mData->mOutputs.mN = 2;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_5_0[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -12017,8 +11915,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_5_0_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_m = rtw_diagnostics_msg(diagnosticTree_m);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_m);
       }
@@ -12044,79 +11942,79 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_5_1_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_1d[0] = 0;
-    tmp_1c[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
-    tmp_1c[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
-    tmp_1c[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
-    tmp_1c[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
-    tmp_1d[1] = 4;
-    tmp_1c[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
-    tmp_1c[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
-    tmp_1c[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
-    tmp_1c[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
-    tmp_1d[2] = 8;
-    tmp_1c[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
-    tmp_1c[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
-    tmp_1c[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
-    tmp_1c[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
-    tmp_1d[3] = 12;
-    tmp_1c[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
-    tmp_1c[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
-    tmp_1c[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
-    tmp_1c[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
-    tmp_1d[4] = 16;
-    tmp_1c[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
-    tmp_1c[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
-    tmp_1c[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
-    tmp_1c[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
-    tmp_1d[5] = 20;
-    tmp_1c[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
-    tmp_1c[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
-    tmp_1c[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
-    tmp_1c[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
-    tmp_1d[6] = 24;
-    tmp_1c[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
-    tmp_1c[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
-    tmp_1c[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
-    tmp_1c[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
-    tmp_1d[7] = 28;
-    tmp_1c[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
-    tmp_1c[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
-    tmp_1c[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
-    tmp_1c[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
-    tmp_1d[8] = 32;
-    tmp_1c[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
-    tmp_1c[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
-    tmp_1c[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
-    tmp_1c[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
-    tmp_1d[9] = 36;
-    tmp_1c[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
-    tmp_1c[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
-    tmp_1c[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
-    tmp_1c[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
-    tmp_1d[10] = 40;
-    tmp_1c[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
-    tmp_1c[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
-    tmp_1c[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
-    tmp_1c[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
-    tmp_1d[11] = 44;
-    memcpy(&tmp_1c[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
-    tmp_1d[12] = 56;
+    tmp_1e[0] = 0;
+    tmp_1d[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
+    tmp_1d[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
+    tmp_1d[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
+    tmp_1d[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
+    tmp_1e[1] = 4;
+    tmp_1d[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
+    tmp_1d[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
+    tmp_1d[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
+    tmp_1d[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
+    tmp_1e[2] = 8;
+    tmp_1d[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
+    tmp_1d[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
+    tmp_1d[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
+    tmp_1d[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
+    tmp_1e[3] = 12;
+    tmp_1d[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
+    tmp_1d[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
+    tmp_1d[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
+    tmp_1d[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
+    tmp_1e[4] = 16;
+    tmp_1d[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
+    tmp_1d[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
+    tmp_1d[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
+    tmp_1d[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
+    tmp_1e[5] = 20;
+    tmp_1d[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
+    tmp_1d[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
+    tmp_1d[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
+    tmp_1d[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
+    tmp_1e[6] = 24;
+    tmp_1d[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
+    tmp_1d[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
+    tmp_1d[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
+    tmp_1d[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
+    tmp_1e[7] = 28;
+    tmp_1d[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
+    tmp_1d[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
+    tmp_1d[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
+    tmp_1d[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
+    tmp_1e[8] = 32;
+    tmp_1d[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
+    tmp_1d[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
+    tmp_1d[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
+    tmp_1d[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
+    tmp_1e[9] = 36;
+    tmp_1d[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
+    tmp_1d[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
+    tmp_1d[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
+    tmp_1d[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
+    tmp_1e[10] = 40;
+    tmp_1d[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
+    tmp_1d[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
+    tmp_1d[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
+    tmp_1d[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
+    tmp_1e[11] = 44;
+    memcpy(&tmp_1d[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
+    tmp_1e[12] = 56;
     simulationData->mData->mInputValues.mN = 56;
-    simulationData->mData->mInputValues.mX = &tmp_1c[0];
+    simulationData->mData->mInputValues.mX = &tmp_1d[0];
     simulationData->mData->mInputOffsets.mN = 13;
-    simulationData->mData->mInputOffsets.mX = &tmp_1d[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_1e[0];
     simulationData->mData->mOutputs.mN = 3;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_5_1[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -12138,8 +12036,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_5_1_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_n = rtw_diagnostics_msg(diagnosticTree_n);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_n);
       }
@@ -12165,79 +12063,79 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_5_2_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_1f[0] = 0;
-    tmp_1e[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
-    tmp_1e[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
-    tmp_1e[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
-    tmp_1e[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
-    tmp_1f[1] = 4;
-    tmp_1e[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
-    tmp_1e[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
-    tmp_1e[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
-    tmp_1e[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
-    tmp_1f[2] = 8;
-    tmp_1e[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
-    tmp_1e[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
-    tmp_1e[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
-    tmp_1e[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
-    tmp_1f[3] = 12;
-    tmp_1e[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
-    tmp_1e[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
-    tmp_1e[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
-    tmp_1e[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
-    tmp_1f[4] = 16;
-    tmp_1e[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
-    tmp_1e[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
-    tmp_1e[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
-    tmp_1e[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
-    tmp_1f[5] = 20;
-    tmp_1e[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
-    tmp_1e[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
-    tmp_1e[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
-    tmp_1e[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
-    tmp_1f[6] = 24;
-    tmp_1e[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
-    tmp_1e[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
-    tmp_1e[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
-    tmp_1e[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
-    tmp_1f[7] = 28;
-    tmp_1e[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
-    tmp_1e[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
-    tmp_1e[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
-    tmp_1e[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
-    tmp_1f[8] = 32;
-    tmp_1e[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
-    tmp_1e[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
-    tmp_1e[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
-    tmp_1e[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
-    tmp_1f[9] = 36;
-    tmp_1e[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
-    tmp_1e[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
-    tmp_1e[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
-    tmp_1e[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
-    tmp_1f[10] = 40;
-    tmp_1e[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
-    tmp_1e[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
-    tmp_1e[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
-    tmp_1e[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
-    tmp_1f[11] = 44;
-    memcpy(&tmp_1e[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
-    tmp_1f[12] = 56;
+    tmp_1g[0] = 0;
+    tmp_1f[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
+    tmp_1f[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
+    tmp_1f[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
+    tmp_1f[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
+    tmp_1g[1] = 4;
+    tmp_1f[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
+    tmp_1f[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
+    tmp_1f[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
+    tmp_1f[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
+    tmp_1g[2] = 8;
+    tmp_1f[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
+    tmp_1f[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
+    tmp_1f[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
+    tmp_1f[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
+    tmp_1g[3] = 12;
+    tmp_1f[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
+    tmp_1f[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
+    tmp_1f[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
+    tmp_1f[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
+    tmp_1g[4] = 16;
+    tmp_1f[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
+    tmp_1f[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
+    tmp_1f[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
+    tmp_1f[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
+    tmp_1g[5] = 20;
+    tmp_1f[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
+    tmp_1f[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
+    tmp_1f[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
+    tmp_1f[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
+    tmp_1g[6] = 24;
+    tmp_1f[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
+    tmp_1f[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
+    tmp_1f[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
+    tmp_1f[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
+    tmp_1g[7] = 28;
+    tmp_1f[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
+    tmp_1f[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
+    tmp_1f[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
+    tmp_1f[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
+    tmp_1g[8] = 32;
+    tmp_1f[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
+    tmp_1f[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
+    tmp_1f[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
+    tmp_1f[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
+    tmp_1g[9] = 36;
+    tmp_1f[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
+    tmp_1f[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
+    tmp_1f[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
+    tmp_1f[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
+    tmp_1g[10] = 40;
+    tmp_1f[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
+    tmp_1f[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
+    tmp_1f[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
+    tmp_1f[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
+    tmp_1g[11] = 44;
+    memcpy(&tmp_1f[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
+    tmp_1g[12] = 56;
     simulationData->mData->mInputValues.mN = 56;
-    simulationData->mData->mInputValues.mX = &tmp_1e[0];
+    simulationData->mData->mInputValues.mX = &tmp_1f[0];
     simulationData->mData->mInputOffsets.mN = 13;
-    simulationData->mData->mInputOffsets.mX = &tmp_1f[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_1g[0];
     simulationData->mData->mOutputs.mN = 4;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_5_2[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -12259,8 +12157,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_5_2_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_o = rtw_diagnostics_msg(diagnosticTree_o);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_o);
       }
@@ -12286,79 +12184,79 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_5_3_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_1h[0] = 0;
-    tmp_1g[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
-    tmp_1g[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
-    tmp_1g[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
-    tmp_1g[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
-    tmp_1h[1] = 4;
-    tmp_1g[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
-    tmp_1g[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
-    tmp_1g[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
-    tmp_1g[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
-    tmp_1h[2] = 8;
-    tmp_1g[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
-    tmp_1g[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
-    tmp_1g[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
-    tmp_1g[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
-    tmp_1h[3] = 12;
-    tmp_1g[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
-    tmp_1g[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
-    tmp_1g[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
-    tmp_1g[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
-    tmp_1h[4] = 16;
-    tmp_1g[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
-    tmp_1g[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
-    tmp_1g[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
-    tmp_1g[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
-    tmp_1h[5] = 20;
-    tmp_1g[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
-    tmp_1g[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
-    tmp_1g[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
-    tmp_1g[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
-    tmp_1h[6] = 24;
-    tmp_1g[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
-    tmp_1g[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
-    tmp_1g[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
-    tmp_1g[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
-    tmp_1h[7] = 28;
-    tmp_1g[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
-    tmp_1g[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
-    tmp_1g[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
-    tmp_1g[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
-    tmp_1h[8] = 32;
-    tmp_1g[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
-    tmp_1g[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
-    tmp_1g[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
-    tmp_1g[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
-    tmp_1h[9] = 36;
-    tmp_1g[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
-    tmp_1g[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
-    tmp_1g[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
-    tmp_1g[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
-    tmp_1h[10] = 40;
-    tmp_1g[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
-    tmp_1g[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
-    tmp_1g[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
-    tmp_1g[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
-    tmp_1h[11] = 44;
-    memcpy(&tmp_1g[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
-    tmp_1h[12] = 56;
+    tmp_1i[0] = 0;
+    tmp_1h[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
+    tmp_1h[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
+    tmp_1h[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
+    tmp_1h[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
+    tmp_1i[1] = 4;
+    tmp_1h[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
+    tmp_1h[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
+    tmp_1h[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
+    tmp_1h[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
+    tmp_1i[2] = 8;
+    tmp_1h[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
+    tmp_1h[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
+    tmp_1h[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
+    tmp_1h[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
+    tmp_1i[3] = 12;
+    tmp_1h[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
+    tmp_1h[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
+    tmp_1h[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
+    tmp_1h[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
+    tmp_1i[4] = 16;
+    tmp_1h[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
+    tmp_1h[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
+    tmp_1h[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
+    tmp_1h[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
+    tmp_1i[5] = 20;
+    tmp_1h[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
+    tmp_1h[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
+    tmp_1h[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
+    tmp_1h[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
+    tmp_1i[6] = 24;
+    tmp_1h[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
+    tmp_1h[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
+    tmp_1h[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
+    tmp_1h[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
+    tmp_1i[7] = 28;
+    tmp_1h[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
+    tmp_1h[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
+    tmp_1h[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
+    tmp_1h[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
+    tmp_1i[8] = 32;
+    tmp_1h[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
+    tmp_1h[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
+    tmp_1h[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
+    tmp_1h[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
+    tmp_1i[9] = 36;
+    tmp_1h[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
+    tmp_1h[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
+    tmp_1h[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
+    tmp_1h[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
+    tmp_1i[10] = 40;
+    tmp_1h[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
+    tmp_1h[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
+    tmp_1h[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
+    tmp_1h[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
+    tmp_1i[11] = 44;
+    memcpy(&tmp_1h[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
+    tmp_1i[12] = 56;
     simulationData->mData->mInputValues.mN = 56;
-    simulationData->mData->mInputValues.mX = &tmp_1g[0];
+    simulationData->mData->mInputValues.mX = &tmp_1h[0];
     simulationData->mData->mInputOffsets.mN = 13;
-    simulationData->mData->mInputOffsets.mX = &tmp_1h[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_1i[0];
     simulationData->mData->mOutputs.mN = 1;
 
     /* SimscapeExecutionBlock: '<S291>/OUTPUT_5_3' */
@@ -12384,8 +12282,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_5_3_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_p = rtw_diagnostics_msg(diagnosticTree_p);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_p);
       }
@@ -12411,79 +12309,79 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_5_4_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_1j[0] = 0;
-    tmp_1i[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
-    tmp_1i[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
-    tmp_1i[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
-    tmp_1i[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
-    tmp_1j[1] = 4;
-    tmp_1i[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
-    tmp_1i[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
-    tmp_1i[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
-    tmp_1i[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
-    tmp_1j[2] = 8;
-    tmp_1i[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
-    tmp_1i[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
-    tmp_1i[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
-    tmp_1i[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
-    tmp_1j[3] = 12;
-    tmp_1i[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
-    tmp_1i[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
-    tmp_1i[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
-    tmp_1i[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
-    tmp_1j[4] = 16;
-    tmp_1i[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
-    tmp_1i[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
-    tmp_1i[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
-    tmp_1i[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
-    tmp_1j[5] = 20;
-    tmp_1i[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
-    tmp_1i[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
-    tmp_1i[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
-    tmp_1i[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
-    tmp_1j[6] = 24;
-    tmp_1i[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
-    tmp_1i[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
-    tmp_1i[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
-    tmp_1i[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
-    tmp_1j[7] = 28;
-    tmp_1i[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
-    tmp_1i[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
-    tmp_1i[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
-    tmp_1i[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
-    tmp_1j[8] = 32;
-    tmp_1i[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
-    tmp_1i[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
-    tmp_1i[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
-    tmp_1i[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
-    tmp_1j[9] = 36;
-    tmp_1i[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
-    tmp_1i[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
-    tmp_1i[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
-    tmp_1i[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
-    tmp_1j[10] = 40;
-    tmp_1i[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
-    tmp_1i[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
-    tmp_1i[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
-    tmp_1i[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
-    tmp_1j[11] = 44;
-    memcpy(&tmp_1i[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
-    tmp_1j[12] = 56;
+    tmp_1k[0] = 0;
+    tmp_1j[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
+    tmp_1j[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
+    tmp_1j[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
+    tmp_1j[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
+    tmp_1k[1] = 4;
+    tmp_1j[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
+    tmp_1j[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
+    tmp_1j[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
+    tmp_1j[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
+    tmp_1k[2] = 8;
+    tmp_1j[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
+    tmp_1j[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
+    tmp_1j[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
+    tmp_1j[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
+    tmp_1k[3] = 12;
+    tmp_1j[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
+    tmp_1j[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
+    tmp_1j[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
+    tmp_1j[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
+    tmp_1k[4] = 16;
+    tmp_1j[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
+    tmp_1j[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
+    tmp_1j[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
+    tmp_1j[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
+    tmp_1k[5] = 20;
+    tmp_1j[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
+    tmp_1j[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
+    tmp_1j[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
+    tmp_1j[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
+    tmp_1k[6] = 24;
+    tmp_1j[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
+    tmp_1j[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
+    tmp_1j[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
+    tmp_1j[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
+    tmp_1k[7] = 28;
+    tmp_1j[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
+    tmp_1j[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
+    tmp_1j[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
+    tmp_1j[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
+    tmp_1k[8] = 32;
+    tmp_1j[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
+    tmp_1j[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
+    tmp_1j[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
+    tmp_1j[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
+    tmp_1k[9] = 36;
+    tmp_1j[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
+    tmp_1j[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
+    tmp_1j[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
+    tmp_1j[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
+    tmp_1k[10] = 40;
+    tmp_1j[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
+    tmp_1j[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
+    tmp_1j[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
+    tmp_1j[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
+    tmp_1k[11] = 44;
+    memcpy(&tmp_1j[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
+    tmp_1k[12] = 56;
     simulationData->mData->mInputValues.mN = 56;
-    simulationData->mData->mInputValues.mX = &tmp_1i[0];
+    simulationData->mData->mInputValues.mX = &tmp_1j[0];
     simulationData->mData->mInputOffsets.mN = 13;
-    simulationData->mData->mInputOffsets.mX = &tmp_1j[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_1k[0];
     simulationData->mData->mOutputs.mN = 12;
     simulationData->mData->mOutputs.mX = &GVCU_HIL_simscape_B.OUTPUT_5_4[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -12505,8 +12403,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_5_4_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_q = rtw_diagnostics_msg(diagnosticTree_q);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_q);
       }
@@ -12532,79 +12430,79 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_5_5_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_1l[0] = 0;
-    tmp_1k[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
-    tmp_1k[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
-    tmp_1k[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
-    tmp_1k[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
-    tmp_1l[1] = 4;
-    tmp_1k[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
-    tmp_1k[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
-    tmp_1k[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
-    tmp_1k[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
-    tmp_1l[2] = 8;
-    tmp_1k[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
-    tmp_1k[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
-    tmp_1k[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
-    tmp_1k[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
-    tmp_1l[3] = 12;
-    tmp_1k[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
-    tmp_1k[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
-    tmp_1k[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
-    tmp_1k[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
-    tmp_1l[4] = 16;
-    tmp_1k[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
-    tmp_1k[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
-    tmp_1k[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
-    tmp_1k[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
-    tmp_1l[5] = 20;
-    tmp_1k[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
-    tmp_1k[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
-    tmp_1k[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
-    tmp_1k[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
-    tmp_1l[6] = 24;
-    tmp_1k[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
-    tmp_1k[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
-    tmp_1k[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
-    tmp_1k[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
-    tmp_1l[7] = 28;
-    tmp_1k[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
-    tmp_1k[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
-    tmp_1k[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
-    tmp_1k[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
-    tmp_1l[8] = 32;
-    tmp_1k[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
-    tmp_1k[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
-    tmp_1k[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
-    tmp_1k[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
-    tmp_1l[9] = 36;
-    tmp_1k[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
-    tmp_1k[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
-    tmp_1k[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
-    tmp_1k[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
-    tmp_1l[10] = 40;
-    tmp_1k[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
-    tmp_1k[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
-    tmp_1k[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
-    tmp_1k[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
-    tmp_1l[11] = 44;
-    memcpy(&tmp_1k[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
-    tmp_1l[12] = 56;
+    tmp_1m[0] = 0;
+    tmp_1l[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
+    tmp_1l[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
+    tmp_1l[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
+    tmp_1l[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
+    tmp_1m[1] = 4;
+    tmp_1l[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
+    tmp_1l[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
+    tmp_1l[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
+    tmp_1l[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
+    tmp_1m[2] = 8;
+    tmp_1l[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
+    tmp_1l[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
+    tmp_1l[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
+    tmp_1l[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
+    tmp_1m[3] = 12;
+    tmp_1l[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
+    tmp_1l[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
+    tmp_1l[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
+    tmp_1l[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
+    tmp_1m[4] = 16;
+    tmp_1l[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
+    tmp_1l[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
+    tmp_1l[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
+    tmp_1l[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
+    tmp_1m[5] = 20;
+    tmp_1l[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
+    tmp_1l[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
+    tmp_1l[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
+    tmp_1l[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
+    tmp_1m[6] = 24;
+    tmp_1l[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
+    tmp_1l[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
+    tmp_1l[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
+    tmp_1l[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
+    tmp_1m[7] = 28;
+    tmp_1l[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
+    tmp_1l[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
+    tmp_1l[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
+    tmp_1l[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
+    tmp_1m[8] = 32;
+    tmp_1l[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
+    tmp_1l[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
+    tmp_1l[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
+    tmp_1l[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
+    tmp_1m[9] = 36;
+    tmp_1l[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
+    tmp_1l[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
+    tmp_1l[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
+    tmp_1l[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
+    tmp_1m[10] = 40;
+    tmp_1l[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
+    tmp_1l[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
+    tmp_1l[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
+    tmp_1l[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
+    tmp_1m[11] = 44;
+    memcpy(&tmp_1l[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
+    tmp_1m[12] = 56;
     simulationData->mData->mInputValues.mN = 56;
-    simulationData->mData->mInputValues.mX = &tmp_1k[0];
+    simulationData->mData->mInputValues.mX = &tmp_1l[0];
     simulationData->mData->mInputOffsets.mN = 13;
-    simulationData->mData->mInputOffsets.mX = &tmp_1l[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_1m[0];
     simulationData->mData->mOutputs.mN = 3;
     simulationData->mData->mOutputs.mX = &rtb_OUTPUT_5_5[0];
     simulationData->mData->mTolerances.mN = 0;
@@ -12626,8 +12524,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_5_5_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_r = rtw_diagnostics_msg(diagnosticTree_r);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_r);
       }
@@ -12653,79 +12551,79 @@ void GVCU_HIL_simscape_output(void)
     simulationData->mData->mJacobianElems.mN = 0;
     simulationData->mData->mJacobianElems.mX =
       &GVCU_HIL_simscape_DW.OUTPUT_5_6_JacobElems;
-    tmp_1o = false;
-    simulationData->mData->mFoundZcEvents = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mFoundZcEvents = tmp_1p;
     simulationData->mData->mHadEvents = false;
     simulationData->mData->mIsMajorTimeStep = true;
-    tmp_1o = false;
-    simulationData->mData->mIsSolverAssertCheck = tmp_1o;
+    tmp_1p = false;
+    simulationData->mData->mIsSolverAssertCheck = tmp_1p;
     simulationData->mData->mIsSolverCheckingCIC = false;
     simulationData->mData->mIsComputingJacobian = false;
     simulationData->mData->mIsEvaluatingF0 = false;
     simulationData->mData->mIsSolverRequestingReset = false;
     simulationData->mData->mIsModeUpdateTimeStep = true;
-    tmp_1n[0] = 0;
-    tmp_1m[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
-    tmp_1m[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
-    tmp_1m[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
-    tmp_1m[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
-    tmp_1n[1] = 4;
-    tmp_1m[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
-    tmp_1m[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
-    tmp_1m[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
-    tmp_1m[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
-    tmp_1n[2] = 8;
-    tmp_1m[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
-    tmp_1m[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
-    tmp_1m[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
-    tmp_1m[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
-    tmp_1n[3] = 12;
-    tmp_1m[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
-    tmp_1m[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
-    tmp_1m[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
-    tmp_1m[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
-    tmp_1n[4] = 16;
-    tmp_1m[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
-    tmp_1m[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
-    tmp_1m[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
-    tmp_1m[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
-    tmp_1n[5] = 20;
-    tmp_1m[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
-    tmp_1m[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
-    tmp_1m[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
-    tmp_1m[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
-    tmp_1n[6] = 24;
-    tmp_1m[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
-    tmp_1m[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
-    tmp_1m[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
-    tmp_1m[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
-    tmp_1n[7] = 28;
-    tmp_1m[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
-    tmp_1m[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
-    tmp_1m[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
-    tmp_1m[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
-    tmp_1n[8] = 32;
-    tmp_1m[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
-    tmp_1m[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
-    tmp_1m[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
-    tmp_1m[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
-    tmp_1n[9] = 36;
-    tmp_1m[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
-    tmp_1m[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
-    tmp_1m[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
-    tmp_1m[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
-    tmp_1n[10] = 40;
-    tmp_1m[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
-    tmp_1m[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
-    tmp_1m[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
-    tmp_1m[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
-    tmp_1n[11] = 44;
-    memcpy(&tmp_1m[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
-    tmp_1n[12] = 56;
+    tmp_1o[0] = 0;
+    tmp_1n[0] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[0];
+    tmp_1n[1] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[1];
+    tmp_1n[2] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[2];
+    tmp_1n[3] = GVCU_HIL_simscape_B.INTERNAL_14_1_1[3];
+    tmp_1o[1] = 4;
+    tmp_1n[4] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[0];
+    tmp_1n[5] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[1];
+    tmp_1n[6] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[2];
+    tmp_1n[7] = GVCU_HIL_simscape_B.INTERNAL_25_1_1[3];
+    tmp_1o[2] = 8;
+    tmp_1n[8] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[0];
+    tmp_1n[9] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[1];
+    tmp_1n[10] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[2];
+    tmp_1n[11] = GVCU_HIL_simscape_B.INTERNAL_13_1_1[3];
+    tmp_1o[3] = 12;
+    tmp_1n[12] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[0];
+    tmp_1n[13] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[1];
+    tmp_1n[14] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[2];
+    tmp_1n[15] = GVCU_HIL_simscape_B.INTERNAL_13_1_2[3];
+    tmp_1o[4] = 16;
+    tmp_1n[16] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[0];
+    tmp_1n[17] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[1];
+    tmp_1n[18] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[2];
+    tmp_1n[19] = GVCU_HIL_simscape_B.INTERNAL_13_1_3[3];
+    tmp_1o[5] = 20;
+    tmp_1n[20] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[0];
+    tmp_1n[21] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[1];
+    tmp_1n[22] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[2];
+    tmp_1n[23] = GVCU_HIL_simscape_B.INTERNAL_15_1_1[3];
+    tmp_1o[6] = 24;
+    tmp_1n[24] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[0];
+    tmp_1n[25] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[1];
+    tmp_1n[26] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[2];
+    tmp_1n[27] = GVCU_HIL_simscape_B.INTERNAL_24_1_1[3];
+    tmp_1o[7] = 28;
+    tmp_1n[28] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[0];
+    tmp_1n[29] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[1];
+    tmp_1n[30] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[2];
+    tmp_1n[31] = GVCU_HIL_simscape_B.INTERNAL_24_1_2[3];
+    tmp_1o[8] = 32;
+    tmp_1n[32] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[0];
+    tmp_1n[33] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[1];
+    tmp_1n[34] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[2];
+    tmp_1n[35] = GVCU_HIL_simscape_B.INTERNAL_24_1_3[3];
+    tmp_1o[9] = 36;
+    tmp_1n[36] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[0];
+    tmp_1n[37] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[1];
+    tmp_1n[38] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[2];
+    tmp_1n[39] = GVCU_HIL_simscape_B.INTERNAL_26_1_1[3];
+    tmp_1o[10] = 40;
+    tmp_1n[40] = GVCU_HIL_simscape_B.INPUT_9_1_1[0];
+    tmp_1n[41] = GVCU_HIL_simscape_B.INPUT_9_1_1[1];
+    tmp_1n[42] = GVCU_HIL_simscape_B.INPUT_9_1_1[2];
+    tmp_1n[43] = GVCU_HIL_simscape_B.INPUT_9_1_1[3];
+    tmp_1o[11] = 44;
+    memcpy(&tmp_1n[44], &GVCU_HIL_simscape_B.STATE_5[0], 12U * sizeof(real_T));
+    tmp_1o[12] = 56;
     simulationData->mData->mInputValues.mN = 56;
-    simulationData->mData->mInputValues.mX = &tmp_1m[0];
+    simulationData->mData->mInputValues.mX = &tmp_1n[0];
     simulationData->mData->mInputOffsets.mN = 13;
-    simulationData->mData->mInputOffsets.mX = &tmp_1n[0];
+    simulationData->mData->mInputOffsets.mX = &tmp_1o[0];
     simulationData->mData->mOutputs.mN = 1;
 
     /* SimscapeExecutionBlock: '<S291>/OUTPUT_5_6' */
@@ -12751,8 +12649,8 @@ void GVCU_HIL_simscape_output(void)
       GVCU_HIL_simscape_DW.OUTPUT_5_6_Simulator, NESL_SIM_OUTPUTS,
       simulationData, diagnosticManager);
     if (b_high_i != 0) {
-      tmp_1o = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
-      if (tmp_1o) {
+      tmp_1p = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
+      if (tmp_1p) {
         msg_s = rtw_diagnostics_msg(diagnosticTree_s);
         rtmSetErrorStatus(GVCU_HIL_simscape_M, msg_s);
       }
@@ -12776,7 +12674,7 @@ void GVCU_HIL_simscape_update(void)
   char *msg_2;
   char *msg_3;
   real_T tmp_0[160];
-  real_T tmp_2[108];
+  real_T tmp_2[100];
   real_T tmp_8[44];
   real_T tmp_4[40];
   real_T tmp_6[36];
@@ -12788,7 +12686,7 @@ void GVCU_HIL_simscape_update(void)
   real_T time_tmp;
   int32_T idxDelay;
   int_T tmp_1[41];
-  int_T tmp_3[28];
+  int_T tmp_3[26];
   int_T tmp_9[12];
   int_T tmp_5[11];
   int_T tmp_7[10];
@@ -12812,7 +12710,7 @@ void GVCU_HIL_simscape_update(void)
    *  RateTransition: '<S291>/RATE_TRANSITION_16_1_1'
    */
   tmp_b = (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-           GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0);
+           GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0);
   if (tmp_b) {
     GVCU_HIL_simscape_DW.RATE_TRANSITION_20_1_1_Buffer0 =
       GVCU_HIL_simscape_B.OUTPUT_5_4[3];
@@ -13161,25 +13059,40 @@ void GVCU_HIL_simscape_update(void)
 
   /* End of Update for SimscapeExecutionBlock: '<S291>/STATE_1' */
   if (tmp_a) {
-    /* Update for DiscreteIntegrator: '<S92>/Integrator' */
-    GVCU_HIL_simscape_DW.Integrator_DSTATE +=
-      GVCU_HIL_simscape_P.Integrator_gainval * GVCU_HIL_simscape_B.Switch_i;
-    if (GVCU_HIL_simscape_B.Relay > 0.0) {
+    /* Update for Delay: '<S2>/Delay1' */
+    GVCU_HIL_simscape_DW.Delay1_DSTATE[0] = GVCU_HIL_simscape_DW.Delay1_DSTATE[1];
+    GVCU_HIL_simscape_DW.Delay1_DSTATE[1] = GVCU_HIL_simscape_B.brake_out;
+  }
+
+  if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
+      GVCU_HIL_simscape_M->Timing.TaskCounters.TID[5] == 0) {
+    /* Update for DiscreteIntegrator: '<S259>/Integrator' */
+    GVCU_HIL_simscape_DW.Integrator_DSTATE =
+      GVCU_HIL_simscape_P.Integrator_gainval * GVCU_HIL_simscape_B.SumI4 +
+      GVCU_HIL_simscape_B.Integrator;
+    if (GVCU_HIL_simscape_DW.Integrator_DSTATE >
+        GVCU_HIL_simscape_P.PIDController1_UpperIntegratorS) {
+      GVCU_HIL_simscape_DW.Integrator_DSTATE =
+        GVCU_HIL_simscape_P.PIDController1_UpperIntegratorS;
+    } else if (GVCU_HIL_simscape_DW.Integrator_DSTATE <
+               GVCU_HIL_simscape_P.PIDController1_LowerIntegratorS) {
+      GVCU_HIL_simscape_DW.Integrator_DSTATE =
+        GVCU_HIL_simscape_P.PIDController1_LowerIntegratorS;
+    }
+
+    if (GVCU_HIL_simscape_B.Add > 0.0) {
       GVCU_HIL_simscape_DW.Integrator_PrevResetState = 1;
-    } else if (GVCU_HIL_simscape_B.Relay < 0.0) {
+    } else if (GVCU_HIL_simscape_B.Add < 0.0) {
       GVCU_HIL_simscape_DW.Integrator_PrevResetState = -1;
-    } else if (GVCU_HIL_simscape_B.Relay == 0.0) {
+    } else if (GVCU_HIL_simscape_B.Add == 0.0) {
       GVCU_HIL_simscape_DW.Integrator_PrevResetState = 0;
     } else {
       GVCU_HIL_simscape_DW.Integrator_PrevResetState = 2;
     }
 
-    /* End of Update for DiscreteIntegrator: '<S92>/Integrator' */
+    /* End of Update for DiscreteIntegrator: '<S259>/Integrator' */
   }
 
-  /* Update for RateLimiter: '<S2>/Rate Limiter1' */
-  GVCU_HIL_simscape_DW.PrevY_m = GVCU_HIL_simscape_B.RateLimiter1;
-  GVCU_HIL_simscape_DW.LastMajorTime = GVCU_HIL_simscape_M->Timing.t[0];
   if (tmp_b) {
     /* Update for UnitDelay: '<S42>/Unit Delay7' incorporates:
      *  Constant: '<S2>/Constant13'
@@ -13196,47 +13109,13 @@ void GVCU_HIL_simscape_update(void)
     /* Update for UnitDelay: '<S42>/Unit Delay5' */
     GVCU_HIL_simscape_DW.UnitDelay5_DSTATE = GVCU_HIL_simscape_B.BrakeBalCmd;
 
+    /* Update for UnitDelay: '<S43>/Unit Delay3' */
+    GVCU_HIL_simscape_DW.UnitDelay3_DSTATE = GVCU_HIL_simscape_B.GearCmd;
+
     /* Update for Delay: '<S6>/Delay' */
     GVCU_HIL_simscape_DW.Delay_DSTATE[0] = GVCU_HIL_simscape_DW.Delay_DSTATE[1];
     GVCU_HIL_simscape_DW.Delay_DSTATE[1] = GVCU_HIL_simscape_B.uDLookupTable;
-  }
 
-  if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-      GVCU_HIL_simscape_M->Timing.TaskCounters.TID[3] == 0) {
-    /* Update for UnitDelay: '<S43>/Unit Delay3' */
-    GVCU_HIL_simscape_DW.UnitDelay3_DSTATE = GVCU_HIL_simscape_B.GearCmd;
-  }
-
-  if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-      GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0) {
-    /* Update for DiscreteIntegrator: '<S259>/Integrator' */
-    GVCU_HIL_simscape_DW.Integrator_DSTATE_d =
-      GVCU_HIL_simscape_P.Integrator_gainval_e * GVCU_HIL_simscape_B.SumI4 +
-      GVCU_HIL_simscape_B.Integrator;
-    if (GVCU_HIL_simscape_DW.Integrator_DSTATE_d >
-        GVCU_HIL_simscape_P.PIDController1_UpperIntegratorS) {
-      GVCU_HIL_simscape_DW.Integrator_DSTATE_d =
-        GVCU_HIL_simscape_P.PIDController1_UpperIntegratorS;
-    } else if (GVCU_HIL_simscape_DW.Integrator_DSTATE_d <
-               GVCU_HIL_simscape_P.PIDController1_LowerIntegratorS) {
-      GVCU_HIL_simscape_DW.Integrator_DSTATE_d =
-        GVCU_HIL_simscape_P.PIDController1_LowerIntegratorS;
-    }
-
-    if (GVCU_HIL_simscape_B.Add_f > 0.0) {
-      GVCU_HIL_simscape_DW.Integrator_PrevResetState_c = 1;
-    } else if (GVCU_HIL_simscape_B.Add_f < 0.0) {
-      GVCU_HIL_simscape_DW.Integrator_PrevResetState_c = -1;
-    } else if (GVCU_HIL_simscape_B.Add_f == 0.0) {
-      GVCU_HIL_simscape_DW.Integrator_PrevResetState_c = 0;
-    } else {
-      GVCU_HIL_simscape_DW.Integrator_PrevResetState_c = 2;
-    }
-
-    /* End of Update for DiscreteIntegrator: '<S259>/Integrator' */
-  }
-
-  if (tmp_b) {
     /* Update for SimscapeExecutionBlock: '<S291>/STATE_2' */
     simulationData = (NeslSimulationData *)GVCU_HIL_simscape_DW.STATE_2_SimData;
     time_0 = time_tmp;
@@ -13247,7 +13126,7 @@ void GVCU_HIL_simscape_update(void)
     simulationData->mData->mDiscStates.mN = 521;
     simulationData->mData->mDiscStates.mX =
       &GVCU_HIL_simscape_DW.STATE_2_Discrete[0];
-    simulationData->mData->mModeVector.mN = 225;
+    simulationData->mData->mModeVector.mN = 224;
     simulationData->mData->mModeVector.mX = &GVCU_HIL_simscape_DW.STATE_2_Modes
       [0];
     simulationData->mData->mSwitchingCoeffs.mN = 0;
@@ -13338,25 +13217,25 @@ void GVCU_HIL_simscape_update(void)
     tmp_2[54] = GVCU_HIL_simscape_B.INPUT_19_1_1[2];
     tmp_2[55] = GVCU_HIL_simscape_B.INPUT_19_1_1[3];
     tmp_3[14] = 56;
-    tmp_2[56] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
-    tmp_2[57] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
-    tmp_2[58] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
-    tmp_2[59] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
+    tmp_2[56] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
+    tmp_2[57] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
+    tmp_2[58] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
+    tmp_2[59] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
     tmp_3[15] = 60;
-    tmp_2[60] = GVCU_HIL_simscape_B.INPUT_21_1_1[0];
-    tmp_2[61] = GVCU_HIL_simscape_B.INPUT_21_1_1[1];
-    tmp_2[62] = GVCU_HIL_simscape_B.INPUT_21_1_1[2];
-    tmp_2[63] = GVCU_HIL_simscape_B.INPUT_21_1_1[3];
+    tmp_2[60] = GVCU_HIL_simscape_B.INPUT_20_1_1[0];
+    tmp_2[61] = GVCU_HIL_simscape_B.INPUT_20_1_1[1];
+    tmp_2[62] = GVCU_HIL_simscape_B.INPUT_20_1_1[2];
+    tmp_2[63] = GVCU_HIL_simscape_B.INPUT_20_1_1[3];
     tmp_3[16] = 64;
-    tmp_2[64] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
-    tmp_2[65] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
-    tmp_2[66] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
-    tmp_2[67] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
+    tmp_2[64] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
+    tmp_2[65] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
+    tmp_2[66] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
+    tmp_2[67] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
     tmp_3[17] = 68;
-    tmp_2[68] = GVCU_HIL_simscape_B.INPUT_22_1_1[0];
-    tmp_2[69] = GVCU_HIL_simscape_B.INPUT_22_1_1[1];
-    tmp_2[70] = GVCU_HIL_simscape_B.INPUT_22_1_1[2];
-    tmp_2[71] = GVCU_HIL_simscape_B.INPUT_22_1_1[3];
+    tmp_2[68] = GVCU_HIL_simscape_B.INPUT_23_1_1[0];
+    tmp_2[69] = GVCU_HIL_simscape_B.INPUT_23_1_1[1];
+    tmp_2[70] = GVCU_HIL_simscape_B.INPUT_23_1_1[2];
+    tmp_2[71] = GVCU_HIL_simscape_B.INPUT_23_1_1[3];
     tmp_3[18] = 72;
     tmp_2[72] = GVCU_HIL_simscape_B.INPUT_24_1_1[0];
     tmp_2[73] = GVCU_HIL_simscape_B.INPUT_24_1_1[1];
@@ -13393,19 +13272,9 @@ void GVCU_HIL_simscape_update(void)
     tmp_2[98] = GVCU_HIL_simscape_B.INPUT_30_1_1[2];
     tmp_2[99] = GVCU_HIL_simscape_B.INPUT_30_1_1[3];
     tmp_3[25] = 100;
-    tmp_2[100] = GVCU_HIL_simscape_B.INPUT_31_1_1[0];
-    tmp_2[101] = GVCU_HIL_simscape_B.INPUT_31_1_1[1];
-    tmp_2[102] = GVCU_HIL_simscape_B.INPUT_31_1_1[2];
-    tmp_2[103] = GVCU_HIL_simscape_B.INPUT_31_1_1[3];
-    tmp_3[26] = 104;
-    tmp_2[104] = GVCU_HIL_simscape_B.INPUT_32_1_1[0];
-    tmp_2[105] = GVCU_HIL_simscape_B.INPUT_32_1_1[1];
-    tmp_2[106] = GVCU_HIL_simscape_B.INPUT_32_1_1[2];
-    tmp_2[107] = GVCU_HIL_simscape_B.INPUT_32_1_1[3];
-    tmp_3[27] = 108;
-    simulationData->mData->mInputValues.mN = 108;
+    simulationData->mData->mInputValues.mN = 100;
     simulationData->mData->mInputValues.mX = &tmp_2[0];
-    simulationData->mData->mInputOffsets.mN = 28;
+    simulationData->mData->mInputOffsets.mN = 26;
     simulationData->mData->mInputOffsets.mX = &tmp_3[0];
     GVCU_HIL_simscape_DW.STATE_2_Discrete[0] =
       GVCU_HIL_simscape_DW.STATE_2_vehiclepowertrainmotorf;
@@ -13712,7 +13581,31 @@ void GVCU_HIL_simscape_update(void)
   if (tmp_a) {
     /* Update for UnitDelay: '<S4>/Unit Delay1' */
     GVCU_HIL_simscape_DW.UnitDelay1_DSTATE = GVCU_HIL_simscape_B.inv_st;
+
+    /* Update for Delay: '<S2>/Delay' */
+    GVCU_HIL_simscape_DW.Delay_DSTATE_n[0] =
+      GVCU_HIL_simscape_DW.Delay_DSTATE_n[1];
+    GVCU_HIL_simscape_DW.Delay_DSTATE_n[1] = GVCU_HIL_simscape_B.pedal_out;
+
+    /* Update for DiscreteIntegrator: '<S92>/Integrator' */
+    GVCU_HIL_simscape_DW.Integrator_DSTATE_i +=
+      GVCU_HIL_simscape_P.Integrator_gainval_d * GVCU_HIL_simscape_B.Switch_i;
+    if (GVCU_HIL_simscape_B.Relay > 0.0) {
+      GVCU_HIL_simscape_DW.Integrator_PrevResetState_n = 1;
+    } else if (GVCU_HIL_simscape_B.Relay < 0.0) {
+      GVCU_HIL_simscape_DW.Integrator_PrevResetState_n = -1;
+    } else if (GVCU_HIL_simscape_B.Relay == 0.0) {
+      GVCU_HIL_simscape_DW.Integrator_PrevResetState_n = 0;
+    } else {
+      GVCU_HIL_simscape_DW.Integrator_PrevResetState_n = 2;
+    }
+
+    /* End of Update for DiscreteIntegrator: '<S92>/Integrator' */
   }
+
+  /* Update for RateLimiter: '<S2>/Rate Limiter1' */
+  GVCU_HIL_simscape_DW.PrevY_m = GVCU_HIL_simscape_B.RateLimiter1;
+  GVCU_HIL_simscape_DW.LastMajorTime = GVCU_HIL_simscape_M->Timing.t[0];
 
   /* Update for TransportDelay: '<S3>/Transport Delay' */
   if (GVCU_HIL_simscape_DW.TransportDelay_IWORK[1] <
@@ -14145,7 +14038,7 @@ void GVCU_HIL_simscape_update(void)
     (&GVCU_HIL_simscape_M->solverInfo);
 
   {
-    /* Update absolute timer for sample time: [0.0002s, 0.0s] */
+    /* Update absolute timer for sample time: [0.001s, 0.0s] */
     /* The "clockTick1" counts the number of times the code of this task has
      * been executed. The absolute time is the multiplication of "clockTick1"
      * and "Timing.stepSize1". Size of "clockTick1" ensures timer will not
@@ -14166,7 +14059,7 @@ void GVCU_HIL_simscape_update(void)
 
   if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
       GVCU_HIL_simscape_M->Timing.TaskCounters.TID[2] == 0) {
-    /* Update absolute timer for sample time: [0.0004s, 0.0s] */
+    /* Update absolute timer for sample time: [0.002s, 0.0s] */
     /* The "clockTick2" counts the number of times the code of this task has
      * been executed. The absolute time is the multiplication of "clockTick2"
      * and "Timing.stepSize2". Size of "clockTick2" ensures timer will not
@@ -14187,7 +14080,7 @@ void GVCU_HIL_simscape_update(void)
 
   if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
       GVCU_HIL_simscape_M->Timing.TaskCounters.TID[3] == 0) {
-    /* Update absolute timer for sample time: [0.001s, 0.0s] */
+    /* Update absolute timer for sample time: [0.004s, 0.0s] */
     /* The "clockTick3" counts the number of times the code of this task has
      * been executed. The absolute time is the multiplication of "clockTick3"
      * and "Timing.stepSize3". Size of "clockTick3" ensures timer will not
@@ -14208,7 +14101,7 @@ void GVCU_HIL_simscape_update(void)
 
   if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
       GVCU_HIL_simscape_M->Timing.TaskCounters.TID[4] == 0) {
-    /* Update absolute timer for sample time: [0.002s, 0.0s] */
+    /* Update absolute timer for sample time: [0.006s, 0.0s] */
     /* The "clockTick4" counts the number of times the code of this task has
      * been executed. The absolute time is the multiplication of "clockTick4"
      * and "Timing.stepSize4". Size of "clockTick4" ensures timer will not
@@ -14229,7 +14122,7 @@ void GVCU_HIL_simscape_update(void)
 
   if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
       GVCU_HIL_simscape_M->Timing.TaskCounters.TID[5] == 0) {
-    /* Update absolute timer for sample time: [0.004s, 0.0s] */
+    /* Update absolute timer for sample time: [0.01s, 0.0s] */
     /* The "clockTick5" counts the number of times the code of this task has
      * been executed. The absolute time is the multiplication of "clockTick5"
      * and "Timing.stepSize5". Size of "clockTick5" ensures timer will not
@@ -14250,7 +14143,7 @@ void GVCU_HIL_simscape_update(void)
 
   if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
       GVCU_HIL_simscape_M->Timing.TaskCounters.TID[6] == 0) {
-    /* Update absolute timer for sample time: [0.005s, 0.0s] */
+    /* Update absolute timer for sample time: [0.1s, 0.0s] */
     /* The "clockTick6" counts the number of times the code of this task has
      * been executed. The absolute time is the multiplication of "clockTick6"
      * and "Timing.stepSize6". Size of "clockTick6" ensures timer will not
@@ -14271,7 +14164,7 @@ void GVCU_HIL_simscape_update(void)
 
   if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
       GVCU_HIL_simscape_M->Timing.TaskCounters.TID[7] == 0) {
-    /* Update absolute timer for sample time: [0.01s, 0.0s] */
+    /* Update absolute timer for sample time: [1.0s, 0.0s] */
     /* The "clockTick7" counts the number of times the code of this task has
      * been executed. The absolute time is the multiplication of "clockTick7"
      * and "Timing.stepSize7". Size of "clockTick7" ensures timer will not
@@ -14290,48 +14183,6 @@ void GVCU_HIL_simscape_update(void)
       GVCU_HIL_simscape_M->Timing.stepSize7 * 4294967296.0;
   }
 
-  if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-      GVCU_HIL_simscape_M->Timing.TaskCounters.TID[8] == 0) {
-    /* Update absolute timer for sample time: [0.1s, 0.0s] */
-    /* The "clockTick8" counts the number of times the code of this task has
-     * been executed. The absolute time is the multiplication of "clockTick8"
-     * and "Timing.stepSize8". Size of "clockTick8" ensures timer will not
-     * overflow during the application lifespan selected.
-     * Timer of this task consists of two 32 bit unsigned integers.
-     * The two integers represent the low bits Timing.clockTick8 and the high bits
-     * Timing.clockTickH8. When the low bit overflows to 0, the high bits increment.
-     */
-    if (!(++GVCU_HIL_simscape_M->Timing.clockTick8)) {
-      ++GVCU_HIL_simscape_M->Timing.clockTickH8;
-    }
-
-    GVCU_HIL_simscape_M->Timing.t[8] = GVCU_HIL_simscape_M->Timing.clockTick8 *
-      GVCU_HIL_simscape_M->Timing.stepSize8 +
-      GVCU_HIL_simscape_M->Timing.clockTickH8 *
-      GVCU_HIL_simscape_M->Timing.stepSize8 * 4294967296.0;
-  }
-
-  if (rtmIsMajorTimeStep(GVCU_HIL_simscape_M) &&
-      GVCU_HIL_simscape_M->Timing.TaskCounters.TID[9] == 0) {
-    /* Update absolute timer for sample time: [1.0s, 0.0s] */
-    /* The "clockTick9" counts the number of times the code of this task has
-     * been executed. The absolute time is the multiplication of "clockTick9"
-     * and "Timing.stepSize9". Size of "clockTick9" ensures timer will not
-     * overflow during the application lifespan selected.
-     * Timer of this task consists of two 32 bit unsigned integers.
-     * The two integers represent the low bits Timing.clockTick9 and the high bits
-     * Timing.clockTickH9. When the low bit overflows to 0, the high bits increment.
-     */
-    if (!(++GVCU_HIL_simscape_M->Timing.clockTick9)) {
-      ++GVCU_HIL_simscape_M->Timing.clockTickH9;
-    }
-
-    GVCU_HIL_simscape_M->Timing.t[9] = GVCU_HIL_simscape_M->Timing.clockTick9 *
-      GVCU_HIL_simscape_M->Timing.stepSize9 +
-      GVCU_HIL_simscape_M->Timing.clockTickH9 *
-      GVCU_HIL_simscape_M->Timing.stepSize9 * 4294967296.0;
-  }
-
   rate_scheduler();
 }
 
@@ -14346,7 +14197,7 @@ void GVCU_HIL_simscape_derivatives(void)
   real_T tmp[160];
   real_T time;
   int_T tmp_0[41];
-  int_T iS;
+  int_T is;
   boolean_T lsat;
   boolean_T usat;
   _rtXdot = ((XDot_GVCU_HIL_simscape_T *) GVCU_HIL_simscape_M->derivs);
@@ -14761,10 +14612,10 @@ void GVCU_HIL_simscape_derivatives(void)
   diagnosticManager = (NeuDiagnosticManager *)
     GVCU_HIL_simscape_DW.STATE_1_DiagMgr;
   diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
-  iS = ne_simulator_method((NeslSimulator *)
+  is = ne_simulator_method((NeslSimulator *)
     GVCU_HIL_simscape_DW.STATE_1_Simulator, NESL_SIM_DERIVATIVES, simulationData,
     diagnosticManager);
-  if (iS != 0) {
+  if (is != 0) {
     lsat = error_buffer_is_empty(rtmGetErrorStatus(GVCU_HIL_simscape_M));
     if (lsat) {
       msg = rtw_diagnostics_msg(diagnosticTree);
@@ -14774,25 +14625,6 @@ void GVCU_HIL_simscape_derivatives(void)
 
   /* End of Derivatives for SimscapeExecutionBlock: '<S291>/STATE_1' */
 
-  /* Derivatives for Integrator: '<S110>/Integrator' */
-  _rtXdot->Integrator_CSTATE = GVCU_HIL_simscape_B.Product;
-
-  /* Derivatives for Integrator: '<S32>/Integrator1' */
-  lsat = (GVCU_HIL_simscape_X.Integrator1_CSTATE <=
-          GVCU_HIL_simscape_P.Integrator1_LowerSat);
-  usat = (GVCU_HIL_simscape_X.Integrator1_CSTATE >=
-          GVCU_HIL_simscape_P.Integrator1_UpperSat);
-  if (!GVCU_HIL_simscape_B.Compare && ((!lsat && !usat) || (lsat &&
-        (GVCU_HIL_simscape_B.Sum8 > 0.0)) || (usat && (GVCU_HIL_simscape_B.Sum8 <
-         0.0)))) {
-    _rtXdot->Integrator1_CSTATE = GVCU_HIL_simscape_B.Sum8;
-  } else {
-    /* in saturation or level reset is active */
-    _rtXdot->Integrator1_CSTATE = 0.0;
-  }
-
-  /* End of Derivatives for Integrator: '<S32>/Integrator1' */
-
   /* Derivatives for TransferFcn: '<S623>/Transfer Fcn' */
   _rtXdot->TransferFcn_CSTATE = 0.0;
   _rtXdot->TransferFcn_CSTATE += GVCU_HIL_simscape_P.TransferFcn_A *
@@ -14800,7 +14632,7 @@ void GVCU_HIL_simscape_derivatives(void)
   _rtXdot->TransferFcn_CSTATE += GVCU_HIL_simscape_B.OUTPUT_1_0[21];
 
   /* Derivatives for Integrator: '<S672>/Integrator' */
-  _rtXdot->Integrator_CSTATE_d = GVCU_HIL_simscape_B.SumI4_c;
+  _rtXdot->Integrator_CSTATE = GVCU_HIL_simscape_B.SumI4_c;
 
   /* Derivatives for Integrator: '<S667>/Filter' */
   _rtXdot->Filter_CSTATE = GVCU_HIL_simscape_B.FilterCoefficient;
@@ -14914,14 +14746,6 @@ void GVCU_HIL_simscape_derivatives(void)
   /* Derivatives for Integrator: '<S216>/Integrator' */
   _rtXdot->Integrator_CSTATE_g = GVCU_HIL_simscape_B.Sum;
 
-  /* Derivatives for SimscapeInputBlock: '<S291>/INPUT_20_1_1' */
-  _rtXdot->GVCU_HIL_simscapevehiclepower_p[0] =
-    GVCU_HIL_simscape_X.GVCU_HIL_simscapevehiclepower_p[1];
-  _rtXdot->GVCU_HIL_simscapevehiclepower_p[1] =
-    ((GVCU_HIL_simscape_DW.INPUT_20_1_1_SimscapeInternalDi -
-      GVCU_HIL_simscape_X.GVCU_HIL_simscapevehiclepower_p[0]) * 1000.0 - 2.0 *
-     GVCU_HIL_simscape_X.GVCU_HIL_simscapevehiclepower_p[1]) * 1000.0;
-
   /* Derivatives for TransferFcn: '<S30>/Transfer Fcn' */
   _rtXdot->TransferFcn_CSTATE_l = 0.0;
   _rtXdot->TransferFcn_CSTATE_l += GVCU_HIL_simscape_P.TransferFcn_A_ha *
@@ -14954,6 +14778,25 @@ void GVCU_HIL_simscape_derivatives(void)
   }
 
   /* End of Derivatives for Integrator: '<S201>/Integrator Limited' */
+
+  /* Derivatives for Integrator: '<S110>/Integrator' */
+  _rtXdot->Integrator_CSTATE_i0 = GVCU_HIL_simscape_B.Product;
+
+  /* Derivatives for Integrator: '<S32>/Integrator1' */
+  lsat = (GVCU_HIL_simscape_X.Integrator1_CSTATE <=
+          GVCU_HIL_simscape_P.Integrator1_LowerSat);
+  usat = (GVCU_HIL_simscape_X.Integrator1_CSTATE >=
+          GVCU_HIL_simscape_P.Integrator1_UpperSat);
+  if (!GVCU_HIL_simscape_B.Compare && ((!lsat && !usat) || (lsat &&
+        (GVCU_HIL_simscape_B.Sum8 > 0.0)) || (usat && (GVCU_HIL_simscape_B.Sum8 <
+         0.0)))) {
+    _rtXdot->Integrator1_CSTATE = GVCU_HIL_simscape_B.Sum8;
+  } else {
+    /* in saturation or level reset is active */
+    _rtXdot->Integrator1_CSTATE = 0.0;
+  }
+
+  /* End of Derivatives for Integrator: '<S32>/Integrator1' */
 
   /* Derivatives for SimscapeInputBlock: '<S291>/INPUT_9_1_1' */
   _rtXdot->GVCU_HIL_simscapevehiclemulti_n[0] =
@@ -15187,20 +15030,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters.mSolverRelTol = 0.001;
     modelParameters.mVariableStepSolver = false;
     modelParameters.mIsUsingODEN = false;
-    modelParameters.mFixedStepSize = 0.0002;
+    modelParameters.mFixedStepSize = 0.001;
     modelParameters.mStartTime = 0.0;
     modelParameters.mLoadInitialState = false;
     modelParameters.mUseSimState = false;
     modelParameters.mLinTrimCompile = false;
     modelParameters.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters.mRTWModifiedTimeStamp = 7.01343106E+8;
+    modelParameters.mRTWModifiedTimeStamp = 7.01356601E+8;
     modelParameters.mZcDisabled = true;
     modelParameters.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters.mFixedStepSize = fixedStepSize;
@@ -15248,20 +15091,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_0.mSolverRelTol = 0.001;
     modelParameters_0.mVariableStepSolver = false;
     modelParameters_0.mIsUsingODEN = false;
-    modelParameters_0.mFixedStepSize = 0.0002;
+    modelParameters_0.mFixedStepSize = 0.001;
     modelParameters_0.mStartTime = 0.0;
     modelParameters_0.mLoadInitialState = false;
     modelParameters_0.mUseSimState = false;
     modelParameters_0.mLinTrimCompile = false;
     modelParameters_0.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_0.mRTWModifiedTimeStamp = 7.01343106E+8;
+    modelParameters_0.mRTWModifiedTimeStamp = 7.01356601E+8;
     modelParameters_0.mZcDisabled = true;
     modelParameters_0.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_0.mFixedStepSize = fixedStepSize;
@@ -15287,6 +15130,7 @@ void GVCU_HIL_simscape_initialize(void)
     }
 
     /* End of Start for SimscapeExecutionBlock: '<S291>/OUTPUT_1_0' */
+
     /* Start for S-Function (sigin): '<S192>/S-Function' */
     /* Level2 S-Function Block: '<S192>/S-Function' (sigin) */
     {
@@ -15335,20 +15179,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_1.mSolverRelTol = 0.001;
     modelParameters_1.mVariableStepSolver = false;
     modelParameters_1.mIsUsingODEN = false;
-    modelParameters_1.mFixedStepSize = 0.0002;
+    modelParameters_1.mFixedStepSize = 0.002;
     modelParameters_1.mStartTime = 0.0;
     modelParameters_1.mLoadInitialState = false;
     modelParameters_1.mUseSimState = false;
     modelParameters_1.mLinTrimCompile = false;
     modelParameters_1.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_1.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_1.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_1.mZcDisabled = true;
     modelParameters_1.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_1.mFixedStepSize = fixedStepSize;
@@ -15396,20 +15240,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_2.mSolverRelTol = 0.001;
     modelParameters_2.mVariableStepSolver = false;
     modelParameters_2.mIsUsingODEN = false;
-    modelParameters_2.mFixedStepSize = 0.0002;
+    modelParameters_2.mFixedStepSize = 0.002;
     modelParameters_2.mStartTime = 0.0;
     modelParameters_2.mLoadInitialState = false;
     modelParameters_2.mUseSimState = false;
     modelParameters_2.mLinTrimCompile = false;
     modelParameters_2.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_2.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_2.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_2.mZcDisabled = true;
     modelParameters_2.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_2.mFixedStepSize = fixedStepSize;
@@ -16708,20 +16552,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_3.mSolverRelTol = 0.001;
     modelParameters_3.mVariableStepSolver = false;
     modelParameters_3.mIsUsingODEN = false;
-    modelParameters_3.mFixedStepSize = 0.0002;
+    modelParameters_3.mFixedStepSize = 0.001;
     modelParameters_3.mStartTime = 0.0;
     modelParameters_3.mLoadInitialState = false;
     modelParameters_3.mUseSimState = false;
     modelParameters_3.mLinTrimCompile = false;
     modelParameters_3.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_3.mRTWModifiedTimeStamp = 7.01343106E+8;
+    modelParameters_3.mRTWModifiedTimeStamp = 7.01356601E+8;
     modelParameters_3.mZcDisabled = true;
     modelParameters_3.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_3.mFixedStepSize = fixedStepSize;
@@ -16769,20 +16613,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_4.mSolverRelTol = 0.001;
     modelParameters_4.mVariableStepSolver = false;
     modelParameters_4.mIsUsingODEN = false;
-    modelParameters_4.mFixedStepSize = 0.0002;
+    modelParameters_4.mFixedStepSize = 0.002;
     modelParameters_4.mStartTime = 0.0;
     modelParameters_4.mLoadInitialState = false;
     modelParameters_4.mUseSimState = false;
     modelParameters_4.mLinTrimCompile = false;
     modelParameters_4.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_4.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_4.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_4.mZcDisabled = true;
     modelParameters_4.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_4.mFixedStepSize = fixedStepSize;
@@ -16830,20 +16674,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_5.mSolverRelTol = 0.001;
     modelParameters_5.mVariableStepSolver = false;
     modelParameters_5.mIsUsingODEN = false;
-    modelParameters_5.mFixedStepSize = 0.0002;
+    modelParameters_5.mFixedStepSize = 0.002;
     modelParameters_5.mStartTime = 0.0;
     modelParameters_5.mLoadInitialState = false;
     modelParameters_5.mUseSimState = false;
     modelParameters_5.mLinTrimCompile = false;
     modelParameters_5.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_5.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_5.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_5.mZcDisabled = true;
     modelParameters_5.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_5.mFixedStepSize = fixedStepSize;
@@ -16891,20 +16735,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_6.mSolverRelTol = 0.001;
     modelParameters_6.mVariableStepSolver = false;
     modelParameters_6.mIsUsingODEN = false;
-    modelParameters_6.mFixedStepSize = 0.0002;
+    modelParameters_6.mFixedStepSize = 0.002;
     modelParameters_6.mStartTime = 0.0;
     modelParameters_6.mLoadInitialState = false;
     modelParameters_6.mUseSimState = false;
     modelParameters_6.mLinTrimCompile = false;
     modelParameters_6.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_6.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_6.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_6.mZcDisabled = true;
     modelParameters_6.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_6.mFixedStepSize = fixedStepSize;
@@ -16952,20 +16796,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_7.mSolverRelTol = 0.001;
     modelParameters_7.mVariableStepSolver = false;
     modelParameters_7.mIsUsingODEN = false;
-    modelParameters_7.mFixedStepSize = 0.0002;
+    modelParameters_7.mFixedStepSize = 0.002;
     modelParameters_7.mStartTime = 0.0;
     modelParameters_7.mLoadInitialState = false;
     modelParameters_7.mUseSimState = false;
     modelParameters_7.mLinTrimCompile = false;
     modelParameters_7.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_7.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_7.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_7.mZcDisabled = true;
     modelParameters_7.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_7.mFixedStepSize = fixedStepSize;
@@ -17013,20 +16857,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_8.mSolverRelTol = 0.001;
     modelParameters_8.mVariableStepSolver = false;
     modelParameters_8.mIsUsingODEN = false;
-    modelParameters_8.mFixedStepSize = 0.0002;
+    modelParameters_8.mFixedStepSize = 0.002;
     modelParameters_8.mStartTime = 0.0;
     modelParameters_8.mLoadInitialState = false;
     modelParameters_8.mUseSimState = false;
     modelParameters_8.mLinTrimCompile = false;
     modelParameters_8.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_8.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_8.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_8.mZcDisabled = true;
     modelParameters_8.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_8.mFixedStepSize = fixedStepSize;
@@ -17074,20 +16918,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_9.mSolverRelTol = 0.001;
     modelParameters_9.mVariableStepSolver = false;
     modelParameters_9.mIsUsingODEN = false;
-    modelParameters_9.mFixedStepSize = 0.0002;
+    modelParameters_9.mFixedStepSize = 0.002;
     modelParameters_9.mStartTime = 0.0;
     modelParameters_9.mLoadInitialState = false;
     modelParameters_9.mUseSimState = false;
     modelParameters_9.mLinTrimCompile = false;
     modelParameters_9.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_9.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_9.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_9.mZcDisabled = true;
     modelParameters_9.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_9.mFixedStepSize = fixedStepSize;
@@ -17135,20 +16979,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_a.mSolverRelTol = 0.001;
     modelParameters_a.mVariableStepSolver = false;
     modelParameters_a.mIsUsingODEN = false;
-    modelParameters_a.mFixedStepSize = 0.0002;
+    modelParameters_a.mFixedStepSize = 0.002;
     modelParameters_a.mStartTime = 0.0;
     modelParameters_a.mLoadInitialState = false;
     modelParameters_a.mUseSimState = false;
     modelParameters_a.mLinTrimCompile = false;
     modelParameters_a.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_a.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_a.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_a.mZcDisabled = true;
     modelParameters_a.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_a.mFixedStepSize = fixedStepSize;
@@ -17196,20 +17040,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_b.mSolverRelTol = 0.001;
     modelParameters_b.mVariableStepSolver = false;
     modelParameters_b.mIsUsingODEN = false;
-    modelParameters_b.mFixedStepSize = 0.0002;
+    modelParameters_b.mFixedStepSize = 0.002;
     modelParameters_b.mStartTime = 0.0;
     modelParameters_b.mLoadInitialState = false;
     modelParameters_b.mUseSimState = false;
     modelParameters_b.mLinTrimCompile = false;
     modelParameters_b.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_b.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_b.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_b.mZcDisabled = true;
     modelParameters_b.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_b.mFixedStepSize = fixedStepSize;
@@ -17257,20 +17101,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_c.mSolverRelTol = 0.001;
     modelParameters_c.mVariableStepSolver = false;
     modelParameters_c.mIsUsingODEN = false;
-    modelParameters_c.mFixedStepSize = 0.0002;
+    modelParameters_c.mFixedStepSize = 0.002;
     modelParameters_c.mStartTime = 0.0;
     modelParameters_c.mLoadInitialState = false;
     modelParameters_c.mUseSimState = false;
     modelParameters_c.mLinTrimCompile = false;
     modelParameters_c.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_c.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_c.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_c.mZcDisabled = true;
     modelParameters_c.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_c.mFixedStepSize = fixedStepSize;
@@ -17318,20 +17162,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_d.mSolverRelTol = 0.001;
     modelParameters_d.mVariableStepSolver = false;
     modelParameters_d.mIsUsingODEN = false;
-    modelParameters_d.mFixedStepSize = 0.0002;
+    modelParameters_d.mFixedStepSize = 0.002;
     modelParameters_d.mStartTime = 0.0;
     modelParameters_d.mLoadInitialState = false;
     modelParameters_d.mUseSimState = false;
     modelParameters_d.mLinTrimCompile = false;
     modelParameters_d.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_d.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_d.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_d.mZcDisabled = true;
     modelParameters_d.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_d.mFixedStepSize = fixedStepSize;
@@ -17379,20 +17223,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_e.mSolverRelTol = 0.001;
     modelParameters_e.mVariableStepSolver = false;
     modelParameters_e.mIsUsingODEN = false;
-    modelParameters_e.mFixedStepSize = 0.0002;
+    modelParameters_e.mFixedStepSize = 0.002;
     modelParameters_e.mStartTime = 0.0;
     modelParameters_e.mLoadInitialState = false;
     modelParameters_e.mUseSimState = false;
     modelParameters_e.mLinTrimCompile = false;
     modelParameters_e.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_e.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_e.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_e.mZcDisabled = true;
     modelParameters_e.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_e.mFixedStepSize = fixedStepSize;
@@ -17440,20 +17284,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_f.mSolverRelTol = 0.001;
     modelParameters_f.mVariableStepSolver = false;
     modelParameters_f.mIsUsingODEN = false;
-    modelParameters_f.mFixedStepSize = 0.0002;
+    modelParameters_f.mFixedStepSize = 0.002;
     modelParameters_f.mStartTime = 0.0;
     modelParameters_f.mLoadInitialState = false;
     modelParameters_f.mUseSimState = false;
     modelParameters_f.mLinTrimCompile = false;
     modelParameters_f.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_f.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_f.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_f.mZcDisabled = true;
     modelParameters_f.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_f.mFixedStepSize = fixedStepSize;
@@ -17501,20 +17345,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_g.mSolverRelTol = 0.001;
     modelParameters_g.mVariableStepSolver = false;
     modelParameters_g.mIsUsingODEN = false;
-    modelParameters_g.mFixedStepSize = 0.0002;
+    modelParameters_g.mFixedStepSize = 0.002;
     modelParameters_g.mStartTime = 0.0;
     modelParameters_g.mLoadInitialState = false;
     modelParameters_g.mUseSimState = false;
     modelParameters_g.mLinTrimCompile = false;
     modelParameters_g.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_g.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_g.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_g.mZcDisabled = true;
     modelParameters_g.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_g.mFixedStepSize = fixedStepSize;
@@ -17562,20 +17406,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_h.mSolverRelTol = 0.001;
     modelParameters_h.mVariableStepSolver = false;
     modelParameters_h.mIsUsingODEN = false;
-    modelParameters_h.mFixedStepSize = 0.0002;
+    modelParameters_h.mFixedStepSize = 0.002;
     modelParameters_h.mStartTime = 0.0;
     modelParameters_h.mLoadInitialState = false;
     modelParameters_h.mUseSimState = false;
     modelParameters_h.mLinTrimCompile = false;
     modelParameters_h.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_h.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_h.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_h.mZcDisabled = true;
     modelParameters_h.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_h.mFixedStepSize = fixedStepSize;
@@ -17623,20 +17467,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_i.mSolverRelTol = 0.001;
     modelParameters_i.mVariableStepSolver = false;
     modelParameters_i.mIsUsingODEN = false;
-    modelParameters_i.mFixedStepSize = 0.0002;
+    modelParameters_i.mFixedStepSize = 0.002;
     modelParameters_i.mStartTime = 0.0;
     modelParameters_i.mLoadInitialState = false;
     modelParameters_i.mUseSimState = false;
     modelParameters_i.mLinTrimCompile = false;
     modelParameters_i.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_i.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_i.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_i.mZcDisabled = true;
     modelParameters_i.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_i.mFixedStepSize = fixedStepSize;
@@ -17684,20 +17528,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_j.mSolverRelTol = 0.001;
     modelParameters_j.mVariableStepSolver = false;
     modelParameters_j.mIsUsingODEN = false;
-    modelParameters_j.mFixedStepSize = 0.0002;
+    modelParameters_j.mFixedStepSize = 0.002;
     modelParameters_j.mStartTime = 0.0;
     modelParameters_j.mLoadInitialState = false;
     modelParameters_j.mUseSimState = false;
     modelParameters_j.mLinTrimCompile = false;
     modelParameters_j.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_j.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_j.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_j.mZcDisabled = true;
     modelParameters_j.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_j.mFixedStepSize = fixedStepSize;
@@ -17745,20 +17589,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_k.mSolverRelTol = 0.001;
     modelParameters_k.mVariableStepSolver = false;
     modelParameters_k.mIsUsingODEN = false;
-    modelParameters_k.mFixedStepSize = 0.0002;
+    modelParameters_k.mFixedStepSize = 0.002;
     modelParameters_k.mStartTime = 0.0;
     modelParameters_k.mLoadInitialState = false;
     modelParameters_k.mUseSimState = false;
     modelParameters_k.mLinTrimCompile = false;
     modelParameters_k.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_k.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_k.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_k.mZcDisabled = true;
     modelParameters_k.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_k.mFixedStepSize = fixedStepSize;
@@ -17806,20 +17650,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_l.mSolverRelTol = 0.001;
     modelParameters_l.mVariableStepSolver = false;
     modelParameters_l.mIsUsingODEN = false;
-    modelParameters_l.mFixedStepSize = 0.0002;
+    modelParameters_l.mFixedStepSize = 0.002;
     modelParameters_l.mStartTime = 0.0;
     modelParameters_l.mLoadInitialState = false;
     modelParameters_l.mUseSimState = false;
     modelParameters_l.mLinTrimCompile = false;
     modelParameters_l.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_l.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_l.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_l.mZcDisabled = true;
     modelParameters_l.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_l.mFixedStepSize = fixedStepSize;
@@ -17867,20 +17711,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_m.mSolverRelTol = 0.001;
     modelParameters_m.mVariableStepSolver = false;
     modelParameters_m.mIsUsingODEN = false;
-    modelParameters_m.mFixedStepSize = 0.0002;
+    modelParameters_m.mFixedStepSize = 0.002;
     modelParameters_m.mStartTime = 0.0;
     modelParameters_m.mLoadInitialState = false;
     modelParameters_m.mUseSimState = false;
     modelParameters_m.mLinTrimCompile = false;
     modelParameters_m.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_m.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_m.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_m.mZcDisabled = true;
     modelParameters_m.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_m.mFixedStepSize = fixedStepSize;
@@ -17928,20 +17772,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_n.mSolverRelTol = 0.001;
     modelParameters_n.mVariableStepSolver = false;
     modelParameters_n.mIsUsingODEN = false;
-    modelParameters_n.mFixedStepSize = 0.0002;
+    modelParameters_n.mFixedStepSize = 0.002;
     modelParameters_n.mStartTime = 0.0;
     modelParameters_n.mLoadInitialState = false;
     modelParameters_n.mUseSimState = false;
     modelParameters_n.mLinTrimCompile = false;
     modelParameters_n.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_n.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_n.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_n.mZcDisabled = true;
     modelParameters_n.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_n.mFixedStepSize = fixedStepSize;
@@ -17989,20 +17833,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_o.mSolverRelTol = 0.001;
     modelParameters_o.mVariableStepSolver = false;
     modelParameters_o.mIsUsingODEN = false;
-    modelParameters_o.mFixedStepSize = 0.0002;
+    modelParameters_o.mFixedStepSize = 0.002;
     modelParameters_o.mStartTime = 0.0;
     modelParameters_o.mLoadInitialState = false;
     modelParameters_o.mUseSimState = false;
     modelParameters_o.mLinTrimCompile = false;
     modelParameters_o.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_o.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_o.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_o.mZcDisabled = true;
     modelParameters_o.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_o.mFixedStepSize = fixedStepSize;
@@ -18050,20 +17894,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_p.mSolverRelTol = 0.001;
     modelParameters_p.mVariableStepSolver = false;
     modelParameters_p.mIsUsingODEN = false;
-    modelParameters_p.mFixedStepSize = 0.0002;
+    modelParameters_p.mFixedStepSize = 0.002;
     modelParameters_p.mStartTime = 0.0;
     modelParameters_p.mLoadInitialState = false;
     modelParameters_p.mUseSimState = false;
     modelParameters_p.mLinTrimCompile = false;
     modelParameters_p.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_p.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_p.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_p.mZcDisabled = true;
     modelParameters_p.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_p.mFixedStepSize = fixedStepSize;
@@ -18111,20 +17955,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_q.mSolverRelTol = 0.001;
     modelParameters_q.mVariableStepSolver = false;
     modelParameters_q.mIsUsingODEN = false;
-    modelParameters_q.mFixedStepSize = 0.0002;
+    modelParameters_q.mFixedStepSize = 0.002;
     modelParameters_q.mStartTime = 0.0;
     modelParameters_q.mLoadInitialState = false;
     modelParameters_q.mUseSimState = false;
     modelParameters_q.mLinTrimCompile = false;
     modelParameters_q.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_q.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_q.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_q.mZcDisabled = true;
     modelParameters_q.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_q.mFixedStepSize = fixedStepSize;
@@ -18172,20 +18016,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_r.mSolverRelTol = 0.001;
     modelParameters_r.mVariableStepSolver = false;
     modelParameters_r.mIsUsingODEN = false;
-    modelParameters_r.mFixedStepSize = 0.0002;
+    modelParameters_r.mFixedStepSize = 0.002;
     modelParameters_r.mStartTime = 0.0;
     modelParameters_r.mLoadInitialState = false;
     modelParameters_r.mUseSimState = false;
     modelParameters_r.mLinTrimCompile = false;
     modelParameters_r.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_r.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_r.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_r.mZcDisabled = true;
     modelParameters_r.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_r.mFixedStepSize = fixedStepSize;
@@ -18233,20 +18077,20 @@ void GVCU_HIL_simscape_initialize(void)
     modelParameters_s.mSolverRelTol = 0.001;
     modelParameters_s.mVariableStepSolver = false;
     modelParameters_s.mIsUsingODEN = false;
-    modelParameters_s.mFixedStepSize = 0.0002;
+    modelParameters_s.mFixedStepSize = 0.002;
     modelParameters_s.mStartTime = 0.0;
     modelParameters_s.mLoadInitialState = false;
     modelParameters_s.mUseSimState = false;
     modelParameters_s.mLinTrimCompile = false;
     modelParameters_s.mLoggingMode = SSC_LOGGING_OFF;
-    modelParameters_s.mRTWModifiedTimeStamp = 7.0133985E+8;
+    modelParameters_s.mRTWModifiedTimeStamp = 7.01355941E+8;
     modelParameters_s.mZcDisabled = true;
     modelParameters_s.mUseModelRefSolver = false;
     tmp_0 = false;
     if (tmp_0) {
       fixedStepSize = (rtInf);
     } else {
-      fixedStepSize = 0.0002;
+      fixedStepSize = 0.001;
     }
 
     modelParameters_s.mFixedStepSize = fixedStepSize;
@@ -18290,7 +18134,6 @@ void GVCU_HIL_simscape_initialize(void)
      *  SimscapeInputBlock: '<S291>/INPUT_13_1_1'
      *  SimscapeInputBlock: '<S291>/INPUT_14_1_1'
      *  SimscapeInputBlock: '<S291>/INPUT_15_1_1'
-     *  SimscapeInputBlock: '<S291>/INPUT_20_1_1'
      *  SimscapeInputBlock: '<S291>/INTERNAL_17_1_1'
      *  SimscapeInputBlock: '<S291>/INTERNAL_18_1_1'
      *  SimscapeInputBlock: '<S291>/INTERNAL_19_1_1'
@@ -18340,7 +18183,6 @@ void GVCU_HIL_simscape_initialize(void)
       GVCU_HIL_simscape_DW.INPUT_14_1_1_SimscapeInternalFi = 0.0;
       GVCU_HIL_simscape_DW.INPUT_10_1_1_SimscapeInternalFi = 0.0;
       GVCU_HIL_simscape_DW.INPUT_15_1_1_SimscapeInternalFi = 0.0;
-      GVCU_HIL_simscape_DW.INPUT_20_1_1_SimscapeInternalFi = 0.0;
     }
 
     /* End of InitializeConditions for SimscapeInputBlock: '<S291>/INTERNAL_20_1_1' */
@@ -18425,28 +18267,17 @@ void GVCU_HIL_simscape_initialize(void)
     GVCU_HIL_simscape_DW.RATE_TRANSITION_57_1_1_Buffer0 =
       GVCU_HIL_simscape_P.RATE_TRANSITION_57_1_1_InitialC;
 
-    /* InitializeConditions for RateLimiter: '<S31>/Rate Limiter' */
-    GVCU_HIL_simscape_DW.PrevY = GVCU_HIL_simscape_P.RateLimiter_IC;
-
-    /* InitializeConditions for DiscreteIntegrator: '<S92>/Integrator' */
-    GVCU_HIL_simscape_DW.Integrator_DSTATE =
-      GVCU_HIL_simscape_P.PIController_InitialConditionFo;
-    GVCU_HIL_simscape_DW.Integrator_PrevResetState = 0;
-
-    /* InitializeConditions for Integrator: '<S110>/Integrator' */
-    GVCU_HIL_simscape_X.Integrator_CSTATE = GVCU_HIL_simscape_P.Integrator_IC;
-
-    /* InitializeConditions for Integrator: '<S32>/Integrator1' */
-    GVCU_HIL_simscape_X.Integrator1_CSTATE = GVCU_HIL_simscape_P.Integrator1_IC;
-
-    /* InitializeConditions for RateLimiter: '<S2>/Rate Limiter1' */
-    GVCU_HIL_simscape_DW.LastMajorTime = (rtInf);
+    /* InitializeConditions for Delay: '<S2>/Delay1' */
+    GVCU_HIL_simscape_DW.Delay1_DSTATE[0] =
+      GVCU_HIL_simscape_P.Delay1_InitialCondition;
+    GVCU_HIL_simscape_DW.Delay1_DSTATE[1] =
+      GVCU_HIL_simscape_P.Delay1_InitialCondition;
 
     /* InitializeConditions for TransferFcn: '<S623>/Transfer Fcn' */
     GVCU_HIL_simscape_X.TransferFcn_CSTATE = 0.0;
 
     /* InitializeConditions for Integrator: '<S672>/Integrator' */
-    GVCU_HIL_simscape_X.Integrator_CSTATE_d =
+    GVCU_HIL_simscape_X.Integrator_CSTATE =
       GVCU_HIL_simscape_P.PIDController_InitialConditio_m;
 
     /* InitializeConditions for Integrator: '<S667>/Filter' */
@@ -18529,8 +18360,7 @@ void GVCU_HIL_simscape_initialize(void)
     GVCU_HIL_simscape_X.TransferFcn_CSTATE_oh = 0.0;
 
     /* InitializeConditions for Integrator: '<S216>/Integrator' */
-    GVCU_HIL_simscape_X.Integrator_CSTATE_g =
-      GVCU_HIL_simscape_P.Integrator_IC_c;
+    GVCU_HIL_simscape_X.Integrator_CSTATE_g = GVCU_HIL_simscape_P.Integrator_IC;
 
     /* InitializeConditions for Delay: '<S6>/Delay' */
     GVCU_HIL_simscape_DW.Delay_DSTATE[0] =
@@ -18539,12 +18369,12 @@ void GVCU_HIL_simscape_initialize(void)
       GVCU_HIL_simscape_P.Delay_InitialCondition;
 
     /* InitializeConditions for RateLimiter: '<S6>/Rate Limiter' */
-    GVCU_HIL_simscape_DW.PrevY_o = GVCU_HIL_simscape_P.RateLimiter_IC_c;
+    GVCU_HIL_simscape_DW.PrevY = GVCU_HIL_simscape_P.RateLimiter_IC;
 
     /* InitializeConditions for DiscreteIntegrator: '<S259>/Integrator' */
-    GVCU_HIL_simscape_DW.Integrator_DSTATE_d =
+    GVCU_HIL_simscape_DW.Integrator_DSTATE =
       GVCU_HIL_simscape_P.PIDController1_InitialConditi_o;
-    GVCU_HIL_simscape_DW.Integrator_PrevResetState_c = 0;
+    GVCU_HIL_simscape_DW.Integrator_PrevResetState = 0;
 
     /* InitializeConditions for TransferFcn: '<S30>/Transfer Fcn' */
     GVCU_HIL_simscape_X.TransferFcn_CSTATE_l = 0.0;
@@ -18578,6 +18408,30 @@ void GVCU_HIL_simscape_initialize(void)
     /* InitializeConditions for UnitDelay: '<S4>/Unit Delay1' */
     GVCU_HIL_simscape_DW.UnitDelay1_DSTATE =
       GVCU_HIL_simscape_P.UnitDelay1_InitialCondition;
+
+    /* InitializeConditions for RateLimiter: '<S31>/Rate Limiter' */
+    GVCU_HIL_simscape_DW.PrevY_n = GVCU_HIL_simscape_P.RateLimiter_IC_o;
+
+    /* InitializeConditions for Delay: '<S2>/Delay' */
+    GVCU_HIL_simscape_DW.Delay_DSTATE_n[0] =
+      GVCU_HIL_simscape_P.Delay_InitialCondition_p;
+    GVCU_HIL_simscape_DW.Delay_DSTATE_n[1] =
+      GVCU_HIL_simscape_P.Delay_InitialCondition_p;
+
+    /* InitializeConditions for DiscreteIntegrator: '<S92>/Integrator' */
+    GVCU_HIL_simscape_DW.Integrator_DSTATE_i =
+      GVCU_HIL_simscape_P.PIController_InitialConditionFo;
+    GVCU_HIL_simscape_DW.Integrator_PrevResetState_n = 0;
+
+    /* InitializeConditions for Integrator: '<S110>/Integrator' */
+    GVCU_HIL_simscape_X.Integrator_CSTATE_i0 =
+      GVCU_HIL_simscape_P.Integrator_IC_k;
+
+    /* InitializeConditions for Integrator: '<S32>/Integrator1' */
+    GVCU_HIL_simscape_X.Integrator1_CSTATE = GVCU_HIL_simscape_P.Integrator1_IC;
+
+    /* InitializeConditions for RateLimiter: '<S2>/Rate Limiter1' */
+    GVCU_HIL_simscape_DW.LastMajorTime = (rtInf);
 
     /* InitializeConditions for TransportDelay: '<S3>/Transport Delay' */
     GVCU_HIL_simscape_DW.TransportDelay_IWORK[0] = 0;
@@ -18642,6 +18496,13 @@ void GVCU_HIL_simscape_initialize(void)
 
     /* End of InitializeConditions for SimscapeInputBlock: '<S291>/INPUT_9_1_1' */
 
+    /* SystemInitialize for MATLAB Function: '<S43>/MATLAB Function' */
+    GVCU_HIL_simscape_DW.last_time = (rtMinusInf);
+
+    /* SystemInitialize for MATLAB Function: '<S191>/MATLAB Function' */
+    GVCU_HIL_simscape_DW.stop_ts = 0.0;
+    GVCU_HIL_simscape_DW.fired = false;
+
     /* SystemInitialize for MATLAB Function: '<S31>/MATLAB Function2' */
     GVCU_HIL_simscape_DW.main_state_not_empty = false;
     GVCU_HIL_simscape_DW.freq_not_empty = false;
@@ -18665,13 +18526,6 @@ void GVCU_HIL_simscape_initialize(void)
     /* SystemInitialize for MATLAB Function: '<S2>/MATLAB Function1' */
     GVCU_HIL_simscape_DW.t_mode_start = -1.0;
     GVCU_HIL_simscape_DW.last_mode = 0.0;
-
-    /* SystemInitialize for MATLAB Function: '<S43>/gear' */
-    GVCU_HIL_simscape_DW.last_time = (rtMinusInf);
-
-    /* SystemInitialize for MATLAB Function: '<S191>/MATLAB Function' */
-    GVCU_HIL_simscape_DW.stop_ts = 0.0;
-    GVCU_HIL_simscape_DW.fired = false;
 
     /* set "at time zero" to false */
     if (rtmIsFirstInitCond(GVCU_HIL_simscape_M)) {
@@ -18703,48 +18557,6 @@ void GVCU_HIL_simscape_terminate(void)
   nesl_destroy_simulation_data((NeslSimulationData *)
     GVCU_HIL_simscape_DW.OUTPUT_1_0_SimData);
   nesl_erase_simulator("GVCU_HIL_simscape/config/Solver Configuration_1");
-
-  /* Terminate for S-Function (sysvarin): '<S36>/S-Function' */
-  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar) {
-    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar);
-    GVCU_HIL_simscape_DW.SFunction_SysVar = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S35>/S-Function' */
-  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_l) {
-    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_l);
-    GVCU_HIL_simscape_DW.SFunction_SysVar_l = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S37>/S-Function' */
-  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_c) {
-    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_c);
-    GVCU_HIL_simscape_DW.SFunction_SysVar_c = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S47>/S-Function' */
-  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_m) {
-    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_m);
-    GVCU_HIL_simscape_DW.SFunction_SysVar_m = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S48>/S-Function' */
-  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_p) {
-    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_p);
-    GVCU_HIL_simscape_DW.SFunction_SysVar_p = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S49>/S-Function' */
-  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_p0) {
-    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_p0);
-    GVCU_HIL_simscape_DW.SFunction_SysVar_p0 = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S50>/S-Function' */
-  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_b) {
-    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_b);
-    GVCU_HIL_simscape_DW.SFunction_SysVar_b = NULL;
-  }
 
   /* Terminate for S-Function (sigin): '<S192>/S-Function' */
   /* Level2 S-Function Block: '<S192>/S-Function' (sigin) */
@@ -18949,6 +18761,42 @@ void GVCU_HIL_simscape_terminate(void)
     sfcnTerminate(rts);
   }
 
+  /* Terminate for S-Function (sysvarin): '<S36>/S-Function' */
+  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar) {
+    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar);
+    GVCU_HIL_simscape_DW.SFunction_SysVar = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarin): '<S37>/S-Function' */
+  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_c) {
+    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_c);
+    GVCU_HIL_simscape_DW.SFunction_SysVar_c = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarin): '<S47>/S-Function' */
+  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_m) {
+    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_m);
+    GVCU_HIL_simscape_DW.SFunction_SysVar_m = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarin): '<S48>/S-Function' */
+  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_p) {
+    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_p);
+    GVCU_HIL_simscape_DW.SFunction_SysVar_p = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarin): '<S49>/S-Function' */
+  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_p0) {
+    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_p0);
+    GVCU_HIL_simscape_DW.SFunction_SysVar_p0 = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarin): '<S50>/S-Function' */
+  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_b) {
+    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_b);
+    GVCU_HIL_simscape_DW.SFunction_SysVar_b = NULL;
+  }
+
   /* Terminate for S-Function (sysvarout): '<S38>/S-Function' */
   if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_b4) {
     cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_b4);
@@ -18971,6 +18819,12 @@ void GVCU_HIL_simscape_terminate(void)
   if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_a) {
     cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_a);
     GVCU_HIL_simscape_DW.SFunction_SysVar_a = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarin): '<S35>/S-Function' */
+  if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_l) {
+    cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_l);
+    GVCU_HIL_simscape_DW.SFunction_SysVar_l = NULL;
   }
 
   /* Terminate for S-Function (sigout): '<S45>/S-Function' */
@@ -19741,7 +19595,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
   {
     int_T *mdlTsMap = GVCU_HIL_simscape_M->Timing.sampleTimeTaskIDArray;
     int_T i;
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 8; i++) {
       mdlTsMap[i] = i;
     }
 
@@ -19753,15 +19607,13 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
 
     /* task periods */
     GVCU_HIL_simscape_M->Timing.sampleTimes[0] = (0.0);
-    GVCU_HIL_simscape_M->Timing.sampleTimes[1] = (0.0002);
-    GVCU_HIL_simscape_M->Timing.sampleTimes[2] = (0.0004);
-    GVCU_HIL_simscape_M->Timing.sampleTimes[3] = (0.001);
-    GVCU_HIL_simscape_M->Timing.sampleTimes[4] = (0.002);
-    GVCU_HIL_simscape_M->Timing.sampleTimes[5] = (0.004);
-    GVCU_HIL_simscape_M->Timing.sampleTimes[6] = (0.005);
-    GVCU_HIL_simscape_M->Timing.sampleTimes[7] = (0.01);
-    GVCU_HIL_simscape_M->Timing.sampleTimes[8] = (0.1);
-    GVCU_HIL_simscape_M->Timing.sampleTimes[9] = (1.0);
+    GVCU_HIL_simscape_M->Timing.sampleTimes[1] = (0.001);
+    GVCU_HIL_simscape_M->Timing.sampleTimes[2] = (0.002);
+    GVCU_HIL_simscape_M->Timing.sampleTimes[3] = (0.004);
+    GVCU_HIL_simscape_M->Timing.sampleTimes[4] = (0.006);
+    GVCU_HIL_simscape_M->Timing.sampleTimes[5] = (0.01);
+    GVCU_HIL_simscape_M->Timing.sampleTimes[6] = (0.1);
+    GVCU_HIL_simscape_M->Timing.sampleTimes[7] = (1.0);
 
     /* task offsets */
     GVCU_HIL_simscape_M->Timing.offsetTimes[0] = (0.0);
@@ -19772,8 +19624,6 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
     GVCU_HIL_simscape_M->Timing.offsetTimes[5] = (0.0);
     GVCU_HIL_simscape_M->Timing.offsetTimes[6] = (0.0);
     GVCU_HIL_simscape_M->Timing.offsetTimes[7] = (0.0);
-    GVCU_HIL_simscape_M->Timing.offsetTimes[8] = (0.0);
-    GVCU_HIL_simscape_M->Timing.offsetTimes[9] = (0.0);
   }
 
   rtmSetTPtr(GVCU_HIL_simscape_M, &GVCU_HIL_simscape_M->Timing.tArray[0]);
@@ -19781,24 +19631,22 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
   {
     int_T *mdlSampleHits = GVCU_HIL_simscape_M->Timing.sampleHitArray;
     int_T i;
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 8; i++) {
       mdlSampleHits[i] = 1;
     }
 
     GVCU_HIL_simscape_M->Timing.sampleHits = (&mdlSampleHits[0]);
   }
 
-  rtmSetTFinal(GVCU_HIL_simscape_M, 2474.0);
-  GVCU_HIL_simscape_M->Timing.stepSize0 = 0.0002;
-  GVCU_HIL_simscape_M->Timing.stepSize1 = 0.0002;
-  GVCU_HIL_simscape_M->Timing.stepSize2 = 0.0004;
-  GVCU_HIL_simscape_M->Timing.stepSize3 = 0.001;
-  GVCU_HIL_simscape_M->Timing.stepSize4 = 0.002;
-  GVCU_HIL_simscape_M->Timing.stepSize5 = 0.004;
-  GVCU_HIL_simscape_M->Timing.stepSize6 = 0.005;
-  GVCU_HIL_simscape_M->Timing.stepSize7 = 0.01;
-  GVCU_HIL_simscape_M->Timing.stepSize8 = 0.1;
-  GVCU_HIL_simscape_M->Timing.stepSize9 = 1.0;
+  rtmSetTFinal(GVCU_HIL_simscape_M, 10.0);
+  GVCU_HIL_simscape_M->Timing.stepSize0 = 0.001;
+  GVCU_HIL_simscape_M->Timing.stepSize1 = 0.001;
+  GVCU_HIL_simscape_M->Timing.stepSize2 = 0.002;
+  GVCU_HIL_simscape_M->Timing.stepSize3 = 0.004;
+  GVCU_HIL_simscape_M->Timing.stepSize4 = 0.006;
+  GVCU_HIL_simscape_M->Timing.stepSize5 = 0.01;
+  GVCU_HIL_simscape_M->Timing.stepSize6 = 0.1;
+  GVCU_HIL_simscape_M->Timing.stepSize7 = 1.0;
   rtmSetFirstInitCond(GVCU_HIL_simscape_M, 1);
 
   /* Setup for data logging */
@@ -19825,8 +19673,8 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
   }
 
   GVCU_HIL_simscape_M->solverInfoPtr = (&GVCU_HIL_simscape_M->solverInfo);
-  GVCU_HIL_simscape_M->Timing.stepSize = (0.0002);
-  rtsiSetFixedStepSize(&GVCU_HIL_simscape_M->solverInfo, 0.0002);
+  GVCU_HIL_simscape_M->Timing.stepSize = (0.001);
+  rtsiSetFixedStepSize(&GVCU_HIL_simscape_M->solverInfo, 0.001);
   rtsiSetSolverMode(&GVCU_HIL_simscape_M->solverInfo, SOLVER_MODE_SINGLETASKING);
 
   /* block I/O */
@@ -19866,7 +19714,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
     RTWSfcnInfo *sfcnInfo = &GVCU_HIL_simscape_M->NonInlinedSFcns.sfcnInfo;
     GVCU_HIL_simscape_M->sfcnInfo = (sfcnInfo);
     rtssSetErrorStatusPtr(sfcnInfo, (&rtmGetErrorStatus(GVCU_HIL_simscape_M)));
-    GVCU_HIL_simscape_M->Sizes.numSampTimes = (10);
+    GVCU_HIL_simscape_M->Sizes.numSampTimes = (8);
     rtssSetNumRootSampTimesPtr(sfcnInfo,
       &GVCU_HIL_simscape_M->Sizes.numSampTimes);
     GVCU_HIL_simscape_M->NonInlinedSFcns.taskTimePtrs[0] = (&rtmGetTPtr
@@ -19885,10 +19733,6 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       (GVCU_HIL_simscape_M)[6]);
     GVCU_HIL_simscape_M->NonInlinedSFcns.taskTimePtrs[7] = (&rtmGetTPtr
       (GVCU_HIL_simscape_M)[7]);
-    GVCU_HIL_simscape_M->NonInlinedSFcns.taskTimePtrs[8] = (&rtmGetTPtr
-      (GVCU_HIL_simscape_M)[8]);
-    GVCU_HIL_simscape_M->NonInlinedSFcns.taskTimePtrs[9] = (&rtmGetTPtr
-      (GVCU_HIL_simscape_M)[9]);
     rtssSetTPtrPtr(sfcnInfo,GVCU_HIL_simscape_M->NonInlinedSFcns.taskTimePtrs);
     rtssSetTStartPtr(sfcnInfo, &rtmGetTStart(GVCU_HIL_simscape_M));
     rtssSetTFinalPtr(sfcnInfo, &rtmGetTFinal(GVCU_HIL_simscape_M));
@@ -20021,7 +19865,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSizes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -20035,7 +19879,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       /* Update the BufferDstPort flags for each input port */
       /* Update port-based sample time attributes */
       _ssSetOutputPortSampleTimeIndex(rts, 0, 0);
-      ssSetOutputPortSampleTime(rts, 0, 0.0002);
+      ssSetOutputPortSampleTime(rts, 0, 0.001);
       ssSetOutputPortOffsetTime(rts, 0, 0.0);
       sfcnInitializeSampleTimes(rts);
     }
@@ -20143,7 +19987,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -20231,7 +20075,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
           _ssSetOutputPortNumDimensions(rts, 0, 1);
           ssSetOutputPortWidthAsInt(rts, 0, 1);
           ssSetOutputPortSignal(rts, 0, ((real_T *)
-            &GVCU_HIL_simscape_B.SFunction_p4));
+            &GVCU_HIL_simscape_B.SFunction_p));
         }
       }
 
@@ -20266,7 +20110,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -20390,7 +20234,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -20574,7 +20418,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       /* adjust sample time */
       ssSetSampleTime(rts, 0, 0.004);
       ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 5;
+      sfcnTsMap[0] = 3;
 
       /* set compiled values of dynamic vector attributes */
       ssSetInputPortWidthAsInt(rts, 0, 1);
@@ -20802,9 +20646,9 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.001);
+      ssSetSampleTime(rts, 0, 0.002);
       ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 3;
+      sfcnTsMap[0] = 2;
 
       /* set compiled values of dynamic vector attributes */
       ssSetInputPortWidthAsInt(rts, 0, 1);
@@ -20998,7 +20842,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       /* adjust sample time */
       ssSetSampleTime(rts, 0, 0.004);
       ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 5;
+      sfcnTsMap[0] = 3;
 
       /* set compiled values of dynamic vector attributes */
       ssSetInputPortWidthAsInt(rts, 0, 1);
@@ -21135,7 +20979,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -21399,7 +21243,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -21610,7 +21454,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -21739,7 +21583,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -21871,7 +21715,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -22604,7 +22448,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -23218,7 +23062,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       /* adjust sample time */
       ssSetSampleTime(rts, 0, 1.0);
       ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 9;
+      sfcnTsMap[0] = 7;
 
       /* set compiled values of dynamic vector attributes */
       ssSetInputPortWidthAsInt(rts, 0, 1);
@@ -23469,7 +23313,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       /* adjust sample time */
       ssSetSampleTime(rts, 0, 1.0);
       ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 9;
+      sfcnTsMap[0] = 7;
 
       /* set compiled values of dynamic vector attributes */
       ssSetInputPortWidthAsInt(rts, 0, 1);
@@ -23998,7 +23842,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -24321,7 +24165,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_simscape_B.Saturation_c);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_simscape_B.Saturation_cd);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -24358,7 +24202,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -24486,7 +24330,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -24616,7 +24460,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -24746,7 +24590,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -24877,7 +24721,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -25008,7 +24852,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -25140,7 +24984,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -25271,7 +25115,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -25398,7 +25242,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -25528,7 +25372,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -25659,7 +25503,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -25791,7 +25635,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -25923,7 +25767,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -26054,7 +25898,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -26312,7 +26156,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -26522,7 +26366,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -26782,7 +26626,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -26997,7 +26841,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -27142,7 +26986,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -27295,7 +27139,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -27546,7 +27390,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -27776,7 +27620,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -28050,7 +27894,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -28261,7 +28105,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -28393,7 +28237,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -28524,7 +28368,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -28654,7 +28498,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -28787,7 +28631,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -28921,7 +28765,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -29167,7 +29011,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -29482,7 +29326,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -29773,7 +29617,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -29959,7 +29803,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -30091,7 +29935,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -30223,7 +30067,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -30355,7 +30199,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -30487,7 +30331,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -30618,7 +30462,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -30749,7 +30593,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -30882,7 +30726,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -31015,7 +30859,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -31147,7 +30991,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -31281,7 +31125,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -31413,7 +31257,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -31546,7 +31390,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -31682,7 +31526,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -31815,7 +31659,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -31951,7 +31795,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -32083,7 +31927,7 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       sfcnInitializeSampleTimes(rts);
 
       /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetSampleTime(rts, 0, 0.001);
       ssSetOffsetTime(rts, 0, 0.0);
       sfcnTsMap[0] = 1;
 
@@ -32118,22 +31962,6 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       false,
       false,
       1.0);
-  }
-
-  {
-    if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_l) {
-      cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_l);
-    }
-
-    GVCU_HIL_simscape_DW.SFunction_SysVar_l = (void*)cnCreateInputSystemVariable
-      (
-       "Checker_Simulink",
-       "Panel_brake_pedal_perc",
-       1,
-       (int_T)-1.0,
-       false,
-       false,
-       1.0);
   }
 
   {
@@ -32278,6 +32106,22 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
       false,
       false,
       1.0);
+  }
+
+  {
+    if (NULL != GVCU_HIL_simscape_DW.SFunction_SysVar_l) {
+      cnReleaseSystemVariable(GVCU_HIL_simscape_DW.SFunction_SysVar_l);
+    }
+
+    GVCU_HIL_simscape_DW.SFunction_SysVar_l = (void*)cnCreateInputSystemVariable
+      (
+       "Checker_Simulink",
+       "Panel_brake_pedal_perc",
+       1,
+       (int_T)-1.0,
+       false,
+       false,
+       1.0);
   }
 
   {
@@ -32841,16 +32685,16 @@ RT_MODEL_GVCU_HIL_simscape_T *GVCU_HIL_simscape(void)
   }
 
   /* Initialize Sizes */
-  GVCU_HIL_simscape_M->Sizes.numContStates = (109);/* Number of continuous states */
+  GVCU_HIL_simscape_M->Sizes.numContStates = (107);/* Number of continuous states */
   GVCU_HIL_simscape_M->Sizes.numPeriodicContStates = (0);
                                       /* Number of periodic continuous states */
   GVCU_HIL_simscape_M->Sizes.numY = (0);/* Number of model outputs */
   GVCU_HIL_simscape_M->Sizes.numU = (0);/* Number of model inputs */
   GVCU_HIL_simscape_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
-  GVCU_HIL_simscape_M->Sizes.numSampTimes = (10);/* Number of sample times */
-  GVCU_HIL_simscape_M->Sizes.numBlocks = (1551);/* Number of blocks */
-  GVCU_HIL_simscape_M->Sizes.numBlockIO = (502);/* Number of block outputs */
-  GVCU_HIL_simscape_M->Sizes.numBlockPrms = (93688);/* Sum of parameter "widths" */
+  GVCU_HIL_simscape_M->Sizes.numSampTimes = (8);/* Number of sample times */
+  GVCU_HIL_simscape_M->Sizes.numBlocks = (1543);/* Number of blocks */
+  GVCU_HIL_simscape_M->Sizes.numBlockIO = (501);/* Number of block outputs */
+  GVCU_HIL_simscape_M->Sizes.numBlockPrms = (93689);/* Sum of parameter "widths" */
   return GVCU_HIL_simscape_M;
 }
 

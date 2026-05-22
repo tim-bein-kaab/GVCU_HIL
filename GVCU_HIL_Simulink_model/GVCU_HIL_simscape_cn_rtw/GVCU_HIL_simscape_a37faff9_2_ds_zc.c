@@ -180,11 +180,11 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_zc(const NeDynamicSystem *LC, const
   vehicle_powertrain_transmission_Logic_Controlled_Clutch1_fundamental_clutch_S =
     -t127->mX.mX[1ULL] + t127->mX.mX[2ULL] * 0.7904449166155415;
   vehicle_powertrain_transmission_Logic_Controlled_Clutch1_engagement_factor =
-    (t127->mU.mX[18ULL] >= 0.5);
+    (t127->mU.mX[16ULL] >= 0.5);
   vehicle_powertrain_transmission_Logic_Controlled_Clutch2_fundamental_clutch_S =
     -t127->mX.mX[1ULL] + t127->mX.mX[2ULL] * 0.6089830513073616;
   vehicle_powertrain_transmission_Logic_Controlled_Clutch2_engagement_factor =
-    (t127->mU.mX[24ULL] >= 0.5);
+    (t127->mU.mX[22ULL] >= 0.5);
   vehicle_powertrain_transmission_Logic_Controlled_Clutch3_fundamental_clutch_S =
     -t127->mX.mX[1ULL] + t127->mX.mX[2ULL] * 0.47669491622669496;
   vehicle_powertrain_front_gearbox_Disc_Friction_Clutch_P = t127->mU.mX[11ULL] *
@@ -194,30 +194,30 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_zc(const NeDynamicSystem *LC, const
     (vehicle_powertrain_front_gearbox_Disc_Friction_Clutch_P >= 1.1) *
     0.005145928515;
   vehicle_powertrain_transmission_Logic_Controlled_Clutch3_engagement_factor =
-    (t127->mU.mX[20ULL] >= 0.5);
+    (t127->mU.mX[18ULL] >= 0.5);
   vehicle_powertrain_transmission_Logic_Controlled_Clutch4_fundamental_clutch_S =
     -t127->mX.mX[1ULL] + t127->mX.mX[2ULL] * 0.37680084796461266;
   vehicle_powertrain_transmission_Logic_Controlled_Clutch4_engagement_factor =
-    (t127->mU.mX[21ULL] >= 0.5);
+    (t127->mU.mX[19ULL] >= 0.5);
   vehicle_powertrain_front_gearbox_Disc_Friction_Clutch1_fundamental_clutch_S =
     (t127->mX.mX[0ULL] * -0.36845983787767134 + t127->mX.mX[34ULL] * 0.01) +
     t127->mU.mX[1ULL];
   vehicle_powertrain_transmission_Logic_Controlled_Clutch5_fundamental_clutch_S =
     -t127->mX.mX[1ULL] + t127->mX.mX[2ULL] * 0.2902966105373554;
   vehicle_powertrain_transmission_Logic_Controlled_Clutch5_engagement_factor =
-    (t127->mU.mX[22ULL] >= 0.5);
+    (t127->mU.mX[20ULL] >= 0.5);
   vehicle_powertrain_transmission_Logic_Controlled_Clutch6_fundamental_clutch_S =
     -t127->mX.mX[1ULL] + t127->mX.mX[2ULL] * 0.22845338999727946;
   vehicle_powertrain_transmission_Logic_Controlled_Clutch6_engagement_factor =
-    (t127->mU.mX[23ULL] >= 0.5);
+    (t127->mU.mX[21ULL] >= 0.5);
   vehicle_powertrain_transmission_Logic_Controlled_Clutch7_fundamental_clutch_S =
     -t127->mX.mX[1ULL] + t127->mX.mX[2ULL] * 0.18061440694582628;
   vehicle_powertrain_transmission_Logic_Controlled_Clutch7_engagement_factor =
-    (t127->mU.mX[25ULL] >= 0.5);
+    (t127->mU.mX[23ULL] >= 0.5);
   vehicle_powertrain_transmission_Logic_Controlled_Clutch8_fundamental_clutch_S =
     -t127->mX.mX[1ULL] + t127->mX.mX[2ULL] * 0.13911016960011482;
   vehicle_powertrain_transmission_Logic_Controlled_Clutch8_engagement_factor =
-    (t127->mU.mX[26ULL] >= 0.5);
+    (t127->mU.mX[24ULL] >= 0.5);
   vehicle_powertrain_propshaft_Disc_Friction_Clutch_fundamental_clutch_S =
     t127->mX.mX[2ULL] * -0.19703389851000003 + t127->mX.mX[0ULL];
   vehicle_powertrain_side_gearbox_Disc_Friction_Clutch_fundamental_clutch_S =
@@ -236,7 +236,7 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_zc(const NeDynamicSystem *LC, const
     -vehicle_powertrain_propshaft_Disc_Friction_Clutch_P * 8900.0;
   vehicle_powertrain_front_gearbox_Disc_Friction_Clutch1_fundamental_clutch_tP =
     vehicle_powertrain_propshaft_Disc_Friction_Clutch_P * 8900.0;
-  vehicle_powertrain_propshaft_Disc_Friction_Clutch_P = t127->mU.mX[15ULL] *
+  vehicle_powertrain_propshaft_Disc_Friction_Clutch_P = t127->mU.mX[13ULL] *
     1.0E-5;
   intrm_sf_mf_33 = (vehicle_powertrain_propshaft_Disc_Friction_Clutch_P - 1.1) *
     (real_T)(vehicle_powertrain_propshaft_Disc_Friction_Clutch_P >= 1.1) *
@@ -245,21 +245,21 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_zc(const NeDynamicSystem *LC, const
     -intrm_sf_mf_33 * 8900.0;
   vehicle_powertrain_propshaft_Disc_Friction_Clutch_fundamental_clutch_tP =
     intrm_sf_mf_33 * 8900.0;
-  intrm_sf_mf_33 = t127->mU.mX[17ULL] * 1.0E-5;
+  intrm_sf_mf_33 = t127->mU.mX[15ULL] * 1.0E-5;
   vehicle_powertrain_side_gearbox_Disc_Friction_Clutch1_P = (intrm_sf_mf_33 -
     1.1) * (real_T)(intrm_sf_mf_33 >= 1.1) * 0.005145928515;
   vehicle_powertrain_side_gearbox_Disc_Friction_Clutch_fundamental_clutch_tM =
     -vehicle_powertrain_side_gearbox_Disc_Friction_Clutch1_P * 8900.0;
   vehicle_powertrain_side_gearbox_Disc_Friction_Clutch_fundamental_clutch_tP =
     vehicle_powertrain_side_gearbox_Disc_Friction_Clutch1_P * 8900.0;
-  vehicle_powertrain_side_gearbox_Disc_Friction_Clutch1_P = t127->mU.mX[16ULL] *
+  vehicle_powertrain_side_gearbox_Disc_Friction_Clutch1_P = t127->mU.mX[14ULL] *
     1.0E-5;
   vehicle_powertrain_transmission_gear_selector_x1 =
     (vehicle_powertrain_side_gearbox_Disc_Friction_Clutch1_P - 1.1) * (real_T)
     (vehicle_powertrain_side_gearbox_Disc_Friction_Clutch1_P >= 1.1) *
     0.005145928515;
   vehicle_powertrain_transmission_Logic_Controlled_Clutch_engagement_factor =
-    (t127->mU.mX[19ULL] >= 0.5);
+    (t127->mU.mX[17ULL] >= 0.5);
   if (vehicle_powertrain_front_gearbox_Disc_Friction_Clutch_fundamental_clutch_S
       == 0.0) {
     t2 = (t127->mX.mX[24ULL] > 0.0);
@@ -1452,7 +1452,6 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_zc(const NeDynamicSystem *LC, const
   out->mZC.mX[223ULL] = (real_T)
     ((vehicle_powertrain_transmission_Logic_Controlled_Clutch8_fundamental_clutch_S
       > 1.0) && ((size_t)t127->mQ.mX[9ULL] == 6ULL));
-  out->mZC.mX[224ULL] = t127->mU.mX[12ULL] - -0.99;
   (void)LC;
   (void)out;
   return 0;

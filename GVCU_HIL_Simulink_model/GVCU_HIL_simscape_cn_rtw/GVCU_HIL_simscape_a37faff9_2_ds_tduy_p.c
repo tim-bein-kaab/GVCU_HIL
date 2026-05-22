@@ -13,14 +13,14 @@
 int32_T GVCU_HIL_simscape_a37faff9_2_ds_tduy_p(const NeDynamicSystem *LC, const
   NeDynamicSystemInput *t1, NeDsMethodOutput *out)
 {
-  static int32_T _cg_const_1[28] = { 0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 };
+  static int32_T _cg_const_1[26] = { 0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 };
 
   static int32_T _cg_const_2[4] = { 13, 11, 19, 17 };
 
   (void)t1;
   (void)LC;
-  out->mTDUY_P.mNumCol = 27ULL;
+  out->mTDUY_P.mNumCol = 25ULL;
   out->mTDUY_P.mNumRow = 23ULL;
   out->mTDUY_P.mJc[0] = _cg_const_1[0];
   out->mTDUY_P.mJc[1] = _cg_const_1[1];
@@ -48,8 +48,6 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_tduy_p(const NeDynamicSystem *LC, const
   out->mTDUY_P.mJc[23] = _cg_const_1[23];
   out->mTDUY_P.mJc[24] = _cg_const_1[24];
   out->mTDUY_P.mJc[25] = _cg_const_1[25];
-  out->mTDUY_P.mJc[26] = _cg_const_1[26];
-  out->mTDUY_P.mJc[27] = _cg_const_1[27];
   out->mTDUY_P.mIr[0] = _cg_const_2[0];
   out->mTDUY_P.mIr[1] = _cg_const_2[1];
   out->mTDUY_P.mIr[2] = _cg_const_2[2];

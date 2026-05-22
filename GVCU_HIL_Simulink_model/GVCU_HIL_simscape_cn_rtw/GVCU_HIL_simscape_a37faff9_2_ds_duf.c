@@ -116,9 +116,9 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_duf(const NeDynamicSystem *LC, const
   }
 
   out->mDUF.mX[14ULL] = -t48->mX.mX[73ULL];
-  out->mDUF.mX[15ULL] = (real_T)(t48->mM.mX[224ULL] != 0) * 1.0E-5 *
+  out->mDUF.mX[15ULL] = (real_T)(t48->mM.mX[223ULL] != 0) * 1.0E-5 *
     0.005145928515 * 8800.0;
-  out->mDUF.mX[16ULL] = (real_T)(t48->mM.mX[217ULL] != 0) * 1.0E-5 *
+  out->mDUF.mX[16ULL] = (real_T)(t48->mM.mX[216ULL] != 0) * 1.0E-5 *
     0.005145928515 * 8800.0;
   out->mDUF.mX[17ULL] = (real_T)(t48->mM.mX[212ULL] != 0) * 1.0E-5 *
     0.005145928515 * 8800.0;

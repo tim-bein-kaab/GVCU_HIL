@@ -7,9 +7,9 @@
  *
  * Code generation for model "GVCU_HIL_simscape".
  *
- * Model version              : 7.78
+ * Model version              : 7.79
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Fri May 22 11:33:14 2026
+ * C source code generated on : Fri May 22 15:18:20 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -964,21 +964,6 @@ typedef struct {
   real_T INTERNAL_44_1_1[4];           /* '<S291>/INTERNAL_44_1_1' */
   real_T RATE_TRANSITION_55_1_1;       /* '<S291>/RATE_TRANSITION_55_1_1' */
   real_T INTERNAL_55_1_1[4];           /* '<S291>/INTERNAL_55_1_1' */
-  real_T Clock;                        /* '<S2>/Clock' */
-  real_T SFunction_h;                  /* '<S36>/S-Function' */
-  real_T SFunction_n;                  /* '<S35>/S-Function' */
-  real_T u01s;                         /* '<S2>/0.01s' */
-  real_T SFunction_p;                  /* '<S37>/S-Function' */
-  real_T SFunction_l;                  /* '<S47>/S-Function' */
-  real_T SFunction_o;                  /* '<S48>/S-Function' */
-  real_T SFunction_oj;                 /* '<S49>/S-Function' */
-  real_T SFunction_h0;                 /* '<S50>/S-Function' */
-  real_T Add;                          /* '<S31>/Add' */
-  real_T Saturation;                   /* '<S2>/Saturation' */
-  real_T Subtract;                     /* '<S52>/Subtract' */
-  real_T Relay;                        /* '<S52>/Relay' */
-  real_T Switch3;                      /* '<S32>/Switch3' */
-  real_T RateLimiter1;                 /* '<S2>/Rate Limiter1' */
   real_T DecelCmd;                     /* '<S2>/Gain1' */
   real_T FilterCoefficient;            /* '<S675>/Filter Coefficient' */
   real_T FilterCoefficient_i;          /* '<S727>/Filter Coefficient' */
@@ -991,40 +976,39 @@ typedef struct {
   real_T INPUT_10_1_1[4];              /* '<S291>/INPUT_10_1_1' */
   real_T TransferFcn;                  /* '<S43>/Transfer Fcn' */
   real_T TransferFcn1;                 /* '<S43>/Transfer Fcn1' */
-  real_T Clock_b;                      /* '<S43>/Clock' */
+  real_T Clock;                        /* '<S43>/Clock' */
+  real_T UnitDelay3;                   /* '<S43>/Unit Delay3' */
   real_T Switch;                       /* '<S616>/Switch' */
   real_T FilterCoefficient_ps;         /* '<S905>/Filter Coefficient' */
   real_T INPUT_15_1_1[4];              /* '<S291>/INPUT_15_1_1' */
   real_T Saturation1;                  /* '<S1>/Saturation1' */
   real_T INPUT_17_1_1[4];              /* '<S291>/INPUT_17_1_1' */
-  real_T Saturation_m;                 /* '<S1>/Saturation' */
+  real_T Saturation;                   /* '<S1>/Saturation' */
   real_T INPUT_16_1_1[4];              /* '<S291>/INPUT_16_1_1' */
-  real_T INPUT_18_1_1[4];              /* '<S291>/INPUT_18_1_1' */
   real_T MaxTorqueLimit;               /* '<S216>/Max Torque Limit' */
   real_T Gain;                         /* '<S216>/Gain' */
-  real_T Delay;                        /* '<S6>/Delay' */
   real_T SFunction_g;                  /* '<S192>/S-Function' */
   real_T rpm;                          /* '<S191>/Subtract1' */
   real_T SumI4;                        /* '<S251>/SumI4' */
   real_T Clock_p;                      /* '<S191>/Clock' */
-  real_T SFunction_p4;                 /* '<S194>/S-Function' */
-  real_T Add_f;                        /* '<S191>/Add' */
+  real_T SFunction_p;                  /* '<S194>/S-Function' */
+  real_T Add;                          /* '<S191>/Add' */
   real_T Integrator;                   /* '<S259>/Integrator' */
-  real_T Gain_i;                       /* '<S191>/Gain' */
+  real_T Saturation_c;                 /* '<S266>/Saturation' */
   real_T Switch2;                      /* '<S224>/Switch2' */
   real_T SFunction_e;                  /* '<S193>/S-Function' */
   real_T Switch2_i;                    /* '<S6>/Switch2' */
   real_T uor1;                         /* '<S190>/Switch' */
   real_T EMTrq;                        /* '<S190>/Product1' */
+  real_T INPUT_18_1_1[4];              /* '<S291>/INPUT_18_1_1' */
   real_T INPUT_19_1_1[4];              /* '<S291>/INPUT_19_1_1' */
-  real_T Switch_k;                     /* '<S618>/Switch' */
-  real_T INPUT_20_1_1[4];              /* '<S291>/INPUT_20_1_1' */
-  real_T INPUT_21_1_1[4];              /* '<S291>/INPUT_21_1_1' */
   real_T prs_to_voltage;               /* '<S1>/Saturation3' */
-  real_T INPUT_23_1_1[4];              /* '<S291>/INPUT_23_1_1' */
+  real_T INPUT_21_1_1[4];              /* '<S291>/INPUT_21_1_1' */
   real_T Saturation2;                  /* '<S1>/Saturation2' */
+  real_T INPUT_20_1_1[4];              /* '<S291>/INPUT_20_1_1' */
+  real_T MultiportSwitch[9];           /* '<S962>/Multiport Switch' */
   real_T INPUT_22_1_1[4];              /* '<S291>/INPUT_22_1_1' */
-  real_T MultiportSwitch[9];           /* '<S967>/Multiport Switch' */
+  real_T INPUT_23_1_1[4];              /* '<S291>/INPUT_23_1_1' */
   real_T INPUT_24_1_1[4];              /* '<S291>/INPUT_24_1_1' */
   real_T INPUT_25_1_1[4];              /* '<S291>/INPUT_25_1_1' */
   real_T INPUT_26_1_1[4];              /* '<S291>/INPUT_26_1_1' */
@@ -1032,9 +1016,7 @@ typedef struct {
   real_T INPUT_28_1_1[4];              /* '<S291>/INPUT_28_1_1' */
   real_T INPUT_29_1_1[4];              /* '<S291>/INPUT_29_1_1' */
   real_T INPUT_30_1_1[4];              /* '<S291>/INPUT_30_1_1' */
-  real_T INPUT_31_1_1[4];              /* '<S291>/INPUT_31_1_1' */
-  real_T INPUT_32_1_1[4];              /* '<S291>/INPUT_32_1_1' */
-  real_T STATE_2[354];                 /* '<S291>/STATE_2' */
+  real_T STATE_2[353];                 /* '<S291>/STATE_2' */
   real_T OUTPUT_2_0[19];               /* '<S291>/OUTPUT_2_0' */
   real_T rpm_c;                        /* '<S4>/Gain3' */
   real_T motor_speed;                  /* '<S4>/Saturation2' */
@@ -1158,7 +1140,7 @@ typedef struct {
   real_T task_deadline_ctrl;           /* '<S4>/Constant109' */
   real_T trq_command_rationnality;     /* '<S4>/Constant101' */
   real_T trq_estimation_rationnality;  /* '<S4>/Constant113' */
-  real_T Saturation_c;                 /* '<S8>/Saturation' */
+  real_T Saturation_cd;                /* '<S8>/Saturation' */
   real_T Saturation1_i;                /* '<S8>/Saturation1' */
   real_T Saturation2_p;                /* '<S8>/Saturation2' */
   real_T Saturation3;                  /* '<S8>/Saturation3' */
@@ -1166,13 +1148,29 @@ typedef struct {
   real_T Constant2;                    /* '<S8>/Constant2' */
   real_T Constant3;                    /* '<S8>/Constant3' */
   real_T Constant4;                    /* '<S8>/Constant4' */
+  real_T Clock_g;                      /* '<S2>/Clock' */
+  real_T SFunction_h;                  /* '<S36>/S-Function' */
+  real_T SFunction_p0;                 /* '<S37>/S-Function' */
+  real_T SFunction_l;                  /* '<S47>/S-Function' */
+  real_T SFunction_o;                  /* '<S48>/S-Function' */
+  real_T SFunction_oj;                 /* '<S49>/S-Function' */
+  real_T SFunction_h0;                 /* '<S50>/S-Function' */
+  real_T Add_j;                        /* '<S31>/Add' */
+  real_T Delay;                        /* '<S2>/Delay' */
   real_T RateTransition;               /* '<S2>/Rate Transition' */
   real_T RateTransition1;              /* '<S2>/Rate Transition1' */
+  real_T SFunction_n;                  /* '<S35>/S-Function' */
+  real_T u01s;                         /* '<S2>/0.01s' */
   real_T SteerCmd;                     /* '<S2>/1-D Lookup Table4' */
+  real_T Saturation_d;                 /* '<S2>/Saturation' */
+  real_T Subtract;                     /* '<S52>/Subtract' */
+  real_T Relay;                        /* '<S52>/Relay' */
+  real_T Switch3;                      /* '<S32>/Switch3' */
   real_T Switch_i;                     /* '<S82>/Switch' */
   real_T Divide;                       /* '<S53>/Divide' */
   real_T Product;                      /* '<S110>/Product' */
   real_T Sum8;                         /* '<S32>/Sum8' */
+  real_T RateLimiter1;                 /* '<S2>/Rate Limiter1' */
   real_T kmh;                          /* '<S2>/m//s to km//h' */
   real_T Gain1_i;                      /* '<S201>/Gain1' */
   real_T Divide_b;                     /* '<S212>/Divide' */
@@ -1396,9 +1394,10 @@ typedef struct {
   real_T wheel_direction;              /* '<S8>/MATLAB Function2' */
   real_T inv_st;                       /* '<S4>/INV' */
   real_T bms_st;                       /* '<S3>/BMS' */
-  real_T GearCmd;                      /* '<S43>/gear' */
+  real_T GearCmd;                      /* '<S43>/MATLAB Function' */
   real_T BrakeBalCmd;                  /* '<S42>/brake balance' */
   real_T pedal_out;                    /* '<S2>/MATLAB Function1' */
+  real_T brake_out;                    /* '<S2>/MATLAB Function1' */
   real_T cycle_time_remaining;         /* '<S2>/MATLAB Function' */
   real_T cycle_finished;               /* '<S2>/MATLAB Function' */
   real_T ign;                          /* '<S31>/MATLAB Function2' */
@@ -1459,7 +1458,7 @@ typedef struct {
   real_T INTERNAL_33_1_1_SimscapeInterna[2];/* '<S291>/INTERNAL_33_1_1' */
   real_T INTERNAL_44_1_1_SimscapeInterna[2];/* '<S291>/INTERNAL_44_1_1' */
   real_T INTERNAL_55_1_1_SimscapeInterna[2];/* '<S291>/INTERNAL_55_1_1' */
-  real_T Integrator_DSTATE;            /* '<S92>/Integrator' */
+  real_T Delay1_DSTATE[2];             /* '<S2>/Delay1' */
   real_T INPUT_11_1_1_SimscapeInternalDi;/* '<S291>/INPUT_11_1_1' */
   real_T INPUT_11_1_1_SimscapeInternalFi;/* '<S291>/INPUT_11_1_1' */
   real_T INPUT_12_1_1_SimscapeInternalDi;/* '<S291>/INPUT_12_1_1' */
@@ -1478,15 +1477,14 @@ typedef struct {
   real_T INPUT_15_1_1_SimscapeInternalFi;/* '<S291>/INPUT_15_1_1' */
   real_T INPUT_17_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_17_1_1' */
   real_T INPUT_16_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_16_1_1' */
-  real_T INPUT_18_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_18_1_1' */
   real_T Delay_DSTATE[2];              /* '<S6>/Delay' */
-  real_T Integrator_DSTATE_d;          /* '<S259>/Integrator' */
+  real_T Integrator_DSTATE;            /* '<S259>/Integrator' */
+  real_T INPUT_18_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_18_1_1' */
   real_T INPUT_19_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_19_1_1' */
-  real_T INPUT_20_1_1_SimscapeInternalDi;/* '<S291>/INPUT_20_1_1' */
-  real_T INPUT_20_1_1_SimscapeInternalFi;/* '<S291>/INPUT_20_1_1' */
   real_T INPUT_21_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_21_1_1' */
-  real_T INPUT_23_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_23_1_1' */
+  real_T INPUT_20_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_20_1_1' */
   real_T INPUT_22_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_22_1_1' */
+  real_T INPUT_23_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_23_1_1' */
   real_T INPUT_24_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_24_1_1' */
   real_T INPUT_25_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_25_1_1' */
   real_T INPUT_26_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_26_1_1' */
@@ -1494,8 +1492,6 @@ typedef struct {
   real_T INPUT_28_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_28_1_1' */
   real_T INPUT_29_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_29_1_1' */
   real_T INPUT_30_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_30_1_1' */
-  real_T INPUT_31_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_31_1_1' */
-  real_T INPUT_32_1_1_SimscapeInternalDi[2];/* '<S291>/INPUT_32_1_1' */
   real_T STATE_2_vehiclepowertrainmotorf;/* '<S291>/STATE_2' */
   real_T STATE_2_vehiclepowertrainengine;/* '<S291>/STATE_2' */
   real_T STATE_2_vehiclepowertraintransm;/* '<S291>/STATE_2' */
@@ -1627,6 +1623,8 @@ typedef struct {
   real_T STATE_2_SimscapeInternalDiscr_h;/* '<S291>/STATE_2' */
   real_T STATE_2_SimscapeInternalDisc_ll[392];/* '<S291>/STATE_2' */
   real_T UnitDelay1_DSTATE;            /* '<S4>/Unit Delay1' */
+  real_T Delay_DSTATE_n[2];            /* '<S2>/Delay' */
+  real_T Integrator_DSTATE_i;          /* '<S92>/Integrator' */
   real_T UnitDelay_DSTATE;             /* '<S3>/Unit Delay' */
   real_T INTERNAL_16_1_1_SimscapeInterna[2];/* '<S291>/INTERNAL_16_1_1' */
   real_T INTERNAL_23_1_1_SimscapeInterna[2];/* '<S291>/INTERNAL_23_1_1' */
@@ -1721,11 +1719,7 @@ typedef struct {
   real_T RATE_TRANSITION_33_1_1_Buffer;/* '<S291>/RATE_TRANSITION_33_1_1' */
   real_T RATE_TRANSITION_44_1_1_Buffer;/* '<S291>/RATE_TRANSITION_44_1_1' */
   real_T RATE_TRANSITION_55_1_1_Buffer;/* '<S291>/RATE_TRANSITION_55_1_1' */
-  real_T u01s_Buffer;                  /* '<S2>/0.01s' */
-  real_T PrevY;                        /* '<S31>/Rate Limiter' */
-  real_T PrevY_m;                      /* '<S2>/Rate Limiter1' */
-  real_T LastMajorTime;                /* '<S2>/Rate Limiter1' */
-  real_T PrevY_o;                      /* '<S6>/Rate Limiter' */
+  real_T PrevY;                        /* '<S6>/Rate Limiter' */
   real_T STATE_2_Discrete[521];        /* '<S291>/STATE_2' */
   real_T STATE_2_JacobElems;           /* '<S291>/STATE_2' */
   real_T STATE_2_ZcValueStore;         /* '<S291>/STATE_2' */
@@ -1745,8 +1739,12 @@ typedef struct {
   real_T RateTransition7_Buffer;       /* '<S4>/Rate Transition7' */
   real_T RateTransition8_Buffer;       /* '<S4>/Rate Transition8' */
   real_T RateTransition9_Buffer;       /* '<S4>/Rate Transition9' */
+  real_T PrevY_n;                      /* '<S31>/Rate Limiter' */
   real_T RateTransition_Buffer;        /* '<S2>/Rate Transition' */
   real_T RateTransition1_Buffer;       /* '<S2>/Rate Transition1' */
+  real_T u01s_Buffer;                  /* '<S2>/0.01s' */
+  real_T PrevY_m;                      /* '<S2>/Rate Limiter1' */
+  real_T LastMajorTime;                /* '<S2>/Rate Limiter1' */
   real_T RateTransition_Buffer_b;      /* '<S1>/Rate Transition' */
   real_T RateTransition1_Buffer_d;     /* '<S1>/Rate Transition1' */
   real_T RateTransition2_Buffer_g;     /* '<S1>/Rate Transition2' */
@@ -1870,7 +1868,7 @@ typedef struct {
   real_T OUTPUT_5_6_JacobElems;        /* '<S291>/OUTPUT_5_6' */
   real_T OUTPUT_5_6_ZcValueStore;      /* '<S291>/OUTPUT_5_6' */
   real_T stop_ts;                      /* '<S191>/MATLAB Function' */
-  real_T last_time;                    /* '<S43>/gear' */
+  real_T last_time;                    /* '<S43>/MATLAB Function' */
   real_T t_mode_start;                 /* '<S2>/MATLAB Function1' */
   real_T last_mode;                    /* '<S2>/MATLAB Function1' */
   real_T t_mode_start_e;               /* '<S2>/MATLAB Function' */
@@ -1900,13 +1898,6 @@ typedef struct {
   void* OUTPUT_1_0_DiagMgr;            /* '<S291>/OUTPUT_1_0' */
   void* OUTPUT_1_0_ZcLogger;           /* '<S291>/OUTPUT_1_0' */
   void* OUTPUT_1_0_TsInfo;             /* '<S291>/OUTPUT_1_0' */
-  void* SFunction_SysVar;              /* '<S36>/S-Function' */
-  void* SFunction_SysVar_l;            /* '<S35>/S-Function' */
-  void* SFunction_SysVar_c;            /* '<S37>/S-Function' */
-  void* SFunction_SysVar_m;            /* '<S47>/S-Function' */
-  void* SFunction_SysVar_p;            /* '<S48>/S-Function' */
-  void* SFunction_SysVar_p0;           /* '<S49>/S-Function' */
-  void* SFunction_SysVar_b;            /* '<S50>/S-Function' */
   void* STATE_2_Simulator;             /* '<S291>/STATE_2' */
   void* STATE_2_SimData;               /* '<S291>/STATE_2' */
   void* STATE_2_DiagMgr;               /* '<S291>/STATE_2' */
@@ -1918,10 +1909,17 @@ typedef struct {
   void* OUTPUT_2_0_ZcLogger;           /* '<S291>/OUTPUT_2_0' */
   void* OUTPUT_2_0_TsInfo;             /* '<S291>/OUTPUT_2_0' */
   void *TransportDelay1_PWORK[2];      /* '<S4>/Transport Delay1' */
+  void* SFunction_SysVar;              /* '<S36>/S-Function' */
+  void* SFunction_SysVar_c;            /* '<S37>/S-Function' */
+  void* SFunction_SysVar_m;            /* '<S47>/S-Function' */
+  void* SFunction_SysVar_p;            /* '<S48>/S-Function' */
+  void* SFunction_SysVar_p0;           /* '<S49>/S-Function' */
+  void* SFunction_SysVar_b;            /* '<S50>/S-Function' */
   void* SFunction_SysVar_b4;           /* '<S38>/S-Function' */
   void* SFunction_SysVar_c1;           /* '<S39>/S-Function' */
   void* SFunction_SysVar_o;            /* '<S40>/S-Function' */
   void* SFunction_SysVar_a;            /* '<S41>/S-Function' */
+  void* SFunction_SysVar_l;            /* '<S35>/S-Function' */
   void* SFunction_SysVar_d;            /* '<S54>/S-Function' */
   void* SFunction_SysVar_am;           /* '<S23>/S-Function' */
   void* SFunction_SysVar_e;            /* '<S18>/S-Function' */
@@ -2097,7 +2095,7 @@ typedef struct {
   int_T STATE_1_SwtgCoeffs;            /* '<S291>/STATE_1' */
   int_T OUTPUT_1_0_Modes;              /* '<S291>/OUTPUT_1_0' */
   int_T OUTPUT_1_0_SwtgCoeffs;         /* '<S291>/OUTPUT_1_0' */
-  int_T STATE_2_Modes[225];            /* '<S291>/STATE_2' */
+  int_T STATE_2_Modes[224];            /* '<S291>/STATE_2' */
   int_T STATE_2_SwtgCoeffs;            /* '<S291>/STATE_2' */
   int_T OUTPUT_2_0_Modes;              /* '<S291>/OUTPUT_2_0' */
   int_T OUTPUT_2_0_SwtgCoeffs;         /* '<S291>/OUTPUT_2_0' */
@@ -2155,8 +2153,8 @@ typedef struct {
   int_T OUTPUT_5_5_SwtgCoeffs;         /* '<S291>/OUTPUT_5_5' */
   int_T OUTPUT_5_6_Modes;              /* '<S291>/OUTPUT_5_6' */
   int_T OUTPUT_5_6_SwtgCoeffs;         /* '<S291>/OUTPUT_5_6' */
-  int8_T Integrator_PrevResetState;    /* '<S92>/Integrator' */
-  int8_T Integrator_PrevResetState_c;  /* '<S259>/Integrator' */
+  int8_T Integrator_PrevResetState;    /* '<S259>/Integrator' */
+  int8_T Integrator_PrevResetState_n;  /* '<S92>/Integrator' */
   uint8_T STATE_1_ZcSignalDir;         /* '<S291>/STATE_1' */
   uint8_T STATE_1_ZcStateStore;        /* '<S291>/STATE_1' */
   uint8_T OUTPUT_1_0_ZcSignalDir;      /* '<S291>/OUTPUT_1_0' */
@@ -2221,11 +2219,11 @@ typedef struct {
   uint8_T OUTPUT_5_6_ZcStateStore;     /* '<S291>/OUTPUT_5_6' */
   boolean_T STATE_1_FirstOutput;       /* '<S291>/STATE_1' */
   boolean_T OUTPUT_1_0_FirstOutput;    /* '<S291>/OUTPUT_1_0' */
-  boolean_T Relay_Mode;                /* '<S52>/Relay' */
-  boolean_T PrevLimited;               /* '<S2>/Rate Limiter1' */
   boolean_T STATE_2_FirstOutput;       /* '<S291>/STATE_2' */
   boolean_T OUTPUT_2_0_FirstOutput;    /* '<S291>/OUTPUT_2_0' */
   boolean_T IntegratorLimited_DWORK1;  /* '<S201>/Integrator Limited' */
+  boolean_T Relay_Mode;                /* '<S52>/Relay' */
+  boolean_T PrevLimited;               /* '<S2>/Rate Limiter1' */
   boolean_T OUTPUT_1_1_FirstOutput;    /* '<S291>/OUTPUT_1_1' */
   boolean_T OUTPUT_2_1_FirstOutput;    /* '<S291>/OUTPUT_2_1' */
   boolean_T OUTPUT_2_2_FirstOutput;    /* '<S291>/OUTPUT_2_2' */
@@ -2281,10 +2279,8 @@ typedef struct {
   real_T GVCU_HIL_simscapeoutputFilter_m[2];/* '<S291>/INTERNAL_52_1_1' */
   real_T GVCU_HIL_simscapeoutputFilter_l[2];/* '<S291>/INTERNAL_57_1_1' */
   real_T GVCU_HIL_simscapevehiclemultibo[29];/* '<S291>/STATE_1' */
-  real_T Integrator_CSTATE;            /* '<S110>/Integrator' */
-  real_T Integrator1_CSTATE;           /* '<S32>/Integrator1' */
   real_T TransferFcn_CSTATE;           /* '<S623>/Transfer Fcn' */
-  real_T Integrator_CSTATE_d;          /* '<S672>/Integrator' */
+  real_T Integrator_CSTATE;            /* '<S672>/Integrator' */
   real_T Filter_CSTATE;                /* '<S667>/Filter' */
   real_T TransferFcn1_CSTATE;          /* '<S623>/Transfer Fcn1' */
   real_T Integrator_CSTATE_p;          /* '<S724>/Integrator' */
@@ -2310,11 +2306,12 @@ typedef struct {
   real_T TransferFcn_CSTATE_o;         /* '<S28>/Transfer Fcn' */
   real_T TransferFcn_CSTATE_oh;        /* '<S27>/Transfer Fcn' */
   real_T Integrator_CSTATE_g;          /* '<S216>/Integrator' */
-  real_T GVCU_HIL_simscapevehiclepower_p[2];/* '<S291>/INPUT_20_1_1' */
   real_T TransferFcn_CSTATE_l;         /* '<S30>/Transfer Fcn' */
   real_T TransferFcn_CSTATE_m;         /* '<S29>/Transfer Fcn' */
   real_T TransferFcn_CSTATE_i;         /* '<S190>/Transfer Fcn' */
   real_T IntegratorLimited_CSTATE;     /* '<S201>/Integrator Limited' */
+  real_T Integrator_CSTATE_i0;         /* '<S110>/Integrator' */
+  real_T Integrator1_CSTATE;           /* '<S32>/Integrator1' */
   real_T GVCU_HIL_simscapevehiclemulti_n[2];/* '<S291>/INPUT_9_1_1' */
 } X_GVCU_HIL_simscape_T;
 
@@ -2342,10 +2339,8 @@ typedef struct {
   real_T GVCU_HIL_simscapeoutputFilter_m[2];/* '<S291>/INTERNAL_52_1_1' */
   real_T GVCU_HIL_simscapeoutputFilter_l[2];/* '<S291>/INTERNAL_57_1_1' */
   real_T GVCU_HIL_simscapevehiclemultibo[29];/* '<S291>/STATE_1' */
-  real_T Integrator_CSTATE;            /* '<S110>/Integrator' */
-  real_T Integrator1_CSTATE;           /* '<S32>/Integrator1' */
   real_T TransferFcn_CSTATE;           /* '<S623>/Transfer Fcn' */
-  real_T Integrator_CSTATE_d;          /* '<S672>/Integrator' */
+  real_T Integrator_CSTATE;            /* '<S672>/Integrator' */
   real_T Filter_CSTATE;                /* '<S667>/Filter' */
   real_T TransferFcn1_CSTATE;          /* '<S623>/Transfer Fcn1' */
   real_T Integrator_CSTATE_p;          /* '<S724>/Integrator' */
@@ -2371,11 +2366,12 @@ typedef struct {
   real_T TransferFcn_CSTATE_o;         /* '<S28>/Transfer Fcn' */
   real_T TransferFcn_CSTATE_oh;        /* '<S27>/Transfer Fcn' */
   real_T Integrator_CSTATE_g;          /* '<S216>/Integrator' */
-  real_T GVCU_HIL_simscapevehiclepower_p[2];/* '<S291>/INPUT_20_1_1' */
   real_T TransferFcn_CSTATE_l;         /* '<S30>/Transfer Fcn' */
   real_T TransferFcn_CSTATE_m;         /* '<S29>/Transfer Fcn' */
   real_T TransferFcn_CSTATE_i;         /* '<S190>/Transfer Fcn' */
   real_T IntegratorLimited_CSTATE;     /* '<S201>/Integrator Limited' */
+  real_T Integrator_CSTATE_i0;         /* '<S110>/Integrator' */
+  real_T Integrator1_CSTATE;           /* '<S32>/Integrator1' */
   real_T GVCU_HIL_simscapevehiclemulti_n[2];/* '<S291>/INPUT_9_1_1' */
 } XDot_GVCU_HIL_simscape_T;
 
@@ -2403,10 +2399,8 @@ typedef struct {
   boolean_T GVCU_HIL_simscapeoutputFilter_m[2];/* '<S291>/INTERNAL_52_1_1' */
   boolean_T GVCU_HIL_simscapeoutputFilter_l[2];/* '<S291>/INTERNAL_57_1_1' */
   boolean_T GVCU_HIL_simscapevehiclemultibo[29];/* '<S291>/STATE_1' */
-  boolean_T Integrator_CSTATE;         /* '<S110>/Integrator' */
-  boolean_T Integrator1_CSTATE;        /* '<S32>/Integrator1' */
   boolean_T TransferFcn_CSTATE;        /* '<S623>/Transfer Fcn' */
-  boolean_T Integrator_CSTATE_d;       /* '<S672>/Integrator' */
+  boolean_T Integrator_CSTATE;         /* '<S672>/Integrator' */
   boolean_T Filter_CSTATE;             /* '<S667>/Filter' */
   boolean_T TransferFcn1_CSTATE;       /* '<S623>/Transfer Fcn1' */
   boolean_T Integrator_CSTATE_p;       /* '<S724>/Integrator' */
@@ -2432,11 +2426,12 @@ typedef struct {
   boolean_T TransferFcn_CSTATE_o;      /* '<S28>/Transfer Fcn' */
   boolean_T TransferFcn_CSTATE_oh;     /* '<S27>/Transfer Fcn' */
   boolean_T Integrator_CSTATE_g;       /* '<S216>/Integrator' */
-  boolean_T GVCU_HIL_simscapevehiclepower_p[2];/* '<S291>/INPUT_20_1_1' */
   boolean_T TransferFcn_CSTATE_l;      /* '<S30>/Transfer Fcn' */
   boolean_T TransferFcn_CSTATE_m;      /* '<S29>/Transfer Fcn' */
   boolean_T TransferFcn_CSTATE_i;      /* '<S190>/Transfer Fcn' */
   boolean_T IntegratorLimited_CSTATE;  /* '<S201>/Integrator Limited' */
+  boolean_T Integrator_CSTATE_i0;      /* '<S110>/Integrator' */
+  boolean_T Integrator1_CSTATE;        /* '<S32>/Integrator1' */
   boolean_T GVCU_HIL_simscapevehiclemulti_n[2];/* '<S291>/INPUT_9_1_1' */
 } XDis_GVCU_HIL_simscape_T;
 
@@ -2585,10 +2580,6 @@ struct P_GVCU_HIL_simscape_T_ {
                               /* Mask Parameter: PIDController_InitialConditio_h
                                * Referenced by: '<S897>/Filter'
                                */
-  real_T PIController_InitialConditionFo;
-                              /* Mask Parameter: PIController_InitialConditionFo
-                               * Referenced by: '<S92>/Integrator'
-                               */
   real_T PIDController_InitialConditio_m;
                               /* Mask Parameter: PIDController_InitialConditio_m
                                * Referenced by: '<S672>/Integrator'
@@ -2613,6 +2604,10 @@ struct P_GVCU_HIL_simscape_T_ {
                               /* Mask Parameter: PIDController1_InitialConditi_o
                                * Referenced by: '<S259>/Integrator'
                                */
+  real_T PIController_InitialConditionFo;
+                              /* Mask Parameter: PIController_InitialConditionFo
+                               * Referenced by: '<S92>/Integrator'
+                               */
   real_T PIDController1_Kb;            /* Mask Parameter: PIDController1_Kb
                                         * Referenced by: '<S251>/Kb'
                                         */
@@ -2634,12 +2629,6 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T PIDController1_LowerIntegratorS;
                               /* Mask Parameter: PIDController1_LowerIntegratorS
                                * Referenced by: '<S259>/Integrator'
-                               */
-  real_T PIController_LowerSaturationLim;
-                              /* Mask Parameter: PIController_LowerSaturationLim
-                               * Referenced by:
-                               *   '<S99>/Saturation'
-                               *   '<S84>/DeadZone'
                                */
   real_T PIDController_LowerSaturationLi;
                               /* Mask Parameter: PIDController_LowerSaturationLi
@@ -2667,6 +2656,12 @@ struct P_GVCU_HIL_simscape_T_ {
                                *   '<S266>/Saturation'
                                *   '<S267>/Saturation'
                                */
+  real_T PIController_LowerSaturationLim;
+                              /* Mask Parameter: PIController_LowerSaturationLim
+                               * Referenced by:
+                               *   '<S99>/Saturation'
+                               *   '<S84>/DeadZone'
+                               */
   real_T PIDController_N;              /* Mask Parameter: PIDController_N
                                         * Referenced by: '<S675>/Filter Coefficient'
                                         */
@@ -2690,9 +2685,6 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T DatasheetBattery2_Ns;         /* Mask Parameter: DatasheetBattery2_Ns
                                         * Referenced by: '<S203>/Gain1'
                                         */
-  real_T PIController_P;               /* Mask Parameter: PIController_P
-                                        * Referenced by: '<S97>/Proportional Gain'
-                                        */
   real_T PIDController_P;              /* Mask Parameter: PIDController_P
                                         * Referenced by: '<S677>/Proportional Gain'
                                         */
@@ -2711,6 +2703,9 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T PIDController1_P_e;           /* Mask Parameter: PIDController1_P_e
                                         * Referenced by: '<S264>/Proportional Gain'
                                         */
+  real_T PIController_P;               /* Mask Parameter: PIController_P
+                                        * Referenced by: '<S97>/Proportional Gain'
+                                        */
   real_T DatasheetBattery2_RInt[20];   /* Mask Parameter: DatasheetBattery2_RInt
                                         * Referenced by: '<S207>/R LUT'
                                         */
@@ -2728,12 +2723,6 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T PIDController1_UpperIntegratorS;
                               /* Mask Parameter: PIDController1_UpperIntegratorS
                                * Referenced by: '<S259>/Integrator'
-                               */
-  real_T PIController_UpperSaturationLim;
-                              /* Mask Parameter: PIController_UpperSaturationLim
-                               * Referenced by:
-                               *   '<S99>/Saturation'
-                               *   '<S84>/DeadZone'
                                */
   real_T PIDController_UpperSaturationLi;
                               /* Mask Parameter: PIDController_UpperSaturationLi
@@ -2761,11 +2750,17 @@ struct P_GVCU_HIL_simscape_T_ {
                                *   '<S266>/Saturation'
                                *   '<S267>/Saturation'
                                */
+  real_T PIController_UpperSaturationLim;
+                              /* Mask Parameter: PIController_UpperSaturationLim
+                               * Referenced by:
+                               *   '<S99>/Saturation'
+                               *   '<S84>/DeadZone'
+                               */
   real_T CompareToConstant_const;     /* Mask Parameter: CompareToConstant_const
-                                       * Referenced by: '<S51>/Constant'
+                                       * Referenced by: '<S189>/Constant'
                                        */
-  real_T CompareToConstant_const_j; /* Mask Parameter: CompareToConstant_const_j
-                                     * Referenced by: '<S189>/Constant'
+  real_T CompareToConstant_const_c; /* Mask Parameter: CompareToConstant_const_c
+                                     * Referenced by: '<S51>/Constant'
                                      */
   real_T CompareToConstant_const_l; /* Mask Parameter: CompareToConstant_const_l
                                      * Referenced by: '<S115>/Constant'
@@ -2839,14 +2834,17 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T Constant1_Value;              /* Expression: -1
                                         * Referenced by: '<S190>/Constant1'
                                         */
+  real_T Gain_Gain_b;                  /* Expression: -1
+                                        * Referenced by: '<S191>/Gain'
+                                        */
   real_T Constant_Value_i;             /* Expression: 0
                                         * Referenced by: '<S6>/Constant'
                                         */
+  real_T Constant1_Value_b;            /* Expression: 0
+                                        * Referenced by: '<S616>/Constant1'
+                                        */
   real_T Constant_Value_j;             /* Expression: 0
                                         * Referenced by: '<S616>/Constant'
-                                        */
-  real_T Constant_Value_k;             /* Expression: 0
-                                        * Referenced by: '<S618>/Constant'
                                         */
   real_T Constant1_Value_d;            /* Expression: 0
                                         * Referenced by: '<S82>/Constant1'
@@ -2929,98 +2927,8 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T RATE_TRANSITION_57_1_1_InitialC;/* Expression: 0
                                           * Referenced by: '<S291>/RATE_TRANSITION_57_1_1'
                                           */
-  real_T Step_Time;                    /* Expression: 0.4
-                                        * Referenced by: '<S31>/Step'
-                                        */
-  real_T Step_Y0;                      /* Expression: 0
-                                        * Referenced by: '<S31>/Step'
-                                        */
-  real_T Step_YFinal;                  /* Expression: 1
-                                        * Referenced by: '<S31>/Step'
-                                        */
-  real_T Step1_Time;                   /* Expression: 0.45
-                                        * Referenced by: '<S31>/Step1'
-                                        */
-  real_T Step1_Y0;                     /* Expression: 0
-                                        * Referenced by: '<S31>/Step1'
-                                        */
-  real_T Step1_YFinal;                 /* Expression: 1
-                                        * Referenced by: '<S31>/Step1'
-                                        */
-  real_T kmhtoms_Gain;                 /* Expression: 1/3.6
-                                        * Referenced by: '<S31>/km//h to m//s'
-                                        */
-  real_T RateLimiter_RisingLim;        /* Expression: 20
-                                        * Referenced by: '<S31>/Rate Limiter'
-                                        */
-  real_T RateLimiter_FallingLim;       /* Expression: -20
-                                        * Referenced by: '<S31>/Rate Limiter'
-                                        */
-  real_T RateLimiter_IC;               /* Expression: 0
-                                        * Referenced by: '<S31>/Rate Limiter'
-                                        */
-  real_T Saturation_UpperSat;          /* Expression: 1000
-                                        * Referenced by: '<S2>/Saturation'
-                                        */
-  real_T Saturation_LowerSat;          /* Expression: 0
-                                        * Referenced by: '<S2>/Saturation'
-                                        */
-  real_T Relay_OnVal;                  /* Expression: 10
-                                        * Referenced by: '<S52>/Relay'
-                                        */
-  real_T Relay_OffVal;                 /* Expression: 1
-                                        * Referenced by: '<S52>/Relay'
-                                        */
-  real_T Relay_YOn;                    /* Expression: 1
-                                        * Referenced by: '<S52>/Relay'
-                                        */
-  real_T Relay_YOff;                   /* Expression: 0
-                                        * Referenced by: '<S52>/Relay'
-                                        */
-  real_T Integrator_gainval;           /* Computed Parameter: Integrator_gainval
-                                        * Referenced by: '<S92>/Integrator'
-                                        */
-  real_T Switch3_Threshold;            /* Expression: 0
-                                        * Referenced by: '<S32>/Switch3'
-                                        */
-  real_T Switch1_Threshold;            /* Expression: 0
-                                        * Referenced by: '<S32>/Switch1'
-                                        */
-  real_T Kff_Gain;                     /* Expression: 0.005
-                                        * Referenced by: '<S32>/Kff'
-                                        */
-  real_T Integrator_IC;                /* Expression: 0
-                                        * Referenced by: '<S110>/Integrator'
-                                        */
-  real_T kp_Gain;                      /* Expression: 0.286
-                                        * Referenced by: '<S32>/kp'
-                                        */
-  real_T Integrator1_IC;               /* Expression: 0
-                                        * Referenced by: '<S32>/Integrator1'
-                                        */
-  real_T Integrator1_UpperSat;         /* Expression: 1
-                                        * Referenced by: '<S32>/Integrator1'
-                                        */
-  real_T Integrator1_LowerSat;         /* Expression: -1
-                                        * Referenced by: '<S32>/Integrator1'
-                                        */
-  real_T uto1_UpperSat;                /* Expression: 1
-                                        * Referenced by: '<S32>/0 to 1 '
-                                        */
-  real_T uto1_LowerSat;                /* Expression: 0
-                                        * Referenced by: '<S32>/0 to 1 '
-                                        */
-  real_T Gain_Gain_a;                  /* Expression: 100
-                                        * Referenced by: '<S32>/Gain'
-                                        */
-  real_T RateLimiter1_RisingLim;       /* Expression: 50
-                                        * Referenced by: '<S2>/Rate Limiter1'
-                                        */
-  real_T RateLimiter1_FallingLim;      /* Expression: -50
-                                        * Referenced by: '<S2>/Rate Limiter1'
-                                        */
-  real_T Switch_Threshold;             /* Expression: 0
-                                        * Referenced by: '<S32>/Switch'
+  real_T Delay1_InitialCondition;      /* Expression: 0.0
+                                        * Referenced by: '<S2>/Delay1'
                                         */
   real_T Gain1_Gain;                   /* Expression: 0.01
                                         * Referenced by: '<S2>/Gain1'
@@ -3076,9 +2984,6 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T UnitDelay5_InitialCondition;  /* Expression: 0
                                         * Referenced by: '<S42>/Unit Delay5'
                                         */
-  real_T Gain_Gain_p;                  /* Expression: 0.01
-                                        * Referenced by: '<S2>/Gain'
-                                        */
   real_T TransferFcn_A_h;              /* Computed Parameter: TransferFcn_A_h
                                         * Referenced by: '<S43>/Transfer Fcn'
                                         */
@@ -3106,7 +3011,7 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T UnitDelay3_InitialCondition;  /* Expression: 0
                                         * Referenced by: '<S43>/Unit Delay3'
                                         */
-  real_T Switch_Threshold_j;           /* Expression: -1
+  real_T Switch_Threshold;             /* Expression: -1
                                         * Referenced by: '<S616>/Switch'
                                         */
   real_T TransferFcn2_A_c;             /* Computed Parameter: TransferFcn2_A_c
@@ -3160,10 +3065,10 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T Switch2_Threshold_i;          /* Expression: 0.1
                                         * Referenced by: '<S27>/Switch2'
                                         */
-  real_T Saturation_UpperSat_k;        /* Expression: 10000000
+  real_T Saturation_UpperSat;          /* Expression: 10000000
                                         * Referenced by: '<S1>/Saturation'
                                         */
-  real_T Saturation_LowerSat_e;        /* Expression: 0
+  real_T Saturation_LowerSat;          /* Expression: 0
                                         * Referenced by: '<S1>/Saturation'
                                         */
   real_T MaxTorqueLimit_tableData[201];/* Expression: T_t_extended
@@ -3172,7 +3077,7 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T MaxTorqueLimit_bp01Data[201]; /* Expression: w_t_extended
                                         * Referenced by: '<S216>/Max Torque Limit'
                                         */
-  real_T Integrator_IC_c;              /* Expression: 0
+  real_T Integrator_IC;                /* Expression: 0
                                         * Referenced by: '<S216>/Integrator'
                                         */
   real_T Gain_Gain_i;                  /* Expression: -1
@@ -3229,13 +3134,13 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T SFunction_P8[9];              /* Computed Parameter: SFunction_P8
                                         * Referenced by: '<S192>/S-Function'
                                         */
-  real_T RateLimiter_RisingLim_l;      /* Expression: 100000
+  real_T RateLimiter_RisingLim;        /* Expression: 100000
                                         * Referenced by: '<S6>/Rate Limiter'
                                         */
-  real_T RateLimiter_FallingLim_k;     /* Expression: -100000
+  real_T RateLimiter_FallingLim;       /* Expression: -100000
                                         * Referenced by: '<S6>/Rate Limiter'
                                         */
-  real_T RateLimiter_IC_c;             /* Expression: 0
+  real_T RateLimiter_IC;               /* Expression: 0
                                         * Referenced by: '<S6>/Rate Limiter'
                                         */
   real_T Gain2_Gain;                   /* Expression: pi/30
@@ -3289,11 +3194,8 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T SFunction_P8_i[9];            /* Computed Parameter: SFunction_P8_i
                                         * Referenced by: '<S194>/S-Function'
                                         */
-  real_T Integrator_gainval_e;       /* Computed Parameter: Integrator_gainval_e
-                                      * Referenced by: '<S259>/Integrator'
-                                      */
-  real_T Gain_Gain_b;                  /* Expression: -1
-                                        * Referenced by: '<S191>/Gain'
+  real_T Integrator_gainval;           /* Computed Parameter: Integrator_gainval
+                                        * Referenced by: '<S259>/Integrator'
                                         */
   real_T SFunction_P1_Size_f[2];      /* Computed Parameter: SFunction_P1_Size_f
                                        * Referenced by: '<S193>/S-Function'
@@ -3389,37 +3291,37 @@ struct P_GVCU_HIL_simscape_T_ {
                                         * Referenced by: '<S1>/Saturation2'
                                         */
   real_T ClutchesGear4_Value[9];       /* Expression: [0 0 0 0 0 0 0 0 0]
-                                        * Referenced by: '<S967>/Clutches Gear 4'
+                                        * Referenced by: '<S962>/Clutches Gear 4'
                                         */
   real_T ClutchesGear1_Value[9];       /* Expression: [0 0 0 0 0 0 0 0 0]
-                                        * Referenced by: '<S967>/Clutches Gear 1'
+                                        * Referenced by: '<S962>/Clutches Gear 1'
                                         */
   real_T ClutchesGear2_Value[9];       /* Expression: [1 0 0 0 0 0 0 0 0]
-                                        * Referenced by: '<S967>/Clutches Gear 2'
+                                        * Referenced by: '<S962>/Clutches Gear 2'
                                         */
   real_T ClutchesGear3_Value[9];       /* Expression: [0 1 0 0 0 0 0 0 0]
-                                        * Referenced by: '<S967>/Clutches Gear 3'
+                                        * Referenced by: '<S962>/Clutches Gear 3'
                                         */
   real_T ClutchesGear5_Value[9];       /* Expression: [0 0 1 0 0 0 0 0 0]
-                                        * Referenced by: '<S967>/Clutches Gear 5'
+                                        * Referenced by: '<S962>/Clutches Gear 5'
                                         */
   real_T ClutchesGear6_Value[9];       /* Expression: [0 0 0 1 0 0 0 0 0]
-                                        * Referenced by: '<S967>/Clutches Gear 6'
+                                        * Referenced by: '<S962>/Clutches Gear 6'
                                         */
   real_T ClutchesGear7_Value[9];       /* Expression: [0 0 0 0 1 0 0 0 0]
-                                        * Referenced by: '<S967>/Clutches Gear 7'
+                                        * Referenced by: '<S962>/Clutches Gear 7'
                                         */
   real_T ClutchesGear8_Value[9];       /* Expression: [0 0 0 0 0 1 0 0 0]
-                                        * Referenced by: '<S967>/Clutches Gear 8'
+                                        * Referenced by: '<S962>/Clutches Gear 8'
                                         */
   real_T ClutchesGear9_Value[9];       /* Expression: [0 0 0 0 0 0 1 0 0]
-                                        * Referenced by: '<S967>/Clutches Gear 9'
+                                        * Referenced by: '<S962>/Clutches Gear 9'
                                         */
   real_T ClutchesGear10_Value[9];      /* Expression: [0 0 0 0 0 0 0 1 0]
-                                        * Referenced by: '<S967>/Clutches Gear 10'
+                                        * Referenced by: '<S962>/Clutches Gear 10'
                                         */
   real_T ClutchesGear11_Value[9];      /* Expression: [0 0 0 0 0 0 0 0 1]
-                                        * Referenced by: '<S967>/Clutches Gear 11'
+                                        * Referenced by: '<S962>/Clutches Gear 11'
                                         */
   real_T Gain3_Gain;                   /* Expression: 30/pi
                                         * Referenced by: '<S4>/Gain3'
@@ -3517,10 +3419,10 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T Gain1_Gain_a;                 /* Expression: -1
                                         * Referenced by: '<S4>/Gain1'
                                         */
-  real_T Saturation_UpperSat_km;       /* Expression: 2047
+  real_T Saturation_UpperSat_k;        /* Expression: 2047
                                         * Referenced by: '<S4>/Saturation'
                                         */
-  real_T Saturation_LowerSat_ek;       /* Expression: -2048
+  real_T Saturation_LowerSat_e;        /* Expression: -2048
                                         * Referenced by: '<S4>/Saturation'
                                         */
   real_T uDLookupTable_tableData[6];
@@ -5549,6 +5451,39 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T SFunction_P7_d[9];            /* Computed Parameter: SFunction_P7_d
                                         * Referenced by: '<S287>/S-Function'
                                         */
+  real_T Step_Time;                    /* Expression: 0.4
+                                        * Referenced by: '<S31>/Step'
+                                        */
+  real_T Step_Y0;                      /* Expression: 0
+                                        * Referenced by: '<S31>/Step'
+                                        */
+  real_T Step_YFinal;                  /* Expression: 1
+                                        * Referenced by: '<S31>/Step'
+                                        */
+  real_T Step1_Time;                   /* Expression: 0.45
+                                        * Referenced by: '<S31>/Step1'
+                                        */
+  real_T Step1_Y0;                     /* Expression: 0
+                                        * Referenced by: '<S31>/Step1'
+                                        */
+  real_T Step1_YFinal;                 /* Expression: 1
+                                        * Referenced by: '<S31>/Step1'
+                                        */
+  real_T kmhtoms_Gain;                 /* Expression: 1/3.6
+                                        * Referenced by: '<S31>/km//h to m//s'
+                                        */
+  real_T RateLimiter_RisingLim_n;      /* Expression: 20
+                                        * Referenced by: '<S31>/Rate Limiter'
+                                        */
+  real_T RateLimiter_FallingLim_p;     /* Expression: -20
+                                        * Referenced by: '<S31>/Rate Limiter'
+                                        */
+  real_T RateLimiter_IC_o;             /* Expression: 0
+                                        * Referenced by: '<S31>/Rate Limiter'
+                                        */
+  real_T Delay_InitialCondition_p;     /* Expression: 0.0
+                                        * Referenced by: '<S2>/Delay'
+                                        */
   real_T uDLookupTable_tableData_m[100];/* Expression: linspace(0.4,2.0,100)
                                          * Referenced by: '<S2>/1-D Lookup Table'
                                          */
@@ -5666,11 +5601,65 @@ struct P_GVCU_HIL_simscape_T_ {
   real_T SFunction_P7_k[9];            /* Computed Parameter: SFunction_P7_k
                                         * Referenced by: '<S46>/S-Function'
                                         */
+  real_T Saturation_UpperSat_f;        /* Expression: 1000
+                                        * Referenced by: '<S2>/Saturation'
+                                        */
+  real_T Saturation_LowerSat_c;        /* Expression: 0
+                                        * Referenced by: '<S2>/Saturation'
+                                        */
+  real_T Relay_OnVal;                  /* Expression: 10
+                                        * Referenced by: '<S52>/Relay'
+                                        */
+  real_T Relay_OffVal;                 /* Expression: 1
+                                        * Referenced by: '<S52>/Relay'
+                                        */
+  real_T Relay_YOn;                    /* Expression: 1
+                                        * Referenced by: '<S52>/Relay'
+                                        */
+  real_T Relay_YOff;                   /* Expression: 0
+                                        * Referenced by: '<S52>/Relay'
+                                        */
+  real_T Integrator_gainval_d;       /* Computed Parameter: Integrator_gainval_d
+                                      * Referenced by: '<S92>/Integrator'
+                                      */
+  real_T Switch3_Threshold;            /* Expression: 0
+                                        * Referenced by: '<S32>/Switch3'
+                                        */
+  real_T Switch1_Threshold;            /* Expression: 0
+                                        * Referenced by: '<S32>/Switch1'
+                                        */
+  real_T Kff_Gain;                     /* Expression: 0.005
+                                        * Referenced by: '<S32>/Kff'
+                                        */
+  real_T Integrator_IC_k;              /* Expression: 0
+                                        * Referenced by: '<S110>/Integrator'
+                                        */
+  real_T kp_Gain;                      /* Expression: 0.286
+                                        * Referenced by: '<S32>/kp'
+                                        */
+  real_T Integrator1_IC;               /* Expression: 0
+                                        * Referenced by: '<S32>/Integrator1'
+                                        */
+  real_T Integrator1_UpperSat;         /* Expression: 1
+                                        * Referenced by: '<S32>/Integrator1'
+                                        */
+  real_T Integrator1_LowerSat;         /* Expression: -1
+                                        * Referenced by: '<S32>/Integrator1'
+                                        */
+  real_T uto1_UpperSat;                /* Expression: 1
+                                        * Referenced by: '<S32>/0 to 1 '
+                                        */
+  real_T uto1_LowerSat;                /* Expression: 0
+                                        * Referenced by: '<S32>/0 to 1 '
+                                        */
   real_T Constant1_Value_i;            /* Expression: 0
                                         * Referenced by: '<S32>/Constant1'
                                         */
   real_T Clamping_zero_Value;          /* Expression: 0
                                         * Referenced by: '<S82>/Clamping_zero'
+                                        */
+  real_T Gain_Gain_a;                  /* Expression: 100
+                                        * Referenced by: '<S32>/Gain'
                                         */
   real_T Switch2_Threshold_h;          /* Expression: 0
                                         * Referenced by: '<S32>/Switch2'
@@ -5683,6 +5672,15 @@ struct P_GVCU_HIL_simscape_T_ {
                                         */
   real_T tauerr_Value;                 /* Expression: 0.03
                                         * Referenced by: '<S53>/tauerr'
+                                        */
+  real_T Switch_Threshold_ak;          /* Expression: 0
+                                        * Referenced by: '<S32>/Switch'
+                                        */
+  real_T RateLimiter1_RisingLim;       /* Expression: 50
+                                        * Referenced by: '<S2>/Rate Limiter1'
+                                        */
+  real_T RateLimiter1_FallingLim;      /* Expression: -50
+                                        * Referenced by: '<S2>/Rate Limiter1'
                                         */
   real_T mstokmh_Gain;                 /* Expression: 3.6
                                         * Referenced by: '<S2>/m//s to km//h'
@@ -5706,7 +5704,7 @@ struct P_GVCU_HIL_simscape_T_ {
                 /* Expression: front.wheel.magic_param.SCALING_COEFFICIENTS.LMUX
                  * Referenced by: '<S11>/Constant'
                  */
-  real_T Constant1_Value_b;
+  real_T Constant1_Value_b3;
                 /* Expression: front.wheel.magic_param.SCALING_COEFFICIENTS.LMUY
                  * Referenced by: '<S11>/Constant1'
                  */
@@ -8093,7 +8091,7 @@ struct tag_RTM_GVCU_HIL_simscape_T {
    */
   struct {
     RTWSfcnInfo sfcnInfo;
-    time_T *taskTimePtrs[10];
+    time_T *taskTimePtrs[8];
     SimStruct childSFunctions[65];
     SimStruct *childSFunctionPtrs[65];
     struct _ssBlkInfo2 blkInfo2[65];
@@ -8834,8 +8832,8 @@ struct tag_RTM_GVCU_HIL_simscape_T {
   boolean_T zCCacheNeedsReset;
   boolean_T derivCacheNeedsReset;
   boolean_T CTOutputIncnstWithState;
-  real_T odeY[109];
-  real_T odeF[3][109];
+  real_T odeY[107];
+  real_T odeF[3][107];
   ODE3_IntgData intgData;
   void *dwork;
 
@@ -8916,15 +8914,9 @@ struct tag_RTM_GVCU_HIL_simscape_T {
     uint32_T clockTick7;
     uint32_T clockTickH7;
     time_T stepSize7;
-    uint32_T clockTick8;
-    uint32_T clockTickH8;
-    time_T stepSize8;
-    uint32_T clockTick9;
-    uint32_T clockTickH9;
-    time_T stepSize9;
     boolean_T firstInitCondFlag;
     struct {
-      uint16_T TID[10];
+      uint16_T TID[8];
     } TaskCounters;
 
     time_T tStart;
@@ -8940,12 +8932,12 @@ struct tag_RTM_GVCU_HIL_simscape_T {
     int_T *sampleHits;
     int_T *perTaskSampleHits;
     time_T *t;
-    time_T sampleTimesArray[10];
-    time_T offsetTimesArray[10];
-    int_T sampleTimeTaskIDArray[10];
-    int_T sampleHitArray[10];
-    int_T perTaskSampleHitsArray[100];
-    time_T tArray[10];
+    time_T sampleTimesArray[8];
+    time_T offsetTimesArray[8];
+    int_T sampleTimeTaskIDArray[8];
+    int_T sampleHitArray[8];
+    int_T perTaskSampleHitsArray[64];
+    time_T tArray[8];
   } Timing;
 };
 
@@ -9122,7 +9114,7 @@ extern RT_MODEL_GVCU_HIL_simscape_T *const GVCU_HIL_simscape_M;
  * '<S109>' : 'GVCU_HIL_simscape/Driver/Driver/Dec_controller/PI Controller/preSat Signal/Forward_Path'
  * '<S110>' : 'GVCU_HIL_simscape/Driver/Driver/LPF/Error LPF'
  * '<S111>' : 'GVCU_HIL_simscape/Driver/brake balance/brake balance'
- * '<S112>' : 'GVCU_HIL_simscape/Driver/gear/gear'
+ * '<S112>' : 'GVCU_HIL_simscape/Driver/gear/MATLAB Function'
  * '<S113>' : 'GVCU_HIL_simscape/GVCU - HiL/BMS'
  * '<S114>' : 'GVCU_HIL_simscape/GVCU - HiL/Commented messages'
  * '<S115>' : 'GVCU_HIL_simscape/GVCU - HiL/Compare To Constant'
@@ -9946,59 +9938,54 @@ extern RT_MODEL_GVCU_HIL_simscape_T *const GVCU_HIL_simscape_M;
  * '<S933>' : 'GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Subsystem3/PS-Simulink Converter6'
  * '<S934>' : 'GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Subsystem3/PS-Simulink Converter1/EVAL_KEY'
  * '<S935>' : 'GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Subsystem3/PS-Simulink Converter6/EVAL_KEY'
- * '<S936>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Simulink-PS Converter'
- * '<S937>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem'
- * '<S938>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3'
- * '<S939>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/friction'
- * '<S940>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter'
- * '<S941>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Simulink-PS Converter/EVAL_KEY'
- * '<S942>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/Simulink-PS Converter'
- * '<S943>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/Simulink-PS Converter/EVAL_KEY'
- * '<S944>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3/PS-Simulink Converter1'
- * '<S945>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3/PS-Simulink Converter6'
- * '<S946>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3/PS-Simulink Converter1/EVAL_KEY'
- * '<S947>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3/PS-Simulink Converter6/EVAL_KEY'
- * '<S948>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/Simulink-PS Converter'
- * '<S949>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/Simulink-PS Converter/EVAL_KEY'
- * '<S950>' : 'GVCU_HIL_simscape/vehicle/powertrain/propshaft/Simulink-PS Converter'
- * '<S951>' : 'GVCU_HIL_simscape/vehicle/powertrain/propshaft/Simulink-PS Converter/EVAL_KEY'
- * '<S952>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Simulink-PS Converter'
- * '<S953>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Simulink-PS Converter1'
- * '<S954>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1'
- * '<S955>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3'
- * '<S956>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Simulink-PS Converter/EVAL_KEY'
- * '<S957>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Simulink-PS Converter1/EVAL_KEY'
- * '<S958>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1/PS-Simulink Converter1'
- * '<S959>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1/PS-Simulink Converter6'
- * '<S960>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1/PS-Simulink Converter1/EVAL_KEY'
- * '<S961>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1/PS-Simulink Converter6/EVAL_KEY'
- * '<S962>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3/PS-Simulink Converter1'
- * '<S963>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3/PS-Simulink Converter6'
- * '<S964>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3/PS-Simulink Converter1/EVAL_KEY'
- * '<S965>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3/PS-Simulink Converter6/EVAL_KEY'
- * '<S966>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3'
- * '<S967>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector'
- * '<S968>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3/PS-Simulink Converter1'
- * '<S969>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3/PS-Simulink Converter6'
- * '<S970>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3/PS-Simulink Converter1/EVAL_KEY'
- * '<S971>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3/PS-Simulink Converter6/EVAL_KEY'
- * '<S972>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter1'
- * '<S973>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter2'
- * '<S974>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter3'
- * '<S975>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter4'
- * '<S976>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter5'
- * '<S977>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter6'
- * '<S978>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter7'
- * '<S979>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter8'
- * '<S980>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter9'
- * '<S981>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter1/EVAL_KEY'
- * '<S982>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter2/EVAL_KEY'
- * '<S983>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter3/EVAL_KEY'
- * '<S984>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter4/EVAL_KEY'
- * '<S985>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter5/EVAL_KEY'
- * '<S986>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter6/EVAL_KEY'
- * '<S987>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter7/EVAL_KEY'
- * '<S988>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter8/EVAL_KEY'
- * '<S989>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter9/EVAL_KEY'
+ * '<S936>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem'
+ * '<S937>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3'
+ * '<S938>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/friction'
+ * '<S939>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/Simulink-PS Converter'
+ * '<S940>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/Simulink-PS Converter/EVAL_KEY'
+ * '<S941>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3/PS-Simulink Converter1'
+ * '<S942>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3/PS-Simulink Converter6'
+ * '<S943>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3/PS-Simulink Converter1/EVAL_KEY'
+ * '<S944>' : 'GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3/PS-Simulink Converter6/EVAL_KEY'
+ * '<S945>' : 'GVCU_HIL_simscape/vehicle/powertrain/propshaft/Simulink-PS Converter'
+ * '<S946>' : 'GVCU_HIL_simscape/vehicle/powertrain/propshaft/Simulink-PS Converter/EVAL_KEY'
+ * '<S947>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Simulink-PS Converter'
+ * '<S948>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Simulink-PS Converter1'
+ * '<S949>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1'
+ * '<S950>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3'
+ * '<S951>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Simulink-PS Converter/EVAL_KEY'
+ * '<S952>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Simulink-PS Converter1/EVAL_KEY'
+ * '<S953>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1/PS-Simulink Converter1'
+ * '<S954>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1/PS-Simulink Converter6'
+ * '<S955>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1/PS-Simulink Converter1/EVAL_KEY'
+ * '<S956>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem1/PS-Simulink Converter6/EVAL_KEY'
+ * '<S957>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3/PS-Simulink Converter1'
+ * '<S958>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3/PS-Simulink Converter6'
+ * '<S959>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3/PS-Simulink Converter1/EVAL_KEY'
+ * '<S960>' : 'GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Subsystem3/PS-Simulink Converter6/EVAL_KEY'
+ * '<S961>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3'
+ * '<S962>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector'
+ * '<S963>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3/PS-Simulink Converter1'
+ * '<S964>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3/PS-Simulink Converter6'
+ * '<S965>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3/PS-Simulink Converter1/EVAL_KEY'
+ * '<S966>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/Subsystem3/PS-Simulink Converter6/EVAL_KEY'
+ * '<S967>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter1'
+ * '<S968>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter2'
+ * '<S969>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter3'
+ * '<S970>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter4'
+ * '<S971>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter5'
+ * '<S972>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter6'
+ * '<S973>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter7'
+ * '<S974>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter8'
+ * '<S975>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter9'
+ * '<S976>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter1/EVAL_KEY'
+ * '<S977>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter2/EVAL_KEY'
+ * '<S978>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter3/EVAL_KEY'
+ * '<S979>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter4/EVAL_KEY'
+ * '<S980>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter5/EVAL_KEY'
+ * '<S981>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter6/EVAL_KEY'
+ * '<S982>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter7/EVAL_KEY'
+ * '<S983>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter8/EVAL_KEY'
+ * '<S984>' : 'GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Simulink-PS Converter9/EVAL_KEY'
  */
 #endif                                 /* GVCU_HIL_simscape_h_ */

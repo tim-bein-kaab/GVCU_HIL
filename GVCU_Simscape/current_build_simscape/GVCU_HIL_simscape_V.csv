@@ -24,7 +24,6 @@ GVCU_HIL_simscape/Driver/Constant13/Value; 0
 GVCU_HIL_simscape/Driver/Constant14/Value; 0
 GVCU_HIL_simscape/Driver/Constant15/Value; 0
 GVCU_HIL_simscape/Driver/Constant16/Value; 0
-GVCU_HIL_simscape/Driver/Gain/Gain; 0.01
 GVCU_HIL_simscape/Driver/Gain1/Gain; 0.01
 GVCU_HIL_simscape/Driver/m//s to km//h/Gain; 3.6
 GVCU_HIL_simscape/Driver/1-D Lookup Table/Table; 0.4; 0.416162; 0.432323; 0.448485; 0.464646; 0.480808; 0.49697; 0.513131; 0.529293; 0.545455; 0.561616; 0.577778; 0.593939; 0.610101; 0.626263; 0.642424; 0.658586; 0.674747; 0.690909; 0.707071; 0.723232; 0.739394; 0.755556; 0.771717; 0.787879; 0.80404; 0.820202; 0.836364; 0.852525; 0.868687; 0.884848; 0.90101; 0.917172; 0.933333; 0.949495; 0.965657; 0.981818; 0.99798; 1.01414; 1.0303; 1.04646; 1.06263; 1.07879; 1.09495; 1.11111; 1.12727; 1.14343; 1.1596; 1.17576; 1.19192; 1.20808; 1.22424; 1.2404; 1.25657; 1.27273; 1.28889; 1.30505; 1.32121; 1.33737; 1.35354; 1.3697; 1.38586; 1.40202; 1.41818; 1.43434; 1.45051; 1.46667; 1.48283; 1.49899; 1.51515; 1.53131; 1.54747; 1.56364; 1.5798; 1.59596; 1.61212; 1.62828; 1.64444; 1.66061; 1.67677; 1.69293; 1.70909; 1.72525; 1.74141; 1.75758; 1.77374; 1.7899; 1.80606; 1.82222; 1.83838; 1.85455; 1.87071; 1.88687; 1.90303; 1.91919; 1.93535; 1.95152; 1.96768; 1.98384; 2
@@ -41,6 +40,8 @@ GVCU_HIL_simscape/Driver/0 - 19 mm/UpperLimit; 19
 GVCU_HIL_simscape/Driver/0 - 19 mm/LowerLimit; 0
 GVCU_HIL_simscape/Driver/Saturation/UpperLimit; 1000
 GVCU_HIL_simscape/Driver/Saturation/LowerLimit; 0
+GVCU_HIL_simscape/Driver/Delay/InitialCondition; 0
+GVCU_HIL_simscape/Driver/Delay1/InitialCondition; 0
 GVCU_HIL_simscape/GVCU - HiL/Compare To Constant/const; 0
 GVCU_HIL_simscape/GVCU - HiL/Constant/Value; 0
 GVCU_HIL_simscape/GVCU - HiL/Constant1/Value; 80
@@ -1091,8 +1092,8 @@ GVCU_HIL_simscape/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_56_1_1/In
 GVCU_HIL_simscape/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_57_1_1/InitialCondition; 0
 GVCU_HIL_simscape/vehicle/powertrain/Subsystem/Gain5/Gain; 3.6
 GVCU_HIL_simscape/vehicle/powertrain/engine/Constant/Value; 0
+GVCU_HIL_simscape/vehicle/powertrain/engine/Constant1/Value; 0
 GVCU_HIL_simscape/vehicle/powertrain/engine/Switch/Threshold; -1
-GVCU_HIL_simscape/vehicle/powertrain/motor/Constant/Value; 0
 GVCU_HIL_simscape/Driver/Driver/LPF/Error LPF/Integrator/InitialCondition; 0
 GVCU_HIL_simscape/Powertrain (EV)/EM/Mapped Motor/Electrical Current/Saturation/UpperLimit; inf
 GVCU_HIL_simscape/Powertrain (EV)/EM/Mapped Motor/Electrical Current/Saturation/LowerLimit; 0.0001
@@ -1177,7 +1178,7 @@ GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Clutches Gear 6/
 GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Clutches Gear 7/Value; 0; 0; 0; 0; 1; 0; 0; 0; 0
 GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Clutches Gear 8/Value; 0; 0; 0; 0; 0; 1; 0; 0; 0
 GVCU_HIL_simscape/vehicle/powertrain/transmission/gear selector/Clutches Gear 9/Value; 0; 0; 0; 0; 0; 0; 1; 0; 0
-GVCU_HIL_simscape/Powertrain (EV)/PID Speed Controller/PID Controller1/Integrator/Discrete/Integrator/gainval; 0.0002
+GVCU_HIL_simscape/Powertrain (EV)/PID Speed Controller/PID Controller1/Integrator/Discrete/Integrator/gainval; 0.005
 GVCU_HIL_simscape/Driver/Driver/Dec_controller/PI Controller/Anti-windup/Disc/ Clamping Parallel/Clamping_zero/Value; 0
 GVCU_HIL_simscape/Driver/Driver/Dec_controller/PI Controller/Anti-windup/Disc/ Clamping Parallel/Constant/Value; 1
 GVCU_HIL_simscape/Driver/Driver/Dec_controller/PI Controller/Anti-windup/Disc/ Clamping Parallel/Constant1/Value; 0

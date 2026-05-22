@@ -31,7 +31,6 @@
 #include "GVCU_HIL_simscape_a37faff9_2_ds_var_tol.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_vmf.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_mcon_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dum_p.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_imax.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_vpf.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_lv.h"
@@ -87,6 +86,8 @@ static int32_T ds_ddm_p(const NeDynamicSystem *ds, const NeDynamicSystemInput
   *in, NeDsMethodOutput *out);
 static int32_T ds_ddm(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                       NeDsMethodOutput *out);
+static int32_T ds_dum_p(const NeDynamicSystem *ds, const NeDynamicSystemInput
+  *in, NeDsMethodOutput *out);
 static int32_T ds_dum(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                       NeDsMethodOutput *out);
 static int32_T ds_dtm_p(const NeDynamicSystem *ds, const NeDynamicSystemInput
@@ -1135,7 +1136,7 @@ static NeVariableData s_variable_data[99] = { {
     1.0, "1", 0.0, FALSE, FALSE, { 1, "1x1" }, NE_INIT_MODE_NONE, "M", } };
 
 static NeVariableData *s_discrete_data = NULL;
-static NeObservableData s_observable_data[1228] = { {
+static NeObservableData s_observable_data[1208] = { {
     "vehicle.multibody.front_left_contact.Mechanical_Rotational_Reference.W.w",
     "GVCU_HIL_simscape/vehicle/multibody/front left contact/Mechanical Rotational Reference",
     { 1, "1x1" }, "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED,
@@ -2692,35 +2693,7 @@ static NeObservableData s_observable_data[1228] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/front gearbox", { 1, "1x1" }, "rad/s",
     1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
     NE_FREQTIME_TYPE_TIME, FALSE, TRUE, "Rotational velocity", }, {
-    "vehicle.powertrain.motor.PS_Gain.I",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Gain", { 1, "1x1" }, "1", 1.0,
-    "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
-    NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I", }, {
-    "vehicle.powertrain.motor.PS_Gain.O",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Gain", { 1, "1x1" }, "1", 1.0,
-    "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
-    NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "O", }, {
-    "vehicle.powertrain.motor.PS_Switch1.I1",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", { 1, "1x1" }, "1",
-    1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
-    NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I1", }, {
-    "vehicle.powertrain.motor.PS_Switch1.I2",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", { 1, "1x1" }, "1",
-    1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
-    NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I2", }, {
-    "vehicle.powertrain.motor.PS_Switch1.I3",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", { 1, "1x1" }, "1",
-    1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
-    NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I3", }, {
-    "vehicle.powertrain.motor.PS_Switch1.O",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", { 1, "1x1" }, "1",
-    1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
-    NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "O", }, {
-    "vehicle.powertrain.motor.Simulink_PS_Converter_output0",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/Simulink-PS\nConverter", { 1,
-      "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_FIXED, NE_INIT_MODE_NONE, FALSE,
-    FALSE, NE_FREQTIME_TYPE_TIME, FALSE, TRUE, "Simulink_PS_Converter_output0",
-  }, { "vehicle.powertrain.motor.Subsystem.Conn2.w",
+    "vehicle.powertrain.motor.Subsystem.Conn2.w",
     "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem", { 1, "1x1" },
     "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE,
     FALSE, NE_FREQTIME_TYPE_TIME, FALSE, TRUE, "Rotational velocity", }, {
@@ -2888,63 +2861,10 @@ static NeObservableData s_observable_data[1228] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/motor/friction", { 1, "1x1" }, "rad/s",
     1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
     NE_FREQTIME_TYPE_TIME, FALSE, TRUE, "Rotational velocity", }, {
-    "vehicle.powertrain.motor.friction.omega",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/friction", { 1, "1x1" }, "rad/s",
-    1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
-    NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "omega", }, {
     "vehicle.powertrain.motor.out.w",
     "GVCU_HIL_simscape/vehicle/powertrain/motor", { 1, "1x1" }, "rad/s", 1.0,
     "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
     NE_FREQTIME_TYPE_TIME, FALSE, TRUE, "Rotational velocity", }, {
-    "vehicle.powertrain.motor.rev_limiter.PS_Constant.O",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Constant", { 1,
-      "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, TRUE,
-    FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "O", }, {
-    "vehicle.powertrain.motor.rev_limiter.PS_Divide.I1",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Divide", { 1,
-      "1x1" }, "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
-    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I1", }, {
-    "vehicle.powertrain.motor.rev_limiter.PS_Divide.I2",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Divide", { 1,
-      "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, TRUE,
-    FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I2", }, {
-    "vehicle.powertrain.motor.rev_limiter.PS_Divide.O",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Divide", { 1,
-      "1x1" }, "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
-    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "O", }, {
-    "vehicle.powertrain.motor.rev_limiter.PS_Lookup_Table_1D.I",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Lookup Table (1D)",
-    { 1, "1x1" }, "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED,
-    NE_INIT_MODE_NONE, FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "x", },
-    { "vehicle.powertrain.motor.rev_limiter.PS_Lookup_Table_1D.O",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Lookup Table (1D)",
-    { 1, "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
-    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "f", }, {
-    "vehicle.powertrain.motor.rev_limiter.PS_Product.I1",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Product", { 1,
-      "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
-    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I1", }, {
-    "vehicle.powertrain.motor.rev_limiter.PS_Product.I2",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Product", { 1,
-      "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
-    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I2", }, {
-    "vehicle.powertrain.motor.rev_limiter.PS_Product.O",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Product", { 1,
-      "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
-    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "O", }, {
-    "vehicle.powertrain.motor.rev_limiter.Simulink_PS_Converter_output0",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/Simulink-PS\nConverter",
-    { 1, "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_FIXED, NE_INIT_MODE_NONE,
-    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, FALSE, TRUE,
-    "Simulink_PS_Converter_output0", }, {
-    "vehicle.powertrain.motor.rev_limiter.omega",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter", { 1, "1x1" },
-    "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE,
-    FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "omega", }, {
-    "vehicle.powertrain.motor.rev_limiter.throttle",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter", { 1, "1x1" }, "1",
-    1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
-    NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "throttle", }, {
     "vehicle.powertrain.propshaft.Disc_Friction_Clutch.B.w",
     "GVCU_HIL_simscape/vehicle/powertrain/propshaft/Disc Friction Clutch", { 1,
       "1x1" }, "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
@@ -6425,7 +6345,7 @@ static NeModeData s_major_mode_data[15] = { {
     0, { 1, "1x1" }, "internal_mode_var_m__", }, { "ie0", 0U, "", 0, { 1, "1x1"
     }, "", } };
 
-static NeZCData s_zc_data[225] = { {
+static NeZCData s_zc_data[224] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Disc Friction Clutch",
     1U, 0U, "vehicle.powertrain.front_gearbox.Disc_Friction_Clutch",
     "sdl.clutches.disk_friction_clutch", NE_ZC_TYPE_TRUE, }, {
@@ -7307,12 +7227,9 @@ static NeZCData s_zc_data[225] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch8",
     1U, 241U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch8.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", NE_ZC_TYPE_FALSE, }, {
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", 1U, 242U,
-    "vehicle.powertrain.motor.PS_Switch1",
-    "foundation.signal.nonlinear.controlled_switch", NE_ZC_TYPE_TRUE, } };
+    "sdl.clutches.fundamental_components.two_way_clutch", NE_ZC_TYPE_FALSE, } };
 
-static NeRange s_range[243] = { { "sdl.clutches.disk_friction_clutch", 304U, 38U,
+static NeRange s_range[242] = { { "sdl.clutches.disk_friction_clutch", 304U, 38U,
     304U, 53U, NE_RANGE_TYPE_NORMAL, }, { "sdl.clutches.disk_friction_clutch",
     304U, 38U, 304U, 53U, NE_RANGE_TYPE_NORMAL, }, {
     "sdl.clutches.disk_friction_clutch", 304U, 38U, 304U, 53U,
@@ -7774,27 +7691,25 @@ static NeRange s_range[243] = { { "sdl.clutches.disk_friction_clutch", 304U, 38U
     "sdl.clutches.fundamental_components.two_way_clutch", 1U, 1U, 1U, 1U,
     NE_RANGE_TYPE_PROTECTED, }, {
     "sdl.clutches.fundamental_components.two_way_clutch", 1U, 1U, 1U, 1U,
-    NE_RANGE_TYPE_PROTECTED, }, {
-    "foundation.signal.nonlinear.controlled_switch", 27U, 21U, 27U, 71U,
-    NE_RANGE_TYPE_NORMAL, } };
+    NE_RANGE_TYPE_PROTECTED, } };
 
 static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Disc Friction Clutch",
     3U, 0U,
     "vehicle.powertrain.front_gearbox.Disc_Friction_Clutch.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
+    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Disc Friction Clutch1",
     3U, 3U,
     "vehicle.powertrain.front_gearbox.Disc_Friction_Clutch1.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/propshaft/Disc Friction Clutch", 3U,
     6U,
     "vehicle.powertrain.propshaft.Disc_Friction_Clutch.fundamental_clutch.clutch",
-    "sdl.clutches.disk_friction_clutch", FALSE,
+    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch", 3U,
@@ -7806,25 +7721,25 @@ static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch1",
     3U, 12U,
     "vehicle.powertrain.side_gearbox.Disc_Friction_Clutch1.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch",
     3U, 15U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch1",
     3U, 18U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch1.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch2",
     3U, 21U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch2.fundamental_clutch.clutch",
-    "sdl.clutches.logic_controlled_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch3",
@@ -7836,7 +7751,7 @@ static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch4",
     3U, 27U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch4.fundamental_clutch.clutch",
-    "sdl.clutches.logic_controlled_clutch", FALSE,
+    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch5",
@@ -7848,19 +7763,19 @@ static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch6",
     3U, 33U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch6.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
+    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch7",
     3U, 36U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch7.fundamental_clutch.clutch",
-    "sdl.clutches.logic_controlled_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch8",
     3U, 39U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch8.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
+    "sdl.clutches.logic_controlled_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/brakes/Disc Brake1", 1U, 42U,
@@ -8672,10 +8587,10 @@ static NeDsMethodOutput *ds_output_dum_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDUM_P.mNumCol = 27;
+  out->mDUM_P.mNumCol = 25;
   out->mDUM_P.mNumRow = 23;
   out->mDUM_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mDUM_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -8813,10 +8728,10 @@ static NeDsMethodOutput *ds_output_bcon_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mBCON_P.mNumCol = 27;
+  out->mBCON_P.mNumCol = 25;
   out->mBCON_P.mNumRow = 99;
   out->mBCON_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mBCON_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     9);
   return out;
@@ -8841,10 +8756,10 @@ static NeDsMethodOutput *ds_output_bpar_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mBPAR_P.mNumCol = 27;
+  out->mBPAR_P.mNumCol = 25;
   out->mBPAR_P.mNumRow = 99;
   out->mBPAR_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mBPAR_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -9043,10 +8958,10 @@ static NeDsMethodOutput *ds_output_duf_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDUF_P.mNumCol = 27;
+  out->mDUF_P.mNumCol = 25;
   out->mDUF_P.mNumRow = 99;
   out->mDUF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mDUF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     20);
   return out;
@@ -9183,10 +9098,10 @@ static NeDsMethodOutput *ds_output_tduf_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mTDUF_P.mNumCol = 27;
+  out->mTDUF_P.mNumCol = 25;
   out->mTDUF_P.mNumRow = 99;
   out->mTDUF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mTDUF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     34);
   return out;
@@ -9215,10 +9130,10 @@ static NeDsMethodOutput *ds_output_dnf_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDNF_P.mNumCol = 118;
+  out->mDNF_P.mNumCol = 115;
   out->mDNF_P.mNumRow = 99;
   out->mDNF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    119);
+    116);
   out->mDNF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     14);
   return out;
@@ -9443,10 +9358,10 @@ static NeDsMethodOutput *ds_output_tduicr_p(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mTDUICR_P.mNumCol = 27;
+  out->mTDUICR_P.mNumCol = 25;
   out->mTDUICR_P.mNumRow = 24;
   out->mTDUICR_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof
-    (int32_T), 28);
+    (int32_T), 26);
   out->mTDUICR_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof
     (int32_T), 0);
   return out;
@@ -9570,10 +9485,10 @@ static NeDsMethodOutput *ds_output_mduy_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mMDUY_P.mNumCol = 27;
+  out->mMDUY_P.mNumCol = 25;
   out->mMDUY_P.mNumRow = 23;
   out->mMDUY_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mMDUY_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -9602,10 +9517,10 @@ static NeDsMethodOutput *ds_output_tduy_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mTDUY_P.mNumCol = 27;
+  out->mTDUY_P.mNumCol = 25;
   out->mTDUY_P.mNumRow = 23;
   out->mTDUY_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mTDUY_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     4);
   return out;
@@ -9674,10 +9589,10 @@ static NeDsMethodOutput *ds_output_duy_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDUY_P.mNumCol = 27;
+  out->mDUY_P.mNumCol = 25;
   out->mDUY_P.mNumRow = 23;
   out->mDUY_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mDUY_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     4);
   return out;
@@ -9730,9 +9645,9 @@ static NeDsMethodOutput *ds_output_mode(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mMODE.mN = 225;
+  out->mMODE.mN = 224;
   out->mMODE.mX = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    225);
+    224);
   return out;
 }
 
@@ -9743,8 +9658,8 @@ static NeDsMethodOutput *ds_output_zc(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mZC.mN = 225;
-  out->mZC.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 225);
+  out->mZC.mN = 224;
+  out->mZC.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 224);
   return out;
 }
 
@@ -9935,8 +9850,8 @@ static NeDsMethodOutput *ds_output_log(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mLOG.mN = 834;
-  out->mLOG.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 834);
+  out->mLOG.mN = 816;
+  out->mLOG.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 816);
   return out;
 }
 
@@ -10065,10 +9980,10 @@ static NeDsMethodOutput *ds_output_dudelt_p(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDUDELT_P.mNumCol = 27;
+  out->mDUDELT_P.mNumCol = 25;
   out->mDUDELT_P.mNumRow = 0;
   out->mDUDELT_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof
-    (int32_T), 28);
+    (int32_T), 26);
   out->mDUDELT_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof
     (int32_T), 0);
   return out;
@@ -10123,9 +10038,9 @@ static NeDsMethodOutput *ds_output_obs_exp(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mOBS_EXP.mN = 1097;
+  out->mOBS_EXP.mN = 1077;
   out->mOBS_EXP.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
-    1097);
+    1077);
   return out;
 }
 
@@ -10136,9 +10051,9 @@ static NeDsMethodOutput *ds_output_obs_act(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mOBS_ACT.mN = 1097;
+  out->mOBS_ACT.mN = 1077;
   out->mOBS_ACT.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
-    1097);
+    1077);
   return out;
 }
 
@@ -10149,9 +10064,9 @@ static NeDsMethodOutput *ds_output_obs_all(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mOBS_ALL.mN = 1097;
+  out->mOBS_ALL.mN = 1077;
   out->mOBS_ALL.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
-    1097);
+    1077);
   return out;
 }
 
@@ -10162,9 +10077,9 @@ static NeDsMethodOutput *ds_output_obs_il(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mOBS_IL.mN = 1097;
+  out->mOBS_IL.mN = 1077;
   out->mOBS_IL.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof
-    (boolean_T), 1097);
+    (boolean_T), 1077);
   return out;
 }
 
@@ -10290,10 +10205,10 @@ static NeDsMethodOutput *ds_output_qu_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mQU_P.mNumCol = 27;
+  out->mQU_P.mNumCol = 25;
   out->mQU_P.mNumRow = 99;
   out->mQU_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mQU_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     3);
   return out;
@@ -10529,7 +10444,7 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
 {
   NeDynamicSystem *ds;
   _NeDynamicSystem *_ds;
-  static SscIoInfo input_info[27];
+  static SscIoInfo input_info[25];
   static SscIoInfo output_info[23];
 
   /* allocate dynamic system data and extended data */
@@ -10548,20 +10463,20 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds->mNumICResiduals = 24;
   ds->mNumFreqs = 0;
   ds->mNumSolverHits = 0;
-  ds->mNumModes = 225;
+  ds->mNumModes = 224;
   ds->mNumMajorModes = 15;
   ds->mNumRealCache = 0;
   ds->mNumIntCache = 392;
-  ds->mNumObservables = 1228;
-  ds->mNumObservableElements = 1097;
-  ds->mNumZcs = 225;
+  ds->mNumObservables = 1208;
+  ds->mNumObservableElements = 1077;
+  ds->mNumZcs = 224;
   ds->mNumAsserts = 18;
   ds->mNumAssertRanges = 46;
   ds->mNumParamAsserts = 0;
   ds->mNumParamAssertRanges = 0;
   ds->mNumInitialAsserts = 0;
   ds->mNumInitialAssertRanges = 0;
-  ds->mNumRanges = 243;
+  ds->mNumRanges = 242;
   ds->mNumEquationRanges = 255;
   ds->mNumCERRanges = 0;
   ds->mNumICRRanges = 24;
@@ -10584,7 +10499,7 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds->mIsScalable = FALSE;
 
   /* setup ios */
-  ds->mNumIo[SSC_INPUT_IO_TYPE] = 27;
+  ds->mNumIo[SSC_INPUT_IO_TYPE] = 25;
   input_info[0].identifier =
     "vehicle.multibody.front_left_contact.Revolute_Joint_w_out0";
   input_info[0].size.numElements = 1;
@@ -10669,109 +10584,96 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
     "vehicle.powertrain.front_gearbox.Simulink_PS_Converter_output0";
   input_info[11].unit = "1";
   input_info[12].identifier =
-    "vehicle.powertrain.motor.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.motor.Subsystem.Simulink_PS_Converter_output0";
   input_info[12].size.numElements = 1;
   input_info[12].size.encodedDimensions = "1x1";
-  input_info[12].name = "vehicle.powertrain.motor.Simulink_PS_Converter_output0";
+  input_info[12].name =
+    "vehicle.powertrain.motor.Subsystem.Simulink_PS_Converter_output0";
   input_info[12].unit = "1";
   input_info[13].identifier =
-    "vehicle.powertrain.motor.Subsystem.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.propshaft.Simulink_PS_Converter_output0";
   input_info[13].size.numElements = 1;
   input_info[13].size.encodedDimensions = "1x1";
   input_info[13].name =
-    "vehicle.powertrain.motor.Subsystem.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.propshaft.Simulink_PS_Converter_output0";
   input_info[13].unit = "1";
   input_info[14].identifier =
-    "vehicle.powertrain.motor.rev_limiter.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter1_output0";
   input_info[14].size.numElements = 1;
   input_info[14].size.encodedDimensions = "1x1";
   input_info[14].name =
-    "vehicle.powertrain.motor.rev_limiter.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter1_output0";
   input_info[14].unit = "1";
   input_info[15].identifier =
-    "vehicle.powertrain.propshaft.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter_output0";
   input_info[15].size.numElements = 1;
   input_info[15].size.encodedDimensions = "1x1";
   input_info[15].name =
-    "vehicle.powertrain.propshaft.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter_output0";
   input_info[15].unit = "1";
   input_info[16].identifier =
-    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter1_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter1_output0";
   input_info[16].size.numElements = 1;
   input_info[16].size.encodedDimensions = "1x1";
   input_info[16].name =
-    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter1_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter1_output0";
   input_info[16].unit = "1";
   input_info[17].identifier =
-    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter2_output0";
   input_info[17].size.numElements = 1;
   input_info[17].size.encodedDimensions = "1x1";
   input_info[17].name =
-    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter2_output0";
   input_info[17].unit = "1";
   input_info[18].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter1_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter3_output0";
   input_info[18].size.numElements = 1;
   input_info[18].size.encodedDimensions = "1x1";
   input_info[18].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter1_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter3_output0";
   input_info[18].unit = "1";
   input_info[19].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter2_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter4_output0";
   input_info[19].size.numElements = 1;
   input_info[19].size.encodedDimensions = "1x1";
   input_info[19].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter2_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter4_output0";
   input_info[19].unit = "1";
   input_info[20].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter3_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter5_output0";
   input_info[20].size.numElements = 1;
   input_info[20].size.encodedDimensions = "1x1";
   input_info[20].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter3_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter5_output0";
   input_info[20].unit = "1";
   input_info[21].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter4_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter6_output0";
   input_info[21].size.numElements = 1;
   input_info[21].size.encodedDimensions = "1x1";
   input_info[21].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter4_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter6_output0";
   input_info[21].unit = "1";
   input_info[22].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter5_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter7_output0";
   input_info[22].size.numElements = 1;
   input_info[22].size.encodedDimensions = "1x1";
   input_info[22].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter5_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter7_output0";
   input_info[22].unit = "1";
   input_info[23].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter6_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter8_output0";
   input_info[23].size.numElements = 1;
   input_info[23].size.encodedDimensions = "1x1";
   input_info[23].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter6_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter8_output0";
   input_info[23].unit = "1";
   input_info[24].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter7_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter9_output0";
   input_info[24].size.numElements = 1;
   input_info[24].size.encodedDimensions = "1x1";
   input_info[24].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter7_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter9_output0";
   input_info[24].unit = "1";
-  input_info[25].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter8_output0";
-  input_info[25].size.numElements = 1;
-  input_info[25].size.encodedDimensions = "1x1";
-  input_info[25].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter8_output0";
-  input_info[25].unit = "1";
-  input_info[26].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter9_output0";
-  input_info[26].size.numElements = 1;
-  input_info[26].size.encodedDimensions = "1x1";
-  input_info[26].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter9_output0";
-  input_info[26].unit = "1";
   ds->mIo[SSC_INPUT_IO_TYPE] = input_info;
   ds->mNumIo[SSC_OUTPUT_IO_TYPE] = 23;
   output_info[0].identifier =
@@ -10960,7 +10862,7 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds->mMakeOutput[NE_DS_METHOD_DDM_P] = ds_output_ddm_p;
   ds->mMethods[NE_DS_METHOD_DDM] = ds_ddm;
   ds->mMakeOutput[NE_DS_METHOD_DDM] = ds_output_ddm;
-  ds->mMethods[NE_DS_METHOD_DUM_P] = GVCU_HIL_simscape_a37faff9_2_ds_dum_p;
+  ds->mMethods[NE_DS_METHOD_DUM_P] = ds_dum_p;
   ds->mMakeOutput[NE_DS_METHOD_DUM_P] = ds_output_dum_p;
   ds->mMethods[NE_DS_METHOD_DUM] = ds_dum;
   ds->mMakeOutput[NE_DS_METHOD_DUM] = ds_output_dum;
@@ -11562,6 +11464,44 @@ static int32_T ds_dum (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1
   (void)t1;
   (void)LC;
   (void)out;
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_dum_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
+  *t1, NeDsMethodOutput *out)
+{
+  (void)t1;
+  (void)LC;
+  out->mDUM_P.mNumCol = 25ULL;
+  out->mDUM_P.mNumRow = 23ULL;
+  out->mDUM_P.mJc[0] = 0;
+  out->mDUM_P.mJc[1] = 0;
+  out->mDUM_P.mJc[2] = 0;
+  out->mDUM_P.mJc[3] = 0;
+  out->mDUM_P.mJc[4] = 0;
+  out->mDUM_P.mJc[5] = 0;
+  out->mDUM_P.mJc[6] = 0;
+  out->mDUM_P.mJc[7] = 0;
+  out->mDUM_P.mJc[8] = 0;
+  out->mDUM_P.mJc[9] = 0;
+  out->mDUM_P.mJc[10] = 0;
+  out->mDUM_P.mJc[11] = 0;
+  out->mDUM_P.mJc[12] = 0;
+  out->mDUM_P.mJc[13] = 0;
+  out->mDUM_P.mJc[14] = 0;
+  out->mDUM_P.mJc[15] = 0;
+  out->mDUM_P.mJc[16] = 0;
+  out->mDUM_P.mJc[17] = 0;
+  out->mDUM_P.mJc[18] = 0;
+  out->mDUM_P.mJc[19] = 0;
+  out->mDUM_P.mJc[20] = 0;
+  out->mDUM_P.mJc[21] = 0;
+  out->mDUM_P.mJc[22] = 0;
+  out->mDUM_P.mJc[23] = 0;
+  out->mDUM_P.mJc[24] = 0;
+  out->mDUM_P.mJc[25] = 0;
   (void)LC;
   (void)out;
   return 0;
