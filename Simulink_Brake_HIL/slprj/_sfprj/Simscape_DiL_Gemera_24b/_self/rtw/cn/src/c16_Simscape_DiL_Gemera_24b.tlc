@@ -1,0 +1,60 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   6 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "drv_st_internal"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Simscape_DiL_Gemera_24b:3577:130-145"\
+    }\
+    ChartData {\
+      Name         "drv_st_internal_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Simscape_DiL_Gemera_24b:3577:130-145"\
+    }\
+    ChartData {\
+      Name         "last_switch_state"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Simscape_DiL_Gemera_24b:3577:146-163"\
+    }\
+    ChartData {\
+      Name         "last_update_time"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Simscape_DiL_Gemera_24b:3577:164-180"\
+    }\
+    ChartData {\
+      Name         "freq"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "C:\Program Files\MATLAB\R2026a\toolbox\shared\coder\coder\lib\+coder\+internal\+time\CoderTimeAPI.m:5178-5182"\
+    }\
+    ChartData {\
+      Name         "freq_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "C:\Program Files\MATLAB\R2026a\toolbox\shared\coder\coder\lib\+coder\+internal\+time\CoderTimeAPI.m:5178-5182"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

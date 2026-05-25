@@ -16,7 +16,7 @@ void Simscape_DiL_Gemera_24b_a41ef8b8_1_gateway(void)
 {
   NeModelParameters modelparams = { (enum NeSolverTypeTag)1, 0.001, 0.001, FALSE,
     FALSE, 0.001, 0.0, FALSE, FALSE, FALSE, (enum SscLoggingSettingTag)0,
-    701598138.0, TRUE, FALSE };
+    701598610.0, TRUE, FALSE };
 
   NeSolverParameters solverparams = { TRUE, TRUE, FALSE, FALSE, TRUE, FALSE,
     FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, 0.001, 0.001, 1e-09, FALSE, FALSE,

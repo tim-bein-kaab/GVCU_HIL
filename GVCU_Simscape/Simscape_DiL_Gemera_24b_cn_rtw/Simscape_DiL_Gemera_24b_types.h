@@ -9,7 +9,7 @@
  *
  * Model version              : 4.4
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Mon May 25 10:23:33 2026
+ * C source code generated on : Mon May 25 10:31:39 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -31,7 +31,7 @@ typedef struct {
 
 #endif
 
-/* Custom Type definition for MATLAB Function: '<S11>/MATLAB Function2' */
+/* Custom Type definition for MATLAB Function: '<S13>/MATLAB Function2' */
 #ifndef struct_tag_sdAmwXbnJnEmimT0NaJRtAD
 #define struct_tag_sdAmwXbnJnEmimT0NaJRtAD
 

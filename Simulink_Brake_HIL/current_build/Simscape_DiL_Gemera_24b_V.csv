@@ -22,6 +22,85 @@ Simscape_DiL_Gemera_24b/Clutch handling/Saturation3/LowerLimit; 0
 Simscape_DiL_Gemera_24b/Clutch handling/Step/Time; 0.1
 Simscape_DiL_Gemera_24b/Clutch handling/Step/InitialValue; 0
 Simscape_DiL_Gemera_24b/Clutch handling/Step/FinalValue; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Compare To Constant/const; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant26/Value; 1000
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant27/Value; 1000
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant30/Value; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant32/Value; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant34/Value; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant36/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant37/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant38/Value; 2
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant39/Value; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant5/Value; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Constant9/Value; 2
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero111/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero112/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero163/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero164/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero165/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero166/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero167/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero168/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero170/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero171/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero180/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Zero181/Value; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Saturation/UpperLimit; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Saturation/LowerLimit; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Saturation1/UpperLimit; 25.5
+Simscape_DiL_Gemera_24b/GVCU - HiL/Saturation1/LowerLimit; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Saturation3/UpperLimit; 25.5
+Simscape_DiL_Gemera_24b/GVCU - HiL/Saturation3/LowerLimit; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Transport Delay/DelayTime; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Transport Delay/InitialOutput; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Unit Delay/InitialCondition; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant10/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant11/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant111/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant13/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant14/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant15/Value; 1
+Simscape_DiL_Gemera_24b/Inverter/Constant17/Value; 1
+Simscape_DiL_Gemera_24b/Inverter/Constant18/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant19/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant20/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant21/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant22/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant23/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant24/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant25/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant26/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant27/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant28/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant29/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant30/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant31/Value; 25
+Simscape_DiL_Gemera_24b/Inverter/Constant32/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant33/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant35/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant36/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant37/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant38/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant4/Value; 1
+Simscape_DiL_Gemera_24b/Inverter/Constant5/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant6/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Constant9/Value; 0
+Simscape_DiL_Gemera_24b/Inverter/Gain/Gain; -1
+Simscape_DiL_Gemera_24b/Inverter/Gain1/Gain; -1
+Simscape_DiL_Gemera_24b/Inverter/Gain2/Gain; -1
+Simscape_DiL_Gemera_24b/Inverter/Gain3/Gain; 9.5493
+Simscape_DiL_Gemera_24b/Inverter/1-D Lookup Table/Table; 825; 825; 700; 500; 500; 300
+Simscape_DiL_Gemera_24b/Inverter/1-D Lookup Table/BreakpointsForDimension1; 0; 2000; 3000; 4000; 5000; 6000
+Simscape_DiL_Gemera_24b/Inverter/Saturation/UpperLimit; 2047
+Simscape_DiL_Gemera_24b/Inverter/Saturation/LowerLimit; -2048
+Simscape_DiL_Gemera_24b/Inverter/Saturation1/UpperLimit; 2047
+Simscape_DiL_Gemera_24b/Inverter/Saturation1/LowerLimit; -2048
+Simscape_DiL_Gemera_24b/Inverter/Saturation2/UpperLimit; 16383
+Simscape_DiL_Gemera_24b/Inverter/Saturation2/LowerLimit; -16384
+Simscape_DiL_Gemera_24b/Inverter/Transport Delay1/DelayTime; 1
+Simscape_DiL_Gemera_24b/Inverter/Transport Delay1/InitialOutput; 0
+Simscape_DiL_Gemera_24b/Inverter/Unit Delay1/InitialCondition; 0
 Simscape_DiL_Gemera_24b/Simulation Step/S-Function/P1; 0
 Simscape_DiL_Gemera_24b/Simulation Step/S-Function1/P1; 2
 Simscape_DiL_Gemera_24b/Wheel_rates/Constant/Value; 1
@@ -115,6 +194,245 @@ Simscape_DiL_Gemera_24b/Clutch handling/cur_to_prs3/1-D Lookup Table9/Breakpoint
 Simscape_DiL_Gemera_24b/Clutch handling/cur_to_prs3/Switch2/Threshold; 0.1
 Simscape_DiL_Gemera_24b/Clutch handling/cur_to_prs3/Transfer Fcn/A; -1
 Simscape_DiL_Gemera_24b/Clutch handling/cur_to_prs3/Transfer Fcn/C; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output11/S-Function_1/P1; 109; 97; 105; 110; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output11/S-Function_1/P2; 83; 67; 85
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output11/S-Function_1/P3; 118; 101; 104; 95; 112; 119; 114; 95; 115; 116
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output11/S-Function_1/P4; 3
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output11/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output11/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output11/S-Function_1/P7; 112; 119; 114; 95; 115; 116
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output11/S-Function_1/P8; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output11/S-Function_1/P9; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P1; 109; 97; 105; 110; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P2; 72; 80; 68; 77; 51
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P3; 104; 112; 100; 109; 51; 95; 104; 118; 95; 115; 116; 97; 116; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P4; 11
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P5; 97; 118; 97; 105; 108; 97; 98; 108; 101; 95; 99; 104; 97; 114; 103; 101; 95; 99; 117; 114; 114; 101; 110; 116
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P6; 97; 118; 97; 105; 108; 97; 98; 108; 101; 95; 100; 105; 115; 99; 104; 97; 114; 103; 101; 95; 99; 117; 114; 114; 101; 110; 116
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P7; 98; 109; 115; 95; 115; 116; 97; 116; 101
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P8; 100; 99; 100; 99; 95; 99; 111; 110; 116; 97; 99; 116; 111; 114
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P9; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P10; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P11; 102; 114; 111; 110; 116; 95; 104; 118; 95; 98; 97; 116; 95; 102; 97; 110; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P12; 102; 114; 111; 110; 116; 95; 104; 118; 95; 98; 97; 116; 95; 112; 117; 109; 112; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P13; 104; 118; 95; 111; 110; 95; 114; 101; 113; 95; 108; 118; 95; 99; 104; 97; 114; 103; 105; 110; 103
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P14; 104; 118; 97; 99; 95; 99; 111; 110; 116; 97; 99; 116; 111; 114
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P15; 111; 98; 99; 95; 99; 111; 110; 116; 97; 99; 116; 111; 114
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P16; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output17/S-Function_1/P17; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P3; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P4; 11
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P5; 97; 99; 116; 105; 118; 101; 95; 109; 111; 100; 101
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P6; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 97; 112; 112; 108; 105; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P7; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 116; 114; 97; 118; 101; 108; 95; 109; 109
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P8; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 116; 114; 97; 118; 101; 108; 95; 109; 109; 95; 118
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P9; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 116; 114; 97; 118; 101; 108; 95; 112; 101; 114; 99
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P10; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 116; 114; 97; 118; 101; 108; 95; 112; 101; 114; 99; 95; 118
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P11; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 116; 114; 97; 118; 101; 108; 95; 115; 101; 110; 115; 111; 114; 95; 115; 116; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P12; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P13; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P14; 112; 111; 115; 105; 116; 105; 111; 110; 95; 109; 111; 116; 111; 114
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P15; 112; 111; 115; 105; 116; 105; 111; 110; 95; 109; 111; 116; 111; 114; 95; 118
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P16; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Message Output21/S-Function_1/P17; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input/S-Function/P1; 112; 111; 119; 101; 114; 116; 114; 97; 105; 110; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input/S-Function/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input/S-Function/P3; 103; 118; 99; 117; 95; 108; 115; 116; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input/S-Function/P5; 99; 101; 110; 95; 99; 108; 117; 95; 115; 116; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input1/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input1/S-Function/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input1/S-Function/P3; 103; 118; 99; 117; 95; 104; 118; 95; 99; 111; 110; 116; 114; 111; 108
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input1/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input1/S-Function/P5; 104; 121; 98; 95; 115; 116; 95; 109; 97; 99; 95; 115; 116; 97; 116; 101
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input1/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input1/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input1/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input2/S-Function/P1; 112; 111; 119; 101; 114; 116; 114; 97; 105; 110; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input2/S-Function/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input2/S-Function/P3; 103; 118; 99; 117; 95; 108; 115; 116; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input2/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input2/S-Function/P5; 108; 115; 116; 95; 99; 116; 114; 108; 95; 115; 116; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input2/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input2/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Input2/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output10/S-Function/P1; 112; 111; 119; 101; 114; 116; 114; 97; 105; 110; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output10/S-Function/P2; 76; 83; 84
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output10/S-Function/P3; 108; 115; 116; 95; 116; 113; 95; 115; 116; 115; 95; 49
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output10/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output10/S-Function/P5; 108; 115; 116; 95; 99; 116; 114; 108; 95; 115; 116
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output10/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output10/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output12/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output12/S-Function/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output12/S-Function/P3; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output12/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output12/S-Function/P5; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 97; 112; 112; 108; 105; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output12/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output12/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output13/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output13/S-Function/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output13/S-Function/P3; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output13/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output13/S-Function/P5; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 116; 114; 97; 118; 101; 108; 95; 109; 109; 95; 118
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output13/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output13/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output15/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output15/S-Function/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output15/S-Function/P3; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output15/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output15/S-Function/P5; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 116; 114; 97; 118; 101; 108; 95; 109; 109
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output15/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output15/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output18/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output18/S-Function/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output18/S-Function/P3; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output18/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output18/S-Function/P5; 97; 99; 116; 105; 118; 101; 95; 109; 111; 100; 101
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output18/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output18/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output20/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output20/S-Function/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output20/S-Function/P3; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output20/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output20/S-Function/P5; 98; 114; 97; 107; 101; 95; 112; 101; 100; 97; 108; 95; 116; 114; 97; 118; 101; 108; 95; 112; 101; 114; 99
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output20/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output20/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output3/S-Function/P1; 112; 111; 119; 101; 114; 116; 114; 97; 105; 110; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output3/S-Function/P2; 76; 83; 84
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output3/S-Function/P3; 108; 115; 116; 95; 116; 113; 95; 115; 116; 115; 95; 50
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output3/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output3/S-Function/P5; 99; 101; 110; 95; 99; 108; 117; 95; 115; 116
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output3/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output3/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output8/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output8/S-Function/P2; 76; 80; 68; 77; 50
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output8/S-Function/P3; 108; 112; 100; 109; 50; 95; 98; 111; 100; 121; 95; 118; 101; 104; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output8/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output8/S-Function/P5; 98; 114; 107; 95; 108; 105; 95; 115; 119; 116; 95; 115; 116
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output8/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output8/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output9/S-Function/P1; 109; 97; 105; 110; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output9/S-Function/P2; 76; 80; 68; 77; 50
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output9/S-Function/P3; 108; 112; 100; 109; 50; 95; 98; 111; 100; 121; 95; 118; 101; 104; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output9/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output9/S-Function/P5; 105; 109; 111; 98; 95; 115; 116
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output9/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/GVCU - HiL/Signal Output9/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P2; 73; 78; 86
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P3; 105; 110; 118; 95; 115; 116; 97; 116; 117; 115; 95; 102; 101; 101; 100; 98; 97; 99; 107
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P4; 12
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P5; 99; 116; 114; 108; 95; 109; 111; 100; 101; 95; 102; 101; 101; 100; 98; 97; 99; 107
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P6; 100; 99; 95; 99; 117; 114; 114; 101; 110; 116
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P7; 100; 99; 95; 118; 111; 108; 116; 97; 103; 101
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P8; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P9; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P10; 102; 97; 117; 108; 116; 95; 108; 101; 118; 101; 108
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P11; 105; 110; 118; 95; 101; 110; 97; 98; 108; 101; 95; 102; 101; 101; 100; 98; 97; 99; 107
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P12; 109; 111; 116; 111; 114; 95; 101; 110; 97; 98; 108; 101; 95; 102; 101; 101; 100; 98; 97; 99; 107
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P13; 115; 97; 102; 101; 95; 115; 116; 97; 116; 101; 95; 109; 101; 116; 104; 111; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P14; 115; 97; 102; 101; 95; 115; 116; 97; 116; 101; 95; 114; 101; 113; 95; 102; 101; 101; 100; 98; 97; 99; 107
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P15; 115; 116; 97; 116; 101; 95; 109; 97; 99; 104; 105; 110; 101
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P16; 116; 111; 114; 113; 117; 101; 95; 108; 105; 109; 105; 116; 95; 114; 101; 97; 115; 111; 110
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P17; 0
+Simscape_DiL_Gemera_24b/Inverter/Message Output/S-Function_1/P18; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P2; 73; 78; 86
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P3; 105; 110; 118; 95; 115; 112; 100; 95; 102; 101; 101; 100; 98; 97; 99; 107
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P4; 6
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P7; 109; 111; 116; 111; 114; 95; 115; 112; 101; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P8; 109; 111; 116; 111; 114; 95; 115; 112; 101; 101; 100; 95; 118; 97; 108; 105; 100; 95; 98; 105; 116
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P9; 112; 111; 115; 95; 111; 102; 102; 115; 101; 116; 95; 97
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P10; 112; 111; 115; 95; 111; 102; 102; 115; 101; 116; 95; 98
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P11; 0
+Simscape_DiL_Gemera_24b/Inverter/Message Output1/S-Function_1/P12; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P2; 73; 78; 86
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P3; 105; 110; 118; 95; 116; 101; 109; 112; 101; 114; 97; 116; 117; 114; 101; 95; 49
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P4; 8
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P5; 99; 111; 111; 108; 97; 110; 116; 95; 116; 101; 109; 112
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P6; 100; 99; 95; 99; 97; 112; 95; 116; 101; 109; 112; 95; 49
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P7; 100; 99; 95; 99; 97; 112; 95; 116; 101; 109; 112; 95; 50
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P8; 100; 114; 105; 118; 101; 114; 95; 98; 111; 97; 114; 100; 95; 116; 101; 109; 112; 95; 109; 97; 120
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P9; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P10; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P11; 109; 111; 115; 102; 101; 116; 95; 116; 101; 109; 112; 95; 109; 97; 120
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P12; 112; 99; 98; 95; 116; 101; 109; 112
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P13; 0
+Simscape_DiL_Gemera_24b/Inverter/Message Output3/S-Function_1/P14; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P2; 73; 78; 86
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P3; 105; 110; 118; 95; 116; 101; 109; 112; 101; 114; 97; 116; 117; 114; 101; 95; 50
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P4; 6
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P7; 109; 111; 116; 111; 114; 95; 116; 101; 109; 112; 95; 97; 49
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P8; 109; 111; 116; 111; 114; 95; 116; 101; 109; 112; 95; 97; 50
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P9; 109; 111; 116; 111; 114; 95; 116; 101; 109; 112; 95; 97; 51
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P10; 109; 111; 116; 111; 114; 95; 116; 101; 109; 112; 95; 97; 52
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P11; 0
+Simscape_DiL_Gemera_24b/Inverter/Message Output4/S-Function_1/P12; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P2; 73; 78; 86
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P3; 105; 110; 118; 95; 116; 114; 113; 95; 102; 101; 101; 100; 98; 97; 99; 107
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P4; 6
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P5; 97; 99; 116; 117; 97; 108; 95; 116; 111; 114; 113; 117; 101
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P6; 97; 118; 97; 105; 108; 97; 98; 108; 101; 95; 116; 111; 114; 113; 117; 101; 95; 110; 101; 103
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P7; 97; 118; 97; 105; 108; 97; 98; 108; 101; 95; 116; 111; 114; 113; 117; 101; 95; 112; 111; 115
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P8; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P9; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P10; 114; 101; 113; 117; 101; 115; 116; 101; 100; 95; 116; 111; 114; 113; 117; 101
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P11; 0
+Simscape_DiL_Gemera_24b/Inverter/Message Output5/S-Function_1/P12; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output7/S-Function_1/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Message Output7/S-Function_1/P2; 73; 78; 86
+Simscape_DiL_Gemera_24b/Inverter/Message Output7/S-Function_1/P3; 105; 110; 118; 95; 112; 119; 114; 95; 102; 101; 101; 100; 98; 97; 99; 107
+Simscape_DiL_Gemera_24b/Inverter/Message Output7/S-Function_1/P4; 3
+Simscape_DiL_Gemera_24b/Inverter/Message Output7/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output7/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109; 95; 100; 105; 115; 97; 98; 108; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Message Output7/S-Function_1/P7; 109; 101; 99; 104; 97; 110; 105; 99; 97; 108; 95; 112; 119; 114; 95; 111; 117; 116
+Simscape_DiL_Gemera_24b/Inverter/Message Output7/S-Function_1/P8; 0
+Simscape_DiL_Gemera_24b/Inverter/Message Output7/S-Function_1/P9; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Signal Input2/S-Function/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Signal Input2/S-Function/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/Inverter/Signal Input2/S-Function/P3; 105; 110; 118; 95; 99; 109; 100
+Simscape_DiL_Gemera_24b/Inverter/Signal Input2/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/Inverter/Signal Input2/S-Function/P5; 105; 110; 118; 95; 101; 110; 97; 98; 108; 101; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/Inverter/Signal Input2/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/Inverter/Signal Input2/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/Inverter/Signal Input2/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Signal Input3/S-Function/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Signal Input3/S-Function/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/Inverter/Signal Input3/S-Function/P3; 105; 110; 118; 95; 99; 109; 100
+Simscape_DiL_Gemera_24b/Inverter/Signal Input3/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/Inverter/Signal Input3/S-Function/P5; 109; 111; 116; 111; 114; 95; 101; 110; 97; 98; 108; 101; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/Inverter/Signal Input3/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/Inverter/Signal Input3/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/Inverter/Signal Input3/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Signal Input4/S-Function/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Signal Input4/S-Function/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/Inverter/Signal Input4/S-Function/P3; 105; 110; 118; 95; 99; 109; 100
+Simscape_DiL_Gemera_24b/Inverter/Signal Input4/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/Inverter/Signal Input4/S-Function/P5; 115; 104; 117; 116; 100; 111; 119; 110; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/Inverter/Signal Input4/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/Inverter/Signal Input4/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/Inverter/Signal Input4/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Inverter/Signal Input5/S-Function/P1; 105; 110; 118; 101; 114; 116; 101; 114; 95; 98; 117; 115
+Simscape_DiL_Gemera_24b/Inverter/Signal Input5/S-Function/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/Inverter/Signal Input5/S-Function/P3; 105; 110; 118; 95; 99; 109; 100
+Simscape_DiL_Gemera_24b/Inverter/Signal Input5/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/Inverter/Signal Input5/S-Function/P5; 99; 116; 114; 108; 95; 109; 111; 100; 101; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/Inverter/Signal Input5/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/Inverter/Signal Input5/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/Inverter/Signal Input5/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
 Simscape_DiL_Gemera_24b/Wheel_rates/Signal Output/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
 Simscape_DiL_Gemera_24b/Wheel_rates/Signal Output/S-Function/P2; 73; 69; 66
 Simscape_DiL_Gemera_24b/Wheel_rates/Signal Output/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 102; 114; 111; 110; 116

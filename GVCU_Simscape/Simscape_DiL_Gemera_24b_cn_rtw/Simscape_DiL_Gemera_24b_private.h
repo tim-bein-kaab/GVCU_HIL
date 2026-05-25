@@ -9,7 +9,7 @@
  *
  * Model version              : 4.4
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Mon May 25 10:23:33 2026
+ * C source code generated on : Mon May 25 10:31:39 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -28,6 +28,20 @@
 #include "Simscape_DiL_Gemera_24b_types.h"
 
 extern real_T rt_atan2d_snf(real_T u0, real_T u1);
+real_T rt_TDelayInterpolate(
+  real_T tMinusDelay,                 /* tMinusDelay = currentSimTime - delay */
+  real_T tStart,
+  real_T *uBuf,
+  int_T bufSz,
+  int_T *lastIdx,
+  int_T oldestIdx,
+  int_T newIdx,
+  real_T initOutput,
+  boolean_T discrete,
+  boolean_T minorStepAndTAtLastMajorOutput)
+  ;
+extern real_T look1_binlcapw(real_T u0, const real_T bp0[], const real_T table[],
+  uint32_T maxIndex);
 extern real_T look1_binlxpw(real_T u0, const real_T bp0[], const real_T table[],
   uint32_T maxIndex);
 extern void anorsimstepinitshmem(SimStruct *rts);
