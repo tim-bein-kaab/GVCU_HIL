@@ -1,0 +1,4 @@
+
+Simscape_DiL_Gemera_24b
+C:/work_local_TimBein/GVCU_HIL_repo/GVCU_HIL_Simulink_model/Simscape_DiL_Gemera_24b_cn_rtw/Simscape_DiL_Gemera_24b_capi.c
+C:/work_local_TimBein/GVCU_HIL_repo/GVCU_HIL_Simulink_model/Simscape_DiL_Gemera_24b_cn_rtw/Simscape_DiL_Gemera_24b.c

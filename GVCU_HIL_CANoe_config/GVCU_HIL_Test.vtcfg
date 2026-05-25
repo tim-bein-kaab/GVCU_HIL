@@ -680,81 +680,9 @@ modules:
       name: VT7820_2
     channels:
       - name: VT7820_2_Channel1
-        start-state-enabled: true
-        start-values:
-          - name: HighCurrent
-            value: 0.028
-          - name: ActivateOutput
-            value: 1
-          - name: LowCurrent
-            value: 0.007
-          - name: MiddleCurrent
-            value: 0.014
-          - name: NumberOfTeeth
-            value: 48
-          - name: PulseDuration
-            value: 50
-          - name: SensorData
-            value: 90
-          - name: SensorSelect
-            value: 3
       - name: VT7820_2_Channel2
-        start-state-enabled: true
-        start-values:
-          - name: HighCurrent
-            value: 0.028
-          - name: ActivateOutput
-            value: 1
-          - name: LowCurrent
-            value: 0.007
-          - name: MiddleCurrent
-            value: 0.014
-          - name: NumberOfTeeth
-            value: 48
-          - name: PulseDuration
-            value: 50
-          - name: SensorData
-            value: 10
-          - name: SensorSelect
-            value: 3
       - name: VT7820_2_Channel3
-        start-state-enabled: true
-        start-values:
-          - name: SensorData
-            value: 10
-          - name: ActivateOutput
-            value: 1
-          - name: HighCurrent
-            value: 0.028
-          - name: LowCurrent
-            value: 0.007
-          - name: MiddleCurrent
-            value: 0.014
-          - name: NumberOfTeeth
-            value: 48
-          - name: PulseDuration
-            value: 50
-          - name: SensorSelect
-            value: 3
       - name: VT7820_2_Channel4
-        start-state-enabled: true
-        start-values:
-          - name: SensorData
-            value: 90
-          - name: ActivateOutput
-            value: 1
-          - name: HighCurrent
-            value: 0.028
-          - name: LowCurrent
-            value: 0.007
-          - name: MiddleCurrent
-            value: 0.014
-          - name: NumberOfTeeth
-            value: 48
-          - name: PulseDuration
-            value: 50
-          - name: SensorSelect
-            value: 3
   - type: 5838
     interface: 1
     vdid: 8928ec064c12d3f3ed145529ab5f93bf00000000
@@ -922,25 +850,13 @@ modules:
       start-state-enabled: true
       start-values:
         - name: InterconnectionMode
-          value: 2
+          value: 0
     channels:
       - name: VT7001_1_Out1
       - name: VT7001_1_Out2
       - name: VT7001_1_SupInt
       - name: VT7001_1_Sup1
       - name: VT7001_1_Sup2
-        start-state-enabled: true
-        start-values:
-          - name: VoltageOutputMode
-            value: 1
-          - name: RefVoltage
-            value: 12
-          - name: CurrentOutputMode
-            value: 1
-          - name: MaxCurrent
-            value: 70
-          - name: VoltageFactor
-            value: 12
   - type: 2004
     interface: 7
     module-channel:

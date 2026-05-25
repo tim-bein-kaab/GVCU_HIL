@@ -1,9 +1,2 @@
 [NStatePersistence]
 Signature=VectorStatePersistence
-[VGlobalMeasurementIndex]
-mMeasurementIndex=1253
-[VTestConfigurationConfigData]
-Test_Configuration_1_NextTestRun=9
-[VTestExecutable]
-Test_Configuration_1_LastReportFile=..\..\..\Users\TEST~1.USE\Users\AAKASH~1.KAV\AppData\Local\Temp\Report_Test_Configuration_1.xml
-Test_Configuration_1_LastReportTmpFile=..\..\..\Users\TEST~1.USE\Users\AAKASH~1.KAV\AppData\Local\Temp\rpt4bf2.xml
