@@ -1,0 +1,22 @@
+ /*@!Encoding:1252*/
+variables
+{
+  message KES_WHEEL_RATE sens_st; // define CAN message
+}
+
+on key '4'
+{
+  canConfigureBusOff(sens_st.msgChannel, sens_st.Id, 1); // enable disturbance
+}
+on key '5'
+{
+  output(sens_st);
+}
+on key '6'
+{
+  canConfigureBusOff(sens_st.msgChannel, sens_st.Id, 0); // disable disturbance
+}
+on key 'B'
+{
+  resetCanEx(sens_st.msgChannel);
+}

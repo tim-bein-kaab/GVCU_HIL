@@ -7,9 +7,9 @@
  *
  * Code generation for model "GVCU_HIL_simscape".
  *
- * Model version              : 7.77
+ * Model version              : 7.81
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Fri May 22 11:12:41 2026
+ * C source code generated on : Mon May 25 09:23:38 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -28,27 +28,9 @@
 #include "GVCU_HIL_simscape.h"
 
 extern real_T rt_roundd_snf(real_T u);
-real_T rt_TDelayInterpolate(
-  real_T tMinusDelay,                 /* tMinusDelay = currentSimTime - delay */
-  real_T tStart,
-  real_T *uBuf,
-  int_T bufSz,
-  int_T *lastIdx,
-  int_T oldestIdx,
-  int_T newIdx,
-  real_T initOutput,
-  boolean_T discrete,
-  boolean_T minorStepAndTAtLastMajorOutput)
-  ;
-extern real_T look1_binlcapw(real_T u0, const real_T bp0[], const real_T table[],
-  uint32_T maxIndex);
-extern real_T look2_binlcapw(real_T u0, real_T u1, const real_T bp0[], const
-  real_T bp1[], const real_T table[], const uint32_T maxIndex[2], uint32_T
-  stride);
 extern real_T look1_binlxpw(real_T u0, const real_T bp0[], const real_T table[],
   uint32_T maxIndex);
 extern void anorsimstepinitshmem(SimStruct *rts);
-extern void sigin(SimStruct *rts);
 extern void sigout(SimStruct *rts);
 
 /* private model entry point functions */

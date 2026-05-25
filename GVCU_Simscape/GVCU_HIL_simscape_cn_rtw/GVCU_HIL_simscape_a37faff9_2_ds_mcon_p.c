@@ -13,12 +13,12 @@
 int32_T GVCU_HIL_simscape_a37faff9_2_ds_mcon_p(const NeDynamicSystem *LC, const
   NeDynamicSystemInput *t1, NeDsMethodOutput *out)
 {
-  static int32_T _cg_const_1[100] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+  static int32_T _cg_const_1[103] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
     13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 23, 23, 23, 23, 23, 23, 23, 23,
     23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
     23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
     23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
-    23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23 };
+    23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23 };
 
   static int32_T _cg_const_2[23] = { 9, 5, 13, 0, 2, 3, 1, 4, 6, 7, 8, 10, 11,
     12, 14, 15, 16, 17, 18, 19, 20, 21, 22 };
@@ -26,9 +26,9 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_mcon_p(const NeDynamicSystem *LC, const
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mMCON_P.mNumCol = 99ULL;
-  out->mMCON_P.mNumRow = 99ULL;
-  for (i = 0; i < 100; i++) {
+  out->mMCON_P.mNumCol = 102ULL;
+  out->mMCON_P.mNumRow = 102ULL;
+  for (i = 0; i < 103; i++) {
     out->mMCON_P.mJc[i] = _cg_const_1[i];
   }
 

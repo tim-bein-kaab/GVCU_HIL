@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2026-05-21 10:05:12" timestamp=" 564.174700" verdicts="2_basic" measurementid="0c74ea9b-86f3-41a2-afc1-1273dccc4910">
+  <verdict time="2026-05-21 10:05:12" timestamp=" 564.174700" endtime="2026-05-21 10:05:12" endtimestamp=" 564.180193" result="pass" />
+  <title>Security_Access_Lvl1</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Login Name</name>
+      <description>test.user1</description>
+    </xinfo>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.CAN 19.5.44 (SP5) /pro</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\Brake_Test.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database IEB_DBC_V33 on CAN1</name>
+      <description>Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\DBC\IEB_DBC_V33.dbc (2026-05-21 09:51:09)</description>
+    </xinfo>
+    <xinfo>
+      <name>Database Jesko_MSCAN3 on CAN2</name>
+      <description>Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\DBC\Jesko_MSCAN3.dbc (2024-10-22 16:17:25)</description>
+    </xinfo>
+    <xinfo>
+      <name>Diagnostic Description of IEB</name>
+      <description>CommonDiagnostics, en-US, Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\KG12_2.0_20260126.cdd (0.3, 2025-02-20 19:17:27+08:00)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>Security_Access_Lvl1</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\CAPL\Security_Access_Lv1.can</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2024-10-22, 16:17:25</description>
+    </xinfo>
+    <xinfo>
+      <name>Computer Name</name>
+      <description>C-PF3S2SVF</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module Simulink_Model_IEB_fault_handling</name>
+      <description>CANoe / Simulink Real-Time Workshop Interface, c:\CANrtk\Exec32\SynchronizedFiles\Simulink_Model_IEB_fault_handling.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module Simscape_DiL_Gemera_24b</name>
+      <description>CANoe / Simulink Real-Time Workshop Interface, c:\CANrtk\Exec32\SynchronizedFiles\Simscape_DiL_Gemera_24b.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANoeILNLVector</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.30.156 (Aug  5 2025 12:32:37) , c:\CANrtk\Exec32\SynchronizedFiles\CANoeILNLVector.dll</description>
+    </xinfo>
+  </testsetup>
+  <hardware name="CAN Channel Interfaces" category="CategoryCANIF">
+    <xinfoset type="device">
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>1</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>24.20.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>22.14.24</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>2</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>24.20.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>22.14.24</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>3</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>24.20.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>22.14.24</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>4</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>24.20.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>22.14.24</description>
+      </xinfo>
+      </xinfoobject>
+    </xinfoset>
+  </hardware>
+  <hardware name="VT System" category="vtsystem">
+    <xinfoset type="device">
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT8012B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3051</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x0</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>1</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1939</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>2</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>3</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20296</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>4</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20601</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>5</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2848</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20540</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.2.12</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2010</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>6</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2848</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20547</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.2.12</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2010</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>7</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20703</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>8</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT7101</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1674</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1300</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>9</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20702</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>10</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT8012B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3138</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x0</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>11</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT7900A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>662</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.1.9</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x10300</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>12</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6306B (No Piggy)</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>614</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x0</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>13</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20413</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>14</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2710</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20203</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.2.7</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x32000</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>15</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT7900A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>584</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.1.9</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x10300</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>16</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT5838</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>108</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.0.6</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1001300</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>17</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2848</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20551</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.2.12</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2010</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>18</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20704</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>19</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20497</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>20</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20375</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>21</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT7001A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>10958</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.1.1</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1311</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>22</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2004A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20070</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.1.5</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2000</description>
+      </xinfo>
+      <xinfo key="ecatsubdevicenumber">
+        <name>EtherCAT-SubDevice number</name>
+        <description>23</description>
+      </xinfo>
+      </xinfoobject>
+    </xinfoset>
+  </hardware>
+</testmodule>
+<!--footprint="1a4258fbd7f53cd9e219925716ca3313" version="1"-->

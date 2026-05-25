@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2025-04-28 15:20:18" timestamp="  60.203000" verdicts="2_basic" measurementid="b81bc6d5-7a46-4749-9136-93df6277875f">
+  <testcase starttime="2025-04-28 15:20:18" timestamp="  60.203000">
+    <teststep timestamp="  60.203000" level="0" type="user" ident="0" result="na">Applying steering wheel angle to IEB</teststep>
+    <!-- Measurement stop forced. Test is incomplete! -->
+    <verdict time="2025-04-28 15:25:46" timestamp=" 388.602452" endtime="2025-04-28 15:25:46" endtimestamp=" 388.602452" result="fail" />
+    <title>simulate_steering</title>
+    <extendedinfo type="html"><![CDATA[<b>Measurement stop forced. Test is incomplete!</b>]]></extendedinfo>
+  </testcase>
+  <verdict time="2025-04-28 15:25:46" timestamp=" 388.602452" endtime="2025-04-28 15:25:46" endtimestamp=" 388.602452" result="fail" />
+  <title>Produce_steering_wheel</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Windows Login Name</name>
+      <description>test.user1</description>
+    </xinfo>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.CAN.LIN.Ethernet.AMD/XCP /pro 17.3.91 (SP3)</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\Brake_Test.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database GemeraBrakePedalRig on CAN3</name>
+      <description>Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\DBC\GemeraBrakePedalRig.dbc (2025-04-10 09:13:32)</description>
+    </xinfo>
+    <xinfo>
+      <name>Database IEB_DBC_V18 on CAN1</name>
+      <description>Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\DBC\IEB_DBC_V18.dbc (2025-04-10 09:13:32)</description>
+    </xinfo>
+    <xinfo>
+      <name>Database Jesko_MSCAN3 on CAN2</name>
+      <description>Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\DBC\Jesko_MSCAN3.dbc (2024-10-22 16:17:25)</description>
+    </xinfo>
+    <xinfo>
+      <name>Diagnostic Description of IEB</name>
+      <description>CommonDiagnostics, en-US, Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\KG12_20250220.cdd (0.3, 2025-02-20 19:17:27+08:00)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>Produce_steering_wheel</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>Z:\R&amp;D\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\CAPL\steering_wheel_sim.can</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2025-04-28, 15:19:20</description>
+    </xinfo>
+    <xinfo>
+      <name>Windows Computer Name</name>
+      <description>C-PF3M2LJG</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module Simulink_ABS_Model_1_1_3</name>
+      <description>CANoe / Simulink Real-Time Workshop Interface, c:\CANrtk\Exec32\SynchronizedFiles\Simulink_ABS_Model_1_1_3.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANoeILNLVector</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.30.113 (Feb 16 2023 15:33:52) , c:\CANrtk\Exec32\SynchronizedFiles\CANoeILNLVector.dll</description>
+    </xinfo>
+  </testsetup>
+  <hardware name="CAN Channel Interfaces" category="CategoryCANIF">
+    <xinfoset type="device">
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>1</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>24.20.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>22.14.24</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>2</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>24.20.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>22.14.24</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>3</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>24.20.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>22.14.24</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>4</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>24.20.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>22.14.24</description>
+      </xinfo>
+      </xinfoobject>
+    </xinfoset>
+  </hardware>
+  <hardware name="VT-System" category="vtsystem">
+    <xinfoset type="device">
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT8012B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3051</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x0</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>1</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1939</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>2</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6104B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1952</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>3</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20296</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>4</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20601</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>5</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2848</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20540</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.2.10</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2010</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>6</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2848</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20547</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.2.10</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2010</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>7</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20703</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>8</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT7101</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>1674</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1300</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>9</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20702</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>10</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT8012B</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3138</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x0</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>11</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT7900A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>662</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.1.9</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x10300</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>12</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT6306B (No Piggy)</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>614</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>0.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x0</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>13</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20413</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>14</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2710</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20203</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.1.4</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x32000</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>15</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT7900A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>584</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.1.9</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x10300</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>16</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT5838</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>108</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.0.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1001300</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>17</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2848</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20551</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>1.2.10</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2010</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>18</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20704</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>19</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20497</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>20</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2816A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20375</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.0.2</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2002</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>21</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT7001A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>10958</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.1.1</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x1311</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>22</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VT2004A</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>20070</description>
+      </xinfo>
+      <xinfo key="firmwareversion">
+        <name>Firmware version</name>
+        <description>2.1.0</description>
+      </xinfo>
+      <xinfo key="hardwareversion">
+        <name>Hardware version</name>
+        <description>0x2000</description>
+      </xinfo>
+      <xinfo key="ecatslavenumber">
+        <name></name>
+        <description>23</description>
+      </xinfo>
+      </xinfoobject>
+    </xinfoset>
+  </hardware>
+  <extendedinfo type="html"><![CDATA[<b>Measurement stop forced. Test is incomplete!</b>]]></extendedinfo>
+</testmodule>
+<!--footprint="0cabb6ad12292e28d210a2329de4ddf5" version="1"-->

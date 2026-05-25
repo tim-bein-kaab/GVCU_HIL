@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Security Access &amp; NM control">
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl9" Children="Controls" ControlName="Button 1">
+      <Property Name="Name">ButtonControl9</Property>
+      <Property Name="Size">44, 22</Property>
+      <Property Name="Location">196, 163</Property>
+      <Property Name="PressValueVTXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;0&lt;/RxValue&gt;</Property>
+      <Property Name="PressValueVT">1;Lower;0</Property>
+      <Property Name="PressValue">0</Property>
+      <Property Name="FlatStyle">CustomFlat</Property>
+      <Property Name="Font">Microsoft Sans Serif, 7.20000029pt, style=Bold</Property>
+      <Property Name="BackColor">Red</Property>
+      <Property Name="Text">KL30</Property>
+      <Property Name="HoverColor">Red</Property>
+      <Property Name="SymbolConfiguration">8;16;VTS::VT7001_1_Out2;;;Active;1;;;-1;;;;;;0</Property>
+      <Property Name="TabIndex">9</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl7" Children="Controls" ControlName="Button 8">
+      <Property Name="Name">ButtonControl7</Property>
+      <Property Name="Size">42, 22</Property>
+      <Property Name="Location">149, 163</Property>
+      <Property Name="ReleaseValueVTXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;1&lt;/RxValue&gt;</Property>
+      <Property Name="ReleaseValueVT">1;Lower;1</Property>
+      <Property Name="ReleaseValue">1</Property>
+      <Property Name="FlatStyle">CustomFlat</Property>
+      <Property Name="Font">Microsoft Sans Serif, 7.20000029pt, style=Bold</Property>
+      <Property Name="BackColor">0, 192, 0</Property>
+      <Property Name="Text">KL30</Property>
+      <Property Name="HoverColor">0, 192, 0</Property>
+      <Property Name="SymbolConfiguration">8;16;VTS::VT7001_1_Out2;;;Active;1;;;-1;;;;;;0</Property>
+      <Property Name="TabIndex">8</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl8" Children="Controls" ControlName="Button 7">
+      <Property Name="Name">ButtonControl8</Property>
+      <Property Name="Size">40, 22</Property>
+      <Property Name="Location">74, 163</Property>
+      <Property Name="PressValueVTXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;0&lt;/RxValue&gt;</Property>
+      <Property Name="PressValueVT">1;Lower;0</Property>
+      <Property Name="PressValue">0</Property>
+      <Property Name="FlatStyle">CustomFlat</Property>
+      <Property Name="Font">Microsoft Sans Serif, 7.20000029pt, style=Bold</Property>
+      <Property Name="BackColor">Red</Property>
+      <Property Name="Text">KL15</Property>
+      <Property Name="HoverColor">Red</Property>
+      <Property Name="SymbolConfiguration">8;16;VTS::VT7001_1_Out2;;;AuxActive;1;;;-1;;;;;;0</Property>
+      <Property Name="TabIndex">7</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl6" Children="Controls" ControlName="Button 6">
+      <Property Name="Name">ButtonControl6</Property>
+      <Property Name="Size">38, 22</Property>
+      <Property Name="Location">32, 163</Property>
+      <Property Name="ReleaseValueVTXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;1&lt;/RxValue&gt;</Property>
+      <Property Name="ReleaseValueVT">1;Lower;1</Property>
+      <Property Name="ReleaseValue">1</Property>
+      <Property Name="FlatStyle">Popup</Property>
+      <Property Name="Font">Microsoft Sans Serif, 7.20000029pt, style=Bold</Property>
+      <Property Name="BackColor">0, 192, 0</Property>
+      <Property Name="Text">KL15</Property>
+      <Property Name="TransparentColor">Red</Property>
+      <Property Name="HoverColor">0, 192, 0</Property>
+      <Property Name="SymbolConfiguration">8;16;VTS::VT7001_1_Out2;;;AuxActive;1;;;-1;;;;;;0</Property>
+      <Property Name="TabIndex">5</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl5" Children="Controls" ControlName="Button 5">
+      <Property Name="Name">ButtonControl5</Property>
+      <Property Name="Size">157, 23</Property>
+      <Property Name="Location">58, 118</Property>
+      <Property Name="Text">SLEEP REQUEST</Property>
+      <Property Name="SymbolConfiguration">8;16;nm_request;;;sleep_request;1;;;-1;;;;;;0</Property>
+      <Property Name="TabIndex">4</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl4" Children="Controls" ControlName="Button 4">
+      <Property Name="Name">ButtonControl4</Property>
+      <Property Name="Size">157, 23</Property>
+      <Property Name="Location">58, 90</Property>
+      <Property Name="Text">STANDBY REQUEST</Property>
+      <Property Name="SymbolConfiguration">8;16;nm_request;;;standby_request;1;;;-1;;;;;;0</Property>
+      <Property Name="TabIndex">3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl3" Children="Controls" ControlName="Button 3">
+      <Property Name="Name">ButtonControl3</Property>
+      <Property Name="Size">157, 23</Property>
+      <Property Name="Location">58, 62</Property>
+      <Property Name="Text">ACTIVE REQUEST</Property>
+      <Property Name="SymbolConfiguration">8;16;nm_request;;;active_request;1;;;-1;;;;;;0</Property>
+      <Property Name="TabIndex">2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl2" Children="Controls" ControlName="lvl2">
+      <Property Name="Name">ButtonControl2</Property>
+      <Property Name="Size">72, 23</Property>
+      <Property Name="Location">164, 19</Property>
+      <Property Name="Text">Level 2</Property>
+      <Property Name="SymbolConfiguration">8;16;Security_Access;;;level2;1;;;-1;;;;;;0</Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=17.3.91.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl1" Children="Controls" ControlName="lvl1">
+      <Property Name="Name">ButtonControl1</Property>
+      <Property Name="Size">72, 23</Property>
+      <Property Name="Location">32, 19</Property>
+      <Property Name="Text">Level 1</Property>
+      <Property Name="SymbolConfiguration">8;16;Security_Access;;;level1;1;;;-1;;;;;;0</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">270, 234</Property>
+    <Property Name="BackColor">Teal</Property>
+    <Property Name="BorderStyle">FixedSingle</Property>
+    <Property Name="IsProportional">True</Property>
+  </Object>
+</Panel>

@@ -13,20 +13,20 @@
 int32_T GVCU_HIL_simscape_a37faff9_2_ds_dxicr_p(const NeDynamicSystem *LC, const
   NeDynamicSystemInput *t1, NeDsMethodOutput *out)
 {
-  static int32_T _cg_const_1[100] = { 0, 0, 0, 0, 1, 2, 3, 4, 4, 5, 5, 5, 6, 6,
+  static int32_T _cg_const_1[103] = { 0, 0, 0, 0, 1, 2, 3, 4, 4, 5, 5, 5, 6, 6,
     6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
     6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
     6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
-    6, 6, 6, 6, 6, 6, 6, 6 };
+    6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 };
 
   static int32_T _cg_const_2[6] = { 0, 2, 3, 1, 4, 5 };
 
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mDXICR_P.mNumCol = 99ULL;
+  out->mDXICR_P.mNumCol = 102ULL;
   out->mDXICR_P.mNumRow = 24ULL;
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 103; i++) {
     out->mDXICR_P.mJc[i] = _cg_const_1[i];
   }
 

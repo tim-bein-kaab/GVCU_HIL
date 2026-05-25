@@ -1,0 +1,201 @@
+Simscape_DiL_Gemera_24b_M.csv
+Simscape_DiL_Gemera_24b/Gain1/Gain; 0.159155
+Simscape_DiL_Gemera_24b/Gain2/Gain; 0.159155
+Simscape_DiL_Gemera_24b/Gain3/Gain; 0.159155
+Simscape_DiL_Gemera_24b/Gain4/Gain; 0.159155
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Constant/Value; 1
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Constant1/Value; 2
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Constant2/Value; 1
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Constant3/Value; 1
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Constant4/Value; 1
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Constant5/Value; 2
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Constant6/Value; 2
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Constant7/Value; 1
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Zero1/Value; 0
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Zero2/Value; 0
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Zero3/Value; 0
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Zero4/Value; 0
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Gain5/Gain; 1
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Transfer Fcn/A; -8.5
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Transfer Fcn/C; 27.5
+Simscape_DiL_Gemera_24b/Simulation Step/S-Function/P1; 0
+Simscape_DiL_Gemera_24b/Simulation Step/S-Function1/P1; 2
+Simscape_DiL_Gemera_24b/friction/Constant/Value; 1
+Simscape_DiL_Gemera_24b/friction/Constant1/Value; 1
+Simscape_DiL_Gemera_24b/friction/Constant2/Value; 1
+Simscape_DiL_Gemera_24b/friction/Constant3/Value; 1
+Simscape_DiL_Gemera_24b/friction/Constant4/Value; 1
+Simscape_DiL_Gemera_24b/friction/Constant5/Value; 1
+Simscape_DiL_Gemera_24b/friction/Constant6/Value; 1
+Simscape_DiL_Gemera_24b/friction/Constant7/Value; 1
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P1; 73; 69; 66; 95; 68; 66; 67; 95; 86; 51; 50
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P3; 118; 101; 104; 105; 99; 108; 101; 95; 109; 111; 100; 101
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P4; 6
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P5; 100; 114; 118; 95; 109; 111; 100
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P6; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P7; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P8; 104; 104; 99; 95; 105; 110; 104; 98; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P9; 105; 101; 98; 95; 99; 104; 103; 95; 109; 111; 100; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P10; 118; 100; 99; 95; 112; 101; 114; 102; 95; 109; 111; 100; 95; 114; 101; 113
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P11; 0
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output/S-Function_1/P12; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P1; 73; 69; 66; 95; 68; 66; 67; 95; 86; 51; 50
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P3; 115; 116; 97; 98; 105; 108; 105; 116; 121; 95; 105; 110; 102; 111; 95; 100; 115; 50
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P4; 8
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P7; 108; 97; 116; 95; 97; 99; 99
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P8; 108; 97; 116; 95; 97; 99; 99; 95; 118
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P9; 108; 111; 110; 103; 95; 97; 99; 99
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P10; 108; 111; 110; 103; 95; 97; 99; 99; 95; 118
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P11; 121; 97; 119; 95; 114; 97; 116; 101
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P12; 121; 97; 119; 95; 114; 97; 116; 101; 95; 118
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P13; 0
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output1/S-Function_1/P14; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P1; 73; 69; 66; 95; 68; 66; 67; 95; 86; 51; 50
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P3; 112; 119; 114; 95; 115; 116; 101; 101; 114; 95; 105; 110; 102; 111; 95; 100; 115; 50
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P4; 6
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P5; 99; 97; 108; 105; 98; 114; 97; 116; 105; 111; 110; 95; 115; 116; 115
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P6; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P7; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P8; 115; 116; 101; 101; 114; 105; 110; 103; 95; 119; 104; 101; 101; 108; 95; 97; 110; 103; 108; 101
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P9; 115; 116; 101; 101; 114; 105; 110; 103; 95; 119; 104; 101; 101; 108; 95; 114; 111; 116; 95; 115; 112; 101; 101; 100
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P10; 115; 116; 101; 101; 114; 105; 110; 103; 95; 119; 104; 101; 101; 108; 95; 115; 101; 110; 115; 111; 114; 95; 118
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P11; 0
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output2/S-Function_1/P12; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output3/S-Function_1/P1; 73; 69; 66; 95; 68; 66; 67; 95; 86; 51; 50
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output3/S-Function_1/P2; 71; 86; 67; 85
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output3/S-Function_1/P3; 110; 109; 95; 114; 101; 113; 117; 101; 115; 116; 95; 103; 118; 99; 117; 95; 100; 115; 50
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output3/S-Function_1/P4; 3
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output3/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output3/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output3/S-Function_1/P7; 110; 109; 95; 114; 101; 113; 117; 101; 115; 116
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output3/S-Function_1/P8; 0
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Message Output3/S-Function_1/P9; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/Simulated GVCU - Steering /Radians to Degrees2/Gain/Gain; 57.2958
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/PID Controller/P; 0.3
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/PID Controller/I; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/PID Controller/D; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/PID Controller/N; 100
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/PID Controller/InitialConditionForIntegrator; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/PID Controller/InitialConditionForFilter; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Constant/Value; 20
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Constant1/Value; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Constant13/Value; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Constant2/Value; 8
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Constant7/Value; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Constant8/Value; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Zero/Value; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Gain1/Gain; 0.277778
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Gain2/Gain; -1
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/1-D Lookup Table1/Table; -7.85; 7.85
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/1-D Lookup Table1/BreakpointsForDimension1; -1; 1
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Saturation/UpperLimit; 1
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Saturation/LowerLimit; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Switch/Threshold; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Switch2/Threshold; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_16_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_17_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_18_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_19_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_1_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_20_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_21_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_23_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_27_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_28_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_29_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_2_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_30_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_31_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_32_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_34_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_38_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_39_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_3_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_40_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_41_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_42_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_43_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_45_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_49_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_50_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_51_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_52_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_53_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_54_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_56_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/config/Solver Configuration/EVAL_KEY/RATE_TRANSITION_57_1_1/InitialCondition; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/Rate Limiter Dynamic/sample time/WtEt; 0.001
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/brake balance/Constant2/Value; 0.8
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/brake balance/Constant3/Value; 0.2
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/brake balance/Unit Delay5/InitialCondition; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/brake balance/Unit Delay6/InitialCondition; 0
+Simscape_DiL_Gemera_24b/driver inputs/longitudinal driver/brake balance/Unit Delay7/InitialCondition; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/Subsystem/Gain5/Gain; 3.6
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/Constant/Value; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/Switch/Threshold; -1
+Simscape_DiL_Gemera_24b/vehicle/powertrain/motor/Constant/Value; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/Subsystem2/Subsystem1/Gain/Gain; 0.001
+Simscape_DiL_Gemera_24b/vehicle/powertrain/Subsystem2/Subsystem1/Gain6/Gain; 9.5493
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input/S-Function/P1; 73; 69; 66; 95; 68; 66; 67; 95; 86; 51; 50
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input/S-Function/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input/S-Function/P3; 116; 97; 114; 103; 101; 116; 95; 98; 114; 97; 107; 101; 95; 112; 114; 101; 115; 115; 117; 114; 101
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input/S-Function/P5; 116; 97; 114; 103; 101; 116; 95; 98; 114; 97; 107; 101; 95; 112; 114; 101; 115; 115; 117; 114; 101; 95; 102; 108
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input1/S-Function/P1; 73; 69; 66; 95; 68; 66; 67; 95; 86; 51; 50
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input1/S-Function/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input1/S-Function/P3; 116; 97; 114; 103; 101; 116; 95; 98; 114; 97; 107; 101; 95; 112; 114; 101; 115; 115; 117; 114; 101
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input1/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input1/S-Function/P5; 116; 97; 114; 103; 101; 116; 95; 98; 114; 97; 107; 101; 95; 112; 114; 101; 115; 115; 117; 114; 101; 95; 102; 114
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input1/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input1/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input1/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input2/S-Function/P1; 73; 69; 66; 95; 68; 66; 67; 95; 86; 51; 50
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input2/S-Function/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input2/S-Function/P3; 116; 97; 114; 103; 101; 116; 95; 98; 114; 97; 107; 101; 95; 112; 114; 101; 115; 115; 117; 114; 101
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input2/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input2/S-Function/P5; 116; 97; 114; 103; 101; 116; 95; 98; 114; 97; 107; 101; 95; 112; 114; 101; 115; 115; 117; 114; 101; 95; 114; 108
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input2/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input2/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input2/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input3/S-Function/P1; 73; 69; 66; 95; 68; 66; 67; 95; 86; 51; 50
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input3/S-Function/P2; 73; 69; 66
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input3/S-Function/P3; 116; 97; 114; 103; 101; 116; 95; 98; 114; 97; 107; 101; 95; 112; 114; 101; 115; 115; 117; 114; 101
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input3/S-Function/P4; 1
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input3/S-Function/P5; 116; 97; 114; 103; 101; 116; 95; 98; 114; 97; 107; 101; 95; 112; 114; 101; 115; 115; 117; 114; 101; 95; 114; 114
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input3/S-Function/P6; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input3/S-Function/P7; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/brakes/Signal Input3/S-Function/P8; 105; 110; 104; 101; 114; 105; 116; 101; 100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/PID Controller/P; 10
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/PID Controller/I; 10
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/PID Controller/D; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/PID Controller/N; 100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/PID Controller/InitialConditionForIntegrator; 1
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/PID Controller/InitialConditionForFilter; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/PID Controller/UpperSaturationLimit; 1
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/PID Controller/LowerSaturationLimit; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/PID Controller/Kb; 100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/Constant/Value; 0.1
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/Constant1/Value; 2
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/Transfer Fcn2/A; -100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/Transfer Fcn2/C; 100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/Transfer Fcn3/A; -100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/engine/TC/Transfer Fcn3/C; 100
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 1/Value; 0; 0; 0; 0; 0; 0; 0; 0; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 10/Value; 0; 0; 0; 0; 0; 0; 0; 1; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 11/Value; 0; 0; 0; 0; 0; 0; 0; 0; 1
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 2/Value; 1; 0; 0; 0; 0; 0; 0; 0; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 3/Value; 0; 1; 0; 0; 0; 0; 0; 0; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 4/Value; 0; 0; 0; 0; 0; 0; 0; 0; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 5/Value; 0; 0; 1; 0; 0; 0; 0; 0; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 6/Value; 0; 0; 0; 1; 0; 0; 0; 0; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 7/Value; 0; 0; 0; 0; 1; 0; 0; 0; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 8/Value; 0; 0; 0; 0; 0; 1; 0; 0; 0
+Simscape_DiL_Gemera_24b/vehicle/powertrain/transmission/gear selector/Clutches Gear 9/Value; 0; 0; 0; 0; 0; 0; 1; 0; 0

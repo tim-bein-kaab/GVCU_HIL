@@ -7,9 +7,9 @@
  *
  * Code generation for model "GVCU_HIL_simscape".
  *
- * Model version              : 7.77
+ * Model version              : 7.81
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Fri May 22 11:12:41 2026
+ * C source code generated on : Mon May 25 09:23:38 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -31,16 +31,7 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_struct_N0HXmklnGkVIKPEIZWhbGC_
-#define DEFINED_TYPEDEF_FOR_struct_N0HXmklnGkVIKPEIZWhbGC_
-
-typedef struct {
-  real_T SoC_init;
-} struct_N0HXmklnGkVIKPEIZWhbGC;
-
-#endif
-
-/* Custom Type definition for MATLAB Function: '<S31>/MATLAB Function2' */
+/* Custom Type definition for MATLAB Function: '<S8>/MATLAB Function2' */
 #ifndef struct_tag_sdAmwXbnJnEmimT0NaJRtAD
 #define struct_tag_sdAmwXbnJnEmimT0NaJRtAD
 

@@ -1,0 +1,279 @@
+VERSION "HIPBNYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY/4/%%%/4/'%**4YYY///"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+
+BS_:
+
+BU_: PDM2 SEAT_DRIVER SEAT_PASS CPM90
+
+
+BO_ 1343 SEAT_POS_PASSENGER: 4 SEAT_PASS
+ SG_ POS_HEIGHT : 0|12@1+ (1,0) [0|4095] ""  PDM2
+ SG_ POS_TRACK : 16|12@1+ (1,0) [0|4095] ""  PDM2
+ SG_ STATUS : 12|2@1+ (1,0) [0|3] "enum"  PDM2
+ SG_ HW_REV : 14|2@1+ (1,0) [0|2] "enum"  PDM2
+
+BO_ 1342 SEAT_POS_DRIVER: 4 SEAT_DRIVER
+ SG_ POS_HEIGHT : 0|12@1+ (1,0) [0|4095] ""  PDM2
+ SG_ POS_TRACK : 16|12@1+ (1,0) [0|4095] ""  PDM2
+ SG_ STATUS : 12|2@1+ (1,0) [0|3] "enum"  PDM2
+ SG_ HW_REV : 14|2@1+ (1,0) [0|2] "enum"  PDM2
+
+BO_ 1034 SEAT_REQUEST_DRIVER: 3 PDM2
+ SG_ HEATER_PWM : 0|8@1+ (1,0) [0|255] "PWM"  SEAT_DRIVER
+ SG_ CALIBRATION_OVERRIDE : 16|1@1+ (1,0) [0|1] "bool"  SEAT_DRIVER
+ SG_ Car_Velocity_status : 11|2@1+ (1,0) [0|3] ""  SEAT_DRIVER
+ SG_ Crash_Event_trigger : 15|1@1+ (1,0) [0|1] "bool"  SEAT_DRIVER
+ SG_ Belt_Buckle_status : 13|2@1+ (1,0) [0|3] ""  SEAT_DRIVER
+ SG_ MOTORS_DIR_REQ : 8|3@1+ (1,0) [0|4] "enum"  SEAT_DRIVER
+
+BO_ 1035 SEAT_REQUEST_PASSENGER: 3 PDM2
+ SG_ HEATER_PWM : 0|8@1+ (1,0) [0|255] "PWM"  SEAT_PASS
+ SG_ CALIBRATION_OVERRIDE : 16|1@1+ (1,0) [0|1] "bool"  SEAT_PASS
+ SG_ Car_Velocity_status : 11|2@1+ (1,0) [0|3] ""  SEAT_PASS
+ SG_ Crash_Event_trigger : 15|1@1+ (1,0) [0|1] "bool"  SEAT_PASS
+ SG_ Belt_Buckle_status : 13|2@1+ (1,0) [0|3] ""  SEAT_PASS
+ SG_ MOTORS_DIR_REQ : 8|3@1+ (1,0) [0|4] "enum"  SEAT_PASS
+
+BO_ 1907 DIAG__REQ_SEAT_PASS_G: 8 PDM2
+ SG_ D0 : 0|8@1+ (1,0) [0|0] ""  SEAT_PASS
+
+BO_ 1906 DIAG__REQ_SEAT_DRIVER: 8 PDM2
+ SG_ D0 : 0|8@1+ (1,0) [0|0] ""  SEAT_DRIVER
+
+BO_ 1915 DIAG__RESP_SEAT_PASS: 8 SEAT_PASS
+ SG_ D0 : 0|8@1+ (1,0) [0|0] ""  PDM2
+
+BO_ 1341 SEAT_STATUS_MEM_PASSENGER: 8 SEAT_PASS
+ SG_ I_SENSE_TRACK : 0|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ I_SENSE_BACKREST_L : 8|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ I_SENSE_BACKREST_R : 16|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ I_SENSE_HEIGHT : 24|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ MOVEMENT_TRACK : 32|3@1+ (1,0) [0|4] ""  PDM2
+ SG_ MOVEMENT_BACKREST : 35|3@1+ (1,0) [0|4] ""  PDM2
+ SG_ MOVEMENT_HEIGHT : 38|3@1+ (1,0) [0|4] ""  PDM2
+ SG_ ERROR_ACTIVE_BAOFFFA : 41|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_ACTIVE_LIN : 42|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_ACTIVE_OCS : 43|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ Occupant_status : 44|2@1+ (1,0) [0|3] "status"  PDM2
+ SG_ Passenger_airbag_enabled_status : 46|2@1+ (1,0) [0|3] "status"  PDM2
+ SG_ ERROR_OCC_ERR_LOOPR_HI_OK : 48|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ERR_CUT_OK : 49|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ECU_OK : 50|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_CRC_OK : 51|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_LIN_ERROR : 52|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_BUILD_OK : 53|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_VBAT_NOT_HI : 54|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_VBAT_NOT_LO : 55|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ Temp_Warning : 56|1@1+ (1,0) [0|1] "bool"  PDM2
+ SG_ Volt_Warning : 57|1@1+ (1,0) [0|1] "bool"  PDM2
+ SG_ ERROR_SBR_FAIL : 60|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ERR_LEAK_GND_OK : 61|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ERR_LEAK_UBATT_OK : 62|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ERR_LOOPR_LO_OK : 63|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ BAOFFA_LED_STATUS : 58|2@1+ (1,0) [0|2] ""  PDM2
+
+BO_ 1340 SEAT_STATUS_MEM_DRIVER: 8 SEAT_DRIVER
+ SG_ I_SENSE_TRACK : 0|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ I_SENSE_BACKREST_L : 8|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ I_SENSE_BACKREST_R : 16|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ I_SENSE_HEIGHT : 24|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ MOVEMENT_TRACK : 32|3@1+ (1,0) [0|4] ""  PDM2
+ SG_ MOVEMENT_BACKREST : 35|3@1+ (1,0) [0|4] ""  PDM2
+ SG_ MOVEMENT_HEIGHT : 38|3@1+ (1,0) [0|4] ""  PDM2
+ SG_ ERROR_ACTIVE_BAOFFFA : 41|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_ACTIVE_LIN : 42|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_ACTIVE_OCS : 43|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ Occupant_status : 44|2@1+ (1,0) [0|3] "status"  PDM2
+ SG_ Passenger_airbag_enabled_status : 46|2@1+ (1,0) [0|3] "status"  PDM2
+ SG_ ERROR_OCC_ERR_LOOPR_HI_OK : 48|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ERR_CUT_OK : 49|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ECU_OK : 50|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_CRC_OK : 51|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_LIN_ERROR : 52|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_BUILD_OK : 53|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_VBAT_NOT_HI : 54|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_GENERIC_BIT_VBAT_NOT_LO : 55|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ Temp_Warning : 56|1@1+ (1,0) [0|1] "bool"  PDM2
+ SG_ Volt_Warning : 57|1@1+ (1,0) [0|1] "bool"  PDM2
+ SG_ ERROR_SBR_FAIL : 60|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ERR_LEAK_GND_OK : 61|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ERR_LEAK_UBATT_OK : 62|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ ERROR_OCC_ERR_LOOPR_LO_OK : 63|1@1+ (1,0) [0|0] "bool"  PDM2
+ SG_ BAOFFA_LED_STATUS : 58|2@1+ (1,0) [0|2] ""  PDM2
+
+BO_ 1914 DIAG__RESP_SEAT_DRIVER: 8 SEAT_DRIVER
+ SG_ D0 : 0|8@1+ (1,0) [0|0] ""  PDM2
+
+BO_ 1022 HU_SEAT_POS_DRIVER_G: 4 PDM2
+ SG_ POS_HEIGHT : 0|12@1+ (1,0) [0|4095] ""  SEAT_DRIVER
+ SG_ POS_TRACK : 16|12@1+ (1,0) [0|4095] ""  SEAT_DRIVER
+ SG_ STATUS : 12|4@1+ (1,0) [0|4] "enum"  SEAT_DRIVER
+
+BO_ 1023 HU_SEAT_POS_PASSENGER_G: 4 PDM2
+ SG_ POS_HEIGHT : 0|12@1+ (1,0) [0|4095] ""  SEAT_PASS
+ SG_ POS_TRACK : 16|12@1+ (1,0) [0|4095] ""  SEAT_PASS
+ SG_ STATUS : 12|4@1+ (1,0) [0|4] "enum"  SEAT_PASS
+
+BO_ 2566861088 CPM90_MOTOR_FEEDBACK1: 8 CPM90
+ SG_ SPEED_ACTUAL : 0|16@1+ (0.5,-32127) [0|65536] "RPM"  PDM2
+ SG_ SPEED_TARGET : 16|16@1+ (0.5,-32127) [0|65536] "RPM"  PDM2
+ SG_ TORQUE_ACTUAL : 32|16@1+ (0.000854,-32127) [0|65536] "Nm"  PDM2
+ SG_ TOTAL_CURRENT : 48|8@1+ (2,-126) [0|256] "A"  PDM2
+ SG_ MSG_COUNTER : 56|4@1+ (1,0) [0|16] ""  PDM2
+ SG_ MSG_CHECKSUM : 60|4@1+ (1,0) [0|16] ""  PDM2
+
+BO_ 2566862368 CPM90_MOTOR_FEEDBACK2: 8 CPM90
+ SG_ POSITION_ACTUAL : 0|32@1+ (1,-2105540607) [0|0] "deg"  PDM2
+ SG_ TORQUE_MAX_ACTUAL : 32|16@1+ (0.000854,-32127) [0|65536] "Nm"  PDM2
+ SG_ TORQUE_MIN_ACTUAL : 48|16@1+ (0.000854,-32127) [0|65536] "Nm"  PDM2
+
+BO_ 2566861856 CPM90_MOTOR_STATUS: 8 CPM90
+ SG_ OPERATIONAL_STATE : 0|4@1+ (1,0) [0|16] ""  PDM2
+ SG_ TEMP_LIMIT_WARNING : 4|2@1+ (1,0) [0|4] ""  PDM2
+ SG_ UNDER_VOLTAGE_CUT_OFF : 10|2@1+ (1,0) [0|4] ""  PDM2
+ SG_ OVER_VOLTAGE_CUT_OFF : 12|2@1+ (1,0) [0|4] ""  PDM2
+ SG_ OVER_TEMP_CUT_OFF : 14|2@1+ (1,0) [0|16] ""  PDM2
+ SG_ MOTOR_BLOCKED_CUT_OFF : 16|2@1+ (1,0) [0|4] ""  PDM2
+ SG_ FAILURE_CUT_OFF : 18|2@1+ (1,0) [0|4] ""  PDM2
+ SG_ CTRL_MODE_ACTUAL : 20|4@1+ (1,0) [0|16] ""  PDM2
+ SG_ SUPPLY_VOLT : 26|8@1+ (0.5,0) [0|256] "V"  PDM2
+ SG_ MOTOR_TEMP : 34|8@1+ (1,-40) [0|256] "degC"  PDM2
+ SG_ EXT_MOTOR_LATCH : 42|2@1+ (1,0) [0|4] ""  PDM2
+ SG_ MOTOR_TEMP2 : 44|8@1+ (1,-40) [0|256] "degC"  PDM2
+ SG_ MSG_COUNTER : 56|4@1+ (1,0) [0|16] ""  PDM2
+ SG_ MSG_CHECKSUM : 60|4@1+ (1,0) [0|16] ""  PDM2
+
+BO_ 2566861616 CPM90_MOTOR_CTRL: 8 PDM2
+ SG_ SPEED_REQ : 0|16@1+ (0.5,-32127) [0|65536] "RPM"  CPM90
+ SG_ TORQUE_REQ : 16|16@1+ (0.000854,-32127) [0|1] "Nm"  CPM90
+ SG_ POSITION_REQ : 32|32@1+ (1,-2105540607) [0|0] "deg"  CPM90
+
+BO_ 2566862112 CPM90_MOTOR_UNIT_ID: 8 CPM90
+ SG_ HW_VER_ID : 8|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ SW_VER_ID : 0|8@1+ (1,0) [0|0] ""  PDM2
+ SG_ MANUFACTURING_DATE : 16|32@1+ (1,0) [0|0] ""  PDM2
+ SG_ SN : 48|16@1+ (1,0) [0|0] ""  PDM2
+
+
+CM_ "HS version 40.15";
+CM_ BU_ PDM2 "Power Distribution Module 2";
+CM_ BU_ SEAT_DRIVER "Driver Seat Control";
+CM_ BU_ SEAT_PASS "Passenger Seat Control";
+CM_ BO_ 1343 "Position reported by memory seat";
+CM_ SG_ 1343 STATUS "";
+CM_ BO_ 1342 "Position reported by memory seat";
+CM_ SG_ 1342 STATUS "";
+CM_ BO_ 1034 "Repacked message from PDM2 that originally comes from HU";
+CM_ SG_ 1034 CALIBRATION_OVERRIDE "Seat logic override when calibrating";
+CM_ BO_ 1035 "Repacked message from PDM2 that originally comes from HU";
+CM_ SG_ 1035 HEATER_PWM "";
+CM_ SG_ 1035 CALIBRATION_OVERRIDE "Seat logic override when calibrating";
+CM_ BO_ 1341 "Status reported by memory seat";
+CM_ BO_ 1340 "Status reported by memory seat";
+CM_ BO_ 1022 "Headunit seat position command";
+CM_ SG_ 1022 STATUS "";
+CM_ BO_ 1023 "Headunit seat position command";
+CM_ SG_ 1023 STATUS "";
+BA_DEF_ SG_  "Filter" ENUM  "0","1";
+BA_DEF_ SG_  "FilterCoeff" FLOAT 0 1;
+BA_DEF_ SG_  "IgnorePeriods" INT 0 100;
+BA_DEF_ BO_  "MsgType" ENUM  "Periodic","Event","PeriodicAndEvent";
+BA_DEF_ BO_  "MsgPeriod" INT 0 10000;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_DEF_  "Filter" "0";
+BA_DEF_DEF_  "FilterCoeff" 0;
+BA_DEF_DEF_  "IgnorePeriods" 0;
+BA_DEF_DEF_  "MsgType" "Periodic";
+BA_DEF_DEF_  "MsgPeriod" 100;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_ "MsgPeriod" BO_ 1343 1000;
+BA_ "MsgType" BO_ 1343 0;
+BA_ "GenMsgCycleTime" BO_ 1343 1000;
+BA_ "MsgPeriod" BO_ 1342 1000;
+BA_ "GenMsgCycleTime" BO_ 1342 1000;
+BA_ "MsgType" BO_ 1342 0;
+BA_ "MsgType" BO_ 1034 0;
+BA_ "MsgPeriod" BO_ 1034 10;
+BA_ "GenMsgCycleTime" BO_ 1034 10;
+BA_ "MsgType" BO_ 1035 0;
+BA_ "MsgPeriod" BO_ 1035 10;
+BA_ "GenMsgCycleTime" BO_ 1035 10;
+BA_ "MsgType" BO_ 1907 1;
+BA_ "MsgPeriod" BO_ 1907 0;
+BA_ "MsgPeriod" BO_ 1906 0;
+BA_ "MsgType" BO_ 1906 1;
+BA_ "MsgType" BO_ 1915 1;
+BA_ "MsgPeriod" BO_ 1915 0;
+BA_ "MsgPeriod" BO_ 1341 100;
+BA_ "MsgType" BO_ 1341 0;
+BA_ "GenMsgCycleTime" BO_ 1341 100;
+BA_ "MsgPeriod" BO_ 1340 100;
+BA_ "MsgType" BO_ 1340 0;
+BA_ "GenMsgCycleTime" BO_ 1340 100;
+BA_ "MsgType" BO_ 1914 1;
+BA_ "MsgPeriod" BO_ 1914 0;
+BA_ "MsgType" BO_ 1022 0;
+BA_ "GenMsgCycleTime" BO_ 1022 1000;
+BA_ "MsgPeriod" BO_ 1022 1000;
+BA_ "MsgType" BO_ 1023 0;
+BA_ "MsgPeriod" BO_ 1023 1000;
+BA_ "GenMsgCycleTime" BO_ 1023 1000;
+BA_ "MsgType" BO_ 2566861088 0;
+BA_ "MsgPeriod" BO_ 2566861088 10;
+BA_ "GenMsgCycleTime" BO_ 2566861088 10;
+BA_ "MsgType" BO_ 2566862368 0;
+BA_ "MsgPeriod" BO_ 2566862368 10;
+BA_ "GenMsgCycleTime" BO_ 2566862368 10;
+BA_ "MsgType" BO_ 2566861856 0;
+BA_ "GenMsgCycleTime" BO_ 2566861856 100;
+BA_ "MsgType" BO_ 2566861616 0;
+BA_ "MsgPeriod" BO_ 2566861616 100;
+BA_ "GenMsgCycleTime" BO_ 2566861616 100;
+BA_ "MsgType" BO_ 2566862112 0;
+BA_ "MsgPeriod" BO_ 2566862112 1000;
+BA_ "GenMsgCycleTime" BO_ 2566862112 1000;
+VAL_ 1343 STATUS 1 "NEED_POSITION" 2 "NEED_LIMIT" 3 "I_AM_FINE" 0 "UNINITIALIZED" ;
+VAL_ 1343 HW_REV 0 "HW_REV_UNKNOWN" 1 "HW_REV_0" 2 "HW_REV_1" ;
+VAL_ 1342 STATUS 1 "NEED_POSITION" 2 "NEED_LIMIT" 3 "I_AM_FINE" 0 "UNINITIALIZED" ;
+VAL_ 1342 HW_REV 0 "HW_REV_UNKNOWN" 1 "HW_REV_0" 2 "HW_REV_1" ;
+VAL_ 1034 Car_Velocity_status 0 "undefined" 1 "standing" 2 "driving" ;
+VAL_ 1034 Crash_Event_trigger 0 "no_crash" 1 "crash_happened" ;
+VAL_ 1034 Belt_Buckle_status 0 "undefined" 1 "OFF" 2 "ON" ;
+VAL_ 1034 MOTORS_DIR_REQ 0 "HOLD" 1 "DIR_1" 2 "DIR_2" 3 "DIR_3" 4 "DIR_4" ;
+VAL_ 1035 Car_Velocity_status 0 "undefined" 1 "standing" 2 "driving" ;
+VAL_ 1035 Crash_Event_trigger 0 "no_crash" 1 "crash_happened" ;
+VAL_ 1035 Belt_Buckle_status 0 "undefined" 1 "OFF" 2 "ON" ;
+VAL_ 1035 MOTORS_DIR_REQ 0 "HOLD" 1 "DIR_1" 2 "DIR_2" 3 "DIR_3" 4 "DIR_4" ;
+VAL_ 1341 MOVEMENT_TRACK 0 "STATIONARY" 1 "MOVING" 2 "FAULT" 3 "REQUEST_OK" 4 "REQUEST_ABORTED" ;
+VAL_ 1341 MOVEMENT_HEIGHT 0 "STATIONARY" 1 "MOVING" 2 "FAULT" 3 "REQUEST_OK" 4 "REQUEST_ABORTED" ;
+VAL_ 1341 Occupant_status 0 "OCCUPANT_ERROR" 1 "OCCUPANT_UNKNOWN" 2 "OCCUPANT_CHILD_NONE" 3 "OCCUPANT_ADULT" ;
+VAL_ 1341 Passenger_airbag_enabled_status 1 "AB_UNKNOWN" 2 "AB_DISABLED" 3 "AB_ENABLED" ;
+VAL_ 1340 MOVEMENT_TRACK 0 "STATIONARY" 1 "MOVING" 2 "FAULT" 3 "REQUEST_OK" 4 "REQUEST_ABORTED" ;
+VAL_ 1340 MOVEMENT_HEIGHT 0 "STATIONARY" 1 "MOVING" 2 "FAULT" 3 "REQUEST_OK" 4 "REQUEST_ABORTED" ;
+VAL_ 1340 Occupant_status 0 "OCCUPANT_ERROR" 1 "OCCUPANT_UNKNOWN" 2 "OCCUPANT_CHILD_NONE" 3 "OCCUPANT_ADULT" ;
+VAL_ 1340 Passenger_airbag_enabled_status 1 "AB_UNKNOWN" 2 "AB_DISABLED" 3 "AB_ENABLED" ;
+VAL_ 1340 BAOFFA_LED_STATUS 0 "Unknown" 1 "LED OFF" 2 "LED ON" ;
+VAL_ 1022 STATUS 0 "DO_NOT_LISTEN" 1 "POSITION" 2 "LIMIT" 3 "REQUEST" 4 "ABORT" ;
+VAL_ 1023 STATUS 0 "DO_NOT_LISTEN" 1 "POSITION" 2 "LIMIT" 3 "REQUEST" 4 "ABORT" ;

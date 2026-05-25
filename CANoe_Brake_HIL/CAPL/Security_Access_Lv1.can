@@ -1,0 +1,20 @@
+﻿/*@!Encoding:65001*/
+includes
+{
+  
+
+}
+
+variables
+{
+
+}
+
+void MainTest()
+{
+  TestWaitForUnlockEcu("IEB", 1);
+}
+
+
+
+

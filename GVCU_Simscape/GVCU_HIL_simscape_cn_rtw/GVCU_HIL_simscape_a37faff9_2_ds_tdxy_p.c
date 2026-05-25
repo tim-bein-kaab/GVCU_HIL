@@ -13,12 +13,12 @@
 int32_T GVCU_HIL_simscape_a37faff9_2_ds_tdxy_p(const NeDynamicSystem *LC, const
   NeDynamicSystemInput *t1, NeDsMethodOutput *out)
 {
-  static int32_T _cg_const_1[100] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8, 8, 8,
+  static int32_T _cg_const_1[103] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8, 8, 8,
     8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 10, 10, 11, 12, 12, 13, 13, 13,
     13, 14, 14, 15, 15, 16, 16, 17, 17, 17, 17, 17, 17, 17, 18, 20, 21, 22, 23,
     24, 26, 27, 29, 30, 32, 33, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35,
     35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35,
-    35, 35, 35, 35, 35, 35 };
+    35, 35, 35, 35, 35, 35, 35, 35, 35 };
 
   static int32_T _cg_const_2[35] = { 15, 9, 21, 4, 6, 7, 5, 8, 10, 10, 16, 10,
     10, 10, 10, 10, 10, 16, 16, 22, 22, 22, 10, 0, 0, 14, 1, 1, 12, 2, 2, 20, 3,
@@ -27,9 +27,9 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_tdxy_p(const NeDynamicSystem *LC, const
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mTDXY_P.mNumCol = 99ULL;
+  out->mTDXY_P.mNumCol = 102ULL;
   out->mTDXY_P.mNumRow = 23ULL;
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 103; i++) {
     out->mTDXY_P.mJc[i] = _cg_const_1[i];
   }
 

@@ -1,0 +1,41 @@
+﻿/*@!Encoding:65001*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+void MainTest()
+{
+  simulate_steering();
+}
+testcase simulate_steering()
+{
+  int i = 0;
+  dword stimId;
+  
+  testStep("0", "Applying steering wheel angle to IEB");
+  
+
+  @ABS_TEST::degrees_radians = 1;
+  //Create stimulus for csv files, SourceSignal exists in csv file
+  stimId = StmCreate_CSV(sysvar::ABS_TEST::steering_ang, IEB_DBC_V28::pwr_steer_info_ds2::steering_wheel_angle, 10, "steering_input.csv");
+  
+
+  //Start the process of reading the stimulus from csv file
+  write("stimId: %d", stimId);
+  StmControl_Start(stimId);
+  testWaitForTimeout(55000);
+  StmControl_Stop(stimId);
+  /*
+  for(i=0;i<elcount(steering_data);i++)
+  {
+    @ABS_TEST::steering_ang =  (steering_data[i] * 180 )/3.14;
+    testWaitForTimeout(150);
+  }
+  */
+}

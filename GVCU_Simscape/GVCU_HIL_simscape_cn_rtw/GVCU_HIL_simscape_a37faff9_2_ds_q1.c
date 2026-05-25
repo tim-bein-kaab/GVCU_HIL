@@ -56,6 +56,7 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_q1(const NeDynamicSystem *LC, const
   out->mQ1.mX[38] = 0.0;
   out->mQ1.mX[39] = 0.0;
   out->mQ1.mX[40] = 0.0;
+  out->mQ1.mX[41] = 0.0;
   (void)LC;
   (void)out;
   return 0;

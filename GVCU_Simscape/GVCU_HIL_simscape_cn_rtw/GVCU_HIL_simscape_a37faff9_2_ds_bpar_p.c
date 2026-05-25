@@ -15,8 +15,8 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_bpar_p(const NeDynamicSystem *LC, const
 {
   (void)t1;
   (void)LC;
-  out->mBPAR_P.mNumCol = 27ULL;
-  out->mBPAR_P.mNumRow = 99ULL;
+  out->mBPAR_P.mNumCol = 25ULL;
+  out->mBPAR_P.mNumRow = 102ULL;
   out->mBPAR_P.mJc[0] = 0;
   out->mBPAR_P.mJc[1] = 0;
   out->mBPAR_P.mJc[2] = 0;
@@ -43,8 +43,6 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_bpar_p(const NeDynamicSystem *LC, const
   out->mBPAR_P.mJc[23] = 0;
   out->mBPAR_P.mJc[24] = 0;
   out->mBPAR_P.mJc[25] = 0;
-  out->mBPAR_P.mJc[26] = 0;
-  out->mBPAR_P.mJc[27] = 0;
   (void)LC;
   (void)out;
   return 0;

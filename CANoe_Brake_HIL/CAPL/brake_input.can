@@ -1,0 +1,74 @@
+﻿/*@!Encoding:65001*/
+includes
+{
+  
+
+}
+
+variables
+{
+  double brake_percentage = 0;
+  double temp_brake_percentage = 0;
+  double actual_brake_percentage = 0;
+  int apply_brake = 0;
+  int release_brake = 0;
+  int brake_active = 0;
+  message SEAT_REQUEST_PASSENGER brake_request;
+}
+
+on sysvar ABS_TEST::Brake_Input
+{
+  brake_percentage = @ABS_TEST::Brake_Input;
+  if(actual_brake_percentage < brake_percentage)
+  {
+    apply_brake = 1;
+  }
+  else
+  {
+    release_brake = 1;
+  }
+}
+
+on message nm_status_ieb
+{
+  if(this.nm_status == 2)
+  {
+    brake_active = 1;
+  }
+  else
+  {
+    brake_active = 0;
+  }
+}
+
+on message brake_pedal
+{
+  if(brake_active)
+  {
+    actual_brake_percentage = this.brake_pedal_travel_perc/10;
+    if(apply_brake)
+    {
+      if((actual_brake_percentage < brake_percentage) && (actual_brake_percentage < 75))
+      {
+        brake_request.MOTORS_DIR_REQ = 3;
+        output(brake_request);
+      }
+      else
+      {
+        apply_brake = 0;
+      }
+    }
+    if(release_brake)
+    {
+      if((actual_brake_percentage - 2.2) > brake_percentage)
+      {
+        brake_request.MOTORS_DIR_REQ = 4;
+        output(brake_request);
+      }
+      else
+      {
+        release_brake = 0;
+      }
+    } 
+  }
+}

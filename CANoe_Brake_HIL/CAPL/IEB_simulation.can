@@ -1,0 +1,100 @@
+﻿/*@!Encoding:65001*/
+includes
+{
+  #include "Crc_Calc.can"
+}
+
+variables
+{
+  int pwr_supply_active = 0;
+  msTimer nm_request_timer;
+  byte request = STANDBY_REQUEST;
+  
+  message nm_request_gvcu_ds2 nm_request_ieb;
+  const byte len = nm_request_gvcu_ds2.dlc;
+  const byte crcPos = 0;
+  byte crc_checksum = 0;
+  byte data[nm_request_gvcu_ds2.dlc];
+  int alive_counter_check = 0;
+  }
+
+on key 'S'
+{
+  setTimer(nm_request_timer, 100);
+}
+
+on key 'D'
+{
+  cancelTimer(nm_request_timer);
+}
+
+on sysvar nm_request::active_request
+{
+  request = ACTIVE_REQUEST;
+}
+
+on sysvar nm_request::standby_request
+{
+  request = STANDBY_REQUEST;
+}
+
+on sysvar nm_request::sleep_request
+{
+  request = SLEEP_REQUEST;
+}
+
+on timer nm_request_timer
+{
+  int i = 0;
+  for(i = 0;i< nm_request_gvcu_ds2.dlc;i++)
+  {
+    data[i] = 0;
+  }
+  data[1] |= request<<4;
+  data[1] |= @nm_request::alive_counter;
+  crc_checksum = calculate_crc(len, crcPos, data);
+  
+  nm_request_ieb.nm_request = request;
+  nm_request_ieb.e2e_alive_counter = @nm_request::alive_counter;
+  nm_request_ieb.e2e_checksum = crc_checksum;
+  output(nm_request_ieb);
+  @nm_request::alive_counter = @nm_request::alive_counter + 1;
+  alive_counter_check = @nm_request::alive_counter;
+  if(alive_counter_check == 15)
+  {
+    @nm_request::alive_counter = 0;
+  }
+  crc_checksum = 0;
+  setTimer(nm_request_timer, 100);
+}
+
+on message nm_status_ieb
+{
+  if(this.nm_status == 4)
+  {
+    cancelTimer(nm_request_timer);
+    @nm_request::alive_counter = 0;
+  }
+}
+
+on sysvar VTS::VT7001_1_Out2::Active
+{
+  pwr_supply_active = @VTS::VT7001_1_Out2::Active;
+  if(pwr_supply_active == 0)
+  {
+    cancelTimer(nm_request_timer);
+    @nm_request::alive_counter = 0;
+  }
+}
+
+dword applILTxPending (long aId, dword aDlc, byte data[])
+{
+  if((aId == 0x1d8) || (aId == 0x1d3) || (aId == 0x1D1) || (aId == 0x5e6))
+  {
+    crc_checksum = calculate_crc(aDlc, 0, data);
+    data[0] = crc_checksum;
+  }
+  
+  return 1;
+}
+

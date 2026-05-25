@@ -13,16 +13,16 @@
 int32_T GVCU_HIL_simscape_a37faff9_2_ds_q1_p(const NeDynamicSystem *LC, const
   NeDynamicSystemInput *t1, NeDsMethodOutput *out)
 {
-  static int32_T _cg_const_2[41] = { 9, 10, 12, 13, 23, 26, 28, 30, 31, 33, 34,
+  static int32_T _cg_const_2[42] = { 9, 10, 12, 13, 23, 26, 28, 30, 31, 33, 34,
     37, 39, 41, 43, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 67, 68,
-    79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89 };
+    77, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92 };
 
   (void)t1;
   (void)LC;
   out->mQ1_P.mNumCol = 1ULL;
-  out->mQ1_P.mNumRow = 99ULL;
+  out->mQ1_P.mNumRow = 102ULL;
   out->mQ1_P.mJc[0] = 0;
-  out->mQ1_P.mJc[1] = 41;
+  out->mQ1_P.mJc[1] = 42;
   out->mQ1_P.mIr[0] = _cg_const_2[0];
   out->mQ1_P.mIr[1] = _cg_const_2[1];
   out->mQ1_P.mIr[2] = _cg_const_2[2];
@@ -64,6 +64,7 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_q1_p(const NeDynamicSystem *LC, const
   out->mQ1_P.mIr[38] = _cg_const_2[38];
   out->mQ1_P.mIr[39] = _cg_const_2[39];
   out->mQ1_P.mIr[40] = _cg_const_2[40];
+  out->mQ1_P.mIr[41] = _cg_const_2[41];
   (void)LC;
   (void)out;
   return 0;

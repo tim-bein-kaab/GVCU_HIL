@@ -1,0 +1,40 @@
+ /*@!Encoding:1252*/
+variables
+{
+  message wheel_sensor_status sens_st; // define CAN message
+}
+
+on key '1'
+{
+  canConfigureBusOff(sens_st.msgChannel, sens_st.Id, 1); // enable disturbance
+}
+on key '2'
+{
+  output(sens_st);
+}
+on key '3'
+{
+  canConfigureBusOff(sens_st.msgChannel, sens_st.Id, 0); // disable disturbance
+}
+on key 'r'
+{
+  resetCanEx(sens_st.msgChannel);
+}
+
+on key 'e'
+{
+  canOutputErrorFrame(errorFrame, 6, 0);
+}
+on errorFrame
+{
+  const int bufferSize = 256;
+  char buffer[bufferSize];
+  char cdirection[2][3] = {"RX", "TX"};
+  int ndir;
+  word ecc;
+  word extInfo;
+  int isProtocolException;
+
+  ecc = (this.ErrorCode >> 6) & 0x3f;
+  
+}

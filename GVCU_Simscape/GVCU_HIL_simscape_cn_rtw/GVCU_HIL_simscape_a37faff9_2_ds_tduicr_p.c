@@ -15,7 +15,7 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_tduicr_p(const NeDynamicSystem *LC,
 {
   (void)t1;
   (void)LC;
-  out->mTDUICR_P.mNumCol = 27ULL;
+  out->mTDUICR_P.mNumCol = 25ULL;
   out->mTDUICR_P.mNumRow = 24ULL;
   out->mTDUICR_P.mJc[0] = 0;
   out->mTDUICR_P.mJc[1] = 0;
@@ -43,8 +43,6 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_tduicr_p(const NeDynamicSystem *LC,
   out->mTDUICR_P.mJc[23] = 0;
   out->mTDUICR_P.mJc[24] = 0;
   out->mTDUICR_P.mJc[25] = 0;
-  out->mTDUICR_P.mJc[26] = 0;
-  out->mTDUICR_P.mJc[27] = 0;
   (void)LC;
   (void)out;
   return 0;

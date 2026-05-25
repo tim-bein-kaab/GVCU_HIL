@@ -1,0 +1,16 @@
+ /*@!Encoding:1252*/
+variables
+{
+}
+
+void MainTest()
+{
+
+  // Start VT7101
+  sysvar::VTS::PWR_SUP1.SetInterconnectionMode(3);
+  sysvar::VTS::VT7101_1_SupInt.SetRefVoltageMode(1);
+  @sysvar::VTS::VT7101_1_SupInt::RefVoltage = 13.0;
+  @sysvar::VTS::VT7101_1_Out1::AuxActive = 1;
+  @sysvar::VTS::VT7101_1_Out1::Active = 1;
+}
+

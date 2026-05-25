@@ -13,16 +13,16 @@
 int32_T GVCU_HIL_simscape_a37faff9_2_ds_duf_p(const NeDynamicSystem *LC, const
   NeDynamicSystemInput *t1, NeDsMethodOutput *out)
 {
-  static int32_T _cg_const_1[28] = { 0, 2, 4, 5, 6, 7, 8, 9, 10, 14, 15, 16, 17,
-    17, 17, 17, 18, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 };
+  static int32_T _cg_const_1[26] = { 0, 2, 4, 5, 6, 7, 8, 9, 10, 14, 15, 16, 17,
+    18, 19, 20, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21 };
 
-  static int32_T _cg_const_2[20] = { 23, 38, 24, 41, 25, 26, 27, 28, 29, 30, 27,
-    28, 29, 30, 37, 43, 40, 50, 56, 53 };
+  static int32_T _cg_const_2[21] = { 23, 38, 24, 41, 25, 26, 27, 28, 29, 30, 27,
+    28, 29, 30, 37, 43, 40, 50, 53, 59, 56 };
 
   (void)t1;
   (void)LC;
-  out->mDUF_P.mNumCol = 27ULL;
-  out->mDUF_P.mNumRow = 99ULL;
+  out->mDUF_P.mNumCol = 25ULL;
+  out->mDUF_P.mNumRow = 102ULL;
   out->mDUF_P.mJc[0] = _cg_const_1[0];
   out->mDUF_P.mJc[1] = _cg_const_1[1];
   out->mDUF_P.mJc[2] = _cg_const_1[2];
@@ -49,8 +49,6 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_duf_p(const NeDynamicSystem *LC, const
   out->mDUF_P.mJc[23] = _cg_const_1[23];
   out->mDUF_P.mJc[24] = _cg_const_1[24];
   out->mDUF_P.mJc[25] = _cg_const_1[25];
-  out->mDUF_P.mJc[26] = _cg_const_1[26];
-  out->mDUF_P.mJc[27] = _cg_const_1[27];
   out->mDUF_P.mIr[0] = _cg_const_2[0];
   out->mDUF_P.mIr[1] = _cg_const_2[1];
   out->mDUF_P.mIr[2] = _cg_const_2[2];
@@ -71,6 +69,7 @@ int32_T GVCU_HIL_simscape_a37faff9_2_ds_duf_p(const NeDynamicSystem *LC, const
   out->mDUF_P.mIr[17] = _cg_const_2[17];
   out->mDUF_P.mIr[18] = _cg_const_2[18];
   out->mDUF_P.mIr[19] = _cg_const_2[19];
+  out->mDUF_P.mIr[20] = _cg_const_2[20];
   (void)LC;
   (void)out;
   return 0;

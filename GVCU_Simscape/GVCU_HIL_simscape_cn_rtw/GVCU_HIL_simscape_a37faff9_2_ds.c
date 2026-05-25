@@ -4,65 +4,49 @@
 /* GVCU_HIL_simscape_a37faff9_2_ds.c - body for module GVCU_HIL_simscape_a37faff9_2_ds */
 
 #include "ne_ds.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_obs_all.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_imin.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_obs_exp.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_acon.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_slf0.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_mode.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_tduy_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dxicr_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_obs_act.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_tduf_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_obs_il.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_vsf.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_mcon.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_tdxy_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_qu_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dxf_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dxf.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_update2_i.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_duy_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_qx.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_sclv.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dnf_v_x.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_slf.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_cache_i.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_var_tol.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_vmf.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_mcon_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dum_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_imax.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_vpf.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_lv.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_ic.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_q1.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dxy_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_tduicr_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_eq_tol.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_bcon_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_log.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_y.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_mduy_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_dudelt_p.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_f.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dnf_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_dxy_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_tduf_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_mcon_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_dxicr_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_mode.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_obs_exp.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_zc.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_lock_i.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_update2_i.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_q1_p.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_duf.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_slv.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dudelt_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_update_i.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_y.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_lock_i.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_bpar_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_nldv.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_lock2_i.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_mduy_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_dxy.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_duf_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_lv.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_acon_p.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_zc.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_assert.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_vdf.h"
-#include "GVCU_HIL_simscape_a37faff9_2_ds_tdxf_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_lock2_i.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_duy_p.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_qx_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_tduy_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_dxf.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_bcon_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_obs_act.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_tdxy_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_dxy.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_tdxf_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_log.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_update_i.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_assert.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_obs_all.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_bpar_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_obs_il.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_slf0.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_dxf_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_cache_i.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_mcon.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_acon.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_tduicr_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_dnf_p.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_q1.h"
+#include "GVCU_HIL_simscape_a37faff9_2_ds_qx.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds.h"
 #include "ssc_ml_fun.h"
 #include "GVCU_HIL_simscape_a37faff9_2_ds_external_struct.h"
@@ -87,6 +71,8 @@ static int32_T ds_ddm_p(const NeDynamicSystem *ds, const NeDynamicSystemInput
   *in, NeDsMethodOutput *out);
 static int32_T ds_ddm(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                       NeDsMethodOutput *out);
+static int32_T ds_dum_p(const NeDynamicSystem *ds, const NeDynamicSystemInput
+  *in, NeDsMethodOutput *out);
 static int32_T ds_dum(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                       NeDsMethodOutput *out);
 static int32_T ds_dtm_p(const NeDynamicSystem *ds, const NeDynamicSystemInput
@@ -113,6 +99,16 @@ static int32_T ds_cpar_p(const NeDynamicSystem *ds, const NeDynamicSystemInput
   *in, NeDsMethodOutput *out);
 static int32_T ds_cpar(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
   NeDsMethodOutput *out);
+static int32_T ds_vdf(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+                      NeDsMethodOutput *out);
+static int32_T ds_vmf(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+                      NeDsMethodOutput *out);
+static int32_T ds_vpf(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+                      NeDsMethodOutput *out);
+static int32_T ds_vsf(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+                      NeDsMethodOutput *out);
+static int32_T ds_slf(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+                      NeDsMethodOutput *out);
 static int32_T ds_dtf_p(const NeDynamicSystem *ds, const NeDynamicSystemInput
   *in, NeDsMethodOutput *out);
 static int32_T ds_dtf(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
@@ -131,6 +127,8 @@ static int32_T ds_dwf(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                       NeDsMethodOutput *out);
 static int32_T ds_dnf(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                       NeDsMethodOutput *out);
+static int32_T ds_dnf_v_x(const NeDynamicSystem *ds, const NeDynamicSystemInput *
+  in, NeDsMethodOutput *out);
 static int32_T ds_cer(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                       NeDsMethodOutput *out);
 static int32_T ds_dxcer(const NeDynamicSystem *ds, const NeDynamicSystemInput
@@ -141,6 +139,8 @@ static int32_T ds_ddcer(const NeDynamicSystem *ds, const NeDynamicSystemInput
   *in, NeDsMethodOutput *out);
 static int32_T ds_ddcer_p(const NeDynamicSystem *ds, const NeDynamicSystemInput *
   in, NeDsMethodOutput *out);
+static int32_T ds_ic(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+                     NeDsMethodOutput *out);
 static int32_T ds_icr(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                       NeDsMethodOutput *out);
 static int32_T ds_icr_im(const NeDynamicSystem *ds, const NeDynamicSystemInput
@@ -231,7 +231,23 @@ static int32_T ds_qu(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                      NeDsMethodOutput *out);
 static int32_T ds_qt(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
                      NeDsMethodOutput *out);
+static int32_T ds_qu_p(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+  NeDsMethodOutput *out);
 static int32_T ds_qt_p(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+  NeDsMethodOutput *out);
+static int32_T ds_var_tol(const NeDynamicSystem *ds, const NeDynamicSystemInput *
+  in, NeDsMethodOutput *out);
+static int32_T ds_eq_tol(const NeDynamicSystem *ds, const NeDynamicSystemInput
+  *in, NeDsMethodOutput *out);
+static int32_T ds_slv(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+                      NeDsMethodOutput *out);
+static int32_T ds_nldv(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+  NeDsMethodOutput *out);
+static int32_T ds_sclv(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+  NeDsMethodOutput *out);
+static int32_T ds_imin(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
+  NeDsMethodOutput *out);
+static int32_T ds_imax(const NeDynamicSystem *ds, const NeDynamicSystemInput *in,
   NeDsMethodOutput *out);
 static int32_T ds_dimin(const NeDynamicSystem *ds, const NeDynamicSystemInput
   *in, NeDsMethodOutput *out);
@@ -540,7 +556,7 @@ static void rtpmap(const NeDynamicSystem * ds, const PmIntVector* inl, const
                    PmIntVector* ini, const PmIntVector* inj, const PmRealVector*
                    inr, PmIntVector* outl, PmIntVector* outi, PmIntVector* outj,
                    PmRealVector* outr);
-static NeEquationData s_equation_data[99] = { { "", 0U, 8,
+static NeEquationData s_equation_data[102] = { { "", 0U, 8,
     NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/brakes/PS Transfer Function1", 1U, 0U,
     TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
@@ -638,108 +654,114 @@ static NeEquationData s_equation_data[99] = { { "", 0U, 8,
     "1", }, { "", 0U, 1, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/front gearbox", 3U, 73U, TRUE, 1.0,
     "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/PS Lookup Table (2D)1",
+    1U, 76U, FALSE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Lookup Table (1D)",
+    1U, 77U, FALSE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Product", 1U, 78U,
+    FALSE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/propshaft/Disc Friction Clutch", 5U,
-    76U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    79U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/propshaft/Disc Friction Clutch", 5U,
-    81U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    84U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/propshaft/Disc Friction Clutch", 3U,
-    86U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch", 5U,
     89U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch", 5U,
-    94U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    92U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch", 5U,
+    97U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch", 3U,
-    99U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    102U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch1",
-    5U, 102U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 105U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch1",
-    5U, 107U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 110U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch1",
-    3U, 112U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    3U, 115U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Torsional Spring-Damper2",
-    1U, 115U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    1U, 118U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Torsional Spring-Damper3",
-    1U, 116U, TRUE, 1.0, "1", }, { "", 0U, 1, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/side gearbox", 3U, 117U, TRUE, 1.0,
-    "1", }, { "", 0U, 1, NE_EQUATION_DOMAIN_TIME,
+    1U, 119U, TRUE, 1.0, "1", }, { "", 0U, 1, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox", 3U, 120U, TRUE, 1.0,
     "1", }, { "", 0U, 1, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox", 3U, 123U, TRUE, 1.0,
     "1", }, { "", 0U, 1, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox", 3U, 126U, TRUE, 1.0,
+    "1", }, { "", 0U, 1, NE_EQUATION_DOMAIN_TIME,
+    "GVCU_HIL_simscape/vehicle/powertrain/side gearbox", 3U, 129U, TRUE, 1.0,
     "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia1", 1U, 129U, TRUE,
+    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia1", 1U, 132U, TRUE,
     1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia10", 1U, 130U,
+    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia10", 1U, 133U,
     TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia2", 1U, 131U, TRUE,
+    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia2", 1U, 134U, TRUE,
     1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia3", 1U, 132U, TRUE,
+    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia3", 1U, 135U, TRUE,
     1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia4", 1U, 133U, TRUE,
+    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia4", 1U, 136U, TRUE,
     1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia5", 1U, 134U, TRUE,
+    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia5", 1U, 137U, TRUE,
     1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia6", 1U, 135U, TRUE,
+    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia6", 1U, 138U, TRUE,
     1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia7", 1U, 136U, TRUE,
+    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia7", 1U, 139U, TRUE,
     1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
-    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia8", 1U, 137U, TRUE,
+    "GVCU_HIL_simscape/vehicle/powertrain/transmission/Inertia8", 1U, 140U, TRUE,
     1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch",
-    5U, 138U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 141U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch",
-    5U, 143U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 146U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch",
-    3U, 148U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    3U, 151U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch1",
-    5U, 151U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 154U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch1",
-    5U, 156U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 159U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch1",
-    3U, 161U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    3U, 164U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch2",
-    5U, 164U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 167U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch2",
-    5U, 169U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 172U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch2",
-    3U, 174U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    3U, 177U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch3",
-    5U, 177U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 180U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch3",
-    5U, 182U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 185U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch3",
-    3U, 187U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    3U, 190U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch4",
-    5U, 190U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 193U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch4",
-    5U, 195U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 198U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch4",
-    3U, 200U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    3U, 203U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch5",
-    5U, 203U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 206U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch5",
-    5U, 208U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 211U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch5",
-    3U, 213U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    3U, 216U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch6",
-    5U, 216U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 219U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch6",
-    5U, 221U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 224U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch6",
-    3U, 226U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    3U, 229U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch7",
-    5U, 229U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 232U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch7",
-    5U, 234U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 237U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch7",
-    3U, 239U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    3U, 242U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch8",
-    5U, 242U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
+    5U, 245U, TRUE, 1.0, "1", }, { "", 0U, 8, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch8",
-    5U, 247U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
+    5U, 250U, TRUE, 1.0, "1", }, { "", 0U, 2, NE_EQUATION_DOMAIN_TIME,
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch8",
-    3U, 252U, TRUE, 1.0, "1", } };
+    3U, 255U, TRUE, 1.0, "1", } };
 
 static NeCERData *s_cer_data = NULL;
 static NeICRData s_icr_data[24] = { { "", 0U, 1,
@@ -786,7 +808,7 @@ static NeSwitchingCoeffsData *s_switching_coefficients_data = NULL;
 static NeJacobianElemsData *s_jacobian_elements_data = NULL;
 static size_t *s_switching_equations_data = NULL;
 static NeSwitchingStatesData *s_switching_states_data = NULL;
-static NeVariableData s_variable_data[99] = { {
+static NeVariableData s_variable_data[102] = { {
     "vehicle.powertrain.motor.friction.Inertia2.w", 0U, 0,
     "GVCU_HIL_simscape/vehicle/powertrain/motor/friction/Inertia2", 1.0, "1",
     0.0, TRUE, FALSE, { 1, "1x1" }, NE_INIT_MODE_MANDATORY,
@@ -1053,6 +1075,15 @@ static NeVariableData s_variable_data[99] = { {
     0U, 0,
     "GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Disc Friction Clutch1",
     1.0, "1", 0.0, FALSE, FALSE, { 1, "1x1" }, NE_INIT_MODE_NONE, "M", }, {
+    "vehicle.powertrain.motor.PS_Switch1.O", 0U, 0,
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", 1.0, "1", 0.0,
+    FALSE, FALSE, { 1, "1x1" }, NE_INIT_MODE_NONE, "O", }, {
+    "vehicle.powertrain.motor.friction.Inertia2.t", 0U, 0,
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/friction/Inertia2", 1.0, "1",
+    0.0, FALSE, FALSE, { 1, "1x1" }, NE_INIT_MODE_NONE, "Torque", }, {
+    "vehicle.powertrain.motor.rev_limiter.PS_Lookup_Table_1D.O", 0U, 0,
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/rev limiter/PS Lookup Table (1D)",
+    1.0, "1", 0.0, FALSE, FALSE, { 1, "1x1" }, NE_INIT_MODE_NONE, "f", }, {
     "vehicle.powertrain.propshaft.Disc_Friction_Clutch.fundamental_clutch.M", 0U,
     0, "GVCU_HIL_simscape/vehicle/powertrain/propshaft/Disc Friction Clutch",
     1.0, "1", 0.0, FALSE, FALSE, { 1, "1x1" }, NE_INIT_MODE_NONE, "M", }, {
@@ -1135,7 +1166,7 @@ static NeVariableData s_variable_data[99] = { {
     1.0, "1", 0.0, FALSE, FALSE, { 1, "1x1" }, NE_INIT_MODE_NONE, "M", } };
 
 static NeVariableData *s_discrete_data = NULL;
-static NeObservableData s_observable_data[1228] = { {
+static NeObservableData s_observable_data[1231] = { {
     "vehicle.multibody.front_left_contact.Mechanical_Rotational_Reference.W.w",
     "GVCU_HIL_simscape/vehicle/multibody/front left contact/Mechanical Rotational Reference",
     { 1, "1x1" }, "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED,
@@ -2706,7 +2737,7 @@ static NeObservableData s_observable_data[1228] = { {
     NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I1", }, {
     "vehicle.powertrain.motor.PS_Switch1.I2",
     "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", { 1, "1x1" }, "1",
-    1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
+    1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, TRUE, FALSE,
     NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "I2", }, {
     "vehicle.powertrain.motor.PS_Switch1.I3",
     "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", { 1, "1x1" }, "1",
@@ -2716,11 +2747,7 @@ static NeObservableData s_observable_data[1228] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", { 1, "1x1" }, "1",
     1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
     NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "O", }, {
-    "vehicle.powertrain.motor.Simulink_PS_Converter_output0",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/Simulink-PS\nConverter", { 1,
-      "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_FIXED, NE_INIT_MODE_NONE, FALSE,
-    FALSE, NE_FREQTIME_TYPE_TIME, FALSE, TRUE, "Simulink_PS_Converter_output0",
-  }, { "vehicle.powertrain.motor.Subsystem.Conn2.w",
+    "vehicle.powertrain.motor.Subsystem.Conn2.w",
     "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem", { 1, "1x1" },
     "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE,
     FALSE, NE_FREQTIME_TYPE_TIME, FALSE, TRUE, "Rotational velocity", }, {
@@ -2750,11 +2777,26 @@ static NeObservableData s_observable_data[1228] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/MRRef1", { 1, "1x1" },
     "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, TRUE,
     FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "Rotational velocity", }, {
-    "vehicle.powertrain.motor.Subsystem.Simulink_PS_Converter_output0",
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/Simulink-PS\nConverter",
-    { 1, "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_FIXED, NE_INIT_MODE_NONE,
-    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, FALSE, TRUE,
-    "Simulink_PS_Converter_output0", }, {
+    "vehicle.powertrain.motor.Subsystem.PS_Lookup_Table_2D1.I1",
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/PS Lookup Table (2D)1",
+    { 1, "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
+    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "x1", }, {
+    "vehicle.powertrain.motor.Subsystem.PS_Lookup_Table_2D1.I2",
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/PS Lookup Table (2D)1",
+    { 1, "1x1" }, "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED,
+    NE_INIT_MODE_NONE, FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "x2", },
+  { "vehicle.powertrain.motor.Subsystem.PS_Lookup_Table_2D1.O",
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem/PS Lookup Table (2D)1",
+    { 1, "1x1" }, "1", 1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
+    FALSE, FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "f", }, {
+    "vehicle.powertrain.motor.Subsystem.omega",
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem", { 1, "1x1" },
+    "rad/s", 1.0, "1/s", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE,
+    FALSE, NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "omega", }, {
+    "vehicle.powertrain.motor.Subsystem.throttle",
+    "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem", { 1, "1x1" }, "1",
+    1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE, FALSE, FALSE,
+    NE_FREQTIME_TYPE_TIME, TRUE, TRUE, "throttle", }, {
     "vehicle.powertrain.motor.Subsystem3.Ideal_Rotational_Motion_Sensor.A",
     "GVCU_HIL_simscape/vehicle/powertrain/motor/Subsystem3/Ideal Rotational Motion Sensor",
     { 1, "1x1" }, "rad", 1.0, "1", NE_NOMINAL_SOURCE_DERIVED, NE_INIT_MODE_NONE,
@@ -6425,7 +6467,7 @@ static NeModeData s_major_mode_data[15] = { {
     0, { 1, "1x1" }, "internal_mode_var_m__", }, { "ie0", 0U, "", 0, { 1, "1x1"
     }, "", } };
 
-static NeZCData s_zc_data[225] = { {
+static NeZCData s_zc_data[224] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Disc Friction Clutch",
     1U, 0U, "vehicle.powertrain.front_gearbox.Disc_Friction_Clutch",
     "sdl.clutches.disk_friction_clutch", NE_ZC_TYPE_TRUE, }, {
@@ -7307,12 +7349,9 @@ static NeZCData s_zc_data[225] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch8",
     1U, 241U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch8.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", NE_ZC_TYPE_FALSE, }, {
-    "GVCU_HIL_simscape/vehicle/powertrain/motor/PS Switch1", 1U, 242U,
-    "vehicle.powertrain.motor.PS_Switch1",
-    "foundation.signal.nonlinear.controlled_switch", NE_ZC_TYPE_TRUE, } };
+    "sdl.clutches.fundamental_components.two_way_clutch", NE_ZC_TYPE_FALSE, } };
 
-static NeRange s_range[243] = { { "sdl.clutches.disk_friction_clutch", 304U, 38U,
+static NeRange s_range[242] = { { "sdl.clutches.disk_friction_clutch", 304U, 38U,
     304U, 53U, NE_RANGE_TYPE_NORMAL, }, { "sdl.clutches.disk_friction_clutch",
     304U, 38U, 304U, 53U, NE_RANGE_TYPE_NORMAL, }, {
     "sdl.clutches.disk_friction_clutch", 304U, 38U, 304U, 53U,
@@ -7774,9 +7813,7 @@ static NeRange s_range[243] = { { "sdl.clutches.disk_friction_clutch", 304U, 38U
     "sdl.clutches.fundamental_components.two_way_clutch", 1U, 1U, 1U, 1U,
     NE_RANGE_TYPE_PROTECTED, }, {
     "sdl.clutches.fundamental_components.two_way_clutch", 1U, 1U, 1U, 1U,
-    NE_RANGE_TYPE_PROTECTED, }, {
-    "foundation.signal.nonlinear.controlled_switch", 27U, 21U, 27U, 71U,
-    NE_RANGE_TYPE_NORMAL, } };
+    NE_RANGE_TYPE_PROTECTED, } };
 
 static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Disc Friction Clutch",
@@ -7788,19 +7825,19 @@ static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/front gearbox/Disc Friction Clutch1",
     3U, 3U,
     "vehicle.powertrain.front_gearbox.Disc_Friction_Clutch1.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/propshaft/Disc Friction Clutch", 3U,
     6U,
     "vehicle.powertrain.propshaft.Disc_Friction_Clutch.fundamental_clutch.clutch",
-    "sdl.clutches.disk_friction_clutch", FALSE,
+    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch", 3U,
     9U,
     "vehicle.powertrain.side_gearbox.Disc_Friction_Clutch.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/side gearbox/Disc Friction Clutch1",
@@ -7812,7 +7849,7 @@ static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch",
     3U, 15U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch1",
@@ -7824,7 +7861,7 @@ static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch2",
     3U, 21U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch2.fundamental_clutch.clutch",
-    "sdl.clutches.logic_controlled_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch3",
@@ -7836,13 +7873,13 @@ static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch4",
     3U, 27U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch4.fundamental_clutch.clutch",
-    "sdl.clutches.logic_controlled_clutch", FALSE,
+    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch5",
     3U, 30U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch5.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.two_way_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch6",
@@ -7854,13 +7891,13 @@ static NeAssertData s_assert_data[18] = { {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch7",
     3U, 36U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch7.fundamental_clutch.clutch",
-    "sdl.clutches.logic_controlled_clutch", FALSE,
+    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/transmission/Logic-Controlled Clutch8",
     3U, 39U,
     "vehicle.powertrain.transmission.Logic_Controlled_Clutch8.fundamental_clutch.clutch",
-    "sdl.clutches.fundamental_components.fundamental_clutch", FALSE,
+    "sdl.clutches.logic_controlled_clutch", FALSE,
     "Mode value is out of range for 'internal_mode_var_m__'. Mode must be between 1 and 6.",
     "physmod:simscape:compiler:core:sf_xform:ModeValueOutOfRange", }, {
     "GVCU_HIL_simscape/vehicle/powertrain/brakes/Disc Brake1", 1U, 42U,
@@ -7965,7 +8002,7 @@ static NeAssertData *s_param_assert_data = NULL;
 static NeRange *s_param_assert_range = NULL;
 static NeAssertData *s_initial_assert_data = NULL;
 static NeRange *s_initial_assert_range = NULL;
-static NeRange s_equation_range[255] = { {
+static NeRange s_equation_range[258] = { {
     "foundation.signal.linear.transfer_function", 89U, 13U, 89U, 31U,
     NE_RANGE_TYPE_NORMAL, }, { "foundation.signal.linear.transfer_function", 89U,
     13U, 89U, 31U, NE_RANGE_TYPE_NORMAL, }, {
@@ -8084,7 +8121,11 @@ static NeRange s_equation_range[255] = { {
     NE_RANGE_TYPE_PROTECTED, }, { "foundation.mechanical.sensors.torque", 31U,
     5U, 31U, 6U, NE_RANGE_TYPE_NORMAL, }, {
     "foundation.mechanical.rotational.branch", 19U, 5U, 19U, 6U,
-    NE_RANGE_TYPE_NORMAL, }, {
+    NE_RANGE_TYPE_NORMAL, }, { "foundation.signal.lookup_tables.two_dimensional",
+    40U, 5U, 40U, 97U, NE_RANGE_TYPE_NORMAL, }, {
+    "foundation.signal.lookup_tables.one_dimensional", 35U, 5U, 35U, 87U,
+    NE_RANGE_TYPE_NORMAL, }, { "foundation.signal.functions.product", 21U, 5U,
+    21U, 18U, NE_RANGE_TYPE_NORMAL, }, {
     "sdl.clutches.fundamental_components.two_way_clutch", 1U, 1U, 1U, 1U,
     NE_RANGE_TYPE_PROTECTED, }, {
     "sdl.clutches.fundamental_components.two_way_clutch", 1U, 1U, 1U, 1U,
@@ -8438,7 +8479,29 @@ static NeParameterData *s_logical_parameter_data = NULL;
 static NeParameterData *s_integer_parameter_data = NULL;
 static NeParameterData *s_index_parameter_data = NULL;
 static NeParameterData *s_real_parameter_data = NULL;
-static real_T s_constant_table0[165] = { 0.0, 0.0, 172.22222222222223,
+static real_T s_constant_table0[129] = { -591.292, 0.0, 591.292, -619.783, 0.0,
+  619.783, -652.556, 0.0, 652.556, -687.929, 0.0, 687.929, -726.422, 0.0,
+  726.422, -767.798, 0.0, 767.798, -812.106, 0.0, 812.106, -858.936, 0.0,
+  858.936, -905.5, 0.0, 905.5, -949.19, 0.0, 949.19, -985.389, 0.0, 985.389,
+  -1000.54, 0.0, 1000.54, -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55,
+  -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55,
+  -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55,
+  -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55,
+  -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55,
+  -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55,
+  -1000.55, 0.0, 1000.55, -1000.55, 0.0, 1000.55, -1000.54, 0.0, 1000.54,
+  -985.389, 0.0, 985.389, -949.19, 0.0, 949.19, -905.5, 0.0, 905.5, -858.936,
+  0.0, 858.936, -812.106, 0.0, 812.106, -767.798, 0.0, 767.798, -726.422, 0.0,
+  726.422, -687.929, 0.0, 687.929, -652.556, 0.0, 652.556, -619.783, 0.0,
+  619.783, -591.292, 0.0, 591.292 };
+
+static real_T s_constant_table1[43] = { -1047.0, -1000.0, -950.0, -900.0, -850.0,
+  -800.0, -750.0, -700.0, -650.0, -600.0, -550.0, -500.0, -450.0, -400.0, -350.0,
+  -300.0, -250.0, -200.0, -150.0, -100.0, -50.0, 0.0, 50.0, 100.0, 150.0, 200.0,
+  250.0, 300.0, 350.0, 400.0, 450.0, 500.0, 550.0, 600.0, 650.0, 700.0, 750.0,
+  800.0, 850.0, 900.0, 950.0, 1000.0, 1047.0 };
+
+static real_T s_constant_table2[165] = { 0.0, 0.0, 172.22222222222223,
   344.44444444444446, 400.0, 400.0, 400.0, 400.0, 400.0, 400.0, 400.0,
   -14.285714285714286, 0.0, 172.22222222222223, 344.44444444444446, 400.0, 400.0,
   400.0, 400.0, 400.0, 400.0, 400.0, -28.571428571428573, 0.0,
@@ -8471,16 +8534,16 @@ static real_T s_constant_table0[165] = { 0.0, 0.0, 172.22222222222223,
   172.22222222222223, 344.44444444444446, 516.66666666666663, 688.88888888888891,
   861.11111111111109, 1033.3333333333333, 1205.5555555555557, 1300.0, 1300.0 };
 
-static real_T s_constant_table1[11] = { 0.0, 0.1, 0.2, 0.30000000000000004, 0.4,
+static real_T s_constant_table3[11] = { 0.0, 0.1, 0.2, 0.30000000000000004, 0.4,
   0.5, 0.6, 0.7, 0.8, 0.9, 1.0 };
 
-static real_T s_constant_table2[15] = { 0.0, 104.71975511965977,
+static real_T s_constant_table4[15] = { 0.0, 104.71975511965977,
   209.43951023931953, 261.79938779914943, 314.15926535897933, 366.51914291880917,
   418.87902047863906, 471.238898038469, 523.59877559829886, 575.95865315812864,
   628.31853071795865, 680.67840827778855, 733.03828583761833, 785.39816339744834,
   816.81408993334628 };
 
-static real_T s_constant_table3[165] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+static real_T s_constant_table5[165] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
   0.0, 0.0, 0.0, 0.0, 0.015123890000000001, 0.030247780000000002, 0.04537167,
   0.0486125, 0.0486125, 0.0486125, 0.0486125, 0.0486125, 0.0486125, 0.0486125,
   0.0, 0.015123890000000001, 0.030247780000000002, 0.04537167, 0.0486125,
@@ -8519,10 +8582,10 @@ static NeDsMethodOutput *ds_output_mcon_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mMCON_P.mNumCol = 99;
-  out->mMCON_P.mNumRow = 99;
+  out->mMCON_P.mNumCol = 102;
+  out->mMCON_P.mNumRow = 102;
   out->mMCON_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mMCON_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     23);
   return out;
@@ -8547,10 +8610,10 @@ static NeDsMethodOutput *ds_output_mpar_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mMPAR_P.mNumCol = 99;
-  out->mMPAR_P.mNumRow = 99;
+  out->mMPAR_P.mNumCol = 102;
+  out->mMPAR_P.mNumRow = 102;
   out->mMPAR_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mMPAR_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -8575,10 +8638,10 @@ static NeDsMethodOutput *ds_output_mnl_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mMNL_P.mNumCol = 99;
-  out->mMNL_P.mNumRow = 99;
+  out->mMNL_P.mNumCol = 102;
+  out->mMNL_P.mNumRow = 102;
   out->mMNL_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mMNL_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -8616,10 +8679,10 @@ static NeDsMethodOutput *ds_output_dxm_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDXM_P.mNumCol = 99;
+  out->mDXM_P.mNumCol = 102;
   out->mDXM_P.mNumRow = 23;
   out->mDXM_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mDXM_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -8672,10 +8735,10 @@ static NeDsMethodOutput *ds_output_dum_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDUM_P.mNumCol = 27;
+  out->mDUM_P.mNumCol = 25;
   out->mDUM_P.mNumRow = 23;
   out->mDUM_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mDUM_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -8756,12 +8819,12 @@ static NeDsMethodOutput *ds_output_acon_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mACON_P.mNumCol = 99;
-  out->mACON_P.mNumRow = 99;
+  out->mACON_P.mNumCol = 102;
+  out->mACON_P.mNumRow = 102;
   out->mACON_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mACON_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    136);
+    140);
   return out;
 }
 
@@ -8772,9 +8835,9 @@ static NeDsMethodOutput *ds_output_acon(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mACON.mN = 136;
+  out->mACON.mN = 140;
   out->mACON.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
-    136);
+    140);
   return out;
 }
 
@@ -8785,10 +8848,10 @@ static NeDsMethodOutput *ds_output_apar_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mAPAR_P.mNumCol = 99;
-  out->mAPAR_P.mNumRow = 99;
+  out->mAPAR_P.mNumCol = 102;
+  out->mAPAR_P.mNumRow = 102;
   out->mAPAR_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mAPAR_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -8813,12 +8876,12 @@ static NeDsMethodOutput *ds_output_bcon_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mBCON_P.mNumCol = 27;
-  out->mBCON_P.mNumRow = 99;
+  out->mBCON_P.mNumCol = 25;
+  out->mBCON_P.mNumRow = 102;
   out->mBCON_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mBCON_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    9);
+    8);
   return out;
 }
 
@@ -8829,8 +8892,8 @@ static NeDsMethodOutput *ds_output_bcon(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mBCON.mN = 9;
-  out->mBCON.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 9);
+  out->mBCON.mN = 8;
+  out->mBCON.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 8);
   return out;
 }
 
@@ -8841,10 +8904,10 @@ static NeDsMethodOutput *ds_output_bpar_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mBPAR_P.mNumCol = 27;
-  out->mBPAR_P.mNumRow = 99;
+  out->mBPAR_P.mNumCol = 25;
+  out->mBPAR_P.mNumRow = 102;
   out->mBPAR_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mBPAR_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -8870,7 +8933,7 @@ static NeDsMethodOutput *ds_output_ccon_p(const NeDynamicSystem *ds, PmAllocator
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
   out->mCCON_P.mNumCol = 1;
-  out->mCCON_P.mNumRow = 99;
+  out->mCCON_P.mNumRow = 102;
   out->mCCON_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     2);
   out->mCCON_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
@@ -8898,7 +8961,7 @@ static NeDsMethodOutput *ds_output_cpar_p(const NeDynamicSystem *ds, PmAllocator
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
   out->mCPAR_P.mNumCol = 1;
-  out->mCPAR_P.mNumRow = 99;
+  out->mCPAR_P.mNumRow = 102;
   out->mCPAR_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     2);
   out->mCPAR_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
@@ -8925,8 +8988,8 @@ static NeDsMethodOutput *ds_output_f(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mF.mN = 99;
-  out->mF.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 99);
+  out->mF.mN = 102;
+  out->mF.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 102);
   return out;
 }
 
@@ -8937,9 +9000,9 @@ static NeDsMethodOutput *ds_output_vdf(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mVDF.mN = 99;
+  out->mVDF.mN = 102;
   out->mVDF.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof(boolean_T),
-    99);
+    102);
   return out;
 }
 
@@ -8950,9 +9013,9 @@ static NeDsMethodOutput *ds_output_vmf(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mVMF.mN = 99;
+  out->mVMF.mN = 102;
   out->mVMF.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof(boolean_T),
-    99);
+    102);
   return out;
 }
 
@@ -8963,9 +9026,9 @@ static NeDsMethodOutput *ds_output_vpf(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mVPF.mN = 99;
+  out->mVPF.mN = 102;
   out->mVPF.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof(boolean_T),
-    99);
+    102);
   return out;
 }
 
@@ -8976,9 +9039,9 @@ static NeDsMethodOutput *ds_output_vsf(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mVSF.mN = 99;
+  out->mVSF.mN = 102;
   out->mVSF.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof(boolean_T),
-    99);
+    102);
   return out;
 }
 
@@ -8989,9 +9052,9 @@ static NeDsMethodOutput *ds_output_slf(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mSLF.mN = 99;
+  out->mSLF.mN = 102;
   out->mSLF.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof(boolean_T),
-    99);
+    102);
   return out;
 }
 
@@ -9002,9 +9065,9 @@ static NeDsMethodOutput *ds_output_slf0(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mSLF0.mN = 99;
+  out->mSLF0.mN = 102;
   out->mSLF0.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof
-    (boolean_T), 99);
+    (boolean_T), 102);
   return out;
 }
 
@@ -9015,12 +9078,12 @@ static NeDsMethodOutput *ds_output_dxf_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDXF_P.mNumCol = 99;
-  out->mDXF_P.mNumRow = 99;
+  out->mDXF_P.mNumCol = 102;
+  out->mDXF_P.mNumRow = 102;
   out->mDXF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mDXF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    84);
+    88);
   return out;
 }
 
@@ -9031,8 +9094,8 @@ static NeDsMethodOutput *ds_output_dxf(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDXF.mN = 84;
-  out->mDXF.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 84);
+  out->mDXF.mN = 88;
+  out->mDXF.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 88);
   return out;
 }
 
@@ -9043,12 +9106,12 @@ static NeDsMethodOutput *ds_output_duf_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDUF_P.mNumCol = 27;
-  out->mDUF_P.mNumRow = 99;
+  out->mDUF_P.mNumCol = 25;
+  out->mDUF_P.mNumRow = 102;
   out->mDUF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mDUF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    20);
+    21);
   return out;
 }
 
@@ -9059,8 +9122,8 @@ static NeDsMethodOutput *ds_output_duf(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDUF.mN = 20;
-  out->mDUF.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 20);
+  out->mDUF.mN = 21;
+  out->mDUF.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 21);
   return out;
 }
 
@@ -9072,7 +9135,7 @@ static NeDsMethodOutput *ds_output_dtf_p(const NeDynamicSystem *ds, PmAllocator 
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
   out->mDTF_P.mNumCol = 1;
-  out->mDTF_P.mNumRow = 99;
+  out->mDTF_P.mNumRow = 102;
   out->mDTF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     2);
   out->mDTF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
@@ -9100,7 +9163,7 @@ static NeDsMethodOutput *ds_output_ddf_p(const NeDynamicSystem *ds, PmAllocator 
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
   out->mDDF_P.mNumCol = 0;
-  out->mDDF_P.mNumRow = 99;
+  out->mDDF_P.mNumRow = 102;
   out->mDDF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     1);
   out->mDDF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
@@ -9128,7 +9191,7 @@ static NeDsMethodOutput *ds_output_dpdxf_p(const NeDynamicSystem *ds,
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
   out->mDPDXF_P.mNumCol = 0;
-  out->mDPDXF_P.mNumRow = 84;
+  out->mDPDXF_P.mNumRow = 88;
   out->mDPDXF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof
     (int32_T), 1);
   out->mDPDXF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof
@@ -9156,7 +9219,7 @@ static NeDsMethodOutput *ds_output_dwf_p(const NeDynamicSystem *ds, PmAllocator 
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
   out->mDWF_P.mNumCol = 0;
-  out->mDWF_P.mNumRow = 99;
+  out->mDWF_P.mNumRow = 102;
   out->mDWF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     1);
   out->mDWF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
@@ -9183,10 +9246,10 @@ static NeDsMethodOutput *ds_output_tduf_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mTDUF_P.mNumCol = 27;
-  out->mTDUF_P.mNumRow = 99;
+  out->mTDUF_P.mNumCol = 25;
+  out->mTDUF_P.mNumRow = 102;
   out->mTDUF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mTDUF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     34);
   return out;
@@ -9199,12 +9262,12 @@ static NeDsMethodOutput *ds_output_tdxf_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mTDXF_P.mNumCol = 99;
-  out->mTDXF_P.mNumRow = 99;
+  out->mTDXF_P.mNumCol = 102;
+  out->mTDXF_P.mNumRow = 102;
   out->mTDXF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mTDXF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    220);
+    228);
   return out;
 }
 
@@ -9215,10 +9278,10 @@ static NeDsMethodOutput *ds_output_dnf_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDNF_P.mNumCol = 118;
-  out->mDNF_P.mNumRow = 99;
+  out->mDNF_P.mNumCol = 115;
+  out->mDNF_P.mNumRow = 102;
   out->mDNF_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    119);
+    116);
   out->mDNF_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     14);
   return out;
@@ -9243,9 +9306,9 @@ static NeDsMethodOutput *ds_output_dnf_v_x(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDNF_V_X.mN = 99;
+  out->mDNF_V_X.mN = 102;
   out->mDNF_V_X.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof
-    (boolean_T), 99);
+    (boolean_T), 102);
   return out;
 }
 
@@ -9280,10 +9343,10 @@ static NeDsMethodOutput *ds_output_dxcer_p(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDXCER_P.mNumCol = 99;
+  out->mDXCER_P.mNumCol = 102;
   out->mDXCER_P.mNumRow = 0;
   out->mDXCER_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof
-    (int32_T), 100);
+    (int32_T), 103);
   out->mDXCER_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof
     (int32_T), 0);
   return out;
@@ -9324,8 +9387,8 @@ static NeDsMethodOutput *ds_output_ic(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mIC.mN = 99;
-  out->mIC.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 99);
+  out->mIC.mN = 102;
+  out->mIC.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 102);
   return out;
 }
 
@@ -9399,10 +9462,10 @@ static NeDsMethodOutput *ds_output_dxicr_p(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDXICR_P.mNumCol = 99;
+  out->mDXICR_P.mNumCol = 102;
   out->mDXICR_P.mNumRow = 24;
   out->mDXICR_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof
-    (int32_T), 100);
+    (int32_T), 103);
   out->mDXICR_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof
     (int32_T), 6);
   return out;
@@ -9443,10 +9506,10 @@ static NeDsMethodOutput *ds_output_tduicr_p(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mTDUICR_P.mNumCol = 27;
+  out->mTDUICR_P.mNumCol = 25;
   out->mTDUICR_P.mNumRow = 24;
   out->mTDUICR_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof
-    (int32_T), 28);
+    (int32_T), 26);
   out->mTDUICR_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof
     (int32_T), 0);
   return out;
@@ -9459,10 +9522,10 @@ static NeDsMethodOutput *ds_output_icrm_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mICRM_P.mNumCol = 99;
+  out->mICRM_P.mNumCol = 102;
   out->mICRM_P.mNumRow = 24;
   out->mICRM_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mICRM_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -9487,10 +9550,10 @@ static NeDsMethodOutput *ds_output_dxicrm_p(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDXICRM_P.mNumCol = 99;
+  out->mDXICRM_P.mNumCol = 102;
   out->mDXICRM_P.mNumRow = 0;
   out->mDXICRM_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof
-    (int32_T), 100);
+    (int32_T), 103);
   out->mDXICRM_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof
     (int32_T), 0);
   return out;
@@ -9570,10 +9633,10 @@ static NeDsMethodOutput *ds_output_mduy_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mMDUY_P.mNumCol = 27;
+  out->mMDUY_P.mNumCol = 25;
   out->mMDUY_P.mNumRow = 23;
   out->mMDUY_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mMDUY_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -9586,10 +9649,10 @@ static NeDsMethodOutput *ds_output_mdxy_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mMDXY_P.mNumCol = 99;
+  out->mMDXY_P.mNumCol = 102;
   out->mMDXY_P.mNumRow = 23;
   out->mMDXY_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mMDXY_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     0);
   return out;
@@ -9602,10 +9665,10 @@ static NeDsMethodOutput *ds_output_tduy_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mTDUY_P.mNumCol = 27;
+  out->mTDUY_P.mNumCol = 25;
   out->mTDUY_P.mNumRow = 23;
   out->mTDUY_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mTDUY_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     4);
   return out;
@@ -9618,10 +9681,10 @@ static NeDsMethodOutput *ds_output_tdxy_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mTDXY_P.mNumCol = 99;
+  out->mTDXY_P.mNumCol = 102;
   out->mTDXY_P.mNumRow = 23;
   out->mTDXY_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mTDXY_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     35);
   return out;
@@ -9646,10 +9709,10 @@ static NeDsMethodOutput *ds_output_dxy_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDXY_P.mNumCol = 99;
+  out->mDXY_P.mNumCol = 102;
   out->mDXY_P.mNumRow = 23;
   out->mDXY_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mDXY_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     35);
   return out;
@@ -9674,10 +9737,10 @@ static NeDsMethodOutput *ds_output_duy_p(const NeDynamicSystem *ds, PmAllocator 
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDUY_P.mNumCol = 27;
+  out->mDUY_P.mNumCol = 25;
   out->mDUY_P.mNumRow = 23;
   out->mDUY_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mDUY_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     4);
   return out;
@@ -9730,9 +9793,9 @@ static NeDsMethodOutput *ds_output_mode(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mMODE.mN = 225;
+  out->mMODE.mN = 224;
   out->mMODE.mX = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    225);
+    224);
   return out;
 }
 
@@ -9743,8 +9806,8 @@ static NeDsMethodOutput *ds_output_zc(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mZC.mN = 225;
-  out->mZC.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 225);
+  out->mZC.mN = 224;
+  out->mZC.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 224);
   return out;
 }
 
@@ -9935,8 +9998,8 @@ static NeDsMethodOutput *ds_output_log(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mLOG.mN = 834;
-  out->mLOG.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 834);
+  out->mLOG.mN = 836;
+  out->mLOG.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 836);
   return out;
 }
 
@@ -10036,10 +10099,10 @@ static NeDsMethodOutput *ds_output_dxdelt_p(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDXDELT_P.mNumCol = 99;
+  out->mDXDELT_P.mNumCol = 102;
   out->mDXDELT_P.mNumRow = 0;
   out->mDXDELT_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof
-    (int32_T), 100);
+    (int32_T), 103);
   out->mDXDELT_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof
     (int32_T), 0);
   return out;
@@ -10065,10 +10128,10 @@ static NeDsMethodOutput *ds_output_dudelt_p(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mDUDELT_P.mNumCol = 27;
+  out->mDUDELT_P.mNumCol = 25;
   out->mDUDELT_P.mNumRow = 0;
   out->mDUDELT_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof
-    (int32_T), 28);
+    (int32_T), 26);
   out->mDUDELT_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof
     (int32_T), 0);
   return out;
@@ -10123,9 +10186,9 @@ static NeDsMethodOutput *ds_output_obs_exp(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mOBS_EXP.mN = 1097;
+  out->mOBS_EXP.mN = 1100;
   out->mOBS_EXP.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
-    1097);
+    1100);
   return out;
 }
 
@@ -10136,9 +10199,9 @@ static NeDsMethodOutput *ds_output_obs_act(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mOBS_ACT.mN = 1097;
+  out->mOBS_ACT.mN = 1100;
   out->mOBS_ACT.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
-    1097);
+    1100);
   return out;
 }
 
@@ -10149,9 +10212,9 @@ static NeDsMethodOutput *ds_output_obs_all(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mOBS_ALL.mN = 1097;
+  out->mOBS_ALL.mN = 1100;
   out->mOBS_ALL.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
-    1097);
+    1100);
   return out;
 }
 
@@ -10162,9 +10225,9 @@ static NeDsMethodOutput *ds_output_obs_il(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mOBS_IL.mN = 1097;
+  out->mOBS_IL.mN = 1100;
   out->mOBS_IL.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof
-    (boolean_T), 1097);
+    (boolean_T), 1100);
   return out;
 }
 
@@ -10226,8 +10289,8 @@ static NeDsMethodOutput *ds_output_qx(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mQX.mN = 337;
-  out->mQX.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 337);
+  out->mQX.mN = 344;
+  out->mQX.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 344);
   return out;
 }
 
@@ -10238,8 +10301,8 @@ static NeDsMethodOutput *ds_output_qu(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mQU.mN = 3;
-  out->mQU.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 3);
+  out->mQU.mN = 0;
+  out->mQU.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 0);
   return out;
 }
 
@@ -10262,8 +10325,8 @@ static NeDsMethodOutput *ds_output_q1(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mQ1.mN = 41;
-  out->mQ1.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 41);
+  out->mQ1.mN = 42;
+  out->mQ1.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 42);
   return out;
 }
 
@@ -10274,12 +10337,12 @@ static NeDsMethodOutput *ds_output_qx_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mQX_P.mNumCol = 99;
-  out->mQX_P.mNumRow = 99;
+  out->mQX_P.mNumCol = 102;
+  out->mQX_P.mNumRow = 102;
   out->mQX_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    100);
+    103);
   out->mQX_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    337);
+    344);
   return out;
 }
 
@@ -10290,12 +10353,12 @@ static NeDsMethodOutput *ds_output_qu_p(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mQU_P.mNumCol = 27;
-  out->mQU_P.mNumRow = 99;
+  out->mQU_P.mNumCol = 25;
+  out->mQU_P.mNumRow = 102;
   out->mQU_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    28);
+    26);
   out->mQU_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    3);
+    0);
   return out;
 }
 
@@ -10307,7 +10370,7 @@ static NeDsMethodOutput *ds_output_qt_p(const NeDynamicSystem *ds, PmAllocator
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
   out->mQT_P.mNumCol = 1;
-  out->mQT_P.mNumRow = 99;
+  out->mQT_P.mNumRow = 102;
   out->mQT_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     2);
   out->mQT_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
@@ -10323,11 +10386,11 @@ static NeDsMethodOutput *ds_output_q1_p(const NeDynamicSystem *ds, PmAllocator
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
   out->mQ1_P.mNumCol = 1;
-  out->mQ1_P.mNumRow = 99;
+  out->mQ1_P.mNumRow = 102;
   out->mQ1_P.mJc = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
     2);
   out->mQ1_P.mIr = (int32_T *) allocator->mCallocFcn(allocator, sizeof(int32_T),
-    41);
+    42);
   return out;
 }
 
@@ -10338,9 +10401,9 @@ static NeDsMethodOutput *ds_output_var_tol(const NeDynamicSystem *ds,
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mVAR_TOL.mN = 99;
+  out->mVAR_TOL.mN = 102;
   out->mVAR_TOL.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
-    99);
+    102);
   return out;
 }
 
@@ -10351,9 +10414,9 @@ static NeDsMethodOutput *ds_output_eq_tol(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mEQ_TOL.mN = 99;
+  out->mEQ_TOL.mN = 102;
   out->mEQ_TOL.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
-    99);
+    102);
   return out;
 }
 
@@ -10364,9 +10427,9 @@ static NeDsMethodOutput *ds_output_lv(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mLV.mN = 99;
+  out->mLV.mN = 102;
   out->mLV.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof(boolean_T),
-    99);
+    102);
   return out;
 }
 
@@ -10377,9 +10440,9 @@ static NeDsMethodOutput *ds_output_slv(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mSLV.mN = 99;
+  out->mSLV.mN = 102;
   out->mSLV.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof(boolean_T),
-    99);
+    102);
   return out;
 }
 
@@ -10390,9 +10453,9 @@ static NeDsMethodOutput *ds_output_nldv(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mNLDV.mN = 99;
+  out->mNLDV.mN = 102;
   out->mNLDV.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof
-    (boolean_T), 99);
+    (boolean_T), 102);
   return out;
 }
 
@@ -10403,9 +10466,9 @@ static NeDsMethodOutput *ds_output_sclv(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mSCLV.mN = 99;
+  out->mSCLV.mN = 102;
   out->mSCLV.mX = (boolean_T *) allocator->mCallocFcn(allocator, sizeof
-    (boolean_T), 99);
+    (boolean_T), 102);
   return out;
 }
 
@@ -10416,8 +10479,9 @@ static NeDsMethodOutput *ds_output_imin(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mIMIN.mN = 99;
-  out->mIMIN.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 99);
+  out->mIMIN.mN = 102;
+  out->mIMIN.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
+    102);
   return out;
 }
 
@@ -10428,8 +10492,9 @@ static NeDsMethodOutput *ds_output_imax(const NeDynamicSystem *ds, PmAllocator
   (void)ds;
   out = (NeDsMethodOutput *) allocator->mCallocFcn(allocator, sizeof
     (NeDsMethodOutput), 1);
-  out->mIMAX.mN = 99;
-  out->mIMAX.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T), 99);
+  out->mIMAX.mN = 102;
+  out->mIMAX.mX = (real_T *) allocator->mCallocFcn(allocator, sizeof(real_T),
+    102);
   return out;
 }
 
@@ -10529,7 +10594,7 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
 {
   NeDynamicSystem *ds;
   _NeDynamicSystem *_ds;
-  static SscIoInfo input_info[27];
+  static SscIoInfo input_info[25];
   static SscIoInfo output_info[23];
 
   /* allocate dynamic system data and extended data */
@@ -10540,29 +10605,29 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds = &_ds->mBase;
 
   /* setup sizes */
-  ds->mNumVariables = 99;
+  ds->mNumVariables = 102;
   ds->mNumDiscreteRealVariables = 0;
   ds->mNumDifferentialVariables = 23;
-  ds->mNumEquations = 99;
+  ds->mNumEquations = 102;
   ds->mNumCEResiduals = 0;
   ds->mNumICResiduals = 24;
   ds->mNumFreqs = 0;
   ds->mNumSolverHits = 0;
-  ds->mNumModes = 225;
+  ds->mNumModes = 224;
   ds->mNumMajorModes = 15;
   ds->mNumRealCache = 0;
   ds->mNumIntCache = 392;
-  ds->mNumObservables = 1228;
-  ds->mNumObservableElements = 1097;
-  ds->mNumZcs = 225;
+  ds->mNumObservables = 1231;
+  ds->mNumObservableElements = 1100;
+  ds->mNumZcs = 224;
   ds->mNumAsserts = 18;
   ds->mNumAssertRanges = 46;
   ds->mNumParamAsserts = 0;
   ds->mNumParamAssertRanges = 0;
   ds->mNumInitialAsserts = 0;
   ds->mNumInitialAssertRanges = 0;
-  ds->mNumRanges = 243;
-  ds->mNumEquationRanges = 255;
+  ds->mNumRanges = 242;
+  ds->mNumEquationRanges = 258;
   ds->mNumCERRanges = 0;
   ds->mNumICRRanges = 24;
   ds->mNumFundamentalSamples = 0;
@@ -10584,7 +10649,7 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds->mIsScalable = FALSE;
 
   /* setup ios */
-  ds->mNumIo[SSC_INPUT_IO_TYPE] = 27;
+  ds->mNumIo[SSC_INPUT_IO_TYPE] = 25;
   input_info[0].identifier =
     "vehicle.multibody.front_left_contact.Revolute_Joint_w_out0";
   input_info[0].size.numElements = 1;
@@ -10669,109 +10734,96 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
     "vehicle.powertrain.front_gearbox.Simulink_PS_Converter_output0";
   input_info[11].unit = "1";
   input_info[12].identifier =
-    "vehicle.powertrain.motor.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.motor.rev_limiter.Simulink_PS_Converter_output0";
   input_info[12].size.numElements = 1;
   input_info[12].size.encodedDimensions = "1x1";
-  input_info[12].name = "vehicle.powertrain.motor.Simulink_PS_Converter_output0";
+  input_info[12].name =
+    "vehicle.powertrain.motor.rev_limiter.Simulink_PS_Converter_output0";
   input_info[12].unit = "1";
   input_info[13].identifier =
-    "vehicle.powertrain.motor.Subsystem.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.propshaft.Simulink_PS_Converter_output0";
   input_info[13].size.numElements = 1;
   input_info[13].size.encodedDimensions = "1x1";
   input_info[13].name =
-    "vehicle.powertrain.motor.Subsystem.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.propshaft.Simulink_PS_Converter_output0";
   input_info[13].unit = "1";
   input_info[14].identifier =
-    "vehicle.powertrain.motor.rev_limiter.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter1_output0";
   input_info[14].size.numElements = 1;
   input_info[14].size.encodedDimensions = "1x1";
   input_info[14].name =
-    "vehicle.powertrain.motor.rev_limiter.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter1_output0";
   input_info[14].unit = "1";
   input_info[15].identifier =
-    "vehicle.powertrain.propshaft.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter_output0";
   input_info[15].size.numElements = 1;
   input_info[15].size.encodedDimensions = "1x1";
   input_info[15].name =
-    "vehicle.powertrain.propshaft.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter_output0";
   input_info[15].unit = "1";
   input_info[16].identifier =
-    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter1_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter1_output0";
   input_info[16].size.numElements = 1;
   input_info[16].size.encodedDimensions = "1x1";
   input_info[16].name =
-    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter1_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter1_output0";
   input_info[16].unit = "1";
   input_info[17].identifier =
-    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter2_output0";
   input_info[17].size.numElements = 1;
   input_info[17].size.encodedDimensions = "1x1";
   input_info[17].name =
-    "vehicle.powertrain.side_gearbox.Simulink_PS_Converter_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter2_output0";
   input_info[17].unit = "1";
   input_info[18].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter1_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter3_output0";
   input_info[18].size.numElements = 1;
   input_info[18].size.encodedDimensions = "1x1";
   input_info[18].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter1_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter3_output0";
   input_info[18].unit = "1";
   input_info[19].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter2_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter4_output0";
   input_info[19].size.numElements = 1;
   input_info[19].size.encodedDimensions = "1x1";
   input_info[19].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter2_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter4_output0";
   input_info[19].unit = "1";
   input_info[20].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter3_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter5_output0";
   input_info[20].size.numElements = 1;
   input_info[20].size.encodedDimensions = "1x1";
   input_info[20].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter3_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter5_output0";
   input_info[20].unit = "1";
   input_info[21].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter4_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter6_output0";
   input_info[21].size.numElements = 1;
   input_info[21].size.encodedDimensions = "1x1";
   input_info[21].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter4_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter6_output0";
   input_info[21].unit = "1";
   input_info[22].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter5_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter7_output0";
   input_info[22].size.numElements = 1;
   input_info[22].size.encodedDimensions = "1x1";
   input_info[22].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter5_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter7_output0";
   input_info[22].unit = "1";
   input_info[23].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter6_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter8_output0";
   input_info[23].size.numElements = 1;
   input_info[23].size.encodedDimensions = "1x1";
   input_info[23].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter6_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter8_output0";
   input_info[23].unit = "1";
   input_info[24].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter7_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter9_output0";
   input_info[24].size.numElements = 1;
   input_info[24].size.encodedDimensions = "1x1";
   input_info[24].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter7_output0";
+    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter9_output0";
   input_info[24].unit = "1";
-  input_info[25].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter8_output0";
-  input_info[25].size.numElements = 1;
-  input_info[25].size.encodedDimensions = "1x1";
-  input_info[25].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter8_output0";
-  input_info[25].unit = "1";
-  input_info[26].identifier =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter9_output0";
-  input_info[26].size.numElements = 1;
-  input_info[26].size.encodedDimensions = "1x1";
-  input_info[26].name =
-    "vehicle.powertrain.transmission.gear_selector.Simulink_PS_Converter9_output0";
-  input_info[26].unit = "1";
   ds->mIo[SSC_INPUT_IO_TYPE] = input_info;
   ds->mNumIo[SSC_OUTPUT_IO_TYPE] = 23;
   output_info[0].identifier =
@@ -10960,7 +11012,7 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds->mMakeOutput[NE_DS_METHOD_DDM_P] = ds_output_ddm_p;
   ds->mMethods[NE_DS_METHOD_DDM] = ds_ddm;
   ds->mMakeOutput[NE_DS_METHOD_DDM] = ds_output_ddm;
-  ds->mMethods[NE_DS_METHOD_DUM_P] = GVCU_HIL_simscape_a37faff9_2_ds_dum_p;
+  ds->mMethods[NE_DS_METHOD_DUM_P] = ds_dum_p;
   ds->mMakeOutput[NE_DS_METHOD_DUM_P] = ds_output_dum_p;
   ds->mMethods[NE_DS_METHOD_DUM] = ds_dum;
   ds->mMakeOutput[NE_DS_METHOD_DUM] = ds_output_dum;
@@ -10998,15 +11050,15 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds->mMakeOutput[NE_DS_METHOD_CPAR] = ds_output_cpar;
   ds->mMethods[NE_DS_METHOD_F] = GVCU_HIL_simscape_a37faff9_2_ds_f;
   ds->mMakeOutput[NE_DS_METHOD_F] = ds_output_f;
-  ds->mMethods[NE_DS_METHOD_VDF] = GVCU_HIL_simscape_a37faff9_2_ds_vdf;
+  ds->mMethods[NE_DS_METHOD_VDF] = ds_vdf;
   ds->mMakeOutput[NE_DS_METHOD_VDF] = ds_output_vdf;
-  ds->mMethods[NE_DS_METHOD_VMF] = GVCU_HIL_simscape_a37faff9_2_ds_vmf;
+  ds->mMethods[NE_DS_METHOD_VMF] = ds_vmf;
   ds->mMakeOutput[NE_DS_METHOD_VMF] = ds_output_vmf;
-  ds->mMethods[NE_DS_METHOD_VPF] = GVCU_HIL_simscape_a37faff9_2_ds_vpf;
+  ds->mMethods[NE_DS_METHOD_VPF] = ds_vpf;
   ds->mMakeOutput[NE_DS_METHOD_VPF] = ds_output_vpf;
-  ds->mMethods[NE_DS_METHOD_VSF] = GVCU_HIL_simscape_a37faff9_2_ds_vsf;
+  ds->mMethods[NE_DS_METHOD_VSF] = ds_vsf;
   ds->mMakeOutput[NE_DS_METHOD_VSF] = ds_output_vsf;
-  ds->mMethods[NE_DS_METHOD_SLF] = GVCU_HIL_simscape_a37faff9_2_ds_slf;
+  ds->mMethods[NE_DS_METHOD_SLF] = ds_slf;
   ds->mMakeOutput[NE_DS_METHOD_SLF] = ds_output_slf;
   ds->mMethods[NE_DS_METHOD_SLF0] = GVCU_HIL_simscape_a37faff9_2_ds_slf0;
   ds->mMakeOutput[NE_DS_METHOD_SLF0] = ds_output_slf0;
@@ -11042,7 +11094,7 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds->mMakeOutput[NE_DS_METHOD_DNF_P] = ds_output_dnf_p;
   ds->mMethods[NE_DS_METHOD_DNF] = ds_dnf;
   ds->mMakeOutput[NE_DS_METHOD_DNF] = ds_output_dnf;
-  ds->mMethods[NE_DS_METHOD_DNF_V_X] = GVCU_HIL_simscape_a37faff9_2_ds_dnf_v_x;
+  ds->mMethods[NE_DS_METHOD_DNF_V_X] = ds_dnf_v_x;
   ds->mMakeOutput[NE_DS_METHOD_DNF_V_X] = ds_output_dnf_v_x;
   ds->mMethods[NE_DS_METHOD_CER] = ds_cer;
   ds->mMakeOutput[NE_DS_METHOD_CER] = ds_output_cer;
@@ -11054,7 +11106,7 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds->mMakeOutput[NE_DS_METHOD_DDCER] = ds_output_ddcer;
   ds->mMethods[NE_DS_METHOD_DDCER_P] = ds_ddcer_p;
   ds->mMakeOutput[NE_DS_METHOD_DDCER_P] = ds_output_ddcer_p;
-  ds->mMethods[NE_DS_METHOD_IC] = GVCU_HIL_simscape_a37faff9_2_ds_ic;
+  ds->mMethods[NE_DS_METHOD_IC] = ds_ic;
   ds->mMakeOutput[NE_DS_METHOD_IC] = ds_output_ic;
   ds->mMethods[NE_DS_METHOD_ICR] = ds_icr;
   ds->mMakeOutput[NE_DS_METHOD_ICR] = ds_output_icr;
@@ -11199,27 +11251,27 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   ds->mMakeOutput[NE_DS_METHOD_Q1] = ds_output_q1;
   ds->mMethods[NE_DS_METHOD_QX_P] = GVCU_HIL_simscape_a37faff9_2_ds_qx_p;
   ds->mMakeOutput[NE_DS_METHOD_QX_P] = ds_output_qx_p;
-  ds->mMethods[NE_DS_METHOD_QU_P] = GVCU_HIL_simscape_a37faff9_2_ds_qu_p;
+  ds->mMethods[NE_DS_METHOD_QU_P] = ds_qu_p;
   ds->mMakeOutput[NE_DS_METHOD_QU_P] = ds_output_qu_p;
   ds->mMethods[NE_DS_METHOD_QT_P] = ds_qt_p;
   ds->mMakeOutput[NE_DS_METHOD_QT_P] = ds_output_qt_p;
   ds->mMethods[NE_DS_METHOD_Q1_P] = GVCU_HIL_simscape_a37faff9_2_ds_q1_p;
   ds->mMakeOutput[NE_DS_METHOD_Q1_P] = ds_output_q1_p;
-  ds->mMethods[NE_DS_METHOD_VAR_TOL] = GVCU_HIL_simscape_a37faff9_2_ds_var_tol;
+  ds->mMethods[NE_DS_METHOD_VAR_TOL] = ds_var_tol;
   ds->mMakeOutput[NE_DS_METHOD_VAR_TOL] = ds_output_var_tol;
-  ds->mMethods[NE_DS_METHOD_EQ_TOL] = GVCU_HIL_simscape_a37faff9_2_ds_eq_tol;
+  ds->mMethods[NE_DS_METHOD_EQ_TOL] = ds_eq_tol;
   ds->mMakeOutput[NE_DS_METHOD_EQ_TOL] = ds_output_eq_tol;
   ds->mMethods[NE_DS_METHOD_LV] = GVCU_HIL_simscape_a37faff9_2_ds_lv;
   ds->mMakeOutput[NE_DS_METHOD_LV] = ds_output_lv;
-  ds->mMethods[NE_DS_METHOD_SLV] = GVCU_HIL_simscape_a37faff9_2_ds_slv;
+  ds->mMethods[NE_DS_METHOD_SLV] = ds_slv;
   ds->mMakeOutput[NE_DS_METHOD_SLV] = ds_output_slv;
-  ds->mMethods[NE_DS_METHOD_NLDV] = GVCU_HIL_simscape_a37faff9_2_ds_nldv;
+  ds->mMethods[NE_DS_METHOD_NLDV] = ds_nldv;
   ds->mMakeOutput[NE_DS_METHOD_NLDV] = ds_output_nldv;
-  ds->mMethods[NE_DS_METHOD_SCLV] = GVCU_HIL_simscape_a37faff9_2_ds_sclv;
+  ds->mMethods[NE_DS_METHOD_SCLV] = ds_sclv;
   ds->mMakeOutput[NE_DS_METHOD_SCLV] = ds_output_sclv;
-  ds->mMethods[NE_DS_METHOD_IMIN] = GVCU_HIL_simscape_a37faff9_2_ds_imin;
+  ds->mMethods[NE_DS_METHOD_IMIN] = ds_imin;
   ds->mMakeOutput[NE_DS_METHOD_IMIN] = ds_output_imin;
-  ds->mMethods[NE_DS_METHOD_IMAX] = GVCU_HIL_simscape_a37faff9_2_ds_imax;
+  ds->mMethods[NE_DS_METHOD_IMAX] = ds_imax;
   ds->mMakeOutput[NE_DS_METHOD_IMAX] = ds_output_imax;
   ds->mMethods[NE_DS_METHOD_DIMIN] = ds_dimin;
   ds->mMakeOutput[NE_DS_METHOD_DIMIN] = ds_output_dimin;
@@ -11307,7 +11359,9 @@ NeDynamicSystem *GVCU_HIL_simscape_a37faff9_2_dae_ds(PmAllocator *allocator)
   _ds->mField1 = s_constant_table1;
   _ds->mField2 = s_constant_table2;
   _ds->mField3 = s_constant_table3;
-  ds->mNumLargeArray = 4;
+  _ds->mField4 = s_constant_table4;
+  _ds->mField5 = s_constant_table5;
+  ds->mNumLargeArray = 6;
   return (NeDynamicSystem *)_ds;
 }
 
@@ -11317,9 +11371,9 @@ static int32_T ds_mdxy_p (const NeDynamicSystem *LC, const NeDynamicSystemInput 
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mMDXY_P.mNumCol = 99ULL;
+  out->mMDXY_P.mNumCol = 102ULL;
   out->mMDXY_P.mNumRow = 23ULL;
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 103; i++) {
     out->mMDXY_P.mJc[i] = 0;
   }
 
@@ -11367,6 +11421,92 @@ static int32_T ds_duy (const NeDynamicSystem *LC, const NeDynamicSystemInput *t2
   return 0;
 }
 
+static int32_T ds_sclv (const NeDynamicSystem *LC, const NeDynamicSystemInput
+  *t1, NeDsMethodOutput *out)
+{
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mSCLV.mX[i] = false;
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_nldv (const NeDynamicSystem *LC, const NeDynamicSystemInput
+  *t1, NeDsMethodOutput *out)
+{
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mNLDV.mX[i] = false;
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_slv (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1,
+  NeDsMethodOutput *out)
+{
+  static boolean_T _cg_const_1[102] = { false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, false,
+    false, false, false, false, false, false, true, false, false, false, false,
+    false, false, false, false, false, false, true, false, false, false, false,
+    false, false, false, false, false, false, true, false, true, false, false,
+    false, false, true, true, false, false, true, false, true, false, true,
+    false, true, false, false, false, false, false, false, false, false, false,
+    false, false, true, true, false, false, false, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true };
+
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mSLV.mX[i] = _cg_const_1[i];
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_eq_tol (const NeDynamicSystem *LC, const NeDynamicSystemInput *
+  t1, NeDsMethodOutput *out)
+{
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mEQ_TOL.mX[i] = 1.0E-9;
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_var_tol (const NeDynamicSystem *LC, const NeDynamicSystemInput
+  *t1, NeDsMethodOutput *out)
+{
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mVAR_TOL.mX[i] = 1.0E-9;
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
 static int32_T ds_state (const NeDynamicSystem *LC, const NeDynamicSystemInput
   *t1, NeDsMethodOutput *out)
 {
@@ -11406,7 +11546,7 @@ static int32_T ds_qt_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
   (void)t1;
   (void)LC;
   out->mQT_P.mNumCol = 1ULL;
-  out->mQT_P.mNumRow = 99ULL;
+  out->mQT_P.mNumRow = 102ULL;
   out->mQT_P.mJc[0] = 0;
   out->mQT_P.mJc[1] = 0;
   (void)LC;
@@ -11417,14 +11557,47 @@ static int32_T ds_qt_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
 static int32_T ds_qu (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1,
                       NeDsMethodOutput *out)
 {
-  static real_T _cg_const_1[3] = { 0.36845983787767134, 0.36845983787767134,
-    -1.0 };
-
   (void)t1;
   (void)LC;
-  out->mQU.mX[0] = _cg_const_1[0];
-  out->mQU.mX[1] = _cg_const_1[1];
-  out->mQU.mX[2] = _cg_const_1[2];
+  (void)out;
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_qu_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
+  *t1, NeDsMethodOutput *out)
+{
+  (void)t1;
+  (void)LC;
+  out->mQU_P.mNumCol = 25ULL;
+  out->mQU_P.mNumRow = 102ULL;
+  out->mQU_P.mJc[0] = 0;
+  out->mQU_P.mJc[1] = 0;
+  out->mQU_P.mJc[2] = 0;
+  out->mQU_P.mJc[3] = 0;
+  out->mQU_P.mJc[4] = 0;
+  out->mQU_P.mJc[5] = 0;
+  out->mQU_P.mJc[6] = 0;
+  out->mQU_P.mJc[7] = 0;
+  out->mQU_P.mJc[8] = 0;
+  out->mQU_P.mJc[9] = 0;
+  out->mQU_P.mJc[10] = 0;
+  out->mQU_P.mJc[11] = 0;
+  out->mQU_P.mJc[12] = 0;
+  out->mQU_P.mJc[13] = 0;
+  out->mQU_P.mJc[14] = 0;
+  out->mQU_P.mJc[15] = 0;
+  out->mQU_P.mJc[16] = 0;
+  out->mQU_P.mJc[17] = 0;
+  out->mQU_P.mJc[18] = 0;
+  out->mQU_P.mJc[19] = 0;
+  out->mQU_P.mJc[20] = 0;
+  out->mQU_P.mJc[21] = 0;
+  out->mQU_P.mJc[22] = 0;
+  out->mQU_P.mJc[23] = 0;
+  out->mQU_P.mJc[24] = 0;
+  out->mQU_P.mJc[25] = 0;
   (void)LC;
   (void)out;
   return 0;
@@ -11567,6 +11740,44 @@ static int32_T ds_dum (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1
   return 0;
 }
 
+static int32_T ds_dum_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
+  *t1, NeDsMethodOutput *out)
+{
+  (void)t1;
+  (void)LC;
+  out->mDUM_P.mNumCol = 25ULL;
+  out->mDUM_P.mNumRow = 23ULL;
+  out->mDUM_P.mJc[0] = 0;
+  out->mDUM_P.mJc[1] = 0;
+  out->mDUM_P.mJc[2] = 0;
+  out->mDUM_P.mJc[3] = 0;
+  out->mDUM_P.mJc[4] = 0;
+  out->mDUM_P.mJc[5] = 0;
+  out->mDUM_P.mJc[6] = 0;
+  out->mDUM_P.mJc[7] = 0;
+  out->mDUM_P.mJc[8] = 0;
+  out->mDUM_P.mJc[9] = 0;
+  out->mDUM_P.mJc[10] = 0;
+  out->mDUM_P.mJc[11] = 0;
+  out->mDUM_P.mJc[12] = 0;
+  out->mDUM_P.mJc[13] = 0;
+  out->mDUM_P.mJc[14] = 0;
+  out->mDUM_P.mJc[15] = 0;
+  out->mDUM_P.mJc[16] = 0;
+  out->mDUM_P.mJc[17] = 0;
+  out->mDUM_P.mJc[18] = 0;
+  out->mDUM_P.mJc[19] = 0;
+  out->mDUM_P.mJc[20] = 0;
+  out->mDUM_P.mJc[21] = 0;
+  out->mDUM_P.mJc[22] = 0;
+  out->mDUM_P.mJc[23] = 0;
+  out->mDUM_P.mJc[24] = 0;
+  out->mDUM_P.mJc[25] = 0;
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
 static int32_T ds_ddm (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1,
   NeDsMethodOutput *out)
 {
@@ -11608,9 +11819,9 @@ static int32_T ds_dxm_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mDXM_P.mNumCol = 99ULL;
+  out->mDXM_P.mNumCol = 102ULL;
   out->mDXM_P.mNumRow = 23ULL;
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 103; i++) {
     out->mDXM_P.mJc[i] = 0;
   }
 
@@ -11636,9 +11847,9 @@ static int32_T ds_mnl_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mMNL_P.mNumCol = 99ULL;
-  out->mMNL_P.mNumRow = 99ULL;
-  for (i = 0; i < 100; i++) {
+  out->mMNL_P.mNumCol = 102ULL;
+  out->mMNL_P.mNumRow = 102ULL;
+  for (i = 0; i < 103; i++) {
     out->mMNL_P.mJc[i] = 0;
   }
 
@@ -11664,9 +11875,9 @@ static int32_T ds_mpar_p (const NeDynamicSystem *LC, const NeDynamicSystemInput 
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mMPAR_P.mNumCol = 99ULL;
-  out->mMPAR_P.mNumRow = 99ULL;
-  for (i = 0; i < 100; i++) {
+  out->mMPAR_P.mNumCol = 102ULL;
+  out->mMPAR_P.mNumRow = 102ULL;
+  for (i = 0; i < 103; i++) {
     out->mMPAR_P.mJc[i] = 0;
   }
 
@@ -11703,6 +11914,36 @@ static int32_T ds_dimin (const NeDynamicSystem *LC, const NeDynamicSystemInput
   (void)t1;
   (void)LC;
   (void)out;
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_imax (const NeDynamicSystem *LC, const NeDynamicSystemInput
+  *t1, NeDsMethodOutput *out)
+{
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mIMAX.mX[i] = pmf_get_inf();
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_imin (const NeDynamicSystem *LC, const NeDynamicSystemInput
+  *t1, NeDsMethodOutput *out)
+{
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mIMIN.mX[i] = -pmf_get_inf();
+  }
+
   (void)LC;
   (void)out;
   return 0;
@@ -11749,9 +11990,9 @@ static int32_T ds_dxicrm_p (const NeDynamicSystem *LC, const
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mDXICRM_P.mNumCol = 99ULL;
+  out->mDXICRM_P.mNumCol = 102ULL;
   out->mDXICRM_P.mNumRow = 0ULL;
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 103; i++) {
     out->mDXICRM_P.mJc[i] = 0;
   }
 
@@ -11777,9 +12018,9 @@ static int32_T ds_icrm_p (const NeDynamicSystem *LC, const NeDynamicSystemInput 
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mICRM_P.mNumCol = 99ULL;
+  out->mICRM_P.mNumCol = 102ULL;
   out->mICRM_P.mNumRow = 24ULL;
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 103; i++) {
     out->mICRM_P.mJc[i] = 0;
   }
 
@@ -11963,12 +12204,158 @@ static int32_T ds_dxicr (const NeDynamicSystem *LC, const NeDynamicSystemInput
   return 0;
 }
 
+static int32_T ds_ic (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1,
+                      NeDsMethodOutput *out)
+{
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mIC.mX[i] = 0.0;
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
 static int32_T ds_freqs (const NeDynamicSystem *LC, const NeDynamicSystemInput
   *t1, NeDsMethodOutput *out)
 {
   (void)t1;
   (void)LC;
   (void)out;
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_vsf (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1,
+  NeDsMethodOutput *out)
+{
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mVSF.mX[i] = false;
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_vpf (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1,
+  NeDsMethodOutput *out)
+{
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mVPF.mX[i] = false;
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_dnf_v_x (const NeDynamicSystem *LC, const NeDynamicSystemInput
+  *t1, NeDsMethodOutput *out)
+{
+  static boolean_T _cg_const_1[102] = { true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, false, true, true, false, false,
+    false, false, false, true, true, true, true, true, false, true, true, false,
+    true, true, false, false, false, false, false, false, false, false, false,
+    false, false, false, false, false, false, false, true, true, false, true,
+    true, false, true, true, false, true, true, false, true, true, false, true,
+    true, false, true, true, false, true, true, false, true, true, false };
+
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mDNF_V_X.mX[i] = _cg_const_1[i];
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_slf (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1,
+  NeDsMethodOutput *out)
+{
+  static boolean_T _cg_const_1[102] = { false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, true,
+    true, false, true, true, false, false, false, false, false, false, false,
+    false, true, true, false, true, true, false, true, true, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, false,
+    false, false, true, true, false, true, true, false, true, true, false, true,
+    true, false, true, true, false, true, true, false, true, true, false, true,
+    true, false, true, true, false };
+
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mSLF.mX[i] = _cg_const_1[i];
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_vmf (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1,
+  NeDsMethodOutput *out)
+{
+  static boolean_T _cg_const_1[102] = { false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, false,
+    false, false, false, false, false, false, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true, true, true, true,
+    true, true, false, false, false, false, true, true, true, true, true, true,
+    true, true, true, true, true, true, false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, true, true,
+    true, true, true, true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true, true, true };
+
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mVMF.mX[i] = _cg_const_1[i];
+  }
+
+  (void)LC;
+  (void)out;
+  return 0;
+}
+
+static int32_T ds_vdf (const NeDynamicSystem *LC, const NeDynamicSystemInput *t1,
+  NeDsMethodOutput *out)
+{
+  static boolean_T _cg_const_1[102] = { false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, false,
+    false, false, false, false, false, false, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true, true, true, true,
+    true, true, false, false, false, false, true, true, true, true, true, true,
+    true, true, true, true, true, true, false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, true, true,
+    true, true, true, true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true, true, true };
+
+  int32_T i;
+  (void)t1;
+  (void)LC;
+  for (i = 0; i < 102; i++) {
+    out->mVDF.mX[i] = _cg_const_1[i];
+  }
+
   (void)LC;
   (void)out;
   return 0;
@@ -11991,7 +12378,7 @@ static int32_T ds_dpdxf_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
   (void)t1;
   (void)LC;
   out->mDPDXF_P.mNumCol = 0ULL;
-  out->mDPDXF_P.mNumRow = 84ULL;
+  out->mDPDXF_P.mNumRow = 88ULL;
   out->mDPDXF_P.mJc[0] = 0;
   (void)LC;
   (void)out;
@@ -12015,7 +12402,7 @@ static int32_T ds_cpar_p (const NeDynamicSystem *LC, const NeDynamicSystemInput 
   (void)t1;
   (void)LC;
   out->mCPAR_P.mNumCol = 1ULL;
-  out->mCPAR_P.mNumRow = 99ULL;
+  out->mCPAR_P.mNumRow = 102ULL;
   out->mCPAR_P.mJc[0] = 0;
   out->mCPAR_P.mJc[1] = 0;
   (void)LC;
@@ -12040,7 +12427,7 @@ static int32_T ds_ccon_p (const NeDynamicSystem *LC, const NeDynamicSystemInput 
   (void)t1;
   (void)LC;
   out->mCCON_P.mNumCol = 1ULL;
-  out->mCCON_P.mNumRow = 99ULL;
+  out->mCCON_P.mNumRow = 102ULL;
   out->mCCON_P.mJc[0] = 0;
   out->mCCON_P.mJc[1] = 0;
   (void)LC;
@@ -12072,7 +12459,6 @@ static int32_T ds_bcon (const NeDynamicSystem *LC, const NeDynamicSystemInput
   out->mBCON.mX[5ULL] = 1.0;
   out->mBCON.mX[6ULL] = 0.0;
   out->mBCON.mX[7ULL] = 1.0;
-  out->mBCON.mX[8ULL] = -1.0;
   (void)LC;
   (void)out;
   return 0;
@@ -12095,9 +12481,9 @@ static int32_T ds_apar_p (const NeDynamicSystem *LC, const NeDynamicSystemInput 
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mAPAR_P.mNumCol = 99ULL;
-  out->mAPAR_P.mNumRow = 99ULL;
-  for (i = 0; i < 100; i++) {
+  out->mAPAR_P.mNumCol = 102ULL;
+  out->mAPAR_P.mNumRow = 102ULL;
+  for (i = 0; i < 103; i++) {
     out->mAPAR_P.mJc[i] = 0;
   }
 
@@ -12123,7 +12509,7 @@ static int32_T ds_dtf_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
   (void)t1;
   (void)LC;
   out->mDTF_P.mNumCol = 1ULL;
-  out->mDTF_P.mNumRow = 99ULL;
+  out->mDTF_P.mNumRow = 102ULL;
   out->mDTF_P.mJc[0] = 0;
   out->mDTF_P.mJc[1] = 0;
   (void)LC;
@@ -12172,7 +12558,7 @@ static int32_T ds_dwf_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
   (void)t1;
   (void)LC;
   out->mDWF_P.mNumCol = 0ULL;
-  out->mDWF_P.mNumRow = 99ULL;
+  out->mDWF_P.mNumRow = 102ULL;
   out->mDWF_P.mJc[0] = 0;
   (void)LC;
   (void)out;
@@ -12196,7 +12582,7 @@ static int32_T ds_ddf_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
   (void)t1;
   (void)LC;
   out->mDDF_P.mNumCol = 0ULL;
-  out->mDDF_P.mNumRow = 99ULL;
+  out->mDDF_P.mNumRow = 102ULL;
   out->mDDF_P.mJc[0] = 0;
   (void)LC;
   (void)out;
@@ -12380,9 +12766,9 @@ static int32_T ds_dxdelt_p (const NeDynamicSystem *LC, const
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mDXDELT_P.mNumCol = 99ULL;
+  out->mDXDELT_P.mNumCol = 102ULL;
   out->mDXDELT_P.mNumRow = 0ULL;
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 103; i++) {
     out->mDXDELT_P.mJc[i] = 0;
   }
 
@@ -12476,9 +12862,9 @@ static int32_T ds_dxcer_p (const NeDynamicSystem *LC, const NeDynamicSystemInput
   int32_T i;
   (void)t1;
   (void)LC;
-  out->mDXCER_P.mNumCol = 99ULL;
+  out->mDXCER_P.mNumCol = 102ULL;
   out->mDXCER_P.mNumRow = 0ULL;
-  for (i = 0; i < 100; i++) {
+  for (i = 0; i < 103; i++) {
     out->mDXCER_P.mJc[i] = 0;
   }
 

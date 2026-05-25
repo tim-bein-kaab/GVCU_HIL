@@ -1,0 +1,802 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: GVCU IEB
+
+
+BO_ 459 brake_pedal: 7 IEB
+ SG_ brake_pedal_travel_perc : 40|10@1+ (0.1,0) [0|100] "%"  GVCU
+ SG_ position_motor_v : 39|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ active_mode : 36|3@1+ (1,0) [0|5] "enum"  GVCU
+ SG_ brake_pedal_travel_sensor_sts : 33|3@1+ (1,0) [0|4] "enum"  GVCU
+ SG_ position_motor : 24|9@1+ (0.1,-2) [-2|49.1] "mm"  GVCU
+ SG_ brake_pedal_travel_mm : 16|8@1+ (0.1,0) [0|25.5] "mm"  GVCU
+ SG_ brake_pedal_travel_perc_v : 15|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ brake_pedal_travel_mm_v : 14|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ brake_pedal_applied : 12|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 462 brake_pressure_actual: 6 IEB
+ SG_ pressure_tar_adas_req : 40|8@1+ (1,0) [0|255] "bar"  GVCU
+ SG_ pressure_tar_driver_req : 32|8@1+ (1,0) [0|255] "bar"  GVCU
+ SG_ support_brk_pressure : 24|8@1+ (1,0) [0|255] "bar"  GVCU
+ SG_ mc_brk_pressure : 16|8@1+ (1,0) [0|255] "bar"  GVCU
+ SG_ support_brk_pressure_v : 13|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ mc_brk_pressure_v : 12|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 480 brake_pressure_request: 7 GVCU
+ SG_ brake_pressure_req_rr : 40|8@1+ (1,0) [0|200] "bar"  IEB
+ SG_ brake_pressure_req_rl : 32|8@1+ (1,0) [0|200] "bar"  IEB
+ SG_ brake_pressure_req_fr : 24|8@1+ (1,0) [0|200] "bar"  IEB
+ SG_ brake_pressure_req_fl : 16|8@1+ (1,0) [0|200] "bar"  IEB
+ SG_ brake_pressure_req_rr_v : 15|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ brake_pressure_req_rl_v : 14|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ brake_pressure_req_fr_v : 13|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ brake_pressure_req_fl_v : 12|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 2006 diag_ds2_func_req_g2: 8 GVCU
+ SG_ DiagnosticFuncAddrReq : 0|64@1+ (1,0) [0|0] ""  IEB
+
+BO_ 1989 diag_req_ieb_g2: 8 GVCU
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  IEB
+
+BO_ 1997 diag_resp_ieb: 8 IEB
+ SG_ diag_data : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+BO_ 475 driver_assistance_01: 2 GVCU
+ SG_ prefill_req : 14|2@1+ (1,0) [0|2] "enum"  IEB
+ SG_ brake_jerk_req : 12|2@1+ (1,0) [0|2] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 1510 nm_request_gvcu_ds2: 2 GVCU
+ SG_ nm_request : 12|4@1+ (1,0) [0|4] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 1513 nm_status_ieb: 2 IEB
+ SG_ nm_status : 12|4@1+ (1,0) [0|12] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 1500 odometer_value: 6 GVCU
+ SG_ veh_odo : 16|32@1+ (0.015625,0) [0|67108863.984] "km"  IEB
+ SG_ veh_odo_v : 12|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 467 pwr_steer_info_ds2: 6 GVCU
+ SG_ steering_wheel_rot_speed : 32|16@1+ (0.1,-1016) [-1016|1016] "deg/s"  IEB
+ SG_ steering_wheel_angle : 16|16@1+ (0.1,-780) [-780|780] "deg"  IEB
+ SG_ calibration_sts : 13|2@1+ (1,0) [0|2] "enum"  IEB
+ SG_ steering_wheel_sensor_v : 12|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 483 regen_01: 4 IEB
+ SG_ recu_brake_torque_req : 16|16@1+ (1,-32767) [-32767|0] "Nm"  GVCU
+ SG_ recu_brake_torque_req_v : 14|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ reg_sts : 12|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 484 regen_02: 6 GVCU
+ SG_ recu_brake_torque_act : 32|16@1+ (1,-32767) [-32767|0] "Nm"  IEB
+ SG_ max_regen_torque : 16|16@1+ (1,-32767) [-32767|0] "Nm"  IEB
+ SG_ recu_brake_torque_act_v : 13|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ max_regen_torque_v : 12|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 1470 sec_stat_ieb: 7 IEB
+ SG_ sa_fail_attempt_cnt : 48|8@1+ (1,0) [0|255] "enum"  GVCU
+ SG_ e2e_alive_cnt_err_cnt : 32|16@1+ (1,0) [0|65535] "enum"  GVCU
+ SG_ e2e_crc_err_cnt : 16|16@1+ (1,0) [0|65535] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 472 stability_info_ds2: 8 GVCU
+ SG_ long_acc : 48|16@1+ (0.002,-65.532) [-65.532|65.532] "m/s2"  IEB
+ SG_ lat_acc : 32|16@1+ (0.002,-65.532) [-65.532|65.538] "m/s2"  IEB
+ SG_ yaw_rate : 16|16@1+ (0.005,-163.83) [-163.83|163.845] "deg/s"  IEB
+ SG_ long_acc_v : 14|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ lat_acc_v : 13|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ yaw_rate_v : 12|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 454 status_ieb_01: 5 IEB
+ SG_ ieb_chg_mod_fb : 38|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ ieb_deg_sts : 35|3@1+ (1,0) [0|4] "enum"  GVCU
+ SG_ com_diagnostic : 32|3@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ self_diagnostic : 29|3@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ voltage_diagnostics : 26|3@1+ (1,0) [0|4] "enum"  GVCU
+ SG_ leakage_detection : 24|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ diag_active : 22|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ temp_diagnostic : 20|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ vdc_off_telltale : 18|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ pressure_diagnostic : 16|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ abs_telltale : 14|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ brake_booster_telltale : 12|2@1+ (1,0) [0|2] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 455 status_ieb_02: 4 IEB
+ SG_ hhc_sts : 29|3@1+ (1,0) [0|4] "enum"  GVCU
+ SG_ abs_sts : 26|3@1+ (1,0) [0|4] "enum"  GVCU
+ SG_ ebd_sts : 24|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ hba_sts : 22|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ vdc_sts : 20|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ cdd_sts : 18|2@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ hhc_direction : 15|3@1+ (1,0) [0|3] "enum"  GVCU
+ SG_ vdc_perf_mod_fb : 12|3@1+ (1,0) [0|4] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 1518 system_time_ds2: 8 GVCU
+ SG_ time_second : 56|8@1+ (1,0) [0|59] "s"  IEB
+ SG_ time_minute : 48|8@1+ (1,0) [0|59] "min"  IEB
+ SG_ time_hour : 40|8@1+ (1,0) [0|23] "h"  IEB
+ SG_ time_day : 32|8@1+ (1,0) [1|31] "d"  IEB
+ SG_ time_month : 24|8@1+ (1,0) [1|12] "mon"  IEB
+ SG_ time_year : 16|8@1+ (1,2010) [2010|2265] "years"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 461 target_brake_pressure: 6 IEB
+ SG_ target_brake_pressure_rr : 40|8@1+ (1,0) [0|255] "bar"  GVCU
+ SG_ target_brake_pressure_rl : 32|8@1+ (1,0) [0|255] "bar"  GVCU
+ SG_ target_brake_pressure_fr : 24|8@1+ (1,0) [0|255] "bar"  GVCU
+ SG_ target_brake_pressure_fl : 16|8@1+ (1,0) [0|255] "bar"  GVCU
+ SG_ target_brake_pressure_rr_v : 15|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ target_brake_pressure_rl_v : 14|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ target_brake_pressure_fr_v : 13|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ target_brake_pressure_fl_v : 12|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 465 vehicle_mode: 3 GVCU
+ SG_ vdc_perf_mod_req : 19|3@1+ (1,0) [0|3] "enum"  IEB
+ SG_ drv_mod : 16|3@1+ (1,0) [0|4] "enum"  IEB
+ SG_ hhc_inhb_req : 14|2@1+ (1,0) [0|2] "enum"  IEB
+ SG_ ieb_chg_mod_req : 12|2@1+ (1,0) [0|2] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 450 vehicle_speed_raw: 4 IEB
+ SG_ vehicle_speed_r : 16|16@1+ (0.01,0) [0|655] "km/h"  GVCU
+ SG_ vehicle_speed_r_v : 12|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 464 vehicle_status_ds2: 7 GVCU
+ SG_ seatbelt_driver_sts : 54|2@1+ (1,0) [0|2] "enum"  IEB
+ SG_ accelerator_pedal_position : 44|10@1+ (0.1,0) [0|100] "%"  IEB
+ SG_ driver_torque_rqst : 32|12@1+ (1,0) [0|4095] "Nm"  IEB
+ SG_ tc_sts : 29|3@1+ (1,0) [0|4] "enum"  IEB
+ SG_ wiper_sts : 26|3@1+ (1,0) [0|4] "enum"  IEB
+ SG_ accelerator_pedal_state : 24|2@1+ (1,0) [0|3] "enum"  IEB
+ SG_ accelerator_pedal_position_v : 23|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ driver_torque_rqst_v : 22|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ abs_telltale_fb : 20|2@1+ (1,0) [0|2] "enum"  IEB
+ SG_ vdc_off_telltale_fb : 18|2@1+ (1,0) [0|2] "enum"  IEB
+ SG_ brake_booster_telltale_fb : 16|2@1+ (1,0) [0|2] "enum"  IEB
+ SG_ epb_status : 12|3@1+ (1,0) [0|5] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 451 wheel_rates_front: 7 IEB
+ SG_ wheel_direction_fr : 51|3@1+ (1,0) [0|5] "enum"  GVCU
+ SG_ wheel_direction_fl : 48|3@1+ (1,0) [0|5] "enum"  GVCU
+ SG_ wheel_rate_fr : 32|16@1+ (0.01,0) [0|655.35] "rad/s"  GVCU
+ SG_ wheel_rate_fl : 16|16@1+ (0.01,0) [0|655.35] "rad/s"  GVCU
+ SG_ wheel_rate_fr_v : 13|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ wheel_rate_fl_v : 12|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 452 wheel_rates_rear: 7 IEB
+ SG_ wheel_direction_rr : 51|3@1+ (1,0) [0|5] "enum"  GVCU
+ SG_ wheel_direction_rl : 48|3@1+ (1,0) [0|5] "enum"  GVCU
+ SG_ wheel_rate_rr : 32|16@1+ (0.01,0) [0|655.35] "rad/s"  GVCU
+ SG_ wheel_rate_rl : 16|16@1+ (0.01,0) [0|655.35] "rad/s"  GVCU
+ SG_ wheel_rate_rr_v : 13|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ wheel_rate_rl_v : 12|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 457 wheel_rotation_counter: 7 IEB
+ SG_ wheel_rotation_counter_rr : 46|10@1+ (1,0) [0|1023] "enum"  GVCU
+ SG_ wheel_rotation_counter_rl : 36|10@1+ (1,0) [0|1023] "enum"  GVCU
+ SG_ wheel_rotation_counter_fr : 26|10@1+ (1,0) [0|1023] "enum"  GVCU
+ SG_ wheel_rotation_counter_fl : 16|10@1+ (1,0) [0|1023] "enum"  GVCU
+ SG_ wheel_rotation_counter_rr_v : 15|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ wheel_rotation_counter_rl_v : 14|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ wheel_rotation_counter_fr_v : 13|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ wheel_rotation_counter_fl_v : 12|1@1+ (1,0) [0|1] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 453 wheel_sensor_status: 4 IEB
+ SG_ wss_status_rr : 27|3@1+ (1,0) [0|6] "enum"  GVCU
+ SG_ wss_status_rl : 24|3@1+ (1,0) [0|6] "enum"  GVCU
+ SG_ wss_status_fr : 19|3@1+ (1,0) [0|6] "enum"  GVCU
+ SG_ wss_status_fl : 16|3@1+ (1,0) [0|6] "enum"  GVCU
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  GVCU
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  GVCU
+
+BO_ 478 wheel_torque_act_front: 6 GVCU
+ SG_ wheel_torque_act_fr : 32|16@1+ (1,-32767) [-32767|32767] "Nm"  IEB
+ SG_ wheel_torque_act_fl : 16|16@1+ (1,-32767) [-32767|32767] "Nm"  IEB
+ SG_ wheel_torque_act_fr_v : 13|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ wheel_torque_act_fl_v : 12|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 479 wheel_torque_act_rear: 6 GVCU
+ SG_ wheel_torque_act_rr : 32|16@1+ (1,-32767) [-32767|32767] "Nm"  IEB
+ SG_ wheel_torque_act_rl : 16|16@1+ (1,-32767) [-32767|32767] "Nm"  IEB
+ SG_ wheel_torque_act_rr_v : 13|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ wheel_torque_act_rl_v : 12|1@1+ (1,0) [0|1] "enum"  IEB
+ SG_ e2e_alive_counter : 8|4@1+ (1,0) [0|15] "enum"  IEB
+ SG_ e2e_checksum : 0|8@1+ (1,0) [0|255] ""  IEB
+
+BO_ 1614 xcp_cmd_ieb: 8 GVCU
+ SG_ command : 0|64@1+ (1,0) [0|0] ""  IEB
+
+BO_ 1615 xcp_resp_ieb: 8 IEB
+ SG_ response : 0|64@1+ (1,0) [0|0] ""  GVCU
+
+
+
+
+CM_ BU_ GVCU "Vehicle Control Module";
+CM_ BU_ IEB "Intelligent Electronic Brake System";
+CM_ BO_ 459 "brake pedal values";
+CM_ SG_ 459 brake_pedal_travel_perc "brake pedal position in percentage";
+CM_ SG_ 459 position_motor_v "position of motor valid signal";
+CM_ SG_ 459 active_mode "current brake mode";
+CM_ SG_ 459 brake_pedal_travel_sensor_sts "brake pedal sensor status";
+CM_ SG_ 459 position_motor "position of support motor in mm";
+CM_ SG_ 459 brake_pedal_travel_mm "brake pedal position in mm";
+CM_ SG_ 459 brake_pedal_travel_perc_v "brake pedal position in percentage valid signal";
+CM_ SG_ 459 brake_pedal_travel_mm_v "brake pedal position in mm valid signal";
+CM_ SG_ 459 brake_pedal_applied "Brake pedal applied";
+CM_ SG_ 459 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 459 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 462 "output pressure master cylinder";
+CM_ SG_ 462 pressure_tar_adas_req "target pressure based on adas request";
+CM_ SG_ 462 pressure_tar_driver_req "target pressure based on driver's pedal input";
+CM_ SG_ 462 support_brk_pressure "output pressure generated by the brake booster";
+CM_ SG_ 462 mc_brk_pressure "master cylinder brake pressure";
+CM_ SG_ 462 support_brk_pressure_v "Valid signal, 1 = Valid";
+CM_ SG_ 462 mc_brk_pressure_v "Valid signal, 1 = Valid";
+CM_ SG_ 462 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 462 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 480 "Requested brake pressure from GVCU to IEB";
+CM_ SG_ 480 brake_pressure_req_rr "brake pressure request rr from GVCU to IEB - it's an offset to IEB's target pressure";
+CM_ SG_ 480 brake_pressure_req_rl "brake pressurerequest rl from GVCU to IEB - it's an offset to IEB's target pressure";
+CM_ SG_ 480 brake_pressure_req_fr "brake pressure request fr from GVCU to IEB - it's an offset to IEB's target pressure";
+CM_ SG_ 480 brake_pressure_req_fl "brake pressure request fl from GVCU to IEB - it's an offset to IEB's target pressure";
+CM_ SG_ 480 brake_pressure_req_rr_v "Valid signal";
+CM_ SG_ 480 brake_pressure_req_rl_v "Valid signal";
+CM_ SG_ 480 brake_pressure_req_fr_v "Valid signal";
+CM_ SG_ 480 brake_pressure_req_fl_v "Valid signal";
+CM_ SG_ 480 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 480 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 2006 "Dynamic Bus 1 & 2 Diagnostic Request";
+CM_ BO_ 1989 "Diag Req IEB";
+CM_ BO_ 1997 "Diag Resp IEB";
+CM_ BO_ 475 "Advanced driving";
+CM_ SG_ 475 prefill_req "ADAS brake prefill request status";
+CM_ SG_ 475 brake_jerk_req "ADAS AEB brake jerk request status";
+CM_ SG_ 475 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 475 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 1510 "Network management request from GVCU";
+CM_ SG_ 1510 nm_request "Network management request from GVCU";
+CM_ SG_ 1510 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1510 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 1513 "IEB network management status for CAN wakeup";
+CM_ SG_ 1513 nm_status "IEB network management status sent by IEB";
+CM_ SG_ 1513 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1513 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 1500 "odometer value";
+CM_ SG_ 1500 veh_odo "Vehicle odometer sent by GVCU";
+CM_ SG_ 1500 veh_odo_v "Vehicle odometer qualifier";
+CM_ SG_ 1500 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1500 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 467 "basic steering values";
+CM_ SG_ 467 steering_wheel_rot_speed "steering wheel rotation speed";
+CM_ SG_ 467 steering_wheel_angle "steering wheel angle";
+CM_ SG_ 467 calibration_sts "steering angle sensor calibration status";
+CM_ SG_ 467 steering_wheel_sensor_v "valid signal for steering wheel angle and steering whel rotation speed as the source for these two signals is the same sensor. It's not possible that one singal is valid and the other is not";
+CM_ SG_ 467 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 467 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 483 "Requested regen brake torque from IEB to GVCU";
+CM_ SG_ 483 recu_brake_torque_req "IEB will convert the target braking force into the recovered torque of the motor and request the motor to execute according to the driver's braking request";
+CM_ SG_ 483 recu_brake_torque_req_v "Valid signal of RecuBrakeTorqueReq";
+CM_ SG_ 483 reg_sts "status bit indicating if regen is active";
+CM_ SG_ 483 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 483 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 484 "Actual regen brake torque from GVCU to IEB";
+CM_ SG_ 484 recu_brake_torque_act "Recuperation Brake Torque Actual at wheel";
+CM_ SG_ 484 max_regen_torque "SetMaxRegenTorque is the maximum torque recovery capability fed back by the motor. IEB will limit the internally calculated request torque recovery based on this signal.";
+CM_ SG_ 484 recu_brake_torque_act_v "Valid signal for RecuBrakeTorqueAct";
+CM_ SG_ 484 max_regen_torque_v "Valid signal for SetMaxRegenTorque";
+CM_ SG_ 484 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 484 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 1470 "error counter status message";
+CM_ SG_ 1470 sa_fail_attempt_cnt "IEB security access fail attempt counter";
+CM_ SG_ 1470 e2e_alive_cnt_err_cnt "IEB alive error counter";
+CM_ SG_ 1470 e2e_crc_err_cnt "IEB e2e crc error counter";
+CM_ BO_ 472 "Gyro(CoG): YawRate";
+CM_ SG_ 472 long_acc "Longitudal acceleration (X-axis)";
+CM_ SG_ 472 lat_acc "Lateral acceleration (Y-axis)";
+CM_ SG_ 472 yaw_rate "yaw rate";
+CM_ SG_ 472 long_acc_v "longitudinal accleration valid signal";
+CM_ SG_ 472 lat_acc_v "lateral acceleration valid signal";
+CM_ SG_ 472 yaw_rate_v "yaw rate valid signal";
+CM_ SG_ 472 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 472 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 454 "status values IEB";
+CM_ SG_ 454 ieb_chg_mod_fb "Feedback if IEB modes changes are allowed or not";
+CM_ SG_ 454 ieb_deg_sts "working status of IEB
+
+DEGRADE_1 -> ~ 100 bar max pressure
+DEGRADE_2 -> ~ 70 bar max pressure
+DEGRADE_3 -> ~ hydraulic backup";
+CM_ SG_ 454 com_diagnostic "- message timeouts
+- invalid values / values out of range
+- wrong e2e received";
+CM_ SG_ 454 self_diagnostic "Communication checks
+Failed to build pressure
+Voltage checks
+Temperature checks eBooster fail-request HBC";
+CM_ SG_ 454 voltage_diagnostics "diagnosis supply voltage";
+CM_ SG_ 454 leakage_detection "IEB has detected a leakage in it's hydraulics";
+CM_ SG_ 454 diag_active "IEB diagnostic active";
+CM_ SG_ 454 temp_diagnostic "diagnostic temperature";
+CM_ SG_ 454 vdc_off_telltale "VDC off telltale information for cluster";
+CM_ SG_ 454 pressure_diagnostic "pressure diagnostic";
+CM_ SG_ 454 abs_telltale "ABS telltale information for cluster";
+CM_ SG_ 454 brake_booster_telltale "Genera brake booster failure information for cluster";
+CM_ SG_ 454 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 454 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 455 "status values IEB";
+CM_ SG_ 455 hhc_sts "Hill Hold Control Active";
+CM_ SG_ 455 abs_sts "ABS status
+ABS active - capable of intervening
+off - deactivated by driver
+intervening - actuating
+failure - fail state
+";
+CM_ SG_ 455 ebd_sts "Electrical Brake Distribution Active";
+CM_ SG_ 455 hba_sts "Hydraulic Brake Assist Active";
+CM_ SG_ 455 vdc_sts "Status of VDC
+VDC active - capable of intervening
+off - deactivated by driver
+intervening - actuating
+failure - fail state
+VDC status valid signal";
+CM_ SG_ 455 cdd_sts "Auto brake status";
+CM_ SG_ 455 hhc_direction "Hill hold control direction of vehicle, uphill or downhill";
+CM_ SG_ 455 vdc_perf_mod_fb "IEB responds to GVCU and SmartCenter with the current VDC Level status";
+CM_ SG_ 455 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 455 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 1518 "system time";
+CM_ SG_ 1518 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 1518 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 461 "target brake pressures per wheel";
+CM_ SG_ 461 target_brake_pressure_rr "target pressure for rear right brake";
+CM_ SG_ 461 target_brake_pressure_rl "target pressure for rear left brake";
+CM_ SG_ 461 target_brake_pressure_fr "target pressure for front right brake";
+CM_ SG_ 461 target_brake_pressure_fl "target pressure for front left brake";
+CM_ SG_ 461 target_brake_pressure_rr_v "target pressure for rear right brake valid signal";
+CM_ SG_ 461 target_brake_pressure_rl_v "target pressure for rear left brake valid signal";
+CM_ SG_ 461 target_brake_pressure_fr_v "target pressure for front right brake valid signal";
+CM_ SG_ 461 target_brake_pressure_fl_v "target pressure for front left brake valid signal";
+CM_ SG_ 461 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 461 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 465 "set Vehicle Dynamics Levels";
+CM_ SG_ 465 vdc_perf_mod_req "VDC status request to IEB";
+CM_ SG_ 465 drv_mod "set vehicle's drive mode";
+CM_ SG_ 465 hhc_inhb_req "Control signal to request HHC function to be inhibited or allowed";
+CM_ SG_ 465 ieb_chg_mod_req "Allow changing in IEB modes (i.e. VDC perf mod), if DISABLED then IEB must NOT listen to related signals (i.e. VDC should be kept ON even if vdc_perf_mod_req says OFF)";
+CM_ SG_ 465 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 465 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 450 "Vehicle speed at CoG";
+CM_ SG_ 450 vehicle_speed_r "Vehicle speed at CoG";
+CM_ SG_ 450 vehicle_speed_r_v "Valid signal";
+CM_ SG_ 450 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 450 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 464 "vehicle status";
+CM_ SG_ 464 seatbelt_driver_sts "information about driver's seat belt";
+CM_ SG_ 464 accelerator_pedal_position "Accelerator pedal position in %";
+CM_ SG_ 464 driver_torque_rqst "Driver torque request (possible used for hill hold function release by IEB) as an absolut value";
+CM_ SG_ 464 tc_sts "Traction control status
+TC active - capable of intervening
+off - deactivated by driver
+intervening - actuating
+failure - fail state";
+CM_ SG_ 464 wiper_sts "signal to indicate if the wiper is engaged or not";
+CM_ SG_ 464 accelerator_pedal_state "Status of accelerator pedal";
+CM_ SG_ 464 accelerator_pedal_position_v "Acceleration pedal position in % valid";
+CM_ SG_ 464 driver_torque_rqst_v "Driver torque request (possible used for hill hold function release by IEB) valid signal";
+CM_ SG_ 464 abs_telltale_fb "Feedback of ans telltale in cluster";
+CM_ SG_ 464 vdc_off_telltale_fb "Feedback of VDC off telltalte in cluster";
+CM_ SG_ 464 brake_booster_telltale_fb "Feedback of brake telltale in cluster";
+CM_ SG_ 464 epb_status "Electric parking brake status";
+CM_ SG_ 464 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 464 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 451 "Front WSS Speed";
+CM_ SG_ 451 wheel_direction_fr "Direction FR wheel";
+CM_ SG_ 451 wheel_direction_fl "Direction FL wheel";
+CM_ SG_ 451 wheel_rate_fr "wheel rate front right";
+CM_ SG_ 451 wheel_rate_fl "wheel rate front left";
+CM_ SG_ 451 wheel_rate_fr_v "Valid signal";
+CM_ SG_ 451 wheel_rate_fl_v "Valid signal";
+CM_ SG_ 451 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 451 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 452 "Rear WSS Speed";
+CM_ SG_ 452 wheel_direction_rr "Direction RR wheel";
+CM_ SG_ 452 wheel_direction_rl "Direction RL wheel";
+CM_ SG_ 452 wheel_rate_rr "wheel rate rear right";
+CM_ SG_ 452 wheel_rate_rl "wheel rate rear left";
+CM_ SG_ 452 wheel_rate_rr_v "Valid signal";
+CM_ SG_ 452 wheel_rate_rl_v "Valid signal";
+CM_ SG_ 452 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 452 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 457 "Rotational counter for WSS";
+CM_ SG_ 457 wheel_rotation_counter_rr "Wheel rotation counts";
+CM_ SG_ 457 wheel_rotation_counter_rl "Wheel rotation counts";
+CM_ SG_ 457 wheel_rotation_counter_fr "Wheel rotation counts";
+CM_ SG_ 457 wheel_rotation_counter_fl "Wheel rotation counts";
+CM_ SG_ 457 wheel_rotation_counter_rr_v "Valid signal";
+CM_ SG_ 457 wheel_rotation_counter_rl_v "Valid signal";
+CM_ SG_ 457 wheel_rotation_counter_fr_v "Valid signal";
+CM_ SG_ 457 wheel_rotation_counter_fl_v "Valid signal";
+CM_ SG_ 457 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 457 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 453 "Report of wheel speed sensor faults";
+CM_ SG_ 453 wss_status_rr "Rear Right Wheel Speed Sensor Diag";
+CM_ SG_ 453 wss_status_rl "Rear Left Wheel Speed Sensor Diag";
+CM_ SG_ 453 wss_status_fr "Front Right Wheel Speed Sensor Diag";
+CM_ SG_ 453 wss_status_fl "Front Left Wheel Speed Sensor Diag";
+CM_ SG_ 453 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 453 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 478 "Wheel torque front wheels";
+CM_ SG_ 478 wheel_torque_act_fr "torque from drivetrain fr";
+CM_ SG_ 478 wheel_torque_act_fl "torque from drivetrain fl";
+CM_ SG_ 478 wheel_torque_act_fr_v "Valid signal";
+CM_ SG_ 478 wheel_torque_act_fl_v "Valid signal";
+CM_ SG_ 478 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 478 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 479 "Wheel torque rear wheels";
+CM_ SG_ 479 wheel_torque_act_rr "torque from drivetrain rr";
+CM_ SG_ 479 wheel_torque_act_rl "torque from drivetrain rl";
+CM_ SG_ 479 wheel_torque_act_rr_v "Valid signal";
+CM_ SG_ 479 wheel_torque_act_rl_v "Valid signal";
+CM_ SG_ 479 e2e_alive_counter "Alive counter for E2E";
+CM_ SG_ 479 e2e_checksum "CRC check value according to specification E2E";
+CM_ BO_ 1614 "IEB XCP Command";
+CM_ BO_ 1615 "IEB XCP Response";
+BA_DEF_  "BusSpeed" INT 0 2000000;
+BA_DEF_ SG_  "CheckSigRange" ENUM  "NO","YES";
+BA_DEF_ BO_  "DiagRequest" ENUM  "no","yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "no","yes";
+BA_DEF_ BO_  "DiagState" ENUM  "no","yes";
+BA_DEF_ BO_  "GatewayMode" ENUM  "GW_OFF","GW_ONLY","GW_RECV";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetitions" INT 0 0;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","event","NoMsgSendType";
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed";
+BA_DEF_ SG_  "GenSigStartValue" INT -999999 999999;
+BA_DEF_ SG_  "GenSigTimeoutValue" INT 0 65535;
+BA_DEF_ BO_  "NmMessage" ENUM  "no","yes";
+BA_DEF_ BU_  "NodeType" ENUM  "GATEWAY","MULTI_PORT","SINGLE_PORT";
+BA_DEF_ BO_  "RecvCanIF" INT 0 255;
+BA_DEF_ BO_  "XmitCanIF" INT 0 255;
+BA_DEF_DEF_  "BusSpeed" 500000;
+BA_DEF_DEF_  "CheckSigRange" "YES";
+BA_DEF_DEF_  "DiagRequest" "no";
+BA_DEF_DEF_  "DiagResponse" "no";
+BA_DEF_DEF_  "DiagState" "no";
+BA_DEF_DEF_  "GatewayMode" "GW_OFF";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetitions" 0;
+BA_DEF_DEF_  "GenMsgSendType" "cyclic";
+BA_DEF_DEF_  "GenSigSendType" "NoSigSendType";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigTimeoutValue" 0;
+BA_DEF_DEF_  "NmMessage" "no";
+BA_DEF_DEF_  "NodeType" "SINGLE_PORT";
+BA_DEF_DEF_  "RecvCanIF" 0;
+BA_DEF_DEF_  "XmitCanIF" 0;
+BA_ "BusSpeed" 500000;
+BA_ "NodeType" BU_ GVCU 2;
+BA_ "NodeType" BU_ IEB 0;
+BA_ "GatewayMode" BO_ 459 0;
+BA_ "GenMsgCycleTime" BO_ 459 10;
+BA_ "GenMsgSendType" BO_ 459 0;
+BA_ "XmitCanIF" BO_ 459 1;
+BA_ "GenSigStartValue" SG_ 459 position_motor 20;
+BA_ "GatewayMode" BO_ 462 0;
+BA_ "GenMsgCycleTime" BO_ 462 10;
+BA_ "GenMsgSendType" BO_ 462 0;
+BA_ "XmitCanIF" BO_ 462 1;
+BA_ "GatewayMode" BO_ 480 0;
+BA_ "GenMsgCycleTime" BO_ 480 10;
+BA_ "GenMsgSendType" BO_ 480 0;
+BA_ "RecvCanIF" BO_ 480 1;
+BA_ "DiagState" BO_ 2006 1;
+BA_ "GatewayMode" BO_ 2006 1;
+BA_ "GenMsgSendType" BO_ 2006 1;
+BA_ "RecvCanIF" BO_ 2006 1;
+BA_ "GatewayMode" BO_ 1989 1;
+BA_ "GenMsgSendType" BO_ 1989 1;
+BA_ "RecvCanIF" BO_ 1989 1;
+BA_ "GatewayMode" BO_ 1997 1;
+BA_ "GenMsgSendType" BO_ 1997 1;
+BA_ "XmitCanIF" BO_ 1997 1;
+BA_ "GatewayMode" BO_ 475 0;
+BA_ "GenMsgCycleTime" BO_ 475 10;
+BA_ "GenMsgSendType" BO_ 475 0;
+BA_ "RecvCanIF" BO_ 475 1;
+BA_ "GatewayMode" BO_ 1510 0;
+BA_ "GenMsgCycleTime" BO_ 1510 100;
+BA_ "GenMsgSendType" BO_ 1510 0;
+BA_ "NmMessage" BO_ 1510 1;
+BA_ "RecvCanIF" BO_ 1510 1;
+BA_ "GatewayMode" BO_ 1513 0;
+BA_ "GenMsgCycleTime" BO_ 1513 100;
+BA_ "GenMsgSendType" BO_ 1513 0;
+BA_ "NmMessage" BO_ 1513 1;
+BA_ "XmitCanIF" BO_ 1513 1;
+BA_ "GatewayMode" BO_ 1500 0;
+BA_ "GenMsgCycleTime" BO_ 1500 100;
+BA_ "GenMsgSendType" BO_ 1500 0;
+BA_ "RecvCanIF" BO_ 1500 1;
+BA_ "GatewayMode" BO_ 467 0;
+BA_ "GenMsgCycleTime" BO_ 467 10;
+BA_ "GenMsgSendType" BO_ 467 0;
+BA_ "RecvCanIF" BO_ 467 1;
+BA_ "GenSigStartValue" SG_ 467 steering_wheel_rot_speed 10160;
+BA_ "GenSigStartValue" SG_ 467 steering_wheel_angle 7800;
+BA_ "GatewayMode" BO_ 483 0;
+BA_ "GenMsgCycleTime" BO_ 483 10;
+BA_ "GenMsgSendType" BO_ 483 0;
+BA_ "XmitCanIF" BO_ 483 1;
+BA_ "GatewayMode" BO_ 484 0;
+BA_ "GenMsgCycleTime" BO_ 484 10;
+BA_ "GenMsgSendType" BO_ 484 0;
+BA_ "RecvCanIF" BO_ 484 1;
+BA_ "GatewayMode" BO_ 1470 0;
+BA_ "GenMsgCycleTime" BO_ 1470 1000;
+BA_ "GenMsgSendType" BO_ 1470 0;
+BA_ "XmitCanIF" BO_ 1470 1;
+BA_ "GatewayMode" BO_ 472 0;
+BA_ "GenMsgCycleTime" BO_ 472 10;
+BA_ "GenMsgSendType" BO_ 472 0;
+BA_ "RecvCanIF" BO_ 472 1;
+BA_ "GenSigStartValue" SG_ 472 long_acc 32766;
+BA_ "GenSigStartValue" SG_ 472 lat_acc 32766;
+BA_ "GenSigStartValue" SG_ 472 yaw_rate 32766;
+BA_ "GenSigStartValue" SG_ 472 long_acc_v 0;
+BA_ "GatewayMode" BO_ 454 0;
+BA_ "GenMsgCycleTime" BO_ 454 100;
+BA_ "GenMsgSendType" BO_ 454 0;
+BA_ "XmitCanIF" BO_ 454 1;
+BA_ "GatewayMode" BO_ 455 0;
+BA_ "GenMsgCycleTime" BO_ 455 100;
+BA_ "GenMsgSendType" BO_ 455 0;
+BA_ "XmitCanIF" BO_ 455 1;
+BA_ "GatewayMode" BO_ 1518 0;
+BA_ "GenMsgCycleTime" BO_ 1518 500;
+BA_ "GenMsgSendType" BO_ 1518 0;
+BA_ "RecvCanIF" BO_ 1518 1;
+BA_ "GatewayMode" BO_ 461 0;
+BA_ "GenMsgCycleTime" BO_ 461 10;
+BA_ "GenMsgSendType" BO_ 461 0;
+BA_ "XmitCanIF" BO_ 461 1;
+BA_ "GatewayMode" BO_ 465 0;
+BA_ "GenMsgCycleTime" BO_ 465 100;
+BA_ "GenMsgSendType" BO_ 465 0;
+BA_ "RecvCanIF" BO_ 465 1;
+BA_ "GatewayMode" BO_ 450 0;
+BA_ "GenMsgCycleTime" BO_ 450 10;
+BA_ "GenMsgSendType" BO_ 450 0;
+BA_ "XmitCanIF" BO_ 450 1;
+BA_ "GatewayMode" BO_ 464 0;
+BA_ "GenMsgCycleTime" BO_ 464 20;
+BA_ "GenMsgSendType" BO_ 464 0;
+BA_ "RecvCanIF" BO_ 464 1;
+BA_ "GenSigStartValue" SG_ 464 driver_torque_rqst 2044;
+BA_ "GatewayMode" BO_ 451 0;
+BA_ "GenMsgCycleTime" BO_ 451 5;
+BA_ "GenMsgSendType" BO_ 451 0;
+BA_ "XmitCanIF" BO_ 451 1;
+BA_ "GenSigStartValue" SG_ 451 wheel_direction_fr 0;
+BA_ "GenSigStartValue" SG_ 451 wheel_direction_fl 0;
+BA_ "GatewayMode" BO_ 452 0;
+BA_ "GenMsgCycleTime" BO_ 452 5;
+BA_ "GenMsgSendType" BO_ 452 0;
+BA_ "XmitCanIF" BO_ 452 1;
+BA_ "GenSigStartValue" SG_ 452 wheel_direction_rr 0;
+BA_ "GenSigStartValue" SG_ 452 wheel_direction_rl 0;
+BA_ "GatewayMode" BO_ 457 0;
+BA_ "GenMsgCycleTime" BO_ 457 100;
+BA_ "GenMsgSendType" BO_ 457 0;
+BA_ "XmitCanIF" BO_ 457 1;
+BA_ "GatewayMode" BO_ 453 0;
+BA_ "GenMsgCycleTime" BO_ 453 10;
+BA_ "GenMsgSendType" BO_ 453 0;
+BA_ "XmitCanIF" BO_ 453 1;
+BA_ "GatewayMode" BO_ 478 0;
+BA_ "GenMsgCycleTime" BO_ 478 10;
+BA_ "GenMsgSendType" BO_ 478 0;
+BA_ "RecvCanIF" BO_ 478 1;
+BA_ "GenSigStartValue" SG_ 478 wheel_torque_act_fr 32767;
+BA_ "GenSigStartValue" SG_ 478 wheel_torque_act_fl 32767;
+BA_ "GatewayMode" BO_ 479 0;
+BA_ "GenMsgCycleTime" BO_ 479 10;
+BA_ "GenMsgSendType" BO_ 479 0;
+BA_ "RecvCanIF" BO_ 479 1;
+BA_ "GenSigStartValue" SG_ 479 wheel_torque_act_rr 32767;
+BA_ "GenSigStartValue" SG_ 479 wheel_torque_act_rl 32767;
+BA_ "GatewayMode" BO_ 1614 0;
+BA_ "GenMsgSendType" BO_ 1614 1;
+BA_ "RecvCanIF" BO_ 1614 1;
+BA_ "GatewayMode" BO_ 1615 0;
+BA_ "GenMsgSendType" BO_ 1615 1;
+BA_ "XmitCanIF" BO_ 1615 1;
+VAL_ 459 active_mode 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "NORMAL_BRAKE_APPLY_ASSIST_ACTIVE" 3 "PRESSURE_REDUCTION_ACTIVE" 4 "REGEN_BRAKING_ACTIVE" 5 "NO_ACTIVE_MODE" ;
+VAL_ 459 brake_pedal_travel_sensor_sts 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "SHORT_TO_GND" 3 "OPEN_CIRCUIT" 4 "OPERATIONAL" ;
+VAL_ 459 brake_pedal_travel_perc_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 459 brake_pedal_travel_mm_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 459 brake_pedal_applied 0 "UNKNOWN" 1 "NOT_APPLIED" 2 "APPLIED" 3 "UNAVAILABLE" ;
+VAL_ 459 e2e_alive_counter 15 "INVALID" ;
+VAL_ 462 support_brk_pressure_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 462 mc_brk_pressure_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 462 e2e_alive_counter 15 "INVALID" ;
+VAL_ 480 brake_pressure_req_rr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 480 brake_pressure_req_rl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 480 brake_pressure_req_fr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 480 brake_pressure_req_fl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 480 e2e_alive_counter 15 "INVALID" ;
+VAL_ 475 prefill_req 0 "UNKNOWN" 1 "NO_REQUEST" 2 "BRAKE_PREFILL_REQUEST" ;
+VAL_ 475 brake_jerk_req 0 "UNKNOWN" 1 "NO_REQUEST" 2 "BRAKE_JERK_REQUEST" ;
+VAL_ 475 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1510 nm_request 0 "UNKNOWN" 1 "STANDBY_REQUEST" 2 "ACTIVE_REQUEST" 3 "SLEEP_REQUEST" ;
+VAL_ 1510 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1513 nm_status 0 "UNKNOWN" 1 "STANDBY" 2 "ACTIVE" 3 "READY_SLEEP" 8 "ERR" 9 "STANDBY_ERR" 10 "ACTIVE_ERR" 11 "READY_SLEEP_ERR" ;
+VAL_ 1513 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1500 veh_odo_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 1500 e2e_alive_counter 15 "INVALID" ;
+VAL_ 467 calibration_sts 0 "UNKNOWN" 1 "NOT_CALIBRATED" 2 "CALIBRATED" ;
+VAL_ 467 steering_wheel_sensor_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 467 e2e_alive_counter 15 "INVALID" ;
+VAL_ 483 recu_brake_torque_req_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 483 reg_sts 0 "UNKNOWN" 1 "NOT_ACTIVE" 2 "ACTIVE" ;
+VAL_ 483 e2e_alive_counter 15 "INVALID" ;
+VAL_ 484 recu_brake_torque_act_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 484 max_regen_torque_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 484 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1470 e2e_alive_counter 15 "INVALID" ;
+VAL_ 472 long_acc_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 472 lat_acc_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 472 yaw_rate_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 472 e2e_alive_counter 15 "INVALID" ;
+VAL_ 454 ieb_chg_mod_fb 0 "UNKNOWN" 1 "IEB_CHG_MOD_DISABLED" 2 "IEB_CHG_MOD_ENABLED" ;
+VAL_ 454 ieb_deg_sts 0 "UNKNOWN" 1 "DEGRADE_1" 2 "DEGRADE_2" 3 "HYDRAULIC_BACKUP" 4 "NORMAL_OPERATION" ;
+VAL_ 454 com_diagnostic 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "COM_ERROR" 3 "COM_OK" ;
+VAL_ 454 self_diagnostic 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "SELF_CHECK_ERROR" 3 "SELF_CHECK_OK" ;
+VAL_ 454 voltage_diagnostics 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "VOLTAGE_ERROR" 3 "VOLTAGE_OK" ;
+VAL_ 454 leakage_detection 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "LEAKAGE_DETECTED" 3 "NO_LEAKAGE" ;
+VAL_ 454 diag_active 0 "UNKNOWN" 1 "DIAG_NOT_ACTIVE" 2 "DIAG_ACTIVE" ;
+VAL_ 454 temp_diagnostic 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "TEMP_ERROR" 3 "TEMP_OK" ;
+VAL_ 454 vdc_off_telltale 0 "UNKNOWN" 1 "ENABLED" 2 "DISABLED" ;
+VAL_ 454 pressure_diagnostic 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "PRESSURE_ERROR" 3 "PRESSURE_OK" ;
+VAL_ 454 abs_telltale 0 "UNKNOWN" 1 "ENABLED" 2 "DISABLED" ;
+VAL_ 454 brake_booster_telltale 0 "UNKNOWN" 1 "ENABLED" 2 "DISABLED" ;
+VAL_ 454 e2e_alive_counter 15 "INVALID" ;
+VAL_ 455 hhc_sts 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "DEACTIVATED" 3 "STANDBY" 4 "HOLD_PRESSURE" ;
+VAL_ 455 abs_sts 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "PARTIALLY_UNAVAILABLE" 3 "AVAILABLE" 4 "ACTIVE" ;
+VAL_ 455 ebd_sts 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "AVAILABLE" 3 "ACTIVE" ;
+VAL_ 455 hba_sts 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "AVAILABLE" 3 "ACTIVE" ;
+VAL_ 455 vdc_sts 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "AVAILABLE" 3 "ACTIVE" ;
+VAL_ 455 cdd_sts 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "AVAILABLE" 3 "ACTIVE" ;
+VAL_ 455 hhc_direction 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "FRONT_UP_HILL" 3 "FRONT_DOWN_HILL" ;
+VAL_ 455 vdc_perf_mod_fb 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "VDC_PERF_MOD_ON" 3 "VDC_PERF_MOD_INTER" 4 "VDC_PERF_MOD_OFF" ;
+VAL_ 455 e2e_alive_counter 15 "INVALID" ;
+VAL_ 1518 e2e_alive_counter 15 "INVALID" ;
+VAL_ 461 target_brake_pressure_rr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 461 target_brake_pressure_rl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 461 target_brake_pressure_fr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 461 target_brake_pressure_fl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 461 e2e_alive_counter 15 "INVALID" ;
+VAL_ 465 vdc_perf_mod_req 0 "UNKNOWN" 1 "VDC_PERF_MOD_ON" 2 "VDC_PERF_MOD_INTER" 3 "VDC_PERF_MOD_OFF" ;
+VAL_ 465 drv_mod 0 "UNKNOWN" 1 "PARK" 2 "NEUTRAL" 3 "REVERSE" 4 "DRIVE" ;
+VAL_ 465 hhc_inhb_req 0 "UNKNOWN" 1 "HHC_INHBD" 2 "HHC_ALLWD" ;
+VAL_ 465 ieb_chg_mod_req 0 "UNKNOWN" 1 "IEB_CHG_MOD_DISABLED" 2 "IEB_CHG_MOD_ENABLED" ;
+VAL_ 465 e2e_alive_counter 15 "INVALID" ;
+VAL_ 450 vehicle_speed_r_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 450 e2e_alive_counter 15 "INVALID" ;
+VAL_ 464 seatbelt_driver_sts 0 "UNKNOWN" 1 "UNLATCHED" 2 "LATCHED" ;
+VAL_ 464 tc_sts 0 "UNKNOWN" 1 "OFF" 2 "ACTIVE" 3 "INTERVENING" 4 "FAILURE" ;
+VAL_ 464 wiper_sts 0 "UNKNOWN" 1 "OFF" 2 "INTERMITTED" 3 "MEDIUM" 4 "FAST" ;
+VAL_ 464 accelerator_pedal_state 0 "UNKNOWN" 1 "NOT_APPLIED" 2 "APPLIED" 3 "UNAVAILABLE" ;
+VAL_ 464 accelerator_pedal_position_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 464 driver_torque_rqst_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 464 abs_telltale_fb 0 "UNKNOWN" 1 "ENABLED" 2 "DISABLED" ;
+VAL_ 464 vdc_off_telltale_fb 0 "UNKNOWN" 1 "ENABLED" 2 "DISABLED" ;
+VAL_ 464 brake_booster_telltale_fb 0 "UNKNOWN" 1 "ENABLED" 2 "DISABLED" ;
+VAL_ 464 epb_status 0 "UNKNOWN" 1 "FAILURE" 2 "CALIPERS_APPLYING" 3 "CALIPERS_RELEASING" 4 "CALIPERS_APPLIED" 5 "CALIPERS_RELEASED" ;
+VAL_ 464 e2e_alive_counter 15 "INVALID" ;
+VAL_ 451 wheel_direction_fr 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "STANDSTILL" 3 "FORWARDS" 4 "BACKWARDS" 5 "OVERSPEED" ;
+VAL_ 451 wheel_direction_fl 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "STANDSTILL" 3 "FORWARDS" 4 "BACKWARDS" 5 "OVERSPEED" ;
+VAL_ 451 wheel_rate_fr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 451 wheel_rate_fl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 451 e2e_alive_counter 15 "INVALID" ;
+VAL_ 452 wheel_direction_rr 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "STANDSTILL" 3 "FORWARDS" 4 "BACKWARDS" 5 "OVERSPEED" ;
+VAL_ 452 wheel_direction_rl 0 "UNKNOWN" 1 "UNAVAILABLE" 2 "STANDSTILL" 3 "FORWARDS" 4 "BACKWARDS" 5 "OVERSPEED" ;
+VAL_ 452 wheel_rate_rr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 452 wheel_rate_rl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 452 e2e_alive_counter 15 "INVALID" ;
+VAL_ 457 wheel_rotation_counter_rr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 457 wheel_rotation_counter_rl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 457 wheel_rotation_counter_fr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 457 wheel_rotation_counter_fl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 457 e2e_alive_counter 15 "INVALID" ;
+VAL_ 453 wss_status_rr 0 "UNKNOWN" 1 "SHORT_TO_GND" 2 "OPEN_CIRCUIT" 3 "GAP_TOO_LARGE" 4 "GAP_TOO_SMALL" 5 "ENCODER_WHEEL_DAMAGED" 6 "OPERATIONAL" ;
+VAL_ 453 wss_status_rl 0 "UNKNWON" 1 "SHORT_TO_GND" 2 "OPEN_CIRCUIT" 3 "GAP_TOO_LARGE" 4 "GAP_TOO_SMALL" 5 "ENCODER_WHEEL_DAMAGED" 6 "OPERATIONAL" ;
+VAL_ 453 wss_status_fr 0 "UNKNOWN" 1 "SHORT_TO_GND" 2 "OPEN_CIRCUIT" 3 "GAP_TOO_LARGE" 4 "GAP_TOO_SMALL" 5 "ENCODER_WHEEL_DAMAGED" 6 "OPERATIONAL" ;
+VAL_ 453 wss_status_fl 0 "UNKNOWN" 1 "SHORT_TO_GND" 2 "OPEN_CIRCUIT" 3 "GAP_TOO_LARGE" 4 "GAP_TOO_SMALL" 5 "ENCODER_WHEEL_DAMAGED" 6 "OPERATIONAL" ;
+VAL_ 453 e2e_alive_counter 15 "INVALID" ;
+VAL_ 478 wheel_torque_act_fr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 478 wheel_torque_act_fl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 478 e2e_alive_counter 15 "INVALID" ;
+VAL_ 479 wheel_torque_act_rr_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 479 wheel_torque_act_rl_v 0 "NOT_VALID" 1 "VALID" ;
+VAL_ 479 e2e_alive_counter 15 "INVALID" ;
+
+
+

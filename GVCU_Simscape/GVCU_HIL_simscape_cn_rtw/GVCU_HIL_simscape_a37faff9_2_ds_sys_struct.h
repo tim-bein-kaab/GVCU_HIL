@@ -13,6 +13,8 @@ typedef struct _NeDynamicSystemTag {
   real_T* mField1;
   real_T* mField2;
   real_T* mField3;
+  real_T* mField4;
+  real_T* mField5;
 } _NeDynamicSystem;
 
 #else

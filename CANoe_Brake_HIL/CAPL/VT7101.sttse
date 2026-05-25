@@ -1,0 +1,6 @@
+[NStatePersistence]
+Signature=VectorStatePersistence
+[VTestExecutable]
+TestNode0_LastReportTmpFile=..\..\..\Embedded_Systems\HIL_PROJECTs\hil_test\IEB\canoe_setup\Brake_Test\rpt7063.xml
+TestNode1_LastReportTmpFile=rpt19f5.xml
+TestNode2_LastReportTmpFile=rpt1e04.xml
