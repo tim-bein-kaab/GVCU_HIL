@@ -9,7 +9,7 @@
  *
  * Model version              : 7.76
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Mon May 25 18:03:03 2026
+ * C source code generated on : Tue May 26 14:05:47 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -14582,17 +14582,9 @@ P_GVCU_HIL_T GVCU_HIL_P = {
   { 1.0, 9.0 },
 
   { 105.0, 110.0, 104.0, 101.0, 114.0, 105.0, 116.0, 101.0, 100.0 },
-  655.35,
-  0.0,
   0.159154943,
-  655.35,
-  0.0,
   0.159154943,
-  655.35,
-  0.0,
   0.159154943,
-  655.35,
-  0.0,
   0.159154943,
 
   { 4U, 4U },
@@ -14611,19 +14603,19 @@ P_GVCU_HIL_T GVCU_HIL_P = {
   25U,
   25U,
 
-  /* Start of '<S519>/CoreSubsys' */
+  /* Start of '<S518>/CoreSubsys' */
   {
-    /* Start of '<S519>/Clutch' */
+    /* Start of '<S518>/Clutch' */
     {
-      /* Start of '<S524>/Slipping' */
+      /* Start of '<S523>/Slipping' */
       {
         -4.0
       }
       ,
 
-      /* End of '<S524>/Slipping' */
+      /* End of '<S523>/Slipping' */
 
-      /* Start of '<S524>/Locked' */
+      /* Start of '<S523>/Locked' */
       {
         0.0,
         0.0,
@@ -14631,9 +14623,9 @@ P_GVCU_HIL_T GVCU_HIL_P = {
       }
       ,
 
-      /* End of '<S524>/Locked' */
+      /* End of '<S523>/Locked' */
 
-      /* Start of '<S524>/detectLockup' */
+      /* Start of '<S523>/detectLockup' */
       {
         0.0,
         0.0,
@@ -14644,21 +14636,21 @@ P_GVCU_HIL_T GVCU_HIL_P = {
       }
       ,
 
-      /* End of '<S524>/detectLockup' */
+      /* End of '<S523>/detectLockup' */
 
-      /* Start of '<S524>/detectSlip' */
+      /* Start of '<S523>/detectSlip' */
       {
         false
       }
-      /* End of '<S524>/detectSlip' */
+      /* End of '<S523>/detectSlip' */
     }
-    /* End of '<S519>/Clutch' */
+    /* End of '<S518>/Clutch' */
   }
   ,
 
-  /* End of '<S519>/CoreSubsys' */
+  /* End of '<S518>/CoreSubsys' */
 
-  /* Start of '<S495>/Bristle Deflection' */
+  /* Start of '<S494>/Bristle Deflection' */
   {
     0.0,
     0.0,
@@ -14678,21 +14670,21 @@ P_GVCU_HIL_T GVCU_HIL_P = {
   }
   ,
 
-  /* End of '<S495>/Bristle Deflection' */
+  /* End of '<S494>/Bristle Deflection' */
 
-  /* Start of '<S463>/CoreSubsys' */
+  /* Start of '<S462>/CoreSubsys' */
   {
-    /* Start of '<S463>/Clutch' */
+    /* Start of '<S462>/Clutch' */
     {
-      /* Start of '<S468>/Slipping' */
+      /* Start of '<S467>/Slipping' */
       {
         -4.0
       }
       ,
 
-      /* End of '<S468>/Slipping' */
+      /* End of '<S467>/Slipping' */
 
-      /* Start of '<S468>/Locked' */
+      /* Start of '<S467>/Locked' */
       {
         0.0,
         0.0,
@@ -14700,9 +14692,9 @@ P_GVCU_HIL_T GVCU_HIL_P = {
       }
       ,
 
-      /* End of '<S468>/Locked' */
+      /* End of '<S467>/Locked' */
 
-      /* Start of '<S468>/detectLockup' */
+      /* Start of '<S467>/detectLockup' */
       {
         0.0,
         0.0,
@@ -14713,21 +14705,21 @@ P_GVCU_HIL_T GVCU_HIL_P = {
       }
       ,
 
-      /* End of '<S468>/detectLockup' */
+      /* End of '<S467>/detectLockup' */
 
-      /* Start of '<S468>/detectSlip' */
+      /* Start of '<S467>/detectSlip' */
       {
         false
       }
-      /* End of '<S468>/detectSlip' */
+      /* End of '<S467>/detectSlip' */
     }
-    /* End of '<S463>/Clutch' */
+    /* End of '<S462>/Clutch' */
   }
   ,
 
-  /* End of '<S463>/CoreSubsys' */
+  /* End of '<S462>/CoreSubsys' */
 
-  /* Start of '<S439>/Bristle Deflection' */
+  /* Start of '<S438>/Bristle Deflection' */
   {
     0.0,
     0.0,
@@ -14745,5 +14737,5 @@ P_GVCU_HIL_T GVCU_HIL_P = {
     INFINITY,
     0.1
   }
-  /* End of '<S439>/Bristle Deflection' */
+  /* End of '<S438>/Bristle Deflection' */
 };

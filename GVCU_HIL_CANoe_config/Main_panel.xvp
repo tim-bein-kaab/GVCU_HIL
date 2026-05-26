@@ -1,13 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=19.5.44.0, Culture=neutral, PublicKeyToken=null">
   <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Panel" ControlName="Start_Vel_Tim">
-    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xb23b7e1aeedd3e48c4ea790e9e0290047b64" ControlName="Check Box 5">
-      <Property Name="Name">Xb23b7e1aeedd3e48c4ea790e9e0290047b64</Property>
-      <Property Name="Size">84, 16</Property>
-      <Property Name="Location">386, 352</Property>
-      <Property Name="Text">brake pedal</Property>
-      <Property Name="TabIndex">22</Property>
-      <Property Name="SymbolConfiguration">8;16;VTS::VT7101_1_Out2;;;AuxActive;1;;;-1;;;Value;;;0</Property>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xcd1d7ba8e9209e423ee962be31e5065aaecd" ControlName="Input/Output Box 4">
+      <Property Name="Name">Xcd1d7ba8e9209e423ee962be31e5065aaecd</Property>
+      <Property Name="Size">58, 21</Property>
+      <Property Name="Location">460, 334</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="AlarmLowerTextColor">Black</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmUpperTextColor">Black</Property>
+      <Property Name="BoxBorderStyle">FixedSingle</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="TabIndex">24</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="UsedValueTable">PhysicalValue</Property>
+      <Property Name="DescriptionSize">5, 21</Property>
+      <Property Name="SymbolConfiguration">8;16;VTS::Brake_PWM;;;PWMOutputDC;2;;;-1;;;Value;;;0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X05819053e97a6e4381e88ebec6e4887b0a61" ControlName="Static Text 13">
+      <Property Name="Name">X05819053e97a6e4381e88ebec6e4887b0a61</Property>
+      <Property Name="Size">114, 15</Property>
+      <Property Name="Location">340, 361</Property>
+      <Property Name="Text">Feedback pedal_perc</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X6baa6c32e41bae4ad9e899ce1a20c2f22b84" ControlName="Input/Output Box 5">
+      <Property Name="Name">X6baa6c32e41bae4ad9e899ce1a20c2f22b84</Property>
+      <Property Name="Size">58, 21</Property>
+      <Property Name="Location">460, 361</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="AlarmLowerTextColor">Black</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmUpperTextColor">Black</Property>
+      <Property Name="BoxBorderStyle">FixedSingle</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="ReadOnlyControl">True</Property>
+      <Property Name="TabIndex">23</Property>
+      <Property Name="TabStopActive">False</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="UsedValueTable">RawValue</Property>
+      <Property Name="DescriptionSize">5, 21</Property>
+      <Property Name="SymbolConfiguration">8;2;dynamic_systems2_bus;IEB;brake_pedal;brake_pedal_travel_perc;1;Dynamic_Systems2;;-1;;;Value;;;0</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="Xca79fc43e7130e4ec8e95efea468f233eaed" ControlName="Static Text 12">
+      <Property Name="Name">Xca79fc43e7130e4ec8e95efea468f233eaed</Property>
+      <Property Name="Size">100, 15</Property>
+      <Property Name="Location">340, 340</Property>
+      <Property Name="Text">Solenoid PWM [%]</Property>
     </Object>
     <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X583117b9e0e77e4c56e97a7eb760d85efbef" ControlName="Static Text 11">
       <Property Name="Name">X583117b9e0e77e4c56e97a7eb760d85efbef</Property>
@@ -279,7 +322,7 @@ output torque</Property>
     </Object>
     <Object Type="Vector.CANalyzer.Panels.Design.NumericUpDownControl, Vector.CANalyzer.Panels.CommonControls, Version=18.0.150.0, Culture=neutral, PublicKeyToken=null" Name="X35b5ebd7e9153e46cae9fdeec7cc83b422c4" ControlName="Numeric Up/Down 1">
       <Property Name="Name">X35b5ebd7e9153e46cae9fdeec7cc83b422c4</Property>
-      <Property Name="Size">82, 18</Property>
+      <Property Name="Size">85, 18</Property>
       <Property Name="Location">188, 215</Property>
       <Property Name="Maximum">310</Property>
       <Property Name="TabIndex">2</Property>

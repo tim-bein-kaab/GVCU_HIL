@@ -9,7 +9,7 @@
  *
  * Model version              : 7.76
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Mon May 25 18:03:03 2026
+ * C source code generated on : Tue May 26 14:05:47 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -393,31 +393,31 @@ typedef struct tag_sdAmwXbnJnEmimT0NaJRtAD sdAmwXbnJnEmimT0NaJRtAD_GVCU__T;
 
 #endif                             /* typedef_sdAmwXbnJnEmimT0NaJRtAD_GVCU__T */
 
-/* Parameters for system: '<S439>/Bristle Deflection' */
+/* Parameters for system: '<S438>/Bristle Deflection' */
 typedef struct P_BristleDeflection_GVCU_HIL_T_ P_BristleDeflection_GVCU_HIL_T;
 
-/* Parameters for system: '<S468>/detectSlip' */
+/* Parameters for system: '<S467>/detectSlip' */
 typedef struct P_detectSlip_GVCU_HIL_T_ P_detectSlip_GVCU_HIL_T;
 
-/* Parameters for system: '<S468>/detectLockup' */
+/* Parameters for system: '<S467>/detectLockup' */
 typedef struct P_detectLockup_GVCU_HIL_T_ P_detectLockup_GVCU_HIL_T;
 
-/* Parameters for system: '<S468>/Locked' */
+/* Parameters for system: '<S467>/Locked' */
 typedef struct P_Locked_GVCU_HIL_T_ P_Locked_GVCU_HIL_T;
 
-/* Parameters for system: '<S468>/Slipping' */
+/* Parameters for system: '<S467>/Slipping' */
 typedef struct P_Slipping_GVCU_HIL_T_ P_Slipping_GVCU_HIL_T;
 
-/* Parameters for system: '<S463>/Clutch' */
+/* Parameters for system: '<S462>/Clutch' */
 typedef struct P_Clutch_GVCU_HIL_T_ P_Clutch_GVCU_HIL_T;
 
-/* Parameters for system: '<S438>/Clutch' */
+/* Parameters for system: '<S437>/Clutch' */
 typedef struct P_CoreSubsys_GVCU_HIL_T_ P_CoreSubsys_GVCU_HIL_T;
 
-/* Parameters for system: '<S519>/Clutch' */
+/* Parameters for system: '<S518>/Clutch' */
 typedef struct P_Clutch_GVCU_HIL_k_T_ P_Clutch_GVCU_HIL_k_T;
 
-/* Parameters for system: '<S494>/Clutch' */
+/* Parameters for system: '<S493>/Clutch' */
 typedef struct P_CoreSubsys_GVCU_HIL_b_T_ P_CoreSubsys_GVCU_HIL_b_T;
 
 /* Parameters (default storage) */

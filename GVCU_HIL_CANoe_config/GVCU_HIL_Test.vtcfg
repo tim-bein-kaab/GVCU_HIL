@@ -179,8 +179,15 @@ modules:
     interface: 2
     module-channel:
       name: VT2848_1
+      start-state-enabled: true
+      start-values:
+        - name: SourceSelection_Ch1_4
+          value: 0
+        - name: SourceSelection_Ch33_36
+          value: 0
     channels:
-      - name: FL_Solenoid
+      - name: VT2848_1_Ch1
+        start-state-enabled: true
         active-values:
           - name: CurBit
             cycle-time: 100ms
@@ -188,6 +195,9 @@ modules:
             cycle-time: 100ms
           - name: PWMDC
             cycle-time: 100ms
+        start-values:
+          - name: OutputMode
+            value: 1
       - name: FR_Solenoid
         active-values:
           - name: CurBit
@@ -240,7 +250,13 @@ modules:
       - name: VT2848_1_Ch30
       - name: VT2848_1_Ch31
       - name: VT2848_1_Ch32
-      - name: FL_spd_sen
+      - name: Brake_PWM
+        start-state-enabled: true
+        start-values:
+          - name: OutputMode
+            value: 1
+          - name: WaveForm
+            value: 1
       - name: FR_spd_sen
       - name: RL_A_spd_sen
       - name: RR_A_spd_sen
@@ -355,6 +371,8 @@ modules:
       name: VT7101_1
       start-state-enabled: true
       start-values:
+        - name: Out2Active
+          value: 1
         - name: Out2AuxActive
           value: 1
     channels:
@@ -680,6 +698,8 @@ modules:
       - name: VT7820_2_Channel1
         start-state-enabled: true
         start-values:
+          - name: RelayBreak
+            value: 1
           - name: HighCurrent
             value: 0.028
           - name: ActivateOutput
@@ -699,6 +719,8 @@ modules:
       - name: VT7820_2_Channel2
         start-state-enabled: true
         start-values:
+          - name: RelayBreak
+            value: 1
           - name: HighCurrent
             value: 0.028
           - name: ActivateOutput
@@ -718,6 +740,8 @@ modules:
       - name: VT7820_2_Channel3
         start-state-enabled: true
         start-values:
+          - name: RelayBreak
+            value: 1
           - name: SensorData
             value: 10
           - name: ActivateOutput
@@ -737,6 +761,8 @@ modules:
       - name: VT7820_2_Channel4
         start-state-enabled: true
         start-values:
+          - name: RelayBreak
+            value: 1
           - name: SensorData
             value: 90
           - name: ActivateOutput
@@ -920,6 +946,8 @@ modules:
       start-state-enabled: true
       start-values:
         - name: Out1Active
+          value: 1
+        - name: Out1AuxActive
           value: 1
         - name: Out2Active
           value: 1

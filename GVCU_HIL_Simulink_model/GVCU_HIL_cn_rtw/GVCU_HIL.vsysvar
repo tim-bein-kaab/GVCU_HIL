@@ -3540,24 +3540,8 @@
         <namespace name="Gain3" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
-        <namespace name="Saturation3" comment="" interface="">
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="LowerLimit" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="UpperLimit" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-        </namespace>
         <namespace name="Gain4" comment="" interface="">
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-        </namespace>
-        <namespace name="Saturation1" comment="" interface="">
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="LowerLimit" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="UpperLimit" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-        </namespace>
-        <namespace name="Saturation" comment="" interface="">
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="LowerLimit" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="UpperLimit" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-        </namespace>
-        <namespace name="Saturation2" comment="" interface="">
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="LowerLimit" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-          <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="UpperLimit" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         </namespace>
       </namespace>
     </namespace>
@@ -4473,6 +4457,11 @@
               <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Sign_convention_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
             </namespace>
           </namespace>
+          <namespace name="Subsystem" comment="" interface="">
+            <namespace name="Matrix_Concatenate23" comment="" interface="">
+              <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Omega" comment="" bitcount="64" isSigned="true" encoding="65001" type="floatarray" arrayLength="4"/>
+            </namespace>
+          </namespace>
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain2_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
           <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Gain3_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
@@ -4544,6 +4533,7 @@
             </namespace>
           </namespace>
         </namespace>
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Add1_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Add_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Clock_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="MATLAB_Function2_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
@@ -4554,7 +4544,6 @@
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Rate_Transition3_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Rate_Transition_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
         <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Saturation_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
-        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="__01s_" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
       </namespace>
       <namespace name="GVCU___HiL" comment="" interface="">
         <namespace name="Constant1" comment="" interface="">
@@ -4864,8 +4853,8 @@
     <namespace name="VT2816_3_Ch14" comment="" interface="">
       <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Voltage" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
     </namespace>
-    <namespace name="VT7101_1_Out2" comment="" interface="">
-      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="Active" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
+    <namespace name="VT7001_1_Out1" comment="" interface="">
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="AuxActive" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>
     </namespace>
     <namespace name="VT7820_2_Channel2" comment="" interface="">
       <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name ="RotationFreq" comment="" bitcount="64" isSigned="true" encoding="65001" type="float"/>

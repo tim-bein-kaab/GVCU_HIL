@@ -9,7 +9,7 @@
  *
  * Model version              : 7.76
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Mon May 25 18:03:03 2026
+ * C source code generated on : Tue May 26 14:05:47 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

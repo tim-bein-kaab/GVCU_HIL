@@ -291,14 +291,6 @@ GVCU_HIL/Wheel_rates/Gain1/Gain; 0.159155
 GVCU_HIL/Wheel_rates/Gain2/Gain; 0.159155
 GVCU_HIL/Wheel_rates/Gain3/Gain; 0.159155
 GVCU_HIL/Wheel_rates/Gain4/Gain; 0.159155
-GVCU_HIL/Wheel_rates/Saturation/UpperLimit; 655.35
-GVCU_HIL/Wheel_rates/Saturation/LowerLimit; 0
-GVCU_HIL/Wheel_rates/Saturation1/UpperLimit; 655.35
-GVCU_HIL/Wheel_rates/Saturation1/LowerLimit; 0
-GVCU_HIL/Wheel_rates/Saturation2/UpperLimit; 655.35
-GVCU_HIL/Wheel_rates/Saturation2/LowerLimit; 0
-GVCU_HIL/Wheel_rates/Saturation3/UpperLimit; 655.35
-GVCU_HIL/Wheel_rates/Saturation3/LowerLimit; 0
 GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 49; 95; 98; 117; 115
 GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P2; 69; 80; 83; 65
 GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P3; 112; 119; 114; 95; 115; 116; 101; 101; 114; 95; 118; 97; 108
