@@ -1,4 +1,12 @@
 GVCU_HIL_M.csv
+GVCU_HIL/Brake_HIL/Zero10/Value; 0
+GVCU_HIL/Brake_HIL/Zero15/Value; 0
+GVCU_HIL/Brake_HIL/Zero5/Value; 0
+GVCU_HIL/Brake_HIL/Zero6/Value; 0
+GVCU_HIL/Brake_HIL/Zero7/Value; 1
+GVCU_HIL/Brake_HIL/Zero8/Value; 0
+GVCU_HIL/Brake_HIL/Zero9/Value; 0
+GVCU_HIL/Brake_HIL/Gain6/Gain; 1
 GVCU_HIL/Clutch handling/1-D Lookup Table4/Table; 0.996; 1.02015; 1.04429; 1.06844; 1.09258; 1.11673; 1.14087; 1.16502; 1.18916; 1.21331; 1.23745; 1.2616; 1.28575; 1.30989; 1.33404; 1.35818; 1.38233; 1.40647; 1.43062; 1.45476; 1.47891; 1.50305; 1.5272; 1.55135; 1.57549; 1.59964; 1.62378; 1.64793; 1.67207; 1.69622; 1.72036; 1.74451; 1.76865; 1.7928; 1.81695; 1.84109; 1.86524; 1.88938; 1.91353; 1.93767; 1.96182; 1.98596; 2.01011; 2.03425; 2.0584; 2.08255; 2.10669; 2.13084; 2.15498; 2.17913; 2.20327; 2.22742; 2.25156; 2.27571; 2.29985; 2.324; 2.34815; 2.37229; 2.39644; 2.42058; 2.44473; 2.46887; 2.49302; 2.51716; 2.54131; 2.56545; 2.5896; 2.61375; 2.63789; 2.66204; 2.68618; 2.71033; 2.73447; 2.75862; 2.78276; 2.80691; 2.83105; 2.8552; 2.87935; 2.90349; 2.92764; 2.95178; 2.97593; 3.00007; 3.02422; 3.04836; 3.07251; 3.09665; 3.1208; 3.14495; 3.16909; 3.19324; 3.21738; 3.24153; 3.26567; 3.28982; 3.31396; 3.33811; 3.36225; 3.3864
 GVCU_HIL/Clutch handling/1-D Lookup Table4/BreakpointsForDimension1; 0; 60606.1; 121212; 181818; 242424; 303030; 363636; 424242; 484848; 545455; 606061; 666667; 727273; 787879; 848485; 909091; 969697; 1.0303e+06; 1.09091e+06; 1.15152e+06; 1.21212e+06; 1.27273e+06; 1.33333e+06; 1.39394e+06; 1.45455e+06; 1.51515e+06; 1.57576e+06; 1.63636e+06; 1.69697e+06; 1.75758e+06; 1.81818e+06; 1.87879e+06; 1.93939e+06; 2e+06; 2.06061e+06; 2.12121e+06; 2.18182e+06; 2.24242e+06; 2.30303e+06; 2.36364e+06; 2.42424e+06; 2.48485e+06; 2.54545e+06; 2.60606e+06; 2.66667e+06; 2.72727e+06; 2.78788e+06; 2.84848e+06; 2.90909e+06; 2.9697e+06; 3.0303e+06; 3.09091e+06; 3.15152e+06; 3.21212e+06; 3.27273e+06; 3.33333e+06; 3.39394e+06; 3.45455e+06; 3.51515e+06; 3.57576e+06; 3.63636e+06; 3.69697e+06; 3.75758e+06; 3.81818e+06; 3.87879e+06; 3.93939e+06; 4e+06; 4.06061e+06; 4.12121e+06; 4.18182e+06; 4.24242e+06; 4.30303e+06; 4.36364e+06; 4.42424e+06; 4.48485e+06; 4.54545e+06; 4.60606e+06; 4.66667e+06; 4.72727e+06; 4.78788e+06; 4.84848e+06; 4.90909e+06; 4.9697e+06; 5.0303e+06; 5.09091e+06; 5.15152e+06; 5.21212e+06; 5.27273e+06; 5.33333e+06; 5.39394e+06; 5.45455e+06; 5.51515e+06; 5.57576e+06; 5.63636e+06; 5.69697e+06; 5.75758e+06; 5.81818e+06; 5.87879e+06; 5.93939e+06; 6e+06
 GVCU_HIL/Clutch handling/1-D Lookup Table6/Table; 0.996; 1.02015; 1.04429; 1.06844; 1.09258; 1.11673; 1.14087; 1.16502; 1.18916; 1.21331; 1.23745; 1.2616; 1.28575; 1.30989; 1.33404; 1.35818; 1.38233; 1.40647; 1.43062; 1.45476; 1.47891; 1.50305; 1.5272; 1.55135; 1.57549; 1.59964; 1.62378; 1.64793; 1.67207; 1.69622; 1.72036; 1.74451; 1.76865; 1.7928; 1.81695; 1.84109; 1.86524; 1.88938; 1.91353; 1.93767; 1.96182; 1.98596; 2.01011; 2.03425; 2.0584; 2.08255; 2.10669; 2.13084; 2.15498; 2.17913; 2.20327; 2.22742; 2.25156; 2.27571; 2.29985; 2.324; 2.34815; 2.37229; 2.39644; 2.42058; 2.44473; 2.46887; 2.49302; 2.51716; 2.54131; 2.56545; 2.5896; 2.61375; 2.63789; 2.66204; 2.68618; 2.71033; 2.73447; 2.75862; 2.78276; 2.80691; 2.83105; 2.8552; 2.87935; 2.90349; 2.92764; 2.95178; 2.97593; 3.00007; 3.02422; 3.04836; 3.07251; 3.09665; 3.1208; 3.14495; 3.16909; 3.19324; 3.21738; 3.24153; 3.26567; 3.28982; 3.31396; 3.33811; 3.36225; 3.3864
@@ -279,10 +287,10 @@ GVCU_HIL/Vehicle/Vehicle Body 1DOF Longitudinal/g; 9.81
 GVCU_HIL/Vehicle/Gain/Gain; 3.6
 GVCU_HIL/Vehicle/Memory/InitialCondition; 0
 GVCU_HIL/Vehicle/Memory1/InitialCondition; 0
-GVCU_HIL/Wheel_rates/Constant/Value; 1
-GVCU_HIL/Wheel_rates/Constant2/Value; 1
-GVCU_HIL/Wheel_rates/Constant3/Value; 1
-GVCU_HIL/Wheel_rates/Constant4/Value; 1
+GVCU_HIL/Wheel_rates/Gain1/Gain; 0.159155
+GVCU_HIL/Wheel_rates/Gain2/Gain; 0.159155
+GVCU_HIL/Wheel_rates/Gain3/Gain; 0.159155
+GVCU_HIL/Wheel_rates/Gain4/Gain; 0.159155
 GVCU_HIL/Wheel_rates/Saturation/UpperLimit; 655.35
 GVCU_HIL/Wheel_rates/Saturation/LowerLimit; 0
 GVCU_HIL/Wheel_rates/Saturation1/UpperLimit; 655.35
@@ -291,6 +299,62 @@ GVCU_HIL/Wheel_rates/Saturation2/UpperLimit; 655.35
 GVCU_HIL/Wheel_rates/Saturation2/LowerLimit; 0
 GVCU_HIL/Wheel_rates/Saturation3/UpperLimit; 655.35
 GVCU_HIL/Wheel_rates/Saturation3/LowerLimit; 0
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 49; 95; 98; 117; 115
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P2; 69; 80; 83; 65
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P3; 112; 119; 114; 95; 115; 116; 101; 101; 114; 95; 118; 97; 108
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P4; 6
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P5; 101; 50; 101; 95; 97; 108; 105; 118; 101; 95; 99; 111; 117; 110; 116; 101; 114
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P6; 101; 50; 101; 95; 99; 104; 101; 99; 107; 115; 117; 109
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P7; 115; 116; 101; 101; 114; 95; 116; 113
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P8; 115; 116; 101; 101; 114; 95; 119; 104; 108; 95; 97; 103
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P9; 115; 116; 101; 101; 114; 95; 119; 104; 108; 95; 114; 111; 116; 95; 115; 112; 100
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P10; 115; 116; 101; 101; 114; 95; 119; 104; 108; 95; 115; 110; 115; 114; 95; 118
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P11; 0
+GVCU_HIL/Brake_HIL/Message Output4/S-Function_1/P12; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/Brake_HIL/Radians to Degrees/Gain/Gain; 57.2958
+GVCU_HIL/Brake_HIL/Radians to Degrees2/Gain/Gain; 57.2958
+GVCU_HIL/Brake_HIL/Signal Output/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 49; 95; 98; 117; 115
+GVCU_HIL/Brake_HIL/Signal Output/S-Function/P2; 69; 80; 83; 65
+GVCU_HIL/Brake_HIL/Signal Output/S-Function/P3; 112; 119; 114; 95; 115; 116; 101; 101; 114; 95; 118; 97; 108
+GVCU_HIL/Brake_HIL/Signal Output/S-Function/P4; 1
+GVCU_HIL/Brake_HIL/Signal Output/S-Function/P5; 115; 116; 101; 101; 114; 95; 119; 104; 108; 95; 115; 110; 115; 114; 95; 118
+GVCU_HIL/Brake_HIL/Signal Output/S-Function/P6; 0
+GVCU_HIL/Brake_HIL/Signal Output/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/Brake_HIL/Signal Output1/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+GVCU_HIL/Brake_HIL/Signal Output1/S-Function/P2; 73; 77; 85
+GVCU_HIL/Brake_HIL/Signal Output1/S-Function/P3; 100; 121; 110; 97; 109; 105; 99; 115; 95; 115; 101; 110; 115; 111; 114; 95; 48; 49
+GVCU_HIL/Brake_HIL/Signal Output1/S-Function/P4; 1
+GVCU_HIL/Brake_HIL/Signal Output1/S-Function/P5; 121; 97; 119; 95; 114; 97; 116; 101
+GVCU_HIL/Brake_HIL/Signal Output1/S-Function/P6; 0
+GVCU_HIL/Brake_HIL/Signal Output1/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/Brake_HIL/Signal Output2/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+GVCU_HIL/Brake_HIL/Signal Output2/S-Function/P2; 73; 77; 85
+GVCU_HIL/Brake_HIL/Signal Output2/S-Function/P3; 100; 121; 110; 97; 109; 105; 99; 115; 95; 115; 101; 110; 115; 111; 114; 95; 48; 49
+GVCU_HIL/Brake_HIL/Signal Output2/S-Function/P4; 1
+GVCU_HIL/Brake_HIL/Signal Output2/S-Function/P5; 108; 97; 116; 95; 97; 99; 99
+GVCU_HIL/Brake_HIL/Signal Output2/S-Function/P6; 0
+GVCU_HIL/Brake_HIL/Signal Output2/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/Brake_HIL/Signal Output3/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+GVCU_HIL/Brake_HIL/Signal Output3/S-Function/P2; 73; 77; 85
+GVCU_HIL/Brake_HIL/Signal Output3/S-Function/P3; 100; 121; 110; 97; 109; 105; 99; 115; 95; 115; 101; 110; 115; 111; 114; 95; 48; 49
+GVCU_HIL/Brake_HIL/Signal Output3/S-Function/P4; 1
+GVCU_HIL/Brake_HIL/Signal Output3/S-Function/P5; 115; 99; 95; 115; 116; 115
+GVCU_HIL/Brake_HIL/Signal Output3/S-Function/P6; 0
+GVCU_HIL/Brake_HIL/Signal Output3/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/Brake_HIL/Signal Output4/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+GVCU_HIL/Brake_HIL/Signal Output4/S-Function/P2; 73; 77; 85
+GVCU_HIL/Brake_HIL/Signal Output4/S-Function/P3; 100; 121; 110; 97; 109; 105; 99; 115; 95; 115; 101; 110; 115; 111; 114; 95; 48; 50
+GVCU_HIL/Brake_HIL/Signal Output4/S-Function/P4; 1
+GVCU_HIL/Brake_HIL/Signal Output4/S-Function/P5; 108; 111; 110; 103; 95; 97; 99; 99
+GVCU_HIL/Brake_HIL/Signal Output4/S-Function/P6; 0
+GVCU_HIL/Brake_HIL/Signal Output4/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
+GVCU_HIL/Brake_HIL/Signal Output5/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
+GVCU_HIL/Brake_HIL/Signal Output5/S-Function/P2; 73; 77; 85
+GVCU_HIL/Brake_HIL/Signal Output5/S-Function/P3; 100; 121; 110; 97; 109; 105; 99; 115; 95; 115; 101; 110; 115; 111; 114; 95; 48; 50
+GVCU_HIL/Brake_HIL/Signal Output5/S-Function/P4; 1
+GVCU_HIL/Brake_HIL/Signal Output5/S-Function/P5; 114; 111; 108; 108; 95; 114; 97; 116; 101
+GVCU_HIL/Brake_HIL/Signal Output5/S-Function/P6; 0
+GVCU_HIL/Brake_HIL/Signal Output5/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
 GVCU_HIL/Clutch handling/Offset prs setting/Offset setting/Value; 0
 GVCU_HIL/Clutch handling/Offset prs setting/Step/Time; 0.2
 GVCU_HIL/Clutch handling/Offset prs setting/Step/InitialValue; 0
@@ -1044,90 +1108,6 @@ GVCU_HIL/Vehicle/Wheels1/Switch/Threshold; 0
 GVCU_HIL/Vehicle/Wheels1/Switch1/Threshold; 0
 GVCU_HIL/Vehicle/to grade/Gain/Gain; 0.5
 GVCU_HIL/Vehicle/to grade/Gain1/Gain; 0.5
-GVCU_HIL/Wheel_rates/Signal Output/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 102; 114; 111; 110; 116
-GVCU_HIL/Wheel_rates/Signal Output/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output/S-Function/P5; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 95; 102; 108
-GVCU_HIL/Wheel_rates/Signal Output/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output1/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output1/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output1/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 102; 114; 111; 110; 116
-GVCU_HIL/Wheel_rates/Signal Output1/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output1/S-Function/P5; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 95; 102; 114
-GVCU_HIL/Wheel_rates/Signal Output1/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output1/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output10/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output10/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output10/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 114; 101; 97; 114
-GVCU_HIL/Wheel_rates/Signal Output10/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output10/S-Function/P5; 119; 104; 101; 101; 108; 95; 100; 105; 114; 101; 99; 116; 105; 111; 110; 95; 114; 108
-GVCU_HIL/Wheel_rates/Signal Output10/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output10/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output11/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output11/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output11/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 114; 101; 97; 114
-GVCU_HIL/Wheel_rates/Signal Output11/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output11/S-Function/P5; 119; 104; 101; 101; 108; 95; 100; 105; 114; 101; 99; 116; 105; 111; 110; 95; 114; 114
-GVCU_HIL/Wheel_rates/Signal Output11/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output11/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output2/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output2/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output2/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 114; 101; 97; 114
-GVCU_HIL/Wheel_rates/Signal Output2/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output2/S-Function/P5; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 95; 114; 108
-GVCU_HIL/Wheel_rates/Signal Output2/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output2/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output3/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output3/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output3/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 114; 101; 97; 114
-GVCU_HIL/Wheel_rates/Signal Output3/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output3/S-Function/P5; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 95; 114; 114
-GVCU_HIL/Wheel_rates/Signal Output3/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output3/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output4/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output4/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output4/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 102; 114; 111; 110; 116
-GVCU_HIL/Wheel_rates/Signal Output4/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output4/S-Function/P5; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 95; 102; 108; 95; 118
-GVCU_HIL/Wheel_rates/Signal Output4/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output4/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output5/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output5/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output5/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 102; 114; 111; 110; 116
-GVCU_HIL/Wheel_rates/Signal Output5/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output5/S-Function/P5; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 95; 102; 114; 95; 118
-GVCU_HIL/Wheel_rates/Signal Output5/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output5/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output6/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output6/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output6/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 114; 101; 97; 114
-GVCU_HIL/Wheel_rates/Signal Output6/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output6/S-Function/P5; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 95; 114; 108; 95; 118
-GVCU_HIL/Wheel_rates/Signal Output6/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output6/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output7/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output7/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output7/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 114; 101; 97; 114
-GVCU_HIL/Wheel_rates/Signal Output7/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output7/S-Function/P5; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 95; 114; 114; 95; 118
-GVCU_HIL/Wheel_rates/Signal Output7/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output7/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output8/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output8/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output8/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 102; 114; 111; 110; 116
-GVCU_HIL/Wheel_rates/Signal Output8/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output8/S-Function/P5; 119; 104; 101; 101; 108; 95; 100; 105; 114; 101; 99; 116; 105; 111; 110; 95; 102; 108
-GVCU_HIL/Wheel_rates/Signal Output8/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output8/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
-GVCU_HIL/Wheel_rates/Signal Output9/S-Function/P1; 100; 121; 110; 97; 109; 105; 99; 95; 115; 121; 115; 116; 101; 109; 115; 50; 95; 98; 117; 115
-GVCU_HIL/Wheel_rates/Signal Output9/S-Function/P2; 73; 69; 66
-GVCU_HIL/Wheel_rates/Signal Output9/S-Function/P3; 119; 104; 101; 101; 108; 95; 114; 97; 116; 101; 115; 95; 102; 114; 111; 110; 116
-GVCU_HIL/Wheel_rates/Signal Output9/S-Function/P4; 1
-GVCU_HIL/Wheel_rates/Signal Output9/S-Function/P5; 119; 104; 101; 101; 108; 95; 100; 105; 114; 101; 99; 116; 105; 111; 110; 95; 102; 114
-GVCU_HIL/Wheel_rates/Signal Output9/S-Function/P6; 0
-GVCU_HIL/Wheel_rates/Signal Output9/S-Function/P7; 105; 110; 104; 101; 114; 105; 116; 101; 100
 GVCU_HIL/Driver/Driver/Dec_controller/PI Controller/P; 1
 GVCU_HIL/Driver/Driver/Dec_controller/PI Controller/I; 1
 GVCU_HIL/Driver/Driver/Dec_controller/PI Controller/InitialConditionForIntegrator; 0

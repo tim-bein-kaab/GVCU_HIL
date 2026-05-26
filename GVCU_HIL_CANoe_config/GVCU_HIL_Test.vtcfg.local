@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<modules>
+
+  <module name="VT6104_1" offline="false" slave="1939"/>
+
+  <module name="VT6104_2" offline="false" slave="1952"/>
+
+  <module name="VT2816_1" offline="false" slave="20296"/>
+
+  <module name="VT2816_2" offline="false" slave="20601"/>
+
+  <module name="VT2848_1" offline="false" slave="20540"/>
+
+  <module name="VT2848_2" offline="false" slave="20547"/>
+
+  <module name="VT2816_3" offline="false" slave="20703"/>
+
+  <module name="VT7101_1" offline="false" slave="1674"/>
+
+  <module name="ANA1" offline="false" slave="20702"/>
+
+  <module name="VT7820_1" offline="false" slave="662"/>
+
+  <module name="VT6306_1" offline="false" slave="614"/>
+
+  <module name="VT2816_5" offline="false" slave="20413"/>
+
+  <module name="VT2710_1" offline="false" slave="20203"/>
+
+  <module name="VT7820_2" offline="false" slave="584"/>
+
+  <module name="VT5838_1" offline="false" slave="108"/>
+
+  <module name="VT2848_3" offline="false" slave="20551"/>
+
+  <module name="VT2816_6" offline="false" slave="20704"/>
+
+  <module name="VT2816_7" offline="false" slave="20497"/>
+
+  <module name="VT2816_8" offline="false" slave="20375"/>
+
+  <module name="VT7001_1" offline="false" slave="10958"/>
+
+  <module name="VT2004_1" offline="false" slave="20070"/>
+
+</modules>

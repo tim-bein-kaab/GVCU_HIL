@@ -7,9 +7,9 @@
  *
  * Code generation for model "GVCU_HIL".
  *
- * Model version              : 7.73
+ * Model version              : 7.76
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Thu May 21 16:59:07 2026
+ * C source code generated on : Mon May 25 18:03:03 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

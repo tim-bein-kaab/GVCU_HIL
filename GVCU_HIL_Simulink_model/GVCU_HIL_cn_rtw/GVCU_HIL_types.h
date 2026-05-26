@@ -7,9 +7,9 @@
  *
  * Code generation for model "GVCU_HIL".
  *
- * Model version              : 7.73
+ * Model version              : 7.76
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Thu May 21 16:59:07 2026
+ * C source code generated on : Mon May 25 18:03:03 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -374,7 +374,7 @@ typedef struct {
 
 #endif
 
-/* Custom Type definition for MATLAB Function: '<S2>/MATLAB Function2' */
+/* Custom Type definition for MATLAB Function: '<S3>/MATLAB Function2' */
 #ifndef struct_tag_sdAmwXbnJnEmimT0NaJRtAD
 #define struct_tag_sdAmwXbnJnEmimT0NaJRtAD
 
@@ -393,31 +393,31 @@ typedef struct tag_sdAmwXbnJnEmimT0NaJRtAD sdAmwXbnJnEmimT0NaJRtAD_GVCU__T;
 
 #endif                             /* typedef_sdAmwXbnJnEmimT0NaJRtAD_GVCU__T */
 
-/* Parameters for system: '<S428>/Bristle Deflection' */
+/* Parameters for system: '<S439>/Bristle Deflection' */
 typedef struct P_BristleDeflection_GVCU_HIL_T_ P_BristleDeflection_GVCU_HIL_T;
 
-/* Parameters for system: '<S457>/detectSlip' */
+/* Parameters for system: '<S468>/detectSlip' */
 typedef struct P_detectSlip_GVCU_HIL_T_ P_detectSlip_GVCU_HIL_T;
 
-/* Parameters for system: '<S457>/detectLockup' */
+/* Parameters for system: '<S468>/detectLockup' */
 typedef struct P_detectLockup_GVCU_HIL_T_ P_detectLockup_GVCU_HIL_T;
 
-/* Parameters for system: '<S457>/Locked' */
+/* Parameters for system: '<S468>/Locked' */
 typedef struct P_Locked_GVCU_HIL_T_ P_Locked_GVCU_HIL_T;
 
-/* Parameters for system: '<S457>/Slipping' */
+/* Parameters for system: '<S468>/Slipping' */
 typedef struct P_Slipping_GVCU_HIL_T_ P_Slipping_GVCU_HIL_T;
 
-/* Parameters for system: '<S452>/Clutch' */
+/* Parameters for system: '<S463>/Clutch' */
 typedef struct P_Clutch_GVCU_HIL_T_ P_Clutch_GVCU_HIL_T;
 
-/* Parameters for system: '<S427>/Clutch' */
+/* Parameters for system: '<S438>/Clutch' */
 typedef struct P_CoreSubsys_GVCU_HIL_T_ P_CoreSubsys_GVCU_HIL_T;
 
-/* Parameters for system: '<S508>/Clutch' */
+/* Parameters for system: '<S519>/Clutch' */
 typedef struct P_Clutch_GVCU_HIL_k_T_ P_Clutch_GVCU_HIL_k_T;
 
-/* Parameters for system: '<S483>/Clutch' */
+/* Parameters for system: '<S494>/Clutch' */
 typedef struct P_CoreSubsys_GVCU_HIL_b_T_ P_CoreSubsys_GVCU_HIL_b_T;
 
 /* Parameters (default storage) */

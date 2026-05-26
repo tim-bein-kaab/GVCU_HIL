@@ -7,9 +7,9 @@
  *
  * Code generation for model "GVCU_HIL".
  *
- * Model version              : 7.73
+ * Model version              : 7.76
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Thu May 21 16:59:07 2026
+ * C source code generated on : Mon May 25 18:03:03 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -47,12 +47,12 @@ real_T rt_TDelayInterpolate(
   ;
 extern real_T look1_binlxpw(real_T u0, const real_T bp0[], const real_T table[],
   uint32_T maxIndex);
-extern real_T look1_binlcapw(real_T u0, const real_T bp0[], const real_T table[],
-  uint32_T maxIndex);
 extern real_T look2_binlcapw(real_T u0, real_T u1, const real_T bp0[], const
   real_T bp1[], const real_T table[], const uint32_T maxIndex[2], uint32_T
   stride);
 extern real_T look1_binlcpw(real_T u0, const real_T bp0[], const real_T table[],
+  uint32_T maxIndex);
+extern real_T look1_binlcapw(real_T u0, const real_T bp0[], const real_T table[],
   uint32_T maxIndex);
 extern void anorsimstepinitshmem(SimStruct *rts);
 extern void sigout(SimStruct *rts);

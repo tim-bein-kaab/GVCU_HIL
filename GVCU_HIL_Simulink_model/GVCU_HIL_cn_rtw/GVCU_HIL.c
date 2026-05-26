@@ -7,9 +7,9 @@
  *
  * Code generation for model "GVCU_HIL".
  *
- * Model version              : 7.73
+ * Model version              : 7.76
  * Simulink Coder version : 26.1 (R2026a) 20-Nov-2025
- * C source code generated on : Thu May 21 16:59:07 2026
+ * C source code generated on : Mon May 25 18:03:03 2026
  *
  * Target selection: cn.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -30,7 +30,7 @@
 #include "GVCU_HIL_capi.h"
 #include "zero_crossing_types.h"
 
-/* Named constants for Chart: '<S235>/Friction Mode' */
+/* Named constants for Chart: '<S246>/Friction Mode' */
 #define GVCU_HIL_IN_InputFaster        ((uint8_T)1U)
 #define GVCU_HIL_IN_InputSlower        ((uint8_T)2U)
 #define GVCU_HIL_IN_Locked             ((uint8_T)1U)
@@ -38,12 +38,12 @@
 #define GVCU_HIL_IN_SameVelocity       ((uint8_T)3U)
 #define GVCU_HIL_IN_Slipping           ((uint8_T)2U)
 
-/* Named constants for Chart: '<S452>/Clutch' */
+/* Named constants for Chart: '<S463>/Clutch' */
 #define GVCU_HIL_IN_Locked_f           ((uint8_T)1U)
 #define GVCU_HIL_IN_NO_ACTIVE_CHILD_d  ((uint8_T)0U)
 #define GVCU_HIL_IN_Slipping_m         ((uint8_T)2U)
 
-/* Named constants for Chart: '<S508>/Clutch' */
+/* Named constants for Chart: '<S519>/Clutch' */
 #define GVCU_HIL_IN_Locked_n           ((uint8_T)1U)
 #define GVCU_HIL_IN_NO_ACTIVE_CHILD_o  ((uint8_T)0U)
 #define GVCU_HIL_IN_Slipping_b         ((uint8_T)2U)
@@ -343,71 +343,6 @@ real_T look1_binlxpw(real_T u0, const real_T bp0[], const real_T table[],
   return (table[iLeft + 1U] - yL_0d0) * frac + yL_0d0;
 }
 
-real_T look1_binlcapw(real_T u0, const real_T bp0[], const real_T table[],
-                      uint32_T maxIndex)
-{
-  real_T frac;
-  real_T y;
-  uint32_T iLeft;
-
-  /* Column-major Lookup 1-D
-     Search method: 'binary'
-     Use previous index: 'off'
-     Interpolation method: 'Linear point-slope'
-     Extrapolation method: 'Clip'
-     Use last breakpoint for index at or above upper limit: 'on'
-     Remove protection against out-of-range input in generated code: 'off'
-   */
-  /* Prelookup - Index and Fraction
-     Index Search method: 'binary'
-     Extrapolation method: 'Clip'
-     Use previous index: 'off'
-     Use last breakpoint for index at or above upper limit: 'on'
-     Remove protection against out-of-range input in generated code: 'off'
-   */
-  if (u0 <= bp0[0U]) {
-    iLeft = 0U;
-    frac = 0.0;
-  } else if (u0 < bp0[maxIndex]) {
-    uint32_T bpIdx;
-    uint32_T iRght;
-
-    /* Binary Search */
-    bpIdx = maxIndex >> 1U;
-    iLeft = 0U;
-    iRght = maxIndex;
-    while (iRght - iLeft > 1U) {
-      if (u0 < bp0[bpIdx]) {
-        iRght = bpIdx;
-      } else {
-        iLeft = bpIdx;
-      }
-
-      bpIdx = (iRght + iLeft) >> 1U;
-    }
-
-    frac = (u0 - bp0[iLeft]) / (bp0[iLeft + 1U] - bp0[iLeft]);
-  } else {
-    iLeft = maxIndex;
-    frac = 0.0;
-  }
-
-  /* Column-major Interpolation 1-D
-     Interpolation method: 'Linear point-slope'
-     Use last breakpoint for index at or above upper limit: 'on'
-     Overflow mode: 'portable wrapping'
-   */
-  if (iLeft == maxIndex) {
-    y = table[iLeft];
-  } else {
-    real_T yL_0d0;
-    yL_0d0 = table[iLeft];
-    y = (table[iLeft + 1U] - yL_0d0) * frac + yL_0d0;
-  }
-
-  return y;
-}
-
 real_T look2_binlcapw(real_T u0, real_T u1, const real_T bp0[], const real_T
                       bp1[], const real_T table[], const uint32_T maxIndex[2],
                       uint32_T stride)
@@ -581,6 +516,71 @@ real_T look1_binlcpw(real_T u0, const real_T bp0[], const real_T table[],
   return (table[iLeft + 1U] - yL_0d0) * frac + yL_0d0;
 }
 
+real_T look1_binlcapw(real_T u0, const real_T bp0[], const real_T table[],
+                      uint32_T maxIndex)
+{
+  real_T frac;
+  real_T y;
+  uint32_T iLeft;
+
+  /* Column-major Lookup 1-D
+     Search method: 'binary'
+     Use previous index: 'off'
+     Interpolation method: 'Linear point-slope'
+     Extrapolation method: 'Clip'
+     Use last breakpoint for index at or above upper limit: 'on'
+     Remove protection against out-of-range input in generated code: 'off'
+   */
+  /* Prelookup - Index and Fraction
+     Index Search method: 'binary'
+     Extrapolation method: 'Clip'
+     Use previous index: 'off'
+     Use last breakpoint for index at or above upper limit: 'on'
+     Remove protection against out-of-range input in generated code: 'off'
+   */
+  if (u0 <= bp0[0U]) {
+    iLeft = 0U;
+    frac = 0.0;
+  } else if (u0 < bp0[maxIndex]) {
+    uint32_T bpIdx;
+    uint32_T iRght;
+
+    /* Binary Search */
+    bpIdx = maxIndex >> 1U;
+    iLeft = 0U;
+    iRght = maxIndex;
+    while (iRght - iLeft > 1U) {
+      if (u0 < bp0[bpIdx]) {
+        iRght = bpIdx;
+      } else {
+        iLeft = bpIdx;
+      }
+
+      bpIdx = (iRght + iLeft) >> 1U;
+    }
+
+    frac = (u0 - bp0[iLeft]) / (bp0[iLeft + 1U] - bp0[iLeft]);
+  } else {
+    iLeft = maxIndex;
+    frac = 0.0;
+  }
+
+  /* Column-major Interpolation 1-D
+     Interpolation method: 'Linear point-slope'
+     Use last breakpoint for index at or above upper limit: 'on'
+     Overflow mode: 'portable wrapping'
+   */
+  if (iLeft == maxIndex) {
+    y = table[iLeft];
+  } else {
+    real_T yL_0d0;
+    yL_0d0 = table[iLeft];
+    y = (table[iLeft + 1U] - yL_0d0) * frac + yL_0d0;
+  }
+
+  return y;
+}
+
 /*
  *         This function updates active task flag for each subrate.
  *         The function is called at model base rate, hence the
@@ -710,15 +710,15 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   rtsiSetSimTimeStep(si,MAJOR_TIME_STEP);
 }
 
-/* Function for Chart: '<S235>/Friction Mode' */
+/* Function for Chart: '<S246>/Friction Mode' */
 void mdlDerivatives_c9_autolibdrivetraincommon(void)
 {
 }
 
 /*
  * System initialize for atomic system:
- *    '<S235>/Friction Mode'
- *    '<S267>/Friction Mode'
+ *    '<S246>/Friction Mode'
+ *    '<S278>/Friction Mode'
  */
 void GVCU_HIL_FrictionMode_Init(B_FrictionMode_GVCU_HIL_T *localB,
   DW_FrictionMode_GVCU_HIL_T *localDW)
@@ -734,8 +734,8 @@ void GVCU_HIL_FrictionMode_Init(B_FrictionMode_GVCU_HIL_T *localB,
 
 /*
  * Output and update for atomic system:
- *    '<S235>/Friction Mode'
- *    '<S267>/Friction Mode'
+ *    '<S246>/Friction Mode'
+ *    '<S278>/Friction Mode'
  */
 void GVCU_HIL_FrictionMode(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_w,
   real_T rtu_win, real_T rtu_wout, real_T rtu_Tin, real_T rtu_Tfmaxs, real_T
@@ -746,7 +746,7 @@ void GVCU_HIL_FrictionMode(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_w,
   if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
     localDW->lastMajorTime = GVCU_HIL_M->Timing.t[0];
 
-    /* Chart: '<S235>/Friction Mode' */
+    /* Chart: '<S246>/Friction Mode' */
     if (localDW->is_active_c9_autolibdrivetrainc == 0) {
       localDW->is_active_c9_autolibdrivetrainc = 1U;
       if (!(rtp_InitiallyLocked != 0.0)) {
@@ -825,14 +825,14 @@ void GVCU_HIL_FrictionMode(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_w,
       }
     }
 
-    /* End of Chart: '<S235>/Friction Mode' */
+    /* End of Chart: '<S246>/Friction Mode' */
   }
 }
 
 /*
  * Output and update for atomic system:
- *    '<S431>/MATLAB Function'
- *    '<S487>/MATLAB Function'
+ *    '<S442>/MATLAB Function'
+ *    '<S498>/MATLAB Function'
  */
 void GVCU_HIL_MATLABFunction(real_T rtu_u, real_T rtp_VXLOW,
   B_MATLABFunction_GVCU_HIL_T *localB)
@@ -871,10 +871,10 @@ void GVCU_HIL_MATLABFunction(real_T rtu_u, real_T rtp_VXLOW,
 
 /*
  * Output and update for atomic system:
- *    '<S434>/MATLAB Function'
- *    '<S472>/MATLAB Function'
- *    '<S490>/MATLAB Function'
- *    '<S528>/MATLAB Function'
+ *    '<S445>/MATLAB Function'
+ *    '<S483>/MATLAB Function'
+ *    '<S501>/MATLAB Function'
+ *    '<S539>/MATLAB Function'
  */
 void GVCU_HIL_MATLABFunction_n(real_T rtu_u, real_T rtu_Vx, real_T rtp_VXLOW,
   B_MATLABFunction_GVCU_HIL_d_T *localB)
@@ -913,52 +913,52 @@ void GVCU_HIL_MATLABFunction_n(real_T rtu_u, real_T rtu_Vx, real_T rtp_VXLOW,
 
 /*
  * System initialize for enable system:
- *    '<S428>/Bristle Deflection'
- *    '<S484>/Bristle Deflection'
+ *    '<S439>/Bristle Deflection'
+ *    '<S495>/Bristle Deflection'
  */
 void GVCU_HIL_BristleDeflection_Init(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M,
   B_BristleDeflection_GVCU_HIL_T *localB, DW_BristleDeflection_GVCU_HIL_T
   *localDW, P_BristleDeflection_GVCU_HIL_T *localP,
   X_BristleDeflection_GVCU_HIL_T *localX)
 {
-  /* InitializeConditions for Integrator: '<S433>/Integrator' */
+  /* InitializeConditions for Integrator: '<S444>/Integrator' */
   if (rtmIsFirstInitCond(GVCU_HIL_M)) {
     localX->Integrator_CSTATE_b = 0.0;
   }
 
   localDW->Integrator_DWORK1 = true;
 
-  /* End of InitializeConditions for Integrator: '<S433>/Integrator' */
+  /* End of InitializeConditions for Integrator: '<S444>/Integrator' */
 
-  /* SystemInitialize for Sum: '<S430>/Sum' incorporates:
-   *  Outport: '<S430>/FxLG'
+  /* SystemInitialize for Sum: '<S441>/Sum' incorporates:
+   *  Outport: '<S441>/FxLG'
    */
   localB->Sum = localP->FxLG_Y0;
 }
 
 /*
  * System reset for enable system:
- *    '<S428>/Bristle Deflection'
- *    '<S484>/Bristle Deflection'
+ *    '<S439>/Bristle Deflection'
+ *    '<S495>/Bristle Deflection'
  */
 void GVCU_HI_BristleDeflection_Reset(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M,
   DW_BristleDeflection_GVCU_HIL_T *localDW, X_BristleDeflection_GVCU_HIL_T
   *localX)
 {
-  /* InitializeConditions for Integrator: '<S433>/Integrator' */
+  /* InitializeConditions for Integrator: '<S444>/Integrator' */
   if (rtmIsFirstInitCond(GVCU_HIL_M)) {
     localX->Integrator_CSTATE_b = 0.0;
   }
 
   localDW->Integrator_DWORK1 = true;
 
-  /* End of InitializeConditions for Integrator: '<S433>/Integrator' */
+  /* End of InitializeConditions for Integrator: '<S444>/Integrator' */
 }
 
 /*
  * Disable for enable system:
- *    '<S428>/Bristle Deflection'
- *    '<S484>/Bristle Deflection'
+ *    '<S439>/Bristle Deflection'
+ *    '<S495>/Bristle Deflection'
  */
 void GVCU__BristleDeflection_Disable(DW_BristleDeflection_GVCU_HIL_T *localDW)
 {
@@ -967,8 +967,8 @@ void GVCU__BristleDeflection_Disable(DW_BristleDeflection_GVCU_HIL_T *localDW)
 
 /*
  * Start for enable system:
- *    '<S428>/Bristle Deflection'
- *    '<S484>/Bristle Deflection'
+ *    '<S439>/Bristle Deflection'
+ *    '<S495>/Bristle Deflection'
  */
 void GVCU_HI_BristleDeflection_Start(DW_BristleDeflection_GVCU_HIL_T *localDW,
   XDis_BristleDeflection_GVCU_H_T *localXdis)
@@ -980,8 +980,8 @@ void GVCU_HI_BristleDeflection_Start(DW_BristleDeflection_GVCU_HIL_T *localDW,
 
 /*
  * Outputs for enable system:
- *    '<S428>/Bristle Deflection'
- *    '<S484>/Bristle Deflection'
+ *    '<S439>/Bristle Deflection'
+ *    '<S495>/Bristle Deflection'
  */
 void GVCU_HIL_BristleDeflection(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M,
   boolean_T rtu_Enable, real_T rtu_Vx, real_T rtu_lambda_mux, real_T rtu_Fz,
@@ -1000,8 +1000,8 @@ void GVCU_HIL_BristleDeflection(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M,
   real_T tmp_0;
   boolean_T tmp;
 
-  /* Outputs for Enabled SubSystem: '<S428>/Bristle Deflection' incorporates:
-   *  EnablePort: '<S430>/Enable'
+  /* Outputs for Enabled SubSystem: '<S439>/Bristle Deflection' incorporates:
+   *  EnablePort: '<S441>/Enable'
    */
   if ((rtmIsMajorTimeStep(GVCU_HIL_M) &&
        GVCU_HIL_M->Timing.TaskCounters.TID[1] == 0) && rtsiIsModeUpdateTimeStep(
@@ -1028,178 +1028,178 @@ void GVCU_HIL_BristleDeflection(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M,
   }
 
   if (localDW->BristleDeflection_MODE) {
-    /* Sum: '<S430>/Subtract' incorporates:
-     *  Product: '<S430>/Product2'
+    /* Sum: '<S441>/Subtract' incorporates:
+     *  Product: '<S441>/Product2'
      */
     rtb_UnaryMinus1_b = rtu_Vx - rtu_Omega * rtu_Re;
 
-    /* Product: '<S430>/Divide' incorporates:
-     *  Constant: '<S430>/Stribeck velocity'
-     *  UnaryMinus: '<S430>/Unary Minus1'
+    /* Product: '<S441>/Divide' incorporates:
+     *  Constant: '<S441>/Stribeck velocity'
+     *  UnaryMinus: '<S441>/Unary Minus1'
      */
     rtb_sigma1 = -rtb_UnaryMinus1_b / (rtp_VXLOW * 0.1);
 
-    /* Gain: '<S430>/Gain' incorporates:
-     *  Math: '<S430>/Square'
+    /* Gain: '<S441>/Gain' incorporates:
+     *  Math: '<S441>/Square'
      */
     rtb_Gain_b = rtb_sigma1 * rtb_sigma1 * localP->Gain_Gain;
     tmp = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
            GVCU_HIL_M->Timing.TaskCounters.TID[1] == 0);
     if (tmp) {
-      /* Product: '<S430>/Product3' incorporates:
-       *  Constant: '<S441>/Dx'
+      /* Product: '<S441>/Product3' incorporates:
+       *  Constant: '<S452>/Dx'
        */
       rtb_pdot = rtu_lambda_mux * rtp_Dx;
 
-      /* Saturate: '<S430>/Saturation3' */
+      /* Saturate: '<S441>/Saturation3' */
       if (rtb_pdot > localP->Saturation3_UpperSat) {
-        /* Saturate: '<S430>/Saturation3' */
+        /* Saturate: '<S441>/Saturation3' */
         localB->Saturation3 = localP->Saturation3_UpperSat;
       } else if (rtb_pdot < localP->Saturation3_LowerSat) {
-        /* Saturate: '<S430>/Saturation3' */
+        /* Saturate: '<S441>/Saturation3' */
         localB->Saturation3 = localP->Saturation3_LowerSat;
       } else {
-        /* Saturate: '<S430>/Saturation3' */
+        /* Saturate: '<S441>/Saturation3' */
         localB->Saturation3 = rtb_pdot;
       }
 
-      /* End of Saturate: '<S430>/Saturation3' */
+      /* End of Saturate: '<S441>/Saturation3' */
     }
 
-    /* Product: '<S430>/Product1' */
+    /* Product: '<S441>/Product1' */
     rtb_sigma1 = rtu_Fz * localB->Saturation3;
 
-    /* Gain: '<S430>/Gain1' */
+    /* Gain: '<S441>/Gain1' */
     rtb_pdot = localP->Gain1_Gain * rtb_sigma1;
 
-    /* Sum: '<S430>/Add2' incorporates:
-     *  Math: '<S430>/Math Function'
-     *  Product: '<S430>/Product'
-     *  Sum: '<S430>/Add1'
+    /* Sum: '<S441>/Add2' incorporates:
+     *  Math: '<S441>/Math Function'
+     *  Product: '<S441>/Product'
+     *  Sum: '<S441>/Add1'
      *
-     * About '<S430>/Math Function':
+     * About '<S441>/Math Function':
      *  Operator: exp
      */
     rtb_pdot += (rtb_sigma1 - rtb_pdot) * exp(rtb_Gain_b);
 
-    /* Outputs for Atomic SubSystem: '<S435>/MF constant coeff' */
-    /* Product: '<S441>/Divide' incorporates:
-     *  Constant: '<S441>/Bx'
-     *  Constant: '<S441>/Cx'
-     *  Constant: '<S441>/Dx'
-     *  Product: '<S441>/Product'
+    /* Outputs for Atomic SubSystem: '<S446>/MF constant coeff' */
+    /* Product: '<S452>/Divide' incorporates:
+     *  Constant: '<S452>/Bx'
+     *  Constant: '<S452>/Cx'
+     *  Constant: '<S452>/Dx'
+     *  Product: '<S452>/Product'
      */
     rtb_Gain_b = rtu_Fz * rtp_Bx * rtp_Cx * rtp_Dx / rtu_sigma;
 
-    /* End of Outputs for SubSystem: '<S435>/MF constant coeff' */
+    /* End of Outputs for SubSystem: '<S446>/MF constant coeff' */
 
-    /* Saturate: '<S430>/Saturation' */
+    /* Saturate: '<S441>/Saturation' */
     if (rtb_Gain_b > localP->Saturation_UpperSat) {
       rtb_Gain_b = localP->Saturation_UpperSat;
     } else if (rtb_Gain_b < localP->Saturation_LowerSat) {
       rtb_Gain_b = localP->Saturation_LowerSat;
     }
 
-    /* End of Saturate: '<S430>/Saturation' */
+    /* End of Saturate: '<S441>/Saturation' */
 
-    /* Product: '<S430>/Divide8' */
+    /* Product: '<S441>/Divide8' */
     rtb_sigma1 /= rtb_Gain_b;
 
-    /* Product: '<S430>/Divide4' */
+    /* Product: '<S441>/Divide4' */
     localB->po = rtu_FxMF / rtb_Gain_b;
 
-    /* Integrator: '<S433>/Integrator' */
+    /* Integrator: '<S444>/Integrator' */
     if (localDW->Integrator_DWORK1) {
       localX->Integrator_CSTATE_b = localB->po;
     }
 
-    /* Switch: '<S439>/Switch2' incorporates:
-     *  Integrator: '<S433>/Integrator'
-     *  RelationalOperator: '<S439>/LowerRelop1'
-     *  RelationalOperator: '<S439>/UpperRelop'
-     *  Switch: '<S439>/Switch'
-     *  UnaryMinus: '<S430>/Unary Minus'
+    /* Switch: '<S450>/Switch2' incorporates:
+     *  Integrator: '<S444>/Integrator'
+     *  RelationalOperator: '<S450>/LowerRelop1'
+     *  RelationalOperator: '<S450>/UpperRelop'
+     *  Switch: '<S450>/Switch'
+     *  UnaryMinus: '<S441>/Unary Minus'
      */
     if (localX->Integrator_CSTATE_b > rtb_sigma1) {
       rtb_Switch2_l = rtb_sigma1;
     } else if (localX->Integrator_CSTATE_b < -rtb_sigma1) {
-      /* Switch: '<S439>/Switch' incorporates:
-       *  UnaryMinus: '<S430>/Unary Minus'
+      /* Switch: '<S450>/Switch' incorporates:
+       *  UnaryMinus: '<S441>/Unary Minus'
        */
       rtb_Switch2_l = -rtb_sigma1;
     } else {
       rtb_Switch2_l = localX->Integrator_CSTATE_b;
     }
 
-    /* End of Switch: '<S439>/Switch2' */
+    /* End of Switch: '<S450>/Switch2' */
 
-    /* Saturate: '<S430>/Saturation1' */
+    /* Saturate: '<S441>/Saturation1' */
     if (rtb_pdot > localP->Saturation1_UpperSat) {
       rtb_pdot = localP->Saturation1_UpperSat;
     } else if (rtb_pdot < localP->Saturation1_LowerSat) {
       rtb_pdot = localP->Saturation1_LowerSat;
     }
 
-    /* Sum: '<S430>/Add' incorporates:
-     *  Abs: '<S430>/Abs'
-     *  Product: '<S430>/Divide2'
-     *  Saturate: '<S430>/Saturation1'
-     *  UnaryMinus: '<S430>/Unary Minus1'
+    /* Sum: '<S441>/Add' incorporates:
+     *  Abs: '<S441>/Abs'
+     *  Product: '<S441>/Divide2'
+     *  Saturate: '<S441>/Saturation1'
+     *  UnaryMinus: '<S441>/Unary Minus1'
      */
     rtb_pdot = -rtb_UnaryMinus1_b - fabs(-rtb_UnaryMinus1_b) / rtb_pdot *
       rtb_Gain_b * rtb_Switch2_l;
 
-    /* Switch: '<S433>/Switch' incorporates:
-     *  Constant: '<S437>/Constant'
-     *  Constant: '<S438>/Constant'
-     *  Integrator: '<S433>/Integrator'
-     *  Logic: '<S433>/Logical Operator'
-     *  Logic: '<S433>/Logical Operator1'
-     *  Logic: '<S433>/Logical Operator2'
-     *  RelationalOperator: '<S433>/Relational Operator'
-     *  RelationalOperator: '<S433>/Relational Operator1'
-     *  RelationalOperator: '<S437>/Compare'
-     *  RelationalOperator: '<S438>/Compare'
-     *  UnaryMinus: '<S430>/Unary Minus'
+    /* Switch: '<S444>/Switch' incorporates:
+     *  Constant: '<S448>/Constant'
+     *  Constant: '<S449>/Constant'
+     *  Integrator: '<S444>/Integrator'
+     *  Logic: '<S444>/Logical Operator'
+     *  Logic: '<S444>/Logical Operator1'
+     *  Logic: '<S444>/Logical Operator2'
+     *  RelationalOperator: '<S444>/Relational Operator'
+     *  RelationalOperator: '<S444>/Relational Operator1'
+     *  RelationalOperator: '<S448>/Compare'
+     *  RelationalOperator: '<S449>/Compare'
+     *  UnaryMinus: '<S441>/Unary Minus'
      */
     if (((localX->Integrator_CSTATE_b <= rtb_sigma1) || (rtb_pdot <
           localP->Constant_Value)) && ((rtb_pdot > localP->Constant_Value_d) ||
          (localX->Integrator_CSTATE_b >= -rtb_sigma1))) {
-      /* Switch: '<S433>/Switch' */
+      /* Switch: '<S444>/Switch' */
       localB->Switch = rtb_pdot;
     } else {
-      /* Switch: '<S433>/Switch' incorporates:
-       *  Constant: '<S433>/Constant1'
+      /* Switch: '<S444>/Switch' incorporates:
+       *  Constant: '<S444>/Constant1'
        */
       localB->Switch = localP->Constant1_Value;
     }
 
-    /* End of Switch: '<S433>/Switch' */
+    /* End of Switch: '<S444>/Switch' */
 
-    /* MATLAB Function: '<S434>/MATLAB Function' */
+    /* MATLAB Function: '<S445>/MATLAB Function' */
     GVCU_HIL_MATLABFunction_n(rtu_sigma, rtu_Vx, rtp_VXLOW,
       &localB->sf_MATLABFunction);
     if (tmp) {
-      /* Gain: '<S430>/Gain3' */
+      /* Gain: '<S441>/Gain3' */
       localB->Gain3 = localP->Gain3_Gain * rtu_sigma;
     }
 
-    /* Switch: '<S436>/Switch2' incorporates:
-     *  RelationalOperator: '<S436>/LowerRelop1'
-     *  RelationalOperator: '<S436>/UpperRelop'
-     *  Switch: '<S436>/Switch'
+    /* Switch: '<S447>/Switch2' incorporates:
+     *  RelationalOperator: '<S447>/LowerRelop1'
+     *  RelationalOperator: '<S447>/UpperRelop'
+     *  Switch: '<S447>/Switch'
      */
     if (localB->sf_MATLABFunction.y > rtu_sigma) {
       rtb_sigma1 = rtu_sigma;
     } else if (localB->sf_MATLABFunction.y < localB->Gain3) {
-      /* Switch: '<S436>/Switch' */
+      /* Switch: '<S447>/Switch' */
       rtb_sigma1 = localB->Gain3;
     } else {
       rtb_sigma1 = localB->sf_MATLABFunction.y;
     }
 
-    /* Saturate: '<S430>/Saturation2' incorporates:
-     *  UnaryMinus: '<S430>/Unary Minus1'
+    /* Saturate: '<S441>/Saturation2' incorporates:
+     *  UnaryMinus: '<S441>/Unary Minus1'
      */
     if (-rtb_UnaryMinus1_b > localP->Saturation2_UpperSat) {
       tmp_0 = localP->Saturation2_UpperSat;
@@ -1209,63 +1209,63 @@ void GVCU_HIL_BristleDeflection(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M,
       tmp_0 = -rtb_UnaryMinus1_b;
     }
 
-    /* Product: '<S430>/Divide3' incorporates:
-     *  Product: '<S430>/Divide7'
-     *  Saturate: '<S430>/Saturation2'
-     *  Switch: '<S436>/Switch2'
+    /* Product: '<S441>/Divide3' incorporates:
+     *  Product: '<S441>/Divide7'
+     *  Saturate: '<S441>/Saturation2'
+     *  Switch: '<S447>/Switch2'
      */
     rtb_sigma1 = rtb_sigma1 / tmp_0 * rtb_Gain_b;
 
-    /* Sum: '<S430>/Sum' incorporates:
-     *  Gain: '<S430>/Gain2'
-     *  Product: '<S430>/Divide1'
-     *  Product: '<S430>/Divide5'
-     *  Product: '<S430>/Divide6'
-     *  Sum: '<S430>/Subtract'
-     *  UnaryMinus: '<S430>/Unary Minus1'
+    /* Sum: '<S441>/Sum' incorporates:
+     *  Gain: '<S441>/Gain2'
+     *  Product: '<S441>/Divide1'
+     *  Product: '<S441>/Divide5'
+     *  Product: '<S441>/Divide6'
+     *  Sum: '<S441>/Subtract'
+     *  UnaryMinus: '<S441>/Unary Minus1'
      */
     localB->Sum = localP->Gain2_Gain * rtb_sigma1 * -rtb_UnaryMinus1_b +
       (rtb_Switch2_l * rtb_Gain_b + rtb_pdot * rtb_sigma1);
   }
 
-  /* End of Outputs for SubSystem: '<S428>/Bristle Deflection' */
+  /* End of Outputs for SubSystem: '<S439>/Bristle Deflection' */
 }
 
 /*
  * Update for enable system:
- *    '<S428>/Bristle Deflection'
- *    '<S484>/Bristle Deflection'
+ *    '<S439>/Bristle Deflection'
+ *    '<S495>/Bristle Deflection'
  */
 void GVCU_H_BristleDeflection_Update(DW_BristleDeflection_GVCU_HIL_T *localDW)
 {
-  /* Update for Enabled SubSystem: '<S428>/Bristle Deflection' incorporates:
-   *  EnablePort: '<S430>/Enable'
+  /* Update for Enabled SubSystem: '<S439>/Bristle Deflection' incorporates:
+   *  EnablePort: '<S441>/Enable'
    */
-  /* Update for Integrator: '<S433>/Integrator' */
+  /* Update for Integrator: '<S444>/Integrator' */
   localDW->Integrator_DWORK1 = (!localDW->BristleDeflection_MODE &&
     localDW->Integrator_DWORK1);
 
-  /* End of Update for SubSystem: '<S428>/Bristle Deflection' */
+  /* End of Update for SubSystem: '<S439>/Bristle Deflection' */
 }
 
 /*
  * Derivatives for enable system:
- *    '<S428>/Bristle Deflection'
- *    '<S484>/Bristle Deflection'
+ *    '<S439>/Bristle Deflection'
+ *    '<S495>/Bristle Deflection'
  */
 void GVCU_HI_BristleDeflection_Deriv(B_BristleDeflection_GVCU_HIL_T *localB,
   DW_BristleDeflection_GVCU_HIL_T *localDW, XDot_BristleDeflection_GVCU_H_T
   *localXdot)
 {
   if (localDW->BristleDeflection_MODE) {
-    /* Derivatives for Integrator: '<S433>/Integrator' */
+    /* Derivatives for Integrator: '<S444>/Integrator' */
     localXdot->Integrator_CSTATE_b = localB->Switch;
   } else {
     localXdot->Integrator_CSTATE_b = 0.0;
   }
 }
 
-/* Function for MATLAB Function: '<S423>/Simple Magic Tire' */
+/* Function for MATLAB Function: '<S434>/Simple Magic Tire' */
 static real_T GVCU_HIL_automltirepurelongFx(real_T kappa, real_T Vx, real_T Fz,
   real_T b_gamma, real_T LONGVL, real_T FNOMIN, real_T b_FZMIN, real_T b_FZMAX,
   real_T press, real_T NOMPRES, real_T PRESMIN, real_T PRESMAX, real_T PCX1,
@@ -1349,7 +1349,7 @@ static real_T GVCU_HIL_automltirepurelongFx(real_T kappa, real_T Vx, real_T Fz,
     1.0)) * lam_Vx;
 }
 
-/* Function for MATLAB Function: '<S423>/Simple Magic Tire' */
+/* Function for MATLAB Function: '<S434>/Simple Magic Tire' */
 static real_T GVCU_HIL_interp2(const real_T varargin_1[3], const real_T
   varargin_2[3], const real_T varargin_3[9], real_T varargin_4, real_T
   varargin_5)
@@ -1466,8 +1466,8 @@ real_T rt_powd_snf(real_T u0, real_T u1)
 
 /*
  * Output and update for atomic system:
- *    '<S423>/Simple Magic Tire'
- *    '<S479>/Simple Magic Tire'
+ *    '<S434>/Simple Magic Tire'
+ *    '<S490>/Simple Magic Tire'
  */
 void GVCU_HIL_SimpleMagicTire(real_T rtu_ReNom, real_T rtu_Fz, real_T rtu_Omega,
   real_T rtu_Vx, real_T rtu_MagicPeak, real_T rtu_MagicPeak_c, real_T
@@ -1545,7 +1545,7 @@ void GVCU_HIL_SimpleMagicTire(real_T rtu_ReNom, real_T rtu_Fz, real_T rtu_Omega,
       i_idx_0 = rtp_FZMAX;
     }
 
-    /* SignalConversion generated from: '<S447>/ SFunction ' */
+    /* SignalConversion generated from: '<S458>/ SFunction ' */
     h_idx_0 *= rtu_MagicPeak_p;
     h_idx_0 = sin(atan(h_idx_0 - (h_idx_0 - atan(h_idx_0)) * rtu_MagicPeak_d) *
                   rtu_MagicPeak_c) * rtu_MagicPeak * (i_idx_0 * rtu_MagicPeak_l);
@@ -1580,7 +1580,7 @@ void GVCU_HIL_SimpleMagicTire(real_T rtu_ReNom, real_T rtu_Fz, real_T rtu_Omega,
       rtu_FxMap_0[3 * i + 2] = rtu_FxMap[i + 6];
     }
 
-    /* SignalConversion generated from: '<S447>/ SFunction ' */
+    /* SignalConversion generated from: '<S458>/ SFunction ' */
     h_idx_0 = GVCU_HIL_interp2(rtu_kappaFx, rtu_FzFx, rtu_FxMap_0, h_idx_0,
       i_idx_0) * rtu_MagicPeak_l;
     break;
@@ -1597,7 +1597,7 @@ void GVCU_HIL_SimpleMagicTire(real_T rtu_ReNom, real_T rtu_Fz, real_T rtu_Omega,
     break;
 
    case 1:
-    /* SignalConversion generated from: '<S447>/ SFunction ' */
+    /* SignalConversion generated from: '<S458>/ SFunction ' */
     i_idx_0 = rtu_RollRes;
     if (rtu_RollRes < rtu_RollRes_ek) {
       i_idx_0 = rtu_RollRes_ek;
@@ -1616,14 +1616,14 @@ void GVCU_HIL_SimpleMagicTire(real_T rtu_ReNom, real_T rtu_Fz, real_T rtu_Omega,
       m_idx_0 = rtp_FZMAX;
     }
 
-    /* SignalConversion generated from: '<S447>/ SFunction ' */
+    /* SignalConversion generated from: '<S458>/ SFunction ' */
     localB->My = ((rtu_RollRes_g * Vxpabs + rtu_RollRes_i) + rtu_Vx * rtu_Vx *
                   rtu_RollRes_a) * (tanh(rtu_Omega) * Re) * (rt_powd_snf(m_idx_0,
       rtu_RollRes_c) * rt_powd_snf(i_idx_0, rtu_RollRes_cz));
     break;
 
    case 2:
-    /* SignalConversion generated from: '<S447>/ SFunction ' */
+    /* SignalConversion generated from: '<S458>/ SFunction ' */
     i_idx_0 = rtu_RollRes;
     if (rtu_RollRes < rtu_RollRes_ek) {
       i_idx_0 = rtu_RollRes_ek;
@@ -1644,7 +1644,7 @@ void GVCU_HIL_SimpleMagicTire(real_T rtu_ReNom, real_T rtu_Fz, real_T rtu_Omega,
 
     Vxpabs = rtu_Vx / 16.7;
 
-    /* SignalConversion generated from: '<S447>/ SFunction ' */
+    /* SignalConversion generated from: '<S458>/ SFunction ' */
     localB->My = ((((rtu_RollRes_g * h_idx_0 / rtu_RollRes_m + rtu_RollRes_i) +
                     fabs(Vxpabs) * rtu_RollRes_a) + rt_powd_snf(Vxpabs, 4.0) *
                    rtu_RollRes_e) + (m_idx_0 * rtu_RollRes_b / rtu_RollRes_m +
@@ -1675,7 +1675,7 @@ void GVCU_HIL_SimpleMagicTire(real_T rtu_ReNom, real_T rtu_Fz, real_T rtu_Omega,
     break;
 
    case 4:
-    /* SignalConversion generated from: '<S447>/ SFunction ' */
+    /* SignalConversion generated from: '<S458>/ SFunction ' */
     i_idx_0 = rtu_RollRes;
     if (rtu_RollRes < rtu_RollRes_ek) {
       i_idx_0 = rtu_RollRes_ek;
@@ -1694,7 +1694,7 @@ void GVCU_HIL_SimpleMagicTire(real_T rtu_ReNom, real_T rtu_Fz, real_T rtu_Omega,
       m_idx_0 = rtp_FZMAX;
     }
 
-    /* SignalConversion generated from: '<S447>/ SFunction ' */
+    /* SignalConversion generated from: '<S458>/ SFunction ' */
     localB->My = -((m_idx_0 * rtu_RollRes_g * 0.001 / ((i_idx_0 - rtu_RollRes_e)
       * rtu_RollRes_a + 1.0) + rtu_RollRes_i) * (-tanh(rtu_Omega) * Re));
     break;
@@ -1710,75 +1710,75 @@ void GVCU_HIL_SimpleMagicTire(real_T rtu_ReNom, real_T rtu_Fz, real_T rtu_Omega,
 
 /*
  * System initialize for function-call system:
- *    '<S457>/detectSlip'
- *    '<S513>/detectSlip'
+ *    '<S468>/detectSlip'
+ *    '<S524>/detectSlip'
  */
 void GVCU_HIL_detectSlip_Init(B_detectSlip_GVCU_HIL_T *localB,
   P_detectSlip_GVCU_HIL_T *localP)
 {
-  /* SystemInitialize for RelationalOperator: '<S470>/Relational Operator' incorporates:
-   *  Outport: '<S461>/yn'
+  /* SystemInitialize for RelationalOperator: '<S481>/Relational Operator' incorporates:
+   *  Outport: '<S472>/yn'
    */
   localB->RelationalOperator = localP->yn_Y0;
 }
 
 /*
  * Start for function-call system:
- *    '<S457>/detectSlip'
- *    '<S513>/detectSlip'
+ *    '<S468>/detectSlip'
+ *    '<S524>/detectSlip'
  */
 void GVCU_HIL_detectSlip_Start(B_detectSlip_GVCU_HIL_T *localB)
 {
-  /* SystemInitialize for RelationalOperator: '<S470>/Relational Operator' */
+  /* SystemInitialize for RelationalOperator: '<S481>/Relational Operator' */
   localB->RelationalOperator = false;
 }
 
 /*
  * Output and update for function-call system:
- *    '<S457>/detectSlip'
- *    '<S513>/detectSlip'
+ *    '<S468>/detectSlip'
+ *    '<S524>/detectSlip'
  */
 void GVCU_HIL_detectSlip(real_T rtu_Tout, real_T rtu_Tfmaxs,
   B_detectSlip_GVCU_HIL_T *localB)
 {
-  /* RelationalOperator: '<S470>/Relational Operator' incorporates:
-   *  Abs: '<S470>/Abs'
+  /* RelationalOperator: '<S481>/Relational Operator' incorporates:
+   *  Abs: '<S481>/Abs'
    */
   localB->RelationalOperator = (fabs(rtu_Tout) >= rtu_Tfmaxs);
 }
 
 /*
  * System initialize for function-call system:
- *    '<S457>/detectLockup'
- *    '<S513>/detectLockup'
+ *    '<S468>/detectLockup'
+ *    '<S524>/detectLockup'
  */
 void GVCU_HIL_detectLockup_Init(B_detectLockup_GVCU_HIL_T *localB,
   DW_detectLockup_GVCU_HIL_T *localDW, P_detectLockup_GVCU_HIL_T *localP)
 {
-  /* InitializeConditions for UnitDelay: '<S465>/Unit Delay' */
+  /* InitializeConditions for UnitDelay: '<S476>/Unit Delay' */
   localDW->UnitDelay_DSTATE = localP->UnitDelay_InitialCondition;
 
-  /* SystemInitialize for CombinatorialLogic: '<S465>/Combinatorial  Logic' incorporates:
-   *  Outport: '<S460>/yn'
+  /* SystemInitialize for CombinatorialLogic: '<S476>/Combinatorial  Logic' incorporates:
+   *  Outport: '<S471>/yn'
    */
   localB->CombinatorialLogic = localP->yn_Y0;
 }
 
 /*
  * Start for function-call system:
- *    '<S457>/detectLockup'
- *    '<S513>/detectLockup'
+ *    '<S468>/detectLockup'
+ *    '<S524>/detectLockup'
  */
 void GVCU_HIL_detectLockup_Start(B_detectLockup_GVCU_HIL_T *localB)
 {
-  /* SystemInitialize for CombinatorialLogic: '<S465>/Combinatorial  Logic' */
+  /* SystemInitialize for CombinatorialLogic: '<S476>/Combinatorial  Logic' */
   localB->CombinatorialLogic = false;
 }
 
 /*
  * Output and update for function-call system:
- *    '<S457>/detectLockup'
- *    '<S513>/detectLockup'
+ *    '<S468>/detectLockup'
+ *    '<S524>/detectLockup'
  */
 void GVCU_HIL_detectLockup(real_T rtu_Tout, real_T rtu_Tfmaxs, real_T rtp_br,
   B_detectLockup_GVCU_HIL_T *localB, DW_detectLockup_GVCU_HIL_T *localDW,
@@ -1786,37 +1786,37 @@ void GVCU_HIL_detectLockup(real_T rtu_Tout, real_T rtu_Tfmaxs, real_T rtp_br,
 {
   real_T rtb_Abs_e;
 
-  /* Gain: '<S466>/Output Damping' incorporates:
-   *  Constant: '<S460>/Constant'
+  /* Gain: '<S477>/Output Damping' incorporates:
+   *  Constant: '<S471>/Constant'
    */
   rtb_Abs_e = rtp_br * localP->Constant_Value_l;
 
-  /* CombinatorialLogic: '<S465>/Combinatorial  Logic' incorporates:
-   *  Abs: '<S463>/Abs'
-   *  Abs: '<S468>/Abs'
-   *  Constant: '<S469>/Constant'
-   *  Logic: '<S468>/AND'
-   *  RelationalOperator: '<S463>/Relational Operator'
-   *  RelationalOperator: '<S468>/Relational Operator'
-   *  RelationalOperator: '<S469>/Compare'
-   *  Sum: '<S466>/Sum1'
-   *  Sum: '<S466>/Sum2'
-   *  UnaryMinus: '<S467>/Unary Minus'
-   *  UnitDelay: '<S465>/Unit Delay'
+  /* CombinatorialLogic: '<S476>/Combinatorial  Logic' incorporates:
+   *  Abs: '<S474>/Abs'
+   *  Abs: '<S479>/Abs'
+   *  Constant: '<S480>/Constant'
+   *  Logic: '<S479>/AND'
+   *  RelationalOperator: '<S474>/Relational Operator'
+   *  RelationalOperator: '<S479>/Relational Operator'
+   *  RelationalOperator: '<S480>/Compare'
+   *  Sum: '<S477>/Sum1'
+   *  Sum: '<S477>/Sum2'
+   *  UnaryMinus: '<S478>/Unary Minus'
+   *  UnitDelay: '<S476>/Unit Delay'
    */
   localB->CombinatorialLogic = localP->CombinatorialLogic_table[(((uint32_T)
     (fabs(((0.0 - rtu_Tout) - rtb_Abs_e) + rtb_Abs_e) >= rtu_Tfmaxs) +
     ((uint32_T)((fabs(-rtu_Tout) <= rtu_Tfmaxs) && (rtu_Tfmaxs >
     localP->Constant_Value)) << 1)) << 1) + localDW->UnitDelay_DSTATE];
 
-  /* Update for UnitDelay: '<S465>/Unit Delay' */
+  /* Update for UnitDelay: '<S476>/Unit Delay' */
   localDW->UnitDelay_DSTATE = localB->CombinatorialLogic;
 }
 
 /*
  * Start for action system:
- *    '<S457>/Locked'
- *    '<S513>/Locked'
+ *    '<S468>/Locked'
+ *    '<S524>/Locked'
  */
 void GVCU_HIL_Locked_Start(real_T *rty_ReactionTorque, real_T *rty_Omega, real_T
   *rty_Omegadot, real_T *rty_Myb, real_T *rty_BrkTrq)
@@ -1830,37 +1830,37 @@ void GVCU_HIL_Locked_Start(real_T *rty_ReactionTorque, real_T *rty_Omega, real_T
 
 /*
  * Output and update for action system:
- *    '<S457>/Locked'
- *    '<S513>/Locked'
+ *    '<S468>/Locked'
+ *    '<S524>/Locked'
  */
 void GVCU_HIL_Locked(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
                      real_T *rty_ReactionTorque, real_T *rty_Omega, real_T
                      *rty_Omegadot, real_T *rty_Myb, real_T *rty_BrkTrq,
                      P_Locked_GVCU_HIL_T *localP)
 {
-  /* SignalConversion generated from: '<S458>/BrkTrq' incorporates:
-   *  SignalConversion generated from: '<S458>/Tout'
+  /* SignalConversion generated from: '<S469>/BrkTrq' incorporates:
+   *  SignalConversion generated from: '<S469>/Tout'
    */
   *rty_BrkTrq = rtu_Tout;
 
-  /* UnaryMinus: '<S458>/Unary Minus' incorporates:
-   *  SignalConversion generated from: '<S458>/Tout'
+  /* UnaryMinus: '<S469>/Unary Minus' incorporates:
+   *  SignalConversion generated from: '<S469>/Tout'
    */
   *rty_ReactionTorque = -rtu_Tout;
   if (rtmIsMajorTimeStep(GVCU_HIL_M) &&
       GVCU_HIL_M->Timing.TaskCounters.TID[1] == 0) {
-    /* SignalConversion generated from: '<S458>/Omega' incorporates:
-     *  Constant: '<S458>/Constant'
+    /* SignalConversion generated from: '<S469>/Omega' incorporates:
+     *  Constant: '<S469>/Constant'
      */
     *rty_Omega = localP->Constant_Value;
 
-    /* SignalConversion generated from: '<S458>/Omegadot' incorporates:
-     *  Constant: '<S458>/Constant1'
+    /* SignalConversion generated from: '<S469>/Omegadot' incorporates:
+     *  Constant: '<S469>/Constant1'
      */
     *rty_Omegadot = localP->Constant1_Value;
 
-    /* SignalConversion generated from: '<S458>/Myb' incorporates:
-     *  Constant: '<S458>/Constant2'
+    /* SignalConversion generated from: '<S469>/Myb' incorporates:
+     *  Constant: '<S469>/Constant2'
      */
     *rty_Myb = localP->Constant2_Value;
   }
@@ -1868,19 +1868,19 @@ void GVCU_HIL_Locked(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
 
 /*
  * System initialize for action system:
- *    '<S457>/Slipping'
- *    '<S513>/Slipping'
+ *    '<S468>/Slipping'
+ *    '<S524>/Slipping'
  */
 void GVCU_HIL_Slipping_Init(real_T rtp_omegao, X_Slipping_GVCU_HIL_T *localX)
 {
-  /* InitializeConditions for Integrator: '<S459>/omega wheel' */
+  /* InitializeConditions for Integrator: '<S470>/omega wheel' */
   localX->omegaWheel = rtp_omegao;
 }
 
 /*
  * Enable for action system:
- *    '<S457>/Slipping'
- *    '<S513>/Slipping'
+ *    '<S468>/Slipping'
+ *    '<S524>/Slipping'
  */
 void GVCU_HIL_Slipping_Enable(XDis_Slipping_GVCU_HIL_T *localXdis)
 {
@@ -1890,8 +1890,8 @@ void GVCU_HIL_Slipping_Enable(XDis_Slipping_GVCU_HIL_T *localXdis)
 
 /*
  * Disable for action system:
- *    '<S457>/Slipping'
- *    '<S513>/Slipping'
+ *    '<S468>/Slipping'
+ *    '<S524>/Slipping'
  */
 void GVCU_HIL_Slipping_Disable(XDis_Slipping_GVCU_HIL_T *localXdis)
 {
@@ -1901,8 +1901,8 @@ void GVCU_HIL_Slipping_Disable(XDis_Slipping_GVCU_HIL_T *localXdis)
 
 /*
  * Start for action system:
- *    '<S457>/Slipping'
- *    '<S513>/Slipping'
+ *    '<S468>/Slipping'
+ *    '<S524>/Slipping'
  */
 void GVCU_HIL_Slipping_Start(real_T *rty_Omega, real_T *rty_Omegadot, real_T
   *rty_ReactionTorque, real_T *rty_Myb, real_T *rty_BrkTrq,
@@ -1912,7 +1912,7 @@ void GVCU_HIL_Slipping_Start(real_T *rty_Omega, real_T *rty_Omegadot, real_T
   *rty_Myb = 0.0;
   *rty_Omega = 0.0;
 
-  /* Gain: '<S459>/Output Inertia' */
+  /* Gain: '<S470>/Output Inertia' */
   localB->OutputInertia = 0.0;
   *rty_Omegadot = 0.0;
   *rty_ReactionTorque = 0.0;
@@ -1920,8 +1920,8 @@ void GVCU_HIL_Slipping_Start(real_T *rty_Omega, real_T *rty_Omegadot, real_T
 
 /*
  * Outputs for action system:
- *    '<S457>/Slipping'
- *    '<S513>/Slipping'
+ *    '<S468>/Slipping'
+ *    '<S524>/Slipping'
  */
 void GVCU_HIL_Slipping(real_T rtu_Tfmaxk, real_T rtu_Tout, real_T *rty_Omega,
   real_T *rty_Omegadot, real_T *rty_ReactionTorque, real_T *rty_Myb, real_T
@@ -1931,55 +1931,55 @@ void GVCU_HIL_Slipping(real_T rtu_Tfmaxk, real_T rtu_Tout, real_T *rty_Omega,
   real_T rtb_OutputDamping;
   real_T rtb_OutputSum_j;
 
-  /* Product: '<S459>/Max Dynamic Friction Torque1' incorporates:
-   *  Gain: '<S459>/-4'
-   *  Integrator: '<S459>/omega wheel'
-   *  Trigonometry: '<S459>/Trigonometric Function'
+  /* Product: '<S470>/Max Dynamic Friction Torque1' incorporates:
+   *  Gain: '<S470>/-4'
+   *  Integrator: '<S470>/omega wheel'
+   *  Trigonometry: '<S470>/Trigonometric Function'
    */
   rtb_OutputSum_j = tanh(localP->u_Gain * localX->omegaWheel) * rtu_Tfmaxk;
 
-  /* SignalConversion generated from: '<S459>/BrkTrq' */
+  /* SignalConversion generated from: '<S470>/BrkTrq' */
   *rty_BrkTrq = rtb_OutputSum_j;
 
-  /* Gain: '<S459>/Output Damping' incorporates:
-   *  Integrator: '<S459>/omega wheel'
+  /* Gain: '<S470>/Output Damping' incorporates:
+   *  Integrator: '<S470>/omega wheel'
    */
   rtb_OutputDamping = rtp_br * localX->omegaWheel;
 
-  /* SignalConversion generated from: '<S459>/Myb' */
+  /* SignalConversion generated from: '<S470>/Myb' */
   *rty_Myb = rtb_OutputDamping;
 
-  /* SignalConversion generated from: '<S459>/Omega' incorporates:
-   *  Integrator: '<S459>/omega wheel'
+  /* SignalConversion generated from: '<S470>/Omega' incorporates:
+   *  Integrator: '<S470>/omega wheel'
    */
   *rty_Omega = localX->omegaWheel;
 
-  /* Sum: '<S459>/Output Sum' */
+  /* Sum: '<S470>/Output Sum' */
   rtb_OutputSum_j = (rtb_OutputSum_j - rtu_Tout) - rtb_OutputDamping;
 
-  /* Gain: '<S459>/Output Inertia' */
+  /* Gain: '<S470>/Output Inertia' */
   localB->OutputInertia = 1.0 / rtp_Iyy * rtb_OutputSum_j;
 
-  /* SignalConversion generated from: '<S459>/Omegadot' */
+  /* SignalConversion generated from: '<S470>/Omegadot' */
   *rty_Omegadot = localB->OutputInertia;
 
-  /* SignalConversion generated from: '<S459>/ReactionTorque' */
+  /* SignalConversion generated from: '<S470>/ReactionTorque' */
   *rty_ReactionTorque = rtb_OutputSum_j;
 }
 
 /*
  * Derivatives for action system:
- *    '<S457>/Slipping'
- *    '<S513>/Slipping'
+ *    '<S468>/Slipping'
+ *    '<S524>/Slipping'
  */
 void GVCU_HIL_Slipping_Deriv(B_Slipping_GVCU_HIL_T *localB,
   XDot_Slipping_GVCU_HIL_T *localXdot)
 {
-  /* Derivatives for Integrator: '<S459>/omega wheel' */
+  /* Derivatives for Integrator: '<S470>/omega wheel' */
   localXdot->omegaWheel = localB->OutputInertia;
 }
 
-/* Function for Chart: '<S452>/Clutch' */
+/* Function for Chart: '<S463>/Clutch' */
 static boolean_T GVCU_HIL_detectSlip_h(real_T Tout, real_T Tfmaxs,
   B_Clutch_GVCU_HIL_T *localB)
 {
@@ -1987,15 +1987,15 @@ static boolean_T GVCU_HIL_detectSlip_h(real_T Tout, real_T Tfmaxs,
   localB->Tout = Tout;
   localB->Tfmaxs = Tfmaxs;
 
-  /* Outputs for Function Call SubSystem: '<S457>/detectSlip' */
+  /* Outputs for Function Call SubSystem: '<S468>/detectSlip' */
   GVCU_HIL_detectSlip(localB->Tout, localB->Tfmaxs, &localB->detectSlip);
 
-  /* End of Outputs for SubSystem: '<S457>/detectSlip' */
+  /* End of Outputs for SubSystem: '<S468>/detectSlip' */
   b_yn = localB->detectSlip.RelationalOperator;
   return b_yn;
 }
 
-/* Function for Chart: '<S452>/Clutch' */
+/* Function for Chart: '<S463>/Clutch' */
 static boolean_T GVCU_HIL_detectLockup_k(real_T Tout, real_T Tfmaxs, real_T
   rtp_br, B_Clutch_GVCU_HIL_T *localB, DW_Clutch_GVCU_HIL_T *localDW,
   P_Clutch_GVCU_HIL_T *localP)
@@ -2004,56 +2004,56 @@ static boolean_T GVCU_HIL_detectLockup_k(real_T Tout, real_T Tfmaxs, real_T
   localB->Tout_c = Tout;
   localB->Tfmaxs_o = Tfmaxs;
 
-  /* Outputs for Function Call SubSystem: '<S457>/detectLockup' */
+  /* Outputs for Function Call SubSystem: '<S468>/detectLockup' */
   GVCU_HIL_detectLockup(localB->Tout_c, localB->Tfmaxs_o, rtp_br,
                         &localB->detectLockup, &localDW->detectLockup,
                         &localP->detectLockup);
 
-  /* End of Outputs for SubSystem: '<S457>/detectLockup' */
+  /* End of Outputs for SubSystem: '<S468>/detectLockup' */
   b_yn = localB->detectLockup.CombinatorialLogic;
   return b_yn;
 }
 
-/* System initialize for atomic system: '<S452>/Clutch' */
+/* System initialize for atomic system: '<S463>/Clutch' */
 void GVCU_HIL_Clutch_Init(real_T rtp_omegao, B_Clutch_GVCU_HIL_T *localB,
   DW_Clutch_GVCU_HIL_T *localDW, P_Clutch_GVCU_HIL_T *localP,
   X_Clutch_GVCU_HIL_T *localX)
 {
-  /* InitializeConditions for Merge: '<S457>/ Merge ' */
+  /* InitializeConditions for Merge: '<S468>/ Merge ' */
   localB->Omega = 0.0;
 
-  /* InitializeConditions for Merge: '<S457>/ Merge 1' */
+  /* InitializeConditions for Merge: '<S468>/ Merge 1' */
   localB->Omegadot = 0.0;
 
-  /* InitializeConditions for Merge: '<S457>/ Merge 3' */
+  /* InitializeConditions for Merge: '<S468>/ Merge 3' */
   localB->Myb = 0.0;
 
-  /* InitializeConditions for Merge: '<S457>/ Merge 2' */
+  /* InitializeConditions for Merge: '<S468>/ Merge 2' */
   localB->ReactionTorque = 0.0;
 
-  /* InitializeConditions for Merge: '<S457>/ Merge 4' */
+  /* InitializeConditions for Merge: '<S468>/ Merge 4' */
   localB->BrkTrq = 0.0;
   localDW->is_active_c8_autolibshared = 0U;
   localDW->is_c8_autolibshared = GVCU_HIL_IN_NO_ACTIVE_CHILD_d;
 
-  /* SystemInitialize for Function Call SubSystem: '<S457>/detectSlip' */
+  /* SystemInitialize for Function Call SubSystem: '<S468>/detectSlip' */
   GVCU_HIL_detectSlip_Init(&localB->detectSlip, &localP->detectSlip);
 
-  /* End of SystemInitialize for SubSystem: '<S457>/detectSlip' */
+  /* End of SystemInitialize for SubSystem: '<S468>/detectSlip' */
 
-  /* SystemInitialize for Function Call SubSystem: '<S457>/detectLockup' */
+  /* SystemInitialize for Function Call SubSystem: '<S468>/detectLockup' */
   GVCU_HIL_detectLockup_Init(&localB->detectLockup, &localDW->detectLockup,
     &localP->detectLockup);
 
-  /* End of SystemInitialize for SubSystem: '<S457>/detectLockup' */
+  /* End of SystemInitialize for SubSystem: '<S468>/detectLockup' */
 
-  /* SystemInitialize for IfAction SubSystem: '<S457>/Slipping' */
+  /* SystemInitialize for IfAction SubSystem: '<S468>/Slipping' */
   GVCU_HIL_Slipping_Init(rtp_omegao, &localX->Slipping);
 
-  /* End of SystemInitialize for SubSystem: '<S457>/Slipping' */
+  /* End of SystemInitialize for SubSystem: '<S468>/Slipping' */
 }
 
-/* Start for atomic system: '<S452>/Clutch' */
+/* Start for atomic system: '<S463>/Clutch' */
 void GVCU_HIL_Clutch_Start(B_Clutch_GVCU_HIL_T *localB)
 {
   localB->Tout = 0.0;
@@ -2061,30 +2061,30 @@ void GVCU_HIL_Clutch_Start(B_Clutch_GVCU_HIL_T *localB)
   localB->Tout_c = 0.0;
   localB->Tfmaxs_o = 0.0;
 
-  /* Start for Function Call SubSystem: '<S457>/detectSlip' */
+  /* Start for Function Call SubSystem: '<S468>/detectSlip' */
   GVCU_HIL_detectSlip_Start(&localB->detectSlip);
 
-  /* End of Start for SubSystem: '<S457>/detectSlip' */
+  /* End of Start for SubSystem: '<S468>/detectSlip' */
 
-  /* Start for Function Call SubSystem: '<S457>/detectLockup' */
+  /* Start for Function Call SubSystem: '<S468>/detectLockup' */
   GVCU_HIL_detectLockup_Start(&localB->detectLockup);
 
-  /* End of Start for SubSystem: '<S457>/detectLockup' */
+  /* End of Start for SubSystem: '<S468>/detectLockup' */
 
-  /* Start for IfAction SubSystem: '<S457>/Slipping' */
+  /* Start for IfAction SubSystem: '<S468>/Slipping' */
   GVCU_HIL_Slipping_Start(&localB->Omega, &localB->Omegadot,
     &localB->ReactionTorque, &localB->Myb, &localB->BrkTrq, &localB->Slipping);
 
-  /* End of Start for SubSystem: '<S457>/Slipping' */
+  /* End of Start for SubSystem: '<S468>/Slipping' */
 
-  /* Start for IfAction SubSystem: '<S457>/Locked' */
+  /* Start for IfAction SubSystem: '<S468>/Locked' */
   GVCU_HIL_Locked_Start(&localB->ReactionTorque, &localB->Omega,
                         &localB->Omegadot, &localB->Myb, &localB->BrkTrq);
 
-  /* End of Start for SubSystem: '<S457>/Locked' */
+  /* End of Start for SubSystem: '<S468>/Locked' */
 }
 
-/* Outputs for atomic system: '<S452>/Clutch' */
+/* Outputs for atomic system: '<S463>/Clutch' */
 void GVCU_HIL_Clutch(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
                      real_T rtu_Tfmaxs, real_T rtu_Tfmaxk, real_T rtp_omegao,
                      real_T rtp_br, real_T rtp_Iyy, real_T rtp_OmegaTol,
@@ -2095,7 +2095,7 @@ void GVCU_HIL_Clutch(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
   if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
     localDW->lastMajorTime = GVCU_HIL_M->Timing.t[0];
 
-    /* Chart: '<S452>/Clutch' */
+    /* Chart: '<S463>/Clutch' */
     if (localDW->is_active_c8_autolibshared == 0) {
       localDW->is_active_c8_autolibshared = 1U;
       localX->Slipping.omegaWheel = rtp_omegao;
@@ -2136,7 +2136,7 @@ void GVCU_HIL_Clutch(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
       rtsiSetBlockStateForSolverChangedAtMajorStep(&GVCU_HIL_M->solverInfo, true);
     }
 
-    /* End of Chart: '<S452>/Clutch' */
+    /* End of Chart: '<S463>/Clutch' */
   }
 
   if (localDW->is_c8_autolibshared == GVCU_HIL_IN_Locked_f) {
@@ -2159,7 +2159,7 @@ void GVCU_HIL_Clutch(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
   }
 }
 
-/* Derivatives for atomic system: '<S452>/Clutch' */
+/* Derivatives for atomic system: '<S463>/Clutch' */
 void GVCU_HIL_Clutch_Deriv(B_Clutch_GVCU_HIL_T *localB, DW_Clutch_GVCU_HIL_T
   *localDW, XDot_Clutch_GVCU_HIL_T *localXdot)
 {
@@ -2176,7 +2176,7 @@ void GVCU_HIL_Clutch_Deriv(B_Clutch_GVCU_HIL_T *localB, DW_Clutch_GVCU_HIL_T
   }
 }
 
-/* Function for Chart: '<S508>/Clutch' */
+/* Function for Chart: '<S519>/Clutch' */
 static boolean_T GVCU_HIL_detectSlip_o(real_T Tout, real_T Tfmaxs,
   B_Clutch_GVCU_HIL_b_T *localB)
 {
@@ -2184,15 +2184,15 @@ static boolean_T GVCU_HIL_detectSlip_o(real_T Tout, real_T Tfmaxs,
   localB->Tout = Tout;
   localB->Tfmaxs = Tfmaxs;
 
-  /* Outputs for Function Call SubSystem: '<S513>/detectSlip' */
+  /* Outputs for Function Call SubSystem: '<S524>/detectSlip' */
   GVCU_HIL_detectSlip(localB->Tout, localB->Tfmaxs, &localB->detectSlip);
 
-  /* End of Outputs for SubSystem: '<S513>/detectSlip' */
+  /* End of Outputs for SubSystem: '<S524>/detectSlip' */
   b_yn = localB->detectSlip.RelationalOperator;
   return b_yn;
 }
 
-/* Function for Chart: '<S508>/Clutch' */
+/* Function for Chart: '<S519>/Clutch' */
 static boolean_T GVCU_HIL_detectLockup_k4(real_T Tout, real_T Tfmaxs, real_T
   rtp_br, B_Clutch_GVCU_HIL_b_T *localB, DW_Clutch_GVCU_HIL_g_T *localDW,
   P_Clutch_GVCU_HIL_k_T *localP)
@@ -2201,56 +2201,56 @@ static boolean_T GVCU_HIL_detectLockup_k4(real_T Tout, real_T Tfmaxs, real_T
   localB->Tout_c = Tout;
   localB->Tfmaxs_n = Tfmaxs;
 
-  /* Outputs for Function Call SubSystem: '<S513>/detectLockup' */
+  /* Outputs for Function Call SubSystem: '<S524>/detectLockup' */
   GVCU_HIL_detectLockup(localB->Tout_c, localB->Tfmaxs_n, rtp_br,
                         &localB->detectLockup, &localDW->detectLockup,
                         &localP->detectLockup);
 
-  /* End of Outputs for SubSystem: '<S513>/detectLockup' */
+  /* End of Outputs for SubSystem: '<S524>/detectLockup' */
   b_yn = localB->detectLockup.CombinatorialLogic;
   return b_yn;
 }
 
-/* System initialize for atomic system: '<S508>/Clutch' */
+/* System initialize for atomic system: '<S519>/Clutch' */
 void GVCU_HIL_Clutch_i_Init(real_T rtp_omegao, B_Clutch_GVCU_HIL_b_T *localB,
   DW_Clutch_GVCU_HIL_g_T *localDW, P_Clutch_GVCU_HIL_k_T *localP,
   X_Clutch_GVCU_HIL_h_T *localX)
 {
-  /* InitializeConditions for Merge: '<S513>/ Merge ' */
+  /* InitializeConditions for Merge: '<S524>/ Merge ' */
   localB->Omega = 0.0;
 
-  /* InitializeConditions for Merge: '<S513>/ Merge 1' */
+  /* InitializeConditions for Merge: '<S524>/ Merge 1' */
   localB->Omegadot = 0.0;
 
-  /* InitializeConditions for Merge: '<S513>/ Merge 3' */
+  /* InitializeConditions for Merge: '<S524>/ Merge 3' */
   localB->Myb = 0.0;
 
-  /* InitializeConditions for Merge: '<S513>/ Merge 2' */
+  /* InitializeConditions for Merge: '<S524>/ Merge 2' */
   localB->ReactionTorque = 0.0;
 
-  /* InitializeConditions for Merge: '<S513>/ Merge 4' */
+  /* InitializeConditions for Merge: '<S524>/ Merge 4' */
   localB->BrkTrq = 0.0;
   localDW->is_active_c8_autolibshared = 0U;
   localDW->is_c8_autolibshared = GVCU_HIL_IN_NO_ACTIVE_CHILD_o;
 
-  /* SystemInitialize for Function Call SubSystem: '<S513>/detectSlip' */
+  /* SystemInitialize for Function Call SubSystem: '<S524>/detectSlip' */
   GVCU_HIL_detectSlip_Init(&localB->detectSlip, &localP->detectSlip);
 
-  /* End of SystemInitialize for SubSystem: '<S513>/detectSlip' */
+  /* End of SystemInitialize for SubSystem: '<S524>/detectSlip' */
 
-  /* SystemInitialize for Function Call SubSystem: '<S513>/detectLockup' */
+  /* SystemInitialize for Function Call SubSystem: '<S524>/detectLockup' */
   GVCU_HIL_detectLockup_Init(&localB->detectLockup, &localDW->detectLockup,
     &localP->detectLockup);
 
-  /* End of SystemInitialize for SubSystem: '<S513>/detectLockup' */
+  /* End of SystemInitialize for SubSystem: '<S524>/detectLockup' */
 
-  /* SystemInitialize for IfAction SubSystem: '<S513>/Slipping' */
+  /* SystemInitialize for IfAction SubSystem: '<S524>/Slipping' */
   GVCU_HIL_Slipping_Init(rtp_omegao, &localX->Slipping);
 
-  /* End of SystemInitialize for SubSystem: '<S513>/Slipping' */
+  /* End of SystemInitialize for SubSystem: '<S524>/Slipping' */
 }
 
-/* Start for atomic system: '<S508>/Clutch' */
+/* Start for atomic system: '<S519>/Clutch' */
 void GVCU_HIL_Clutch_i_Start(B_Clutch_GVCU_HIL_b_T *localB)
 {
   localB->Tout = 0.0;
@@ -2258,30 +2258,30 @@ void GVCU_HIL_Clutch_i_Start(B_Clutch_GVCU_HIL_b_T *localB)
   localB->Tout_c = 0.0;
   localB->Tfmaxs_n = 0.0;
 
-  /* Start for Function Call SubSystem: '<S513>/detectSlip' */
+  /* Start for Function Call SubSystem: '<S524>/detectSlip' */
   GVCU_HIL_detectSlip_Start(&localB->detectSlip);
 
-  /* End of Start for SubSystem: '<S513>/detectSlip' */
+  /* End of Start for SubSystem: '<S524>/detectSlip' */
 
-  /* Start for Function Call SubSystem: '<S513>/detectLockup' */
+  /* Start for Function Call SubSystem: '<S524>/detectLockup' */
   GVCU_HIL_detectLockup_Start(&localB->detectLockup);
 
-  /* End of Start for SubSystem: '<S513>/detectLockup' */
+  /* End of Start for SubSystem: '<S524>/detectLockup' */
 
-  /* Start for IfAction SubSystem: '<S513>/Slipping' */
+  /* Start for IfAction SubSystem: '<S524>/Slipping' */
   GVCU_HIL_Slipping_Start(&localB->Omega, &localB->Omegadot,
     &localB->ReactionTorque, &localB->Myb, &localB->BrkTrq, &localB->Slipping);
 
-  /* End of Start for SubSystem: '<S513>/Slipping' */
+  /* End of Start for SubSystem: '<S524>/Slipping' */
 
-  /* Start for IfAction SubSystem: '<S513>/Locked' */
+  /* Start for IfAction SubSystem: '<S524>/Locked' */
   GVCU_HIL_Locked_Start(&localB->ReactionTorque, &localB->Omega,
                         &localB->Omegadot, &localB->Myb, &localB->BrkTrq);
 
-  /* End of Start for SubSystem: '<S513>/Locked' */
+  /* End of Start for SubSystem: '<S524>/Locked' */
 }
 
-/* Outputs for atomic system: '<S508>/Clutch' */
+/* Outputs for atomic system: '<S519>/Clutch' */
 void GVCU_HIL_Clutch_n(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
   real_T rtu_Tfmaxs, real_T rtu_Tfmaxk, real_T rtp_omegao, real_T rtp_br, real_T
   rtp_Iyy, real_T rtp_OmegaTol, B_Clutch_GVCU_HIL_b_T *localB,
@@ -2291,7 +2291,7 @@ void GVCU_HIL_Clutch_n(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
   if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
     localDW->lastMajorTime = GVCU_HIL_M->Timing.t[0];
 
-    /* Chart: '<S508>/Clutch' */
+    /* Chart: '<S519>/Clutch' */
     if (localDW->is_active_c8_autolibshared == 0) {
       localDW->is_active_c8_autolibshared = 1U;
       localX->Slipping.omegaWheel = rtp_omegao;
@@ -2332,7 +2332,7 @@ void GVCU_HIL_Clutch_n(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
       rtsiSetBlockStateForSolverChangedAtMajorStep(&GVCU_HIL_M->solverInfo, true);
     }
 
-    /* End of Chart: '<S508>/Clutch' */
+    /* End of Chart: '<S519>/Clutch' */
   }
 
   if (localDW->is_c8_autolibshared == GVCU_HIL_IN_Locked_n) {
@@ -2355,7 +2355,7 @@ void GVCU_HIL_Clutch_n(RT_MODEL_GVCU_HIL_T * const GVCU_HIL_M, real_T rtu_Tout,
   }
 }
 
-/* Derivatives for atomic system: '<S508>/Clutch' */
+/* Derivatives for atomic system: '<S519>/Clutch' */
 void GVCU_HIL_Clutch_o_Deriv(B_Clutch_GVCU_HIL_b_T *localB,
   DW_Clutch_GVCU_HIL_g_T *localDW, XDot_Clutch_GVCU_HIL_g_T *localXdot)
 {
@@ -2372,7 +2372,7 @@ void GVCU_HIL_Clutch_o_Deriv(B_Clutch_GVCU_HIL_b_T *localB,
   }
 }
 
-/* Function for MATLAB Function: '<S2>/MATLAB Function2' */
+/* Function for MATLAB Function: '<S3>/MATLAB Function2' */
 static void GVCU_HIL_tic(real_T *tstart_tv_sec, real_T *tstart_tv_nsec)
 {
   coderTimespec origTimespec;
@@ -2386,7 +2386,7 @@ static void GVCU_HIL_tic(real_T *tstart_tv_sec, real_T *tstart_tv_nsec)
   *tstart_tv_nsec = origTimespec.tv_nsec;
 }
 
-/* Function for MATLAB Function: '<S2>/MATLAB Function2' */
+/* Function for MATLAB Function: '<S3>/MATLAB Function2' */
 static real_T GVCU_HIL_toc(real_T tstart_tv_sec, real_T tstart_tv_nsec)
 {
   coderTimespec origTimespec;
@@ -2534,26 +2534,35 @@ void GVCU_HIL_output(void)
   XDis_GVCU_HIL_T *_rtXdis;
   real_T rtb_VectorConcatenate_b[9];
   real_T rtb_uAPabsRT[6];
-  real_T rtb_Omega[4];
-  real_T rtb_Pa_m[4];
-  real_T tmp_0[2];
+  real_T tmp_2[2];
   real_T Add_tmp;
   real_T b_xtmp;
   real_T idx;
-  real_T rtb_Add_m;
+  real_T rtb_Add_j;
+  real_T rtb_Cd;
   real_T rtb_Integrator;
+  real_T rtb_Integrator_m;
+  real_T rtb_Pa_f_idx_0;
+  real_T rtb_Pa_f_idx_2;
+  real_T rtb_Pa_f_idx_3;
   real_T rtb_ProportionalGain;
+  real_T rtb_RateLimiter;
   real_T rtb_Saturation1;
-  real_T rtb_Selector1_idx_0;
-  real_T rtb_Selector1_idx_1;
+  real_T rtb_SignalCopy_d;
+  real_T rtb_Sum1;
   real_T rtb_Sum_jk;
-  real_T rtb_TransferFcn;
-  real_T rtb_TrigonometricFunction2_o1;
-  real_T rtb_VectorConcatenate2_idx_1;
+  real_T rtb_SumofElements;
+  real_T rtb_TrigonometricFunction2_o2;
+  real_T rtb_UnaryMinus1_i;
+  real_T rtb_UnaryMinus3_j;
+  real_T rtb_UnitConversion;
+  real_T rtb_VectorConcatenate2_idx_0;
   real_T rtb_bar;
   real_T rtb_brake_out;
+  real_T rtb_rpm;
   real_T rtb_u19mm;
-  real_T t_rel;
+  real_T rtb_uto1;
+  real_T u0;
   real_T xtmp;
   int32_T b_low_i;
   int32_T b_low_ip1;
@@ -2563,12 +2572,11 @@ void GVCU_HIL_output(void)
   int32_T n;
   int8_T rtAction;
   int8_T rtPrevAction;
-  boolean_T b_y;
-  boolean_T exitg1;
   boolean_T rtb_Compare;
   boolean_T rtb_RelationalOperator;
   boolean_T rtb_fixforDTpropagationissue;
   boolean_T tmp;
+  boolean_T tmp_0;
   ZCEventType zcEvent;
   if (rtmIsMajorTimeStep(GVCU_HIL_M)) {
     /* set solver stop time */
@@ -2591,120 +2599,265 @@ void GVCU_HIL_output(void)
 
   _rtXdis = ((XDis_GVCU_HIL_T *) GVCU_HIL_M->contStateDisabled);
 
-  /* RateTransition: '<S1>/Rate Transition' incorporates:
-   *  RateTransition: '<S1>/Rate Transition1'
-   *  RateTransition: '<S1>/Rate Transition2'
-   *  RateTransition: '<S1>/Rate Transition3'
-   *  RateTransition: '<S5>/Rate Transition1'
-   *  RateTransition: '<S5>/Rate Transition10'
-   *  RateTransition: '<S5>/Rate Transition11'
-   *  RateTransition: '<S5>/Rate Transition14'
-   *  RateTransition: '<S5>/Rate Transition2'
-   *  RateTransition: '<S5>/Rate Transition3'
-   *  RateTransition: '<S5>/Rate Transition4'
-   *  RateTransition: '<S5>/Rate Transition5'
-   *  RateTransition: '<S5>/Rate Transition6'
-   *  RateTransition: '<S5>/Rate Transition7'
-   *  RateTransition: '<S5>/Rate Transition8'
-   *  RateTransition: '<S5>/Rate Transition9'
+  /* RateTransition: '<S3>/Rate Transition2' incorporates:
+   *  RateTransition: '<S2>/Rate Transition'
+   *  RateTransition: '<S2>/Rate Transition1'
+   *  RateTransition: '<S2>/Rate Transition2'
+   *  RateTransition: '<S2>/Rate Transition3'
+   *  RateTransition: '<S6>/Rate Transition1'
+   *  RateTransition: '<S6>/Rate Transition10'
+   *  RateTransition: '<S6>/Rate Transition11'
+   *  RateTransition: '<S6>/Rate Transition14'
+   *  RateTransition: '<S6>/Rate Transition2'
+   *  RateTransition: '<S6>/Rate Transition3'
+   *  RateTransition: '<S6>/Rate Transition4'
+   *  RateTransition: '<S6>/Rate Transition5'
+   *  RateTransition: '<S6>/Rate Transition6'
+   *  RateTransition: '<S6>/Rate Transition7'
+   *  RateTransition: '<S6>/Rate Transition8'
+   *  RateTransition: '<S6>/Rate Transition9'
    */
   tmp = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
          GVCU_HIL_M->Timing.TaskCounters.TID[1] == 0);
   if (tmp) {
-    /* S-Function (anorsimstepinitshmem): '<S8>/S-Function' */
+    /* S-Function (anorsimstepinitshmem): '<S9>/S-Function' */
 
-    /* Level2 S-Function Block: '<S8>/S-Function' (anorsimstepinitshmem) */
+    /* Level2 S-Function Block: '<S9>/S-Function' (anorsimstepinitshmem) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[0];
       sfcnOutputs(rts,0);
     }
 
-    /* S-Function (sysvarin): '<S36>/S-Function' */
+    /* Gain: '<S1>/Gain6' incorporates:
+     *  Gain: '<S14>/Gain'
+     */
+    GVCU_HIL_B.Gain6 = GVCU_HIL_P.Gain_Gain_iv * 0.0 * GVCU_HIL_P.Gain6_Gain;
+
+    /* S-Function (sigout): '<S16>/S-Function' */
+
+    /* Level2 S-Function Block: '<S16>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[1];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Saturate: '<S438>/Saturation' incorporates:
+     *  Constant: '<S438>/Constant9'
+     *  Sum: '<S438>/Add2'
+     */
+    if (GVCU_HIL_P.veh.TyreLoadedRadius_F > GVCU_HIL_P.Saturation_UpperSat) {
+      /* Saturate: '<S438>/Saturation' */
+      GVCU_HIL_B.Saturation = GVCU_HIL_P.Saturation_UpperSat;
+    } else if (GVCU_HIL_P.veh.TyreLoadedRadius_F <
+               GVCU_HIL_P.Saturation_LowerSat) {
+      /* Saturate: '<S438>/Saturation' */
+      GVCU_HIL_B.Saturation = GVCU_HIL_P.Saturation_LowerSat;
+    } else {
+      /* Saturate: '<S438>/Saturation' */
+      GVCU_HIL_B.Saturation = GVCU_HIL_P.veh.TyreLoadedRadius_F;
+    }
+
+    /* End of Saturate: '<S438>/Saturation' */
+
+    /* Gain: '<S380>/Gain1' incorporates:
+     *  Memory: '<S10>/Memory'
+     */
+    GVCU_HIL_B.Gain1 = GVCU_HIL_P.Gain1_Gain * GVCU_HIL_DW.Memory_PreviousInput;
+
+    /* Memory: '<S239>/Memory' */
+    GVCU_HIL_B.Memory = GVCU_HIL_DW.Memory_PreviousInput_f;
+
+    /* Constant: '<S238>/domega_o' */
+    GVCU_HIL_B.domega_o = GVCU_HIL_P.FL_domega_o;
+  }
+
+  /* Integrator: '<S239>/Integrator' */
+  if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
+    zcEvent = rt_ZCFcn(RISING_ZERO_CROSSING,
+                       &GVCU_HIL_PrevZCX.Integrator_Reset_ZCE,
+                       (GVCU_HIL_B.Memory));
+
+    /* evaluate zero-crossings */
+    if ((zcEvent != NO_ZCEVENT) || GVCU_HIL_DW.Integrator_DWORK1) {
+      GVCU_HIL_X.Integrator_CSTATE = GVCU_HIL_B.domega_o;
+    }
+  }
+
+  rtb_UnaryMinus3_j = GVCU_HIL_X.Integrator_CSTATE;
+
+  /* Sum: '<S238>/Subtract1' incorporates:
+   *  Gain: '<S238>/Gain1'
+   *  Gain: '<S238>/Gain2'
+   *  Integrator: '<S238>/Integrator'
+   *  Integrator: '<S239>/Integrator'
+   */
+  GVCU_HIL_B.Subtract1 = GVCU_HIL_P.FL_b * GVCU_HIL_X.Integrator_CSTATE +
+    GVCU_HIL_P.FL_k * GVCU_HIL_X.Integrator_CSTATE_j;
+
+  /* Integrator: '<S482>/Integrator' */
+  rtb_Integrator = GVCU_HIL_X.Integrator_CSTATE_a;
+
+  /* Gain: '<S438>/Sign convention' incorporates:
+   *  Integrator: '<S482>/Integrator'
+   *  Product: '<S465>/Product1'
+   *  Sum: '<S438>/Add1'
+   */
+  GVCU_HIL_B.Signconvention = (GVCU_HIL_B.Subtract1 -
+    GVCU_HIL_X.Integrator_CSTATE_a * GVCU_HIL_B.Saturation) *
+    GVCU_HIL_P.Signconvention_Gain;
+
+  /* Clock: '<S3>/Clock' incorporates:
+   *  Clock: '<S201>/Clock'
+   */
+  rtb_Pa_f_idx_0 = GVCU_HIL_M->Timing.t[0];
+
+  /* Clock: '<S3>/Clock' */
+  GVCU_HIL_B.Clock = rtb_Pa_f_idx_0;
+  if (tmp) {
+    /* S-Function (sysvarin): '<S46>/S-Function' */
     if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar, 1,
-         &GVCU_HIL_B.SFunction_l, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarin): '<S37>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_p, 1,
-         &GVCU_HIL_B.SFunction_o, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarin): '<S38>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_p0, 1,
-         &GVCU_HIL_B.SFunction_oj, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarin): '<S39>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_b, 1,
          &GVCU_HIL_B.SFunction_h, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 
-  /* If: '<S235>/If' incorporates:
-   *  If: '<S267>/If'
-   *  RateLimiter: '<S2>/Rate Limiter1'
-   *  Step: '<S11>/Step'
-   *  Step: '<S12>/Step'
-   *  Step: '<S13>/Step'
-   *  Step: '<S14>/Step'
-   *  Step: '<S1>/Step'
+  /* Integrator: '<S385>/Integrator' */
+  GVCU_HIL_B.Integrator = GVCU_HIL_X.Integrator_CSTATE_k;
+
+  /* SignalConversion generated from: '<S382>/Vector Concatenate2' incorporates:
+   *  Concatenate: '<S382>/Vector Concatenate2'
+   */
+  GVCU_HIL_B.VectorConcatenate2[0] = GVCU_HIL_B.Integrator;
+
+  /* SignalConversion generated from: '<S382>/Vector Concatenate2' incorporates:
+   *  Concatenate: '<S382>/Vector Concatenate2'
+   */
+  GVCU_HIL_B.VectorConcatenate2[1] = 0.0;
+
+  /* SignalConversion generated from: '<S382>/Vector Concatenate2' incorporates:
+   *  Concatenate: '<S382>/Vector Concatenate2'
+   */
+  GVCU_HIL_B.VectorConcatenate2[2] = 0.0;
+  if (tmp) {
+    /* S-Function (sysvarin): '<S45>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_l, 1,
+         &GVCU_HIL_B.SFunction_n, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+
+    /* RateTransition: '<S3>/0.01s' */
+    if (rtmIsMajorTimeStep(GVCU_HIL_M) &&
+        GVCU_HIL_M->Timing.TaskCounters.TID[4] == 0) {
+      GVCU_HIL_DW.u01s_Buffer = GVCU_HIL_B.SFunction_n;
+    }
+  }
+
+  /* RateTransition: '<S3>/0.01s' incorporates:
+   *  RateTransition: '<S3>/Rate Transition'
+   *  RateTransition: '<S3>/Rate Transition1'
+   *  RateTransition: '<S3>/Rate Transition2'
+   *  RateTransition: '<S3>/Rate Transition3'
+   */
+  tmp_0 = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
+           GVCU_HIL_M->Timing.TaskCounters.TID[4] == 0);
+  if (tmp_0) {
+    /* RateTransition: '<S3>/0.01s' */
+    GVCU_HIL_B.u01s = GVCU_HIL_DW.u01s_Buffer;
+  }
+
+  if (tmp) {
+    /* S-Function (sysvarin): '<S51>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_c, 1,
+         &GVCU_HIL_B.SFunction_p, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarin): '<S47>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_m, 1,
+         &GVCU_HIL_B.SFunction_l, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarin): '<S48>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_p, 1,
+         &GVCU_HIL_B.SFunction_o, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarin): '<S49>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_p0, 1,
+         &GVCU_HIL_B.SFunction_oj, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarin): '<S50>/S-Function' */
+    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_b, 1,
+         &GVCU_HIL_B.SFunction_h0, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+  }
+
+  /* If: '<S246>/If' incorporates:
+   *  If: '<S278>/If'
+   *  RateLimiter: '<S3>/Rate Limiter1'
+   *  Step: '<S22>/Step'
+   *  Step: '<S23>/Step'
+   *  Step: '<S24>/Step'
+   *  Step: '<S25>/Step'
    *  Step: '<S2>/Step'
-   *  Step: '<S2>/Step1'
+   *  Step: '<S3>/Step'
+   *  Step: '<S3>/Step1'
    */
   Add_tmp = GVCU_HIL_M->Timing.t[0];
 
-  /* Step: '<S2>/Step' */
+  /* Step: '<S3>/Step' */
   if (Add_tmp < GVCU_HIL_P.Step_Time) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_Y0;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_Y0;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_YFinal;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_YFinal;
   }
 
-  /* Step: '<S2>/Step1' */
+  /* Step: '<S3>/Step1' */
   if (Add_tmp < GVCU_HIL_P.Step1_Time) {
-    rtb_TransferFcn = GVCU_HIL_P.Step1_Y0;
+    rtb_Integrator_m = GVCU_HIL_P.Step1_Y0;
   } else {
-    rtb_TransferFcn = GVCU_HIL_P.Step1_YFinal;
+    rtb_Integrator_m = GVCU_HIL_P.Step1_YFinal;
   }
 
-  /* Sum: '<S2>/Add' incorporates:
-   *  Step: '<S2>/Step'
-   *  Step: '<S2>/Step1'
-   *  Sum: '<S2>/Subtract1'
+  /* Sum: '<S3>/Add' incorporates:
+   *  Step: '<S3>/Step'
+   *  Step: '<S3>/Step1'
+   *  Sum: '<S3>/Subtract1'
    */
-  GVCU_HIL_B.Add = (rtb_TrigonometricFunction2_o1 - rtb_TransferFcn) +
-    GVCU_HIL_B.SFunction_h;
+  GVCU_HIL_B.Add = (rtb_UnaryMinus1_i - rtb_Integrator_m) +
+    GVCU_HIL_B.SFunction_h0;
   if (tmp) {
-    /* MATLAB Function: '<S2>/MATLAB Function2' */
-    GVCU_HIL_B.RefVel = GVCU_HIL_B.SFunction_l;
-    idx = GVCU_HIL_B.RefVel;
-    t_rel = GVCU_HIL_B.SFunction_o;
-    b_xtmp = GVCU_HIL_B.SFunction_oj;
-    xtmp = GVCU_HIL_B.Add;
+    /* MATLAB Function: '<S3>/MATLAB Function2' */
+    rtb_Integrator_m = GVCU_HIL_B.SFunction_l;
+    b_xtmp = GVCU_HIL_B.SFunction_o;
+    rtb_RateLimiter = GVCU_HIL_B.SFunction_oj;
+    idx = GVCU_HIL_B.Add;
     if (!GVCU_HIL_DW.main_state_not_empty) {
       GVCU_HIL_DW.main_state_not_empty = true;
       GVCU_HIL_tic(&GVCU_HIL_DW.t_start.tv_sec, &GVCU_HIL_DW.t_start.tv_nsec);
     }
 
-    if ((t_rel != 0.0) && !(GVCU_HIL_DW.prev_trans_park_neutral != 0.0)) {
+    if ((b_xtmp != 0.0) && !(GVCU_HIL_DW.prev_trans_park_neutral != 0.0)) {
       GVCU_HIL_DW.pending_park_neutral = 1.0;
     }
 
-    if ((b_xtmp != 0.0) && !(GVCU_HIL_DW.prev_trans_neutral_drive != 0.0)) {
+    if ((rtb_RateLimiter != 0.0) && !(GVCU_HIL_DW.prev_trans_neutral_drive !=
+         0.0)) {
       GVCU_HIL_DW.pending_neutral_drive = 1.0;
     }
 
-    if ((xtmp != 0.0) && !(GVCU_HIL_DW.prev_trans_park_drive != 0.0)) {
+    if ((idx != 0.0) && !(GVCU_HIL_DW.prev_trans_park_drive != 0.0)) {
       GVCU_HIL_DW.pending_park_drive = 1.0;
     }
 
-    GVCU_HIL_DW.prev_trans_park_neutral = t_rel;
-    GVCU_HIL_DW.prev_trans_neutral_drive = b_xtmp;
-    GVCU_HIL_DW.prev_trans_park_drive = xtmp;
+    GVCU_HIL_DW.prev_trans_park_neutral = b_xtmp;
+    GVCU_HIL_DW.prev_trans_neutral_drive = rtb_RateLimiter;
+    GVCU_HIL_DW.prev_trans_park_drive = idx;
     if (GVCU_HIL_DW.main_state == 0.0) {
       if (GVCU_HIL_DW.pending_park_drive != 0.0) {
         GVCU_HIL_DW.main_state = 3.0;
@@ -2732,7 +2885,7 @@ void GVCU_HIL_output(void)
       break;
 
      case 1:
-      idx = 0.0;
+      rtb_Integrator_m = 0.0;
       switch ((int32_T)GVCU_HIL_DW.sub_state) {
        case 0:
         GVCU_HIL_DW.brake_switch_internal = 2.0;
@@ -2774,7 +2927,7 @@ void GVCU_HIL_output(void)
       break;
 
      case 2:
-      idx = 0.0;
+      rtb_Integrator_m = 0.0;
       switch ((int32_T)GVCU_HIL_DW.sub_state) {
        case 0:
         GVCU_HIL_DW.brake_switch_internal = 2.0;
@@ -2816,7 +2969,7 @@ void GVCU_HIL_output(void)
       break;
 
      case 3:
-      idx = 0.0;
+      rtb_Integrator_m = 0.0;
       switch ((int32_T)GVCU_HIL_DW.sub_state) {
        case 0:
         GVCU_HIL_DW.brake_switch_internal = 2.0;
@@ -2883,91 +3036,57 @@ void GVCU_HIL_output(void)
     GVCU_HIL_B.brake_switch = GVCU_HIL_DW.brake_switch_internal;
     GVCU_HIL_B.btn_paddle_ri = GVCU_HIL_DW.btn_paddle_ri_internal;
     GVCU_HIL_B.btn_paddle_le = GVCU_HIL_DW.btn_paddle_le_internal;
-    GVCU_HIL_B.RefVel = idx;
     GVCU_HIL_B.ign = 7.0;
 
-    /* End of MATLAB Function: '<S2>/MATLAB Function2' */
+    /* Gain: '<S3>/km//h to m//s' incorporates:
+     *  MATLAB Function: '<S3>/MATLAB Function2'
+     */
+    rtb_Integrator_m *= GVCU_HIL_P.kmhtoms_Gain;
 
-    /* S-Function (sigout): '<S32>/S-Function' */
-
-    /* Level2 S-Function Block: '<S32>/S-Function' (sigout) */
+    /* RateLimiter: '<S3>/Rate Limiter' */
+    rtb_UnaryMinus1_i = rtb_Integrator_m - GVCU_HIL_DW.PrevY;
+    if (rtb_UnaryMinus1_i > GVCU_HIL_P.RateLimiter_RisingLim * GVCU_HIL_period)
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[1];
-      sfcnOutputs(rts,0);
-    }
-
-    /* S-Function (sigout): '<S33>/S-Function' */
-
-    /* Level2 S-Function Block: '<S33>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[2];
-      sfcnOutputs(rts,0);
-    }
-  }
-
-  /* Clock: '<S2>/Clock' incorporates:
-   *  Clock: '<S190>/Clock'
-   */
-  rtb_TransferFcn = GVCU_HIL_M->Timing.t[0];
-
-  /* Clock: '<S2>/Clock' */
-  GVCU_HIL_B.Clock = rtb_TransferFcn;
-  if (tmp) {
-    /* S-Function (sysvarin): '<S35>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_h, 1,
-         &GVCU_HIL_B.SFunction_hk, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarin): '<S40>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_c, 1,
-         &GVCU_HIL_B.SFunction_p, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* Gain: '<S2>/km//h to m//s' */
-    rtb_Integrator = GVCU_HIL_P.kmhtoms_Gain * GVCU_HIL_B.RefVel;
-
-    /* RateLimiter: '<S2>/Rate Limiter' */
-    t_rel = rtb_Integrator - GVCU_HIL_DW.PrevY;
-    if (t_rel > GVCU_HIL_P.RateLimiter_RisingLim * GVCU_HIL_period) {
-      rtb_Integrator = GVCU_HIL_P.RateLimiter_RisingLim * GVCU_HIL_period +
+      rtb_RateLimiter = GVCU_HIL_P.RateLimiter_RisingLim * GVCU_HIL_period +
         GVCU_HIL_DW.PrevY;
-    } else if (t_rel < GVCU_HIL_P.RateLimiter_FallingLim * GVCU_HIL_period) {
-      rtb_Integrator = GVCU_HIL_P.RateLimiter_FallingLim * GVCU_HIL_period +
+    } else if (rtb_UnaryMinus1_i < GVCU_HIL_P.RateLimiter_FallingLim *
+               GVCU_HIL_period) {
+      rtb_RateLimiter = GVCU_HIL_P.RateLimiter_FallingLim * GVCU_HIL_period +
         GVCU_HIL_DW.PrevY;
+    } else {
+      rtb_RateLimiter = rtb_Integrator_m;
     }
 
-    GVCU_HIL_DW.PrevY = rtb_Integrator;
+    GVCU_HIL_DW.PrevY = rtb_RateLimiter;
 
-    /* End of RateLimiter: '<S2>/Rate Limiter' */
+    /* End of RateLimiter: '<S3>/Rate Limiter' */
 
-    /* MATLAB Function: '<S2>/MATLAB Function' incorporates:
-     *  Constant: '<S2>/Constant1'
-     *  Constant: '<S2>/Constant2'
-     *  Constant: '<S2>/Constant7'
-     *  Constant: '<S2>/Constant8'
-     *  Constant: '<S2>/Constant9'
+    /* MATLAB Function: '<S3>/MATLAB Function' incorporates:
+     *  Constant: '<S3>/Constant1'
+     *  Constant: '<S3>/Constant2'
+     *  Constant: '<S3>/Constant7'
+     *  Constant: '<S3>/Constant8'
+     *  Constant: '<S3>/Constant9'
      */
     idx = rt_roundd_snf(GVCU_HIL_B.SFunction_p);
     if (rtIsNaN(idx) || ((idx < 1.0) || (idx > 14.0))) {
       idx = 4.0;
     }
 
-    if (((GVCU_HIL_B.SFunction_hk == 2.0) || (GVCU_HIL_B.SFunction_hk == 3.0)) &&
-        (GVCU_HIL_DW.last_mode_f != GVCU_HIL_B.SFunction_hk)) {
+    if (((GVCU_HIL_B.SFunction_h == 2.0) || (GVCU_HIL_B.SFunction_h == 3.0)) &&
+        (GVCU_HIL_DW.last_mode_f != GVCU_HIL_B.SFunction_h)) {
       GVCU_HIL_DW.t_mode_start_e = GVCU_HIL_B.Clock;
     }
 
-    if ((GVCU_HIL_B.SFunction_hk == 3.0) && (GVCU_HIL_DW.last_cycle != idx)) {
+    if ((GVCU_HIL_B.SFunction_h == 3.0) && (GVCU_HIL_DW.last_cycle != idx)) {
       GVCU_HIL_DW.t_mode_start_e = GVCU_HIL_B.Clock;
     }
 
-    GVCU_HIL_DW.last_mode_f = GVCU_HIL_B.SFunction_hk;
+    GVCU_HIL_DW.last_mode_f = GVCU_HIL_B.SFunction_h;
     GVCU_HIL_DW.last_cycle = idx;
     GVCU_HIL_B.cycle_time_remaining = 0.0;
     GVCU_HIL_B.cycle_finished = 0.0;
-    if ((GVCU_HIL_B.SFunction_hk == 2.0) && (GVCU_HIL_DW.t_mode_start_e >= 0.0))
+    if ((GVCU_HIL_B.SFunction_h == 2.0) && (GVCU_HIL_DW.t_mode_start_e >= 0.0))
     {
       b_xtmp = fmin(GVCU_HIL_B.Clock - GVCU_HIL_DW.t_mode_start_e,
                     GVCU_HIL_P.veh_speed_time[2120]);
@@ -2975,7 +3094,7 @@ void GVCU_HIL_output(void)
              (real_T));
       memcpy(&GVCU_HIL_B.y_m[0], &GVCU_HIL_P.veh_speed_data[0], 2121U * sizeof
              (real_T));
-      rtb_Integrator = GVCU_HIL_P.veh_speed_data[2120];
+      rtb_RateLimiter = GVCU_HIL_P.veh_speed_data[2120];
       if (GVCU_HIL_P.veh_speed_time[1] < GVCU_HIL_P.veh_speed_time[0]) {
         for (n = 0; n < 1060; n++) {
           xtmp = GVCU_HIL_B.x_c[n];
@@ -2988,7 +3107,7 @@ void GVCU_HIL_output(void)
       }
 
       if (rtIsNaN(b_xtmp)) {
-        rtb_Integrator = (rtNaN);
+        rtb_RateLimiter = (rtNaN);
       } else if (!(b_xtmp > GVCU_HIL_B.x_c[2120]) && !(b_xtmp < GVCU_HIL_B.x_c[0]))
       {
         n = 1;
@@ -3004,27 +3123,27 @@ void GVCU_HIL_output(void)
           }
         }
 
-        xtmp = GVCU_HIL_B.x_c[n - 1];
-        b_xtmp = (b_xtmp - xtmp) / (GVCU_HIL_B.x_c[n] - xtmp);
+        rtb_RateLimiter = GVCU_HIL_B.x_c[n - 1];
+        b_xtmp = (b_xtmp - rtb_RateLimiter) / (GVCU_HIL_B.x_c[n] -
+          rtb_RateLimiter);
         if (b_xtmp == 0.0) {
-          rtb_Integrator = GVCU_HIL_B.y_m[n - 1];
+          rtb_RateLimiter = GVCU_HIL_B.y_m[n - 1];
         } else if (b_xtmp == 1.0) {
-          rtb_Integrator = GVCU_HIL_B.y_m[n];
+          rtb_RateLimiter = GVCU_HIL_B.y_m[n];
         } else if (GVCU_HIL_B.y_m[n - 1] == GVCU_HIL_B.y_m[n]) {
-          rtb_Integrator = GVCU_HIL_B.y_m[n - 1];
+          rtb_RateLimiter = GVCU_HIL_B.y_m[n - 1];
         } else {
-          rtb_Integrator = (1.0 - b_xtmp) * GVCU_HIL_B.y_m[n - 1] + b_xtmp *
+          rtb_RateLimiter = (1.0 - b_xtmp) * GVCU_HIL_B.y_m[n - 1] + b_xtmp *
             GVCU_HIL_B.y_m[n];
         }
       }
-    } else if ((GVCU_HIL_B.SFunction_hk == 3.0) && (GVCU_HIL_DW.t_mode_start_e >=
+    } else if ((GVCU_HIL_B.SFunction_h == 3.0) && (GVCU_HIL_DW.t_mode_start_e >=
                 0.0)) {
       b_low_ip1 = (int32_T)idx;
-      rtb_TrigonometricFunction2_o1 = rt_roundd_snf
-        (GVCU_HIL_P.cycle_len[b_low_ip1 - 1]);
-      if (rtb_TrigonometricFunction2_o1 < 2.147483648E+9) {
-        if (rtb_TrigonometricFunction2_o1 >= -2.147483648E+9) {
-          b_mid_i = (int32_T)rtb_TrigonometricFunction2_o1;
+      rtb_UnaryMinus1_i = rt_roundd_snf(GVCU_HIL_P.cycle_len[b_low_ip1 - 1]);
+      if (rtb_UnaryMinus1_i < 2.147483648E+9) {
+        if (rtb_UnaryMinus1_i >= -2.147483648E+9) {
+          b_mid_i = (int32_T)rtb_UnaryMinus1_i;
           n = b_mid_i;
         } else {
           b_mid_i = MIN_int32_T;
@@ -3036,14 +3155,14 @@ void GVCU_HIL_output(void)
       }
 
       n--;
-      t_rel = GVCU_HIL_B.Clock - GVCU_HIL_DW.t_mode_start_e;
+      rtb_Integrator_m = GVCU_HIL_B.Clock - GVCU_HIL_DW.t_mode_start_e;
       cycle_time_remaining_tmp_tmp = (b_low_ip1 - 1) * 1875;
       b_low_i = (cycle_time_remaining_tmp_tmp + b_mid_i) - 1;
       GVCU_HIL_B.cycle_time_remaining = fmax
-        (GVCU_HIL_P.cycle_time_matrix[b_low_i] - t_rel, 0.0);
-      if (t_rel >= GVCU_HIL_P.cycle_time_matrix[b_low_i]) {
+        (GVCU_HIL_P.cycle_time_matrix[b_low_i] - rtb_Integrator_m, 0.0);
+      if (rtb_Integrator_m >= GVCU_HIL_P.cycle_time_matrix[b_low_i]) {
         GVCU_HIL_B.cycle_finished = 1.0;
-        t_rel = GVCU_HIL_P.cycle_time_matrix[b_low_i];
+        rtb_Integrator_m = GVCU_HIL_P.cycle_time_matrix[b_low_i];
       }
 
       for (b_low_ip1 = 0; b_low_ip1 <= n; b_low_ip1++) {
@@ -3052,7 +3171,7 @@ void GVCU_HIL_output(void)
         GVCU_HIL_B.b_y_data[b_low_ip1] = GVCU_HIL_P.cycle_speed_matrix[b_x_tmp];
       }
 
-      rtb_Integrator = GVCU_HIL_P.cycle_speed_matrix[b_low_i];
+      rtb_RateLimiter = GVCU_HIL_P.cycle_speed_matrix[b_low_i];
       if (GVCU_HIL_P.cycle_time_matrix[cycle_time_remaining_tmp_tmp + 1] <
           GVCU_HIL_P.cycle_time_matrix[cycle_time_remaining_tmp_tmp]) {
         b_low_i = (uint16_T)(b_mid_i >> 1);
@@ -3079,10 +3198,10 @@ void GVCU_HIL_output(void)
         }
       }
 
-      if (rtIsNaN(t_rel)) {
-        rtb_Integrator = (rtNaN);
-      } else if (!(t_rel > GVCU_HIL_B.b_x_data[b_mid_i - 1]) && !(t_rel <
-                  GVCU_HIL_B.b_x_data[0])) {
+      if (rtIsNaN(rtb_Integrator_m)) {
+        rtb_RateLimiter = (rtNaN);
+      } else if (!(rtb_Integrator_m > GVCU_HIL_B.b_x_data[b_mid_i - 1]) &&
+                 !(rtb_Integrator_m < GVCU_HIL_B.b_x_data[0])) {
         n = b_mid_i;
         b_low_i = 1;
         b_low_ip1 = 2;
@@ -3092,7 +3211,7 @@ void GVCU_HIL_output(void)
             b_mid_i++;
           }
 
-          if (t_rel >= GVCU_HIL_B.b_x_data[b_mid_i - 1]) {
+          if (rtb_Integrator_m >= GVCU_HIL_B.b_x_data[b_mid_i - 1]) {
             b_low_i = b_mid_i;
             b_low_ip1 = b_mid_i + 1;
           } else {
@@ -3101,121 +3220,49 @@ void GVCU_HIL_output(void)
         }
 
         b_xtmp = GVCU_HIL_B.b_x_data[b_low_i - 1];
-        t_rel = (t_rel - b_xtmp) / (GVCU_HIL_B.b_x_data[b_low_i] - b_xtmp);
-        if (t_rel == 0.0) {
-          rtb_Integrator = GVCU_HIL_B.b_y_data[b_low_i - 1];
-        } else if (t_rel == 1.0) {
-          rtb_Integrator = GVCU_HIL_B.b_y_data[b_low_i];
+        rtb_Integrator_m = (rtb_Integrator_m - b_xtmp) /
+          (GVCU_HIL_B.b_x_data[b_low_i] - b_xtmp);
+        if (rtb_Integrator_m == 0.0) {
+          rtb_RateLimiter = GVCU_HIL_B.b_y_data[b_low_i - 1];
+        } else if (rtb_Integrator_m == 1.0) {
+          rtb_RateLimiter = GVCU_HIL_B.b_y_data[b_low_i];
         } else if (GVCU_HIL_B.b_y_data[b_low_i - 1] ==
                    GVCU_HIL_B.b_y_data[b_low_i]) {
-          rtb_Integrator = GVCU_HIL_B.b_y_data[b_low_i - 1];
+          rtb_RateLimiter = GVCU_HIL_B.b_y_data[b_low_i - 1];
         } else {
-          rtb_Integrator = (1.0 - t_rel) * GVCU_HIL_B.b_y_data[b_low_i - 1] +
-            t_rel * GVCU_HIL_B.b_y_data[b_low_i];
+          rtb_RateLimiter = (1.0 - rtb_Integrator_m) *
+            GVCU_HIL_B.b_y_data[b_low_i - 1] + rtb_Integrator_m *
+            GVCU_HIL_B.b_y_data[b_low_i];
         }
       }
     }
 
-    /* End of MATLAB Function: '<S2>/MATLAB Function' */
+    /* End of MATLAB Function: '<S3>/MATLAB Function' */
 
-    /* S-Function (sysvarout): '<S41>/S-Function' */
-    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_b4, 1,
-         &GVCU_HIL_B.cycle_time_remaining, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sysvarout): '<S42>/S-Function' */
-    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_c1, 1,
-         &GVCU_HIL_B.cycle_finished, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* RateTransition: '<S2>/Rate Transition3' incorporates:
-     *  Constant: '<S2>/Constant'
-     */
-    if (rtmIsMajorTimeStep(GVCU_HIL_M) &&
-        GVCU_HIL_M->Timing.TaskCounters.TID[4] == 0) {
-      GVCU_HIL_DW.RateTransition3_Buffer = GVCU_HIL_P.Constant_Value_d;
-    }
-  }
-
-  /* RateTransition: '<S2>/Rate Transition3' incorporates:
-   *  RateTransition: '<S2>/0.01s'
-   *  RateTransition: '<S2>/Rate Transition'
-   *  RateTransition: '<S2>/Rate Transition1'
-   *  RateTransition: '<S2>/Rate Transition2'
-   */
-  b_y = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
-         GVCU_HIL_M->Timing.TaskCounters.TID[4] == 0);
-  if (b_y) {
-    /* RateTransition: '<S2>/Rate Transition3' */
-    GVCU_HIL_B.RateTransition3 = GVCU_HIL_DW.RateTransition3_Buffer;
-
-    /* S-Function (sysvarout): '<S43>/S-Function' */
-    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_f, 1,
-         &GVCU_HIL_B.RateTransition3, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-  }
-
-  /* Integrator: '<S374>/Integrator' */
-  GVCU_HIL_B.Integrator = GVCU_HIL_X.Integrator_CSTATE;
-
-  /* SignalConversion generated from: '<S371>/Vector Concatenate2' incorporates:
-   *  Concatenate: '<S371>/Vector Concatenate2'
-   */
-  GVCU_HIL_B.VectorConcatenate2[0] = GVCU_HIL_B.Integrator;
-
-  /* SignalConversion generated from: '<S371>/Vector Concatenate2' incorporates:
-   *  Concatenate: '<S371>/Vector Concatenate2'
-   */
-  GVCU_HIL_B.VectorConcatenate2[1] = 0.0;
-
-  /* SignalConversion generated from: '<S371>/Vector Concatenate2' incorporates:
-   *  Concatenate: '<S371>/Vector Concatenate2'
-   */
-  GVCU_HIL_B.VectorConcatenate2[2] = 0.0;
-  if (tmp) {
-    /* S-Function (sysvarin): '<S34>/S-Function' */
-    if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_l, 1,
-         &GVCU_HIL_B.SFunction_n, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* RateTransition: '<S2>/0.01s' */
-    if (b_y) {
-      GVCU_HIL_DW.u01s_Buffer = GVCU_HIL_B.SFunction_n;
-    }
-
-    /* Saturate: '<S2>/Saturation' */
-    if (rtb_Integrator > GVCU_HIL_P.Saturation_UpperSat) {
-      /* Saturate: '<S2>/Saturation' */
-      GVCU_HIL_B.Saturation = GVCU_HIL_P.Saturation_UpperSat;
-    } else if (rtb_Integrator < GVCU_HIL_P.Saturation_LowerSat) {
-      /* Saturate: '<S2>/Saturation' */
-      GVCU_HIL_B.Saturation = GVCU_HIL_P.Saturation_LowerSat;
+    /* Saturate: '<S3>/Saturation' */
+    if (rtb_RateLimiter > GVCU_HIL_P.Saturation_UpperSat_f) {
+      /* Saturate: '<S3>/Saturation' */
+      GVCU_HIL_B.Saturation_d = GVCU_HIL_P.Saturation_UpperSat_f;
+    } else if (rtb_RateLimiter < GVCU_HIL_P.Saturation_LowerSat_c) {
+      /* Saturate: '<S3>/Saturation' */
+      GVCU_HIL_B.Saturation_d = GVCU_HIL_P.Saturation_LowerSat_c;
     } else {
-      /* Saturate: '<S2>/Saturation' */
-      GVCU_HIL_B.Saturation = rtb_Integrator;
+      /* Saturate: '<S3>/Saturation' */
+      GVCU_HIL_B.Saturation_d = rtb_RateLimiter;
     }
 
-    /* End of Saturate: '<S2>/Saturation' */
+    /* End of Saturate: '<S3>/Saturation' */
   }
 
-  /* RateTransition: '<S2>/0.01s' */
-  if (b_y) {
-    /* RateTransition: '<S2>/0.01s' */
-    GVCU_HIL_B.u01s = GVCU_HIL_DW.u01s_Buffer;
-  }
-
-  /* Sum: '<S48>/Subtract' */
-  GVCU_HIL_B.Subtract = GVCU_HIL_B.VectorConcatenate2[0] - GVCU_HIL_B.Saturation;
+  /* Sum: '<S59>/Subtract' */
+  GVCU_HIL_B.Subtract = GVCU_HIL_B.VectorConcatenate2[0] -
+    GVCU_HIL_B.Saturation_d;
   if (tmp) {
-    /* Gain: '<S93>/Proportional Gain' */
+    /* Gain: '<S104>/Proportional Gain' */
     rtb_ProportionalGain = GVCU_HIL_P.PIController_P * GVCU_HIL_B.Subtract;
   }
 
-  /* Relay: '<S48>/Relay' */
+  /* Relay: '<S59>/Relay' */
   if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
     GVCU_HIL_DW.Relay_Mode = ((GVCU_HIL_B.Subtract >= GVCU_HIL_P.Relay_OnVal) ||
       (!(GVCU_HIL_B.Subtract <= GVCU_HIL_P.Relay_OffVal) &&
@@ -3223,66 +3270,69 @@ void GVCU_HIL_output(void)
   }
 
   if (GVCU_HIL_DW.Relay_Mode) {
-    /* Relay: '<S48>/Relay' */
+    /* Relay: '<S59>/Relay' */
     GVCU_HIL_B.Relay = GVCU_HIL_P.Relay_YOn;
   } else {
-    /* Relay: '<S48>/Relay' */
+    /* Relay: '<S59>/Relay' */
     GVCU_HIL_B.Relay = GVCU_HIL_P.Relay_YOff;
   }
 
-  /* End of Relay: '<S48>/Relay' */
+  /* End of Relay: '<S59>/Relay' */
   if (tmp) {
-    /* DiscreteIntegrator: '<S88>/Integrator' */
+    /* DiscreteIntegrator: '<S99>/Integrator' */
     if ((GVCU_HIL_B.Relay != 0.0) || (GVCU_HIL_DW.Integrator_PrevResetState != 0))
     {
       GVCU_HIL_DW.Integrator_DSTATE = GVCU_HIL_P.PIController_InitialConditionFo;
     }
 
-    /* Sum: '<S97>/Sum' incorporates:
-     *  DiscreteIntegrator: '<S88>/Integrator'
+    /* Sum: '<S108>/Sum' incorporates:
+     *  DiscreteIntegrator: '<S99>/Integrator'
      */
-    rtb_Add_m = rtb_ProportionalGain + GVCU_HIL_DW.Integrator_DSTATE;
+    rtb_rpm = rtb_ProportionalGain + GVCU_HIL_DW.Integrator_DSTATE;
 
-    /* Saturate: '<S95>/Saturation' */
-    if (rtb_Add_m > GVCU_HIL_P.PIController_UpperSaturationLim) {
+    /* Saturate: '<S106>/Saturation' */
+    if (rtb_rpm > GVCU_HIL_P.PIController_UpperSaturationLim) {
       rtb_u19mm = GVCU_HIL_P.PIController_UpperSaturationLim;
-    } else if (rtb_Add_m < GVCU_HIL_P.PIController_LowerSaturationLim) {
+    } else if (rtb_rpm < GVCU_HIL_P.PIController_LowerSaturationLim) {
       rtb_u19mm = GVCU_HIL_P.PIController_LowerSaturationLim;
     } else {
-      rtb_u19mm = rtb_Add_m;
+      rtb_u19mm = rtb_rpm;
     }
 
-    /* End of Saturate: '<S95>/Saturation' */
+    /* End of Saturate: '<S106>/Saturation' */
 
-    /* Switch: '<S28>/Switch3' */
+    /* Switch: '<S39>/Switch3' */
     if (GVCU_HIL_B.u01s > GVCU_HIL_P.Switch3_Threshold) {
-      /* Switch: '<S28>/Switch3' */
+      /* Switch: '<S39>/Switch3' */
       GVCU_HIL_B.Switch3 = GVCU_HIL_B.u01s;
     } else {
-      /* Switch: '<S28>/Switch3' */
+      /* Switch: '<S39>/Switch3' */
       GVCU_HIL_B.Switch3 = rtb_u19mm;
     }
 
-    /* End of Switch: '<S28>/Switch3' */
+    /* End of Switch: '<S39>/Switch3' */
   }
 
-  /* Switch: '<S28>/Switch1' */
+  /* Switch: '<S39>/Switch1' */
   if (GVCU_HIL_B.Switch3 > GVCU_HIL_P.Switch1_Threshold) {
-    rtb_ProportionalGain = GVCU_HIL_B.VectorConcatenate2[0];
+    idx = GVCU_HIL_B.VectorConcatenate2[0];
   } else {
-    rtb_ProportionalGain = GVCU_HIL_B.Saturation;
+    idx = GVCU_HIL_B.Saturation_d;
   }
 
-  /* End of Switch: '<S28>/Switch1' */
+  /* End of Switch: '<S39>/Switch1' */
+
+  /* Integrator: '<S117>/Integrator' */
+  rtb_ProportionalGain = GVCU_HIL_X.Integrator_CSTATE_i;
   if (tmp) {
-    /* RelationalOperator: '<S47>/Compare' incorporates:
-     *  Constant: '<S47>/Constant'
+    /* RelationalOperator: '<S58>/Compare' incorporates:
+     *  Constant: '<S58>/Constant'
      */
     GVCU_HIL_B.Compare = (GVCU_HIL_B.Switch3 >
                           GVCU_HIL_P.CompareToConstant_const);
   }
 
-  /* Integrator: '<S28>/Integrator1' */
+  /* Integrator: '<S39>/Integrator1' */
   /* Limited  Integrator  */
   if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
     rtb_RelationalOperator = (((GVCU_HIL_PrevZCX.Integrator1_Reset_ZCE ==
@@ -3302,61 +3352,59 @@ void GVCU_HIL_output(void)
     GVCU_HIL_X.Integrator1_CSTATE = GVCU_HIL_P.Integrator1_LowerSat;
   }
 
-  /* Sum: '<S28>/Sum1' incorporates:
-   *  Gain: '<S28>/Kff'
-   *  Gain: '<S28>/kp'
-   *  Integrator: '<S106>/Integrator'
-   *  Integrator: '<S28>/Integrator1'
+  /* Sum: '<S39>/Sum1' incorporates:
+   *  Gain: '<S39>/Kff'
+   *  Gain: '<S39>/kp'
+   *  Integrator: '<S117>/Integrator'
+   *  Integrator: '<S39>/Integrator1'
    */
-  rtb_Integrator = (GVCU_HIL_P.Kff_Gain * rtb_ProportionalGain +
-                    GVCU_HIL_P.kp_Gain * GVCU_HIL_X.Integrator_CSTATE_i) +
-    GVCU_HIL_X.Integrator1_CSTATE;
+  rtb_Sum1 = (GVCU_HIL_P.Kff_Gain * idx + GVCU_HIL_P.kp_Gain *
+              GVCU_HIL_X.Integrator_CSTATE_i) + GVCU_HIL_X.Integrator1_CSTATE;
 
-  /* Saturate: '<S28>/0 to 1 ' */
-  if (rtb_Integrator > GVCU_HIL_P.uto1_UpperSat) {
-    idx = GVCU_HIL_P.uto1_UpperSat;
-  } else if (rtb_Integrator < GVCU_HIL_P.uto1_LowerSat) {
-    idx = GVCU_HIL_P.uto1_LowerSat;
+  /* Saturate: '<S39>/0 to 1 ' */
+  if (rtb_Sum1 > GVCU_HIL_P.uto1_UpperSat) {
+    rtb_uto1 = GVCU_HIL_P.uto1_UpperSat;
+  } else if (rtb_Sum1 < GVCU_HIL_P.uto1_LowerSat) {
+    rtb_uto1 = GVCU_HIL_P.uto1_LowerSat;
   } else {
-    idx = rtb_Integrator;
+    rtb_uto1 = rtb_Sum1;
   }
 
-  /* End of Saturate: '<S28>/0 to 1 ' */
+  /* End of Saturate: '<S39>/0 to 1 ' */
 
-  /* Gain: '<S28>/Gain' */
-  b_xtmp = GVCU_HIL_P.Gain_Gain_a * idx;
+  /* Gain: '<S39>/Gain' */
+  rtb_Integrator_m = GVCU_HIL_P.Gain_Gain_a * rtb_uto1;
 
-  /* RateLimiter: '<S2>/Rate Limiter1' */
+  /* RateLimiter: '<S3>/Rate Limiter1' */
   if (GVCU_HIL_DW.LastMajorTime == (rtInf)) {
-    /* RateLimiter: '<S2>/Rate Limiter1' */
-    GVCU_HIL_B.RateLimiter1 = b_xtmp;
+    /* RateLimiter: '<S3>/Rate Limiter1' */
+    GVCU_HIL_B.RateLimiter1 = rtb_Integrator_m;
   } else {
-    xtmp = Add_tmp - GVCU_HIL_DW.LastMajorTime;
+    b_xtmp = Add_tmp - GVCU_HIL_DW.LastMajorTime;
     if (GVCU_HIL_DW.LastMajorTime == Add_tmp) {
       if (GVCU_HIL_DW.PrevLimited) {
-        /* RateLimiter: '<S2>/Rate Limiter1' */
+        /* RateLimiter: '<S3>/Rate Limiter1' */
         GVCU_HIL_B.RateLimiter1 = GVCU_HIL_DW.PrevY_m;
       } else {
-        /* RateLimiter: '<S2>/Rate Limiter1' */
-        GVCU_HIL_B.RateLimiter1 = b_xtmp;
+        /* RateLimiter: '<S3>/Rate Limiter1' */
+        GVCU_HIL_B.RateLimiter1 = rtb_Integrator_m;
       }
     } else {
-      rtb_TrigonometricFunction2_o1 = xtmp * GVCU_HIL_P.RateLimiter1_RisingLim;
-      t_rel = b_xtmp - GVCU_HIL_DW.PrevY_m;
-      if (t_rel > rtb_TrigonometricFunction2_o1) {
-        /* RateLimiter: '<S2>/Rate Limiter1' */
-        GVCU_HIL_B.RateLimiter1 = GVCU_HIL_DW.PrevY_m +
-          rtb_TrigonometricFunction2_o1;
+      rtb_RateLimiter = b_xtmp * GVCU_HIL_P.RateLimiter1_RisingLim;
+      rtb_UnaryMinus1_i = rtb_Integrator_m - GVCU_HIL_DW.PrevY_m;
+      if (rtb_UnaryMinus1_i > rtb_RateLimiter) {
+        /* RateLimiter: '<S3>/Rate Limiter1' */
+        GVCU_HIL_B.RateLimiter1 = GVCU_HIL_DW.PrevY_m + rtb_RateLimiter;
         rtb_RelationalOperator = true;
       } else {
-        xtmp *= GVCU_HIL_P.RateLimiter1_FallingLim;
-        if (t_rel < xtmp) {
-          /* RateLimiter: '<S2>/Rate Limiter1' */
-          GVCU_HIL_B.RateLimiter1 = GVCU_HIL_DW.PrevY_m + xtmp;
+        b_xtmp *= GVCU_HIL_P.RateLimiter1_FallingLim;
+        if (rtb_UnaryMinus1_i < b_xtmp) {
+          /* RateLimiter: '<S3>/Rate Limiter1' */
+          GVCU_HIL_B.RateLimiter1 = GVCU_HIL_DW.PrevY_m + b_xtmp;
           rtb_RelationalOperator = true;
         } else {
-          /* RateLimiter: '<S2>/Rate Limiter1' */
-          GVCU_HIL_B.RateLimiter1 = b_xtmp;
+          /* RateLimiter: '<S3>/Rate Limiter1' */
+          GVCU_HIL_B.RateLimiter1 = rtb_Integrator_m;
           rtb_RelationalOperator = false;
         }
       }
@@ -3368,20 +3416,20 @@ void GVCU_HIL_output(void)
   }
 
   if (tmp) {
-    /* MATLAB Function: '<S2>/MATLAB Function1' incorporates:
-     *  Constant: '<S2>/Constant3'
-     *  Constant: '<S2>/Constant4'
-     *  Constant: '<S2>/Constant5'
-     *  Constant: '<S2>/Constant6'
+    /* MATLAB Function: '<S3>/MATLAB Function1' incorporates:
+     *  Constant: '<S3>/Constant3'
+     *  Constant: '<S3>/Constant4'
+     *  Constant: '<S3>/Constant5'
+     *  Constant: '<S3>/Constant6'
      */
-    if ((GVCU_HIL_B.SFunction_hk == 1.0) && (GVCU_HIL_DW.last_mode != 1.0)) {
+    if ((GVCU_HIL_B.SFunction_h == 1.0) && (GVCU_HIL_DW.last_mode != 1.0)) {
       GVCU_HIL_DW.t_mode_start = GVCU_HIL_B.Clock;
     }
 
-    GVCU_HIL_DW.last_mode = GVCU_HIL_B.SFunction_hk;
-    if ((GVCU_HIL_B.SFunction_hk == 1.0) && (GVCU_HIL_DW.t_mode_start >= 0.0)) {
-      t_rel = GVCU_HIL_B.Clock - GVCU_HIL_DW.t_mode_start;
-      b_xtmp = fmin(t_rel, GVCU_HIL_P.acc_pedal_time[10607]);
+    GVCU_HIL_DW.last_mode = GVCU_HIL_B.SFunction_h;
+    if ((GVCU_HIL_B.SFunction_h == 1.0) && (GVCU_HIL_DW.t_mode_start >= 0.0)) {
+      rtb_Integrator_m = GVCU_HIL_B.Clock - GVCU_HIL_DW.t_mode_start;
+      b_xtmp = fmin(rtb_Integrator_m, GVCU_HIL_P.acc_pedal_time[10607]);
       memcpy(&GVCU_HIL_B.x[0], &GVCU_HIL_P.acc_pedal_time[0], 10608U * sizeof
              (real_T));
       memcpy(&GVCU_HIL_B.y[0], &GVCU_HIL_P.acc_pedal_data[0], 10608U * sizeof
@@ -3415,8 +3463,8 @@ void GVCU_HIL_output(void)
           }
         }
 
-        xtmp = GVCU_HIL_B.x[n - 1];
-        b_xtmp = (b_xtmp - xtmp) / (GVCU_HIL_B.x[n] - xtmp);
+        rtb_RateLimiter = GVCU_HIL_B.x[n - 1];
+        b_xtmp = (b_xtmp - rtb_RateLimiter) / (GVCU_HIL_B.x[n] - rtb_RateLimiter);
         if (b_xtmp == 0.0) {
           GVCU_HIL_B.pedal_out = GVCU_HIL_B.y[n - 1];
         } else if (b_xtmp == 1.0) {
@@ -3429,7 +3477,7 @@ void GVCU_HIL_output(void)
         }
       }
 
-      rtb_u19mm = fmin(t_rel, GVCU_HIL_P.brk_pedal_time[2120]);
+      rtb_u19mm = fmin(rtb_Integrator_m, GVCU_HIL_P.brk_pedal_time[2120]);
       memcpy(&GVCU_HIL_B.x_c[0], &GVCU_HIL_P.brk_pedal_time[0], 2121U * sizeof
              (real_T));
       memcpy(&GVCU_HIL_B.y_m[0], &GVCU_HIL_P.brk_pedal_data[0], 2121U * sizeof
@@ -3464,23 +3512,24 @@ void GVCU_HIL_output(void)
         }
 
         b_xtmp = GVCU_HIL_B.x_c[b_low_i - 1];
-        t_rel = (rtb_u19mm - b_xtmp) / (GVCU_HIL_B.x_c[b_low_i] - b_xtmp);
-        if (t_rel == 0.0) {
+        rtb_Integrator_m = (rtb_u19mm - b_xtmp) / (GVCU_HIL_B.x_c[b_low_i] -
+          b_xtmp);
+        if (rtb_Integrator_m == 0.0) {
           rtb_brake_out = GVCU_HIL_B.y_m[b_low_i - 1];
-        } else if (t_rel == 1.0) {
+        } else if (rtb_Integrator_m == 1.0) {
           rtb_brake_out = GVCU_HIL_B.y_m[b_low_i];
         } else if (GVCU_HIL_B.y_m[b_low_i - 1] == GVCU_HIL_B.y_m[b_low_i]) {
           rtb_brake_out = GVCU_HIL_B.y_m[b_low_i - 1];
         } else {
-          rtb_brake_out = (1.0 - t_rel) * GVCU_HIL_B.y_m[b_low_i - 1] + t_rel *
-            GVCU_HIL_B.y_m[b_low_i];
+          rtb_brake_out = (1.0 - rtb_Integrator_m) * GVCU_HIL_B.y_m[b_low_i - 1]
+            + rtb_Integrator_m * GVCU_HIL_B.y_m[b_low_i];
         }
       }
     } else {
       GVCU_HIL_B.pedal_out = GVCU_HIL_B.RateLimiter1;
 
-      /* Switch: '<S28>/Switch' incorporates:
-       *  Constant: '<S28>/Constant'
+      /* Switch: '<S39>/Switch' incorporates:
+       *  Constant: '<S39>/Constant'
        */
       if (GVCU_HIL_B.Switch3 > GVCU_HIL_P.Switch_Threshold) {
         rtb_brake_out = GVCU_HIL_B.Switch3;
@@ -3488,664 +3537,93 @@ void GVCU_HIL_output(void)
         rtb_brake_out = GVCU_HIL_P.Constant_Value;
       }
 
-      /* End of Switch: '<S28>/Switch' */
+      /* End of Switch: '<S39>/Switch' */
     }
 
-    /* End of MATLAB Function: '<S2>/MATLAB Function1' */
+    /* End of MATLAB Function: '<S3>/MATLAB Function1' */
 
-    /* Lookup_n-D: '<S2>/1-D Lookup Table3' */
+    /* Lookup_n-D: '<S3>/1-D Lookup Table3' */
     rtb_u19mm = look1_binlxpw(rtb_brake_out, GVCU_HIL_P.uDLookupTable3_bp01Data,
       GVCU_HIL_P.uDLookupTable3_tableData, 3U);
 
-    /* Saturate: '<S2>/0 - 19 mm' */
+    /* Saturate: '<S3>/0 - 19 mm' */
     if (rtb_u19mm > GVCU_HIL_P.u19mm_UpperSat) {
       rtb_u19mm = GVCU_HIL_P.u19mm_UpperSat;
     } else if (rtb_u19mm < GVCU_HIL_P.u19mm_LowerSat) {
       rtb_u19mm = GVCU_HIL_P.u19mm_LowerSat;
     }
 
-    /* End of Saturate: '<S2>/0 - 19 mm' */
+    /* End of Saturate: '<S3>/0 - 19 mm' */
 
-    /* Lookup_n-D: '<S2>/1-D Lookup Table1' incorporates:
-     *  Saturate: '<S2>/0 - 19 mm'
+    /* Lookup_n-D: '<S3>/1-D Lookup Table1' incorporates:
+     *  Saturate: '<S3>/0 - 19 mm'
      */
     rtb_bar = look1_binlxpw(rtb_u19mm, GVCU_HIL_P.uDLookupTable1_bp01Data,
       GVCU_HIL_P.uDLookupTable1_tableData, 9U);
 
-    /* RateTransition: '<S2>/Rate Transition2' */
-    if (b_y) {
-      GVCU_HIL_DW.RateTransition2_Buffer = rtb_bar;
-    }
-  }
-
-  /* RateTransition: '<S2>/Rate Transition2' */
-  if (b_y) {
-    /* RateTransition: '<S2>/Rate Transition2' */
-    GVCU_HIL_B.RateTransition2 = GVCU_HIL_DW.RateTransition2_Buffer;
-
-    /* S-Function (sysvarout): '<S44>/S-Function' */
-    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_hn, 1,
-         &GVCU_HIL_B.RateTransition2, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-  }
-
-  if (tmp && b_y) {
-    /* RateTransition: '<S2>/Rate Transition' incorporates:
-     *  Lookup_n-D: '<S2>/1-D Lookup Table'
+    /* Gain: '<S378>/Gain' incorporates:
+     *  Constant: '<S378>/Constant1'
+     *  Product: '<S378>/Product'
      */
-    GVCU_HIL_DW.RateTransition_Buffer = look1_binlxpw(GVCU_HIL_B.pedal_out,
-      GVCU_HIL_P.uDLookupTable_bp01Data, GVCU_HIL_P.uDLookupTable_tableData, 99U);
-  }
-
-  /* RateTransition: '<S2>/Rate Transition' */
-  if (b_y) {
-    /* RateTransition: '<S2>/Rate Transition' */
-    GVCU_HIL_B.RateTransition = GVCU_HIL_DW.RateTransition_Buffer;
-
-    /* S-Function (sysvarout): '<S45>/S-Function' */
-    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_o, 1,
-         &GVCU_HIL_B.RateTransition, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-  }
-
-  if (tmp && b_y) {
-    /* RateTransition: '<S2>/Rate Transition1' incorporates:
-     *  Lookup_n-D: '<S2>/1-D Lookup Table2'
-     */
-    GVCU_HIL_DW.RateTransition1_Buffer = look1_binlxpw(GVCU_HIL_B.pedal_out,
-      GVCU_HIL_P.uDLookupTable2_bp01Data_d,
-      GVCU_HIL_P.uDLookupTable2_tableData_p, 99U);
-  }
-
-  /* RateTransition: '<S2>/Rate Transition1' */
-  if (b_y) {
-    /* RateTransition: '<S2>/Rate Transition1' */
-    GVCU_HIL_B.RateTransition1 = GVCU_HIL_DW.RateTransition1_Buffer;
-
-    /* S-Function (sysvarout): '<S46>/S-Function' */
-    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_a, 1,
-         &GVCU_HIL_B.RateTransition1, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-  }
-
-  if (tmp) {
-    /* S-Function (sysvarout): '<S50>/S-Function' */
-    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_d, 1,
-         &GVCU_HIL_B.Switch3, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* DeadZone: '<S80>/DeadZone' */
-    if (rtb_Add_m > GVCU_HIL_P.PIController_UpperSaturationLim) {
-      rtb_Add_m -= GVCU_HIL_P.PIController_UpperSaturationLim;
-    } else if (rtb_Add_m >= GVCU_HIL_P.PIController_LowerSaturationLim) {
-      rtb_Add_m = 0.0;
-    } else {
-      rtb_Add_m -= GVCU_HIL_P.PIController_LowerSaturationLim;
-    }
-
-    /* End of DeadZone: '<S80>/DeadZone' */
-
-    /* RelationalOperator: '<S78>/Relational Operator' incorporates:
-     *  Constant: '<S78>/Clamping_zero'
-     */
-    rtb_RelationalOperator = (GVCU_HIL_P.Clamping_zero_Value != rtb_Add_m);
-
-    /* RelationalOperator: '<S78>/fix for DT propagation issue' incorporates:
-     *  Constant: '<S78>/Clamping_zero'
-     */
-    rtb_fixforDTpropagationissue = (rtb_Add_m > GVCU_HIL_P.Clamping_zero_Value);
-
-    /* Gain: '<S85>/Integral Gain' */
-    rtb_Add_m = GVCU_HIL_P.PIController_I * GVCU_HIL_B.Subtract;
-
-    /* Switch: '<S78>/Switch1' incorporates:
-     *  Constant: '<S78>/Constant'
-     *  Constant: '<S78>/Constant2'
-     */
-    if (rtb_fixforDTpropagationissue) {
-      rtPrevAction = GVCU_HIL_P.Constant_Value_gy;
-    } else {
-      rtPrevAction = GVCU_HIL_P.Constant2_Value_f2;
-    }
-
-    /* Switch: '<S78>/Switch2' incorporates:
-     *  Constant: '<S78>/Clamping_zero'
-     *  Constant: '<S78>/Constant3'
-     *  Constant: '<S78>/Constant4'
-     *  RelationalOperator: '<S78>/fix for DT propagation issue1'
-     */
-    if (rtb_Add_m > GVCU_HIL_P.Clamping_zero_Value) {
-      rtAction = GVCU_HIL_P.Constant3_Value_g;
-    } else {
-      rtAction = GVCU_HIL_P.Constant4_Value_j;
-    }
-
-    /* Switch: '<S78>/Switch' incorporates:
-     *  Logic: '<S78>/AND3'
-     *  RelationalOperator: '<S78>/Equal1'
-     *  Switch: '<S78>/Switch1'
-     *  Switch: '<S78>/Switch2'
-     */
-    if (rtb_RelationalOperator && (rtPrevAction == rtAction)) {
-      /* Switch: '<S78>/Switch' incorporates:
-       *  Constant: '<S78>/Constant1'
-       */
-      GVCU_HIL_B.Switch = GVCU_HIL_P.Constant1_Value_d;
-    } else {
-      /* Switch: '<S78>/Switch' */
-      GVCU_HIL_B.Switch = rtb_Add_m;
-    }
-
-    /* End of Switch: '<S78>/Switch' */
-
-    /* Product: '<S49>/Divide' incorporates:
-     *  Constant: '<S49>/tauerr'
-     */
-    GVCU_HIL_B.Divide = 1.0 / GVCU_HIL_P.tauerr_Value;
-  }
-
-  /* Product: '<S106>/Product' incorporates:
-   *  Integrator: '<S106>/Integrator'
-   *  Sum: '<S106>/Sum'
-   *  Sum: '<S28>/Subtract'
-   */
-  GVCU_HIL_B.Product = ((rtb_ProportionalGain - GVCU_HIL_B.VectorConcatenate2[0])
-                        - GVCU_HIL_X.Integrator_CSTATE_i) * GVCU_HIL_B.Divide;
-
-  /* Switch: '<S28>/Switch2' incorporates:
-   *  Constant: '<S28>/Constant1'
-   *  Sum: '<S28>/Subtract1'
-   */
-  if (GVCU_HIL_B.Switch3 > GVCU_HIL_P.Switch2_Threshold) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Constant1_Value_i;
-  } else {
-    rtb_TrigonometricFunction2_o1 = idx - rtb_Integrator;
-  }
-
-  /* Sum: '<S28>/Sum8' incorporates:
-   *  Gain: '<S28>/Kaw'
-   *  Gain: '<S28>/Ki'
-   *  Integrator: '<S106>/Integrator'
-   *  Switch: '<S28>/Switch2'
-   */
-  GVCU_HIL_B.Sum8 = GVCU_HIL_P.Ki_Gain * GVCU_HIL_X.Integrator_CSTATE_i +
-    GVCU_HIL_P.Kaw_Gain * rtb_TrigonometricFunction2_o1;
-
-  /* Integrator: '<S292>/Integrator' */
-  GVCU_HIL_B.Spd = GVCU_HIL_X.Integrator_CSTATE_n;
-
-  /* Gain: '<S7>/Gain1' */
-  GVCU_HIL_B.rpm = GVCU_HIL_P.Gain1_Gain * GVCU_HIL_B.Spd;
-
-  /* Lookup_n-D: '<S7>/1-D Lookup Table' incorporates:
-   *  Abs: '<S7>/Abs3'
-   */
-  GVCU_HIL_B.uDLookupTable = look1_binlcapw(fabs(GVCU_HIL_B.rpm),
-    GVCU_HIL_P.uDLookupTable_bp01Data_d, GVCU_HIL_P.uDLookupTable_tableData_d,
-    5U);
-  if (tmp) {
-    /* Gain: '<S2>/m//s to km//h' */
-    GVCU_HIL_B.kmh = GVCU_HIL_P.mstokmh_Gain * GVCU_HIL_B.Saturation;
-
-    /* S-Function (sigin): '<S193>/S-Function' */
-
-    /* Level2 S-Function Block: '<S193>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[3];
-      sfcnOutputs(rts,0);
-    }
-
-    /* RelationalOperator: '<S187>/Compare' incorporates:
-     *  Constant: '<S187>/Constant'
-     */
-    rtb_Compare = (GVCU_HIL_B.SFunction_p4 <
-                   GVCU_HIL_P.CompareToConstant_const_j);
-
-    /* Switch: '<S200>/Switch' incorporates:
-     *  Constant: '<S196>/Constant1'
-     */
-    if (14.118 * GVCU_HIL_P.bat.SoC_init >
-        GVCU_HIL_P.DatasheetBattery2_BattChargeMax) {
-      /* Switch: '<S200>/Switch' incorporates:
-       *  Constant: '<S200>/Constant1'
-       */
-      GVCU_HIL_B.Switch_a = GVCU_HIL_P.DatasheetBattery2_BattChargeMax;
-    } else {
-      /* Switch: '<S200>/Switch' */
-      GVCU_HIL_B.Switch_a = 14.118 * GVCU_HIL_P.bat.SoC_init;
-    }
-
-    /* End of Switch: '<S200>/Switch' */
-  }
-
-  /* TransferFcn: '<S188>/Transfer Fcn' */
-  GVCU_HIL_B.TransferFcn = 0.0;
-  GVCU_HIL_B.TransferFcn += GVCU_HIL_P.TransferFcn_C *
-    GVCU_HIL_X.TransferFcn_CSTATE;
-
-  /* Gain: '<S200>/Gain1' */
-  GVCU_HIL_B.Gain1 = -1.0 / (GVCU_HIL_P.DatasheetBattery2_Np * 3600.0) *
-    GVCU_HIL_B.TransferFcn;
-
-  /* Integrator: '<S200>/Integrator Limited' */
-  /* Limited  Integrator  */
-  if (GVCU_HIL_DW.IntegratorLimited_DWORK1) {
-    GVCU_HIL_X.IntegratorLimited_CSTATE = GVCU_HIL_B.Switch_a;
-  }
-
-  if (GVCU_HIL_X.IntegratorLimited_CSTATE >=
-      GVCU_HIL_P.DatasheetBattery2_BattChargeMax) {
-    GVCU_HIL_X.IntegratorLimited_CSTATE =
-      GVCU_HIL_P.DatasheetBattery2_BattChargeMax;
-  } else if (GVCU_HIL_X.IntegratorLimited_CSTATE <=
-             GVCU_HIL_P.IntegratorLimited_LowerSat) {
-    GVCU_HIL_X.IntegratorLimited_CSTATE = GVCU_HIL_P.IntegratorLimited_LowerSat;
-  }
-
-  /* Product: '<S201>/Divide' incorporates:
-   *  Constant: '<S201>/Constant1'
-   *  Integrator: '<S200>/Integrator Limited'
-   */
-  rtb_Integrator = GVCU_HIL_X.IntegratorLimited_CSTATE /
-    GVCU_HIL_P.DatasheetBattery2_BattChargeMax;
-
-  /* Gain: '<S202>/Gain1' incorporates:
-   *  Constant: '<S188>/Temperature1'
-   *  Gain: '<S202>/Gain2'
-   *  Lookup_n-D: '<S205>/Em LUT'
-   *  Lookup_n-D: '<S206>/R LUT'
-   *  Product: '<S202>/Product'
-   *  SignalConversion: '<S450>/Signal Copy'
-   *  Sum: '<S202>/Subtract'
-   */
-  GVCU_HIL_B.Gain1_g = (look1_binlcapw(rtb_Integrator,
-    GVCU_HIL_P.DatasheetBattery2_SOCEmBp, GVCU_HIL_P.DatasheetBattery2_Em, 9U) -
-                        1.0 / GVCU_HIL_P.DatasheetBattery2_Np *
-                        GVCU_HIL_B.TransferFcn * look2_binlcapw
-                        (GVCU_HIL_P.Temperature1_Value, rtb_Integrator,
-    GVCU_HIL_P.DatasheetBattery2_BattTempBp,
-    GVCU_HIL_P.DatasheetBattery2_SOCRintBp, GVCU_HIL_P.DatasheetBattery2_RInt,
-    GVCU_HIL_P.RLUT_maxIndex, 2U)) * GVCU_HIL_P.DatasheetBattery2_Ns;
-
-  /* Lookup_n-D: '<S215>/Max Torque Limit' incorporates:
-   *  Integrator: '<S292>/Integrator'
-   */
-  rtb_Integrator = look1_binlcapw(GVCU_HIL_B.Spd,
-    GVCU_HIL_P.MaxTorqueLimit_bp01Data, GVCU_HIL_P.MaxTorqueLimit_tableData,
-    200U);
-
-  /* Gain: '<S215>/Gain1' incorporates:
-   *  Integrator: '<S215>/Integrator'
-   */
-  idx = 1.0 / GVCU_HIL_P.MappedMotor_Tc * GVCU_HIL_X.Integrator_CSTATE_g;
-
-  /* Switch: '<S220>/Switch2' incorporates:
-   *  RelationalOperator: '<S220>/LowerRelop1'
-   */
-  if (!(idx > rtb_Integrator)) {
-    /* Gain: '<S215>/Gain' */
-    rtb_ProportionalGain = GVCU_HIL_P.Gain_Gain_i * rtb_Integrator;
-
-    /* Switch: '<S220>/Switch' incorporates:
-     *  RelationalOperator: '<S220>/UpperRelop'
-     */
-    if (idx < rtb_ProportionalGain) {
-      rtb_Integrator = rtb_ProportionalGain;
-    } else {
-      rtb_Integrator = idx;
-    }
-
-    /* End of Switch: '<S220>/Switch' */
-  }
-
-  /* End of Switch: '<S220>/Switch2' */
-
-  /* Saturate: '<S211>/Saturation' */
-  if (GVCU_HIL_B.Gain1_g > GVCU_HIL_P.Saturation_UpperSat_h) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_UpperSat_h;
-  } else if (GVCU_HIL_B.Gain1_g < GVCU_HIL_P.Saturation_LowerSat_e) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_LowerSat_e;
-  } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.Gain1_g;
-  }
-
-  /* Product: '<S211>/Divide' incorporates:
-   *  Integrator: '<S292>/Integrator'
-   *  Lookup_n-D: '<S214>/2-D Lookup Table'
-   *  Product: '<S214>/Product'
-   *  Saturate: '<S211>/Saturation'
-   *  SignalConversion: '<S450>/Signal Copy'
-   *  Sum: '<S211>/Add'
-   */
-  GVCU_HIL_B.Divide_b = (GVCU_HIL_B.Spd * rtb_Integrator + look2_binlcapw
-    (GVCU_HIL_B.Spd, rtb_Integrator, GVCU_HIL_P.uDLookupTable_bp01Data_c,
-     GVCU_HIL_P.uDLookupTable_bp02Data, GVCU_HIL_P.uDLookupTable_tableData_n,
-     GVCU_HIL_P.uDLookupTable_maxIndex, 45U)) / rtb_TrigonometricFunction2_o1;
-  if (tmp) {
-    /* S-Function (sigin): '<S191>/S-Function' */
-
-    /* Level2 S-Function Block: '<S191>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[4];
-      sfcnOutputs(rts,0);
-    }
-
-    /* RateLimiter: '<S7>/Rate Limiter' */
-    t_rel = GVCU_HIL_B.SFunction_g - GVCU_HIL_DW.PrevY_o;
-    if (t_rel > GVCU_HIL_P.RateLimiter_RisingLim_l * GVCU_HIL_period) {
-      rtb_Add_m = GVCU_HIL_P.RateLimiter_RisingLim_l * GVCU_HIL_period +
-        GVCU_HIL_DW.PrevY_o;
-    } else if (t_rel < GVCU_HIL_P.RateLimiter_FallingLim_k * GVCU_HIL_period) {
-      rtb_Add_m = GVCU_HIL_P.RateLimiter_FallingLim_k * GVCU_HIL_period +
-        GVCU_HIL_DW.PrevY_o;
-    } else {
-      rtb_Add_m = GVCU_HIL_B.SFunction_g;
-    }
-
-    GVCU_HIL_DW.PrevY_o = rtb_Add_m;
-
-    /* End of RateLimiter: '<S7>/Rate Limiter' */
-
-    /* Gain: '<S7>/Gain2' */
-    GVCU_HIL_B.rads = GVCU_HIL_P.Gain2_Gain * rtb_Add_m;
-  }
-
-  /* Sum: '<S190>/Subtract1' */
-  GVCU_HIL_B.rpm_l = GVCU_HIL_B.rads - GVCU_HIL_B.Spd;
-  rtb_RelationalOperator = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
-    GVCU_HIL_M->Timing.TaskCounters.TID[2] == 0);
-  if (rtb_RelationalOperator) {
-    /* Gain: '<S353>/Proportional Gain' */
-    rtb_Sum_jk = GVCU_HIL_P.PIDController1_P * GVCU_HIL_B.rpm_l;
-
-    /* Sum: '<S358>/Sum Fdbk' */
-    rtb_ProportionalGain = rtb_Sum_jk + GVCU_HIL_DW.Integrator_DSTATE_d;
-
-    /* Saturate: '<S356>/Saturation' */
-    if (rtb_ProportionalGain > GVCU_HIL_P.PIDController1_UpperSaturationL) {
-      rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.PIDController1_UpperSaturationL;
-    } else if (rtb_ProportionalGain < GVCU_HIL_P.PIDController1_LowerSaturationL)
-    {
-      rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.PIDController1_LowerSaturationL;
-    } else {
-      rtb_TrigonometricFunction2_o1 = rtb_ProportionalGain;
-    }
-
-    /* Sum: '<S340>/SumI4' incorporates:
-     *  Gain: '<S340>/Kb'
-     *  Gain: '<S345>/Integral Gain'
-     *  Saturate: '<S356>/Saturation'
-     *  Sum: '<S340>/SumI2'
-     */
-    GVCU_HIL_B.SumI4 = (rtb_TrigonometricFunction2_o1 - rtb_ProportionalGain) *
-      GVCU_HIL_P.PIDController1_Kb + GVCU_HIL_P.PIDController1_I *
-      GVCU_HIL_B.rpm_l;
-  }
-
-  /* Clock: '<S190>/Clock' */
-  GVCU_HIL_B.Clock_p = rtb_TransferFcn;
-  if (tmp) {
-    /* MATLAB Function: '<S190>/MATLAB Function' */
-    if ((fabs(GVCU_HIL_B.Spd) < 2.094) && (fabs(GVCU_HIL_B.rads) < 2.094)) {
-      if (GVCU_HIL_DW.stop_ts == 0.0) {
-        GVCU_HIL_DW.stop_ts = GVCU_HIL_B.Clock_p;
-      }
-
-      if ((GVCU_HIL_B.Clock_p - GVCU_HIL_DW.stop_ts >= 0.5) &&
-          !GVCU_HIL_DW.fired) {
-        rtb_ProportionalGain = 1.0;
-        GVCU_HIL_DW.fired = true;
-      } else {
-        rtb_ProportionalGain = 0.0;
-      }
-    } else {
-      GVCU_HIL_DW.stop_ts = 0.0;
-      GVCU_HIL_DW.fired = false;
-      rtb_ProportionalGain = 0.0;
-    }
-
-    /* End of MATLAB Function: '<S190>/MATLAB Function' */
-
-    /* Sum: '<S190>/Add' */
-    GVCU_HIL_B.Add_f = rtb_ProportionalGain + (real_T)rtb_Compare;
-  }
-
-  if (rtb_RelationalOperator) {
-    /* DiscreteIntegrator: '<S348>/Integrator' */
-    if ((GVCU_HIL_B.Add_f != 0.0) || (GVCU_HIL_DW.Integrator_PrevResetState_c !=
-         0)) {
-      GVCU_HIL_DW.Integrator_DSTATE_d =
-        GVCU_HIL_P.PIDController1_InitialCondition;
-    }
-
-    /* DiscreteIntegrator: '<S348>/Integrator' */
-    GVCU_HIL_B.Integrator_d = GVCU_HIL_P.Integrator_gainval_e * GVCU_HIL_B.SumI4
-      + GVCU_HIL_DW.Integrator_DSTATE_d;
-
-    /* DiscreteIntegrator: '<S348>/Integrator' */
-    if (GVCU_HIL_B.Integrator_d > GVCU_HIL_P.PIDController1_UpperIntegratorS) {
-      /* DiscreteIntegrator: '<S348>/Integrator' */
-      GVCU_HIL_B.Integrator_d = GVCU_HIL_P.PIDController1_UpperIntegratorS;
-    } else if (GVCU_HIL_B.Integrator_d <
-               GVCU_HIL_P.PIDController1_LowerIntegratorS) {
-      /* DiscreteIntegrator: '<S348>/Integrator' */
-      GVCU_HIL_B.Integrator_d = GVCU_HIL_P.PIDController1_LowerIntegratorS;
-    }
-
-    /* Sum: '<S357>/Sum' */
-    rtb_TrigonometricFunction2_o1 = rtb_Sum_jk + GVCU_HIL_B.Integrator_d;
-
-    /* Saturate: '<S355>/Saturation' */
-    if (rtb_TrigonometricFunction2_o1 >
-        GVCU_HIL_P.PIDController1_UpperSaturationL) {
-      /* Saturate: '<S355>/Saturation' */
-      GVCU_HIL_B.Saturation_c = GVCU_HIL_P.PIDController1_UpperSaturationL;
-    } else if (rtb_TrigonometricFunction2_o1 <
-               GVCU_HIL_P.PIDController1_LowerSaturationL) {
-      /* Saturate: '<S355>/Saturation' */
-      GVCU_HIL_B.Saturation_c = GVCU_HIL_P.PIDController1_LowerSaturationL;
-    } else {
-      /* Saturate: '<S355>/Saturation' */
-      GVCU_HIL_B.Saturation_c = rtb_TrigonometricFunction2_o1;
-    }
-
-    /* End of Saturate: '<S355>/Saturation' */
-  }
-
-  if (tmp) {
-    /* S-Function (sigin): '<S192>/S-Function' */
-
-    /* Level2 S-Function Block: '<S192>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[5];
-      sfcnOutputs(rts,0);
-    }
-  }
-
-  /* Switch: '<S7>/Switch2' */
-  if (GVCU_HIL_B.SFunction_p4 > GVCU_HIL_P.Switch2_Threshold_i) {
-    /* Switch: '<S313>/Switch2' incorporates:
-     *  RelationalOperator: '<S313>/LowerRelop1'
-     */
-    if (GVCU_HIL_B.Saturation_c > GVCU_HIL_B.uDLookupTable) {
-      rtb_ProportionalGain = GVCU_HIL_B.uDLookupTable;
-    } else {
-      /* Gain: '<S190>/Gain' */
-      rtb_ProportionalGain = GVCU_HIL_P.Gain_Gain_b * GVCU_HIL_B.uDLookupTable;
-
-      /* Switch: '<S313>/Switch' incorporates:
-       *  RelationalOperator: '<S313>/UpperRelop'
-       */
-      if (!(GVCU_HIL_B.Saturation_c < rtb_ProportionalGain)) {
-        rtb_ProportionalGain = GVCU_HIL_B.Saturation_c;
-      }
-
-      /* End of Switch: '<S313>/Switch' */
-    }
-
-    /* End of Switch: '<S313>/Switch2' */
-
-    /* Switch: '<S7>/Switch2' incorporates:
-     *  Sum: '<S190>/Add1'
-     */
-    GVCU_HIL_B.Switch2 = rtb_ProportionalGain + GVCU_HIL_B.SFunction_e;
-  } else {
-    /* Switch: '<S7>/Switch2' incorporates:
-     *  Constant: '<S7>/Constant'
-     */
-    GVCU_HIL_B.Switch2 = GVCU_HIL_P.Constant_Value_i;
-  }
-
-  /* End of Switch: '<S7>/Switch2' */
-
-  /* Switch: '<S188>/Switch' incorporates:
-   *  Constant: '<S188>/Constant'
-   *  Constant: '<S188>/Constant1'
-   */
-  if (GVCU_HIL_B.Switch2 >= GVCU_HIL_P.Switch_Threshold_a) {
-    rtb_ProportionalGain = GVCU_HIL_P.Constant_Value_l;
-  } else {
-    rtb_ProportionalGain = GVCU_HIL_P.Constant1_Value_o;
-  }
-
-  /* End of Switch: '<S188>/Switch' */
-
-  /* Sum: '<S215>/Sum' incorporates:
-   *  Product: '<S188>/Product'
-   */
-  GVCU_HIL_B.Sum = GVCU_HIL_B.Switch2 * rtb_ProportionalGain - idx;
-
-  /* Product: '<S188>/Product1' */
-  GVCU_HIL_B.EMTrq = rtb_Integrator * rtb_ProportionalGain;
-  if (tmp) {
-    /* Memory: '<S228>/Memory' */
-    GVCU_HIL_B.Memory = GVCU_HIL_DW.Memory_PreviousInput;
-
-    /* Constant: '<S227>/domega_o' */
-    GVCU_HIL_B.domega_o = GVCU_HIL_P.FL_domega_o;
-  }
-
-  /* Integrator: '<S228>/Integrator' */
-  if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
-    zcEvent = rt_ZCFcn(RISING_ZERO_CROSSING,
-                       &GVCU_HIL_PrevZCX.Integrator_Reset_ZCE,
-                       (GVCU_HIL_B.Memory));
-
-    /* evaluate zero-crossings */
-    if ((zcEvent != NO_ZCEVENT) || GVCU_HIL_DW.Integrator_DWORK1) {
-      GVCU_HIL_X.Integrator_CSTATE_o = GVCU_HIL_B.domega_o;
-    }
-  }
-
-  rtb_Integrator = GVCU_HIL_X.Integrator_CSTATE_o;
-
-  /* Sum: '<S227>/Subtract1' incorporates:
-   *  Gain: '<S227>/Gain1'
-   *  Gain: '<S227>/Gain2'
-   *  Integrator: '<S227>/Integrator'
-   *  Integrator: '<S228>/Integrator'
-   */
-  GVCU_HIL_B.Subtract1 = GVCU_HIL_P.FL_b * GVCU_HIL_X.Integrator_CSTATE_o +
-    GVCU_HIL_P.FL_k * GVCU_HIL_X.Integrator_CSTATE_j;
-
-  /* Integrator: '<S471>/Integrator' */
-  rtb_ProportionalGain = GVCU_HIL_X.Integrator_CSTATE_a;
-  if (tmp) {
-    /* Sum: '<S427>/Add2' incorporates:
-     *  Constant: '<S427>/Constant9'
-     */
-    rtb_Add_m = GVCU_HIL_P.veh.TyreLoadedRadius_F;
-
-    /* Saturate: '<S427>/Saturation' */
-    if (rtb_Add_m > GVCU_HIL_P.Saturation_UpperSat_m) {
-      /* Saturate: '<S427>/Saturation' */
-      GVCU_HIL_B.Saturation_o = GVCU_HIL_P.Saturation_UpperSat_m;
-    } else if (rtb_Add_m < GVCU_HIL_P.Saturation_LowerSat_i) {
-      /* Saturate: '<S427>/Saturation' */
-      GVCU_HIL_B.Saturation_o = GVCU_HIL_P.Saturation_LowerSat_i;
-    } else {
-      /* Saturate: '<S427>/Saturation' */
-      GVCU_HIL_B.Saturation_o = rtb_Add_m;
-    }
-
-    /* End of Saturate: '<S427>/Saturation' */
-
-    /* Gain: '<S367>/Gain' incorporates:
-     *  Constant: '<S367>/Constant1'
-     *  Product: '<S367>/Product'
-     */
-    rtb_Pa_m[2] = GVCU_HIL_P.Constant1_Value_l * rtb_bar *
+    rtb_Pa_f_idx_2 = GVCU_HIL_P.Constant1_Value_l * rtb_bar *
       GVCU_HIL_P.Gain_Gain_bw;
-    rtb_Pa_m[3] = GVCU_HIL_P.Constant1_Value_l * rtb_bar *
+    rtb_Pa_f_idx_3 = GVCU_HIL_P.Constant1_Value_l * rtb_bar *
       GVCU_HIL_P.Gain_Gain_bw;
 
-    /* Sum: '<S369>/Sum' incorporates:
-     *  Constant: '<S367>/Constant'
-     *  Gain: '<S367>/Gain'
-     *  Product: '<S367>/Product'
+    /* Sum: '<S380>/Sum' incorporates:
+     *  Constant: '<S378>/Constant'
+     *  Gain: '<S378>/Gain'
+     *  Product: '<S378>/Product'
      */
-    GVCU_HIL_B.Sum_a = GVCU_HIL_P.Constant_Value_p * rtb_bar *
+    GVCU_HIL_B.Sum = GVCU_HIL_P.Constant_Value_p * rtb_bar *
       GVCU_HIL_P.Gain_Gain_bw + GVCU_HIL_P.Constant_Value_p * rtb_bar *
       GVCU_HIL_P.Gain_Gain_bw;
 
-    /* Product: '<S456>/product' incorporates:
-     *  Constant: '<S456>/Disk brake actuator bore'
-     *  Constant: '<S456>/Number of brake pads'
-     *  Gain: '<S456>/Torque Conversion1'
+    /* Product: '<S467>/product' incorporates:
+     *  Constant: '<S467>/Disk brake actuator bore'
+     *  Constant: '<S467>/Number of brake pads'
+     *  Gain: '<S467>/Torque Conversion1'
      */
-    rtb_Add_m = GVCU_HIL_P.TorqueConversion1_Gain *
-      GVCU_HIL_P.veh.brake.disk_aboref * GVCU_HIL_B.Sum_a *
+    rtb_Cd = GVCU_HIL_P.TorqueConversion1_Gain *
+      GVCU_HIL_P.veh.brake.disk_aboref * GVCU_HIL_B.Sum *
       GVCU_HIL_P.veh.brake.disk_aboref * GVCU_HIL_P.veh.brake.num_padsf;
 
-    /* Saturate: '<S456>/Disallow Negative Brake Torque' */
-    if (rtb_Add_m > GVCU_HIL_P.DisallowNegativeBrakeTorque_Upp) {
-      rtb_Add_m = GVCU_HIL_P.DisallowNegativeBrakeTorque_Upp;
-    } else if (rtb_Add_m < GVCU_HIL_P.DisallowNegativeBrakeTorque_Low) {
-      rtb_Add_m = GVCU_HIL_P.DisallowNegativeBrakeTorque_Low;
+    /* Saturate: '<S467>/Disallow Negative Brake Torque' */
+    if (rtb_Cd > GVCU_HIL_P.DisallowNegativeBrakeTorque_Upp) {
+      rtb_Cd = GVCU_HIL_P.DisallowNegativeBrakeTorque_Upp;
+    } else if (rtb_Cd < GVCU_HIL_P.DisallowNegativeBrakeTorque_Low) {
+      rtb_Cd = GVCU_HIL_P.DisallowNegativeBrakeTorque_Low;
     }
 
-    /* End of Saturate: '<S456>/Disallow Negative Brake Torque' */
+    /* End of Saturate: '<S467>/Disallow Negative Brake Torque' */
 
-    /* Gain: '<S456>/Torque Conversion' */
+    /* Gain: '<S467>/Torque Conversion' */
     GVCU_HIL_B.TorqueConversion = GVCU_HIL_P.veh.brake.pad_radiusf *
-      GVCU_HIL_P.veh.brake.mu_kinematicf * rtb_Add_m;
+      GVCU_HIL_P.veh.brake.mu_kinematicf * rtb_Cd;
 
-    /* Gain: '<S453>/Ratio of static to kinetic' */
+    /* Gain: '<S464>/Ratio of static to kinetic' */
     GVCU_HIL_B.Ratioofstatictokinetic = GVCU_HIL_P.veh.brake.mu_staticf /
       GVCU_HIL_P.veh.brake.mu_kinematicf * GVCU_HIL_B.TorqueConversion;
 
-    /* Gain: '<S453>/Ratio of static to kinetic1' */
+    /* Gain: '<S464>/Ratio of static to kinetic1' */
     GVCU_HIL_B.Ratioofstatictokinetic1 = GVCU_HIL_P.veh.brake.mu_kinematicf /
       GVCU_HIL_P.veh.brake.mu_kinematicf * GVCU_HIL_B.TorqueConversion;
   }
 
-  /* Gain: '<S427>/Sign convention' incorporates:
-   *  Integrator: '<S471>/Integrator'
-   *  Product: '<S454>/Product1'
-   *  Sum: '<S427>/Add1'
-   */
-  GVCU_HIL_B.Signconvention = (GVCU_HIL_B.Subtract1 -
-    GVCU_HIL_X.Integrator_CSTATE_a * GVCU_HIL_B.Saturation_o) *
-    GVCU_HIL_P.Signconvention_Gain;
-
-  /* Outputs for Iterator SubSystem: '<S427>/Clutch' incorporates:
-   *  ForEach: '<S452>/For Each'
+  /* Outputs for Iterator SubSystem: '<S438>/Clutch' incorporates:
+   *  ForEach: '<S463>/For Each'
    */
   for (ForEach_itr_g = 0; ForEach_itr_g < 1; ForEach_itr_g++) {
-    /* ForEachSliceSelector generated from: '<S452>/Tout' */
+    /* ForEachSliceSelector generated from: '<S463>/Tout' */
     rtb_ImpSel_InsertedFor_Tout_a_m = GVCU_HIL_B.Signconvention;
 
-    /* ForEachSliceSelector generated from: '<S452>/Tfmaxs' */
+    /* ForEachSliceSelector generated from: '<S463>/Tfmaxs' */
     rtb_ImpSel_InsertedFor_Tfmaxs_h = GVCU_HIL_B.Ratioofstatictokinetic;
 
-    /* ForEachSliceSelector generated from: '<S452>/Tfmaxk' */
+    /* ForEachSliceSelector generated from: '<S463>/Tfmaxk' */
     rtb_ImpSel_InsertedFor_Tfmaxk_n = GVCU_HIL_B.Ratioofstatictokinetic1;
 
-    /* Chart: '<S452>/Clutch' */
+    /* Chart: '<S463>/Clutch' */
     GVCU_HIL_Clutch(GVCU_HIL_M, rtb_ImpSel_InsertedFor_Tout_a_m,
                     rtb_ImpSel_InsertedFor_Tfmaxs_h,
                     rtb_ImpSel_InsertedFor_Tfmaxk_n, GVCU_HIL_P.pos.xdot_0 /
@@ -4160,99 +3638,255 @@ void GVCU_HIL_output(void)
                     &GVCU_HIL_X.CoreSubsys[ForEach_itr_g].sf_Clutch,
                     &_rtXdis->CoreSubsys[ForEach_itr_g].sf_Clutch);
 
-    /* ForEachSliceAssignment generated from: '<S452>/Omega' */
+    /* ForEachSliceAssignment generated from: '<S463>/Omega' */
     rtb_ImpAsg_InsertedFor_Omega__a = GVCU_HIL_B.CoreSubsys[ForEach_itr_g].
       sf_Clutch.Omega;
   }
 
-  /* End of Outputs for SubSystem: '<S427>/Clutch' */
+  /* End of Outputs for SubSystem: '<S438>/Clutch' */
 
-  /* SignalConversion generated from: '<S416>/Matrix Concatenate23' */
-  rtb_Omega[0] = rtb_ImpAsg_InsertedFor_Omega__a;
+  /* MATLAB Function: '<S434>/Simple Magic Tire' incorporates:
+   *  Constant: '<S425>/FxType'
+   *  Constant: '<S425>/TirePrsConstant'
+   *  Constant: '<S425>/lam_muxConstant'
+   *  Constant: '<S425>/rollType'
+   *  Constant: '<S425>/vertType'
+   *  Constant: '<S459>/Constant'
+   *  Constant: '<S459>/Constant1'
+   *  Constant: '<S459>/Constant12'
+   *  Constant: '<S459>/Constant14'
+   *  Constant: '<S459>/Constant19'
+   *  Constant: '<S459>/Constant2'
+   *  Constant: '<S459>/Constant6'
+   *  Constant: '<S459>/Constant7'
+   *  Constant: '<S460>/Constant1'
+   *  Constant: '<S460>/Constant10'
+   *  Constant: '<S460>/Constant11'
+   *  Constant: '<S460>/Constant12'
+   *  Constant: '<S460>/Constant13'
+   *  Constant: '<S460>/Constant14'
+   *  Constant: '<S460>/Constant15'
+   *  Constant: '<S460>/Constant16'
+   *  Constant: '<S460>/Constant17'
+   *  Constant: '<S460>/Constant18'
+   *  Constant: '<S460>/Constant19'
+   *  Constant: '<S460>/Constant2'
+   *  Constant: '<S460>/Constant3'
+   *  Constant: '<S460>/Constant4'
+   *  Constant: '<S460>/Constant5'
+   *  Constant: '<S460>/Constant6'
+   *  Constant: '<S460>/Constant7'
+   *  Constant: '<S460>/Constant8'
+   *  Constant: '<S460>/Constant9'
+   *  Constant: '<S461>/Constant1'
+   *  Constant: '<S461>/Constant10'
+   *  Constant: '<S461>/Constant11'
+   *  Constant: '<S461>/Constant13'
+   *  Constant: '<S461>/Constant14'
+   *  Constant: '<S461>/Constant15'
+   *  Constant: '<S461>/Constant16'
+   *  Constant: '<S461>/Constant17'
+   *  Constant: '<S461>/Constant18'
+   *  Constant: '<S461>/Constant19'
+   *  Constant: '<S461>/Constant2'
+   *  Constant: '<S461>/Constant20'
+   *  Constant: '<S461>/Constant21'
+   *  Constant: '<S461>/Constant22'
+   *  Constant: '<S461>/Constant23'
+   *  Constant: '<S461>/Constant24'
+   *  Constant: '<S461>/Constant3'
+   *  Constant: '<S461>/Constant4'
+   *  Constant: '<S461>/Constant5'
+   *  Constant: '<S461>/Constant6'
+   *  Constant: '<S461>/Constant7'
+   *  Constant: '<S461>/Constant8'
+   *  Constant: '<S461>/Constant9'
+   */
+  GVCU_HIL_SimpleMagicTire(GVCU_HIL_B.Saturation, GVCU_HIL_B.Gain1,
+    rtb_ImpAsg_InsertedFor_Omega__a, GVCU_HIL_B.VectorConcatenate2[0],
+    GVCU_HIL_P.Constant_Value_l, GVCU_HIL_P.Constant1_Value_f,
+    GVCU_HIL_P.Constant7_Value, GVCU_HIL_P.Constant6_Value,
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBr_cx, GVCU_HIL_P.Constant2_Value,
+    GVCU_HIL_P.Constant19_Value, GVCU_HIL_P.Constant12_Value,
+    GVCU_HIL_P.Constant14_Value, GVCU_HIL_P.Constant11_Value,
+    GVCU_HIL_P.Constant5_Value, GVCU_HIL_P.Constant2_Value_b,
+    GVCU_HIL_P.Constant13_Value, GVCU_HIL_P.Constant8_Value,
+    GVCU_HIL_P.Constant15_Value, GVCU_HIL_P.Constant16_Value,
+    GVCU_HIL_P.Constant7_Value_j, GVCU_HIL_P.Constant9_Value,
+    GVCU_HIL_P.Constant17_Value, GVCU_HIL_P.Constant18_Value,
+    GVCU_HIL_P.Constant6_Value_p, GVCU_HIL_P.Constant10_Value,
+    GVCU_HIL_P.Constant4_Value, GVCU_HIL_P.Constant1_Value_lj,
+    GVCU_HIL_P.Constant3_Value, GVCU_HIL_P.Constant19_Value_d,
+    GVCU_HIL_P.Constant12_Value_m, GVCU_HIL_P.Constant14_Value_b, 0.0,
+    GVCU_HIL_P.FxType_Value, GVCU_HIL_P.rollType_Value,
+    GVCU_HIL_P.vertType_Value, GVCU_HIL_P.FrontLongitudinalWheelDiscBra_h,
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBr_hv,
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f,
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBr_by, &GVCU_HIL_B.sf_SimpleMagicTire);
 
-  /* SignalConversion generated from: '<S416>/Matrix Concatenate23' */
-  rtb_Omega[1] = rtb_ImpAsg_InsertedFor_Omega__a;
+  /* MATLAB Function: '<S442>/MATLAB Function' */
+  GVCU_HIL_MATLABFunction(GVCU_HIL_B.VectorConcatenate2[0],
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f, &GVCU_HIL_B.sf_MATLABFunction_h);
 
-  /* Integrator: '<S527>/Integrator' */
-  rtb_bar = GVCU_HIL_X.Integrator_CSTATE_e;
+  /* Product: '<S440>/Product3' */
+  rtb_Integrator_m = GVCU_HIL_B.sf_SimpleMagicTire.Fx *
+    GVCU_HIL_B.sf_MATLABFunction_h.lambda;
+
+  /* Sum: '<S440>/Add2' incorporates:
+   *  Constant: '<S440>/Constant4'
+   */
+  b_xtmp = GVCU_HIL_P.Constant4_Value_i - GVCU_HIL_B.sf_MATLABFunction_h.lambda;
+
+  /* DeadZone: '<S439>/Dead Zone' */
+  if (GVCU_HIL_B.VectorConcatenate2[0] > GVCU_HIL_P.DeadZone_End) {
+    rtb_UnaryMinus1_i = GVCU_HIL_B.VectorConcatenate2[0] -
+      GVCU_HIL_P.DeadZone_End;
+  } else if (GVCU_HIL_B.VectorConcatenate2[0] >= GVCU_HIL_P.DeadZone_Start) {
+    rtb_UnaryMinus1_i = 0.0;
+  } else {
+    rtb_UnaryMinus1_i = GVCU_HIL_B.VectorConcatenate2[0] -
+      GVCU_HIL_P.DeadZone_Start;
+  }
+
+  /* RelationalOperator: '<S439>/Relational Operator' incorporates:
+   *  Abs: '<S439>/Abs1'
+   *  Constant: '<S439>/VXLOW'
+   *  DeadZone: '<S439>/Dead Zone'
+   */
+  GVCU_HIL_B.RelationalOperator = (fabs(rtb_UnaryMinus1_i) <=
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f);
   if (tmp) {
-    /* Sum: '<S483>/Add2' incorporates:
-     *  Constant: '<S483>/Constant9'
-     */
-    rtb_Add_m = GVCU_HIL_P.veh.TyreLoadedRadius_R;
+    /* SignalConversion generated from: '<S441>/Enable' */
+    GVCU_HIL_B.HiddenBuf_InsertedFor_BristleDe = GVCU_HIL_B.RelationalOperator;
+  }
 
-    /* Saturate: '<S483>/Saturation' */
-    if (rtb_Add_m > GVCU_HIL_P.Saturation_UpperSat_p) {
-      /* Saturate: '<S483>/Saturation' */
+  /* Outputs for Enabled SubSystem: '<S439>/Bristle Deflection' */
+  /* Constant: '<S425>/lam_muxConstant' incorporates:
+   *  Constant: '<S425>/Constant'
+   */
+  GVCU_HIL_BristleDeflection(GVCU_HIL_M,
+    GVCU_HIL_B.HiddenBuf_InsertedFor_BristleDe, GVCU_HIL_B.VectorConcatenate2[0],
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBr_cx,
+    GVCU_HIL_B.sf_SimpleMagicTire.FzTire, GVCU_HIL_B.sf_SimpleMagicTire.Re,
+    rtb_ImpAsg_InsertedFor_Omega__a, GVCU_HIL_P.FrontLongitudinalWheelDiscBra_g,
+    GVCU_HIL_B.sf_SimpleMagicTire.Fx, GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f,
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBrake,
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_k,
+    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_c, &GVCU_HIL_B.BristleDeflection,
+    &GVCU_HIL_DW.BristleDeflection, &GVCU_HIL_P.BristleDeflection,
+    &GVCU_HIL_X.BristleDeflection, &_rtXdis->BristleDeflection);
+
+  /* End of Outputs for SubSystem: '<S439>/Bristle Deflection' */
+
+  /* Sum: '<S440>/Add1' incorporates:
+   *  Product: '<S440>/Product4'
+   */
+  b_xtmp = b_xtmp * GVCU_HIL_B.BristleDeflection.Sum + rtb_Integrator_m;
+
+  /* Switch: '<S380>/Switch' incorporates:
+   *  Constant: '<S380>/Constant2'
+   *  MinMax: '<S380>/Max'
+   */
+  if (GVCU_HIL_B.VectorConcatenate2[0] > GVCU_HIL_P.Switch_Threshold_n) {
+    rtb_UnaryMinus1_i = b_xtmp;
+  } else {
+    rtb_UnaryMinus1_i = fmax(b_xtmp, GVCU_HIL_P.Constant2_Value_g);
+  }
+
+  /* Gain: '<S380>/Gain3' incorporates:
+   *  Switch: '<S380>/Switch'
+   */
+  GVCU_HIL_B.Gain3 = GVCU_HIL_P.Gain3_Gain * rtb_UnaryMinus1_i;
+
+  /* SignalConversion generated from: '<S385>/Vector Concatenate2' */
+  rtb_VectorConcatenate2_idx_0 = GVCU_HIL_B.Gain3;
+  if (tmp) {
+    /* Sum: '<S494>/Add2' incorporates:
+     *  Constant: '<S494>/Constant9'
+     */
+    rtb_Cd = GVCU_HIL_P.veh.TyreLoadedRadius_R;
+
+    /* Saturate: '<S494>/Saturation' */
+    if (rtb_Cd > GVCU_HIL_P.Saturation_UpperSat_p) {
+      /* Saturate: '<S494>/Saturation' */
       GVCU_HIL_B.Saturation_a = GVCU_HIL_P.Saturation_UpperSat_p;
-    } else if (rtb_Add_m < GVCU_HIL_P.Saturation_LowerSat_m) {
-      /* Saturate: '<S483>/Saturation' */
+    } else if (rtb_Cd < GVCU_HIL_P.Saturation_LowerSat_m) {
+      /* Saturate: '<S494>/Saturation' */
       GVCU_HIL_B.Saturation_a = GVCU_HIL_P.Saturation_LowerSat_m;
     } else {
-      /* Saturate: '<S483>/Saturation' */
-      GVCU_HIL_B.Saturation_a = rtb_Add_m;
+      /* Saturate: '<S494>/Saturation' */
+      GVCU_HIL_B.Saturation_a = rtb_Cd;
     }
 
-    /* End of Saturate: '<S483>/Saturation' */
+    /* End of Saturate: '<S494>/Saturation' */
 
-    /* Sum: '<S369>/Sum1' */
-    GVCU_HIL_B.Sum1 = rtb_Pa_m[2] + rtb_Pa_m[3];
+    /* Memory: '<S10>/Memory1' */
+    rtb_Cd = GVCU_HIL_DW.Memory1_PreviousInput;
 
-    /* Product: '<S512>/product' incorporates:
-     *  Constant: '<S512>/Disk brake actuator bore'
-     *  Constant: '<S512>/Number of brake pads'
-     *  Gain: '<S512>/Torque Conversion1'
+    /* Gain: '<S380>/Gain' */
+    GVCU_HIL_B.Gain = GVCU_HIL_P.Gain_Gain_f * rtb_Cd;
+
+    /* Sum: '<S380>/Sum1' */
+    GVCU_HIL_B.Sum1 = rtb_Pa_f_idx_2 + rtb_Pa_f_idx_3;
+
+    /* Product: '<S523>/product' incorporates:
+     *  Constant: '<S523>/Disk brake actuator bore'
+     *  Constant: '<S523>/Number of brake pads'
+     *  Gain: '<S523>/Torque Conversion1'
      */
-    rtb_Add_m = GVCU_HIL_P.TorqueConversion1_Gain_e *
+    rtb_Cd = GVCU_HIL_P.TorqueConversion1_Gain_e *
       GVCU_HIL_P.veh.brake.disk_aborer * GVCU_HIL_B.Sum1 *
       GVCU_HIL_P.veh.brake.disk_aborer * GVCU_HIL_P.veh.brake.num_padsr;
 
-    /* Saturate: '<S512>/Disallow Negative Brake Torque' */
-    if (rtb_Add_m > GVCU_HIL_P.DisallowNegativeBrakeTorque_U_k) {
-      rtb_Add_m = GVCU_HIL_P.DisallowNegativeBrakeTorque_U_k;
-    } else if (rtb_Add_m < GVCU_HIL_P.DisallowNegativeBrakeTorque_L_a) {
-      rtb_Add_m = GVCU_HIL_P.DisallowNegativeBrakeTorque_L_a;
+    /* Saturate: '<S523>/Disallow Negative Brake Torque' */
+    if (rtb_Cd > GVCU_HIL_P.DisallowNegativeBrakeTorque_U_k) {
+      rtb_Cd = GVCU_HIL_P.DisallowNegativeBrakeTorque_U_k;
+    } else if (rtb_Cd < GVCU_HIL_P.DisallowNegativeBrakeTorque_L_a) {
+      rtb_Cd = GVCU_HIL_P.DisallowNegativeBrakeTorque_L_a;
     }
 
-    /* End of Saturate: '<S512>/Disallow Negative Brake Torque' */
+    /* End of Saturate: '<S523>/Disallow Negative Brake Torque' */
 
-    /* Gain: '<S512>/Torque Conversion' */
+    /* Gain: '<S523>/Torque Conversion' */
     GVCU_HIL_B.TorqueConversion_d = GVCU_HIL_P.veh.brake.pad_radiusr *
-      GVCU_HIL_P.veh.brake.mu_kinematicr * rtb_Add_m;
+      GVCU_HIL_P.veh.brake.mu_kinematicr * rtb_Cd;
 
-    /* Gain: '<S509>/Ratio of static to kinetic' */
+    /* Gain: '<S520>/Ratio of static to kinetic' */
     GVCU_HIL_B.Ratioofstatictokinetic_m = GVCU_HIL_P.veh.brake.mu_staticr /
       GVCU_HIL_P.veh.brake.mu_kinematicr * GVCU_HIL_B.TorqueConversion_d;
 
-    /* Gain: '<S509>/Ratio of static to kinetic1' */
+    /* Gain: '<S520>/Ratio of static to kinetic1' */
     GVCU_HIL_B.Ratioofstatictokinetic1_g = GVCU_HIL_P.veh.brake.mu_kinematicr /
       GVCU_HIL_P.veh.brake.mu_kinematicr * GVCU_HIL_B.TorqueConversion_d;
   }
 
-  /* Gain: '<S483>/Sign convention' incorporates:
-   *  Constant: '<S189>/Constant2'
-   *  Integrator: '<S527>/Integrator'
-   *  Product: '<S510>/Product1'
-   *  Sum: '<S483>/Add1'
+  /* Integrator: '<S538>/Integrator' */
+  rtb_Integrator_m = GVCU_HIL_X.Integrator_CSTATE_e;
+
+  /* Gain: '<S494>/Sign convention' incorporates:
+   *  Constant: '<S200>/Constant2'
+   *  Integrator: '<S538>/Integrator'
+   *  Product: '<S521>/Product1'
+   *  Sum: '<S494>/Add1'
    */
   GVCU_HIL_B.Signconvention_k = (GVCU_HIL_P.Constant2_Value_f -
     GVCU_HIL_X.Integrator_CSTATE_e * GVCU_HIL_B.Saturation_a) *
     GVCU_HIL_P.Signconvention_Gain_k;
 
-  /* Outputs for Iterator SubSystem: '<S483>/Clutch' incorporates:
-   *  ForEach: '<S508>/For Each'
+  /* Outputs for Iterator SubSystem: '<S494>/Clutch' incorporates:
+   *  ForEach: '<S519>/For Each'
    */
   for (ForEach_itr = 0; ForEach_itr < 1; ForEach_itr++) {
-    /* ForEachSliceSelector generated from: '<S508>/Tout' */
+    /* ForEachSliceSelector generated from: '<S519>/Tout' */
     rtb_ImpSel_InsertedFor_Tout_at_ = GVCU_HIL_B.Signconvention_k;
 
-    /* ForEachSliceSelector generated from: '<S508>/Tfmaxs' */
+    /* ForEachSliceSelector generated from: '<S519>/Tfmaxs' */
     rtb_ImpSel_InsertedFor_Tfmaxs_a = GVCU_HIL_B.Ratioofstatictokinetic_m;
 
-    /* ForEachSliceSelector generated from: '<S508>/Tfmaxk' */
+    /* ForEachSliceSelector generated from: '<S519>/Tfmaxk' */
     rtb_ImpSel_InsertedFor_Tfmaxk_a = GVCU_HIL_B.Ratioofstatictokinetic1_g;
 
-    /* Chart: '<S508>/Clutch' */
+    /* Chart: '<S519>/Clutch' */
     GVCU_HIL_Clutch_n(GVCU_HIL_M, rtb_ImpSel_InsertedFor_Tout_at_,
                       rtb_ImpSel_InsertedFor_Tfmaxs_a,
                       rtb_ImpSel_InsertedFor_Tfmaxk_a, GVCU_HIL_P.pos.xdot_0 /
@@ -4267,63 +3901,1125 @@ void GVCU_HIL_output(void)
                       &GVCU_HIL_X.CoreSubsys_h[ForEach_itr].sf_Clutch,
                       &_rtXdis->CoreSubsys_h[ForEach_itr].sf_Clutch);
 
-    /* ForEachSliceAssignment generated from: '<S508>/Omega' */
+    /* ForEachSliceAssignment generated from: '<S519>/Omega' */
     rtb_ImpAsg_InsertedFor_Omega_at = GVCU_HIL_B.CoreSubsys_h[ForEach_itr].
       sf_Clutch.Omega;
   }
 
-  /* End of Outputs for SubSystem: '<S483>/Clutch' */
+  /* End of Outputs for SubSystem: '<S494>/Clutch' */
 
-  /* SignalConversion generated from: '<S416>/Matrix Concatenate23' */
-  rtb_Omega[2] = rtb_ImpAsg_InsertedFor_Omega_at;
+  /* MATLAB Function: '<S490>/Simple Magic Tire' incorporates:
+   *  Constant: '<S426>/FxType'
+   *  Constant: '<S426>/TirePrsConstant'
+   *  Constant: '<S426>/lam_muxConstant'
+   *  Constant: '<S426>/rollType'
+   *  Constant: '<S426>/vertType'
+   *  Constant: '<S515>/Constant'
+   *  Constant: '<S515>/Constant1'
+   *  Constant: '<S515>/Constant12'
+   *  Constant: '<S515>/Constant14'
+   *  Constant: '<S515>/Constant19'
+   *  Constant: '<S515>/Constant2'
+   *  Constant: '<S515>/Constant6'
+   *  Constant: '<S515>/Constant7'
+   *  Constant: '<S516>/Constant1'
+   *  Constant: '<S516>/Constant10'
+   *  Constant: '<S516>/Constant11'
+   *  Constant: '<S516>/Constant12'
+   *  Constant: '<S516>/Constant13'
+   *  Constant: '<S516>/Constant14'
+   *  Constant: '<S516>/Constant15'
+   *  Constant: '<S516>/Constant16'
+   *  Constant: '<S516>/Constant17'
+   *  Constant: '<S516>/Constant18'
+   *  Constant: '<S516>/Constant19'
+   *  Constant: '<S516>/Constant2'
+   *  Constant: '<S516>/Constant3'
+   *  Constant: '<S516>/Constant4'
+   *  Constant: '<S516>/Constant5'
+   *  Constant: '<S516>/Constant6'
+   *  Constant: '<S516>/Constant7'
+   *  Constant: '<S516>/Constant8'
+   *  Constant: '<S516>/Constant9'
+   *  Constant: '<S517>/Constant1'
+   *  Constant: '<S517>/Constant10'
+   *  Constant: '<S517>/Constant11'
+   *  Constant: '<S517>/Constant13'
+   *  Constant: '<S517>/Constant14'
+   *  Constant: '<S517>/Constant15'
+   *  Constant: '<S517>/Constant16'
+   *  Constant: '<S517>/Constant17'
+   *  Constant: '<S517>/Constant18'
+   *  Constant: '<S517>/Constant19'
+   *  Constant: '<S517>/Constant2'
+   *  Constant: '<S517>/Constant20'
+   *  Constant: '<S517>/Constant21'
+   *  Constant: '<S517>/Constant22'
+   *  Constant: '<S517>/Constant23'
+   *  Constant: '<S517>/Constant24'
+   *  Constant: '<S517>/Constant3'
+   *  Constant: '<S517>/Constant4'
+   *  Constant: '<S517>/Constant5'
+   *  Constant: '<S517>/Constant6'
+   *  Constant: '<S517>/Constant7'
+   *  Constant: '<S517>/Constant8'
+   *  Constant: '<S517>/Constant9'
+   */
+  GVCU_HIL_SimpleMagicTire(GVCU_HIL_B.Saturation_a, GVCU_HIL_B.Gain,
+    rtb_ImpAsg_InsertedFor_Omega_at, GVCU_HIL_B.VectorConcatenate2[0],
+    GVCU_HIL_P.Constant_Value_ez, GVCU_HIL_P.Constant1_Value_k,
+    GVCU_HIL_P.Constant7_Value_n, GVCU_HIL_P.Constant6_Value_a,
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_c, GVCU_HIL_P.Constant2_Value_o,
+    GVCU_HIL_P.Constant19_Value_o, GVCU_HIL_P.Constant12_Value_o,
+    GVCU_HIL_P.Constant14_Value_m, GVCU_HIL_P.Constant11_Value_n,
+    GVCU_HIL_P.Constant5_Value_n, GVCU_HIL_P.Constant2_Value_fr,
+    GVCU_HIL_P.Constant13_Value_l, GVCU_HIL_P.Constant8_Value_f,
+    GVCU_HIL_P.Constant15_Value_o, GVCU_HIL_P.Constant16_Value_j,
+    GVCU_HIL_P.Constant7_Value_o, GVCU_HIL_P.Constant9_Value_c,
+    GVCU_HIL_P.Constant17_Value_p, GVCU_HIL_P.Constant18_Value_c,
+    GVCU_HIL_P.Constant6_Value_g, GVCU_HIL_P.Constant10_Value_m,
+    GVCU_HIL_P.Constant4_Value_l, GVCU_HIL_P.Constant1_Value_o,
+    GVCU_HIL_P.Constant3_Value_p, GVCU_HIL_P.Constant19_Value_f,
+    GVCU_HIL_P.Constant12_Value_d, GVCU_HIL_P.Constant14_Value_k, 0.0,
+    GVCU_HIL_P.FxType_Value_f, GVCU_HIL_P.rollType_Value_h,
+    GVCU_HIL_P.vertType_Value_e, GVCU_HIL_P.RearLongitudinalWheelDiscBrak_i,
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_m,
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n,
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_h, &GVCU_HIL_B.sf_SimpleMagicTire_n);
 
-  /* SignalConversion generated from: '<S416>/Matrix Concatenate23' */
-  rtb_Omega[3] = rtb_ImpAsg_InsertedFor_Omega_at;
+  /* MATLAB Function: '<S498>/MATLAB Function' */
+  GVCU_HIL_MATLABFunction(GVCU_HIL_B.VectorConcatenate2[0],
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n, &GVCU_HIL_B.sf_MATLABFunction_k);
 
-  /* UnaryMinus: '<S227>/Unary Minus' */
-  idx = -GVCU_HIL_B.Subtract1;
+  /* Product: '<S496>/Product3' */
+  rtb_RateLimiter = GVCU_HIL_B.sf_SimpleMagicTire_n.Fx *
+    GVCU_HIL_B.sf_MATLABFunction_k.lambda;
+
+  /* Sum: '<S496>/Add2' incorporates:
+   *  Constant: '<S496>/Constant4'
+   */
+  xtmp = GVCU_HIL_P.Constant4_Value_l0 - GVCU_HIL_B.sf_MATLABFunction_k.lambda;
+
+  /* DeadZone: '<S495>/Dead Zone' */
+  if (GVCU_HIL_B.VectorConcatenate2[0] > GVCU_HIL_P.DeadZone_End_b) {
+    rtb_UnaryMinus1_i = GVCU_HIL_B.VectorConcatenate2[0] -
+      GVCU_HIL_P.DeadZone_End_b;
+  } else if (GVCU_HIL_B.VectorConcatenate2[0] >= GVCU_HIL_P.DeadZone_Start_f) {
+    rtb_UnaryMinus1_i = 0.0;
+  } else {
+    rtb_UnaryMinus1_i = GVCU_HIL_B.VectorConcatenate2[0] -
+      GVCU_HIL_P.DeadZone_Start_f;
+  }
+
+  /* RelationalOperator: '<S495>/Relational Operator' incorporates:
+   *  Abs: '<S495>/Abs1'
+   *  Constant: '<S495>/VXLOW'
+   *  DeadZone: '<S495>/Dead Zone'
+   */
+  GVCU_HIL_B.RelationalOperator_b = (fabs(rtb_UnaryMinus1_i) <=
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n);
   if (tmp) {
-    /* Constant: '<S303>/k1' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate4'
+    /* SignalConversion generated from: '<S497>/Enable' */
+    GVCU_HIL_B.HiddenBuf_InsertedFor_Bristle_k = GVCU_HIL_B.RelationalOperator_b;
+  }
+
+  /* Outputs for Enabled SubSystem: '<S495>/Bristle Deflection' */
+  /* Constant: '<S426>/lam_muxConstant' incorporates:
+   *  Constant: '<S426>/Constant'
+   */
+  GVCU_HIL_BristleDeflection(GVCU_HIL_M,
+    GVCU_HIL_B.HiddenBuf_InsertedFor_Bristle_k, GVCU_HIL_B.VectorConcatenate2[0],
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_c,
+    GVCU_HIL_B.sf_SimpleMagicTire_n.FzTire, GVCU_HIL_B.sf_SimpleMagicTire_n.Re,
+    rtb_ImpAsg_InsertedFor_Omega_at, GVCU_HIL_P.RearLongitudinalWheelDiscBrak_k,
+    GVCU_HIL_B.sf_SimpleMagicTire_n.Fx,
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n,
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrake1,
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_b,
+    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_o, &GVCU_HIL_B.BristleDeflection_h,
+    &GVCU_HIL_DW.BristleDeflection_h, &GVCU_HIL_P.BristleDeflection_h,
+    &GVCU_HIL_X.BristleDeflection_h, &_rtXdis->BristleDeflection_h);
+
+  /* End of Outputs for SubSystem: '<S495>/Bristle Deflection' */
+
+  /* Sum: '<S496>/Add1' incorporates:
+   *  Product: '<S496>/Product4'
+   */
+  rtb_RateLimiter += xtmp * GVCU_HIL_B.BristleDeflection_h.Sum;
+
+  /* Switch: '<S380>/Switch1' incorporates:
+   *  Constant: '<S380>/Constant1'
+   *  MinMax: '<S380>/Max1'
+   */
+  if (GVCU_HIL_B.VectorConcatenate2[0] > GVCU_HIL_P.Switch1_Threshold_l) {
+    rtb_UnaryMinus1_i = rtb_RateLimiter;
+  } else {
+    rtb_UnaryMinus1_i = fmax(rtb_RateLimiter, GVCU_HIL_P.Constant1_Value_ob);
+  }
+
+  /* Gain: '<S380>/Gain2' incorporates:
+   *  Switch: '<S380>/Switch1'
+   */
+  GVCU_HIL_B.Gain2 = GVCU_HIL_P.Gain2_Gain * rtb_UnaryMinus1_i;
+  if (tmp) {
+    /* Lookup_n-D: '<S377>/2-D Lookup Table4' incorporates:
+     *  Constant: '<S377>/hRideF'
+     *  Constant: '<S377>/hRideR'
+     */
+    rtb_Cd = look2_binlcapw(GVCU_HIL_P.hRideF_Value, GVCU_HIL_P.hRideR_Value,
+      GVCU_HIL_P.veh.aero.FRH, GVCU_HIL_P.veh.aero.RRH,
+      GVCU_HIL_P.uDLookupTable4_tableData, GVCU_HIL_P.uDLookupTable4_maxIndex,
+      5U);
+
+    /* Gain: '<S377>/Gain7' */
+    GVCU_HIL_B.Gain7 = GVCU_HIL_P.Gain7_Gain * rtb_Cd;
+  }
+
+  /* Sum: '<S377>/Sum4' incorporates:
+   *  Constant: '<S121>/wind x'
+   */
+  rtb_SignalCopy_d = GVCU_HIL_B.VectorConcatenate2[0] +
+    GVCU_HIL_P.environment.wind.x;
+
+  /* Math: '<S377>/Square' */
+  rtb_SignalCopy_d *= rtb_SignalCopy_d;
+
+  /* Gain: '<S377>/Gain6' incorporates:
+   *  Concatenate: '<S377>/Matrix Concatenate1'
+   *  Constant: '<S118>/Constant2'
+   *  Constant: '<S377>/Constant1'
+   *  Product: '<S377>/Product2'
+   */
+  GVCU_HIL_B.FAero[0] = GVCU_HIL_B.Gain7 * GVCU_HIL_P.veh.A * rtb_SignalCopy_d *
+    GVCU_HIL_P.environment.air.density * GVCU_HIL_P.Gain6_Gain_l;
+  if (tmp) {
+    /* Constant: '<S377>/Constant3' incorporates:
+     *  Concatenate: '<S377>/Matrix Concatenate1'
+     */
+    GVCU_HIL_B.FAero[1] = GVCU_HIL_P.Constant3_Value_a;
+
+    /* Lookup_n-D: '<S377>/2-D Lookup Table3' incorporates:
+     *  Constant: '<S377>/hRideF'
+     *  Constant: '<S377>/hRideR'
+     */
+    rtb_UnitConversion = look2_binlcapw(GVCU_HIL_P.hRideF_Value,
+      GVCU_HIL_P.hRideR_Value, GVCU_HIL_P.veh.aero.FRH, GVCU_HIL_P.veh.aero.RRH,
+      GVCU_HIL_P.uDLookupTable3_tableData_g, GVCU_HIL_P.uDLookupTable3_maxIndex,
+      5U);
+
+    /* Gain: '<S377>/Gain8' */
+    GVCU_HIL_B.Clf = GVCU_HIL_P.Gain8_Gain * rtb_UnitConversion;
+  }
+
+  /* Gain: '<S377>/Gain2' incorporates:
+   *  Constant: '<S118>/Constant2'
+   *  Constant: '<S377>/Constant1'
+   *  Product: '<S377>/Product'
+   */
+  rtb_Add_j = GVCU_HIL_B.Clf * GVCU_HIL_P.veh.A * rtb_SignalCopy_d *
+    GVCU_HIL_P.environment.air.density * GVCU_HIL_P.Gain2_Gain_f;
+  if (tmp) {
+    /* Lookup_n-D: '<S377>/2-D Lookup Table2' incorporates:
+     *  Constant: '<S377>/hRideF'
+     *  Constant: '<S377>/hRideR'
+     */
+    rtb_UnitConversion = look2_binlcapw(GVCU_HIL_P.hRideF_Value,
+      GVCU_HIL_P.hRideR_Value, GVCU_HIL_P.veh.aero.FRH, GVCU_HIL_P.veh.aero.RRH,
+      GVCU_HIL_P.uDLookupTable2_tableData_c, GVCU_HIL_P.uDLookupTable2_maxIndex,
+      5U);
+
+    /* Gain: '<S377>/Gain9' */
+    GVCU_HIL_B.Clr = GVCU_HIL_P.Gain9_Gain * rtb_UnitConversion;
+  }
+
+  /* Gain: '<S377>/Gain3' incorporates:
+   *  Constant: '<S118>/Constant2'
+   *  Constant: '<S377>/Constant1'
+   *  Product: '<S377>/Product1'
+   */
+  rtb_SignalCopy_d = GVCU_HIL_B.Clr * GVCU_HIL_P.veh.A * rtb_SignalCopy_d *
+    GVCU_HIL_P.environment.air.density * GVCU_HIL_P.Gain3_Gain_j;
+
+  /* Sum: '<S377>/Sum2' incorporates:
+   *  Concatenate: '<S377>/Matrix Concatenate1'
+   */
+  GVCU_HIL_B.FAero[2] = rtb_Add_j + rtb_SignalCopy_d;
+  if (tmp) {
+    /* UnaryMinus: '<S385>/Unary Minus' incorporates:
+     *  Constant: '<S121>/wind x'
+     *  SignalConversion generated from: '<S424>/Vector Concatenate5'
+     */
+    GVCU_HIL_B.UnaryMinus[0] = -GVCU_HIL_P.environment.wind.x;
+    GVCU_HIL_B.UnaryMinus[1] = -0.0;
+    GVCU_HIL_B.UnaryMinus[2] = -0.0;
+
+    /* Constant: '<S422>/Constant' incorporates:
+     *  Concatenate: '<S422>/Vector Concatenate'
+     */
+    GVCU_HIL_B.VectorConcatenate[0] = GVCU_HIL_P.veh.aero.CD;
+  }
+
+  /* Sum: '<S422>/Add1' incorporates:
+   *  SignalConversion generated from: '<S385>/Vector Concatenate5'
+   */
+  rtb_Pa_f_idx_3 = GVCU_HIL_B.Integrator - GVCU_HIL_B.UnaryMinus[0];
+
+  /* Trigonometry: '<S422>/Tanh' incorporates:
+   *  Gain: '<S422>/4'
+   */
+  rtb_Pa_f_idx_2 = tanh(GVCU_HIL_P.u_Gain_f[0] * rtb_Pa_f_idx_3);
+
+  /* Sum: '<S422>/Sum of Elements' incorporates:
+   *  Product: '<S422>/Product'
+   *  Sum: '<S422>/Add1'
+   */
+  rtb_SumofElements = ((0.0 - GVCU_HIL_B.UnaryMinus[1]) * (0.0 -
+    GVCU_HIL_B.UnaryMinus[1]) + rtb_Pa_f_idx_3 * rtb_Pa_f_idx_3) + (0.0 -
+    GVCU_HIL_B.UnaryMinus[2]) * (0.0 - GVCU_HIL_B.UnaryMinus[2]);
+
+  /* Product: '<S423>/Product6' incorporates:
+   *  Constant: '<S423>/Constant5'
+   *  Constant: '<S423>/Constant6'
+   *  Gain: '<S423>/Gain'
+   *  Math: '<S423>/Hypot'
+   *  MinMax: '<S423>/Max'
+   *  MinMax: '<S423>/Min'
+   *  Sum: '<S422>/Add1'
+   *  Trigonometry: '<S423>/Trigonometric Function'
+   */
+  rtb_UnaryMinus1_i = fmin(fmax(1.0 / GVCU_HIL_P.DragForce_xdot_tol *
+    rt_hypotd_snf(0.0 - GVCU_HIL_B.UnaryMinus[1], rtb_Pa_f_idx_3),
+    GVCU_HIL_P.Constant6_Value_m), GVCU_HIL_P.Constant5_Value_j) *
+    rt_atan2d_snf_cordic11(0.0 - GVCU_HIL_B.UnaryMinus[1], rtb_Pa_f_idx_3);
+
+  /* Lookup_n-D: '<S422>/Cs' incorporates:
+   *  Concatenate: '<S422>/Vector Concatenate'
+   *  UnaryMinus: '<S453>/Unary Minus1'
+   */
+  GVCU_HIL_B.VectorConcatenate[1] = look1_binlcpw(rtb_UnaryMinus1_i,
+    GVCU_HIL_P.DragForce_beta_w, GVCU_HIL_P.DragForce_Cs, 1U);
+  if (tmp) {
+    /* Constant: '<S422>/Constant1' incorporates:
+     *  Concatenate: '<S422>/Vector Concatenate'
+     */
+    GVCU_HIL_B.VectorConcatenate[2] = GVCU_HIL_P.VehicleBody1DOFLongitudinal_Cl;
+
+    /* Saturate: '<S422>/Saturation' incorporates:
+     *  Constant: '<S379>/AirTempConstant'
+     */
+    if (GVCU_HIL_P.VehicleBody1DOFLongitudinal_T >
+        GVCU_HIL_P.Saturation_UpperSat_e) {
+      /* Saturate: '<S422>/Saturation' */
+      GVCU_HIL_B.Saturation_p = GVCU_HIL_P.Saturation_UpperSat_e;
+    } else if (GVCU_HIL_P.VehicleBody1DOFLongitudinal_T <
+               GVCU_HIL_P.Saturation_LowerSat_d) {
+      /* Saturate: '<S422>/Saturation' */
+      GVCU_HIL_B.Saturation_p = GVCU_HIL_P.Saturation_LowerSat_d;
+    } else {
+      /* Saturate: '<S422>/Saturation' */
+      GVCU_HIL_B.Saturation_p = GVCU_HIL_P.VehicleBody1DOFLongitudinal_T;
+    }
+
+    /* End of Saturate: '<S422>/Saturation' */
+  }
+
+  /* Lookup_n-D: '<S422>/Crm' incorporates:
+   *  Concatenate: '<S422>/Vector Concatenate'
+   *  UnaryMinus: '<S453>/Unary Minus1'
+   */
+  GVCU_HIL_B.VectorConcatenate[3] = look1_binlxpw(rtb_UnaryMinus1_i,
+    GVCU_HIL_P.Crm_bp01Data, GVCU_HIL_P.Crm_tableData, 1U);
+
+  /* Product: '<S422>/Product5' incorporates:
+   *  Concatenate: '<S422>/Vector Concatenate'
+   *  Constant: '<S422>/Constant2'
+   */
+  GVCU_HIL_B.VectorConcatenate[4] = rtb_Pa_f_idx_2 *
+    GVCU_HIL_P.VehicleBody1DOFLongitudinal_Cpm;
+
+  /* Lookup_n-D: '<S422>/Cym' incorporates:
+   *  Concatenate: '<S422>/Vector Concatenate'
+   *  UnaryMinus: '<S453>/Unary Minus1'
+   */
+  GVCU_HIL_B.VectorConcatenate[5] = look1_binlxpw(rtb_UnaryMinus1_i,
+    GVCU_HIL_P.DragForce_beta_w, GVCU_HIL_P.DragForce_Cym, 1U);
+
+  /* Gain: '<S422>/.5.*A.*Pabs.//R.//T' incorporates:
+   *  Product: '<S422>/Product1'
+   */
+  rtb_UnaryMinus1_i = 0.5 * GVCU_HIL_P.veh.A *
+    GVCU_HIL_P.VehicleBody1DOFLongitudinal_Pab / GVCU_HIL_P.DragForce_R;
+  for (b_mid_i = 0; b_mid_i <= 4; b_mid_i += 2) {
+    /* Product: '<S422>/Product1' */
+    tmp_1 = _mm_loadu_pd(&GVCU_HIL_B.VectorConcatenate[b_mid_i]);
+    _mm_storeu_pd(&rtb_uAPabsRT[b_mid_i], _mm_mul_pd(_mm_div_pd(_mm_mul_pd
+      (_mm_set1_pd(rtb_SumofElements), tmp_1), _mm_set1_pd
+      (GVCU_HIL_B.Saturation_p)), _mm_set1_pd(rtb_UnaryMinus1_i)));
+  }
+
+  /* End of Gain: '<S422>/.5.*A.*Pabs.//R.//T' */
+
+  /* Trigonometry: '<S422>/Tanh' incorporates:
+   *  Constant: '<S422>/Constant4'
+   *  Gain: '<S422>/4'
+   *  Product: '<S422>/Product3'
+   *  Sum: '<S422>/Add1'
+   *  Sum: '<S422>/Add2'
+   */
+  _mm_storeu_pd(&tmp_2[0], _mm_mul_pd(_mm_sub_pd(_mm_set_pd(tanh((0.0 -
+    GVCU_HIL_B.UnaryMinus[2]) * GVCU_HIL_P.u_Gain_f[2]), rtb_Pa_f_idx_2),
+    _mm_set_pd(GVCU_HIL_P.Constant4_Value_fm[2], GVCU_HIL_P.Constant4_Value_fm[0])),
+    _mm_set_pd(rtb_uAPabsRT[2], rtb_uAPabsRT[0])));
+  if (tmp) {
+    /* Product: '<S381>/Divide' incorporates:
+     *  Constant: '<S120>/Constant'
+     *  Constant: '<S120>/Constant1'
+     *  Constant: '<S120>/Constant2'
+     *  Constant: '<S120>/Constant3'
+     *  Constant: '<S381>/Constant'
+     *  Gain: '<S381>/Gain'
+     *  Gain: '<S381>/Gain1'
+     *  Sum: '<S381>/Sum'
+     *  Sum: '<S381>/Sum1'
+     *  Sum: '<S381>/Sum2'
+     */
+    u0 = ((GVCU_HIL_P.Constant_Value_d + GVCU_HIL_P.Constant1_Value_p) *
+          GVCU_HIL_P.Gain_Gain_m - (GVCU_HIL_P.Constant2_Value_e +
+           GVCU_HIL_P.Constant3_Value_ny) * GVCU_HIL_P.Gain1_Gain_f) /
+      (GVCU_HIL_P.veh.f + GVCU_HIL_P.veh.r);
+
+    /* Trigonometry: '<S381>/Tan ' */
+    if (u0 > 1.0) {
+      u0 = 1.0;
+    } else if (u0 < -1.0) {
+      u0 = -1.0;
+    }
+
+    /* Gain: '<S544>/Gain' incorporates:
+     *  Trigonometry: '<S381>/Tan '
+     */
+    GVCU_HIL_B.Gain_f = GVCU_HIL_P.Gain_Gain_ai * asin(u0);
+
+    /* UnitConversion: '<S382>/Unit Conversion' */
+    /* Unit Conversion - from: deg to: rad
+       Expression: output = (0.0174533*input) + (0) */
+    rtb_UnitConversion = 0.017453292519943295 * GVCU_HIL_B.Gain_f;
+
+    /* Trigonometry: '<S385>/Trigonometric Function2' */
+    rtb_TrigonometricFunction2_o2 = cos(rtb_UnitConversion);
+
+    /* Gain: '<S385>/m' incorporates:
+     *  Constant: '<S385>/g'
+     */
+    rtb_Saturation1 = GVCU_HIL_P.veh.mass *
+      GVCU_HIL_P.VehicleBody1DOFLongitudinal_g;
+
+    /* Product: '<S385>/Product1' incorporates:
+     *  Trigonometry: '<S385>/Trigonometric Function2'
+     */
+    GVCU_HIL_B.Product1 = sin(rtb_UnitConversion) * rtb_Saturation1;
+  }
+
+  /* Sum: '<S385>/Add5' incorporates:
+   *  SignalConversion generated from: '<S385>/Vector Concatenate2'
+   *  Sum: '<S385>/Sum of Elements'
+   */
+  xtmp = (((rtb_VectorConcatenate2_idx_0 + GVCU_HIL_B.Gain2) + GVCU_HIL_B.FAero
+           [0]) - tmp_2[0]) - GVCU_HIL_B.Product1;
+
+  /* Gain: '<S385>/1//m' */
+  GVCU_HIL_B.xddot = 1.0 / GVCU_HIL_P.veh.mass * xtmp;
+
+  /* UnitConversion: '<S393>/Unit Conversion' incorporates:
+   *  SignalConversion generated from: '<S382>/Vector Concatenate3'
+   */
+  /* Unit Conversion - from: m/s^2 to: gn
+     Expression: output = (0.101972*input) + (0) */
+  GVCU_HIL_B.UnitConversion[0] = 0.10197162129779282 * GVCU_HIL_B.xddot;
+  GVCU_HIL_B.UnitConversion[1] = 0.0;
+  GVCU_HIL_B.UnitConversion[2] = 0.0;
+  if (tmp) {
+    /* S-Function (sigout): '<S17>/S-Function' */
+
+    /* Level2 S-Function Block: '<S17>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[2];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigout): '<S19>/S-Function' */
+
+    /* Level2 S-Function Block: '<S19>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[3];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Gain: '<S13>/Gain' */
+    GVCU_HIL_B.Gain_o = GVCU_HIL_P.Gain_Gain_kc * 0.0;
+
+    /* S-Function (sigout): '<S20>/S-Function' */
+
+    /* Level2 S-Function Block: '<S20>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[4];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S1>/Zero6' */
+    GVCU_HIL_B.e2e_alive_counter = GVCU_HIL_P.Zero6_Value;
+
+    /* Constant: '<S1>/Zero5' */
+    GVCU_HIL_B.e2e_checksum = GVCU_HIL_P.Zero5_Value;
+
+    /* Constant: '<S1>/Zero8' */
+    GVCU_HIL_B.steer_tq = GVCU_HIL_P.Zero8_Value;
+
+    /* Constant: '<S1>/Zero9' */
+    GVCU_HIL_B.steer_whl_ag = GVCU_HIL_P.Zero9_Value;
+
+    /* Constant: '<S1>/Zero10' */
+    GVCU_HIL_B.steer_whl_rot_spd = GVCU_HIL_P.Zero10_Value;
+
+    /* Constant: '<S1>/Zero7' */
+    GVCU_HIL_B.steer_whl_snsr_v = GVCU_HIL_P.Zero7_Value;
+
+    /* S-Function (sigout): '<S12>/S-Function_1' */
+
+    /* Level2 S-Function Block: '<S12>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[5];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigout): '<S15>/S-Function' */
+
+    /* Level2 S-Function Block: '<S15>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[6];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S1>/Zero15' */
+    GVCU_HIL_B.yaw_rate_qual = GVCU_HIL_P.Zero15_Value;
+
+    /* S-Function (sigout): '<S18>/S-Function' */
+
+    /* Level2 S-Function Block: '<S18>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[7];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigout): '<S43>/S-Function' */
+
+    /* Level2 S-Function Block: '<S43>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[8];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigout): '<S44>/S-Function' */
+
+    /* Level2 S-Function Block: '<S44>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[9];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sysvarout): '<S52>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_b4, 1,
+         &GVCU_HIL_B.cycle_time_remaining, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sysvarout): '<S53>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_c1, 1,
+         &GVCU_HIL_B.cycle_finished, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+
+    /* RateTransition: '<S3>/Rate Transition3' incorporates:
+     *  Constant: '<S3>/Constant'
+     */
+    if (tmp_0) {
+      GVCU_HIL_DW.RateTransition3_Buffer = GVCU_HIL_P.Constant_Value_dg;
+    }
+  }
+
+  /* RateTransition: '<S3>/Rate Transition3' */
+  if (tmp_0) {
+    /* RateTransition: '<S3>/Rate Transition3' */
+    GVCU_HIL_B.RateTransition3 = GVCU_HIL_DW.RateTransition3_Buffer;
+
+    /* S-Function (sysvarout): '<S54>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_f, 1,
+         &GVCU_HIL_B.RateTransition3, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+  }
+
+  /* RateTransition: '<S3>/Rate Transition2' */
+  if (tmp && tmp_0) {
+    GVCU_HIL_DW.RateTransition2_Buffer = rtb_bar;
+  }
+
+  if (tmp_0) {
+    /* RateTransition: '<S3>/Rate Transition2' */
+    GVCU_HIL_B.RateTransition2 = GVCU_HIL_DW.RateTransition2_Buffer;
+
+    /* S-Function (sysvarout): '<S55>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_h, 1,
+         &GVCU_HIL_B.RateTransition2, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+  }
+
+  if (tmp && tmp_0) {
+    /* RateTransition: '<S3>/Rate Transition' incorporates:
+     *  Lookup_n-D: '<S3>/1-D Lookup Table'
+     */
+    GVCU_HIL_DW.RateTransition_Buffer = look1_binlxpw(GVCU_HIL_B.pedal_out,
+      GVCU_HIL_P.uDLookupTable_bp01Data, GVCU_HIL_P.uDLookupTable_tableData, 99U);
+  }
+
+  /* RateTransition: '<S3>/Rate Transition' */
+  if (tmp_0) {
+    /* RateTransition: '<S3>/Rate Transition' */
+    GVCU_HIL_B.RateTransition = GVCU_HIL_DW.RateTransition_Buffer;
+
+    /* S-Function (sysvarout): '<S56>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_o, 1,
+         &GVCU_HIL_B.RateTransition, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+  }
+
+  if (tmp && tmp_0) {
+    /* RateTransition: '<S3>/Rate Transition1' incorporates:
+     *  Lookup_n-D: '<S3>/1-D Lookup Table2'
+     */
+    GVCU_HIL_DW.RateTransition1_Buffer = look1_binlxpw(GVCU_HIL_B.pedal_out,
+      GVCU_HIL_P.uDLookupTable2_bp01Data_d,
+      GVCU_HIL_P.uDLookupTable2_tableData_p, 99U);
+  }
+
+  /* RateTransition: '<S3>/Rate Transition1' */
+  if (tmp_0) {
+    /* RateTransition: '<S3>/Rate Transition1' */
+    GVCU_HIL_B.RateTransition1 = GVCU_HIL_DW.RateTransition1_Buffer;
+
+    /* S-Function (sysvarout): '<S57>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_a, 1,
+         &GVCU_HIL_B.RateTransition1, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+  }
+
+  if (tmp) {
+    /* S-Function (sysvarout): '<S61>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_d, 1,
+         &GVCU_HIL_B.Switch3, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+
+    /* DeadZone: '<S91>/DeadZone' */
+    if (rtb_rpm > GVCU_HIL_P.PIController_UpperSaturationLim) {
+      rtb_rpm -= GVCU_HIL_P.PIController_UpperSaturationLim;
+    } else if (rtb_rpm >= GVCU_HIL_P.PIController_LowerSaturationLim) {
+      rtb_rpm = 0.0;
+    } else {
+      rtb_rpm -= GVCU_HIL_P.PIController_LowerSaturationLim;
+    }
+
+    /* End of DeadZone: '<S91>/DeadZone' */
+
+    /* RelationalOperator: '<S89>/Relational Operator' incorporates:
+     *  Constant: '<S89>/Clamping_zero'
+     */
+    rtb_RelationalOperator = (GVCU_HIL_P.Clamping_zero_Value != rtb_rpm);
+
+    /* RelationalOperator: '<S89>/fix for DT propagation issue' incorporates:
+     *  Constant: '<S89>/Clamping_zero'
+     */
+    rtb_fixforDTpropagationissue = (rtb_rpm > GVCU_HIL_P.Clamping_zero_Value);
+
+    /* Gain: '<S96>/Integral Gain' */
+    rtb_rpm = GVCU_HIL_P.PIController_I * GVCU_HIL_B.Subtract;
+
+    /* Switch: '<S89>/Switch1' incorporates:
+     *  Constant: '<S89>/Constant'
+     *  Constant: '<S89>/Constant2'
+     */
+    if (rtb_fixforDTpropagationissue) {
+      rtPrevAction = GVCU_HIL_P.Constant_Value_gy;
+    } else {
+      rtPrevAction = GVCU_HIL_P.Constant2_Value_f2;
+    }
+
+    /* Switch: '<S89>/Switch2' incorporates:
+     *  Constant: '<S89>/Clamping_zero'
+     *  Constant: '<S89>/Constant3'
+     *  Constant: '<S89>/Constant4'
+     *  RelationalOperator: '<S89>/fix for DT propagation issue1'
+     */
+    if (rtb_rpm > GVCU_HIL_P.Clamping_zero_Value) {
+      rtAction = GVCU_HIL_P.Constant3_Value_g;
+    } else {
+      rtAction = GVCU_HIL_P.Constant4_Value_j;
+    }
+
+    /* Switch: '<S89>/Switch' incorporates:
+     *  Logic: '<S89>/AND3'
+     *  RelationalOperator: '<S89>/Equal1'
+     *  Switch: '<S89>/Switch1'
+     *  Switch: '<S89>/Switch2'
+     */
+    if (rtb_RelationalOperator && (rtPrevAction == rtAction)) {
+      /* Switch: '<S89>/Switch' incorporates:
+       *  Constant: '<S89>/Constant1'
+       */
+      GVCU_HIL_B.Switch = GVCU_HIL_P.Constant1_Value_d;
+    } else {
+      /* Switch: '<S89>/Switch' */
+      GVCU_HIL_B.Switch = rtb_rpm;
+    }
+
+    /* End of Switch: '<S89>/Switch' */
+
+    /* Product: '<S60>/Divide' incorporates:
+     *  Constant: '<S60>/tauerr'
+     */
+    GVCU_HIL_B.Divide = 1.0 / GVCU_HIL_P.tauerr_Value;
+  }
+
+  /* Product: '<S117>/Product' incorporates:
+   *  Sum: '<S117>/Sum'
+   *  Sum: '<S39>/Subtract'
+   */
+  GVCU_HIL_B.Product = ((idx - GVCU_HIL_B.VectorConcatenate2[0]) -
+                        rtb_ProportionalGain) * GVCU_HIL_B.Divide;
+
+  /* Switch: '<S39>/Switch2' incorporates:
+   *  Constant: '<S39>/Constant1'
+   *  Sum: '<S39>/Subtract1'
+   */
+  if (GVCU_HIL_B.Switch3 > GVCU_HIL_P.Switch2_Threshold) {
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Constant1_Value_i;
+  } else {
+    rtb_UnaryMinus1_i = rtb_uto1 - rtb_Sum1;
+  }
+
+  /* Sum: '<S39>/Sum8' incorporates:
+   *  Gain: '<S39>/Kaw'
+   *  Gain: '<S39>/Ki'
+   *  Switch: '<S39>/Switch2'
+   */
+  GVCU_HIL_B.Sum8 = GVCU_HIL_P.Ki_Gain * rtb_ProportionalGain +
+    GVCU_HIL_P.Kaw_Gain * rtb_UnaryMinus1_i;
+
+  /* Integrator: '<S303>/Integrator' */
+  GVCU_HIL_B.Spd = GVCU_HIL_X.Integrator_CSTATE_n;
+
+  /* Gain: '<S8>/Gain1' */
+  GVCU_HIL_B.rpm = GVCU_HIL_P.Gain1_Gain_fg * GVCU_HIL_B.Spd;
+
+  /* Lookup_n-D: '<S8>/1-D Lookup Table' incorporates:
+   *  Abs: '<S8>/Abs3'
+   */
+  GVCU_HIL_B.uDLookupTable = look1_binlcapw(fabs(GVCU_HIL_B.rpm),
+    GVCU_HIL_P.uDLookupTable_bp01Data_d, GVCU_HIL_P.uDLookupTable_tableData_d,
+    5U);
+  if (tmp) {
+    /* Gain: '<S3>/m//s to km//h' */
+    GVCU_HIL_B.kmh = GVCU_HIL_P.mstokmh_Gain * GVCU_HIL_B.Saturation_d;
+
+    /* S-Function (sigin): '<S204>/S-Function' */
+
+    /* Level2 S-Function Block: '<S204>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[10];
+      sfcnOutputs(rts,0);
+    }
+
+    /* RelationalOperator: '<S198>/Compare' incorporates:
+     *  Constant: '<S198>/Constant'
+     */
+    rtb_Compare = (GVCU_HIL_B.SFunction_p4 <
+                   GVCU_HIL_P.CompareToConstant_const_j);
+
+    /* Switch: '<S211>/Switch' incorporates:
+     *  Constant: '<S207>/Constant1'
+     */
+    if (14.118 * GVCU_HIL_P.bat.SoC_init >
+        GVCU_HIL_P.DatasheetBattery2_BattChargeMax) {
+      /* Switch: '<S211>/Switch' incorporates:
+       *  Constant: '<S211>/Constant1'
+       */
+      GVCU_HIL_B.Switch_a = GVCU_HIL_P.DatasheetBattery2_BattChargeMax;
+    } else {
+      /* Switch: '<S211>/Switch' */
+      GVCU_HIL_B.Switch_a = 14.118 * GVCU_HIL_P.bat.SoC_init;
+    }
+
+    /* End of Switch: '<S211>/Switch' */
+  }
+
+  /* TransferFcn: '<S199>/Transfer Fcn' */
+  GVCU_HIL_B.TransferFcn = 0.0;
+  GVCU_HIL_B.TransferFcn += GVCU_HIL_P.TransferFcn_C *
+    GVCU_HIL_X.TransferFcn_CSTATE;
+
+  /* Gain: '<S211>/Gain1' */
+  GVCU_HIL_B.Gain1_i = -1.0 / (GVCU_HIL_P.DatasheetBattery2_Np * 3600.0) *
+    GVCU_HIL_B.TransferFcn;
+
+  /* Integrator: '<S211>/Integrator Limited' */
+  /* Limited  Integrator  */
+  if (GVCU_HIL_DW.IntegratorLimited_DWORK1) {
+    GVCU_HIL_X.IntegratorLimited_CSTATE = GVCU_HIL_B.Switch_a;
+  }
+
+  if (GVCU_HIL_X.IntegratorLimited_CSTATE >=
+      GVCU_HIL_P.DatasheetBattery2_BattChargeMax) {
+    GVCU_HIL_X.IntegratorLimited_CSTATE =
+      GVCU_HIL_P.DatasheetBattery2_BattChargeMax;
+  } else if (GVCU_HIL_X.IntegratorLimited_CSTATE <=
+             GVCU_HIL_P.IntegratorLimited_LowerSat) {
+    GVCU_HIL_X.IntegratorLimited_CSTATE = GVCU_HIL_P.IntegratorLimited_LowerSat;
+  }
+
+  /* Product: '<S212>/Divide' incorporates:
+   *  Constant: '<S212>/Constant1'
+   *  Integrator: '<S211>/Integrator Limited'
+   */
+  rtb_SumofElements = GVCU_HIL_X.IntegratorLimited_CSTATE /
+    GVCU_HIL_P.DatasheetBattery2_BattChargeMax;
+
+  /* Gain: '<S213>/Gain1' incorporates:
+   *  Constant: '<S199>/Temperature1'
+   *  Gain: '<S213>/Gain2'
+   *  Lookup_n-D: '<S216>/Em LUT'
+   *  Lookup_n-D: '<S217>/R LUT'
+   *  Product: '<S213>/Product'
+   *  Sum: '<S213>/Subtract'
+   *  UnaryMinus: '<S453>/Unary Minus5'
+   */
+  GVCU_HIL_B.Gain1_g = (look1_binlcapw(rtb_SumofElements,
+    GVCU_HIL_P.DatasheetBattery2_SOCEmBp, GVCU_HIL_P.DatasheetBattery2_Em, 9U) -
+                        1.0 / GVCU_HIL_P.DatasheetBattery2_Np *
+                        GVCU_HIL_B.TransferFcn * look2_binlcapw
+                        (GVCU_HIL_P.Temperature1_Value, rtb_SumofElements,
+    GVCU_HIL_P.DatasheetBattery2_BattTempBp,
+    GVCU_HIL_P.DatasheetBattery2_SOCRintBp, GVCU_HIL_P.DatasheetBattery2_RInt,
+    GVCU_HIL_P.RLUT_maxIndex, 2U)) * GVCU_HIL_P.DatasheetBattery2_Ns;
+
+  /* Lookup_n-D: '<S226>/Max Torque Limit' incorporates:
+   *  Integrator: '<S303>/Integrator'
+   */
+  rtb_SumofElements = look1_binlcapw(GVCU_HIL_B.Spd,
+    GVCU_HIL_P.MaxTorqueLimit_bp01Data, GVCU_HIL_P.MaxTorqueLimit_tableData,
+    200U);
+
+  /* Gain: '<S226>/Gain1' incorporates:
+   *  Integrator: '<S226>/Integrator'
+   */
+  rtb_bar = 1.0 / GVCU_HIL_P.MappedMotor_Tc * GVCU_HIL_X.Integrator_CSTATE_g;
+
+  /* Switch: '<S231>/Switch2' incorporates:
+   *  RelationalOperator: '<S231>/LowerRelop1'
+   */
+  if (!(rtb_bar > rtb_SumofElements)) {
+    /* Gain: '<S226>/Gain' */
+    rtb_rpm = GVCU_HIL_P.Gain_Gain_i * rtb_SumofElements;
+
+    /* Switch: '<S231>/Switch' incorporates:
+     *  RelationalOperator: '<S231>/UpperRelop'
+     */
+    if (rtb_bar < rtb_rpm) {
+      rtb_SumofElements = rtb_rpm;
+    } else {
+      rtb_SumofElements = rtb_bar;
+    }
+
+    /* End of Switch: '<S231>/Switch' */
+  }
+
+  /* End of Switch: '<S231>/Switch2' */
+
+  /* Saturate: '<S222>/Saturation' */
+  if (GVCU_HIL_B.Gain1_g > GVCU_HIL_P.Saturation_UpperSat_h) {
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Saturation_UpperSat_h;
+  } else if (GVCU_HIL_B.Gain1_g < GVCU_HIL_P.Saturation_LowerSat_e) {
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Saturation_LowerSat_e;
+  } else {
+    rtb_UnaryMinus1_i = GVCU_HIL_B.Gain1_g;
+  }
+
+  /* Product: '<S222>/Divide' incorporates:
+   *  Integrator: '<S303>/Integrator'
+   *  Lookup_n-D: '<S225>/2-D Lookup Table'
+   *  Product: '<S225>/Product'
+   *  Saturate: '<S222>/Saturation'
+   *  Sum: '<S222>/Add'
+   *  UnaryMinus: '<S453>/Unary Minus5'
+   */
+  GVCU_HIL_B.Divide_b = (GVCU_HIL_B.Spd * rtb_SumofElements + look2_binlcapw
+    (GVCU_HIL_B.Spd, rtb_SumofElements, GVCU_HIL_P.uDLookupTable_bp01Data_c,
+     GVCU_HIL_P.uDLookupTable_bp02Data, GVCU_HIL_P.uDLookupTable_tableData_n,
+     GVCU_HIL_P.uDLookupTable_maxIndex, 45U)) / rtb_UnaryMinus1_i;
+  if (tmp) {
+    /* S-Function (sigin): '<S202>/S-Function' */
+
+    /* Level2 S-Function Block: '<S202>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[11];
+      sfcnOutputs(rts,0);
+    }
+
+    /* RateLimiter: '<S8>/Rate Limiter' */
+    rtb_UnaryMinus1_i = GVCU_HIL_B.SFunction_g - GVCU_HIL_DW.PrevY_o;
+    if (rtb_UnaryMinus1_i > GVCU_HIL_P.RateLimiter_RisingLim_l * GVCU_HIL_period)
+    {
+      rtb_rpm = GVCU_HIL_P.RateLimiter_RisingLim_l * GVCU_HIL_period +
+        GVCU_HIL_DW.PrevY_o;
+    } else if (rtb_UnaryMinus1_i < GVCU_HIL_P.RateLimiter_FallingLim_k *
+               GVCU_HIL_period) {
+      rtb_rpm = GVCU_HIL_P.RateLimiter_FallingLim_k * GVCU_HIL_period +
+        GVCU_HIL_DW.PrevY_o;
+    } else {
+      rtb_rpm = GVCU_HIL_B.SFunction_g;
+    }
+
+    GVCU_HIL_DW.PrevY_o = rtb_rpm;
+
+    /* End of RateLimiter: '<S8>/Rate Limiter' */
+
+    /* Gain: '<S8>/Gain2' */
+    GVCU_HIL_B.rads = GVCU_HIL_P.Gain2_Gain_e * rtb_rpm;
+  }
+
+  /* Sum: '<S201>/Subtract1' */
+  GVCU_HIL_B.rpm_l = GVCU_HIL_B.rads - GVCU_HIL_B.Spd;
+  rtb_RelationalOperator = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
+    GVCU_HIL_M->Timing.TaskCounters.TID[2] == 0);
+  if (rtb_RelationalOperator) {
+    /* Gain: '<S364>/Proportional Gain' */
+    rtb_Sum_jk = GVCU_HIL_P.PIDController1_P * GVCU_HIL_B.rpm_l;
+
+    /* Sum: '<S369>/Sum Fdbk' */
+    rtb_rpm = rtb_Sum_jk + GVCU_HIL_DW.Integrator_DSTATE_d;
+
+    /* Saturate: '<S367>/Saturation' */
+    if (rtb_rpm > GVCU_HIL_P.PIDController1_UpperSaturationL) {
+      rtb_UnaryMinus1_i = GVCU_HIL_P.PIDController1_UpperSaturationL;
+    } else if (rtb_rpm < GVCU_HIL_P.PIDController1_LowerSaturationL) {
+      rtb_UnaryMinus1_i = GVCU_HIL_P.PIDController1_LowerSaturationL;
+    } else {
+      rtb_UnaryMinus1_i = rtb_rpm;
+    }
+
+    /* Sum: '<S351>/SumI4' incorporates:
+     *  Gain: '<S351>/Kb'
+     *  Gain: '<S356>/Integral Gain'
+     *  Saturate: '<S367>/Saturation'
+     *  Sum: '<S351>/SumI2'
+     */
+    GVCU_HIL_B.SumI4 = (rtb_UnaryMinus1_i - rtb_rpm) *
+      GVCU_HIL_P.PIDController1_Kb + GVCU_HIL_P.PIDController1_I *
+      GVCU_HIL_B.rpm_l;
+  }
+
+  /* Clock: '<S201>/Clock' */
+  GVCU_HIL_B.Clock_p = rtb_Pa_f_idx_0;
+  if (tmp) {
+    /* MATLAB Function: '<S201>/MATLAB Function' */
+    if ((fabs(GVCU_HIL_B.Spd) < 2.094) && (fabs(GVCU_HIL_B.rads) < 2.094)) {
+      if (GVCU_HIL_DW.stop_ts == 0.0) {
+        GVCU_HIL_DW.stop_ts = GVCU_HIL_B.Clock_p;
+      }
+
+      if ((GVCU_HIL_B.Clock_p - GVCU_HIL_DW.stop_ts >= 0.5) &&
+          !GVCU_HIL_DW.fired) {
+        rtb_rpm = 1.0;
+        GVCU_HIL_DW.fired = true;
+      } else {
+        rtb_rpm = 0.0;
+      }
+    } else {
+      GVCU_HIL_DW.stop_ts = 0.0;
+      GVCU_HIL_DW.fired = false;
+      rtb_rpm = 0.0;
+    }
+
+    /* End of MATLAB Function: '<S201>/MATLAB Function' */
+
+    /* Sum: '<S201>/Add' */
+    GVCU_HIL_B.Add_f = rtb_rpm + (real_T)rtb_Compare;
+  }
+
+  if (rtb_RelationalOperator) {
+    /* DiscreteIntegrator: '<S359>/Integrator' */
+    if ((GVCU_HIL_B.Add_f != 0.0) || (GVCU_HIL_DW.Integrator_PrevResetState_c !=
+         0)) {
+      GVCU_HIL_DW.Integrator_DSTATE_d =
+        GVCU_HIL_P.PIDController1_InitialCondition;
+    }
+
+    /* DiscreteIntegrator: '<S359>/Integrator' */
+    GVCU_HIL_B.Integrator_d = GVCU_HIL_P.Integrator_gainval_e * GVCU_HIL_B.SumI4
+      + GVCU_HIL_DW.Integrator_DSTATE_d;
+
+    /* DiscreteIntegrator: '<S359>/Integrator' */
+    if (GVCU_HIL_B.Integrator_d > GVCU_HIL_P.PIDController1_UpperIntegratorS) {
+      /* DiscreteIntegrator: '<S359>/Integrator' */
+      GVCU_HIL_B.Integrator_d = GVCU_HIL_P.PIDController1_UpperIntegratorS;
+    } else if (GVCU_HIL_B.Integrator_d <
+               GVCU_HIL_P.PIDController1_LowerIntegratorS) {
+      /* DiscreteIntegrator: '<S359>/Integrator' */
+      GVCU_HIL_B.Integrator_d = GVCU_HIL_P.PIDController1_LowerIntegratorS;
+    }
+
+    /* Sum: '<S368>/Sum' */
+    u0 = rtb_Sum_jk + GVCU_HIL_B.Integrator_d;
+
+    /* Saturate: '<S366>/Saturation' */
+    if (u0 > GVCU_HIL_P.PIDController1_UpperSaturationL) {
+      /* Saturate: '<S366>/Saturation' */
+      GVCU_HIL_B.Saturation_c = GVCU_HIL_P.PIDController1_UpperSaturationL;
+    } else if (u0 < GVCU_HIL_P.PIDController1_LowerSaturationL) {
+      /* Saturate: '<S366>/Saturation' */
+      GVCU_HIL_B.Saturation_c = GVCU_HIL_P.PIDController1_LowerSaturationL;
+    } else {
+      /* Saturate: '<S366>/Saturation' */
+      GVCU_HIL_B.Saturation_c = u0;
+    }
+
+    /* End of Saturate: '<S366>/Saturation' */
+  }
+
+  if (tmp) {
+    /* S-Function (sigin): '<S203>/S-Function' */
+
+    /* Level2 S-Function Block: '<S203>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[12];
+      sfcnOutputs(rts,0);
+    }
+  }
+
+  /* Switch: '<S8>/Switch2' */
+  if (GVCU_HIL_B.SFunction_p4 > GVCU_HIL_P.Switch2_Threshold_i) {
+    /* Switch: '<S324>/Switch2' incorporates:
+     *  RelationalOperator: '<S324>/LowerRelop1'
+     */
+    if (GVCU_HIL_B.Saturation_c > GVCU_HIL_B.uDLookupTable) {
+      rtb_Sum_jk = GVCU_HIL_B.uDLookupTable;
+    } else {
+      /* Gain: '<S201>/Gain' */
+      rtb_Sum_jk = GVCU_HIL_P.Gain_Gain_b * GVCU_HIL_B.uDLookupTable;
+
+      /* Switch: '<S324>/Switch' incorporates:
+       *  RelationalOperator: '<S324>/UpperRelop'
+       */
+      if (!(GVCU_HIL_B.Saturation_c < rtb_Sum_jk)) {
+        rtb_Sum_jk = GVCU_HIL_B.Saturation_c;
+      }
+
+      /* End of Switch: '<S324>/Switch' */
+    }
+
+    /* End of Switch: '<S324>/Switch2' */
+
+    /* Switch: '<S8>/Switch2' incorporates:
+     *  Sum: '<S201>/Add1'
+     */
+    GVCU_HIL_B.Switch2 = rtb_Sum_jk + GVCU_HIL_B.SFunction_e;
+  } else {
+    /* Switch: '<S8>/Switch2' incorporates:
+     *  Constant: '<S8>/Constant'
+     */
+    GVCU_HIL_B.Switch2 = GVCU_HIL_P.Constant_Value_i;
+  }
+
+  /* End of Switch: '<S8>/Switch2' */
+
+  /* Switch: '<S199>/Switch' incorporates:
+   *  Constant: '<S199>/Constant'
+   *  Constant: '<S199>/Constant1'
+   */
+  if (GVCU_HIL_B.Switch2 >= GVCU_HIL_P.Switch_Threshold_a) {
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Constant_Value_lu;
+  } else {
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Constant1_Value_ou;
+  }
+
+  /* End of Switch: '<S199>/Switch' */
+
+  /* Sum: '<S226>/Sum' incorporates:
+   *  Product: '<S199>/Product'
+   */
+  GVCU_HIL_B.Sum_h = GVCU_HIL_B.Switch2 * rtb_UnaryMinus1_i - rtb_bar;
+
+  /* Product: '<S199>/Product1' */
+  GVCU_HIL_B.EMTrq = rtb_SumofElements * rtb_UnaryMinus1_i;
+
+  /* SignalConversion generated from: '<S427>/Matrix Concatenate23' */
+  rtb_Pa_f_idx_0 = rtb_ImpAsg_InsertedFor_Omega__a;
+
+  /* SignalConversion generated from: '<S427>/Matrix Concatenate23' */
+  rtb_ProportionalGain = rtb_ImpAsg_InsertedFor_Omega__a;
+
+  /* SignalConversion generated from: '<S427>/Matrix Concatenate23' */
+  rtb_Pa_f_idx_2 = rtb_ImpAsg_InsertedFor_Omega_at;
+
+  /* SignalConversion generated from: '<S427>/Matrix Concatenate23' */
+  rtb_Pa_f_idx_3 = rtb_ImpAsg_InsertedFor_Omega_at;
+
+  /* UnaryMinus: '<S238>/Unary Minus' */
+  rtb_rpm = -GVCU_HIL_B.Subtract1;
+  if (tmp) {
+    /* Constant: '<S314>/k1' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate4'
      */
     GVCU_HIL_B.VectorConcatenate4[0] = GVCU_HIL_P.SplitTorsionalCompliance_k1;
 
-    /* Constant: '<S303>/k2' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate4'
+    /* Constant: '<S314>/k2' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate4'
      */
     GVCU_HIL_B.VectorConcatenate4[1] = GVCU_HIL_P.SplitTorsionalCompliance_k2;
 
-    /* Constant: '<S303>/theta1_o' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate5'
+    /* Constant: '<S314>/theta1_o' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate5'
      */
     GVCU_HIL_B.VectorConcatenate5[0] = GVCU_HIL_P.theta1_o_Value;
 
-    /* Constant: '<S303>/theta2_o' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate5'
+    /* Constant: '<S314>/theta2_o' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate5'
      */
     GVCU_HIL_B.VectorConcatenate5[1] = GVCU_HIL_P.theta2_o_Value;
 
-    /* Memory: '<S304>/Memory' */
+    /* Memory: '<S315>/Memory' */
     GVCU_HIL_B.Memory_a = GVCU_HIL_DW.Memory_PreviousInput_h;
 
-    /* Constant: '<S303>/domega1_o' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate2'
+    /* Constant: '<S314>/domega1_o' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate2'
      */
     GVCU_HIL_B.VectorConcatenate2_l[0] = GVCU_HIL_P.domega1_o_Value;
 
-    /* Constant: '<S303>/domega2_o' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate2'
+    /* Constant: '<S314>/domega2_o' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate2'
      */
     GVCU_HIL_B.VectorConcatenate2_l[1] = GVCU_HIL_P.domega2_o_Value;
   }
 
-  /* Integrator: '<S303>/Integrator' */
+  /* Integrator: '<S314>/Integrator' */
   if (GVCU_HIL_DW.Integrator_DWORK1_f) {
     GVCU_HIL_X.Integrator_CSTATE_f[0] = GVCU_HIL_B.VectorConcatenate5[0];
     GVCU_HIL_X.Integrator_CSTATE_f[1] = GVCU_HIL_B.VectorConcatenate5[1];
   }
 
-  /* Integrator: '<S304>/Integrator' */
+  /* Integrator: '<S315>/Integrator' */
   if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
     zcEvent = rt_ZCFcn(RISING_ZERO_CROSSING,
                        &GVCU_HIL_PrevZCX.Integrator_Reset_ZCE_l,
@@ -4336,79 +5032,77 @@ void GVCU_HIL_output(void)
     }
   }
 
-  rtb_Selector1_idx_0 = GVCU_HIL_X.Integrator_CSTATE_d[0];
-  rtb_Selector1_idx_1 = GVCU_HIL_X.Integrator_CSTATE_d[1];
+  rtb_Sum1 = GVCU_HIL_X.Integrator_CSTATE_d[0];
+  rtb_uto1 = GVCU_HIL_X.Integrator_CSTATE_d[1];
   if (tmp) {
-    /* Constant: '<S303>/b1' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate3'
+    /* Constant: '<S314>/b1' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate3'
      */
     GVCU_HIL_B.VectorConcatenate3[0] = GVCU_HIL_P.SplitTorsionalCompliance_b1;
 
-    /* Constant: '<S303>/b2' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate3'
+    /* Constant: '<S314>/b2' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate3'
      */
     GVCU_HIL_B.VectorConcatenate3[1] = GVCU_HIL_P.SplitTorsionalCompliance_b2;
   }
 
-  /* Product: '<S303>/Product1' incorporates:
-   *  Integrator: '<S303>/Integrator'
-   *  Integrator: '<S304>/Integrator'
-   *  Product: '<S303>/Product'
+  /* Product: '<S314>/Product1' incorporates:
+   *  Integrator: '<S314>/Integrator'
+   *  Integrator: '<S315>/Integrator'
+   *  Product: '<S314>/Product'
    */
   tmp_1 = _mm_add_pd(_mm_mul_pd(_mm_loadu_pd(&GVCU_HIL_B.VectorConcatenate4[0]),
     _mm_loadu_pd(&GVCU_HIL_X.Integrator_CSTATE_f[0])), _mm_mul_pd(_mm_loadu_pd
     (&GVCU_HIL_X.Integrator_CSTATE_d[0]), _mm_loadu_pd
     (&GVCU_HIL_B.VectorConcatenate3[0])));
 
-  /* Sum: '<S303>/Subtract1' */
+  /* Sum: '<S314>/Subtract1' */
   _mm_storeu_pd(&GVCU_HIL_B.Subtract1_j[0], tmp_1);
 
-  /* Sum: '<S235>/Add' incorporates:
-   *  UnaryMinus: '<S227>/Unary Minus'
+  /* Sum: '<S246>/Add' incorporates:
+   *  UnaryMinus: '<S238>/Unary Minus'
    */
   GVCU_HIL_B.Add_c = -GVCU_HIL_B.Subtract1 + GVCU_HIL_B.Subtract1_j[1];
 
-  /* Integrator: '<S255>/Integrator' */
-  rtb_Sum_jk = GVCU_HIL_X.Integrator_CSTATE_fz;
+  /* Integrator: '<S266>/Integrator' */
+  rtb_SumofElements = GVCU_HIL_X.Integrator_CSTATE_fz;
 
-  /* Sum: '<S235>/Subtract' incorporates:
-   *  Constant: '<S235>/Constant'
-   *  Integrator: '<S255>/Integrator'
+  /* Sum: '<S246>/Subtract' incorporates:
+   *  Constant: '<S246>/Constant'
+   *  Integrator: '<S266>/Integrator'
    */
-  rtb_TrigonometricFunction2_o1 = GVCU_HIL_X.Integrator_CSTATE_fz -
-    GVCU_HIL_P.FL_Clutch_Peng;
+  u0 = GVCU_HIL_X.Integrator_CSTATE_fz - GVCU_HIL_P.FL_Clutch_Peng;
 
-  /* Saturate: '<S235>/Saturation' */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Saturation_UpperSat_l) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_UpperSat_l;
-  } else if (rtb_TrigonometricFunction2_o1 < GVCU_HIL_P.Saturation_LowerSat_k) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_LowerSat_k;
+  /* Saturate: '<S246>/Saturation' */
+  if (u0 > GVCU_HIL_P.Saturation_UpperSat_l) {
+    u0 = GVCU_HIL_P.Saturation_UpperSat_l;
+  } else if (u0 < GVCU_HIL_P.Saturation_LowerSat_k) {
+    u0 = GVCU_HIL_P.Saturation_LowerSat_k;
   }
 
-  /* Gain: '<S237>/P2F' incorporates:
-   *  Saturate: '<S235>/Saturation'
+  /* Gain: '<S248>/P2F' incorporates:
+   *  Saturate: '<S246>/Saturation'
    */
-  rtb_TrigonometricFunction2_o1 *= GVCU_HIL_P.FL_Clutch_Aeff;
+  u0 *= GVCU_HIL_P.FL_Clutch_Aeff;
 
-  /* Saturate: '<S253>/Saturation' */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Saturation_UpperSat_g) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_UpperSat_g;
-  } else if (rtb_TrigonometricFunction2_o1 < GVCU_HIL_P.Saturation_LowerSat_et)
-  {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_LowerSat_et;
+  /* Saturate: '<S264>/Saturation' */
+  if (u0 > GVCU_HIL_P.Saturation_UpperSat_g) {
+    u0 = GVCU_HIL_P.Saturation_UpperSat_g;
+  } else if (u0 < GVCU_HIL_P.Saturation_LowerSat_et) {
+    u0 = GVCU_HIL_P.Saturation_LowerSat_et;
   }
 
-  /* Gain: '<S253>/Torque Conversion' incorporates:
-   *  Saturate: '<S253>/Saturation'
+  /* Gain: '<S264>/Torque Conversion' incorporates:
+   *  Saturate: '<S264>/Saturation'
    */
-  b_xtmp = GVCU_HIL_P.FL_Clutch_Ndisk * GVCU_HIL_P.FL_Clutch_Reff *
-    GVCU_HIL_P.FL_Clutch_muk * rtb_TrigonometricFunction2_o1;
+  rtb_bar = GVCU_HIL_P.FL_Clutch_Ndisk * GVCU_HIL_P.FL_Clutch_Reff *
+    GVCU_HIL_P.FL_Clutch_muk * u0;
 
-  /* Gain: '<S253>/Ratio of static to kinetic' */
+  /* Gain: '<S264>/Ratio of static to kinetic' */
   GVCU_HIL_B.Ratioofstatictokinetic_i = GVCU_HIL_P.FL_Clutch_mus /
-    GVCU_HIL_P.FL_Clutch_muk * b_xtmp;
+    GVCU_HIL_P.FL_Clutch_muk * rtb_bar;
 
-  /* Chart: '<S235>/Friction Mode' */
+  /* Chart: '<S246>/Friction Mode' */
   GVCU_HIL_FrictionMode(GVCU_HIL_M, GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m,
                         GVCU_HIL_X.OutputIntegrator_CSTATE_g,
                         GVCU_HIL_X.InputIntegrator_CSTATE_k, GVCU_HIL_B.Add_c,
@@ -4419,96 +5113,96 @@ void GVCU_HIL_output(void)
                         &GVCU_HIL_B.sf_FrictionMode,
                         &GVCU_HIL_DW.sf_FrictionMode);
   if (tmp) {
-    /* InitialCondition: '<S243>/IC' */
+    /* InitialCondition: '<S254>/IC' */
     if (GVCU_HIL_DW.IC_FirstOutputTime) {
       GVCU_HIL_DW.IC_FirstOutputTime = false;
 
-      /* InitialCondition: '<S243>/IC' */
+      /* InitialCondition: '<S254>/IC' */
       GVCU_HIL_B.IC = GVCU_HIL_P.IC_Value;
     } else {
-      /* InitialCondition: '<S243>/IC' incorporates:
-       *  Constant: '<S243>/Constant1'
+      /* InitialCondition: '<S254>/IC' incorporates:
+       *  Constant: '<S254>/Constant1'
        */
       GVCU_HIL_B.IC = GVCU_HIL_P.Constant1_Value_lg;
     }
 
-    /* End of InitialCondition: '<S243>/IC' */
+    /* End of InitialCondition: '<S254>/IC' */
 
-    /* InitialCondition: '<S244>/IC' */
+    /* InitialCondition: '<S255>/IC' */
     if (GVCU_HIL_DW.IC_FirstOutputTime_m) {
       GVCU_HIL_DW.IC_FirstOutputTime_m = false;
 
-      /* InitialCondition: '<S244>/IC' */
+      /* InitialCondition: '<S255>/IC' */
       GVCU_HIL_B.IC_e = GVCU_HIL_P.IC_Value_m;
     } else {
-      /* InitialCondition: '<S244>/IC' incorporates:
-       *  Constant: '<S244>/Constant1'
+      /* InitialCondition: '<S255>/IC' incorporates:
+       *  Constant: '<S255>/Constant1'
        */
       GVCU_HIL_B.IC_e = GVCU_HIL_P.Constant1_Value_h;
     }
 
-    /* End of InitialCondition: '<S244>/IC' */
+    /* End of InitialCondition: '<S255>/IC' */
   }
 
-  /* Switch: '<S243>/Switch' */
+  /* Switch: '<S254>/Switch' */
   if (GVCU_HIL_B.IC > GVCU_HIL_P.Switch_Threshold_f) {
-    /* Switch: '<S243>/Switch' */
+    /* Switch: '<S254>/Switch' */
     GVCU_HIL_B.Switch_p = GVCU_HIL_B.sf_FrictionMode.win_0;
   } else {
-    /* Switch: '<S243>/Switch' incorporates:
-     *  Constant: '<S243>/Constant'
+    /* Switch: '<S254>/Switch' incorporates:
+     *  Constant: '<S254>/Constant'
      */
     GVCU_HIL_B.Switch_p = GVCU_HIL_P.pos.xdot_0 /
       GVCU_HIL_P.veh.TyreLoadedRadius_F;
   }
 
-  /* End of Switch: '<S243>/Switch' */
+  /* End of Switch: '<S254>/Switch' */
 
-  /* Switch: '<S244>/Switch' */
+  /* Switch: '<S255>/Switch' */
   if (GVCU_HIL_B.IC_e > GVCU_HIL_P.Switch_Threshold_j) {
-    /* Switch: '<S244>/Switch' */
+    /* Switch: '<S255>/Switch' */
     GVCU_HIL_B.Switch_f = GVCU_HIL_B.sf_FrictionMode.wout_0;
   } else {
-    /* Switch: '<S244>/Switch' incorporates:
-     *  Constant: '<S244>/Constant'
+    /* Switch: '<S255>/Switch' incorporates:
+     *  Constant: '<S255>/Constant'
      */
     GVCU_HIL_B.Switch_f = GVCU_HIL_P.pos.xdot_0 /
       GVCU_HIL_P.veh.TyreLoadedRadius_F;
   }
 
-  /* End of Switch: '<S244>/Switch' */
+  /* End of Switch: '<S255>/Switch' */
   if (tmp) {
-    /* InitialCondition: '<S239>/IC' */
+    /* InitialCondition: '<S250>/IC' */
     if (GVCU_HIL_DW.IC_FirstOutputTime_c) {
       GVCU_HIL_DW.IC_FirstOutputTime_c = false;
 
-      /* InitialCondition: '<S239>/IC' */
+      /* InitialCondition: '<S250>/IC' */
       GVCU_HIL_B.IC_l = GVCU_HIL_P.IC_Value_e;
     } else {
-      /* InitialCondition: '<S239>/IC' incorporates:
-       *  Constant: '<S239>/Constant1'
+      /* InitialCondition: '<S250>/IC' incorporates:
+       *  Constant: '<S250>/Constant1'
        */
       GVCU_HIL_B.IC_l = GVCU_HIL_P.Constant1_Value_j;
     }
 
-    /* End of InitialCondition: '<S239>/IC' */
+    /* End of InitialCondition: '<S250>/IC' */
   }
 
-  /* Switch: '<S239>/Switch' */
-  if (GVCU_HIL_B.IC_l > GVCU_HIL_P.Switch_Threshold_n) {
-    /* Switch: '<S239>/Switch' */
+  /* Switch: '<S250>/Switch' */
+  if (GVCU_HIL_B.IC_l > GVCU_HIL_P.Switch_Threshold_ny) {
+    /* Switch: '<S250>/Switch' */
     GVCU_HIL_B.Switch_c = GVCU_HIL_B.sf_FrictionMode.w0;
   } else {
-    /* Switch: '<S239>/Switch' incorporates:
-     *  Constant: '<S239>/Constant'
+    /* Switch: '<S250>/Switch' incorporates:
+     *  Constant: '<S250>/Constant'
      */
     GVCU_HIL_B.Switch_c = GVCU_HIL_P.pos.xdot_0 /
       GVCU_HIL_P.veh.TyreLoadedRadius_F;
   }
 
-  /* End of Switch: '<S239>/Switch' */
+  /* End of Switch: '<S250>/Switch' */
 
-  /* If: '<S235>/If' */
+  /* If: '<S246>/If' */
   rtPrevAction = GVCU_HIL_DW.If_ActiveSubsystem;
   if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
     rtAction = (int8_T)!GVCU_HIL_B.sf_FrictionMode.Locked;
@@ -4541,11 +5235,11 @@ void GVCU_HIL_output(void)
 
   if (rtAction == 0) {
     if (rtPrevAction != 0) {
-      /* InitializeConditions for IfAction SubSystem: '<S235>/Locked' incorporates:
-       *  ActionPort: '<S241>/Action'
+      /* InitializeConditions for IfAction SubSystem: '<S246>/Locked' incorporates:
+       *  ActionPort: '<S252>/Action'
        */
-      /* InitializeConditions for If: '<S235>/If' incorporates:
-       *  Integrator: '<S241>/Locked Shaft Integrator'
+      /* InitializeConditions for If: '<S246>/If' incorporates:
+       *  Integrator: '<S252>/Locked Shaft Integrator'
        */
       if (rtmIsFirstInitCond(GVCU_HIL_M)) {
         GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m = 0.0;
@@ -4553,22 +5247,22 @@ void GVCU_HIL_output(void)
 
       GVCU_HIL_DW.LockedShaftIntegrator_DWORK1_d = true;
 
-      /* End of InitializeConditions for SubSystem: '<S235>/Locked' */
+      /* End of InitializeConditions for SubSystem: '<S246>/Locked' */
 
-      /* Enable for IfAction SubSystem: '<S235>/Locked' incorporates:
-       *  ActionPort: '<S241>/Action'
+      /* Enable for IfAction SubSystem: '<S246>/Locked' incorporates:
+       *  ActionPort: '<S252>/Action'
        */
-      /* Enable for If: '<S235>/If' */
+      /* Enable for If: '<S246>/If' */
       (void) memset(&(GVCU_HIL_XDis.LockedShaftIntegrator_CSTATE_m), 0,
                     1*sizeof(boolean_T));
 
-      /* End of Enable for SubSystem: '<S235>/Locked' */
+      /* End of Enable for SubSystem: '<S246>/Locked' */
     }
 
-    /* Outputs for IfAction SubSystem: '<S235>/Locked' incorporates:
-     *  ActionPort: '<S241>/Action'
+    /* Outputs for IfAction SubSystem: '<S246>/Locked' incorporates:
+     *  ActionPort: '<S252>/Action'
      */
-    /* Integrator: '<S241>/Locked Shaft Integrator' */
+    /* Integrator: '<S252>/Locked Shaft Integrator' */
     /* Limited  Integrator  */
     if (GVCU_HIL_DW.LockedShaftIntegrator_DWORK1_d) {
       GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m = GVCU_HIL_B.Switch_c;
@@ -4602,45 +5296,45 @@ void GVCU_HIL_output(void)
         GVCU_HIL_P.LockedShaftIntegrator_LowerSat;
     }
 
-    /* Gain: '<S241>/Inertia' incorporates:
-     *  Gain: '<S241>/Impeller Damping'
-     *  Gain: '<S241>/Turbine Damping'
-     *  Integrator: '<S241>/Locked Shaft Integrator'
-     *  Sum: '<S241>/Add1'
-     *  Sum: '<S241>/Sum'
+    /* Gain: '<S252>/Inertia' incorporates:
+     *  Gain: '<S252>/Impeller Damping'
+     *  Gain: '<S252>/Turbine Damping'
+     *  Integrator: '<S252>/Locked Shaft Integrator'
+     *  Sum: '<S252>/Add1'
+     *  Sum: '<S252>/Sum'
      */
-    GVCU_HIL_B.Inertia_f = ((GVCU_HIL_B.Subtract1_j[1] + idx) -
+    GVCU_HIL_B.Inertia_f = ((GVCU_HIL_B.Subtract1_j[1] + rtb_rpm) -
       (GVCU_HIL_P.FL_Clutch_bin * GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m +
        GVCU_HIL_P.FL_Clutch_bout * GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m)) *
       (1.0 / (GVCU_HIL_P.FL_Clutch_Jin + GVCU_HIL_P.FL_Clutch_Jout));
 
-    /* SignalConversion: '<S241>/Signal Conversion' incorporates:
-     *  Integrator: '<S241>/Locked Shaft Integrator'
+    /* SignalConversion: '<S252>/Signal Conversion' incorporates:
+     *  Integrator: '<S252>/Locked Shaft Integrator'
      */
-    idx = GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m;
+    rtb_UnaryMinus1_i = GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m;
 
-    /* SignalConversion: '<S241>/Signal Conversion1' incorporates:
-     *  Integrator: '<S241>/Locked Shaft Integrator'
+    /* SignalConversion: '<S252>/Signal Conversion1' incorporates:
+     *  Integrator: '<S252>/Locked Shaft Integrator'
      */
-    rtb_VectorConcatenate2_idx_1 = GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m;
+    rtb_bar = GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m;
     if (rtmIsMajorTimeStep(GVCU_HIL_M) &&
         GVCU_HIL_M->Timing.TaskCounters.TID[1] == 0) {
-      /* Merge: '<S235>/Merge2' incorporates:
-       *  Constant: '<S241>/Constant'
-       *  SignalConversion generated from: '<S241>/Speed Ratio'
+      /* Merge: '<S246>/Merge2' incorporates:
+       *  Constant: '<S252>/Constant'
+       *  SignalConversion generated from: '<S252>/Speed Ratio'
        */
       GVCU_HIL_B.SpdRatio = GVCU_HIL_P.Constant_Value_o;
     }
 
-    /* End of Outputs for SubSystem: '<S235>/Locked' */
+    /* End of Outputs for SubSystem: '<S246>/Locked' */
   } else {
     if (rtAction != rtPrevAction) {
-      /* InitializeConditions for IfAction SubSystem: '<S235>/Unlocked' incorporates:
-       *  ActionPort: '<S242>/Action'
+      /* InitializeConditions for IfAction SubSystem: '<S246>/Unlocked' incorporates:
+       *  ActionPort: '<S253>/Action'
        */
-      /* InitializeConditions for If: '<S235>/If' incorporates:
-       *  Integrator: '<S242>/Input Integrator'
-       *  Integrator: '<S242>/Output Integrator'
+      /* InitializeConditions for If: '<S246>/If' incorporates:
+       *  Integrator: '<S253>/Input Integrator'
+       *  Integrator: '<S253>/Output Integrator'
        */
       if (rtmIsFirstInitCond(GVCU_HIL_M)) {
         GVCU_HIL_X.InputIntegrator_CSTATE_k = 0.0;
@@ -4650,22 +5344,22 @@ void GVCU_HIL_output(void)
       GVCU_HIL_DW.InputIntegrator_DWORK1_f = true;
       GVCU_HIL_DW.OutputIntegrator_DWORK1_f = true;
 
-      /* End of InitializeConditions for SubSystem: '<S235>/Unlocked' */
+      /* End of InitializeConditions for SubSystem: '<S246>/Unlocked' */
 
-      /* Enable for IfAction SubSystem: '<S235>/Unlocked' incorporates:
-       *  ActionPort: '<S242>/Action'
+      /* Enable for IfAction SubSystem: '<S246>/Unlocked' incorporates:
+       *  ActionPort: '<S253>/Action'
        */
-      /* Enable for If: '<S235>/If' */
+      /* Enable for If: '<S246>/If' */
       (void) memset(&(GVCU_HIL_XDis.InputIntegrator_CSTATE_k), 0,
                     2*sizeof(boolean_T));
 
-      /* End of Enable for SubSystem: '<S235>/Unlocked' */
+      /* End of Enable for SubSystem: '<S246>/Unlocked' */
     }
 
-    /* Outputs for IfAction SubSystem: '<S235>/Unlocked' incorporates:
-     *  ActionPort: '<S242>/Action'
+    /* Outputs for IfAction SubSystem: '<S246>/Unlocked' incorporates:
+     *  ActionPort: '<S253>/Action'
      */
-    /* Integrator: '<S242>/Input Integrator' */
+    /* Integrator: '<S253>/Input Integrator' */
     /* Limited  Integrator  */
     if (GVCU_HIL_DW.InputIntegrator_DWORK1_f) {
       GVCU_HIL_X.InputIntegrator_CSTATE_k = GVCU_HIL_B.Switch_p;
@@ -4697,11 +5391,11 @@ void GVCU_HIL_output(void)
       GVCU_HIL_X.InputIntegrator_CSTATE_k = GVCU_HIL_P.InputIntegrator_LowerSat;
     }
 
-    t_rel = GVCU_HIL_X.InputIntegrator_CSTATE_k;
+    rtb_Sum_jk = GVCU_HIL_X.InputIntegrator_CSTATE_k;
 
-    /* End of Integrator: '<S242>/Input Integrator' */
+    /* End of Integrator: '<S253>/Input Integrator' */
 
-    /* Integrator: '<S242>/Output Integrator' */
+    /* Integrator: '<S253>/Output Integrator' */
     /* Limited  Integrator  */
     if (GVCU_HIL_DW.OutputIntegrator_DWORK1_f) {
       GVCU_HIL_X.OutputIntegrator_CSTATE_g = GVCU_HIL_B.Switch_f;
@@ -4735,142 +5429,144 @@ void GVCU_HIL_output(void)
         GVCU_HIL_P.OutputIntegrator_LowerSat;
     }
 
-    /* Product: '<S242>/Max Dynamic Friction Torque' incorporates:
-     *  Gain: '<S242>/4'
-     *  Integrator: '<S242>/Output Integrator'
-     *  Sum: '<S242>/W_Slip'
-     *  Trigonometry: '<S242>/Trigonometric Function'
+    /* Product: '<S253>/Max Dynamic Friction Torque' incorporates:
+     *  Gain: '<S253>/4'
+     *  Integrator: '<S253>/Output Integrator'
+     *  Sum: '<S253>/W_Slip'
+     *  Trigonometry: '<S253>/Trigonometric Function'
      */
-    b_xtmp *= tanh((t_rel - GVCU_HIL_X.OutputIntegrator_CSTATE_g) *
-                   GVCU_HIL_P.u_Gain);
+    rtb_bar *= tanh((rtb_Sum_jk - GVCU_HIL_X.OutputIntegrator_CSTATE_g) *
+                    GVCU_HIL_P.u_Gain);
 
-    /* Gain: '<S242>/Input Inertia' incorporates:
-     *  Gain: '<S242>/Input Damping'
-     *  Sum: '<S242>/Input Sum'
+    /* Gain: '<S253>/Input Inertia' incorporates:
+     *  Gain: '<S253>/Input Damping'
+     *  Sum: '<S253>/Input Sum'
      */
-    GVCU_HIL_B.InputInertia_b = ((GVCU_HIL_B.Subtract1_j[1] - b_xtmp) -
-      GVCU_HIL_P.FL_Clutch_bin * t_rel) * (1.0 / GVCU_HIL_P.FL_Clutch_Jin);
+    GVCU_HIL_B.InputInertia_b = ((GVCU_HIL_B.Subtract1_j[1] - rtb_bar) -
+      GVCU_HIL_P.FL_Clutch_bin * rtb_Sum_jk) * (1.0 / GVCU_HIL_P.FL_Clutch_Jin);
 
-    /* Gain: '<S242>/Output Inertia' incorporates:
-     *  Gain: '<S242>/Output Damping'
-     *  Integrator: '<S242>/Output Integrator'
-     *  Sum: '<S242>/Add1'
-     *  Sum: '<S242>/Output Sum'
+    /* Gain: '<S253>/Output Inertia' incorporates:
+     *  Gain: '<S253>/Output Damping'
+     *  Integrator: '<S253>/Output Integrator'
+     *  Sum: '<S253>/Add1'
+     *  Sum: '<S253>/Output Sum'
      */
-    GVCU_HIL_B.OutputInertia_a = ((b_xtmp - GVCU_HIL_P.FL_Clutch_bout *
-      GVCU_HIL_X.OutputIntegrator_CSTATE_g) + idx) * (1.0 /
+    GVCU_HIL_B.OutputInertia_a = ((rtb_bar - GVCU_HIL_P.FL_Clutch_bout *
+      GVCU_HIL_X.OutputIntegrator_CSTATE_g) + rtb_rpm) * (1.0 /
       GVCU_HIL_P.FL_Clutch_Jout);
 
-    /* Switch: '<S256>/Switch' incorporates:
-     *  Abs: '<S256>/Abs'
-     *  Constant: '<S257>/Constant'
-     *  Constant: '<S258>/Constant'
-     *  Fcn: '<S256>/Fcn'
-     *  Integrator: '<S242>/Output Integrator'
-     *  Logic: '<S256>/Logical Operator'
-     *  RelationalOperator: '<S257>/Compare'
-     *  RelationalOperator: '<S258>/Compare'
+    /* Switch: '<S267>/Switch' incorporates:
+     *  Abs: '<S267>/Abs'
+     *  Constant: '<S268>/Constant'
+     *  Constant: '<S269>/Constant'
+     *  Fcn: '<S267>/Fcn'
+     *  Integrator: '<S253>/Output Integrator'
+     *  Logic: '<S267>/Logical Operator'
+     *  RelationalOperator: '<S268>/Compare'
+     *  RelationalOperator: '<S269>/Compare'
      */
     if ((GVCU_HIL_X.OutputIntegrator_CSTATE_g >=
          -GVCU_HIL_P.div0protectabspoly1_thresh) &&
         (GVCU_HIL_X.OutputIntegrator_CSTATE_g <=
          GVCU_HIL_P.div0protectabspoly1_thresh)) {
-      b_xtmp = 2.0E-6 / (3.0 - rt_powd_snf(GVCU_HIL_X.OutputIntegrator_CSTATE_g /
-        1.0e-6, 2.0));
+      rtb_rpm = 2.0E-6 / (3.0 - rt_powd_snf(GVCU_HIL_X.OutputIntegrator_CSTATE_g
+        / 1.0e-6, 2.0));
     } else {
-      b_xtmp = fabs(GVCU_HIL_X.OutputIntegrator_CSTATE_g);
+      rtb_rpm = fabs(GVCU_HIL_X.OutputIntegrator_CSTATE_g);
     }
 
-    /* End of Switch: '<S256>/Switch' */
+    /* End of Switch: '<S267>/Switch' */
 
-    /* SignalConversion: '<S242>/Signal Conversion' incorporates:
-     *  Integrator: '<S242>/Output Integrator'
+    /* SignalConversion: '<S253>/Signal Conversion' incorporates:
+     *  Integrator: '<S253>/Output Integrator'
      */
-    idx = GVCU_HIL_X.OutputIntegrator_CSTATE_g;
+    rtb_UnaryMinus1_i = GVCU_HIL_X.OutputIntegrator_CSTATE_g;
 
-    /* SignalConversion: '<S242>/Signal Conversion1' */
-    rtb_VectorConcatenate2_idx_1 = t_rel;
+    /* SignalConversion: '<S253>/Signal Conversion1' */
+    rtb_bar = rtb_Sum_jk;
 
-    /* Merge: '<S235>/Merge2' incorporates:
-     *  Product: '<S242>/Product3'
-     *  SignalConversion: '<S242>/Signal Conversion2'
+    /* Merge: '<S246>/Merge2' incorporates:
+     *  Product: '<S253>/Product3'
+     *  SignalConversion: '<S253>/Signal Conversion2'
      */
-    GVCU_HIL_B.SpdRatio = t_rel / b_xtmp;
+    GVCU_HIL_B.SpdRatio = rtb_Sum_jk / rtb_rpm;
 
-    /* End of Outputs for SubSystem: '<S235>/Unlocked' */
+    /* End of Outputs for SubSystem: '<S246>/Unlocked' */
   }
 
-  /* Sum: '<S227>/Subtract' */
-  GVCU_HIL_B.Subtract_k = idx - rtb_Omega[0];
+  /* Sum: '<S238>/Subtract' */
+  GVCU_HIL_B.Subtract_k = rtb_UnaryMinus1_i - rtb_Pa_f_idx_0;
 
-  /* Switch: '<S228>/Switch' */
+  /* Switch: '<S239>/Switch' */
   if (!(GVCU_HIL_B.Memory != 0.0)) {
-    rtb_Integrator = GVCU_HIL_B.domega_o;
+    rtb_UnaryMinus3_j = GVCU_HIL_B.domega_o;
   }
 
-  /* Product: '<S228>/Product' incorporates:
-   *  Constant: '<S227>/omega_c'
-   *  Sum: '<S228>/Sum'
-   *  Switch: '<S228>/Switch'
+  /* Product: '<S239>/Product' incorporates:
+   *  Constant: '<S238>/omega_c'
+   *  Sum: '<S239>/Sum'
+   *  Switch: '<S239>/Switch'
    */
-  GVCU_HIL_B.Product_i = (GVCU_HIL_B.Subtract_k - rtb_Integrator) *
+  GVCU_HIL_B.Product_i = (GVCU_HIL_B.Subtract_k - rtb_UnaryMinus3_j) *
     GVCU_HIL_P.FL_omega_c;
   if (tmp) {
-    /* Product: '<S254>/Divide' incorporates:
-     *  Constant: '<S254>/Constant'
+    /* Product: '<S265>/Divide' incorporates:
+     *  Constant: '<S265>/Constant'
      */
     GVCU_HIL_B.Divide_c = 1.0 / GVCU_HIL_P.FL_Clutch_tauC;
   }
 
-  /* TransferFcn: '<S24>/Transfer Fcn' */
-  rtb_TransferFcn = GVCU_HIL_P.TransferFcn_C_n * GVCU_HIL_X.TransferFcn_CSTATE_o;
+  /* TransferFcn: '<S35>/Transfer Fcn' */
+  rtb_VectorConcatenate2_idx_0 = GVCU_HIL_P.TransferFcn_C_n *
+    GVCU_HIL_X.TransferFcn_CSTATE_o;
 
-  /* Switch: '<S24>/Switch2' incorporates:
-   *  Constant: '<S24>/Constant'
-   *  Gain: '<S24>/Gain'
-   *  Lookup_n-D: '<S24>/1-D Lookup Table2'
-   *  Lookup_n-D: '<S24>/1-D Lookup Table9'
-   *  TransferFcn: '<S24>/Transfer Fcn'
+  /* Switch: '<S35>/Switch2' incorporates:
+   *  Constant: '<S35>/Constant'
+   *  Gain: '<S35>/Gain'
+   *  Lookup_n-D: '<S35>/1-D Lookup Table2'
+   *  Lookup_n-D: '<S35>/1-D Lookup Table9'
+   *  TransferFcn: '<S35>/Transfer Fcn'
    */
-  if (rtb_TransferFcn > GVCU_HIL_P.Switch2_Threshold_im) {
-    idx = GVCU_HIL_P.Gain_Gain * look1_binlxpw(look1_binlxpw(rtb_TransferFcn,
-      GVCU_HIL_P.uDLookupTable9_bp01Data, GVCU_HIL_P.uDLookupTable9_tableData,
-      3U), GVCU_HIL_P.uDLookupTable2_bp01Data,
-      GVCU_HIL_P.uDLookupTable2_tableData, 3U);
+  if (rtb_VectorConcatenate2_idx_0 > GVCU_HIL_P.Switch2_Threshold_im) {
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Gain_Gain * look1_binlxpw(look1_binlxpw
+      (rtb_VectorConcatenate2_idx_0, GVCU_HIL_P.uDLookupTable9_bp01Data,
+       GVCU_HIL_P.uDLookupTable9_tableData, 3U),
+      GVCU_HIL_P.uDLookupTable2_bp01Data, GVCU_HIL_P.uDLookupTable2_tableData,
+      3U);
   } else {
-    idx = GVCU_HIL_P.Constant_Value_b;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Constant_Value_b;
   }
 
-  /* End of Switch: '<S24>/Switch2' */
+  /* End of Switch: '<S35>/Switch2' */
 
-  /* Saturate: '<S1>/Saturation' */
-  if (idx > GVCU_HIL_P.Saturation_UpperSat_k) {
-    /* Saturate: '<S1>/Saturation' */
+  /* Saturate: '<S2>/Saturation' */
+  if (rtb_UnaryMinus1_i > GVCU_HIL_P.Saturation_UpperSat_k) {
+    /* Saturate: '<S2>/Saturation' */
     GVCU_HIL_B.Saturation_m = GVCU_HIL_P.Saturation_UpperSat_k;
-  } else if (idx < GVCU_HIL_P.Saturation_LowerSat_er) {
-    /* Saturate: '<S1>/Saturation' */
+  } else if (rtb_UnaryMinus1_i < GVCU_HIL_P.Saturation_LowerSat_er) {
+    /* Saturate: '<S2>/Saturation' */
     GVCU_HIL_B.Saturation_m = GVCU_HIL_P.Saturation_LowerSat_er;
   } else {
-    /* Saturate: '<S1>/Saturation' */
-    GVCU_HIL_B.Saturation_m = idx;
+    /* Saturate: '<S2>/Saturation' */
+    GVCU_HIL_B.Saturation_m = rtb_UnaryMinus1_i;
   }
 
-  /* End of Saturate: '<S1>/Saturation' */
+  /* End of Saturate: '<S2>/Saturation' */
 
-  /* Product: '<S255>/Product' incorporates:
-   *  Sum: '<S255>/Sum'
+  /* Product: '<S266>/Product' incorporates:
+   *  Sum: '<S266>/Sum'
    */
-  GVCU_HIL_B.Product_ie = (GVCU_HIL_B.Saturation_m - rtb_Sum_jk) *
+  GVCU_HIL_B.Product_ie = (GVCU_HIL_B.Saturation_m - rtb_SumofElements) *
     GVCU_HIL_B.Divide_c;
   if (tmp) {
-    /* Memory: '<S260>/Memory' */
+    /* Memory: '<S271>/Memory' */
     GVCU_HIL_B.Memory_k = GVCU_HIL_DW.Memory_PreviousInput_j;
 
-    /* Constant: '<S259>/domega_o' */
+    /* Constant: '<S270>/domega_o' */
     GVCU_HIL_B.domega_o_a = GVCU_HIL_P.FR_domega_o;
   }
 
-  /* Integrator: '<S260>/Integrator' */
+  /* Integrator: '<S271>/Integrator' */
   if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
     zcEvent = rt_ZCFcn(RISING_ZERO_CROSSING,
                        &GVCU_HIL_PrevZCX.Integrator_Reset_ZCE_g,
@@ -4882,72 +5578,72 @@ void GVCU_HIL_output(void)
     }
   }
 
-  idx = GVCU_HIL_X.Integrator_CSTATE_m;
+  rtb_SumofElements = GVCU_HIL_X.Integrator_CSTATE_m;
 
-  /* Gain: '<S259>/Gain2' incorporates:
-   *  Integrator: '<S260>/Integrator'
+  /* Gain: '<S270>/Gain2' incorporates:
+   *  Integrator: '<S271>/Integrator'
    */
-  rtb_TransferFcn = GVCU_HIL_P.FR_b * GVCU_HIL_X.Integrator_CSTATE_m;
+  rtb_UnaryMinus3_j = GVCU_HIL_P.FR_b * GVCU_HIL_X.Integrator_CSTATE_m;
 
-  /* Gain: '<S259>/Gain1' incorporates:
-   *  Integrator: '<S259>/Integrator'
+  /* Gain: '<S270>/Gain1' incorporates:
+   *  Integrator: '<S270>/Integrator'
    */
-  b_xtmp = GVCU_HIL_P.FR_k * GVCU_HIL_X.Integrator_CSTATE_l;
+  rtb_rpm = GVCU_HIL_P.FR_k * GVCU_HIL_X.Integrator_CSTATE_l;
 
-  /* Sum: '<S259>/Subtract1' incorporates:
-   *  Gain: '<S259>/Gain1'
-   *  Gain: '<S259>/Gain2'
-   *  Integrator: '<S259>/Integrator'
-   *  Integrator: '<S260>/Integrator'
+  /* Sum: '<S270>/Subtract1' incorporates:
+   *  Gain: '<S270>/Gain1'
+   *  Gain: '<S270>/Gain2'
+   *  Integrator: '<S270>/Integrator'
+   *  Integrator: '<S271>/Integrator'
    */
-  rtb_Integrator = GVCU_HIL_P.FR_b * GVCU_HIL_X.Integrator_CSTATE_m +
-    GVCU_HIL_P.FR_k * GVCU_HIL_X.Integrator_CSTATE_l;
+  rtb_VectorConcatenate2_idx_0 = GVCU_HIL_P.FR_b *
+    GVCU_HIL_X.Integrator_CSTATE_m + GVCU_HIL_P.FR_k *
+    GVCU_HIL_X.Integrator_CSTATE_l;
 
-  /* Sum: '<S267>/Add' incorporates:
-   *  UnaryMinus: '<S259>/Unary Minus'
+  /* Sum: '<S278>/Add' incorporates:
+   *  UnaryMinus: '<S270>/Unary Minus'
    */
-  GVCU_HIL_B.Add_d = -rtb_Integrator + GVCU_HIL_B.Subtract1_j[0];
+  GVCU_HIL_B.Add_d = -rtb_VectorConcatenate2_idx_0 + GVCU_HIL_B.Subtract1_j[0];
 
-  /* Integrator: '<S287>/Integrator' */
-  rtb_Sum_jk = GVCU_HIL_X.Integrator_CSTATE_k;
+  /* Integrator: '<S298>/Integrator' */
+  rtb_UnaryMinus1_i = GVCU_HIL_X.Integrator_CSTATE_k0;
 
-  /* Sum: '<S267>/Subtract' incorporates:
-   *  Constant: '<S267>/Constant'
-   *  Integrator: '<S287>/Integrator'
+  /* Sum: '<S278>/Subtract' incorporates:
+   *  Constant: '<S278>/Constant'
+   *  Integrator: '<S298>/Integrator'
    */
-  rtb_TrigonometricFunction2_o1 = GVCU_HIL_X.Integrator_CSTATE_k -
-    GVCU_HIL_P.FR_Clutch_Peng;
+  u0 = GVCU_HIL_X.Integrator_CSTATE_k0 - GVCU_HIL_P.FR_Clutch_Peng;
 
-  /* Saturate: '<S267>/Saturation' */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Saturation_UpperSat_n) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_UpperSat_n;
-  } else if (rtb_TrigonometricFunction2_o1 < GVCU_HIL_P.Saturation_LowerSat_a) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_LowerSat_a;
+  /* Saturate: '<S278>/Saturation' */
+  if (u0 > GVCU_HIL_P.Saturation_UpperSat_n) {
+    u0 = GVCU_HIL_P.Saturation_UpperSat_n;
+  } else if (u0 < GVCU_HIL_P.Saturation_LowerSat_a) {
+    u0 = GVCU_HIL_P.Saturation_LowerSat_a;
   }
 
-  /* Gain: '<S269>/P2F' incorporates:
-   *  Saturate: '<S267>/Saturation'
+  /* Gain: '<S280>/P2F' incorporates:
+   *  Saturate: '<S278>/Saturation'
    */
-  rtb_TrigonometricFunction2_o1 *= GVCU_HIL_P.FR_Clutch_Aeff;
+  u0 *= GVCU_HIL_P.FR_Clutch_Aeff;
 
-  /* Saturate: '<S285>/Saturation' */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Saturation_UpperSat_c) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_UpperSat_c;
-  } else if (rtb_TrigonometricFunction2_o1 < GVCU_HIL_P.Saturation_LowerSat_c) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_LowerSat_c;
+  /* Saturate: '<S296>/Saturation' */
+  if (u0 > GVCU_HIL_P.Saturation_UpperSat_c) {
+    u0 = GVCU_HIL_P.Saturation_UpperSat_c;
+  } else if (u0 < GVCU_HIL_P.Saturation_LowerSat_c3) {
+    u0 = GVCU_HIL_P.Saturation_LowerSat_c3;
   }
 
-  /* Gain: '<S285>/Torque Conversion' incorporates:
-   *  Saturate: '<S285>/Saturation'
+  /* Gain: '<S296>/Torque Conversion' incorporates:
+   *  Saturate: '<S296>/Saturation'
    */
-  t_rel = GVCU_HIL_P.FR_Clutch_Ndisk * GVCU_HIL_P.FR_Clutch_Reff *
-    GVCU_HIL_P.FR_Clutch_muk * rtb_TrigonometricFunction2_o1;
+  rtb_Sum_jk = GVCU_HIL_P.FR_Clutch_Ndisk * GVCU_HIL_P.FR_Clutch_Reff *
+    GVCU_HIL_P.FR_Clutch_muk * u0;
 
-  /* Gain: '<S285>/Ratio of static to kinetic' */
+  /* Gain: '<S296>/Ratio of static to kinetic' */
   GVCU_HIL_B.Ratioofstatictokinetic_n = GVCU_HIL_P.FR_Clutch_mus /
-    GVCU_HIL_P.FR_Clutch_muk * t_rel;
+    GVCU_HIL_P.FR_Clutch_muk * rtb_Sum_jk;
 
-  /* Chart: '<S267>/Friction Mode' */
+  /* Chart: '<S278>/Friction Mode' */
   GVCU_HIL_FrictionMode(GVCU_HIL_M, GVCU_HIL_X.LockedShaftIntegrator_CSTATE,
                         GVCU_HIL_X.OutputIntegrator_CSTATE,
                         GVCU_HIL_X.InputIntegrator_CSTATE, GVCU_HIL_B.Add_d,
@@ -4958,97 +5654,97 @@ void GVCU_HIL_output(void)
                         &GVCU_HIL_B.sf_FrictionMode_n,
                         &GVCU_HIL_DW.sf_FrictionMode_n);
   if (tmp) {
-    /* InitialCondition: '<S275>/IC' */
+    /* InitialCondition: '<S286>/IC' */
     if (GVCU_HIL_DW.IC_FirstOutputTime_ca) {
       GVCU_HIL_DW.IC_FirstOutputTime_ca = false;
 
-      /* InitialCondition: '<S275>/IC' */
+      /* InitialCondition: '<S286>/IC' */
       GVCU_HIL_B.IC_e4 = GVCU_HIL_P.IC_Value_c;
     } else {
-      /* InitialCondition: '<S275>/IC' incorporates:
-       *  Constant: '<S275>/Constant1'
+      /* InitialCondition: '<S286>/IC' incorporates:
+       *  Constant: '<S286>/Constant1'
        */
       GVCU_HIL_B.IC_e4 = GVCU_HIL_P.Constant1_Value_c;
     }
 
-    /* End of InitialCondition: '<S275>/IC' */
+    /* End of InitialCondition: '<S286>/IC' */
 
-    /* InitialCondition: '<S276>/IC' */
+    /* InitialCondition: '<S287>/IC' */
     if (GVCU_HIL_DW.IC_FirstOutputTime_n) {
       GVCU_HIL_DW.IC_FirstOutputTime_n = false;
 
-      /* InitialCondition: '<S276>/IC' */
+      /* InitialCondition: '<S287>/IC' */
       GVCU_HIL_B.IC_p = GVCU_HIL_P.IC_Value_i;
     } else {
-      /* InitialCondition: '<S276>/IC' incorporates:
-       *  Constant: '<S276>/Constant1'
+      /* InitialCondition: '<S287>/IC' incorporates:
+       *  Constant: '<S287>/Constant1'
        */
       GVCU_HIL_B.IC_p = GVCU_HIL_P.Constant1_Value_js;
     }
 
-    /* End of InitialCondition: '<S276>/IC' */
+    /* End of InitialCondition: '<S287>/IC' */
   }
 
-  /* Switch: '<S275>/Switch' */
+  /* Switch: '<S286>/Switch' */
   if (GVCU_HIL_B.IC_e4 > GVCU_HIL_P.Switch_Threshold_e) {
-    /* Switch: '<S275>/Switch' */
+    /* Switch: '<S286>/Switch' */
     GVCU_HIL_B.Switch_c3 = GVCU_HIL_B.sf_FrictionMode_n.win_0;
   } else {
-    /* Switch: '<S275>/Switch' incorporates:
-     *  Constant: '<S275>/Constant'
+    /* Switch: '<S286>/Switch' incorporates:
+     *  Constant: '<S286>/Constant'
      */
     GVCU_HIL_B.Switch_c3 = GVCU_HIL_P.pos.xdot_0 /
       GVCU_HIL_P.veh.TyreLoadedRadius_F;
   }
 
-  /* End of Switch: '<S275>/Switch' */
+  /* End of Switch: '<S286>/Switch' */
 
-  /* Switch: '<S276>/Switch' */
+  /* Switch: '<S287>/Switch' */
   if (GVCU_HIL_B.IC_p > GVCU_HIL_P.Switch_Threshold_c) {
-    /* Switch: '<S276>/Switch' */
+    /* Switch: '<S287>/Switch' */
     GVCU_HIL_B.Switch_j = GVCU_HIL_B.sf_FrictionMode_n.wout_0;
   } else {
-    /* Switch: '<S276>/Switch' incorporates:
-     *  Constant: '<S276>/Constant'
+    /* Switch: '<S287>/Switch' incorporates:
+     *  Constant: '<S287>/Constant'
      */
     GVCU_HIL_B.Switch_j = GVCU_HIL_P.pos.xdot_0 /
       GVCU_HIL_P.veh.TyreLoadedRadius_F;
   }
 
-  /* End of Switch: '<S276>/Switch' */
+  /* End of Switch: '<S287>/Switch' */
   if (tmp) {
-    /* InitialCondition: '<S271>/IC' */
+    /* InitialCondition: '<S282>/IC' */
     if (GVCU_HIL_DW.IC_FirstOutputTime_g) {
       GVCU_HIL_DW.IC_FirstOutputTime_g = false;
 
-      /* InitialCondition: '<S271>/IC' */
+      /* InitialCondition: '<S282>/IC' */
       GVCU_HIL_B.IC_j = GVCU_HIL_P.IC_Value_n;
     } else {
-      /* InitialCondition: '<S271>/IC' incorporates:
-       *  Constant: '<S271>/Constant1'
+      /* InitialCondition: '<S282>/IC' incorporates:
+       *  Constant: '<S282>/Constant1'
        */
       GVCU_HIL_B.IC_j = GVCU_HIL_P.Constant1_Value_lp;
     }
 
-    /* End of InitialCondition: '<S271>/IC' */
+    /* End of InitialCondition: '<S282>/IC' */
   }
 
-  /* Switch: '<S271>/Switch' */
+  /* Switch: '<S282>/Switch' */
   if (GVCU_HIL_B.IC_j > GVCU_HIL_P.Switch_Threshold_h) {
-    /* Switch: '<S271>/Switch' */
+    /* Switch: '<S282>/Switch' */
     GVCU_HIL_B.Switch_o = GVCU_HIL_B.sf_FrictionMode_n.w0;
   } else {
-    /* Switch: '<S271>/Switch' incorporates:
-     *  Constant: '<S271>/Constant'
+    /* Switch: '<S282>/Switch' incorporates:
+     *  Constant: '<S282>/Constant'
      */
     GVCU_HIL_B.Switch_o = GVCU_HIL_P.pos.xdot_0 /
       GVCU_HIL_P.veh.TyreLoadedRadius_F;
   }
 
-  /* End of Switch: '<S271>/Switch' */
+  /* End of Switch: '<S282>/Switch' */
 
-  /* If: '<S267>/If' incorporates:
-   *  If: '<S235>/If'
+  /* If: '<S278>/If' incorporates:
+   *  If: '<S246>/If'
    */
   rtPrevAction = GVCU_HIL_DW.If_ActiveSubsystem_o;
   if (rtsiIsModeUpdateTimeStep(&GVCU_HIL_M->solverInfo)) {
@@ -5082,11 +5778,11 @@ void GVCU_HIL_output(void)
 
   if (rtAction == 0) {
     if (rtPrevAction != 0) {
-      /* InitializeConditions for IfAction SubSystem: '<S267>/Locked' incorporates:
-       *  ActionPort: '<S273>/Action'
+      /* InitializeConditions for IfAction SubSystem: '<S278>/Locked' incorporates:
+       *  ActionPort: '<S284>/Action'
        */
-      /* InitializeConditions for If: '<S267>/If' incorporates:
-       *  Integrator: '<S273>/Locked Shaft Integrator'
+      /* InitializeConditions for If: '<S278>/If' incorporates:
+       *  Integrator: '<S284>/Locked Shaft Integrator'
        */
       if (rtmIsFirstInitCond(GVCU_HIL_M)) {
         GVCU_HIL_X.LockedShaftIntegrator_CSTATE = 0.0;
@@ -5094,22 +5790,22 @@ void GVCU_HIL_output(void)
 
       GVCU_HIL_DW.LockedShaftIntegrator_DWORK1 = true;
 
-      /* End of InitializeConditions for SubSystem: '<S267>/Locked' */
+      /* End of InitializeConditions for SubSystem: '<S278>/Locked' */
 
-      /* Enable for IfAction SubSystem: '<S267>/Locked' incorporates:
-       *  ActionPort: '<S273>/Action'
+      /* Enable for IfAction SubSystem: '<S278>/Locked' incorporates:
+       *  ActionPort: '<S284>/Action'
        */
-      /* Enable for If: '<S267>/If' */
+      /* Enable for If: '<S278>/If' */
       (void) memset(&(GVCU_HIL_XDis.LockedShaftIntegrator_CSTATE), 0,
                     1*sizeof(boolean_T));
 
-      /* End of Enable for SubSystem: '<S267>/Locked' */
+      /* End of Enable for SubSystem: '<S278>/Locked' */
     }
 
-    /* Outputs for IfAction SubSystem: '<S267>/Locked' incorporates:
-     *  ActionPort: '<S273>/Action'
+    /* Outputs for IfAction SubSystem: '<S278>/Locked' incorporates:
+     *  ActionPort: '<S284>/Action'
      */
-    /* Integrator: '<S273>/Locked Shaft Integrator' */
+    /* Integrator: '<S284>/Locked Shaft Integrator' */
     /* Limited  Integrator  */
     if (GVCU_HIL_DW.LockedShaftIntegrator_DWORK1) {
       GVCU_HIL_X.LockedShaftIntegrator_CSTATE = GVCU_HIL_B.Switch_o;
@@ -5143,47 +5839,48 @@ void GVCU_HIL_output(void)
         GVCU_HIL_P.LockedShaftIntegrator_LowerSa_a;
     }
 
-    /* Gain: '<S273>/Inertia' incorporates:
-     *  Gain: '<S273>/Impeller Damping'
-     *  Gain: '<S273>/Turbine Damping'
-     *  Integrator: '<S273>/Locked Shaft Integrator'
-     *  Sum: '<S259>/Subtract1'
-     *  Sum: '<S273>/Add1'
-     *  Sum: '<S273>/Sum'
+    /* Gain: '<S284>/Inertia' incorporates:
+     *  Gain: '<S284>/Impeller Damping'
+     *  Gain: '<S284>/Turbine Damping'
+     *  Integrator: '<S284>/Locked Shaft Integrator'
+     *  Sum: '<S270>/Subtract1'
+     *  Sum: '<S284>/Add1'
+     *  Sum: '<S284>/Sum'
      */
-    GVCU_HIL_B.Inertia = ((GVCU_HIL_B.Subtract1_j[0] - (rtb_TransferFcn + b_xtmp))
-                          - (GVCU_HIL_P.FR_Clutch_bin *
-      GVCU_HIL_X.LockedShaftIntegrator_CSTATE + GVCU_HIL_P.FR_Clutch_bout *
-      GVCU_HIL_X.LockedShaftIntegrator_CSTATE)) * (1.0 /
+    GVCU_HIL_B.Inertia = ((GVCU_HIL_B.Subtract1_j[0] - (rtb_UnaryMinus3_j +
+      rtb_rpm)) - (GVCU_HIL_P.FR_Clutch_bin *
+                   GVCU_HIL_X.LockedShaftIntegrator_CSTATE +
+                   GVCU_HIL_P.FR_Clutch_bout *
+                   GVCU_HIL_X.LockedShaftIntegrator_CSTATE)) * (1.0 /
       (GVCU_HIL_P.FR_Clutch_Jin + GVCU_HIL_P.FR_Clutch_Jout));
 
-    /* SignalConversion: '<S273>/Signal Conversion' incorporates:
-     *  Integrator: '<S273>/Locked Shaft Integrator'
+    /* SignalConversion: '<S284>/Signal Conversion' incorporates:
+     *  Integrator: '<S284>/Locked Shaft Integrator'
      */
-    rtb_Integrator = GVCU_HIL_X.LockedShaftIntegrator_CSTATE;
+    idx = GVCU_HIL_X.LockedShaftIntegrator_CSTATE;
 
-    /* SignalConversion: '<S273>/Signal Conversion1' incorporates:
-     *  Integrator: '<S273>/Locked Shaft Integrator'
+    /* SignalConversion: '<S284>/Signal Conversion1' incorporates:
+     *  Integrator: '<S284>/Locked Shaft Integrator'
      */
-    xtmp = GVCU_HIL_X.LockedShaftIntegrator_CSTATE;
+    rtb_UnaryMinus3_j = GVCU_HIL_X.LockedShaftIntegrator_CSTATE;
     if (rtmIsMajorTimeStep(GVCU_HIL_M) &&
         GVCU_HIL_M->Timing.TaskCounters.TID[1] == 0) {
-      /* Merge: '<S267>/Merge2' incorporates:
-       *  Constant: '<S273>/Constant'
-       *  SignalConversion generated from: '<S273>/Speed Ratio'
+      /* Merge: '<S278>/Merge2' incorporates:
+       *  Constant: '<S284>/Constant'
+       *  SignalConversion generated from: '<S284>/Speed Ratio'
        */
       GVCU_HIL_B.SpdRatio_o = GVCU_HIL_P.Constant_Value_e;
     }
 
-    /* End of Outputs for SubSystem: '<S267>/Locked' */
+    /* End of Outputs for SubSystem: '<S278>/Locked' */
   } else {
     if (rtAction != rtPrevAction) {
-      /* InitializeConditions for IfAction SubSystem: '<S267>/Unlocked' incorporates:
-       *  ActionPort: '<S274>/Action'
+      /* InitializeConditions for IfAction SubSystem: '<S278>/Unlocked' incorporates:
+       *  ActionPort: '<S285>/Action'
        */
-      /* InitializeConditions for If: '<S267>/If' incorporates:
-       *  Integrator: '<S274>/Input Integrator'
-       *  Integrator: '<S274>/Output Integrator'
+      /* InitializeConditions for If: '<S278>/If' incorporates:
+       *  Integrator: '<S285>/Input Integrator'
+       *  Integrator: '<S285>/Output Integrator'
        */
       if (rtmIsFirstInitCond(GVCU_HIL_M)) {
         GVCU_HIL_X.InputIntegrator_CSTATE = 0.0;
@@ -5193,22 +5890,22 @@ void GVCU_HIL_output(void)
       GVCU_HIL_DW.InputIntegrator_DWORK1 = true;
       GVCU_HIL_DW.OutputIntegrator_DWORK1 = true;
 
-      /* End of InitializeConditions for SubSystem: '<S267>/Unlocked' */
+      /* End of InitializeConditions for SubSystem: '<S278>/Unlocked' */
 
-      /* Enable for IfAction SubSystem: '<S267>/Unlocked' incorporates:
-       *  ActionPort: '<S274>/Action'
+      /* Enable for IfAction SubSystem: '<S278>/Unlocked' incorporates:
+       *  ActionPort: '<S285>/Action'
        */
-      /* Enable for If: '<S267>/If' */
+      /* Enable for If: '<S278>/If' */
       (void) memset(&(GVCU_HIL_XDis.InputIntegrator_CSTATE), 0,
                     2*sizeof(boolean_T));
 
-      /* End of Enable for SubSystem: '<S267>/Unlocked' */
+      /* End of Enable for SubSystem: '<S278>/Unlocked' */
     }
 
-    /* Outputs for IfAction SubSystem: '<S267>/Unlocked' incorporates:
-     *  ActionPort: '<S274>/Action'
+    /* Outputs for IfAction SubSystem: '<S278>/Unlocked' incorporates:
+     *  ActionPort: '<S285>/Action'
      */
-    /* Integrator: '<S274>/Input Integrator' */
+    /* Integrator: '<S285>/Input Integrator' */
     /* Limited  Integrator  */
     if (GVCU_HIL_DW.InputIntegrator_DWORK1) {
       GVCU_HIL_X.InputIntegrator_CSTATE = GVCU_HIL_B.Switch_c3;
@@ -5240,11 +5937,11 @@ void GVCU_HIL_output(void)
       GVCU_HIL_X.InputIntegrator_CSTATE = GVCU_HIL_P.InputIntegrator_LowerSat_c;
     }
 
-    rtb_TransferFcn = GVCU_HIL_X.InputIntegrator_CSTATE;
+    rtb_UnaryMinus3_j = GVCU_HIL_X.InputIntegrator_CSTATE;
 
-    /* End of Integrator: '<S274>/Input Integrator' */
+    /* End of Integrator: '<S285>/Input Integrator' */
 
-    /* Integrator: '<S274>/Output Integrator' */
+    /* Integrator: '<S285>/Output Integrator' */
     /* Limited  Integrator  */
     if (GVCU_HIL_DW.OutputIntegrator_DWORK1) {
       GVCU_HIL_X.OutputIntegrator_CSTATE = GVCU_HIL_B.Switch_j;
@@ -5278,941 +5975,339 @@ void GVCU_HIL_output(void)
         GVCU_HIL_P.OutputIntegrator_LowerSat_o;
     }
 
-    /* Product: '<S274>/Max Dynamic Friction Torque' incorporates:
-     *  Gain: '<S274>/4'
-     *  Integrator: '<S274>/Output Integrator'
-     *  Sum: '<S274>/W_Slip'
-     *  Trigonometry: '<S274>/Trigonometric Function'
+    /* Product: '<S285>/Max Dynamic Friction Torque' incorporates:
+     *  Gain: '<S285>/4'
+     *  Integrator: '<S285>/Output Integrator'
+     *  Sum: '<S285>/W_Slip'
+     *  Trigonometry: '<S285>/Trigonometric Function'
      */
-    t_rel *= tanh((rtb_TransferFcn - GVCU_HIL_X.OutputIntegrator_CSTATE) *
-                  GVCU_HIL_P.u_Gain_j);
+    rtb_Sum_jk *= tanh((rtb_UnaryMinus3_j - GVCU_HIL_X.OutputIntegrator_CSTATE) *
+                       GVCU_HIL_P.u_Gain_j);
 
-    /* Gain: '<S274>/Input Inertia' incorporates:
-     *  Gain: '<S274>/Input Damping'
-     *  Sum: '<S274>/Input Sum'
+    /* Gain: '<S285>/Input Inertia' incorporates:
+     *  Gain: '<S285>/Input Damping'
+     *  Sum: '<S285>/Input Sum'
      */
-    GVCU_HIL_B.InputInertia = ((GVCU_HIL_B.Subtract1_j[0] - t_rel) -
-      GVCU_HIL_P.FR_Clutch_bin * rtb_TransferFcn) * (1.0 /
+    GVCU_HIL_B.InputInertia = ((GVCU_HIL_B.Subtract1_j[0] - rtb_Sum_jk) -
+      GVCU_HIL_P.FR_Clutch_bin * rtb_UnaryMinus3_j) * (1.0 /
       GVCU_HIL_P.FR_Clutch_Jin);
 
-    /* Gain: '<S274>/Output Inertia' incorporates:
-     *  Gain: '<S274>/Output Damping'
-     *  Integrator: '<S274>/Output Integrator'
-     *  Sum: '<S274>/Add1'
-     *  Sum: '<S274>/Output Sum'
-     *  UnaryMinus: '<S259>/Unary Minus'
+    /* Gain: '<S285>/Output Inertia' incorporates:
+     *  Gain: '<S285>/Output Damping'
+     *  Integrator: '<S285>/Output Integrator'
+     *  Sum: '<S285>/Add1'
+     *  Sum: '<S285>/Output Sum'
+     *  UnaryMinus: '<S270>/Unary Minus'
      */
-    GVCU_HIL_B.OutputInertia = ((t_rel - GVCU_HIL_P.FR_Clutch_bout *
-      GVCU_HIL_X.OutputIntegrator_CSTATE) - rtb_Integrator) * (1.0 /
-      GVCU_HIL_P.FR_Clutch_Jout);
+    GVCU_HIL_B.OutputInertia = ((rtb_Sum_jk - GVCU_HIL_P.FR_Clutch_bout *
+      GVCU_HIL_X.OutputIntegrator_CSTATE) - rtb_VectorConcatenate2_idx_0) * (1.0
+      / GVCU_HIL_P.FR_Clutch_Jout);
 
-    /* Switch: '<S288>/Switch' incorporates:
-     *  Abs: '<S288>/Abs'
-     *  Constant: '<S289>/Constant'
-     *  Constant: '<S290>/Constant'
-     *  Fcn: '<S288>/Fcn'
-     *  Integrator: '<S274>/Output Integrator'
-     *  Logic: '<S288>/Logical Operator'
-     *  RelationalOperator: '<S289>/Compare'
-     *  RelationalOperator: '<S290>/Compare'
+    /* Switch: '<S299>/Switch' incorporates:
+     *  Abs: '<S299>/Abs'
+     *  Constant: '<S300>/Constant'
+     *  Constant: '<S301>/Constant'
+     *  Fcn: '<S299>/Fcn'
+     *  Integrator: '<S285>/Output Integrator'
+     *  Logic: '<S299>/Logical Operator'
+     *  RelationalOperator: '<S300>/Compare'
+     *  RelationalOperator: '<S301>/Compare'
      */
     if ((GVCU_HIL_X.OutputIntegrator_CSTATE >=
          -GVCU_HIL_P.div0protectabspoly1_thresh_o) &&
         (GVCU_HIL_X.OutputIntegrator_CSTATE <=
          GVCU_HIL_P.div0protectabspoly1_thresh_o)) {
-      t_rel = 2.0E-6 / (3.0 - rt_powd_snf(GVCU_HIL_X.OutputIntegrator_CSTATE /
-        1.0e-6, 2.0));
+      rtb_VectorConcatenate2_idx_0 = 2.0E-6 / (3.0 - rt_powd_snf
+        (GVCU_HIL_X.OutputIntegrator_CSTATE / 1.0e-6, 2.0));
     } else {
-      t_rel = fabs(GVCU_HIL_X.OutputIntegrator_CSTATE);
+      rtb_VectorConcatenate2_idx_0 = fabs(GVCU_HIL_X.OutputIntegrator_CSTATE);
     }
 
-    /* End of Switch: '<S288>/Switch' */
+    /* End of Switch: '<S299>/Switch' */
 
-    /* SignalConversion: '<S274>/Signal Conversion' incorporates:
-     *  Integrator: '<S274>/Output Integrator'
+    /* SignalConversion: '<S285>/Signal Conversion' incorporates:
+     *  Integrator: '<S285>/Output Integrator'
      */
-    rtb_Integrator = GVCU_HIL_X.OutputIntegrator_CSTATE;
+    idx = GVCU_HIL_X.OutputIntegrator_CSTATE;
 
-    /* SignalConversion: '<S274>/Signal Conversion1' */
-    xtmp = rtb_TransferFcn;
-
-    /* Merge: '<S267>/Merge2' incorporates:
-     *  Product: '<S274>/Product3'
-     *  SignalConversion: '<S274>/Signal Conversion2'
+    /* Merge: '<S278>/Merge2' incorporates:
+     *  Product: '<S285>/Product3'
+     *  SignalConversion: '<S285>/Signal Conversion2'
      */
-    GVCU_HIL_B.SpdRatio_o = rtb_TransferFcn / t_rel;
+    GVCU_HIL_B.SpdRatio_o = rtb_UnaryMinus3_j / rtb_VectorConcatenate2_idx_0;
 
-    /* End of Outputs for SubSystem: '<S267>/Unlocked' */
+    /* End of Outputs for SubSystem: '<S278>/Unlocked' */
   }
 
-  /* Sum: '<S259>/Subtract' */
-  GVCU_HIL_B.Subtract_h = rtb_Integrator - rtb_Omega[1];
+  /* Sum: '<S270>/Subtract' */
+  GVCU_HIL_B.Subtract_h = idx - rtb_ProportionalGain;
 
-  /* Switch: '<S260>/Switch' */
+  /* Switch: '<S271>/Switch' */
   if (!(GVCU_HIL_B.Memory_k != 0.0)) {
-    idx = GVCU_HIL_B.domega_o_a;
+    rtb_SumofElements = GVCU_HIL_B.domega_o_a;
   }
 
-  /* Product: '<S260>/Product' incorporates:
-   *  Constant: '<S259>/omega_c'
-   *  Sum: '<S260>/Sum'
-   *  Switch: '<S260>/Switch'
+  /* Product: '<S271>/Product' incorporates:
+   *  Constant: '<S270>/omega_c'
+   *  Sum: '<S271>/Sum'
+   *  Switch: '<S271>/Switch'
    */
-  GVCU_HIL_B.Product_g = (GVCU_HIL_B.Subtract_h - idx) * GVCU_HIL_P.FR_omega_c;
+  GVCU_HIL_B.Product_g = (GVCU_HIL_B.Subtract_h - rtb_SumofElements) *
+    GVCU_HIL_P.FR_omega_c;
   if (tmp) {
-    /* Product: '<S286>/Divide' incorporates:
-     *  Constant: '<S286>/Constant'
+    /* Product: '<S297>/Divide' incorporates:
+     *  Constant: '<S297>/Constant'
      */
     GVCU_HIL_B.Divide_i = 1.0 / GVCU_HIL_P.FR_Clutch_tauC;
   }
 
-  /* TransferFcn: '<S25>/Transfer Fcn' */
-  t_rel = GVCU_HIL_P.TransferFcn_C_b * GVCU_HIL_X.TransferFcn_CSTATE_oq;
+  /* TransferFcn: '<S36>/Transfer Fcn' */
+  rtb_rpm = GVCU_HIL_P.TransferFcn_C_b * GVCU_HIL_X.TransferFcn_CSTATE_oq;
 
-  /* Switch: '<S25>/Switch2' incorporates:
-   *  Constant: '<S25>/Constant'
-   *  Gain: '<S25>/Gain'
-   *  Lookup_n-D: '<S25>/1-D Lookup Table2'
-   *  Lookup_n-D: '<S25>/1-D Lookup Table9'
-   *  TransferFcn: '<S25>/Transfer Fcn'
+  /* Switch: '<S36>/Switch2' incorporates:
+   *  Constant: '<S36>/Constant'
+   *  Gain: '<S36>/Gain'
+   *  Lookup_n-D: '<S36>/1-D Lookup Table2'
+   *  Lookup_n-D: '<S36>/1-D Lookup Table9'
+   *  TransferFcn: '<S36>/Transfer Fcn'
    */
-  if (t_rel > GVCU_HIL_P.Switch2_Threshold_b) {
-    idx = GVCU_HIL_P.Gain_Gain_d * look1_binlxpw(look1_binlxpw(t_rel,
-      GVCU_HIL_P.uDLookupTable9_bp01Data_p,
-      GVCU_HIL_P.uDLookupTable9_tableData_l, 3U),
+  if (rtb_rpm > GVCU_HIL_P.Switch2_Threshold_b) {
+    rtb_SumofElements = GVCU_HIL_P.Gain_Gain_d * look1_binlxpw(look1_binlxpw
+      (rtb_rpm, GVCU_HIL_P.uDLookupTable9_bp01Data_p,
+       GVCU_HIL_P.uDLookupTable9_tableData_l, 3U),
       GVCU_HIL_P.uDLookupTable2_bp01Data_k,
       GVCU_HIL_P.uDLookupTable2_tableData_f, 3U);
   } else {
-    idx = GVCU_HIL_P.Constant_Value_a;
+    rtb_SumofElements = GVCU_HIL_P.Constant_Value_a;
   }
 
-  /* End of Switch: '<S25>/Switch2' */
+  /* End of Switch: '<S36>/Switch2' */
 
-  /* Saturate: '<S1>/Saturation1' */
-  if (idx > GVCU_HIL_P.Saturation1_UpperSat) {
-    /* Saturate: '<S1>/Saturation1' */
+  /* Saturate: '<S2>/Saturation1' */
+  if (rtb_SumofElements > GVCU_HIL_P.Saturation1_UpperSat) {
+    /* Saturate: '<S2>/Saturation1' */
     GVCU_HIL_B.Saturation1 = GVCU_HIL_P.Saturation1_UpperSat;
-  } else if (idx < GVCU_HIL_P.Saturation1_LowerSat) {
-    /* Saturate: '<S1>/Saturation1' */
+  } else if (rtb_SumofElements < GVCU_HIL_P.Saturation1_LowerSat) {
+    /* Saturate: '<S2>/Saturation1' */
     GVCU_HIL_B.Saturation1 = GVCU_HIL_P.Saturation1_LowerSat;
   } else {
-    /* Saturate: '<S1>/Saturation1' */
-    GVCU_HIL_B.Saturation1 = idx;
+    /* Saturate: '<S2>/Saturation1' */
+    GVCU_HIL_B.Saturation1 = rtb_SumofElements;
   }
 
-  /* End of Saturate: '<S1>/Saturation1' */
+  /* End of Saturate: '<S2>/Saturation1' */
 
-  /* Product: '<S287>/Product' incorporates:
-   *  Sum: '<S287>/Sum'
+  /* Product: '<S298>/Product' incorporates:
+   *  Sum: '<S298>/Sum'
    */
-  GVCU_HIL_B.Product_p = (GVCU_HIL_B.Saturation1 - rtb_Sum_jk) *
+  GVCU_HIL_B.Product_p = (GVCU_HIL_B.Saturation1 - rtb_UnaryMinus1_i) *
     GVCU_HIL_B.Divide_i;
 
-  /* Gain: '<S189>/Gain' */
-  idx = GVCU_HIL_P.Gain_Gain_n * GVCU_HIL_B.Spd;
+  /* Gain: '<S200>/Gain' */
+  rtb_SumofElements = GVCU_HIL_P.Gain_Gain_n * GVCU_HIL_B.Spd;
 
-  /* Gain: '<S189>/Gain2' */
-  GVCU_HIL_B.rpm_g = GVCU_HIL_P.Gain2_Gain_j * idx;
+  /* Gain: '<S200>/Gain2' */
+  GVCU_HIL_B.rpm_g = GVCU_HIL_P.Gain2_Gain_j * rtb_SumofElements;
   if (tmp) {
-    /* Switch: '<S294>/Switch' incorporates:
-     *  Constant: '<S291>/J'
-     *  Constant: '<S301>/Constant'
-     *  Constant: '<S302>/Constant'
-     *  Logic: '<S294>/Logical Operator'
-     *  RelationalOperator: '<S301>/Compare'
-     *  RelationalOperator: '<S302>/Compare'
+    /* Switch: '<S305>/Switch' incorporates:
+     *  Constant: '<S302>/J'
+     *  Constant: '<S312>/Constant'
+     *  Constant: '<S313>/Constant'
+     *  Logic: '<S305>/Logical Operator'
+     *  RelationalOperator: '<S312>/Compare'
+     *  RelationalOperator: '<S313>/Compare'
      */
     if ((GVCU_HIL_P.RotationalInertia_J >= -GVCU_HIL_P.div0protectabspoly_thresh)
         && (GVCU_HIL_P.RotationalInertia_J <=
             GVCU_HIL_P.div0protectabspoly_thresh)) {
-      /* Switch: '<S294>/Switch' incorporates:
-       *  Fcn: '<S294>/Fcn'
+      /* Switch: '<S305>/Switch' incorporates:
+       *  Fcn: '<S305>/Fcn'
        */
       GVCU_HIL_B.Switch_n = 2.0E-6 / (3.0 - rt_powd_snf
         (GVCU_HIL_P.RotationalInertia_J / 1.0e-6, 2.0));
     } else {
-      /* Switch: '<S294>/Switch' incorporates:
-       *  Abs: '<S294>/Abs'
+      /* Switch: '<S305>/Switch' incorporates:
+       *  Abs: '<S305>/Abs'
        */
       GVCU_HIL_B.Switch_n = fabs(GVCU_HIL_P.RotationalInertia_J);
     }
 
-    /* End of Switch: '<S294>/Switch' */
+    /* End of Switch: '<S305>/Switch' */
 
-    /* Constant: '<S303>/omega1_c' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate1'
+    /* Constant: '<S314>/omega1_c' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate1'
      */
     GVCU_HIL_B.VectorConcatenate1[0] =
       GVCU_HIL_P.SplitTorsionalCompliance_omega1;
 
-    /* Constant: '<S303>/omega2_c' incorporates:
-     *  Concatenate: '<S303>/Vector Concatenate1'
+    /* Constant: '<S314>/omega2_c' incorporates:
+     *  Concatenate: '<S314>/Vector Concatenate1'
      */
     GVCU_HIL_B.VectorConcatenate1[1] =
       GVCU_HIL_P.SplitTorsionalCompliance_omega2;
   }
 
-  /* Product: '<S292>/Divide' incorporates:
-   *  Gain: '<S189>/Gain1'
-   *  Gain: '<S292>/Gain2'
-   *  Sum: '<S292>/Subtract'
-   *  Sum: '<S303>/Subtract3'
+  /* Product: '<S303>/Divide' incorporates:
+   *  Gain: '<S200>/Gain1'
+   *  Gain: '<S303>/Gain2'
+   *  Sum: '<S303>/Subtract'
+   *  Sum: '<S314>/Subtract3'
    */
   GVCU_HIL_B.Divide_l = ((((0.0 - GVCU_HIL_B.Subtract1_j[0]) -
     GVCU_HIL_B.Subtract1_j[1]) * GVCU_HIL_P.Gain1_Gain_d + GVCU_HIL_B.EMTrq) +
     -GVCU_HIL_P.RotationalInertia_b * GVCU_HIL_B.Spd) / GVCU_HIL_B.Switch_n;
 
-  /* Sum: '<S303>/Subtract' */
-  rtb_TransferFcn = idx - xtmp;
-  GVCU_HIL_B.Subtract_b[0] = rtb_TransferFcn;
+  /* Sum: '<S314>/Subtract' */
+  rtb_UnaryMinus3_j = rtb_SumofElements - rtb_UnaryMinus3_j;
+  GVCU_HIL_B.Subtract_b[0] = rtb_UnaryMinus3_j;
 
-  /* Switch: '<S304>/Switch' */
+  /* Switch: '<S315>/Switch' */
   if (!(GVCU_HIL_B.Memory_a != 0.0)) {
-    rtb_Selector1_idx_0 = GVCU_HIL_B.VectorConcatenate2_l[0];
-    rtb_Selector1_idx_1 = GVCU_HIL_B.VectorConcatenate2_l[1];
+    rtb_Sum1 = GVCU_HIL_B.VectorConcatenate2_l[0];
+    rtb_uto1 = GVCU_HIL_B.VectorConcatenate2_l[1];
   }
 
-  /* Product: '<S304>/Product' incorporates:
-   *  Sum: '<S304>/Sum'
-   *  Switch: '<S304>/Switch'
+  /* Product: '<S315>/Product' incorporates:
+   *  Sum: '<S315>/Sum'
+   *  Switch: '<S315>/Switch'
    */
-  GVCU_HIL_B.Product_f[0] = (rtb_TransferFcn - rtb_Selector1_idx_0) *
+  GVCU_HIL_B.Product_f[0] = (rtb_UnaryMinus3_j - rtb_Sum1) *
     GVCU_HIL_B.VectorConcatenate1[0];
 
-  /* Sum: '<S303>/Subtract' */
-  rtb_TransferFcn = idx - rtb_VectorConcatenate2_idx_1;
-  GVCU_HIL_B.Subtract_b[1] = rtb_TransferFcn;
+  /* Sum: '<S314>/Subtract' */
+  rtb_UnaryMinus3_j = rtb_SumofElements - rtb_bar;
+  GVCU_HIL_B.Subtract_b[1] = rtb_UnaryMinus3_j;
 
-  /* Product: '<S304>/Product' incorporates:
-   *  Sum: '<S304>/Sum'
-   *  Switch: '<S304>/Switch'
+  /* Product: '<S315>/Product' incorporates:
+   *  Sum: '<S315>/Sum'
+   *  Switch: '<S315>/Switch'
    */
-  GVCU_HIL_B.Product_f[1] = (rtb_TransferFcn - rtb_Selector1_idx_1) *
+  GVCU_HIL_B.Product_f[1] = (rtb_UnaryMinus3_j - rtb_uto1) *
     GVCU_HIL_B.VectorConcatenate1[1];
   if (tmp) {
-    /* Lookup_n-D: '<S366>/2-D Lookup Table4' incorporates:
-     *  Constant: '<S366>/hRideF'
-     *  Constant: '<S366>/hRideR'
-     */
-    rtb_Add_m = look2_binlcapw(GVCU_HIL_P.hRideF_Value, GVCU_HIL_P.hRideR_Value,
-      GVCU_HIL_P.veh.aero.FRH, GVCU_HIL_P.veh.aero.RRH,
-      GVCU_HIL_P.uDLookupTable4_tableData, GVCU_HIL_P.uDLookupTable4_maxIndex,
-      5U);
-
-    /* Gain: '<S366>/Gain7' */
-    GVCU_HIL_B.Gain7 = GVCU_HIL_P.Gain7_Gain * rtb_Add_m;
-  }
-
-  /* Sum: '<S366>/Sum4' incorporates:
-   *  Constant: '<S110>/wind x'
-   */
-  b_xtmp = GVCU_HIL_B.VectorConcatenate2[0] + GVCU_HIL_P.environment.wind.x;
-
-  /* Math: '<S366>/Square' */
-  b_xtmp *= b_xtmp;
-
-  /* Gain: '<S366>/Gain6' incorporates:
-   *  Concatenate: '<S366>/Matrix Concatenate1'
-   *  Constant: '<S107>/Constant2'
-   *  Constant: '<S366>/Constant1'
-   *  Product: '<S366>/Product2'
-   */
-  GVCU_HIL_B.FAero[0] = GVCU_HIL_B.Gain7 * GVCU_HIL_P.veh.A * b_xtmp *
-    GVCU_HIL_P.environment.air.density * GVCU_HIL_P.Gain6_Gain;
-  if (tmp) {
-    /* Constant: '<S366>/Constant3' incorporates:
-     *  Concatenate: '<S366>/Matrix Concatenate1'
-     */
-    GVCU_HIL_B.FAero[1] = GVCU_HIL_P.Constant3_Value_a;
-
-    /* Lookup_n-D: '<S366>/2-D Lookup Table3' incorporates:
-     *  Constant: '<S366>/hRideF'
-     *  Constant: '<S366>/hRideR'
-     */
-    rtb_Saturation1 = look2_binlcapw(GVCU_HIL_P.hRideF_Value,
-      GVCU_HIL_P.hRideR_Value, GVCU_HIL_P.veh.aero.FRH, GVCU_HIL_P.veh.aero.RRH,
-      GVCU_HIL_P.uDLookupTable3_tableData_g, GVCU_HIL_P.uDLookupTable3_maxIndex,
-      5U);
-
-    /* Gain: '<S366>/Gain8' */
-    GVCU_HIL_B.Clf = GVCU_HIL_P.Gain8_Gain * rtb_Saturation1;
-  }
-
-  /* Gain: '<S366>/Gain2' incorporates:
-   *  Constant: '<S107>/Constant2'
-   *  Constant: '<S366>/Constant1'
-   *  Product: '<S366>/Product'
-   */
-  idx = GVCU_HIL_B.Clf * GVCU_HIL_P.veh.A * b_xtmp *
-    GVCU_HIL_P.environment.air.density * GVCU_HIL_P.Gain2_Gain_f;
-  if (tmp) {
-    /* Lookup_n-D: '<S366>/2-D Lookup Table2' incorporates:
-     *  Constant: '<S366>/hRideF'
-     *  Constant: '<S366>/hRideR'
-     */
-    rtb_Saturation1 = look2_binlcapw(GVCU_HIL_P.hRideF_Value,
-      GVCU_HIL_P.hRideR_Value, GVCU_HIL_P.veh.aero.FRH, GVCU_HIL_P.veh.aero.RRH,
-      GVCU_HIL_P.uDLookupTable2_tableData_c, GVCU_HIL_P.uDLookupTable2_maxIndex,
-      5U);
-
-    /* Gain: '<S366>/Gain9' */
-    GVCU_HIL_B.Clr = GVCU_HIL_P.Gain9_Gain * rtb_Saturation1;
-  }
-
-  /* Gain: '<S366>/Gain3' incorporates:
-   *  Constant: '<S107>/Constant2'
-   *  Constant: '<S366>/Constant1'
-   *  Product: '<S366>/Product1'
-   */
-  b_xtmp = GVCU_HIL_B.Clr * GVCU_HIL_P.veh.A * b_xtmp *
-    GVCU_HIL_P.environment.air.density * GVCU_HIL_P.Gain3_Gain;
-
-  /* Sum: '<S366>/Sum2' incorporates:
-   *  Concatenate: '<S366>/Matrix Concatenate1'
-   */
-  GVCU_HIL_B.FAero[2] = idx + b_xtmp;
-  if (tmp) {
-    /* Constant: '<S366>/Constant2' incorporates:
-     *  Concatenate: '<S366>/Matrix Concatenate2'
+    /* Constant: '<S377>/Constant2' incorporates:
+     *  Concatenate: '<S377>/Matrix Concatenate2'
      */
     GVCU_HIL_B.MAero[0] = GVCU_HIL_P.Constant2_Value_l;
   }
 
-  /* Sum: '<S366>/Sum3' incorporates:
-   *  Concatenate: '<S366>/Matrix Concatenate2'
-   *  Gain: '<S366>/Gain4'
-   *  Gain: '<S366>/Gain5'
+  /* Sum: '<S377>/Sum3' incorporates:
+   *  Concatenate: '<S377>/Matrix Concatenate2'
+   *  Gain: '<S377>/Gain4'
+   *  Gain: '<S377>/Gain5'
    */
-  GVCU_HIL_B.MAero[1] = GVCU_HIL_P.veh.r * b_xtmp - GVCU_HIL_P.veh.f * idx;
+  GVCU_HIL_B.MAero[1] = GVCU_HIL_P.veh.r * rtb_SignalCopy_d - GVCU_HIL_P.veh.f *
+    rtb_Add_j;
   if (tmp) {
-    /* Constant: '<S366>/Constant' incorporates:
-     *  Concatenate: '<S366>/Matrix Concatenate2'
+    /* Constant: '<S377>/Constant' incorporates:
+     *  Concatenate: '<S377>/Matrix Concatenate2'
      */
     GVCU_HIL_B.MAero[2] = GVCU_HIL_P.Constant_Value_d4;
 
-    /* Memory: '<S9>/Memory' */
-    rtb_Saturation1 = GVCU_HIL_DW.Memory_PreviousInput_n;
-
-    /* Memory: '<S9>/Memory1' */
-    rtb_Add_m = GVCU_HIL_DW.Memory1_PreviousInput;
-
-    /* Gain: '<S369>/Gain1' incorporates:
-     *  Memory: '<S9>/Memory'
-     */
-    GVCU_HIL_B.Gain1_o = GVCU_HIL_P.Gain1_Gain_p *
-      GVCU_HIL_DW.Memory_PreviousInput_n;
+    /* Product: '<S385>/Product2' */
+    GVCU_HIL_B.Product2 = rtb_TrigonometricFunction2_o2 * rtb_Saturation1;
   }
 
-  /* Gain: '<S9>/Gain' */
-  GVCU_HIL_B.kmh_e = GVCU_HIL_P.Gain_Gain_m * GVCU_HIL_B.VectorConcatenate2[0];
+  /* Gain: '<S10>/Gain' */
+  GVCU_HIL_B.kmh_e = GVCU_HIL_P.Gain_Gain_me * GVCU_HIL_B.VectorConcatenate2[0];
 
-  /* MATLAB Function: '<S423>/Simple Magic Tire' incorporates:
-   *  Constant: '<S414>/FxType'
-   *  Constant: '<S414>/TirePrsConstant'
-   *  Constant: '<S414>/lam_muxConstant'
-   *  Constant: '<S414>/rollType'
-   *  Constant: '<S414>/vertType'
-   *  Constant: '<S448>/Constant'
-   *  Constant: '<S448>/Constant1'
-   *  Constant: '<S448>/Constant12'
-   *  Constant: '<S448>/Constant14'
-   *  Constant: '<S448>/Constant19'
-   *  Constant: '<S448>/Constant2'
-   *  Constant: '<S448>/Constant6'
-   *  Constant: '<S448>/Constant7'
-   *  Constant: '<S449>/Constant1'
-   *  Constant: '<S449>/Constant10'
-   *  Constant: '<S449>/Constant11'
-   *  Constant: '<S449>/Constant12'
-   *  Constant: '<S449>/Constant13'
-   *  Constant: '<S449>/Constant14'
-   *  Constant: '<S449>/Constant15'
-   *  Constant: '<S449>/Constant16'
-   *  Constant: '<S449>/Constant17'
-   *  Constant: '<S449>/Constant18'
-   *  Constant: '<S449>/Constant19'
-   *  Constant: '<S449>/Constant2'
-   *  Constant: '<S449>/Constant3'
-   *  Constant: '<S449>/Constant4'
-   *  Constant: '<S449>/Constant5'
-   *  Constant: '<S449>/Constant6'
-   *  Constant: '<S449>/Constant7'
-   *  Constant: '<S449>/Constant8'
-   *  Constant: '<S449>/Constant9'
-   *  Constant: '<S450>/Constant1'
-   *  Constant: '<S450>/Constant10'
-   *  Constant: '<S450>/Constant11'
-   *  Constant: '<S450>/Constant13'
-   *  Constant: '<S450>/Constant14'
-   *  Constant: '<S450>/Constant15'
-   *  Constant: '<S450>/Constant16'
-   *  Constant: '<S450>/Constant17'
-   *  Constant: '<S450>/Constant18'
-   *  Constant: '<S450>/Constant19'
-   *  Constant: '<S450>/Constant2'
-   *  Constant: '<S450>/Constant20'
-   *  Constant: '<S450>/Constant21'
-   *  Constant: '<S450>/Constant22'
-   *  Constant: '<S450>/Constant23'
-   *  Constant: '<S450>/Constant24'
-   *  Constant: '<S450>/Constant3'
-   *  Constant: '<S450>/Constant4'
-   *  Constant: '<S450>/Constant5'
-   *  Constant: '<S450>/Constant6'
-   *  Constant: '<S450>/Constant7'
-   *  Constant: '<S450>/Constant8'
-   *  Constant: '<S450>/Constant9'
+  /* Sum: '<S385>/Add6' incorporates:
+   *  Constant: '<S422>/Constant3'
+   *  Product: '<S422>/Product4'
    */
-  GVCU_HIL_SimpleMagicTire(GVCU_HIL_B.Saturation_o, GVCU_HIL_B.Gain1_o,
-    rtb_ImpAsg_InsertedFor_Omega__a, GVCU_HIL_B.VectorConcatenate2[0],
-    GVCU_HIL_P.Constant_Value_lq, GVCU_HIL_P.Constant1_Value_f,
-    GVCU_HIL_P.Constant7_Value, GVCU_HIL_P.Constant6_Value,
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBr_cx, GVCU_HIL_P.Constant2_Value_m,
-    GVCU_HIL_P.Constant19_Value, GVCU_HIL_P.Constant12_Value,
-    GVCU_HIL_P.Constant14_Value, GVCU_HIL_P.Constant11_Value,
-    GVCU_HIL_P.Constant5_Value, GVCU_HIL_P.Constant2_Value_b,
-    GVCU_HIL_P.Constant13_Value, GVCU_HIL_P.Constant8_Value,
-    GVCU_HIL_P.Constant15_Value, GVCU_HIL_P.Constant16_Value,
-    GVCU_HIL_P.Constant7_Value_j, GVCU_HIL_P.Constant9_Value,
-    GVCU_HIL_P.Constant17_Value, GVCU_HIL_P.Constant18_Value,
-    GVCU_HIL_P.Constant6_Value_p, GVCU_HIL_P.Constant10_Value,
-    GVCU_HIL_P.Constant4_Value, GVCU_HIL_P.Constant1_Value_lj,
-    GVCU_HIL_P.Constant3_Value_i, GVCU_HIL_P.Constant19_Value_d,
-    GVCU_HIL_P.Constant12_Value_m, GVCU_HIL_P.Constant14_Value_b, 0.0,
-    GVCU_HIL_P.FxType_Value, GVCU_HIL_P.rollType_Value,
-    GVCU_HIL_P.vertType_Value, GVCU_HIL_P.FrontLongitudinalWheelDiscBra_h,
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBr_hv,
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f,
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBr_by, &GVCU_HIL_B.sf_SimpleMagicTire);
-
-  /* MATLAB Function: '<S431>/MATLAB Function' */
-  GVCU_HIL_MATLABFunction(GVCU_HIL_B.VectorConcatenate2[0],
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f, &GVCU_HIL_B.sf_MATLABFunction_h);
-
-  /* Product: '<S429>/Product3' */
-  b_xtmp = GVCU_HIL_B.sf_SimpleMagicTire.Fx *
-    GVCU_HIL_B.sf_MATLABFunction_h.lambda;
-
-  /* Sum: '<S429>/Add2' incorporates:
-   *  Constant: '<S429>/Constant4'
-   */
-  t_rel = GVCU_HIL_P.Constant4_Value_i - GVCU_HIL_B.sf_MATLABFunction_h.lambda;
-
-  /* DeadZone: '<S428>/Dead Zone' */
-  if (GVCU_HIL_B.VectorConcatenate2[0] > GVCU_HIL_P.DeadZone_End) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.VectorConcatenate2[0] -
-      GVCU_HIL_P.DeadZone_End;
-  } else if (GVCU_HIL_B.VectorConcatenate2[0] >= GVCU_HIL_P.DeadZone_Start) {
-    rtb_TrigonometricFunction2_o1 = 0.0;
-  } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.VectorConcatenate2[0] -
-      GVCU_HIL_P.DeadZone_Start;
-  }
-
-  /* RelationalOperator: '<S428>/Relational Operator' incorporates:
-   *  Abs: '<S428>/Abs1'
-   *  Constant: '<S428>/VXLOW'
-   *  DeadZone: '<S428>/Dead Zone'
-   */
-  GVCU_HIL_B.RelationalOperator = (fabs(rtb_TrigonometricFunction2_o1) <=
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f);
-  if (tmp) {
-    /* SignalConversion generated from: '<S430>/Enable' */
-    GVCU_HIL_B.HiddenBuf_InsertedFor_BristleDe = GVCU_HIL_B.RelationalOperator;
-  }
-
-  /* Outputs for Enabled SubSystem: '<S428>/Bristle Deflection' */
-  /* Constant: '<S414>/lam_muxConstant' incorporates:
-   *  Constant: '<S414>/Constant'
-   */
-  GVCU_HIL_BristleDeflection(GVCU_HIL_M,
-    GVCU_HIL_B.HiddenBuf_InsertedFor_BristleDe, GVCU_HIL_B.VectorConcatenate2[0],
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBr_cx,
-    GVCU_HIL_B.sf_SimpleMagicTire.FzTire, GVCU_HIL_B.sf_SimpleMagicTire.Re,
-    rtb_ImpAsg_InsertedFor_Omega__a, GVCU_HIL_P.FrontLongitudinalWheelDiscBra_g,
-    GVCU_HIL_B.sf_SimpleMagicTire.Fx, GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f,
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBrake,
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_k,
-    GVCU_HIL_P.FrontLongitudinalWheelDiscBra_c, &GVCU_HIL_B.BristleDeflection,
-    &GVCU_HIL_DW.BristleDeflection, &GVCU_HIL_P.BristleDeflection,
-    &GVCU_HIL_X.BristleDeflection, &_rtXdis->BristleDeflection);
-
-  /* End of Outputs for SubSystem: '<S428>/Bristle Deflection' */
-
-  /* Sum: '<S429>/Add1' incorporates:
-   *  Product: '<S429>/Product4'
-   */
-  t_rel = t_rel * GVCU_HIL_B.BristleDeflection.Sum + b_xtmp;
-
-  /* Switch: '<S369>/Switch' incorporates:
-   *  Constant: '<S369>/Constant2'
-   *  MinMax: '<S369>/Max'
-   */
-  if (GVCU_HIL_B.VectorConcatenate2[0] > GVCU_HIL_P.Switch_Threshold_np) {
-    rtb_TrigonometricFunction2_o1 = t_rel;
-  } else {
-    rtb_TrigonometricFunction2_o1 = fmax(t_rel, GVCU_HIL_P.Constant2_Value_g);
-  }
-
-  /* Gain: '<S369>/Gain3' incorporates:
-   *  Switch: '<S369>/Switch'
-   */
-  GVCU_HIL_B.Gain3 = GVCU_HIL_P.Gain3_Gain_f * rtb_TrigonometricFunction2_o1;
-
-  /* SignalConversion generated from: '<S374>/Vector Concatenate2' */
-  xtmp = GVCU_HIL_B.Gain3;
-  if (tmp) {
-    /* Gain: '<S369>/Gain' */
-    GVCU_HIL_B.Gain = GVCU_HIL_P.Gain_Gain_f * rtb_Add_m;
-  }
-
-  /* MATLAB Function: '<S479>/Simple Magic Tire' incorporates:
-   *  Constant: '<S415>/FxType'
-   *  Constant: '<S415>/TirePrsConstant'
-   *  Constant: '<S415>/lam_muxConstant'
-   *  Constant: '<S415>/rollType'
-   *  Constant: '<S415>/vertType'
-   *  Constant: '<S504>/Constant'
-   *  Constant: '<S504>/Constant1'
-   *  Constant: '<S504>/Constant12'
-   *  Constant: '<S504>/Constant14'
-   *  Constant: '<S504>/Constant19'
-   *  Constant: '<S504>/Constant2'
-   *  Constant: '<S504>/Constant6'
-   *  Constant: '<S504>/Constant7'
-   *  Constant: '<S505>/Constant1'
-   *  Constant: '<S505>/Constant10'
-   *  Constant: '<S505>/Constant11'
-   *  Constant: '<S505>/Constant12'
-   *  Constant: '<S505>/Constant13'
-   *  Constant: '<S505>/Constant14'
-   *  Constant: '<S505>/Constant15'
-   *  Constant: '<S505>/Constant16'
-   *  Constant: '<S505>/Constant17'
-   *  Constant: '<S505>/Constant18'
-   *  Constant: '<S505>/Constant19'
-   *  Constant: '<S505>/Constant2'
-   *  Constant: '<S505>/Constant3'
-   *  Constant: '<S505>/Constant4'
-   *  Constant: '<S505>/Constant5'
-   *  Constant: '<S505>/Constant6'
-   *  Constant: '<S505>/Constant7'
-   *  Constant: '<S505>/Constant8'
-   *  Constant: '<S505>/Constant9'
-   *  Constant: '<S506>/Constant1'
-   *  Constant: '<S506>/Constant10'
-   *  Constant: '<S506>/Constant11'
-   *  Constant: '<S506>/Constant13'
-   *  Constant: '<S506>/Constant14'
-   *  Constant: '<S506>/Constant15'
-   *  Constant: '<S506>/Constant16'
-   *  Constant: '<S506>/Constant17'
-   *  Constant: '<S506>/Constant18'
-   *  Constant: '<S506>/Constant19'
-   *  Constant: '<S506>/Constant2'
-   *  Constant: '<S506>/Constant20'
-   *  Constant: '<S506>/Constant21'
-   *  Constant: '<S506>/Constant22'
-   *  Constant: '<S506>/Constant23'
-   *  Constant: '<S506>/Constant24'
-   *  Constant: '<S506>/Constant3'
-   *  Constant: '<S506>/Constant4'
-   *  Constant: '<S506>/Constant5'
-   *  Constant: '<S506>/Constant6'
-   *  Constant: '<S506>/Constant7'
-   *  Constant: '<S506>/Constant8'
-   *  Constant: '<S506>/Constant9'
-   */
-  GVCU_HIL_SimpleMagicTire(GVCU_HIL_B.Saturation_a, GVCU_HIL_B.Gain,
-    rtb_ImpAsg_InsertedFor_Omega_at, GVCU_HIL_B.VectorConcatenate2[0],
-    GVCU_HIL_P.Constant_Value_ez, GVCU_HIL_P.Constant1_Value_k,
-    GVCU_HIL_P.Constant7_Value_n, GVCU_HIL_P.Constant6_Value_a,
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_c, GVCU_HIL_P.Constant2_Value_o,
-    GVCU_HIL_P.Constant19_Value_o, GVCU_HIL_P.Constant12_Value_o,
-    GVCU_HIL_P.Constant14_Value_m, GVCU_HIL_P.Constant11_Value_n,
-    GVCU_HIL_P.Constant5_Value_n, GVCU_HIL_P.Constant2_Value_fr,
-    GVCU_HIL_P.Constant13_Value_l, GVCU_HIL_P.Constant8_Value_f,
-    GVCU_HIL_P.Constant15_Value_o, GVCU_HIL_P.Constant16_Value_j,
-    GVCU_HIL_P.Constant7_Value_o, GVCU_HIL_P.Constant9_Value_c,
-    GVCU_HIL_P.Constant17_Value_p, GVCU_HIL_P.Constant18_Value_c,
-    GVCU_HIL_P.Constant6_Value_g, GVCU_HIL_P.Constant10_Value_m,
-    GVCU_HIL_P.Constant4_Value_l, GVCU_HIL_P.Constant1_Value_oq,
-    GVCU_HIL_P.Constant3_Value_p, GVCU_HIL_P.Constant19_Value_f,
-    GVCU_HIL_P.Constant12_Value_d, GVCU_HIL_P.Constant14_Value_k, 0.0,
-    GVCU_HIL_P.FxType_Value_f, GVCU_HIL_P.rollType_Value_h,
-    GVCU_HIL_P.vertType_Value_e, GVCU_HIL_P.RearLongitudinalWheelDiscBrak_i,
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_m,
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n,
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_h, &GVCU_HIL_B.sf_SimpleMagicTire_n);
-
-  /* MATLAB Function: '<S487>/MATLAB Function' */
-  GVCU_HIL_MATLABFunction(GVCU_HIL_B.VectorConcatenate2[0],
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n, &GVCU_HIL_B.sf_MATLABFunction_k);
-
-  /* Product: '<S485>/Product3' */
-  b_xtmp = GVCU_HIL_B.sf_SimpleMagicTire_n.Fx *
-    GVCU_HIL_B.sf_MATLABFunction_k.lambda;
-
-  /* Sum: '<S485>/Add2' incorporates:
-   *  Constant: '<S485>/Constant4'
-   */
-  rtb_TransferFcn = GVCU_HIL_P.Constant4_Value_l0 -
-    GVCU_HIL_B.sf_MATLABFunction_k.lambda;
-
-  /* DeadZone: '<S484>/Dead Zone' */
-  if (GVCU_HIL_B.VectorConcatenate2[0] > GVCU_HIL_P.DeadZone_End_b) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.VectorConcatenate2[0] -
-      GVCU_HIL_P.DeadZone_End_b;
-  } else if (GVCU_HIL_B.VectorConcatenate2[0] >= GVCU_HIL_P.DeadZone_Start_f) {
-    rtb_TrigonometricFunction2_o1 = 0.0;
-  } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.VectorConcatenate2[0] -
-      GVCU_HIL_P.DeadZone_Start_f;
-  }
-
-  /* RelationalOperator: '<S484>/Relational Operator' incorporates:
-   *  Abs: '<S484>/Abs1'
-   *  Constant: '<S484>/VXLOW'
-   *  DeadZone: '<S484>/Dead Zone'
-   */
-  GVCU_HIL_B.RelationalOperator_b = (fabs(rtb_TrigonometricFunction2_o1) <=
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n);
-  if (tmp) {
-    /* SignalConversion generated from: '<S486>/Enable' */
-    GVCU_HIL_B.HiddenBuf_InsertedFor_Bristle_k = GVCU_HIL_B.RelationalOperator_b;
-  }
-
-  /* Outputs for Enabled SubSystem: '<S484>/Bristle Deflection' */
-  /* Constant: '<S415>/lam_muxConstant' incorporates:
-   *  Constant: '<S415>/Constant'
-   */
-  GVCU_HIL_BristleDeflection(GVCU_HIL_M,
-    GVCU_HIL_B.HiddenBuf_InsertedFor_Bristle_k, GVCU_HIL_B.VectorConcatenate2[0],
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_c,
-    GVCU_HIL_B.sf_SimpleMagicTire_n.FzTire, GVCU_HIL_B.sf_SimpleMagicTire_n.Re,
-    rtb_ImpAsg_InsertedFor_Omega_at, GVCU_HIL_P.RearLongitudinalWheelDiscBrak_k,
-    GVCU_HIL_B.sf_SimpleMagicTire_n.Fx,
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n,
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrake1,
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_b,
-    GVCU_HIL_P.RearLongitudinalWheelDiscBrak_o, &GVCU_HIL_B.BristleDeflection_h,
-    &GVCU_HIL_DW.BristleDeflection_h, &GVCU_HIL_P.BristleDeflection_h,
-    &GVCU_HIL_X.BristleDeflection_h, &_rtXdis->BristleDeflection_h);
-
-  /* End of Outputs for SubSystem: '<S484>/Bristle Deflection' */
-
-  /* Sum: '<S485>/Add1' incorporates:
-   *  Product: '<S485>/Product4'
-   */
-  rtb_TransferFcn = rtb_TransferFcn * GVCU_HIL_B.BristleDeflection_h.Sum +
-    b_xtmp;
-
-  /* Switch: '<S369>/Switch1' incorporates:
-   *  Constant: '<S369>/Constant1'
-   *  MinMax: '<S369>/Max1'
-   */
-  if (GVCU_HIL_B.VectorConcatenate2[0] > GVCU_HIL_P.Switch1_Threshold_l) {
-    rtb_TrigonometricFunction2_o1 = rtb_TransferFcn;
-  } else {
-    rtb_TrigonometricFunction2_o1 = fmax(rtb_TransferFcn,
-      GVCU_HIL_P.Constant1_Value_ob);
-  }
-
-  /* Gain: '<S369>/Gain2' incorporates:
-   *  Switch: '<S369>/Switch1'
-   */
-  GVCU_HIL_B.Gain2 = GVCU_HIL_P.Gain2_Gain_k * rtb_TrigonometricFunction2_o1;
-  if (tmp) {
-    /* UnaryMinus: '<S374>/Unary Minus' incorporates:
-     *  Constant: '<S110>/wind x'
-     *  SignalConversion generated from: '<S413>/Vector Concatenate5'
-     */
-    GVCU_HIL_B.UnaryMinus[0] = -GVCU_HIL_P.environment.wind.x;
-    GVCU_HIL_B.UnaryMinus[1] = -0.0;
-    GVCU_HIL_B.UnaryMinus[2] = -0.0;
-  }
-
-  /* Sum: '<S411>/Add1' incorporates:
-   *  SignalConversion generated from: '<S374>/Vector Concatenate5'
-   */
-  tmp_1 = _mm_sub_pd(_mm_set_pd(0.0, GVCU_HIL_B.Integrator), _mm_loadu_pd
-                     (&GVCU_HIL_B.UnaryMinus[0]));
-  _mm_storeu_pd(&tmp_0[0], tmp_1);
-
-  /* Sum: '<S411>/Sum of Elements' incorporates:
-   *  Product: '<S411>/Product'
-   *  Sum: '<S411>/Add1'
-   */
-  idx = ((0.0 - GVCU_HIL_B.UnaryMinus[1]) * (0.0 - GVCU_HIL_B.UnaryMinus[1]) +
-         tmp_0[0] * tmp_0[0]) + (0.0 - GVCU_HIL_B.UnaryMinus[2]) * (0.0 -
-    GVCU_HIL_B.UnaryMinus[2]);
-  if (tmp) {
-    /* Constant: '<S411>/Constant' incorporates:
-     *  Concatenate: '<S411>/Vector Concatenate'
-     */
-    GVCU_HIL_B.VectorConcatenate[0] = GVCU_HIL_P.veh.aero.CD;
-  }
-
-  /* Product: '<S412>/Product6' incorporates:
-   *  Constant: '<S412>/Constant5'
-   *  Constant: '<S412>/Constant6'
-   *  Gain: '<S412>/Gain'
-   *  Math: '<S412>/Hypot'
-   *  MinMax: '<S412>/Max'
-   *  MinMax: '<S412>/Min'
-   *  Sum: '<S411>/Add1'
-   *  Trigonometry: '<S412>/Trigonometric Function'
-   */
-  b_xtmp = fmin(fmax(1.0 / GVCU_HIL_P.DragForce_xdot_tol * rt_hypotd_snf(tmp_0[1],
-    tmp_0[0]), GVCU_HIL_P.Constant6_Value_m), GVCU_HIL_P.Constant5_Value_j) *
-    rt_atan2d_snf_cordic11(0.0 - GVCU_HIL_B.UnaryMinus[1], tmp_0[0]);
-
-  /* Lookup_n-D: '<S411>/Cs' incorporates:
-   *  Concatenate: '<S411>/Vector Concatenate'
-   *  UnaryMinus: '<S442>/Unary Minus5'
-   */
-  GVCU_HIL_B.VectorConcatenate[1] = look1_binlcpw(b_xtmp,
-    GVCU_HIL_P.DragForce_beta_w, GVCU_HIL_P.DragForce_Cs, 1U);
-  if (tmp) {
-    /* Constant: '<S411>/Constant1' incorporates:
-     *  Concatenate: '<S411>/Vector Concatenate'
-     */
-    GVCU_HIL_B.VectorConcatenate[2] = GVCU_HIL_P.VehicleBody1DOFLongitudinal_Cl;
-
-    /* Saturate: '<S411>/Saturation' incorporates:
-     *  Constant: '<S368>/AirTempConstant'
-     */
-    if (GVCU_HIL_P.VehicleBody1DOFLongitudinal_T >
-        GVCU_HIL_P.Saturation_UpperSat_e) {
-      /* Saturate: '<S411>/Saturation' */
-      GVCU_HIL_B.Saturation_p = GVCU_HIL_P.Saturation_UpperSat_e;
-    } else if (GVCU_HIL_P.VehicleBody1DOFLongitudinal_T <
-               GVCU_HIL_P.Saturation_LowerSat_d) {
-      /* Saturate: '<S411>/Saturation' */
-      GVCU_HIL_B.Saturation_p = GVCU_HIL_P.Saturation_LowerSat_d;
-    } else {
-      /* Saturate: '<S411>/Saturation' */
-      GVCU_HIL_B.Saturation_p = GVCU_HIL_P.VehicleBody1DOFLongitudinal_T;
-    }
-
-    /* End of Saturate: '<S411>/Saturation' */
-  }
-
-  /* Lookup_n-D: '<S411>/Crm' incorporates:
-   *  Concatenate: '<S411>/Vector Concatenate'
-   *  UnaryMinus: '<S442>/Unary Minus5'
-   */
-  GVCU_HIL_B.VectorConcatenate[3] = look1_binlxpw(b_xtmp,
-    GVCU_HIL_P.Crm_bp01Data, GVCU_HIL_P.Crm_tableData, 1U);
-
-  /* Trigonometry: '<S411>/Tanh' incorporates:
-   *  Gain: '<S411>/4'
-   */
-  rtb_Integrator = tanh(GVCU_HIL_P.u_Gain_f[0] * tmp_0[0]);
-
-  /* Product: '<S411>/Product5' incorporates:
-   *  Concatenate: '<S411>/Vector Concatenate'
-   *  Constant: '<S411>/Constant2'
-   */
-  GVCU_HIL_B.VectorConcatenate[4] = rtb_Integrator *
-    GVCU_HIL_P.VehicleBody1DOFLongitudinal_Cpm;
-
-  /* Lookup_n-D: '<S411>/Cym' incorporates:
-   *  Concatenate: '<S411>/Vector Concatenate'
-   *  UnaryMinus: '<S442>/Unary Minus5'
-   */
-  GVCU_HIL_B.VectorConcatenate[5] = look1_binlxpw(b_xtmp,
-    GVCU_HIL_P.DragForce_beta_w, GVCU_HIL_P.DragForce_Cym, 1U);
-
-  /* Gain: '<S411>/.5.*A.*Pabs.//R.//T' incorporates:
-   *  Product: '<S411>/Product1'
-   */
-  b_xtmp = 0.5 * GVCU_HIL_P.veh.A * GVCU_HIL_P.VehicleBody1DOFLongitudinal_Pab /
-    GVCU_HIL_P.DragForce_R;
-  for (b_mid_i = 0; b_mid_i <= 4; b_mid_i += 2) {
-    /* Product: '<S411>/Product1' */
-    tmp_1 = _mm_loadu_pd(&GVCU_HIL_B.VectorConcatenate[b_mid_i]);
-    _mm_storeu_pd(&rtb_uAPabsRT[b_mid_i], _mm_mul_pd(_mm_div_pd(_mm_mul_pd
-      (_mm_set1_pd(idx), tmp_1), _mm_set1_pd(GVCU_HIL_B.Saturation_p)),
-      _mm_set1_pd(b_xtmp)));
-  }
-
-  /* End of Gain: '<S411>/.5.*A.*Pabs.//R.//T' */
-
-  /* Sum: '<S374>/Add6' incorporates:
-   *  Constant: '<S411>/Constant3'
-   *  Product: '<S411>/Product4'
-   */
-  b_xtmp = (GVCU_HIL_P.veh.f + GVCU_HIL_P.veh.r) * rtb_uAPabsRT[4] +
+  rtb_SumofElements = (GVCU_HIL_P.veh.f + GVCU_HIL_P.veh.r) * rtb_uAPabsRT[4] +
     GVCU_HIL_B.MAero[1];
+
+  /* Sum: '<S385>/Add1' */
+  rtb_UnaryMinus1_i = (GVCU_HIL_B.Product2 + GVCU_HIL_B.FAero[2]) + tmp_2[1];
+
+  /* Gain: '<S385>/h' incorporates:
+   *  Sum: '<S385>/Add3'
+   */
+  rtb_Add_j = ((GVCU_HIL_P.tir.UNLOADED_RADIUSf +
+                GVCU_HIL_P.tir.UNLOADED_RADIUSr) / 2.0 + GVCU_HIL_P.veh.h) *
+    (((tmp_2[0] - GVCU_HIL_B.FAero[0]) + GVCU_HIL_B.Product1) + xtmp);
+
+  /* Gain: '<S394>/1//NF' incorporates:
+   *  Gain: '<S385>/1//(a+b)'
+   *  Gain: '<S385>/b'
+   *  Sum: '<S385>/Add2'
+   */
+  GVCU_HIL_B.Fz = ((GVCU_HIL_P.veh.r * rtb_UnaryMinus1_i - rtb_SumofElements) -
+                   rtb_Add_j) * (1.0 / (GVCU_HIL_P.veh.f + GVCU_HIL_P.veh.r)) *
+    (1.0 / GVCU_HIL_P.VehicleBody1DOFLongitudinal_NF);
+
+  /* Gain: '<S394>/1//NR' incorporates:
+   *  Gain: '<S385>/1//(a+b) '
+   *  Gain: '<S385>/a'
+   *  Sum: '<S385>/Add4'
+   */
+  GVCU_HIL_B.Fz_n = ((GVCU_HIL_P.veh.f * rtb_UnaryMinus1_i + rtb_SumofElements)
+                     + rtb_Add_j) * (1.0 / (GVCU_HIL_P.veh.f + GVCU_HIL_P.veh.r))
+    * (1.0 / GVCU_HIL_P.VehicleBody1DOFLongitudinal_NR);
   if (tmp) {
-    /* Product: '<S370>/Divide' incorporates:
-     *  Constant: '<S109>/Constant'
-     *  Constant: '<S109>/Constant1'
-     *  Constant: '<S109>/Constant2'
-     *  Constant: '<S109>/Constant3'
-     *  Constant: '<S370>/Constant'
-     *  Gain: '<S370>/Gain'
-     *  Gain: '<S370>/Gain1'
-     *  Sum: '<S370>/Sum'
-     *  Sum: '<S370>/Sum1'
-     *  Sum: '<S370>/Sum2'
+    /* Trigonometry: '<S420>/sincos' incorporates:
+     *  Constant: '<S384>/Constant'
+     *  SignalConversion generated from: '<S420>/sincos'
      */
-    rtb_TrigonometricFunction2_o1 = ((GVCU_HIL_P.Constant_Value_dq +
-      GVCU_HIL_P.Constant1_Value_p) * GVCU_HIL_P.Gain_Gain_mq -
-      (GVCU_HIL_P.Constant2_Value + GVCU_HIL_P.Constant3_Value) *
-      GVCU_HIL_P.Gain1_Gain_f) / (GVCU_HIL_P.veh.f + GVCU_HIL_P.veh.r);
+    rtb_Cd = cos(GVCU_HIL_P.Constant_Value_lb);
+    rtb_TrigonometricFunction2_o2 = sin(GVCU_HIL_P.Constant_Value_lb);
+    rtb_Saturation1 = cos(rtb_UnitConversion);
+    rtb_UnitConversion = sin(rtb_UnitConversion);
+    rtb_UnaryMinus3_j = cos(GVCU_HIL_P.Constant_Value_lb);
+    rtb_rpm = sin(GVCU_HIL_P.Constant_Value_lb);
 
-    /* Trigonometry: '<S370>/Tan ' */
-    if (rtb_TrigonometricFunction2_o1 > 1.0) {
-      rtb_TrigonometricFunction2_o1 = 1.0;
-    } else if (rtb_TrigonometricFunction2_o1 < -1.0) {
-      rtb_TrigonometricFunction2_o1 = -1.0;
-    }
+    /* Fcn: '<S420>/Fcn11' */
+    rtb_VectorConcatenate_b[0] = rtb_Cd * rtb_Saturation1;
 
-    /* Gain: '<S533>/Gain' incorporates:
-     *  Trigonometry: '<S370>/Tan '
+    /* Fcn: '<S420>/Fcn21' incorporates:
+     *  Fcn: '<S420>/Fcn22'
+     *  Trigonometry: '<S420>/sincos'
      */
-    GVCU_HIL_B.Gain_f = GVCU_HIL_P.Gain_Gain_ai * asin
-      (rtb_TrigonometricFunction2_o1);
+    rtb_Sum_jk = rtb_UnitConversion * rtb_rpm;
+    rtb_VectorConcatenate_b[1] = rtb_Sum_jk * rtb_Cd -
+      rtb_TrigonometricFunction2_o2 * rtb_UnaryMinus3_j;
 
-    /* UnitConversion: '<S371>/Unit Conversion' */
-    /* Unit Conversion - from: deg to: rad
-       Expression: output = (0.0174533*input) + (0) */
-    rtb_Saturation1 = 0.017453292519943295 * GVCU_HIL_B.Gain_f;
-
-    /* Gain: '<S374>/m' incorporates:
-     *  Constant: '<S374>/g'
+    /* Fcn: '<S420>/Fcn31' incorporates:
+     *  Fcn: '<S420>/Fcn32'
+     *  Trigonometry: '<S420>/sincos'
      */
-    rtb_Add_m = GVCU_HIL_P.veh.mass * GVCU_HIL_P.VehicleBody1DOFLongitudinal_g;
+    idx = rtb_UnitConversion * rtb_UnaryMinus3_j;
+    rtb_VectorConcatenate_b[2] = idx * rtb_Cd + rtb_TrigonometricFunction2_o2 *
+      rtb_rpm;
 
-    /* Product: '<S374>/Product2' incorporates:
-     *  Trigonometry: '<S374>/Trigonometric Function2'
+    /* Fcn: '<S420>/Fcn12' incorporates:
+     *  Trigonometry: '<S420>/sincos'
      */
-    GVCU_HIL_B.Product2 = cos(rtb_Saturation1) * rtb_Add_m;
+    rtb_VectorConcatenate_b[3] = rtb_TrigonometricFunction2_o2 * rtb_Saturation1;
 
-    /* Product: '<S374>/Product1' incorporates:
-     *  Trigonometry: '<S374>/Trigonometric Function2'
+    /* Fcn: '<S420>/Fcn22' incorporates:
+     *  Trigonometry: '<S420>/sincos'
      */
-    GVCU_HIL_B.Product1 = sin(rtb_Saturation1) * rtb_Add_m;
-  }
+    rtb_VectorConcatenate_b[4] = rtb_Sum_jk * rtb_TrigonometricFunction2_o2 +
+      rtb_Cd * rtb_UnaryMinus3_j;
 
-  /* Product: '<S411>/Product3' incorporates:
-   *  Constant: '<S411>/Constant4'
-   *  Sum: '<S411>/Add2'
-   */
-  rtb_Integrator = (rtb_Integrator - GVCU_HIL_P.Constant4_Value_fm[0]) *
-    rtb_uAPabsRT[0];
-
-  /* Sum: '<S374>/Add1' incorporates:
-   *  Constant: '<S411>/Constant4'
-   *  Gain: '<S411>/4'
-   *  Product: '<S411>/Product3'
-   *  Sum: '<S411>/Add1'
-   *  Sum: '<S411>/Add2'
-   *  Trigonometry: '<S411>/Tanh'
-   */
-  idx = (tanh((0.0 - GVCU_HIL_B.UnaryMinus[2]) * GVCU_HIL_P.u_Gain_f[2]) -
-         GVCU_HIL_P.Constant4_Value_fm[2]) * rtb_uAPabsRT[2] +
-    (GVCU_HIL_B.Product2 + GVCU_HIL_B.FAero[2]);
-
-  /* Sum: '<S374>/Add5' incorporates:
-   *  SignalConversion generated from: '<S374>/Vector Concatenate2'
-   *  Sum: '<S374>/Sum of Elements'
-   */
-  rtb_Sum_jk = (((xtmp + GVCU_HIL_B.Gain2) + GVCU_HIL_B.FAero[0]) -
-                rtb_Integrator) - GVCU_HIL_B.Product1;
-
-  /* Gain: '<S374>/h' incorporates:
-   *  Sum: '<S374>/Add3'
-   */
-  rtb_Integrator = ((GVCU_HIL_P.tir.UNLOADED_RADIUSf +
-                     GVCU_HIL_P.tir.UNLOADED_RADIUSr) / 2.0 + GVCU_HIL_P.veh.h) *
-    (((rtb_Integrator - GVCU_HIL_B.FAero[0]) + GVCU_HIL_B.Product1) + rtb_Sum_jk);
-
-  /* Gain: '<S383>/1//NF' incorporates:
-   *  Gain: '<S374>/1//(a+b)'
-   *  Gain: '<S374>/b'
-   *  Sum: '<S374>/Add2'
-   */
-  GVCU_HIL_B.Fz = ((GVCU_HIL_P.veh.r * idx - b_xtmp) - rtb_Integrator) * (1.0 /
-    (GVCU_HIL_P.veh.f + GVCU_HIL_P.veh.r)) * (1.0 /
-    GVCU_HIL_P.VehicleBody1DOFLongitudinal_NF);
-
-  /* Gain: '<S383>/1//NR' incorporates:
-   *  Gain: '<S374>/1//(a+b) '
-   *  Gain: '<S374>/a'
-   *  Sum: '<S374>/Add4'
-   */
-  GVCU_HIL_B.Fz_n = ((GVCU_HIL_P.veh.f * idx + b_xtmp) + rtb_Integrator) * (1.0 /
-    (GVCU_HIL_P.veh.f + GVCU_HIL_P.veh.r)) * (1.0 /
-    GVCU_HIL_P.VehicleBody1DOFLongitudinal_NR);
-
-  /* Gain: '<S374>/1//m' */
-  GVCU_HIL_B.xddot = 1.0 / GVCU_HIL_P.veh.mass * rtb_Sum_jk;
-  if (tmp) {
-    /* Trigonometry: '<S409>/sincos' incorporates:
-     *  Constant: '<S373>/Constant'
-     *  SignalConversion generated from: '<S409>/sincos'
+    /* Fcn: '<S420>/Fcn32' incorporates:
+     *  Trigonometry: '<S420>/sincos'
      */
-    rtb_Add_m = cos(GVCU_HIL_P.Constant_Value_lb);
-    rtb_TrigonometricFunction2_o1 = sin(GVCU_HIL_P.Constant_Value_lb);
-    idx = cos(rtb_Saturation1);
-    rtb_Saturation1 = sin(rtb_Saturation1);
-    rtb_Sum_jk = cos(GVCU_HIL_P.Constant_Value_lb);
-    rtb_Integrator = sin(GVCU_HIL_P.Constant_Value_lb);
+    rtb_VectorConcatenate_b[5] = idx * rtb_TrigonometricFunction2_o2 - rtb_Cd *
+      rtb_rpm;
 
-    /* Fcn: '<S409>/Fcn11' */
-    rtb_VectorConcatenate_b[0] = rtb_Add_m * idx;
-
-    /* Fcn: '<S409>/Fcn21' incorporates:
-     *  Fcn: '<S409>/Fcn22'
-     *  Trigonometry: '<S409>/sincos'
+    /* Fcn: '<S420>/Fcn13' incorporates:
+     *  Trigonometry: '<S420>/sincos'
      */
-    b_xtmp = rtb_Saturation1 * rtb_Integrator;
-    rtb_VectorConcatenate_b[1] = b_xtmp * rtb_Add_m -
-      rtb_TrigonometricFunction2_o1 * rtb_Sum_jk;
+    rtb_VectorConcatenate_b[6] = -rtb_UnitConversion;
 
-    /* Fcn: '<S409>/Fcn31' incorporates:
-     *  Fcn: '<S409>/Fcn32'
-     *  Trigonometry: '<S409>/sincos'
+    /* Fcn: '<S420>/Fcn23' incorporates:
+     *  Trigonometry: '<S420>/sincos'
      */
-    xtmp = rtb_Saturation1 * rtb_Sum_jk;
-    rtb_VectorConcatenate_b[2] = xtmp * rtb_Add_m +
-      rtb_TrigonometricFunction2_o1 * rtb_Integrator;
+    rtb_VectorConcatenate_b[7] = rtb_Saturation1 * rtb_rpm;
 
-    /* Fcn: '<S409>/Fcn12' incorporates:
-     *  Trigonometry: '<S409>/sincos'
-     */
-    rtb_VectorConcatenate_b[3] = rtb_TrigonometricFunction2_o1 * idx;
-
-    /* Fcn: '<S409>/Fcn22' incorporates:
-     *  Trigonometry: '<S409>/sincos'
-     */
-    rtb_VectorConcatenate_b[4] = b_xtmp * rtb_TrigonometricFunction2_o1 +
-      rtb_Add_m * rtb_Sum_jk;
-
-    /* Fcn: '<S409>/Fcn32' incorporates:
-     *  Trigonometry: '<S409>/sincos'
-     */
-    rtb_VectorConcatenate_b[5] = xtmp * rtb_TrigonometricFunction2_o1 -
-      rtb_Add_m * rtb_Integrator;
-
-    /* Fcn: '<S409>/Fcn13' incorporates:
-     *  Trigonometry: '<S409>/sincos'
-     */
-    rtb_VectorConcatenate_b[6] = -rtb_Saturation1;
-
-    /* Fcn: '<S409>/Fcn23' incorporates:
-     *  Trigonometry: '<S409>/sincos'
-     */
-    rtb_VectorConcatenate_b[7] = idx * rtb_Integrator;
-
-    /* Fcn: '<S409>/Fcn33' */
-    rtb_VectorConcatenate_b[8] = idx * rtb_Sum_jk;
+    /* Fcn: '<S420>/Fcn33' */
+    rtb_VectorConcatenate_b[8] = rtb_Saturation1 * rtb_UnaryMinus3_j;
     for (b_low_ip1 = 0; b_low_ip1 < 3; b_low_ip1++) {
-      /* Math: '<S373>/Transpose' incorporates:
-       *  Concatenate: '<S410>/Vector Concatenate'
+      /* Math: '<S384>/Transpose' incorporates:
+       *  Concatenate: '<S421>/Vector Concatenate'
        */
       GVCU_HIL_B.Transpose[3 * b_low_ip1] = rtb_VectorConcatenate_b[b_low_ip1];
       GVCU_HIL_B.Transpose[3 * b_low_ip1 + 1] =
@@ -6221,219 +6316,217 @@ void GVCU_HIL_output(void)
         rtb_VectorConcatenate_b[b_low_ip1 + 6];
     }
 
-    /* S-Function (sysvarout): '<S417>/S-Function' */
+    /* S-Function (sysvarout): '<S428>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_as, 1,
          &GVCU_HIL_B.Subtract1, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S418>/S-Function' incorporates:
-     *  Constant: '<S189>/Constant2'
+    /* S-Function (sysvarout): '<S429>/S-Function' incorporates:
+     *  Constant: '<S200>/Constant2'
      */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_dg, 1,
          &GVCU_HIL_P.Constant2_Value_f, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S419>/S-Function' */
+    /* S-Function (sysvarout): '<S430>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_ca, 1,
-         &GVCU_HIL_B.Gain1_o, 0) != 0) {
+         &GVCU_HIL_B.Gain1, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* Product: '<S442>/Product' incorporates:
-     *  Constant: '<S442>/Constant'
+    /* Product: '<S453>/Product' incorporates:
+     *  Constant: '<S453>/Constant'
      */
     GVCU_HIL_B.Product_n = GVCU_HIL_P.Constant_Value_n * 0.0;
 
-    /* Product: '<S442>/Product3' */
-    GVCU_HIL_B.Product3 = GVCU_HIL_B.Gain1_o * 0.0;
+    /* Product: '<S453>/Product3' */
+    GVCU_HIL_B.Product3 = GVCU_HIL_B.Gain1 * 0.0;
 
-    /* Product: '<S442>/Product4' incorporates:
-     *  Constant: '<S442>/Constant1'
+    /* Product: '<S453>/Product4' incorporates:
+     *  Constant: '<S453>/Constant1'
      */
     GVCU_HIL_B.Product4 = GVCU_HIL_P.Constant1_Value_dy * 0.0 * 0.0;
 
-    /* Product: '<S442>/Product9' */
+    /* Product: '<S453>/Product9' */
     GVCU_HIL_B.Product9 = 0.0;
   }
 
-  /* Product: '<S454>/Product3' */
-  rtb_Product3 = rtb_ImpAsg_InsertedFor_Omega__a * GVCU_HIL_B.Saturation_o;
+  /* Product: '<S465>/Product3' */
+  rtb_Product3 = rtb_ImpAsg_InsertedFor_Omega__a * GVCU_HIL_B.Saturation;
 
-  /* Switch: '<S473>/Switch' incorporates:
-   *  Abs: '<S473>/Abs'
-   *  Constant: '<S475>/Constant'
-   *  Constant: '<S476>/Constant'
-   *  Fcn: '<S473>/Fcn'
-   *  Logic: '<S473>/Logical Operator'
-   *  RelationalOperator: '<S475>/Compare'
-   *  RelationalOperator: '<S476>/Compare'
+  /* Switch: '<S484>/Switch' incorporates:
+   *  Abs: '<S484>/Abs'
+   *  Constant: '<S486>/Constant'
+   *  Constant: '<S487>/Constant'
+   *  Fcn: '<S484>/Fcn'
+   *  Logic: '<S484>/Logical Operator'
+   *  RelationalOperator: '<S486>/Compare'
+   *  RelationalOperator: '<S487>/Compare'
    */
   if ((rtb_Product3 >= -GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f) &&
       (rtb_Product3 <= GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f)) {
-    rtb_Add_m = 2.0 / (3.0 - rt_powd_snf(rtb_Product3, 2.0));
+    rtb_UnitConversion = 2.0 / (3.0 - rt_powd_snf(rtb_Product3, 2.0));
   } else {
-    rtb_Add_m = fabs(rtb_Product3);
+    rtb_UnitConversion = fabs(rtb_Product3);
   }
 
-  /* End of Switch: '<S473>/Switch' */
+  /* End of Switch: '<S484>/Switch' */
 
-  /* MATLAB Function: '<S472>/MATLAB Function' incorporates:
-   *  Constant: '<S454>/Constant1'
+  /* MATLAB Function: '<S483>/MATLAB Function' incorporates:
+   *  Constant: '<S465>/Constant1'
    */
   GVCU_HIL_MATLABFunction_n(GVCU_HIL_P.FrontLongitudinalWheelDiscBra_g,
     rtb_Product3, GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f,
     &GVCU_HIL_B.sf_MATLABFunction_i);
 
-  /* Saturate: '<S454>/Saturation1' */
+  /* Saturate: '<S465>/Saturation1' */
   if (GVCU_HIL_B.sf_MATLABFunction_i.y >
       GVCU_HIL_P.FrontLongitudinalWheelDiscBra_g) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.FrontLongitudinalWheelDiscBra_g;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.FrontLongitudinalWheelDiscBra_g;
   } else if (GVCU_HIL_B.sf_MATLABFunction_i.y <
              GVCU_HIL_P.Saturation1_LowerSat_l) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation1_LowerSat_l;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Saturation1_LowerSat_l;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.sf_MATLABFunction_i.y;
+    rtb_UnaryMinus1_i = GVCU_HIL_B.sf_MATLABFunction_i.y;
   }
 
-  /* Product: '<S454>/Product2' incorporates:
-   *  Saturate: '<S454>/Saturation1'
+  /* Product: '<S465>/Product2' incorporates:
+   *  Saturate: '<S465>/Saturation1'
    */
-  rtb_TrigonometricFunction2_o1 = rtb_Add_m / rtb_TrigonometricFunction2_o1;
+  u0 = rtb_UnitConversion / rtb_UnaryMinus1_i;
 
-  /* Saturate: '<S454>/Saturation' */
-  rtb_Saturation1 = GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f *
+  /* Saturate: '<S465>/Saturation' */
+  rtb_UnitConversion = GVCU_HIL_P.FrontLongitudinalWheelDiscBra_f *
     GVCU_HIL_P.veh.TyreLoadedRadius_F /
     GVCU_HIL_P.FrontLongitudinalWheelDiscBra_g;
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Saturation_UpperSat_o) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_UpperSat_o;
-  } else if (rtb_TrigonometricFunction2_o1 < rtb_Saturation1) {
-    rtb_TrigonometricFunction2_o1 = rtb_Saturation1;
+  if (u0 > GVCU_HIL_P.Saturation_UpperSat_o) {
+    u0 = GVCU_HIL_P.Saturation_UpperSat_o;
+  } else if (u0 < rtb_UnitConversion) {
+    u0 = rtb_UnitConversion;
   }
 
-  /* Product: '<S471>/Product' incorporates:
-   *  Product: '<S454>/Product'
-   *  Saturate: '<S454>/Saturation'
-   *  Sum: '<S454>/Add'
-   *  Sum: '<S471>/Sum'
+  /* Product: '<S482>/Product' incorporates:
+   *  Product: '<S465>/Product'
+   *  Saturate: '<S465>/Saturation'
+   *  Sum: '<S465>/Add'
+   *  Sum: '<S482>/Sum'
    */
   GVCU_HIL_B.Product_b = ((GVCU_HIL_B.sf_SimpleMagicTire.My /
-    GVCU_HIL_B.Saturation_o + t_rel) - rtb_ProportionalGain) *
-    rtb_TrigonometricFunction2_o1;
+    GVCU_HIL_B.Saturation + b_xtmp) - rtb_Integrator) * u0;
   if (tmp) {
-    /* Product: '<S498>/Product' incorporates:
-     *  Constant: '<S498>/Constant'
+    /* Product: '<S509>/Product' incorporates:
+     *  Constant: '<S509>/Constant'
      */
     GVCU_HIL_B.Product_gx = GVCU_HIL_P.Constant_Value_gl * 0.0;
 
-    /* Product: '<S498>/Product3' */
+    /* Product: '<S509>/Product3' */
     GVCU_HIL_B.Product3_p = GVCU_HIL_B.Gain * 0.0;
 
-    /* Product: '<S498>/Product4' incorporates:
-     *  Constant: '<S498>/Constant1'
+    /* Product: '<S509>/Product4' incorporates:
+     *  Constant: '<S509>/Constant1'
      */
     GVCU_HIL_B.Product4_k = GVCU_HIL_P.Constant1_Value_jz * 0.0 * 0.0;
 
-    /* Product: '<S498>/Product9' */
+    /* Product: '<S509>/Product9' */
     GVCU_HIL_B.Product9_j = 0.0;
   }
 
-  /* Product: '<S510>/Product3' */
+  /* Product: '<S521>/Product3' */
   rtb_Product3_n = rtb_ImpAsg_InsertedFor_Omega_at * GVCU_HIL_B.Saturation_a;
 
-  /* Switch: '<S529>/Switch' incorporates:
-   *  Abs: '<S529>/Abs'
-   *  Constant: '<S531>/Constant'
-   *  Constant: '<S532>/Constant'
-   *  Fcn: '<S529>/Fcn'
-   *  Logic: '<S529>/Logical Operator'
-   *  RelationalOperator: '<S531>/Compare'
-   *  RelationalOperator: '<S532>/Compare'
+  /* Switch: '<S540>/Switch' incorporates:
+   *  Abs: '<S540>/Abs'
+   *  Constant: '<S542>/Constant'
+   *  Constant: '<S543>/Constant'
+   *  Fcn: '<S540>/Fcn'
+   *  Logic: '<S540>/Logical Operator'
+   *  RelationalOperator: '<S542>/Compare'
+   *  RelationalOperator: '<S543>/Compare'
    */
   if ((rtb_Product3_n >= -GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n) &&
       (rtb_Product3_n <= GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n)) {
-    rtb_Add_m = 2.0 / (3.0 - rt_powd_snf(rtb_Product3_n, 2.0));
+    rtb_Integrator = 2.0 / (3.0 - rt_powd_snf(rtb_Product3_n, 2.0));
   } else {
-    rtb_Add_m = fabs(rtb_Product3_n);
+    rtb_Integrator = fabs(rtb_Product3_n);
   }
 
-  /* End of Switch: '<S529>/Switch' */
+  /* End of Switch: '<S540>/Switch' */
 
-  /* MATLAB Function: '<S528>/MATLAB Function' incorporates:
-   *  Constant: '<S510>/Constant1'
+  /* MATLAB Function: '<S539>/MATLAB Function' incorporates:
+   *  Constant: '<S521>/Constant1'
    */
   GVCU_HIL_MATLABFunction_n(GVCU_HIL_P.RearLongitudinalWheelDiscBrak_k,
     rtb_Product3_n, GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n,
     &GVCU_HIL_B.sf_MATLABFunction_g);
 
-  /* Saturate: '<S510>/Saturation1' */
+  /* Saturate: '<S521>/Saturation1' */
   if (GVCU_HIL_B.sf_MATLABFunction_g.y >
       GVCU_HIL_P.RearLongitudinalWheelDiscBrak_k) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.RearLongitudinalWheelDiscBrak_k;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.RearLongitudinalWheelDiscBrak_k;
   } else if (GVCU_HIL_B.sf_MATLABFunction_g.y <
              GVCU_HIL_P.Saturation1_LowerSat_f) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation1_LowerSat_f;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Saturation1_LowerSat_f;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.sf_MATLABFunction_g.y;
+    rtb_UnaryMinus1_i = GVCU_HIL_B.sf_MATLABFunction_g.y;
   }
 
-  /* Product: '<S510>/Product2' incorporates:
-   *  Saturate: '<S510>/Saturation1'
+  /* Product: '<S521>/Product2' incorporates:
+   *  Saturate: '<S521>/Saturation1'
    */
-  rtb_TrigonometricFunction2_o1 = rtb_Add_m / rtb_TrigonometricFunction2_o1;
+  u0 = rtb_Integrator / rtb_UnaryMinus1_i;
 
-  /* Saturate: '<S510>/Saturation' */
-  rtb_Saturation1 = GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n *
+  /* Saturate: '<S521>/Saturation' */
+  rtb_UnitConversion = GVCU_HIL_P.RearLongitudinalWheelDiscBrak_n *
     GVCU_HIL_P.veh.TyreLoadedRadius_R /
     GVCU_HIL_P.RearLongitudinalWheelDiscBrak_k;
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Saturation_UpperSat_gq) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Saturation_UpperSat_gq;
-  } else if (rtb_TrigonometricFunction2_o1 < rtb_Saturation1) {
-    rtb_TrigonometricFunction2_o1 = rtb_Saturation1;
+  if (u0 > GVCU_HIL_P.Saturation_UpperSat_gq) {
+    u0 = GVCU_HIL_P.Saturation_UpperSat_gq;
+  } else if (u0 < rtb_UnitConversion) {
+    u0 = rtb_UnitConversion;
   }
 
-  /* Product: '<S527>/Product' incorporates:
-   *  Product: '<S510>/Product'
-   *  Saturate: '<S510>/Saturation'
-   *  Sum: '<S510>/Add'
-   *  Sum: '<S527>/Sum'
+  /* Product: '<S538>/Product' incorporates:
+   *  Product: '<S521>/Product'
+   *  Saturate: '<S521>/Saturation'
+   *  Sum: '<S521>/Add'
+   *  Sum: '<S538>/Sum'
    */
   GVCU_HIL_B.Product_l = ((GVCU_HIL_B.sf_SimpleMagicTire_n.My /
-    GVCU_HIL_B.Saturation_a + rtb_TransferFcn) - rtb_bar) *
-    rtb_TrigonometricFunction2_o1;
+    GVCU_HIL_B.Saturation_a + rtb_RateLimiter) - rtb_Integrator_m) * u0;
 
-  /* Step: '<S14>/Step' */
+  /* Step: '<S25>/Step' */
   if (Add_tmp < GVCU_HIL_P.Step_Time_j) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_Y0_d;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_Y0_d;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_YFinal_a;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_YFinal_a;
   }
 
-  /* Switch: '<S14>/Switch' incorporates:
-   *  Constant: '<S14>/Offset setting'
-   *  Step: '<S14>/Step'
+  /* Switch: '<S25>/Switch' incorporates:
+   *  Constant: '<S25>/Offset setting'
+   *  Step: '<S25>/Step'
    */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Switch_Threshold_m) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.Saturation_m;
+  if (rtb_UnaryMinus1_i > GVCU_HIL_P.Switch_Threshold_m) {
+    rtb_UnaryMinus1_i = GVCU_HIL_B.Saturation_m;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Offsetsetting_Value;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Offsetsetting_Value;
   }
 
-  /* Lookup_n-D: '<S1>/1-D Lookup Table4' incorporates:
-   *  Switch: '<S14>/Switch'
+  /* Lookup_n-D: '<S2>/1-D Lookup Table4' incorporates:
+   *  Switch: '<S25>/Switch'
    */
-  GVCU_HIL_B.prs_to_voltage = look1_binlxpw(rtb_TrigonometricFunction2_o1,
+  GVCU_HIL_B.prs_to_voltage = look1_binlxpw(rtb_UnaryMinus1_i,
     GVCU_HIL_P.uDLookupTable4_bp01Data, GVCU_HIL_P.uDLookupTable4_tableData_n,
     99U);
 
-  /* RateTransition: '<S1>/Rate Transition' incorporates:
-   *  RateTransition: '<S1>/Rate Transition1'
-   *  RateTransition: '<S1>/Rate Transition2'
-   *  RateTransition: '<S1>/Rate Transition3'
-   *  RateTransition: '<S5>/Rate Transition10'
-   *  RateTransition: '<S5>/Rate Transition11'
-   *  RateTransition: '<S5>/Rate Transition13'
+  /* RateTransition: '<S2>/Rate Transition' incorporates:
+   *  RateTransition: '<S2>/Rate Transition1'
+   *  RateTransition: '<S2>/Rate Transition2'
+   *  RateTransition: '<S2>/Rate Transition3'
+   *  RateTransition: '<S6>/Rate Transition10'
+   *  RateTransition: '<S6>/Rate Transition11'
+   *  RateTransition: '<S6>/Rate Transition13'
    */
   if (tmp && (rtmIsMajorTimeStep(GVCU_HIL_M) &&
               GVCU_HIL_M->Timing.TaskCounters.TID[3] == 0)) {
@@ -6443,10 +6536,10 @@ void GVCU_HIL_output(void)
   rtb_RelationalOperator = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
     GVCU_HIL_M->Timing.TaskCounters.TID[3] == 0);
   if (rtb_RelationalOperator) {
-    /* RateTransition: '<S1>/Rate Transition' */
+    /* RateTransition: '<S2>/Rate Transition' */
     GVCU_HIL_B.RateTransition_f = GVCU_HIL_DW.RateTransition_Buffer_b;
 
-    /* S-Function (sysvarout): '<S20>/S-Function' */
+    /* S-Function (sysvarout): '<S31>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_am, 1,
          &GVCU_HIL_B.RateTransition_f, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
@@ -6454,46 +6547,46 @@ void GVCU_HIL_output(void)
   }
 
   if (tmp) {
-    /* S-Function (sysvarin): '<S15>/S-Function' */
+    /* S-Function (sysvarin): '<S26>/S-Function' */
     if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_e, 1,
          &GVCU_HIL_B.SFunction_b, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 
-  /* Step: '<S13>/Step' */
+  /* Step: '<S24>/Step' */
   if (Add_tmp < GVCU_HIL_P.Step_Time_p) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_Y0_l;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_Y0_l;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_YFinal_h;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_YFinal_h;
   }
 
-  /* Switch: '<S13>/Switch' incorporates:
-   *  Constant: '<S13>/Offset setting'
-   *  Step: '<S13>/Step'
+  /* Switch: '<S24>/Switch' incorporates:
+   *  Constant: '<S24>/Offset setting'
+   *  Step: '<S24>/Step'
    */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Switch_Threshold_ha) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.Saturation1;
+  if (rtb_UnaryMinus1_i > GVCU_HIL_P.Switch_Threshold_ha) {
+    rtb_UnaryMinus1_i = GVCU_HIL_B.Saturation1;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Offsetsetting_Value_i;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Offsetsetting_Value_i;
   }
 
-  /* Lookup_n-D: '<S1>/1-D Lookup Table6' incorporates:
-   *  Switch: '<S13>/Switch'
+  /* Lookup_n-D: '<S2>/1-D Lookup Table6' incorporates:
+   *  Switch: '<S24>/Switch'
    */
-  GVCU_HIL_B.prs_to_voltage_e = look1_binlxpw(rtb_TrigonometricFunction2_o1,
+  GVCU_HIL_B.prs_to_voltage_e = look1_binlxpw(rtb_UnaryMinus1_i,
     GVCU_HIL_P.uDLookupTable6_bp01Data, GVCU_HIL_P.uDLookupTable6_tableData, 99U);
 
-  /* RateTransition: '<S1>/Rate Transition1' */
+  /* RateTransition: '<S2>/Rate Transition1' */
   if (tmp && rtb_RelationalOperator) {
     GVCU_HIL_DW.RateTransition1_Buffer_d = GVCU_HIL_B.prs_to_voltage_e;
   }
 
   if (rtb_RelationalOperator) {
-    /* RateTransition: '<S1>/Rate Transition1' */
+    /* RateTransition: '<S2>/Rate Transition1' */
     GVCU_HIL_B.RateTransition1_k = GVCU_HIL_DW.RateTransition1_Buffer_d;
 
-    /* S-Function (sysvarout): '<S21>/S-Function' */
+    /* S-Function (sysvarout): '<S32>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_aw, 1,
          &GVCU_HIL_B.RateTransition1_k, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
@@ -6501,83 +6594,82 @@ void GVCU_HIL_output(void)
   }
 
   if (tmp) {
-    /* S-Function (sysvarin): '<S16>/S-Function' */
+    /* S-Function (sysvarin): '<S27>/S-Function' */
     if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_a3, 1,
          &GVCU_HIL_B.SFunction_a, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 
-  /* TransferFcn: '<S26>/Transfer Fcn' */
-  rtb_ProportionalGain = GVCU_HIL_P.TransferFcn_C_n4 *
-    GVCU_HIL_X.TransferFcn_CSTATE_m;
+  /* TransferFcn: '<S37>/Transfer Fcn' */
+  rtb_Integrator = GVCU_HIL_P.TransferFcn_C_n4 * GVCU_HIL_X.TransferFcn_CSTATE_m;
 
-  /* Switch: '<S26>/Switch2' incorporates:
-   *  Constant: '<S26>/Constant'
-   *  Gain: '<S26>/Gain'
-   *  Lookup_n-D: '<S26>/1-D Lookup Table2'
-   *  Lookup_n-D: '<S26>/1-D Lookup Table9'
-   *  TransferFcn: '<S26>/Transfer Fcn'
+  /* Switch: '<S37>/Switch2' incorporates:
+   *  Constant: '<S37>/Constant'
+   *  Gain: '<S37>/Gain'
+   *  Lookup_n-D: '<S37>/1-D Lookup Table2'
+   *  Lookup_n-D: '<S37>/1-D Lookup Table9'
+   *  TransferFcn: '<S37>/Transfer Fcn'
    */
-  if (rtb_ProportionalGain > GVCU_HIL_P.Switch2_Threshold_p) {
-    rtb_ProportionalGain = GVCU_HIL_P.Gain_Gain_e * look1_binlxpw(look1_binlxpw
-      (rtb_ProportionalGain, GVCU_HIL_P.uDLookupTable9_bp01Data_a,
+  if (rtb_Integrator > GVCU_HIL_P.Switch2_Threshold_p) {
+    rtb_Integrator = GVCU_HIL_P.Gain_Gain_e * look1_binlxpw(look1_binlxpw
+      (rtb_Integrator, GVCU_HIL_P.uDLookupTable9_bp01Data_a,
        GVCU_HIL_P.uDLookupTable9_tableData_a, 3U),
       GVCU_HIL_P.uDLookupTable2_bp01Data_p,
       GVCU_HIL_P.uDLookupTable2_tableData_d, 3U);
   } else {
-    rtb_ProportionalGain = GVCU_HIL_P.Constant_Value_do;
+    rtb_Integrator = GVCU_HIL_P.Constant_Value_do;
   }
 
-  /* End of Switch: '<S26>/Switch2' */
+  /* End of Switch: '<S37>/Switch2' */
 
-  /* Saturate: '<S1>/Saturation2' */
-  if (rtb_ProportionalGain > GVCU_HIL_P.Saturation2_UpperSat) {
-    /* Saturate: '<S1>/Saturation2' */
+  /* Saturate: '<S2>/Saturation2' */
+  if (rtb_Integrator > GVCU_HIL_P.Saturation2_UpperSat) {
+    /* Saturate: '<S2>/Saturation2' */
     GVCU_HIL_B.Saturation2 = GVCU_HIL_P.Saturation2_UpperSat;
-  } else if (rtb_ProportionalGain < GVCU_HIL_P.Saturation2_LowerSat) {
-    /* Saturate: '<S1>/Saturation2' */
+  } else if (rtb_Integrator < GVCU_HIL_P.Saturation2_LowerSat) {
+    /* Saturate: '<S2>/Saturation2' */
     GVCU_HIL_B.Saturation2 = GVCU_HIL_P.Saturation2_LowerSat;
   } else {
-    /* Saturate: '<S1>/Saturation2' */
-    GVCU_HIL_B.Saturation2 = rtb_ProportionalGain;
+    /* Saturate: '<S2>/Saturation2' */
+    GVCU_HIL_B.Saturation2 = rtb_Integrator;
   }
 
-  /* End of Saturate: '<S1>/Saturation2' */
+  /* End of Saturate: '<S2>/Saturation2' */
 
-  /* Step: '<S12>/Step' */
+  /* Step: '<S23>/Step' */
   if (Add_tmp < GVCU_HIL_P.Step_Time_h) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_Y0_p;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_Y0_p;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_YFinal_hf;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_YFinal_hf;
   }
 
-  /* Switch: '<S12>/Switch' incorporates:
-   *  Constant: '<S12>/Offset setting'
-   *  Step: '<S12>/Step'
+  /* Switch: '<S23>/Switch' incorporates:
+   *  Constant: '<S23>/Offset setting'
+   *  Step: '<S23>/Step'
    */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Switch_Threshold_p) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.Saturation2;
+  if (rtb_UnaryMinus1_i > GVCU_HIL_P.Switch_Threshold_p) {
+    rtb_UnaryMinus1_i = GVCU_HIL_B.Saturation2;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Offsetsetting_Value_d;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Offsetsetting_Value_d;
   }
 
-  /* Lookup_n-D: '<S1>/1-D Lookup Table7' incorporates:
-   *  Switch: '<S12>/Switch'
+  /* Lookup_n-D: '<S2>/1-D Lookup Table7' incorporates:
+   *  Switch: '<S23>/Switch'
    */
-  GVCU_HIL_B.prs_to_voltage_c = look1_binlxpw(rtb_TrigonometricFunction2_o1,
+  GVCU_HIL_B.prs_to_voltage_c = look1_binlxpw(rtb_UnaryMinus1_i,
     GVCU_HIL_P.uDLookupTable7_bp01Data, GVCU_HIL_P.uDLookupTable7_tableData, 99U);
 
-  /* RateTransition: '<S1>/Rate Transition2' */
+  /* RateTransition: '<S2>/Rate Transition2' */
   if (tmp && rtb_RelationalOperator) {
     GVCU_HIL_DW.RateTransition2_Buffer_g = GVCU_HIL_B.prs_to_voltage_c;
   }
 
   if (rtb_RelationalOperator) {
-    /* RateTransition: '<S1>/Rate Transition2' */
+    /* RateTransition: '<S2>/Rate Transition2' */
     GVCU_HIL_B.RateTransition2_j = GVCU_HIL_DW.RateTransition2_Buffer_g;
 
-    /* S-Function (sysvarout): '<S22>/S-Function' */
+    /* S-Function (sysvarout): '<S33>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_o0, 1,
          &GVCU_HIL_B.RateTransition2_j, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
@@ -6585,83 +6677,82 @@ void GVCU_HIL_output(void)
   }
 
   if (tmp) {
-    /* S-Function (sysvarin): '<S17>/S-Function' */
+    /* S-Function (sysvarin): '<S28>/S-Function' */
     if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_oc, 1,
          &GVCU_HIL_B.SFunction_d, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 
-  /* TransferFcn: '<S27>/Transfer Fcn' */
-  rtb_ProportionalGain = GVCU_HIL_P.TransferFcn_C_f *
-    GVCU_HIL_X.TransferFcn_CSTATE_l;
+  /* TransferFcn: '<S38>/Transfer Fcn' */
+  rtb_Integrator = GVCU_HIL_P.TransferFcn_C_f * GVCU_HIL_X.TransferFcn_CSTATE_l;
 
-  /* Switch: '<S27>/Switch2' incorporates:
-   *  Constant: '<S27>/Constant'
-   *  Gain: '<S27>/Gain'
-   *  Lookup_n-D: '<S27>/1-D Lookup Table2'
-   *  Lookup_n-D: '<S27>/1-D Lookup Table9'
-   *  TransferFcn: '<S27>/Transfer Fcn'
+  /* Switch: '<S38>/Switch2' incorporates:
+   *  Constant: '<S38>/Constant'
+   *  Gain: '<S38>/Gain'
+   *  Lookup_n-D: '<S38>/1-D Lookup Table2'
+   *  Lookup_n-D: '<S38>/1-D Lookup Table9'
+   *  TransferFcn: '<S38>/Transfer Fcn'
    */
-  if (rtb_ProportionalGain > GVCU_HIL_P.Switch2_Threshold_f) {
-    rtb_ProportionalGain = GVCU_HIL_P.Gain_Gain_k * look1_binlxpw(look1_binlxpw
-      (rtb_ProportionalGain, GVCU_HIL_P.uDLookupTable9_bp01Data_b,
+  if (rtb_Integrator > GVCU_HIL_P.Switch2_Threshold_f) {
+    rtb_Integrator = GVCU_HIL_P.Gain_Gain_k * look1_binlxpw(look1_binlxpw
+      (rtb_Integrator, GVCU_HIL_P.uDLookupTable9_bp01Data_b,
        GVCU_HIL_P.uDLookupTable9_tableData_e, 3U),
       GVCU_HIL_P.uDLookupTable2_bp01Data_e,
       GVCU_HIL_P.uDLookupTable2_tableData_j, 3U);
   } else {
-    rtb_ProportionalGain = GVCU_HIL_P.Constant_Value_lc;
+    rtb_Integrator = GVCU_HIL_P.Constant_Value_lc;
   }
 
-  /* End of Switch: '<S27>/Switch2' */
+  /* End of Switch: '<S38>/Switch2' */
 
-  /* Saturate: '<S1>/Saturation3' */
-  if (rtb_ProportionalGain > GVCU_HIL_P.Saturation3_UpperSat) {
-    /* Saturate: '<S1>/Saturation3' */
+  /* Saturate: '<S2>/Saturation3' */
+  if (rtb_Integrator > GVCU_HIL_P.Saturation3_UpperSat) {
+    /* Saturate: '<S2>/Saturation3' */
     GVCU_HIL_B.prs_to_voltage_d = GVCU_HIL_P.Saturation3_UpperSat;
-  } else if (rtb_ProportionalGain < GVCU_HIL_P.Saturation3_LowerSat) {
-    /* Saturate: '<S1>/Saturation3' */
+  } else if (rtb_Integrator < GVCU_HIL_P.Saturation3_LowerSat) {
+    /* Saturate: '<S2>/Saturation3' */
     GVCU_HIL_B.prs_to_voltage_d = GVCU_HIL_P.Saturation3_LowerSat;
   } else {
-    /* Saturate: '<S1>/Saturation3' */
-    GVCU_HIL_B.prs_to_voltage_d = rtb_ProportionalGain;
+    /* Saturate: '<S2>/Saturation3' */
+    GVCU_HIL_B.prs_to_voltage_d = rtb_Integrator;
   }
 
-  /* End of Saturate: '<S1>/Saturation3' */
+  /* End of Saturate: '<S2>/Saturation3' */
 
-  /* Step: '<S11>/Step' */
+  /* Step: '<S22>/Step' */
   if (Add_tmp < GVCU_HIL_P.Step_Time_c) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_Y0_g;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_Y0_g;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Step_YFinal_e;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Step_YFinal_e;
   }
 
-  /* Switch: '<S11>/Switch' incorporates:
-   *  Constant: '<S11>/Offset setting'
-   *  Step: '<S11>/Step'
+  /* Switch: '<S22>/Switch' incorporates:
+   *  Constant: '<S22>/Offset setting'
+   *  Step: '<S22>/Step'
    */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Switch_Threshold_l) {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_B.prs_to_voltage_d;
+  if (rtb_UnaryMinus1_i > GVCU_HIL_P.Switch_Threshold_l) {
+    rtb_UnaryMinus1_i = GVCU_HIL_B.prs_to_voltage_d;
   } else {
-    rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Offsetsetting_Value_m;
+    rtb_UnaryMinus1_i = GVCU_HIL_P.Offsetsetting_Value_m;
   }
 
-  /* Lookup_n-D: '<S1>/1-D Lookup Table8' incorporates:
-   *  Switch: '<S11>/Switch'
+  /* Lookup_n-D: '<S2>/1-D Lookup Table8' incorporates:
+   *  Switch: '<S22>/Switch'
    */
-  GVCU_HIL_B.prs_to_voltage_j = look1_binlxpw(rtb_TrigonometricFunction2_o1,
+  GVCU_HIL_B.prs_to_voltage_j = look1_binlxpw(rtb_UnaryMinus1_i,
     GVCU_HIL_P.uDLookupTable8_bp01Data, GVCU_HIL_P.uDLookupTable8_tableData, 99U);
 
-  /* RateTransition: '<S1>/Rate Transition3' */
+  /* RateTransition: '<S2>/Rate Transition3' */
   if (tmp && rtb_RelationalOperator) {
     GVCU_HIL_DW.RateTransition3_Buffer_d = GVCU_HIL_B.prs_to_voltage_j;
   }
 
   if (rtb_RelationalOperator) {
-    /* RateTransition: '<S1>/Rate Transition3' */
+    /* RateTransition: '<S2>/Rate Transition3' */
     GVCU_HIL_B.RateTransition3_e = GVCU_HIL_DW.RateTransition3_Buffer_d;
 
-    /* S-Function (sysvarout): '<S23>/S-Function' */
+    /* S-Function (sysvarout): '<S34>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_cq, 1,
          &GVCU_HIL_B.RateTransition3_e, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
@@ -6669,98 +6760,98 @@ void GVCU_HIL_output(void)
   }
 
   if (tmp) {
-    /* S-Function (sysvarin): '<S18>/S-Function' */
+    /* S-Function (sysvarin): '<S29>/S-Function' */
     if (cnGetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_cj, 1,
          &GVCU_HIL_B.SFunction_c, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 
-  /* Step: '<S1>/Step' */
+  /* Step: '<S2>/Step' */
   if (Add_tmp < GVCU_HIL_P.Step_Time_ck) {
-    /* Step: '<S1>/Step' */
+    /* Step: '<S2>/Step' */
     GVCU_HIL_B.Step = GVCU_HIL_P.Step_Y0_b;
   } else {
-    /* Step: '<S1>/Step' */
+    /* Step: '<S2>/Step' */
     GVCU_HIL_B.Step = GVCU_HIL_P.Step_YFinal_b;
   }
 
   if (tmp) {
-    /* S-Function (sysvarout): '<S19>/S-Function' */
+    /* S-Function (sysvarout): '<S30>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_cw, 1,
          &GVCU_HIL_B.Step, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* Constant: '<S4>/Constant37' */
+    /* Constant: '<S5>/Constant37' */
     GVCU_HIL_B.brake_pedal_travel_sensor_sts = GVCU_HIL_P.Constant37_Value;
 
-    /* Constant: '<S4>/Constant38' */
+    /* Constant: '<S5>/Constant38' */
     GVCU_HIL_B.active_mode = GVCU_HIL_P.Constant38_Value;
 
-    /* Constant: '<S4>/Constant30' */
+    /* Constant: '<S5>/Constant30' */
     GVCU_HIL_B.brake_pedal_travel_mm_v = GVCU_HIL_P.Constant30_Value;
 
-    /* Constant: '<S4>/Zero181' */
-    GVCU_HIL_B.e2e_alive_counter = GVCU_HIL_P.Zero181_Value;
+    /* Constant: '<S5>/Zero181' */
+    GVCU_HIL_B.e2e_alive_counter_p = GVCU_HIL_P.Zero181_Value;
 
-    /* Constant: '<S4>/Zero180' */
-    GVCU_HIL_B.e2e_checksum = GVCU_HIL_P.Zero180_Value;
+    /* Constant: '<S5>/Zero180' */
+    GVCU_HIL_B.e2e_checksum_c = GVCU_HIL_P.Zero180_Value;
 
-    /* Constant: '<S4>/Constant39' */
+    /* Constant: '<S5>/Constant39' */
     GVCU_HIL_B.position_motor_v = GVCU_HIL_P.Constant39_Value;
 
-    /* Constant: '<S4>/Constant34' */
+    /* Constant: '<S5>/Constant34' */
     GVCU_HIL_B.brake_pedal_travel_perc_v = GVCU_HIL_P.Constant34_Value;
 
-    /* Sum: '<S4>/Add' incorporates:
-     *  Constant: '<S113>/Constant'
-     *  RelationalOperator: '<S113>/Compare'
+    /* Sum: '<S5>/Add' incorporates:
+     *  Constant: '<S124>/Constant'
+     *  RelationalOperator: '<S124>/Compare'
      */
     GVCU_HIL_B.brake_pedal_applied = (real_T)(rtb_brake_out >
       GVCU_HIL_P.CompareToConstant_const_l) + GVCU_HIL_B.brake_switch;
 
-    /* Constant: '<S4>/Constant36' */
+    /* Constant: '<S5>/Constant36' */
     GVCU_HIL_B.position_motor = GVCU_HIL_P.Constant36_Value;
 
-    /* Saturate: '<S4>/Saturation3' */
+    /* Saturate: '<S5>/Saturation3' */
     if (rtb_u19mm > GVCU_HIL_P.Saturation3_UpperSat_e) {
-      /* Saturate: '<S4>/Saturation3' */
+      /* Saturate: '<S5>/Saturation3' */
       GVCU_HIL_B.brake_pedal_travel_mm = GVCU_HIL_P.Saturation3_UpperSat_e;
     } else if (rtb_u19mm < GVCU_HIL_P.Saturation3_LowerSat_l) {
-      /* Saturate: '<S4>/Saturation3' */
+      /* Saturate: '<S5>/Saturation3' */
       GVCU_HIL_B.brake_pedal_travel_mm = GVCU_HIL_P.Saturation3_LowerSat_l;
     } else {
-      /* Saturate: '<S4>/Saturation3' */
+      /* Saturate: '<S5>/Saturation3' */
       GVCU_HIL_B.brake_pedal_travel_mm = rtb_u19mm;
     }
 
-    /* End of Saturate: '<S4>/Saturation3' */
+    /* End of Saturate: '<S5>/Saturation3' */
 
-    /* S-Function (sigout): '<S120>/S-Function_1' */
+    /* S-Function (sigout): '<S131>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S120>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S131>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[6];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[13];
       sfcnOutputs(rts,0);
     }
 
-    /* S-Function (sigout): '<S130>/S-Function' */
+    /* S-Function (sigout): '<S141>/S-Function' */
 
-    /* Level2 S-Function Block: '<S130>/S-Function' (sigout) */
+    /* Level2 S-Function Block: '<S141>/S-Function' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[7];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[14];
       sfcnOutputs(rts,0);
     }
 
-    /* Constant: '<S4>/Constant27' */
+    /* Constant: '<S5>/Constant27' */
     GVCU_HIL_B.available_charge_current = GVCU_HIL_P.Constant27_Value;
 
-    /* Constant: '<S4>/Constant26' */
+    /* Constant: '<S5>/Constant26' */
     GVCU_HIL_B.available_discharge_current = GVCU_HIL_P.Constant26_Value;
   }
 
-  /* TransportDelay: '<S4>/Transport Delay' */
+  /* TransportDelay: '<S5>/Transport Delay' */
   GVCU_HIL_B.TransportDelay = rt_TDelayInterpolate(GVCU_HIL_M->Timing.t[0] -
     GVCU_HIL_P.TransportDelay_Delay,GVCU_HIL_DW.TransportDelay_RWORK[0],(real_T *)
     GVCU_HIL_DW.TransportDelay_PWORK[0],GVCU_HIL_DW.TransportDelay_IWORK[3],
@@ -6768,48 +6859,48 @@ void GVCU_HIL_output(void)
     GVCU_HIL_DW.TransportDelay_IWORK[1],GVCU_HIL_P.TransportDelay_InitOutput,
     true,false);
   if (tmp) {
-    /* Constant: '<S4>/Zero167' */
+    /* Constant: '<S5>/Zero167' */
     GVCU_HIL_B.dcdc_contactor = GVCU_HIL_P.Zero167_Value;
 
-    /* Constant: '<S4>/Zero171' */
+    /* Constant: '<S5>/Zero171' */
     GVCU_HIL_B.e2e_alive_counter_disabled = GVCU_HIL_P.Zero171_Value;
 
-    /* Constant: '<S4>/Zero170' */
+    /* Constant: '<S5>/Zero170' */
     GVCU_HIL_B.e2e_checksum_disabled = GVCU_HIL_P.Zero170_Value;
 
-    /* Constant: '<S4>/Zero164' */
+    /* Constant: '<S5>/Zero164' */
     GVCU_HIL_B.front_hv_bat_fan_req = GVCU_HIL_P.Zero164_Value;
 
-    /* Constant: '<S4>/Zero163' */
+    /* Constant: '<S5>/Zero163' */
     GVCU_HIL_B.front_hv_bat_pump_req = GVCU_HIL_P.Zero163_Value;
 
-    /* Constant: '<S4>/Zero165' */
+    /* Constant: '<S5>/Zero165' */
     GVCU_HIL_B.hv_on_req_lv_charging = GVCU_HIL_P.Zero165_Value;
 
-    /* Constant: '<S4>/Zero168' */
+    /* Constant: '<S5>/Zero168' */
     GVCU_HIL_B.hvac_contactor = GVCU_HIL_P.Zero168_Value;
 
-    /* Constant: '<S4>/Zero166' */
+    /* Constant: '<S5>/Zero166' */
     GVCU_HIL_B.obc_contactor = GVCU_HIL_P.Zero166_Value;
 
-    /* S-Function (sigout): '<S117>/S-Function_1' */
+    /* S-Function (sigout): '<S128>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S117>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S128>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[8];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[15];
       sfcnOutputs(rts,0);
     }
 
-    /* S-Function (sigin): '<S125>/S-Function' */
+    /* S-Function (sigin): '<S136>/S-Function' */
 
-    /* Level2 S-Function Block: '<S125>/S-Function' (sigin) */
+    /* Level2 S-Function Block: '<S136>/S-Function' (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[9];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[16];
       sfcnOutputs(rts,0);
     }
 
-    /* MATLAB Function: '<S4>/BMS' incorporates:
-     *  UnitDelay: '<S4>/Unit Delay'
+    /* MATLAB Function: '<S5>/BMS' incorporates:
+     *  UnitDelay: '<S5>/Unit Delay'
      */
     switch ((int32_T)GVCU_HIL_DW.UnitDelay_DSTATE) {
      case 0:
@@ -6859,147 +6950,468 @@ void GVCU_HIL_output(void)
       break;
     }
 
-    /* End of MATLAB Function: '<S4>/BMS' */
+    /* End of MATLAB Function: '<S5>/BMS' */
 
-    /* Constant: '<S4>/Constant' */
+    /* Constant: '<S5>/Constant' */
     GVCU_HIL_B.third_shaft_speed = GVCU_HIL_P.Constant_Value_j;
 
-    /* Constant: '<S4>/Constant11' */
+    /* Constant: '<S5>/Constant11' */
     GVCU_HIL_B.third_shaft_speed_v = GVCU_HIL_P.Constant11_Value_kw;
 
-    /* S-Function (sigout): '<S119>/S-Function_1' */
+    /* S-Function (sigout): '<S130>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S119>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S130>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[10];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[17];
       sfcnOutputs(rts,0);
     }
 
-    /* Constant: '<S4>/Constant28' */
+    /* Constant: '<S5>/Constant28' */
     GVCU_HIL_B.pack_current = GVCU_HIL_P.Constant28_Value;
 
-    /* Constant: '<S4>/Constant29' */
+    /* Constant: '<S5>/Constant29' */
     GVCU_HIL_B.pack_voltage = GVCU_HIL_P.Constant29_Value;
 
-    /* S-Function (sigout): '<S114>/S-Function_1' */
+    /* S-Function (sigout): '<S125>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S114>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S125>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[11];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[18];
       sfcnOutputs(rts,0);
     }
 
-    /* Constant: '<S4>/Zero106' */
+    /* Constant: '<S5>/Zero106' */
     GVCU_HIL_B.ac_low_gas = GVCU_HIL_P.Zero106_Value;
 
-    /* Constant: '<S4>/Zero107' */
+    /* Constant: '<S5>/Zero107' */
     GVCU_HIL_B.ac_pressure_high = GVCU_HIL_P.Zero107_Value;
 
-    /* Constant: '<S4>/Zero108' */
+    /* Constant: '<S5>/Zero108' */
     GVCU_HIL_B.ac_pressure_low = GVCU_HIL_P.Zero108_Value;
 
-    /* Constant: '<S4>/Zero110' */
+    /* Constant: '<S5>/Zero110' */
     GVCU_HIL_B.clima_hv_req = GVCU_HIL_P.Zero110_Value;
 
-    /* Constant: '<S4>/Zero105' */
+    /* Constant: '<S5>/Zero105' */
     GVCU_HIL_B.compressor_fault = GVCU_HIL_P.Zero105_Value;
 
-    /* Constant: '<S4>/Zero102' */
+    /* Constant: '<S5>/Zero102' */
     GVCU_HIL_B.compressor_hv_curr = GVCU_HIL_P.Zero102_Value;
 
-    /* Constant: '<S4>/Zero101' */
+    /* Constant: '<S5>/Zero101' */
     GVCU_HIL_B.compressor_hv_volt = GVCU_HIL_P.Zero101_Value;
 
-    /* Constant: '<S4>/Zero103' */
+    /* Constant: '<S5>/Zero103' */
     GVCU_HIL_B.compressor_op_state = GVCU_HIL_P.Zero103_Value;
 
-    /* Constant: '<S4>/Zero104' */
+    /* Constant: '<S5>/Zero104' */
     GVCU_HIL_B.compressor_warning = GVCU_HIL_P.Zero104_Value;
 
-    /* Constant: '<S4>/Zero109' */
+    /* Constant: '<S5>/Zero109' */
     GVCU_HIL_B.front_hvac_fan_request = GVCU_HIL_P.Zero109_Value;
 
-    /* S-Function (sigout): '<S115>/S-Function_1' */
+    /* S-Function (sigout): '<S126>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S115>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S126>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[12];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[19];
       sfcnOutputs(rts,0);
     }
 
-    /* Constant: '<S4>/Zero112' */
+    /* Constant: '<S5>/Zero112' */
     GVCU_HIL_B.e2e_alive_counter_l = GVCU_HIL_P.Zero112_Value;
 
-    /* Constant: '<S4>/Zero111' */
+    /* Constant: '<S5>/Zero111' */
     GVCU_HIL_B.e2e_checksum_e = GVCU_HIL_P.Zero111_Value;
 
-    /* S-Function (sigout): '<S116>/S-Function_1' */
+    /* S-Function (sigout): '<S127>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S116>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S127>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[13];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[20];
       sfcnOutputs(rts,0);
     }
 
-    /* Constant: '<S4>/Zero174' */
+    /* Constant: '<S5>/Zero174' */
     GVCU_HIL_B.soh_v = GVCU_HIL_P.Zero174_Value;
 
-    /* Constant: '<S4>/Zero178' */
+    /* Constant: '<S5>/Zero178' */
     GVCU_HIL_B.e2e_alive_counter_disabled_i = GVCU_HIL_P.Zero178_Value;
 
-    /* Constant: '<S4>/Zero172' */
+    /* Constant: '<S5>/Zero172' */
     GVCU_HIL_B.e2e_checksum_disabled_k = GVCU_HIL_P.Zero172_Value;
 
-    /* Constant: '<S4>/Zero175' */
+    /* Constant: '<S5>/Zero175' */
     GVCU_HIL_B.soc = GVCU_HIL_P.Zero175_Value;
 
-    /* Constant: '<S4>/Zero177' */
+    /* Constant: '<S5>/Zero177' */
     GVCU_HIL_B.soe = GVCU_HIL_P.Zero177_Value;
 
-    /* Constant: '<S4>/Zero176' */
+    /* Constant: '<S5>/Zero176' */
     GVCU_HIL_B.soh = GVCU_HIL_P.Zero176_Value;
 
-    /* Constant: '<S4>/Zero173' */
+    /* Constant: '<S5>/Zero173' */
     GVCU_HIL_B.thermal_runaway_detection = GVCU_HIL_P.Zero173_Value;
 
-    /* Constant: '<S4>/Zero1' */
+    /* Constant: '<S5>/Zero1' */
     GVCU_HIL_B.soe_v = GVCU_HIL_P.Zero1_Value;
 
-    /* S-Function (sigout): '<S118>/S-Function_1' */
+    /* S-Function (sigout): '<S129>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S118>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S129>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[14];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[21];
       sfcnOutputs(rts,0);
     }
 
-    /* Constant: '<S4>/Zero3' */
+    /* Constant: '<S5>/Zero3' */
     GVCU_HIL_B.soc_predictive_v = GVCU_HIL_P.Zero3_Value;
 
-    /* S-Function (sigout): '<S136>/S-Function' */
+    /* S-Function (sigout): '<S147>/S-Function' */
 
-    /* Level2 S-Function Block: '<S136>/S-Function' (sigout) */
+    /* Level2 S-Function Block: '<S147>/S-Function' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[15];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[22];
       sfcnOutputs(rts,0);
     }
 
-    /* S-Function (sigout): '<S137>/S-Function' */
+    /* S-Function (sigout): '<S148>/S-Function' */
 
-    /* Level2 S-Function Block: '<S137>/S-Function' (sigout) */
+    /* Level2 S-Function Block: '<S148>/S-Function' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[16];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[23];
       sfcnOutputs(rts,0);
     }
 
-    /* Constant: '<S4>/Constant42' */
+    /* Constant: '<S5>/Constant42' */
     GVCU_HIL_B.soc_v = GVCU_HIL_P.Constant42_Value;
+
+    /* S-Function (sigout): '<S149>/S-Function' */
+
+    /* Level2 S-Function Block: '<S149>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[24];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigout): '<S150>/S-Function' */
+
+    /* Level2 S-Function Block: '<S150>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[25];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigout): '<S151>/S-Function' */
+
+    /* Level2 S-Function Block: '<S151>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[26];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigout): '<S152>/S-Function' */
+
+    /* Level2 S-Function Block: '<S152>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[27];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant17' */
+    GVCU_HIL_B.auto_shift_perf_mod_swt_req = GVCU_HIL_P.Constant17_Value_f;
+
+    /* Constant: '<S5>/Constant31' */
+    GVCU_HIL_B.ddc_perf_mod_swt_req = GVCU_HIL_P.Constant31_Value;
+
+    /* Constant: '<S5>/Zero19' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_b = GVCU_HIL_P.Zero19_Value;
+
+    /* Constant: '<S5>/Zero18' */
+    GVCU_HIL_B.e2e_checksum_disabled_j = GVCU_HIL_P.Zero18_Value;
+
+    /* Constant: '<S5>/Constant33' */
+    GVCU_HIL_B.eps_perf_mod_swt_req = GVCU_HIL_P.Constant33_Value;
+
+    /* Constant: '<S5>/Constant12' */
+    GVCU_HIL_B.pedl_map_perf_mod_swt_req = GVCU_HIL_P.Constant12_Value_f;
+
+    /* Constant: '<S5>/Constant15' */
+    GVCU_HIL_B.perf_mod_swt_req = GVCU_HIL_P.Constant15_Value_ow;
+
+    /* Constant: '<S5>/Constant16' */
+    GVCU_HIL_B.perf_stgy_perf_mod_swt_req = GVCU_HIL_P.Constant16_Value_k;
+
+    /* Constant: '<S5>/Constant13' */
+    GVCU_HIL_B.rgn_perf_mod_swt_req = GVCU_HIL_P.Constant13_Value_e;
+
+    /* S-Function (sigout): '<S132>/S-Function_1' */
+
+    /* Level2 S-Function Block: '<S132>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[28];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Zero85' */
+    GVCU_HIL_B.dtc_list_12v = GVCU_HIL_P.Zero85_Value;
+
+    /* Constant: '<S5>/Zero84' */
+    GVCU_HIL_B.dtc_list_48v = GVCU_HIL_P.Zero84_Value;
+
+    /* Constant: '<S5>/Zero79' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_h = GVCU_HIL_P.Zero79_Value;
+
+    /* Constant: '<S5>/Zero78' */
+    GVCU_HIL_B.e2e_checksum_disabled_n = GVCU_HIL_P.Zero78_Value;
+
+    /* Constant: '<S5>/Zero86' */
+    GVCU_HIL_B.in_current_hv = GVCU_HIL_P.Zero86_Value;
+
+    /* Constant: '<S5>/Zero87' */
+    GVCU_HIL_B.in_voltage_hv = GVCU_HIL_P.Zero87_Value;
+
+    /* Constant: '<S5>/Zero83' */
+    GVCU_HIL_B.state_12v = GVCU_HIL_P.Zero83_Value;
+
+    /* Constant: '<S5>/Zero81' */
+    GVCU_HIL_B.state_48v = GVCU_HIL_P.Zero81_Value;
+
+    /* Constant: '<S5>/Zero82' */
+    GVCU_HIL_B.swt_ena_fb_12v = GVCU_HIL_P.Zero82_Value;
+
+    /* Constant: '<S5>/Zero80' */
+    GVCU_HIL_B.swt_ena_fb_48v = GVCU_HIL_P.Zero80_Value;
+
+    /* S-Function (sigout): '<S133>/S-Function_1' */
+
+    /* Level2 S-Function Block: '<S133>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[29];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant22' */
+    GVCU_HIL_B.available_power_12v = GVCU_HIL_P.Constant22_Value_m;
+
+    /* Constant: '<S5>/Constant23' */
+    GVCU_HIL_B.available_power_48v = GVCU_HIL_P.Constant23_Value_a;
+
+    /* Constant: '<S5>/Constant20' */
+    GVCU_HIL_B.current_output_12v = GVCU_HIL_P.Constant20_Value_i;
+
+    /* Constant: '<S5>/Constant21' */
+    GVCU_HIL_B.current_output_48v = GVCU_HIL_P.Constant21_Value_c;
+
+    /* Constant: '<S5>/Constant24' */
+    GVCU_HIL_B.dcdc_fan_req = GVCU_HIL_P.Constant24_Value_o;
+
+    /* Constant: '<S5>/Constant25' */
+    GVCU_HIL_B.dcdc_pump_req = GVCU_HIL_P.Constant25_Value;
+
+    /* Constant: '<S5>/Zero89' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_f = GVCU_HIL_P.Zero89_Value;
+
+    /* Constant: '<S5>/Zero88' */
+    GVCU_HIL_B.e2e_checksum_disabled_e = GVCU_HIL_P.Zero88_Value;
+
+    /* S-Function (sigout): '<S134>/S-Function_1' */
+
+    /* Level2 S-Function Block: '<S134>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[30];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant1' */
+    GVCU_HIL_B.bar = GVCU_HIL_P.Constant1_Value_ey;
 
     /* S-Function (sigout): '<S138>/S-Function' */
 
     /* Level2 S-Function Block: '<S138>/S-Function' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[17];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[31];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant14' */
+    GVCU_HIL_B.Constant14 = GVCU_HIL_P.Constant14_Value_mb;
+
+    /* S-Function (sigout): '<S156>/S-Function' */
+
+    /* Level2 S-Function Block: '<S156>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[32];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant18' */
+    GVCU_HIL_B.Constant18 = GVCU_HIL_P.Constant18_Value_b3;
+
+    /* S-Function (sigout): '<S154>/S-Function' */
+
+    /* Level2 S-Function Block: '<S154>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[33];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant19' */
+    GVCU_HIL_B.Constant19 = GVCU_HIL_P.Constant19_Value_a;
+
+    /* S-Function (sigout): '<S157>/S-Function' */
+
+    /* Level2 S-Function Block: '<S157>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[34];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant2' */
+    GVCU_HIL_B.degrees40 = GVCU_HIL_P.Constant2_Value_em;
+
+    /* S-Function (sigout): '<S145>/S-Function' */
+
+    /* Level2 S-Function Block: '<S145>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[35];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant3' */
+    GVCU_HIL_B.bar_e = GVCU_HIL_P.Constant3_Value_i;
+
+    /* S-Function (sigout): '<S155>/S-Function' */
+
+    /* Level2 S-Function Block: '<S155>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[36];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant32' */
+    GVCU_HIL_B.imob_st = GVCU_HIL_P.Constant32_Value;
+
+    /* S-Function (sigout): '<S159>/S-Function' */
+
+    /* Level2 S-Function Block: '<S159>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[37];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant4' */
+    GVCU_HIL_B.degrees40_j = GVCU_HIL_P.Constant4_Value_o;
+
+    /* S-Function (sigout): '<S140>/S-Function' */
+
+    /* Level2 S-Function Block: '<S140>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[38];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant5' */
+    GVCU_HIL_B.brake_pedal_travel_mm_v_e = GVCU_HIL_P.Constant5_Value_g;
+
+    /* S-Function (sigout): '<S142>/S-Function' */
+
+    /* Level2 S-Function Block: '<S142>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[39];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Constant: '<S5>/Constant9' */
+    GVCU_HIL_B.active_mode_m = GVCU_HIL_P.Constant9_Value_d;
+
+    /* S-Function (sigout): '<S144>/S-Function' */
+
+    /* Level2 S-Function Block: '<S144>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[40];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Saturate: '<S5>/Saturation1' */
+    if (rtb_u19mm > GVCU_HIL_P.Saturation1_UpperSat_f) {
+      /* Saturate: '<S5>/Saturation1' */
+      GVCU_HIL_B.brake_pedal_travel_mm_j = GVCU_HIL_P.Saturation1_UpperSat_f;
+    } else if (rtb_u19mm < GVCU_HIL_P.Saturation1_LowerSat_m) {
+      /* Saturate: '<S5>/Saturation1' */
+      GVCU_HIL_B.brake_pedal_travel_mm_j = GVCU_HIL_P.Saturation1_LowerSat_m;
+    } else {
+      /* Saturate: '<S5>/Saturation1' */
+      GVCU_HIL_B.brake_pedal_travel_mm_j = rtb_u19mm;
+    }
+
+    /* End of Saturate: '<S5>/Saturation1' */
+
+    /* S-Function (sigout): '<S143>/S-Function' */
+
+    /* Level2 S-Function Block: '<S143>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[41];
+      sfcnOutputs(rts,0);
+    }
+
+    /* Saturate: '<S5>/Saturation' */
+    if (rtb_brake_out > GVCU_HIL_P.Saturation_UpperSat_os) {
+      /* Saturate: '<S5>/Saturation' */
+      GVCU_HIL_B.brake_pedal_travel_perc = GVCU_HIL_P.Saturation_UpperSat_os;
+    } else if (rtb_brake_out < GVCU_HIL_P.Saturation_LowerSat_ds) {
+      /* Saturate: '<S5>/Saturation' */
+      GVCU_HIL_B.brake_pedal_travel_perc = GVCU_HIL_P.Saturation_LowerSat_ds;
+    } else {
+      /* Saturate: '<S5>/Saturation' */
+      GVCU_HIL_B.brake_pedal_travel_perc = rtb_brake_out;
+    }
+
+    /* End of Saturate: '<S5>/Saturation' */
+
+    /* S-Function (sigout): '<S146>/S-Function' */
+
+    /* Level2 S-Function Block: '<S146>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[42];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigout): '<S158>/S-Function' */
+
+    /* Level2 S-Function Block: '<S158>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[43];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigin): '<S135>/S-Function' */
+
+    /* Level2 S-Function Block: '<S135>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[44];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sigout): '<S153>/S-Function' */
+
+    /* Level2 S-Function Block: '<S153>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[45];
+      sfcnOutputs(rts,0);
+    }
+
+    /* S-Function (sysvarout): '<S160>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_j, 1,
+         &GVCU_HIL_B.SFunction_hp, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
+    }
+
+    /* S-Function (sigin): '<S137>/S-Function' */
+
+    /* Level2 S-Function Block: '<S137>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[46];
       sfcnOutputs(rts,0);
     }
 
@@ -7007,370 +7419,49 @@ void GVCU_HIL_output(void)
 
     /* Level2 S-Function Block: '<S139>/S-Function' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[18];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[47];
       sfcnOutputs(rts,0);
     }
 
-    /* S-Function (sigout): '<S140>/S-Function' */
-
-    /* Level2 S-Function Block: '<S140>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[19];
-      sfcnOutputs(rts,0);
-    }
-
-    /* S-Function (sigout): '<S141>/S-Function' */
-
-    /* Level2 S-Function Block: '<S141>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[20];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant17' */
-    GVCU_HIL_B.auto_shift_perf_mod_swt_req = GVCU_HIL_P.Constant17_Value_f;
-
-    /* Constant: '<S4>/Constant31' */
-    GVCU_HIL_B.ddc_perf_mod_swt_req = GVCU_HIL_P.Constant31_Value;
-
-    /* Constant: '<S4>/Zero19' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_b = GVCU_HIL_P.Zero19_Value;
-
-    /* Constant: '<S4>/Zero18' */
-    GVCU_HIL_B.e2e_checksum_disabled_j = GVCU_HIL_P.Zero18_Value;
-
-    /* Constant: '<S4>/Constant33' */
-    GVCU_HIL_B.eps_perf_mod_swt_req = GVCU_HIL_P.Constant33_Value;
-
-    /* Constant: '<S4>/Constant12' */
-    GVCU_HIL_B.pedl_map_perf_mod_swt_req = GVCU_HIL_P.Constant12_Value_f;
-
-    /* Constant: '<S4>/Constant15' */
-    GVCU_HIL_B.perf_mod_swt_req = GVCU_HIL_P.Constant15_Value_ow;
-
-    /* Constant: '<S4>/Constant16' */
-    GVCU_HIL_B.perf_stgy_perf_mod_swt_req = GVCU_HIL_P.Constant16_Value_k;
-
-    /* Constant: '<S4>/Constant13' */
-    GVCU_HIL_B.rgn_perf_mod_swt_req = GVCU_HIL_P.Constant13_Value_e;
-
-    /* S-Function (sigout): '<S121>/S-Function_1' */
-
-    /* Level2 S-Function Block: '<S121>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[21];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Zero85' */
-    GVCU_HIL_B.dtc_list_12v = GVCU_HIL_P.Zero85_Value;
-
-    /* Constant: '<S4>/Zero84' */
-    GVCU_HIL_B.dtc_list_48v = GVCU_HIL_P.Zero84_Value;
-
-    /* Constant: '<S4>/Zero79' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_h = GVCU_HIL_P.Zero79_Value;
-
-    /* Constant: '<S4>/Zero78' */
-    GVCU_HIL_B.e2e_checksum_disabled_n = GVCU_HIL_P.Zero78_Value;
-
-    /* Constant: '<S4>/Zero86' */
-    GVCU_HIL_B.in_current_hv = GVCU_HIL_P.Zero86_Value;
-
-    /* Constant: '<S4>/Zero87' */
-    GVCU_HIL_B.in_voltage_hv = GVCU_HIL_P.Zero87_Value;
-
-    /* Constant: '<S4>/Zero83' */
-    GVCU_HIL_B.state_12v = GVCU_HIL_P.Zero83_Value;
-
-    /* Constant: '<S4>/Zero81' */
-    GVCU_HIL_B.state_48v = GVCU_HIL_P.Zero81_Value;
-
-    /* Constant: '<S4>/Zero82' */
-    GVCU_HIL_B.swt_ena_fb_12v = GVCU_HIL_P.Zero82_Value;
-
-    /* Constant: '<S4>/Zero80' */
-    GVCU_HIL_B.swt_ena_fb_48v = GVCU_HIL_P.Zero80_Value;
-
-    /* S-Function (sigout): '<S122>/S-Function_1' */
-
-    /* Level2 S-Function Block: '<S122>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[22];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant22' */
-    GVCU_HIL_B.available_power_12v = GVCU_HIL_P.Constant22_Value_m;
-
-    /* Constant: '<S4>/Constant23' */
-    GVCU_HIL_B.available_power_48v = GVCU_HIL_P.Constant23_Value_a;
-
-    /* Constant: '<S4>/Constant20' */
-    GVCU_HIL_B.current_output_12v = GVCU_HIL_P.Constant20_Value_i;
-
-    /* Constant: '<S4>/Constant21' */
-    GVCU_HIL_B.current_output_48v = GVCU_HIL_P.Constant21_Value_c;
-
-    /* Constant: '<S4>/Constant24' */
-    GVCU_HIL_B.dcdc_fan_req = GVCU_HIL_P.Constant24_Value_o;
-
-    /* Constant: '<S4>/Constant25' */
-    GVCU_HIL_B.dcdc_pump_req = GVCU_HIL_P.Constant25_Value;
-
-    /* Constant: '<S4>/Zero89' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_f = GVCU_HIL_P.Zero89_Value;
-
-    /* Constant: '<S4>/Zero88' */
-    GVCU_HIL_B.e2e_checksum_disabled_e = GVCU_HIL_P.Zero88_Value;
-
-    /* S-Function (sigout): '<S123>/S-Function_1' */
-
-    /* Level2 S-Function Block: '<S123>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[23];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant1' */
-    GVCU_HIL_B.bar = GVCU_HIL_P.Constant1_Value_ey;
-
-    /* S-Function (sigout): '<S127>/S-Function' */
-
-    /* Level2 S-Function Block: '<S127>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[24];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant14' */
-    GVCU_HIL_B.Constant14 = GVCU_HIL_P.Constant14_Value_mb;
-
-    /* S-Function (sigout): '<S145>/S-Function' */
-
-    /* Level2 S-Function Block: '<S145>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[25];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant18' */
-    GVCU_HIL_B.Constant18 = GVCU_HIL_P.Constant18_Value_b3;
-
-    /* S-Function (sigout): '<S143>/S-Function' */
-
-    /* Level2 S-Function Block: '<S143>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[26];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant19' */
-    GVCU_HIL_B.Constant19 = GVCU_HIL_P.Constant19_Value_a;
-
-    /* S-Function (sigout): '<S146>/S-Function' */
-
-    /* Level2 S-Function Block: '<S146>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[27];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant2' */
-    GVCU_HIL_B.degrees40 = GVCU_HIL_P.Constant2_Value_e;
-
-    /* S-Function (sigout): '<S134>/S-Function' */
-
-    /* Level2 S-Function Block: '<S134>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[28];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant3' */
-    GVCU_HIL_B.bar_e = GVCU_HIL_P.Constant3_Value_i4;
-
-    /* S-Function (sigout): '<S144>/S-Function' */
-
-    /* Level2 S-Function Block: '<S144>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[29];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant32' */
-    GVCU_HIL_B.imob_st = GVCU_HIL_P.Constant32_Value;
-
-    /* S-Function (sigout): '<S148>/S-Function' */
-
-    /* Level2 S-Function Block: '<S148>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[30];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant4' */
-    GVCU_HIL_B.degrees40_j = GVCU_HIL_P.Constant4_Value_o;
-
-    /* S-Function (sigout): '<S129>/S-Function' */
-
-    /* Level2 S-Function Block: '<S129>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[31];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant5' */
-    GVCU_HIL_B.brake_pedal_travel_mm_v_e = GVCU_HIL_P.Constant5_Value_g;
-
-    /* S-Function (sigout): '<S131>/S-Function' */
-
-    /* Level2 S-Function Block: '<S131>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[32];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S4>/Constant9' */
-    GVCU_HIL_B.active_mode_m = GVCU_HIL_P.Constant9_Value_d;
-
-    /* S-Function (sigout): '<S133>/S-Function' */
-
-    /* Level2 S-Function Block: '<S133>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[33];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Saturate: '<S4>/Saturation1' */
-    if (rtb_u19mm > GVCU_HIL_P.Saturation1_UpperSat_f) {
-      /* Saturate: '<S4>/Saturation1' */
-      GVCU_HIL_B.brake_pedal_travel_mm_j = GVCU_HIL_P.Saturation1_UpperSat_f;
-    } else if (rtb_u19mm < GVCU_HIL_P.Saturation1_LowerSat_m) {
-      /* Saturate: '<S4>/Saturation1' */
-      GVCU_HIL_B.brake_pedal_travel_mm_j = GVCU_HIL_P.Saturation1_LowerSat_m;
-    } else {
-      /* Saturate: '<S4>/Saturation1' */
-      GVCU_HIL_B.brake_pedal_travel_mm_j = rtb_u19mm;
-    }
-
-    /* End of Saturate: '<S4>/Saturation1' */
-
-    /* S-Function (sigout): '<S132>/S-Function' */
-
-    /* Level2 S-Function Block: '<S132>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[34];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Saturate: '<S4>/Saturation' */
-    if (rtb_brake_out > GVCU_HIL_P.Saturation_UpperSat_os) {
-      /* Saturate: '<S4>/Saturation' */
-      GVCU_HIL_B.brake_pedal_travel_perc = GVCU_HIL_P.Saturation_UpperSat_os;
-    } else if (rtb_brake_out < GVCU_HIL_P.Saturation_LowerSat_ds) {
-      /* Saturate: '<S4>/Saturation' */
-      GVCU_HIL_B.brake_pedal_travel_perc = GVCU_HIL_P.Saturation_LowerSat_ds;
-    } else {
-      /* Saturate: '<S4>/Saturation' */
-      GVCU_HIL_B.brake_pedal_travel_perc = rtb_brake_out;
-    }
-
-    /* End of Saturate: '<S4>/Saturation' */
-
-    /* S-Function (sigout): '<S135>/S-Function' */
-
-    /* Level2 S-Function Block: '<S135>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[35];
-      sfcnOutputs(rts,0);
-    }
-
-    /* S-Function (sigout): '<S147>/S-Function' */
-
-    /* Level2 S-Function Block: '<S147>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[36];
-      sfcnOutputs(rts,0);
-    }
-
-    /* S-Function (sigin): '<S124>/S-Function' */
-
-    /* Level2 S-Function Block: '<S124>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[37];
-      sfcnOutputs(rts,0);
-    }
-
-    /* S-Function (sigout): '<S142>/S-Function' */
-
-    /* Level2 S-Function Block: '<S142>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[38];
-      sfcnOutputs(rts,0);
-    }
-
-    /* S-Function (sysvarout): '<S149>/S-Function' */
-    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_j, 1,
-         &GVCU_HIL_B.SFunction_hp, 0) != 0) {
-      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
-    }
-
-    /* S-Function (sigin): '<S126>/S-Function' */
-
-    /* Level2 S-Function Block: '<S126>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[39];
-      sfcnOutputs(rts,0);
-    }
-
-    /* S-Function (sigout): '<S128>/S-Function' */
-
-    /* Level2 S-Function Block: '<S128>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[40];
-      sfcnOutputs(rts,0);
-    }
-
-    /* S-Function (sysvarout): '<S150>/S-Function' */
+    /* S-Function (sysvarout): '<S161>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_pv, 1,
          &GVCU_HIL_B.SFunction_gn, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sigin): '<S163>/S-Function' */
+    /* S-Function (sigin): '<S174>/S-Function' */
 
-    /* Level2 S-Function Block: '<S163>/S-Function' (sigin) */
+    /* Level2 S-Function Block: '<S174>/S-Function' (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[41];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[48];
       sfcnOutputs(rts,0);
     }
 
-    /* RateTransition: '<S5>/Rate Transition15' */
+    /* RateTransition: '<S6>/Rate Transition15' */
     if (rtmIsMajorTimeStep(GVCU_HIL_M) &&
         GVCU_HIL_M->Timing.TaskCounters.TID[5] == 0) {
       GVCU_HIL_DW.RateTransition15_Buffer = GVCU_HIL_B.TransferFcn;
     }
   }
 
-  /* RateTransition: '<S5>/Rate Transition15' incorporates:
-   *  RateTransition: '<S5>/Rate Transition14'
+  /* RateTransition: '<S6>/Rate Transition15' incorporates:
+   *  RateTransition: '<S6>/Rate Transition14'
    */
   rtb_Compare = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
                  GVCU_HIL_M->Timing.TaskCounters.TID[5] == 0);
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition15' */
+    /* RateTransition: '<S6>/Rate Transition15' */
     GVCU_HIL_B.dc_current = GVCU_HIL_DW.RateTransition15_Buffer;
   }
 
-  /* RateTransition: '<S5>/Rate Transition14' incorporates:
-   *  Constant: '<S5>/Constant13'
-   *  Constant: '<S5>/Constant14'
-   *  Constant: '<S5>/Constant15'
-   *  Constant: '<S5>/Constant17'
-   *  Constant: '<S5>/Constant18'
-   *  Constant: '<S5>/Constant19'
-   *  Constant: '<S5>/Constant9'
+  /* RateTransition: '<S6>/Rate Transition14' incorporates:
+   *  Constant: '<S6>/Constant13'
+   *  Constant: '<S6>/Constant14'
+   *  Constant: '<S6>/Constant15'
+   *  Constant: '<S6>/Constant17'
+   *  Constant: '<S6>/Constant18'
+   *  Constant: '<S6>/Constant19'
+   *  Constant: '<S6>/Constant9'
    */
   if (tmp) {
     if (rtb_Compare) {
@@ -7387,11 +7478,11 @@ void GVCU_HIL_output(void)
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition14' */
+    /* RateTransition: '<S6>/Rate Transition14' */
     GVCU_HIL_B.dc_voltage = GVCU_HIL_DW.RateTransition14_Buffer;
   }
 
-  /* TransportDelay: '<S5>/Transport Delay1' */
+  /* TransportDelay: '<S6>/Transport Delay1' */
   GVCU_HIL_B.TransportDelay1 = rt_TDelayInterpolate(GVCU_HIL_M->Timing.t[0] -
     GVCU_HIL_P.TransportDelay1_Delay,GVCU_HIL_DW.TransportDelay1_RWORK[0],
     (real_T *)GVCU_HIL_DW.TransportDelay1_PWORK[0],
@@ -7399,43 +7490,43 @@ void GVCU_HIL_output(void)
     GVCU_HIL_DW.TransportDelay1_IWORK[0],GVCU_HIL_DW.TransportDelay1_IWORK[1],
     GVCU_HIL_P.TransportDelay1_InitOutput,true,false);
   if (tmp) {
-    /* Constant: '<S5>/Constant6' */
+    /* Constant: '<S6>/Constant6' */
     GVCU_HIL_B.torque_limit_reason = GVCU_HIL_P.Constant6_Value_hd;
 
-    /* S-Function (sigout): '<S152>/S-Function_1' */
+    /* S-Function (sigout): '<S163>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S152>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S163>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[42];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[49];
       sfcnOutputs(rts,0);
     }
 
-    /* S-Function (sigin): '<S160>/S-Function' */
+    /* S-Function (sigin): '<S171>/S-Function' */
 
-    /* Level2 S-Function Block: '<S160>/S-Function' (sigin) */
+    /* Level2 S-Function Block: '<S171>/S-Function' (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[43];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[50];
       sfcnOutputs(rts,0);
     }
 
-    /* S-Function (sigin): '<S161>/S-Function' */
+    /* S-Function (sigin): '<S172>/S-Function' */
 
-    /* Level2 S-Function Block: '<S161>/S-Function' (sigin) */
+    /* Level2 S-Function Block: '<S172>/S-Function' (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[44];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[51];
       sfcnOutputs(rts,0);
     }
 
-    /* S-Function (sigin): '<S162>/S-Function' */
+    /* S-Function (sigin): '<S173>/S-Function' */
 
-    /* Level2 S-Function Block: '<S162>/S-Function' (sigin) */
+    /* Level2 S-Function Block: '<S173>/S-Function' (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[45];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[52];
       sfcnOutputs(rts,0);
     }
 
-    /* MATLAB Function: '<S5>/INV' incorporates:
-     *  UnitDelay: '<S5>/Unit Delay1'
+    /* MATLAB Function: '<S6>/INV' incorporates:
+     *  UnitDelay: '<S6>/Unit Delay1'
      */
     switch ((int32_T)GVCU_HIL_DW.UnitDelay1_DSTATE) {
      case 0:
@@ -7489,220 +7580,220 @@ void GVCU_HIL_output(void)
       break;
     }
 
-    /* End of MATLAB Function: '<S5>/INV' */
+    /* End of MATLAB Function: '<S6>/INV' */
   }
 
   if (rtb_RelationalOperator) {
-    /* Constant: '<S5>/Constant10' */
+    /* Constant: '<S6>/Constant10' */
     GVCU_HIL_B.e2e_alive_counter_disabled_m = GVCU_HIL_P.Constant10_Value_e;
 
-    /* Constant: '<S5>/Constant11' */
+    /* Constant: '<S6>/Constant11' */
     GVCU_HIL_B.e2e_checksum_disabled_nu = GVCU_HIL_P.Constant11_Value_m;
   }
 
-  /* Gain: '<S5>/Gain' */
+  /* Gain: '<S6>/Gain' */
   GVCU_HIL_B.Gain_e = GVCU_HIL_P.Gain_Gain_j * GVCU_HIL_B.rpm;
 
-  /* RateTransition: '<S5>/Rate Transition10' incorporates:
-   *  Constant: '<S5>/Constant35'
-   *  Constant: '<S5>/Constant36'
-   *  Constant: '<S5>/Constant4'
+  /* RateTransition: '<S6>/Rate Transition10' incorporates:
+   *  Constant: '<S6>/Constant35'
+   *  Constant: '<S6>/Constant36'
+   *  Constant: '<S6>/Constant4'
    */
   if (tmp && rtb_RelationalOperator) {
     GVCU_HIL_DW.RateTransition10_Buffer = GVCU_HIL_B.Gain_e;
   }
 
   if (rtb_RelationalOperator) {
-    /* Saturate: '<S5>/Saturation2' */
+    /* Saturate: '<S6>/Saturation2' */
     if (GVCU_HIL_DW.RateTransition10_Buffer > GVCU_HIL_P.Saturation2_UpperSat_a)
     {
-      /* Saturate: '<S5>/Saturation2' */
+      /* Saturate: '<S6>/Saturation2' */
       GVCU_HIL_B.motor_speed = GVCU_HIL_P.Saturation2_UpperSat_a;
     } else if (GVCU_HIL_DW.RateTransition10_Buffer <
                GVCU_HIL_P.Saturation2_LowerSat_p) {
-      /* Saturate: '<S5>/Saturation2' */
+      /* Saturate: '<S6>/Saturation2' */
       GVCU_HIL_B.motor_speed = GVCU_HIL_P.Saturation2_LowerSat_p;
     } else {
-      /* Saturate: '<S5>/Saturation2' */
+      /* Saturate: '<S6>/Saturation2' */
       GVCU_HIL_B.motor_speed = GVCU_HIL_DW.RateTransition10_Buffer;
     }
 
-    /* End of Saturate: '<S5>/Saturation2' */
+    /* End of Saturate: '<S6>/Saturation2' */
     GVCU_HIL_B.motor_speed_valid_bit = GVCU_HIL_P.Constant4_Value_b;
     GVCU_HIL_B.pos_offset_a = GVCU_HIL_P.Constant35_Value;
     GVCU_HIL_B.pos_offset_b = GVCU_HIL_P.Constant36_Value_p;
 
-    /* S-Function (sigout): '<S153>/S-Function_1' incorporates:
-     *  Constant: '<S5>/Constant35'
-     *  Constant: '<S5>/Constant36'
-     *  Constant: '<S5>/Constant4'
+    /* S-Function (sigout): '<S164>/S-Function_1' incorporates:
+     *  Constant: '<S6>/Constant35'
+     *  Constant: '<S6>/Constant36'
+     *  Constant: '<S6>/Constant4'
      */
 
-    /* Level2 S-Function Block: '<S153>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S164>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[46];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[53];
       sfcnOutputs(rts,3);
     }
   }
 
   if (tmp) {
-    /* Constant: '<S5>/Constant106' */
+    /* Constant: '<S6>/Constant106' */
     GVCU_HIL_B.can_comm_loss_error = GVCU_HIL_P.Constant106_Value;
 
-    /* Constant: '<S5>/Constant80' */
+    /* Constant: '<S6>/Constant80' */
     GVCU_HIL_B.can_comm_loss_warning = GVCU_HIL_P.Constant80_Value;
 
-    /* Constant: '<S5>/Constant79' */
+    /* Constant: '<S6>/Constant79' */
     GVCU_HIL_B.can_e2e = GVCU_HIL_P.Constant79_Value;
 
-    /* Constant: '<S5>/Constant53' */
+    /* Constant: '<S6>/Constant53' */
     GVCU_HIL_B.coolant_t_fault = GVCU_HIL_P.Constant53_Value;
 
-    /* Constant: '<S5>/Constant78' */
+    /* Constant: '<S6>/Constant78' */
     GVCU_HIL_B.coolant_t_rationality = GVCU_HIL_P.Constant78_Value;
 
-    /* Constant: '<S5>/Constant57' */
+    /* Constant: '<S6>/Constant57' */
     GVCU_HIL_B.coolant_t_sensing = GVCU_HIL_P.Constant57_Value;
 
-    /* Constant: '<S5>/Constant77' */
+    /* Constant: '<S6>/Constant77' */
     GVCU_HIL_B.coolant_t_warning = GVCU_HIL_P.Constant77_Value;
 
-    /* Constant: '<S5>/Constant66' */
+    /* Constant: '<S6>/Constant66' */
     GVCU_HIL_B.crash_signal = GVCU_HIL_P.Constant66_Value;
 
-    /* Constant: '<S5>/Constant54' */
+    /* Constant: '<S6>/Constant54' */
     GVCU_HIL_B.dc_link_t_fault = GVCU_HIL_P.Constant54_Value;
 
-    /* Constant: '<S5>/Constant50' */
+    /* Constant: '<S6>/Constant50' */
     GVCU_HIL_B.dc_link_t_rationality = GVCU_HIL_P.Constant50_Value;
 
-    /* Constant: '<S5>/Constant51' */
+    /* Constant: '<S6>/Constant51' */
     GVCU_HIL_B.dc_link_t_sensing = GVCU_HIL_P.Constant51_Value;
 
-    /* Constant: '<S5>/Constant49' */
+    /* Constant: '<S6>/Constant49' */
     GVCU_HIL_B.dc_link_t_warning = GVCU_HIL_P.Constant49_Value;
 
-    /* Constant: '<S5>/Constant46' */
+    /* Constant: '<S6>/Constant46' */
     GVCU_HIL_B.driver_t_fault = GVCU_HIL_P.Constant46_Value;
 
-    /* Constant: '<S5>/Constant48' */
+    /* Constant: '<S6>/Constant48' */
     GVCU_HIL_B.driver_t_rationality = GVCU_HIL_P.Constant48_Value;
 
-    /* Constant: '<S5>/Constant52' */
+    /* Constant: '<S6>/Constant52' */
     GVCU_HIL_B.driver_t_sensing = GVCU_HIL_P.Constant52_Value;
 
-    /* Constant: '<S5>/Constant47' */
+    /* Constant: '<S6>/Constant47' */
     GVCU_HIL_B.driver_t_warning = GVCU_HIL_P.Constant47_Value;
 
-    /* Constant: '<S5>/Constant7' */
+    /* Constant: '<S6>/Constant7' */
     GVCU_HIL_B.e2e_alive_counter_disabled_iq = GVCU_HIL_P.Constant7_Value_e;
 
-    /* Constant: '<S5>/Constant8' */
+    /* Constant: '<S6>/Constant8' */
     GVCU_HIL_B.e2e_checksum_disabled_p = GVCU_HIL_P.Constant8_Value_ld;
 
-    /* Constant: '<S5>/Constant45' */
+    /* Constant: '<S6>/Constant45' */
     GVCU_HIL_B.gate_driver_bist_fault = GVCU_HIL_P.Constant45_Value;
 
-    /* Constant: '<S5>/Constant40' */
+    /* Constant: '<S6>/Constant40' */
     GVCU_HIL_B.gate_driver_fault = GVCU_HIL_P.Constant40_Value;
 
-    /* Constant: '<S5>/Constant41' */
+    /* Constant: '<S6>/Constant41' */
     GVCU_HIL_B.gate_driver_warning = GVCU_HIL_P.Constant41_Value;
 
-    /* Constant: '<S5>/Constant60' */
+    /* Constant: '<S6>/Constant60' */
     GVCU_HIL_B.inverter_boards_t_fault = GVCU_HIL_P.Constant60_Value;
 
-    /* Constant: '<S5>/Constant62' */
+    /* Constant: '<S6>/Constant62' */
     GVCU_HIL_B.inverter_boards_t_rationality = GVCU_HIL_P.Constant62_Value;
 
-    /* Constant: '<S5>/Constant64' */
+    /* Constant: '<S6>/Constant64' */
     GVCU_HIL_B.inverter_boards_t_sensing = GVCU_HIL_P.Constant64_Value;
 
-    /* Constant: '<S5>/Constant61' */
+    /* Constant: '<S6>/Constant61' */
     GVCU_HIL_B.inverter_boards_t_warning = GVCU_HIL_P.Constant61_Value;
 
-    /* Constant: '<S5>/Constant70' */
+    /* Constant: '<S6>/Constant70' */
     GVCU_HIL_B.ipc_lock_cm = GVCU_HIL_P.Constant70_Value;
 
-    /* Constant: '<S5>/Constant68' */
+    /* Constant: '<S6>/Constant68' */
     GVCU_HIL_B.ipc_lock_main = GVCU_HIL_P.Constant68_Value;
 
-    /* Constant: '<S5>/Constant76' */
+    /* Constant: '<S6>/Constant76' */
     GVCU_HIL_B.lv_ext_supply_ov = GVCU_HIL_P.Constant76_Value;
 
-    /* Constant: '<S5>/Constant75' */
+    /* Constant: '<S6>/Constant75' */
     GVCU_HIL_B.lv_ext_supply_uv = GVCU_HIL_P.Constant75_Value;
 
-    /* Constant: '<S5>/Constant110' */
+    /* Constant: '<S6>/Constant110' */
     GVCU_HIL_B.lv_int_supply = GVCU_HIL_P.Constant110_Value;
 
-    /* Constant: '<S5>/Constant67' */
+    /* Constant: '<S6>/Constant67' */
     GVCU_HIL_B.lv_self_check_main = GVCU_HIL_P.Constant67_Value;
 
-    /* Constant: '<S5>/Constant16' */
+    /* Constant: '<S6>/Constant16' */
     GVCU_HIL_B.mcu_bist_fault = GVCU_HIL_P.Constant16_Value_h;
 
-    /* Constant: '<S5>/Constant34' */
+    /* Constant: '<S6>/Constant34' */
     GVCU_HIL_B.mcu_fault = GVCU_HIL_P.Constant34_Value_m;
 
-    /* Constant: '<S5>/Constant42' */
+    /* Constant: '<S6>/Constant42' */
     GVCU_HIL_B.mosfet_t_fault = GVCU_HIL_P.Constant42_Value_p;
 
-    /* Constant: '<S5>/Constant55' */
+    /* Constant: '<S6>/Constant55' */
     GVCU_HIL_B.mosfet_t_rationality = GVCU_HIL_P.Constant55_Value;
 
-    /* Constant: '<S5>/Constant56' */
+    /* Constant: '<S6>/Constant56' */
     GVCU_HIL_B.mosfet_t_sensing = GVCU_HIL_P.Constant56_Value;
 
-    /* Constant: '<S5>/Constant44' */
+    /* Constant: '<S6>/Constant44' */
     GVCU_HIL_B.mosfet_t_warning = GVCU_HIL_P.Constant44_Value;
 
-    /* Constant: '<S5>/Constant58' */
+    /* Constant: '<S6>/Constant58' */
     GVCU_HIL_B.motor_t_fault = GVCU_HIL_P.Constant58_Value;
 
-    /* Constant: '<S5>/Constant63' */
+    /* Constant: '<S6>/Constant63' */
     GVCU_HIL_B.motor_t_rationality = GVCU_HIL_P.Constant63_Value;
 
-    /* Constant: '<S5>/Constant65' */
+    /* Constant: '<S6>/Constant65' */
     GVCU_HIL_B.motor_t_sensing = GVCU_HIL_P.Constant65_Value;
 
-    /* Constant: '<S5>/Constant59' */
+    /* Constant: '<S6>/Constant59' */
     GVCU_HIL_B.motor_t_warning = GVCU_HIL_P.Constant59_Value;
 
-    /* Constant: '<S5>/Constant39' */
+    /* Constant: '<S6>/Constant39' */
     GVCU_HIL_B.sbc_bist_fault = GVCU_HIL_P.Constant39_Value_h;
 
-    /* Constant: '<S5>/Constant43' */
+    /* Constant: '<S6>/Constant43' */
     GVCU_HIL_B.sbc_fault = GVCU_HIL_P.Constant43_Value;
 
-    /* Constant: '<S5>/Constant72' */
+    /* Constant: '<S6>/Constant72' */
     GVCU_HIL_B.sw_compatibility = GVCU_HIL_P.Constant72_Value;
 
-    /* Constant: '<S5>/Constant71' */
+    /* Constant: '<S6>/Constant71' */
     GVCU_HIL_B.task_alive_cm = GVCU_HIL_P.Constant71_Value;
 
-    /* Constant: '<S5>/Constant74' */
+    /* Constant: '<S6>/Constant74' */
     GVCU_HIL_B.task_alive_main = GVCU_HIL_P.Constant74_Value;
 
-    /* Constant: '<S5>/Constant73' */
+    /* Constant: '<S6>/Constant73' */
     GVCU_HIL_B.task_deadline_cm = GVCU_HIL_P.Constant73_Value;
 
-    /* Constant: '<S5>/Constant69' */
+    /* Constant: '<S6>/Constant69' */
     GVCU_HIL_B.task_deadline_main = GVCU_HIL_P.Constant69_Value;
 
-    /* Constant: '<S5>/Constant108' */
+    /* Constant: '<S6>/Constant108' */
     GVCU_HIL_B.y_cap_ctrl_u = GVCU_HIL_P.Constant108_Value;
 
-    /* S-Function (sigout): '<S154>/S-Function_1' */
+    /* S-Function (sigout): '<S165>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S154>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S165>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[47];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[54];
       sfcnOutputs(rts,0);
     }
 
-    /* RateTransition: '<S5>/Rate Transition' incorporates:
-     *  Constant: '<S5>/Constant20'
+    /* RateTransition: '<S6>/Rate Transition' incorporates:
+     *  Constant: '<S6>/Constant20'
      */
     if (rtmIsMajorTimeStep(GVCU_HIL_M) &&
         GVCU_HIL_M->Timing.TaskCounters.TID[6] == 0) {
@@ -7710,94 +7801,94 @@ void GVCU_HIL_output(void)
     }
   }
 
-  /* RateTransition: '<S5>/Rate Transition' incorporates:
-   *  RateTransition: '<S5>/Rate Transition1'
-   *  RateTransition: '<S5>/Rate Transition2'
-   *  RateTransition: '<S5>/Rate Transition3'
-   *  RateTransition: '<S5>/Rate Transition4'
-   *  RateTransition: '<S5>/Rate Transition5'
-   *  RateTransition: '<S5>/Rate Transition6'
-   *  RateTransition: '<S5>/Rate Transition7'
-   *  RateTransition: '<S5>/Rate Transition8'
-   *  RateTransition: '<S5>/Rate Transition9'
+  /* RateTransition: '<S6>/Rate Transition' incorporates:
+   *  RateTransition: '<S6>/Rate Transition1'
+   *  RateTransition: '<S6>/Rate Transition2'
+   *  RateTransition: '<S6>/Rate Transition3'
+   *  RateTransition: '<S6>/Rate Transition4'
+   *  RateTransition: '<S6>/Rate Transition5'
+   *  RateTransition: '<S6>/Rate Transition6'
+   *  RateTransition: '<S6>/Rate Transition7'
+   *  RateTransition: '<S6>/Rate Transition8'
+   *  RateTransition: '<S6>/Rate Transition9'
    */
   rtb_Compare = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
                  GVCU_HIL_M->Timing.TaskCounters.TID[6] == 0);
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition' */
+    /* RateTransition: '<S6>/Rate Transition' */
     GVCU_HIL_B.coolant_temp = GVCU_HIL_DW.RateTransition_Buffer_j;
   }
 
-  /* RateTransition: '<S5>/Rate Transition1' incorporates:
-   *  Constant: '<S5>/Constant21'
+  /* RateTransition: '<S6>/Rate Transition1' incorporates:
+   *  Constant: '<S6>/Constant21'
    */
   if (tmp && rtb_Compare) {
     GVCU_HIL_DW.RateTransition1_Buffer_c = GVCU_HIL_P.Constant21_Value_i;
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition1' */
+    /* RateTransition: '<S6>/Rate Transition1' */
     GVCU_HIL_B.dc_cap_temp_1 = GVCU_HIL_DW.RateTransition1_Buffer_c;
   }
 
-  /* RateTransition: '<S5>/Rate Transition2' incorporates:
-   *  Constant: '<S5>/Constant22'
+  /* RateTransition: '<S6>/Rate Transition2' incorporates:
+   *  Constant: '<S6>/Constant22'
    */
   if (tmp && rtb_Compare) {
     GVCU_HIL_DW.RateTransition2_Buffer_ge = GVCU_HIL_P.Constant22_Value_e;
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition2' */
+    /* RateTransition: '<S6>/Rate Transition2' */
     GVCU_HIL_B.dc_cap_temp_2 = GVCU_HIL_DW.RateTransition2_Buffer_ge;
   }
 
-  /* RateTransition: '<S5>/Rate Transition3' incorporates:
-   *  Constant: '<S5>/Constant23'
-   *  Constant: '<S5>/Constant24'
-   *  Constant: '<S5>/Constant25'
+  /* RateTransition: '<S6>/Rate Transition3' incorporates:
+   *  Constant: '<S6>/Constant23'
+   *  Constant: '<S6>/Constant24'
+   *  Constant: '<S6>/Constant25'
    */
   if (tmp && rtb_Compare) {
     GVCU_HIL_DW.RateTransition3_Buffer_k = GVCU_HIL_P.Constant23_Value_e;
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition3' */
+    /* RateTransition: '<S6>/Rate Transition3' */
     GVCU_HIL_B.driver_board_temp_max = GVCU_HIL_DW.RateTransition3_Buffer_k;
     GVCU_HIL_B.e2e_alive_counter_disabled_a = GVCU_HIL_P.Constant24_Value_on;
     GVCU_HIL_B.e2e_checksum_disabled_o = GVCU_HIL_P.Constant25_Value_k;
   }
 
-  /* RateTransition: '<S5>/Rate Transition4' incorporates:
-   *  Constant: '<S5>/Constant26'
+  /* RateTransition: '<S6>/Rate Transition4' incorporates:
+   *  Constant: '<S6>/Constant26'
    */
   if (tmp && rtb_Compare) {
     GVCU_HIL_DW.RateTransition4_Buffer = GVCU_HIL_P.Constant26_Value_k;
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition4' */
+    /* RateTransition: '<S6>/Rate Transition4' */
     GVCU_HIL_B.mosfet_temp_max = GVCU_HIL_DW.RateTransition4_Buffer;
   }
 
-  /* RateTransition: '<S5>/Rate Transition5' incorporates:
-   *  Constant: '<S5>/Constant27'
-   *  Constant: '<S5>/Constant32'
-   *  Constant: '<S5>/Constant33'
+  /* RateTransition: '<S6>/Rate Transition5' incorporates:
+   *  Constant: '<S6>/Constant27'
+   *  Constant: '<S6>/Constant32'
+   *  Constant: '<S6>/Constant33'
    */
   if (tmp && rtb_Compare) {
     GVCU_HIL_DW.RateTransition5_Buffer = GVCU_HIL_P.Constant27_Value_a;
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition5' */
+    /* RateTransition: '<S6>/Rate Transition5' */
     GVCU_HIL_B.pcb_temp = GVCU_HIL_DW.RateTransition5_Buffer;
 
-    /* S-Function (sigout): '<S155>/S-Function_1' */
+    /* S-Function (sigout): '<S166>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S155>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S166>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[48];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[55];
       sfcnOutputs(rts,6);
     }
 
@@ -7805,355 +7896,352 @@ void GVCU_HIL_output(void)
     GVCU_HIL_B.e2e_checksum_disabled_h = GVCU_HIL_P.Constant33_Value_a;
   }
 
-  /* RateTransition: '<S5>/Rate Transition6' incorporates:
-   *  Constant: '<S5>/Constant28'
+  /* RateTransition: '<S6>/Rate Transition6' incorporates:
+   *  Constant: '<S6>/Constant28'
    */
   if (tmp && rtb_Compare) {
     GVCU_HIL_DW.RateTransition6_Buffer = GVCU_HIL_P.Constant28_Value_n;
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition6' */
+    /* RateTransition: '<S6>/Rate Transition6' */
     GVCU_HIL_B.motor_temp_a1 = GVCU_HIL_DW.RateTransition6_Buffer;
   }
 
-  /* RateTransition: '<S5>/Rate Transition7' incorporates:
-   *  Constant: '<S5>/Constant29'
+  /* RateTransition: '<S6>/Rate Transition7' incorporates:
+   *  Constant: '<S6>/Constant29'
    */
   if (tmp && rtb_Compare) {
     GVCU_HIL_DW.RateTransition7_Buffer = GVCU_HIL_P.Constant29_Value_c;
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition7' */
+    /* RateTransition: '<S6>/Rate Transition7' */
     GVCU_HIL_B.motor_temp_a2 = GVCU_HIL_DW.RateTransition7_Buffer;
   }
 
-  /* RateTransition: '<S5>/Rate Transition8' incorporates:
-   *  Constant: '<S5>/Constant30'
+  /* RateTransition: '<S6>/Rate Transition8' incorporates:
+   *  Constant: '<S6>/Constant30'
    */
   if (tmp && rtb_Compare) {
     GVCU_HIL_DW.RateTransition8_Buffer = GVCU_HIL_P.Constant30_Value_l;
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition8' */
+    /* RateTransition: '<S6>/Rate Transition8' */
     GVCU_HIL_B.motor_temp_a3 = GVCU_HIL_DW.RateTransition8_Buffer;
   }
 
-  /* RateTransition: '<S5>/Rate Transition9' incorporates:
-   *  Constant: '<S5>/Constant31'
+  /* RateTransition: '<S6>/Rate Transition9' incorporates:
+   *  Constant: '<S6>/Constant31'
    */
   if (tmp && rtb_Compare) {
     GVCU_HIL_DW.RateTransition9_Buffer = GVCU_HIL_P.Constant31_Value_c;
   }
 
   if (rtb_Compare) {
-    /* RateTransition: '<S5>/Rate Transition9' */
+    /* RateTransition: '<S6>/Rate Transition9' */
     GVCU_HIL_B.motor_temp_a4 = GVCU_HIL_DW.RateTransition9_Buffer;
 
-    /* S-Function (sigout): '<S156>/S-Function_1' */
+    /* S-Function (sigout): '<S167>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S156>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S167>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[49];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[56];
       sfcnOutputs(rts,6);
     }
   }
 
-  /* Gain: '<S5>/Gain1' */
-  rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Gain1_Gain_a * GVCU_HIL_B.EMTrq;
+  /* Gain: '<S6>/Gain1' */
+  u0 = GVCU_HIL_P.Gain1_Gain_a * GVCU_HIL_B.EMTrq;
 
-  /* Saturate: '<S5>/Saturation' */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Saturation_UpperSat_km) {
-    /* Saturate: '<S5>/Saturation' */
+  /* Saturate: '<S6>/Saturation' */
+  if (u0 > GVCU_HIL_P.Saturation_UpperSat_km) {
+    /* Saturate: '<S6>/Saturation' */
     GVCU_HIL_B.actual_torque = GVCU_HIL_P.Saturation_UpperSat_km;
-  } else if (rtb_TrigonometricFunction2_o1 < GVCU_HIL_P.Saturation_LowerSat_ek)
-  {
-    /* Saturate: '<S5>/Saturation' */
+  } else if (u0 < GVCU_HIL_P.Saturation_LowerSat_ek) {
+    /* Saturate: '<S6>/Saturation' */
     GVCU_HIL_B.actual_torque = GVCU_HIL_P.Saturation_LowerSat_ek;
   } else {
-    /* Saturate: '<S5>/Saturation' */
-    GVCU_HIL_B.actual_torque = rtb_TrigonometricFunction2_o1;
+    /* Saturate: '<S6>/Saturation' */
+    GVCU_HIL_B.actual_torque = u0;
   }
 
-  /* End of Saturate: '<S5>/Saturation' */
+  /* End of Saturate: '<S6>/Saturation' */
   if (tmp) {
-    /* Constant: '<S5>/Constant37' */
+    /* Constant: '<S6>/Constant37' */
     GVCU_HIL_B.e2e_alive_counter_disabled_hq = GVCU_HIL_P.Constant37_Value_h;
 
-    /* Constant: '<S5>/Constant38' */
+    /* Constant: '<S6>/Constant38' */
     GVCU_HIL_B.e2e_checksum_disabled_ev = GVCU_HIL_P.Constant38_Value_m;
 
-    /* RateTransition: '<S5>/Rate Transition13' */
+    /* RateTransition: '<S6>/Rate Transition13' */
     if (rtb_RelationalOperator) {
-      /* Gain: '<S5>/Gain2' */
-      rtb_TrigonometricFunction2_o1 = GVCU_HIL_P.Gain2_Gain_o *
-        GVCU_HIL_B.SFunction_e;
+      /* Gain: '<S6>/Gain2' */
+      u0 = GVCU_HIL_P.Gain2_Gain_o * GVCU_HIL_B.SFunction_e;
 
-      /* Saturate: '<S5>/Saturation1' */
-      if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Saturation1_UpperSat_g) {
+      /* Saturate: '<S6>/Saturation1' */
+      if (u0 > GVCU_HIL_P.Saturation1_UpperSat_g) {
         GVCU_HIL_DW.RateTransition13_Buffer = GVCU_HIL_P.Saturation1_UpperSat_g;
-      } else if (rtb_TrigonometricFunction2_o1 <
-                 GVCU_HIL_P.Saturation1_LowerSat_h) {
+      } else if (u0 < GVCU_HIL_P.Saturation1_LowerSat_h) {
         GVCU_HIL_DW.RateTransition13_Buffer = GVCU_HIL_P.Saturation1_LowerSat_h;
       } else {
-        GVCU_HIL_DW.RateTransition13_Buffer = rtb_TrigonometricFunction2_o1;
+        GVCU_HIL_DW.RateTransition13_Buffer = u0;
       }
 
-      /* End of Saturate: '<S5>/Saturation1' */
+      /* End of Saturate: '<S6>/Saturation1' */
     }
   }
 
-  /* RateTransition: '<S5>/Rate Transition13' */
+  /* RateTransition: '<S6>/Rate Transition13' */
   if (rtb_RelationalOperator) {
-    /* RateTransition: '<S5>/Rate Transition13' */
+    /* RateTransition: '<S6>/Rate Transition13' */
     GVCU_HIL_B.requested_torque = GVCU_HIL_DW.RateTransition13_Buffer;
   }
 
   if (tmp) {
-    /* S-Function (sigout): '<S157>/S-Function_1' */
+    /* S-Function (sigout): '<S168>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S157>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S168>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[50];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[57];
       sfcnOutputs(rts,0);
     }
 
-    /* Constant: '<S5>/Constant89' */
+    /* Constant: '<S6>/Constant89' */
     GVCU_HIL_B.ac_i_sensor_calibration = GVCU_HIL_P.Constant89_Value;
 
-    /* Constant: '<S5>/Constant84' */
+    /* Constant: '<S6>/Constant84' */
     GVCU_HIL_B.ac_i_sensor_oor = GVCU_HIL_P.Constant84_Value;
 
-    /* Constant: '<S5>/Constant99' */
+    /* Constant: '<S6>/Constant99' */
     GVCU_HIL_B.ac_phase_i_imbalance = GVCU_HIL_P.Constant99_Value;
 
-    /* Constant: '<S5>/Constant100' */
+    /* Constant: '<S6>/Constant100' */
     GVCU_HIL_B.ac_phase_i_oc = GVCU_HIL_P.Constant100_Value;
 
-    /* Constant: '<S5>/Constant86' */
+    /* Constant: '<S6>/Constant86' */
     GVCU_HIL_B.ac_phase_loss = GVCU_HIL_P.Constant86_Value;
 
-    /* Constant: '<S5>/Constant85' */
+    /* Constant: '<S6>/Constant85' */
     GVCU_HIL_B.ac_phase_short = GVCU_HIL_P.Constant85_Value;
 
-    /* Constant: '<S5>/Constant88' */
+    /* Constant: '<S6>/Constant88' */
     GVCU_HIL_B.ac_phase_u_rationnality = GVCU_HIL_P.Constant88_Value;
 
-    /* Constant: '<S5>/Constant105' */
+    /* Constant: '<S6>/Constant105' */
     GVCU_HIL_B.ctrl_mode_rationnality = GVCU_HIL_P.Constant105_Value;
 
-    /* Constant: '<S5>/Constant90' */
+    /* Constant: '<S6>/Constant90' */
     GVCU_HIL_B.dc_bus_i_oc = GVCU_HIL_P.Constant90_Value;
 
-    /* Constant: '<S5>/Constant91' */
+    /* Constant: '<S6>/Constant91' */
     GVCU_HIL_B.dc_bus_i_rationnality = GVCU_HIL_P.Constant91_Value;
 
-    /* Constant: '<S5>/Constant92' */
+    /* Constant: '<S6>/Constant92' */
     GVCU_HIL_B.dc_bus_i_sensing = GVCU_HIL_P.Constant92_Value;
 
-    /* Constant: '<S5>/Constant96' */
+    /* Constant: '<S6>/Constant96' */
     GVCU_HIL_B.dc_bus_u_ov = GVCU_HIL_P.Constant96_Value;
 
-    /* Constant: '<S5>/Constant93' */
+    /* Constant: '<S6>/Constant93' */
     GVCU_HIL_B.dc_bus_u_rationnality = GVCU_HIL_P.Constant93_Value;
 
-    /* Constant: '<S5>/Constant94' */
+    /* Constant: '<S6>/Constant94' */
     GVCU_HIL_B.dc_bus_u_sensing = GVCU_HIL_P.Constant94_Value;
 
-    /* Constant: '<S5>/Constant98' */
+    /* Constant: '<S6>/Constant98' */
     GVCU_HIL_B.dc_bus_u_uv = GVCU_HIL_P.Constant98_Value;
 
-    /* Constant: '<S5>/Constant114' */
+    /* Constant: '<S6>/Constant114' */
     GVCU_HIL_B.e2e_alive_counter_disabled_g = GVCU_HIL_P.Constant114_Value;
 
-    /* Constant: '<S5>/Constant81' */
+    /* Constant: '<S6>/Constant81' */
     GVCU_HIL_B.e2e_checksum_disabled_c = GVCU_HIL_P.Constant81_Value;
 
-    /* Constant: '<S5>/Constant103' */
+    /* Constant: '<S6>/Constant103' */
     GVCU_HIL_B.hv_self_check_ctrl = GVCU_HIL_P.Constant103_Value;
 
-    /* Constant: '<S5>/Constant104' */
+    /* Constant: '<S6>/Constant104' */
     GVCU_HIL_B.ipc_lock_ctrl = GVCU_HIL_P.Constant104_Value;
 
-    /* Constant: '<S5>/Constant102' */
+    /* Constant: '<S6>/Constant102' */
     GVCU_HIL_B.lv_self_check_ctrl = GVCU_HIL_P.Constant102_Value;
 
-    /* Constant: '<S5>/Constant95' */
+    /* Constant: '<S6>/Constant95' */
     GVCU_HIL_B.motor_over_speed = GVCU_HIL_P.Constant95_Value;
 
-    /* Constant: '<S5>/Constant97' */
+    /* Constant: '<S6>/Constant97' */
     GVCU_HIL_B.motor_speed_rationnality = GVCU_HIL_P.Constant97_Value;
 
-    /* Constant: '<S5>/Constant112' */
+    /* Constant: '<S6>/Constant112' */
     GVCU_HIL_B.motor_stall = GVCU_HIL_P.Constant112_Value;
 
-    /* Constant: '<S5>/Constant82' */
+    /* Constant: '<S6>/Constant82' */
     GVCU_HIL_B.rslv_bist_fault = GVCU_HIL_P.Constant82_Value;
 
-    /* Constant: '<S5>/Constant83' */
+    /* Constant: '<S6>/Constant83' */
     GVCU_HIL_B.rslv_fault = GVCU_HIL_P.Constant83_Value;
 
-    /* Constant: '<S5>/Constant87' */
+    /* Constant: '<S6>/Constant87' */
     GVCU_HIL_B.rslv_offset = GVCU_HIL_P.Constant87_Value;
 
-    /* Constant: '<S5>/Constant107' */
+    /* Constant: '<S6>/Constant107' */
     GVCU_HIL_B.task_alive_ctrl = GVCU_HIL_P.Constant107_Value;
 
-    /* Constant: '<S5>/Constant109' */
+    /* Constant: '<S6>/Constant109' */
     GVCU_HIL_B.task_deadline_ctrl = GVCU_HIL_P.Constant109_Value;
 
-    /* Constant: '<S5>/Constant101' */
+    /* Constant: '<S6>/Constant101' */
     GVCU_HIL_B.trq_command_rationnality = GVCU_HIL_P.Constant101_Value;
 
-    /* Constant: '<S5>/Constant113' */
+    /* Constant: '<S6>/Constant113' */
     GVCU_HIL_B.trq_estimation_rationnality = GVCU_HIL_P.Constant113_Value;
 
-    /* S-Function (sigout): '<S158>/S-Function_1' */
+    /* S-Function (sigout): '<S169>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S158>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S169>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[51];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[58];
       sfcnOutputs(rts,0);
     }
   }
 
   if (rtb_RelationalOperator) {
-    /* Constant: '<S5>/Constant5' */
+    /* Constant: '<S6>/Constant5' */
     GVCU_HIL_B.e2e_alive_counter_disabled_j = GVCU_HIL_P.Constant5_Value_b;
 
-    /* Constant: '<S5>/Constant111' */
+    /* Constant: '<S6>/Constant111' */
     GVCU_HIL_B.e2e_checksum_disabled_m = GVCU_HIL_P.Constant111_Value;
   }
 
-  /* Product: '<S5>/Product' */
+  /* Product: '<S6>/Product' */
   GVCU_HIL_B.mechanical_pwr_out = GVCU_HIL_B.EMTrq * GVCU_HIL_B.rpm;
 
-  /* RateTransition: '<S5>/Rate Transition11' */
+  /* RateTransition: '<S6>/Rate Transition11' */
   if (tmp && rtb_RelationalOperator) {
     GVCU_HIL_DW.RateTransition11_Buffer = GVCU_HIL_B.mechanical_pwr_out;
   }
 
   if (rtb_RelationalOperator) {
-    /* RateTransition: '<S5>/Rate Transition11' */
+    /* RateTransition: '<S6>/Rate Transition11' */
     GVCU_HIL_B.mechanical_pwr_out_i = GVCU_HIL_DW.RateTransition11_Buffer;
 
-    /* S-Function (sigout): '<S159>/S-Function_1' */
+    /* S-Function (sigout): '<S170>/S-Function_1' */
 
-    /* Level2 S-Function Block: '<S159>/S-Function_1' (sigout) */
+    /* Level2 S-Function Block: '<S170>/S-Function_1' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[52];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[59];
       sfcnOutputs(rts,3);
     }
   }
 
   if (tmp) {
-    /* S-Function (sysvarout): '<S181>/S-Function' */
+    /* S-Function (sysvarout): '<S192>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_d3, 1,
          &GVCU_HIL_B.Gain3, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S165>/S-Function' */
+    /* S-Function (sysvarout): '<S176>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_pa, 1,
          &GVCU_HIL_B.brake_switch, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S166>/S-Function' */
+    /* S-Function (sysvarout): '<S177>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_n, 1,
          &GVCU_HIL_B.pedal_out, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S167>/S-Function' */
+    /* S-Function (sysvarout): '<S178>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_er, 1,
          &GVCU_HIL_B.kmh, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S168>/S-Function' */
+    /* S-Function (sysvarout): '<S179>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_g, 1,
          &GVCU_HIL_B.rpm_g, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S169>/S-Function' */
+    /* S-Function (sysvarout): '<S180>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_k, 1,
          &GVCU_HIL_B.Saturation1, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S171>/S-Function' */
+    /* S-Function (sysvarout): '<S182>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_e0, 1,
          &GVCU_HIL_B.Subtract1_j[1], 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S170>/S-Function' */
+    /* S-Function (sysvarout): '<S181>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_lf, 1,
          &GVCU_HIL_B.Subtract1_j[0], 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S182>/S-Function' */
-    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_m, 1,
+    /* S-Function (sysvarout): '<S193>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_mc, 1,
          &GVCU_HIL_B.Gain2, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S172>/S-Function' */
+    /* S-Function (sysvarout): '<S183>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_py, 1,
          &GVCU_HIL_B.Switch2, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S173>/S-Function' */
+    /* S-Function (sysvarout): '<S184>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_fl, 1,
          &GVCU_HIL_B.SFunction_e, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S174>/S-Function' */
+    /* S-Function (sysvarout): '<S185>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_ko, 1,
-         &GVCU_HIL_B.Sum_a, 0) != 0) {
+         &GVCU_HIL_B.Sum, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S175>/S-Function' */
+    /* S-Function (sysvarout): '<S186>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_m4, 1,
          &GVCU_HIL_B.Sum1, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S176>/S-Function' */
+    /* S-Function (sysvarout): '<S187>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_lv, 1,
          &GVCU_HIL_B.Saturation_m, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S177>/S-Function' */
+    /* S-Function (sysvarout): '<S188>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_mn, 1,
          &GVCU_HIL_B.prs_to_voltage_d, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S178>/S-Function' */
+    /* S-Function (sysvarout): '<S189>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_la, 1,
          &GVCU_HIL_B.Saturation2, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S179>/S-Function' */
+    /* S-Function (sysvarout): '<S190>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_kr, 1,
          &GVCU_HIL_B.rpm_l, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 
-  if (b_y) {
-    /* S-Function (sysvarout): '<S180>/S-Function' */
+  if (tmp_0) {
+    /* S-Function (sysvarout): '<S191>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_da, 1,
          &GVCU_HIL_B.u01s, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
@@ -8161,273 +8249,124 @@ void GVCU_HIL_output(void)
   }
 
   if (tmp) {
-    /* S-Function (sysvarout): '<S183>/S-Function' */
+    /* S-Function (sysvarout): '<S194>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_dc, 1,
          &GVCU_HIL_B.Gain_f, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S184>/S-Function' incorporates:
-     *  Constant: '<S110>/wind x'
+    /* S-Function (sysvarout): '<S195>/S-Function' incorporates:
+     *  Constant: '<S121>/wind x'
      */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_c5, 1,
          &GVCU_HIL_P.environment.wind.x, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S164>/S-Function' */
+    /* S-Function (sysvarout): '<S175>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_pi, 1,
          &GVCU_HIL_B.kmh_e, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S185>/S-Function' */
+    /* S-Function (sysvarout): '<S196>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_mm, 1,
          &GVCU_HIL_B.EMTrq, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
 
-    /* S-Function (sysvarout): '<S186>/S-Function' */
+    /* S-Function (sysvarout): '<S197>/S-Function' */
     if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_flp, 1,
          &GVCU_HIL_B.rpm, 0) != 0) {
       rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 
-  /* Abs: '<S10>/Abs' */
-  rtb_TrigonometricFunction2_o1 = fabs(rtb_Omega[0]);
+  /* Abs: '<S11>/Abs' */
+  u0 = fabs(rtb_Pa_f_idx_0);
 
-  /* Saturate: '<S10>/Saturation' */
-  if (rtb_TrigonometricFunction2_o1 > GVCU_HIL_P.Saturation_UpperSat_hd) {
-    /* Saturate: '<S10>/Saturation' */
-    GVCU_HIL_B.Saturation_cd = GVCU_HIL_P.Saturation_UpperSat_hd;
-  } else if (rtb_TrigonometricFunction2_o1 < GVCU_HIL_P.Saturation_LowerSat_n) {
-    /* Saturate: '<S10>/Saturation' */
-    GVCU_HIL_B.Saturation_cd = GVCU_HIL_P.Saturation_LowerSat_n;
-  } else {
-    /* Saturate: '<S10>/Saturation' */
-    GVCU_HIL_B.Saturation_cd = rtb_TrigonometricFunction2_o1;
+  /* Saturate: '<S11>/Saturation' */
+  if (u0 > GVCU_HIL_P.Saturation_UpperSat_hd) {
+    u0 = GVCU_HIL_P.Saturation_UpperSat_hd;
+  } else if (u0 < GVCU_HIL_P.Saturation_LowerSat_n) {
+    u0 = GVCU_HIL_P.Saturation_LowerSat_n;
   }
 
-  /* End of Saturate: '<S10>/Saturation' */
-  if (tmp) {
-    /* S-Function (sigout): '<S535>/S-Function' */
-
-    /* Level2 S-Function Block: '<S535>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[53];
-      sfcnOutputs(rts,0);
-    }
-  }
-
-  /* Abs: '<S10>/Abs1' */
-  Add_tmp = fabs(rtb_Omega[1]);
-
-  /* Saturate: '<S10>/Saturation1' */
-  if (Add_tmp > GVCU_HIL_P.Saturation1_UpperSat_c) {
-    /* Saturate: '<S10>/Saturation1' */
-    GVCU_HIL_B.Saturation1_i = GVCU_HIL_P.Saturation1_UpperSat_c;
-  } else if (Add_tmp < GVCU_HIL_P.Saturation1_LowerSat_g) {
-    /* Saturate: '<S10>/Saturation1' */
-    GVCU_HIL_B.Saturation1_i = GVCU_HIL_P.Saturation1_LowerSat_g;
-  } else {
-    /* Saturate: '<S10>/Saturation1' */
-    GVCU_HIL_B.Saturation1_i = Add_tmp;
-  }
-
-  /* End of Saturate: '<S10>/Saturation1' */
-  if (tmp) {
-    /* S-Function (sigout): '<S536>/S-Function' */
-
-    /* Level2 S-Function Block: '<S536>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[54];
-      sfcnOutputs(rts,0);
-    }
-  }
-
-  /* MATLAB Function: '<S10>/MATLAB Function2' incorporates:
-   *  Abs: '<S10>/Abs2'
-   *  Abs: '<S10>/Abs3'
+  /* Gain: '<S11>/Gain4' incorporates:
+   *  Saturate: '<S11>/Saturation'
    */
-  rtb_Pa_m[0] = rtb_TrigonometricFunction2_o1;
-  rtb_Pa_m[1] = Add_tmp;
-  Add_tmp = fabs(rtb_Omega[2]);
-  rtb_Pa_m[2] = Add_tmp;
-  rtb_u19mm = fabs(rtb_Omega[3]);
-  rtb_Pa_m[3] = rtb_u19mm;
-  b_y = true;
-  b_low_ip1 = 0;
-  exitg1 = false;
-  while (!exitg1 && (b_low_ip1 < 4)) {
-    if (!(rtb_Pa_m[b_low_ip1] <= 0.01)) {
-      b_y = false;
-      exitg1 = true;
-    } else {
-      b_low_ip1++;
-    }
-  }
-
-  if (b_y) {
-    GVCU_HIL_B.wheel_direction = 2.0;
-  } else {
-    b_y = true;
-    n = 0;
-    exitg1 = false;
-    while (!exitg1 && (n < 4)) {
-      if (!(rtb_Omega[n] > 0.01)) {
-        b_y = false;
-        exitg1 = true;
-      } else {
-        n++;
-      }
-    }
-
-    if (b_y) {
-      GVCU_HIL_B.wheel_direction = 3.0;
-    } else {
-      b_y = true;
-      n = 0;
-      exitg1 = false;
-      while (!exitg1 && (n < 4)) {
-        if (!(rtb_Omega[n] < -0.01)) {
-          b_y = false;
-          exitg1 = true;
-        } else {
-          n++;
-        }
-      }
-
-      if (b_y) {
-        GVCU_HIL_B.wheel_direction = 4.0;
-      } else {
-        GVCU_HIL_B.wheel_direction = 0.0;
-      }
-    }
-  }
-
-  /* End of MATLAB Function: '<S10>/MATLAB Function2' */
+  GVCU_HIL_B.Gain4 = GVCU_HIL_P.Gain4_Gain * u0;
   if (tmp) {
-    /* S-Function (sigout): '<S537>/S-Function' */
-
-    /* Level2 S-Function Block: '<S537>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[55];
-      sfcnOutputs(rts,0);
-    }
-
-    /* S-Function (sigout): '<S538>/S-Function' */
-
-    /* Level2 S-Function Block: '<S538>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[56];
-      sfcnOutputs(rts,0);
+    /* S-Function (sysvarout): '<S546>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_bd, 1,
+         &GVCU_HIL_B.Gain4, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 
-  /* Saturate: '<S10>/Saturation2' */
-  if (Add_tmp > GVCU_HIL_P.Saturation2_UpperSat_p) {
-    /* Saturate: '<S10>/Saturation2' */
-    GVCU_HIL_B.Saturation2_p = GVCU_HIL_P.Saturation2_UpperSat_p;
-  } else if (Add_tmp < GVCU_HIL_P.Saturation2_LowerSat_b) {
-    /* Saturate: '<S10>/Saturation2' */
-    GVCU_HIL_B.Saturation2_p = GVCU_HIL_P.Saturation2_LowerSat_b;
-  } else {
-    /* Saturate: '<S10>/Saturation2' */
-    GVCU_HIL_B.Saturation2_p = Add_tmp;
+  /* Abs: '<S11>/Abs2' */
+  u0 = fabs(rtb_Pa_f_idx_2);
+
+  /* Saturate: '<S11>/Saturation2' */
+  if (u0 > GVCU_HIL_P.Saturation2_UpperSat_p) {
+    u0 = GVCU_HIL_P.Saturation2_UpperSat_p;
+  } else if (u0 < GVCU_HIL_P.Saturation2_LowerSat_b) {
+    u0 = GVCU_HIL_P.Saturation2_LowerSat_b;
   }
 
-  /* End of Saturate: '<S10>/Saturation2' */
+  /* Gain: '<S11>/Gain2' incorporates:
+   *  Saturate: '<S11>/Saturation2'
+   */
+  GVCU_HIL_B.Gain2_n = GVCU_HIL_P.Gain2_Gain_a * u0;
   if (tmp) {
-    /* S-Function (sigout): '<S539>/S-Function' */
-
-    /* Level2 S-Function Block: '<S539>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[57];
-      sfcnOutputs(rts,0);
+    /* S-Function (sysvarout): '<S547>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_eq, 1,
+         &GVCU_HIL_B.Gain2_n, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 
-  /* Saturate: '<S10>/Saturation3' */
-  if (rtb_u19mm > GVCU_HIL_P.Saturation3_UpperSat_a) {
-    /* Saturate: '<S10>/Saturation3' */
-    GVCU_HIL_B.Saturation3 = GVCU_HIL_P.Saturation3_UpperSat_a;
-  } else if (rtb_u19mm < GVCU_HIL_P.Saturation3_LowerSat_d) {
-    /* Saturate: '<S10>/Saturation3' */
-    GVCU_HIL_B.Saturation3 = GVCU_HIL_P.Saturation3_LowerSat_d;
-  } else {
-    /* Saturate: '<S10>/Saturation3' */
-    GVCU_HIL_B.Saturation3 = rtb_u19mm;
+  /* Abs: '<S11>/Abs3' */
+  u0 = fabs(rtb_Pa_f_idx_3);
+
+  /* Saturate: '<S11>/Saturation3' */
+  if (u0 > GVCU_HIL_P.Saturation3_UpperSat_a) {
+    u0 = GVCU_HIL_P.Saturation3_UpperSat_a;
+  } else if (u0 < GVCU_HIL_P.Saturation3_LowerSat_d) {
+    u0 = GVCU_HIL_P.Saturation3_LowerSat_d;
   }
 
-  /* End of Saturate: '<S10>/Saturation3' */
+  /* Gain: '<S11>/Gain3' incorporates:
+   *  Saturate: '<S11>/Saturation3'
+   */
+  GVCU_HIL_B.Gain3_f = GVCU_HIL_P.Gain3_Gain_n * u0;
   if (tmp) {
-    /* S-Function (sigout): '<S540>/S-Function' */
-
-    /* Level2 S-Function Block: '<S540>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[58];
-      sfcnOutputs(rts,0);
+    /* S-Function (sysvarout): '<S548>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_or, 1,
+         &GVCU_HIL_B.Gain3_f, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
+  }
 
-    /* S-Function (sigout): '<S545>/S-Function' */
+  /* Abs: '<S11>/Abs1' */
+  u0 = fabs(rtb_ProportionalGain);
 
-    /* Level2 S-Function Block: '<S545>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[59];
-      sfcnOutputs(rts,0);
-    }
+  /* Saturate: '<S11>/Saturation1' */
+  if (u0 > GVCU_HIL_P.Saturation1_UpperSat_c) {
+    u0 = GVCU_HIL_P.Saturation1_UpperSat_c;
+  } else if (u0 < GVCU_HIL_P.Saturation1_LowerSat_g) {
+    u0 = GVCU_HIL_P.Saturation1_LowerSat_g;
+  }
 
-    /* S-Function (sigout): '<S546>/S-Function' */
-
-    /* Level2 S-Function Block: '<S546>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[60];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S10>/Constant' */
-    GVCU_HIL_B.Constant = GVCU_HIL_P.Constant_Value_pr;
-
-    /* S-Function (sigout): '<S541>/S-Function' */
-
-    /* Level2 S-Function Block: '<S541>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[61];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S10>/Constant2' */
-    GVCU_HIL_B.Constant2 = GVCU_HIL_P.Constant2_Value_ek;
-
-    /* S-Function (sigout): '<S542>/S-Function' */
-
-    /* Level2 S-Function Block: '<S542>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[62];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S10>/Constant3' */
-    GVCU_HIL_B.Constant3 = GVCU_HIL_P.Constant3_Value_e;
-
-    /* S-Function (sigout): '<S543>/S-Function' */
-
-    /* Level2 S-Function Block: '<S543>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[63];
-      sfcnOutputs(rts,0);
-    }
-
-    /* Constant: '<S10>/Constant4' */
-    GVCU_HIL_B.Constant4 = GVCU_HIL_P.Constant4_Value_oi;
-
-    /* S-Function (sigout): '<S544>/S-Function' */
-
-    /* Level2 S-Function Block: '<S544>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[64];
-      sfcnOutputs(rts,0);
+  /* Gain: '<S11>/Gain1' incorporates:
+   *  Saturate: '<S11>/Saturation1'
+   */
+  GVCU_HIL_B.Gain1_k = GVCU_HIL_P.Gain1_Gain_e * u0;
+  if (tmp) {
+    /* S-Function (sysvarout): '<S549>/S-Function' */
+    if (cnSetSystemVariableValues(GVCU_HIL_DW.SFunction_SysVar_hf, 1,
+         &GVCU_HIL_B.Gain1_k, 0) != 0) {
+      rtmSetErrorStatus(GVCU_HIL_M, cnGetErrorMessage());
     }
   }
 }
@@ -8440,8 +8379,8 @@ void GVCU_HIL_update(void)
   tmp = (rtmIsMajorTimeStep(GVCU_HIL_M) &&
          GVCU_HIL_M->Timing.TaskCounters.TID[1] == 0);
   if (tmp) {
-    /* Update for S-Function (anorsimstepinitshmem): '<S8>/S-Function' */
-    /* Level2 S-Function Block: '<S8>/S-Function' (anorsimstepinitshmem) */
+    /* Update for S-Function (anorsimstepinitshmem): '<S9>/S-Function' */
+    /* Level2 S-Function Block: '<S9>/S-Function' (anorsimstepinitshmem) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[0];
       sfcnUpdate(rts,0);
@@ -8449,7 +8388,15 @@ void GVCU_HIL_update(void)
         return;
     }
 
-    /* Update for DiscreteIntegrator: '<S88>/Integrator' */
+    /* Update for Memory: '<S10>/Memory' */
+    GVCU_HIL_DW.Memory_PreviousInput = GVCU_HIL_B.Fz;
+
+    /* Update for Memory: '<S239>/Memory' incorporates:
+     *  Constant: '<S239>/Reset'
+     */
+    GVCU_HIL_DW.Memory_PreviousInput_f = GVCU_HIL_P.Reset_Value;
+
+    /* Update for DiscreteIntegrator: '<S99>/Integrator' */
     GVCU_HIL_DW.Integrator_DSTATE += GVCU_HIL_P.Integrator_gainval *
       GVCU_HIL_B.Switch;
     if (GVCU_HIL_B.Relay > 0.0) {
@@ -8462,18 +8409,35 @@ void GVCU_HIL_update(void)
       GVCU_HIL_DW.Integrator_PrevResetState = 2;
     }
 
-    /* End of Update for DiscreteIntegrator: '<S88>/Integrator' */
+    /* End of Update for DiscreteIntegrator: '<S99>/Integrator' */
   }
 
-  /* Update for RateLimiter: '<S2>/Rate Limiter1' */
+  /* Update for Integrator: '<S239>/Integrator' */
+  GVCU_HIL_DW.Integrator_DWORK1 = false;
+
+  /* Update for RateLimiter: '<S3>/Rate Limiter1' */
   GVCU_HIL_DW.PrevY_m = GVCU_HIL_B.RateLimiter1;
   GVCU_HIL_DW.LastMajorTime = GVCU_HIL_M->Timing.t[0];
 
-  /* Update for Integrator: '<S200>/Integrator Limited' */
+  /* Update for Enabled SubSystem: '<S439>/Bristle Deflection' */
+  GVCU_H_BristleDeflection_Update(&GVCU_HIL_DW.BristleDeflection);
+
+  /* End of Update for SubSystem: '<S439>/Bristle Deflection' */
+  if (tmp) {
+    /* Update for Memory: '<S10>/Memory1' */
+    GVCU_HIL_DW.Memory1_PreviousInput = GVCU_HIL_B.Fz_n;
+  }
+
+  /* Update for Enabled SubSystem: '<S495>/Bristle Deflection' */
+  GVCU_H_BristleDeflection_Update(&GVCU_HIL_DW.BristleDeflection_h);
+
+  /* End of Update for SubSystem: '<S495>/Bristle Deflection' */
+
+  /* Update for Integrator: '<S211>/Integrator Limited' */
   GVCU_HIL_DW.IntegratorLimited_DWORK1 = false;
   if (rtmIsMajorTimeStep(GVCU_HIL_M) &&
       GVCU_HIL_M->Timing.TaskCounters.TID[2] == 0) {
-    /* Update for DiscreteIntegrator: '<S348>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S359>/Integrator' */
     GVCU_HIL_DW.Integrator_DSTATE_d = GVCU_HIL_P.Integrator_gainval_e *
       GVCU_HIL_B.SumI4 + GVCU_HIL_B.Integrator_d;
     if (GVCU_HIL_DW.Integrator_DSTATE_d >
@@ -8496,107 +8460,80 @@ void GVCU_HIL_update(void)
       GVCU_HIL_DW.Integrator_PrevResetState_c = 2;
     }
 
-    /* End of Update for DiscreteIntegrator: '<S348>/Integrator' */
+    /* End of Update for DiscreteIntegrator: '<S359>/Integrator' */
   }
 
-  if (tmp) {
-    /* Update for Memory: '<S228>/Memory' incorporates:
-     *  Constant: '<S228>/Reset'
-     */
-    GVCU_HIL_DW.Memory_PreviousInput = GVCU_HIL_P.Reset_Value;
-  }
-
-  /* Update for Integrator: '<S228>/Integrator' */
-  GVCU_HIL_DW.Integrator_DWORK1 = false;
-
-  /* Update for Integrator: '<S303>/Integrator' */
+  /* Update for Integrator: '<S314>/Integrator' */
   GVCU_HIL_DW.Integrator_DWORK1_f = false;
   if (tmp) {
-    /* Update for Memory: '<S304>/Memory' incorporates:
-     *  Constant: '<S304>/Reset'
+    /* Update for Memory: '<S315>/Memory' incorporates:
+     *  Constant: '<S315>/Reset'
      */
     GVCU_HIL_DW.Memory_PreviousInput_h = GVCU_HIL_P.Reset_Value_f;
   }
 
-  /* Update for Integrator: '<S304>/Integrator' */
+  /* Update for Integrator: '<S315>/Integrator' */
   GVCU_HIL_DW.Integrator_DWORK1_m = false;
 
-  /* Update for If: '<S235>/If' */
+  /* Update for If: '<S246>/If' */
   if (GVCU_HIL_DW.If_ActiveSubsystem == 0) {
-    /* Update for IfAction SubSystem: '<S235>/Locked' incorporates:
-     *  ActionPort: '<S241>/Action'
+    /* Update for IfAction SubSystem: '<S246>/Locked' incorporates:
+     *  ActionPort: '<S252>/Action'
      */
-    /* Update for Integrator: '<S241>/Locked Shaft Integrator' */
+    /* Update for Integrator: '<S252>/Locked Shaft Integrator' */
     GVCU_HIL_DW.LockedShaftIntegrator_DWORK1_d = false;
 
-    /* End of Update for SubSystem: '<S235>/Locked' */
+    /* End of Update for SubSystem: '<S246>/Locked' */
   } else {
-    /* Update for IfAction SubSystem: '<S235>/Unlocked' incorporates:
-     *  ActionPort: '<S242>/Action'
+    /* Update for IfAction SubSystem: '<S246>/Unlocked' incorporates:
+     *  ActionPort: '<S253>/Action'
      */
-    /* Update for Integrator: '<S242>/Input Integrator' */
+    /* Update for Integrator: '<S253>/Input Integrator' */
     GVCU_HIL_DW.InputIntegrator_DWORK1_f = false;
 
-    /* Update for Integrator: '<S242>/Output Integrator' */
+    /* Update for Integrator: '<S253>/Output Integrator' */
     GVCU_HIL_DW.OutputIntegrator_DWORK1_f = false;
 
-    /* End of Update for SubSystem: '<S235>/Unlocked' */
+    /* End of Update for SubSystem: '<S246>/Unlocked' */
   }
 
-  /* End of Update for If: '<S235>/If' */
+  /* End of Update for If: '<S246>/If' */
   if (tmp) {
-    /* Update for Memory: '<S260>/Memory' incorporates:
-     *  Constant: '<S260>/Reset'
+    /* Update for Memory: '<S271>/Memory' incorporates:
+     *  Constant: '<S271>/Reset'
      */
     GVCU_HIL_DW.Memory_PreviousInput_j = GVCU_HIL_P.Reset_Value_a;
   }
 
-  /* Update for Integrator: '<S260>/Integrator' */
+  /* Update for Integrator: '<S271>/Integrator' */
   GVCU_HIL_DW.Integrator_DWORK1_d = false;
 
-  /* Update for If: '<S267>/If' */
+  /* Update for If: '<S278>/If' */
   if (GVCU_HIL_DW.If_ActiveSubsystem_o == 0) {
-    /* Update for IfAction SubSystem: '<S267>/Locked' incorporates:
-     *  ActionPort: '<S273>/Action'
+    /* Update for IfAction SubSystem: '<S278>/Locked' incorporates:
+     *  ActionPort: '<S284>/Action'
      */
-    /* Update for Integrator: '<S273>/Locked Shaft Integrator' */
+    /* Update for Integrator: '<S284>/Locked Shaft Integrator' */
     GVCU_HIL_DW.LockedShaftIntegrator_DWORK1 = false;
 
-    /* End of Update for SubSystem: '<S267>/Locked' */
+    /* End of Update for SubSystem: '<S278>/Locked' */
   } else {
-    /* Update for IfAction SubSystem: '<S267>/Unlocked' incorporates:
-     *  ActionPort: '<S274>/Action'
+    /* Update for IfAction SubSystem: '<S278>/Unlocked' incorporates:
+     *  ActionPort: '<S285>/Action'
      */
-    /* Update for Integrator: '<S274>/Input Integrator' */
+    /* Update for Integrator: '<S285>/Input Integrator' */
     GVCU_HIL_DW.InputIntegrator_DWORK1 = false;
 
-    /* Update for Integrator: '<S274>/Output Integrator' */
+    /* Update for Integrator: '<S285>/Output Integrator' */
     GVCU_HIL_DW.OutputIntegrator_DWORK1 = false;
 
-    /* End of Update for SubSystem: '<S267>/Unlocked' */
+    /* End of Update for SubSystem: '<S278>/Unlocked' */
   }
 
-  /* End of Update for If: '<S267>/If' */
-  if (tmp) {
-    /* Update for Memory: '<S9>/Memory' */
-    GVCU_HIL_DW.Memory_PreviousInput_n = GVCU_HIL_B.Fz;
+  /* End of Update for If: '<S278>/If' */
 
-    /* Update for Memory: '<S9>/Memory1' */
-    GVCU_HIL_DW.Memory1_PreviousInput = GVCU_HIL_B.Fz_n;
-  }
-
-  /* Update for Enabled SubSystem: '<S428>/Bristle Deflection' */
-  GVCU_H_BristleDeflection_Update(&GVCU_HIL_DW.BristleDeflection);
-
-  /* End of Update for SubSystem: '<S428>/Bristle Deflection' */
-
-  /* Update for Enabled SubSystem: '<S484>/Bristle Deflection' */
-  GVCU_H_BristleDeflection_Update(&GVCU_HIL_DW.BristleDeflection_h);
-
-  /* End of Update for SubSystem: '<S484>/Bristle Deflection' */
-
-  /* Update for TransportDelay: '<S4>/Transport Delay' incorporates:
-   *  TransportDelay: '<S5>/Transport Delay1'
+  /* Update for TransportDelay: '<S5>/Transport Delay' incorporates:
+   *  TransportDelay: '<S6>/Transport Delay1'
    */
   if (GVCU_HIL_DW.TransportDelay_IWORK[1] < GVCU_HIL_DW.TransportDelay_IWORK[3]
       - 1) {
@@ -8622,13 +8559,13 @@ void GVCU_HIL_update(void)
     [GVCU_HIL_DW.TransportDelay_IWORK[1] + GVCU_HIL_DW.TransportDelay_IWORK[3]] =
     tmp_0;
 
-  /* End of Update for TransportDelay: '<S4>/Transport Delay' */
+  /* End of Update for TransportDelay: '<S5>/Transport Delay' */
   if (tmp) {
-    /* Update for UnitDelay: '<S4>/Unit Delay' */
+    /* Update for UnitDelay: '<S5>/Unit Delay' */
     GVCU_HIL_DW.UnitDelay_DSTATE = GVCU_HIL_B.bms_st;
   }
 
-  /* Update for TransportDelay: '<S5>/Transport Delay1' */
+  /* Update for TransportDelay: '<S6>/Transport Delay1' */
   if (GVCU_HIL_DW.TransportDelay1_IWORK[1] < GVCU_HIL_DW.TransportDelay1_IWORK[3]
       - 1) {
     GVCU_HIL_DW.TransportDelay1_IWORK[1]++;
@@ -8652,7 +8589,7 @@ void GVCU_HIL_update(void)
     [GVCU_HIL_DW.TransportDelay1_IWORK[1] + GVCU_HIL_DW.TransportDelay1_IWORK[3]]
     = tmp_0;
   if (tmp) {
-    /* Update for UnitDelay: '<S5>/Unit Delay1' */
+    /* Update for UnitDelay: '<S6>/Unit Delay1' */
     GVCU_HIL_DW.UnitDelay1_DSTATE = GVCU_HIL_B.inv_st;
   }
 
@@ -8828,13 +8765,22 @@ void GVCU_HIL_derivatives(void)
   boolean_T usat;
   _rtXdot = ((XDot_GVCU_HIL_T *) GVCU_HIL_M->derivs);
 
-  /* Derivatives for Integrator: '<S374>/Integrator' */
-  _rtXdot->Integrator_CSTATE = GVCU_HIL_B.xddot;
+  /* Derivatives for Integrator: '<S239>/Integrator' */
+  _rtXdot->Integrator_CSTATE = GVCU_HIL_B.Product_i;
 
-  /* Derivatives for Integrator: '<S106>/Integrator' */
+  /* Derivatives for Integrator: '<S238>/Integrator' */
+  _rtXdot->Integrator_CSTATE_j = GVCU_HIL_B.Subtract_k;
+
+  /* Derivatives for Integrator: '<S482>/Integrator' */
+  _rtXdot->Integrator_CSTATE_a = GVCU_HIL_B.Product_b;
+
+  /* Derivatives for Integrator: '<S385>/Integrator' */
+  _rtXdot->Integrator_CSTATE_k = GVCU_HIL_B.xddot;
+
+  /* Derivatives for Integrator: '<S117>/Integrator' */
   _rtXdot->Integrator_CSTATE_i = GVCU_HIL_B.Product;
 
-  /* Derivatives for Integrator: '<S28>/Integrator1' */
+  /* Derivatives for Integrator: '<S39>/Integrator1' */
   lsat = (GVCU_HIL_X.Integrator1_CSTATE <= GVCU_HIL_P.Integrator1_LowerSat);
   usat = (GVCU_HIL_X.Integrator1_CSTATE >= GVCU_HIL_P.Integrator1_UpperSat);
   if (!GVCU_HIL_B.Compare && ((!lsat && !usat) || (lsat && (GVCU_HIL_B.Sum8 >
@@ -8845,101 +8791,104 @@ void GVCU_HIL_derivatives(void)
     _rtXdot->Integrator1_CSTATE = 0.0;
   }
 
-  /* End of Derivatives for Integrator: '<S28>/Integrator1' */
+  /* End of Derivatives for Integrator: '<S39>/Integrator1' */
 
-  /* Derivatives for Integrator: '<S292>/Integrator' */
-  _rtXdot->Integrator_CSTATE_n = GVCU_HIL_B.Divide_l;
-
-  /* Derivatives for TransferFcn: '<S188>/Transfer Fcn' */
-  _rtXdot->TransferFcn_CSTATE = 0.0;
-  _rtXdot->TransferFcn_CSTATE += GVCU_HIL_P.TransferFcn_A *
-    GVCU_HIL_X.TransferFcn_CSTATE;
-  _rtXdot->TransferFcn_CSTATE += GVCU_HIL_B.Divide_b;
-
-  /* Derivatives for Integrator: '<S200>/Integrator Limited' */
-  lsat = (GVCU_HIL_X.IntegratorLimited_CSTATE <=
-          GVCU_HIL_P.IntegratorLimited_LowerSat);
-  usat = (GVCU_HIL_X.IntegratorLimited_CSTATE >=
-          GVCU_HIL_P.DatasheetBattery2_BattChargeMax);
-  if ((!lsat && !usat) || (lsat && (GVCU_HIL_B.Gain1 > 0.0)) || (usat &&
-       (GVCU_HIL_B.Gain1 < 0.0))) {
-    _rtXdot->IntegratorLimited_CSTATE = GVCU_HIL_B.Gain1;
-  } else {
-    /* in saturation */
-    _rtXdot->IntegratorLimited_CSTATE = 0.0;
-  }
-
-  /* End of Derivatives for Integrator: '<S200>/Integrator Limited' */
-
-  /* Derivatives for Integrator: '<S215>/Integrator' */
-  _rtXdot->Integrator_CSTATE_g = GVCU_HIL_B.Sum;
-
-  /* Derivatives for Integrator: '<S228>/Integrator' */
-  _rtXdot->Integrator_CSTATE_o = GVCU_HIL_B.Product_i;
-
-  /* Derivatives for Integrator: '<S227>/Integrator' */
-  _rtXdot->Integrator_CSTATE_j = GVCU_HIL_B.Subtract_k;
-
-  /* Derivatives for Integrator: '<S471>/Integrator' */
-  _rtXdot->Integrator_CSTATE_a = GVCU_HIL_B.Product_b;
-
-  /* Derivatives for Iterator SubSystem: '<S427>/Clutch' */
+  /* Derivatives for Iterator SubSystem: '<S438>/Clutch' */
   for (ForEach_itr_g = 0; ForEach_itr_g < 1; ForEach_itr_g++) {
-    /* Derivatives for ForEachSliceSelector generated from: '<S452>/Tout' */
+    /* Derivatives for ForEachSliceSelector generated from: '<S463>/Tout' */
     rtb_ImpSel_InsertedFor_Tout_a_m = GVCU_HIL_B.Signconvention;
 
-    /* Derivatives for ForEachSliceSelector generated from: '<S452>/Tfmaxs' */
+    /* Derivatives for ForEachSliceSelector generated from: '<S463>/Tfmaxs' */
     rtb_ImpSel_InsertedFor_Tfmaxs_h = GVCU_HIL_B.Ratioofstatictokinetic;
 
-    /* Derivatives for ForEachSliceSelector generated from: '<S452>/Tfmaxk' */
+    /* Derivatives for ForEachSliceSelector generated from: '<S463>/Tfmaxk' */
     rtb_ImpSel_InsertedFor_Tfmaxk_n = GVCU_HIL_B.Ratioofstatictokinetic1;
 
-    /* Derivatives for Chart: '<S452>/Clutch' */
+    /* Derivatives for Chart: '<S463>/Clutch' */
     GVCU_HIL_Clutch_Deriv(&GVCU_HIL_B.CoreSubsys[ForEach_itr_g].sf_Clutch,
                           &GVCU_HIL_DW.CoreSubsys[ForEach_itr_g].sf_Clutch,
                           &_rtXdot->CoreSubsys[ForEach_itr_g].sf_Clutch);
   }
 
-  /* End of Derivatives for SubSystem: '<S427>/Clutch' */
+  /* End of Derivatives for SubSystem: '<S438>/Clutch' */
 
-  /* Derivatives for Integrator: '<S527>/Integrator' */
+  /* Derivatives for Enabled SubSystem: '<S439>/Bristle Deflection' */
+  GVCU_HI_BristleDeflection_Deriv(&GVCU_HIL_B.BristleDeflection,
+    &GVCU_HIL_DW.BristleDeflection, &_rtXdot->BristleDeflection);
+
+  /* End of Derivatives for SubSystem: '<S439>/Bristle Deflection' */
+
+  /* Derivatives for Integrator: '<S538>/Integrator' */
   _rtXdot->Integrator_CSTATE_e = GVCU_HIL_B.Product_l;
 
-  /* Derivatives for Iterator SubSystem: '<S483>/Clutch' */
+  /* Derivatives for Iterator SubSystem: '<S494>/Clutch' */
   for (ForEach_itr = 0; ForEach_itr < 1; ForEach_itr++) {
-    /* Derivatives for ForEachSliceSelector generated from: '<S508>/Tout' */
+    /* Derivatives for ForEachSliceSelector generated from: '<S519>/Tout' */
     rtb_ImpSel_InsertedFor_Tout_at_ = GVCU_HIL_B.Signconvention_k;
 
-    /* Derivatives for ForEachSliceSelector generated from: '<S508>/Tfmaxs' */
+    /* Derivatives for ForEachSliceSelector generated from: '<S519>/Tfmaxs' */
     rtb_ImpSel_InsertedFor_Tfmaxs_a = GVCU_HIL_B.Ratioofstatictokinetic_m;
 
-    /* Derivatives for ForEachSliceSelector generated from: '<S508>/Tfmaxk' */
+    /* Derivatives for ForEachSliceSelector generated from: '<S519>/Tfmaxk' */
     rtb_ImpSel_InsertedFor_Tfmaxk_a = GVCU_HIL_B.Ratioofstatictokinetic1_g;
 
-    /* Derivatives for Chart: '<S508>/Clutch' */
+    /* Derivatives for Chart: '<S519>/Clutch' */
     GVCU_HIL_Clutch_o_Deriv(&GVCU_HIL_B.CoreSubsys_h[ForEach_itr].sf_Clutch,
       &GVCU_HIL_DW.CoreSubsys_h[ForEach_itr].sf_Clutch, &_rtXdot->
       CoreSubsys_h[ForEach_itr].sf_Clutch);
   }
 
-  /* End of Derivatives for SubSystem: '<S483>/Clutch' */
+  /* End of Derivatives for SubSystem: '<S494>/Clutch' */
+
+  /* Derivatives for Enabled SubSystem: '<S495>/Bristle Deflection' */
+  GVCU_HI_BristleDeflection_Deriv(&GVCU_HIL_B.BristleDeflection_h,
+    &GVCU_HIL_DW.BristleDeflection_h, &_rtXdot->BristleDeflection_h);
+
+  /* End of Derivatives for SubSystem: '<S495>/Bristle Deflection' */
 
   /* Derivatives for Integrator: '<S303>/Integrator' */
+  _rtXdot->Integrator_CSTATE_n = GVCU_HIL_B.Divide_l;
+
+  /* Derivatives for TransferFcn: '<S199>/Transfer Fcn' */
+  _rtXdot->TransferFcn_CSTATE = 0.0;
+  _rtXdot->TransferFcn_CSTATE += GVCU_HIL_P.TransferFcn_A *
+    GVCU_HIL_X.TransferFcn_CSTATE;
+  _rtXdot->TransferFcn_CSTATE += GVCU_HIL_B.Divide_b;
+
+  /* Derivatives for Integrator: '<S211>/Integrator Limited' */
+  lsat = (GVCU_HIL_X.IntegratorLimited_CSTATE <=
+          GVCU_HIL_P.IntegratorLimited_LowerSat);
+  usat = (GVCU_HIL_X.IntegratorLimited_CSTATE >=
+          GVCU_HIL_P.DatasheetBattery2_BattChargeMax);
+  if ((!lsat && !usat) || (lsat && (GVCU_HIL_B.Gain1_i > 0.0)) || (usat &&
+       (GVCU_HIL_B.Gain1_i < 0.0))) {
+    _rtXdot->IntegratorLimited_CSTATE = GVCU_HIL_B.Gain1_i;
+  } else {
+    /* in saturation */
+    _rtXdot->IntegratorLimited_CSTATE = 0.0;
+  }
+
+  /* End of Derivatives for Integrator: '<S211>/Integrator Limited' */
+
+  /* Derivatives for Integrator: '<S226>/Integrator' */
+  _rtXdot->Integrator_CSTATE_g = GVCU_HIL_B.Sum_h;
+
+  /* Derivatives for Integrator: '<S314>/Integrator' */
   _rtXdot->Integrator_CSTATE_f[0] = GVCU_HIL_B.Subtract_b[0];
 
-  /* Derivatives for Integrator: '<S304>/Integrator' */
+  /* Derivatives for Integrator: '<S315>/Integrator' */
   _rtXdot->Integrator_CSTATE_d[0] = GVCU_HIL_B.Product_f[0];
 
-  /* Derivatives for Integrator: '<S303>/Integrator' */
+  /* Derivatives for Integrator: '<S314>/Integrator' */
   _rtXdot->Integrator_CSTATE_f[1] = GVCU_HIL_B.Subtract_b[1];
 
-  /* Derivatives for Integrator: '<S304>/Integrator' */
+  /* Derivatives for Integrator: '<S315>/Integrator' */
   _rtXdot->Integrator_CSTATE_d[1] = GVCU_HIL_B.Product_f[1];
 
-  /* Derivatives for Integrator: '<S255>/Integrator' */
+  /* Derivatives for Integrator: '<S266>/Integrator' */
   _rtXdot->Integrator_CSTATE_fz = GVCU_HIL_B.Product_ie;
 
-  /* Derivatives for If: '<S235>/If' */
+  /* Derivatives for If: '<S246>/If' */
   ((XDot_GVCU_HIL_T *) GVCU_HIL_M->derivs)->LockedShaftIntegrator_CSTATE_m = 0.0;
 
   {
@@ -8953,10 +8902,10 @@ void GVCU_HIL_derivatives(void)
 
   switch (GVCU_HIL_DW.If_ActiveSubsystem) {
    case 0:
-    /* Derivatives for IfAction SubSystem: '<S235>/Locked' incorporates:
-     *  ActionPort: '<S241>/Action'
+    /* Derivatives for IfAction SubSystem: '<S246>/Locked' incorporates:
+     *  ActionPort: '<S252>/Action'
      */
-    /* Derivatives for Integrator: '<S241>/Locked Shaft Integrator' */
+    /* Derivatives for Integrator: '<S252>/Locked Shaft Integrator' */
     lsat = (GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m <=
             GVCU_HIL_P.LockedShaftIntegrator_LowerSat);
     usat = (GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m >=
@@ -8969,15 +8918,15 @@ void GVCU_HIL_derivatives(void)
       _rtXdot->LockedShaftIntegrator_CSTATE_m = 0.0;
     }
 
-    /* End of Derivatives for Integrator: '<S241>/Locked Shaft Integrator' */
-    /* End of Derivatives for SubSystem: '<S235>/Locked' */
+    /* End of Derivatives for Integrator: '<S252>/Locked Shaft Integrator' */
+    /* End of Derivatives for SubSystem: '<S246>/Locked' */
     break;
 
    case 1:
-    /* Derivatives for IfAction SubSystem: '<S235>/Unlocked' incorporates:
-     *  ActionPort: '<S242>/Action'
+    /* Derivatives for IfAction SubSystem: '<S246>/Unlocked' incorporates:
+     *  ActionPort: '<S253>/Action'
      */
-    /* Derivatives for Integrator: '<S242>/Input Integrator' */
+    /* Derivatives for Integrator: '<S253>/Input Integrator' */
     lsat = (GVCU_HIL_X.InputIntegrator_CSTATE_k <=
             GVCU_HIL_P.InputIntegrator_LowerSat);
     usat = (GVCU_HIL_X.InputIntegrator_CSTATE_k >=
@@ -8990,9 +8939,9 @@ void GVCU_HIL_derivatives(void)
       _rtXdot->InputIntegrator_CSTATE_k = 0.0;
     }
 
-    /* End of Derivatives for Integrator: '<S242>/Input Integrator' */
+    /* End of Derivatives for Integrator: '<S253>/Input Integrator' */
 
-    /* Derivatives for Integrator: '<S242>/Output Integrator' */
+    /* Derivatives for Integrator: '<S253>/Output Integrator' */
     lsat = (GVCU_HIL_X.OutputIntegrator_CSTATE_g <=
             GVCU_HIL_P.OutputIntegrator_LowerSat);
     usat = (GVCU_HIL_X.OutputIntegrator_CSTATE_g >=
@@ -9005,29 +8954,29 @@ void GVCU_HIL_derivatives(void)
       _rtXdot->OutputIntegrator_CSTATE_g = 0.0;
     }
 
-    /* End of Derivatives for Integrator: '<S242>/Output Integrator' */
-    /* End of Derivatives for SubSystem: '<S235>/Unlocked' */
+    /* End of Derivatives for Integrator: '<S253>/Output Integrator' */
+    /* End of Derivatives for SubSystem: '<S246>/Unlocked' */
     break;
   }
 
-  /* End of Derivatives for If: '<S235>/If' */
+  /* End of Derivatives for If: '<S246>/If' */
 
-  /* Derivatives for TransferFcn: '<S24>/Transfer Fcn' */
+  /* Derivatives for TransferFcn: '<S35>/Transfer Fcn' */
   _rtXdot->TransferFcn_CSTATE_o = 0.0;
   _rtXdot->TransferFcn_CSTATE_o += GVCU_HIL_P.TransferFcn_A_m *
     GVCU_HIL_X.TransferFcn_CSTATE_o;
   _rtXdot->TransferFcn_CSTATE_o += GVCU_HIL_B.SFunction_b;
 
-  /* Derivatives for Integrator: '<S260>/Integrator' */
+  /* Derivatives for Integrator: '<S271>/Integrator' */
   _rtXdot->Integrator_CSTATE_m = GVCU_HIL_B.Product_g;
 
-  /* Derivatives for Integrator: '<S259>/Integrator' */
+  /* Derivatives for Integrator: '<S270>/Integrator' */
   _rtXdot->Integrator_CSTATE_l = GVCU_HIL_B.Subtract_h;
 
-  /* Derivatives for Integrator: '<S287>/Integrator' */
-  _rtXdot->Integrator_CSTATE_k = GVCU_HIL_B.Product_p;
+  /* Derivatives for Integrator: '<S298>/Integrator' */
+  _rtXdot->Integrator_CSTATE_k0 = GVCU_HIL_B.Product_p;
 
-  /* Derivatives for If: '<S267>/If' */
+  /* Derivatives for If: '<S278>/If' */
   ((XDot_GVCU_HIL_T *) GVCU_HIL_M->derivs)->LockedShaftIntegrator_CSTATE = 0.0;
 
   {
@@ -9041,10 +8990,10 @@ void GVCU_HIL_derivatives(void)
 
   switch (GVCU_HIL_DW.If_ActiveSubsystem_o) {
    case 0:
-    /* Derivatives for IfAction SubSystem: '<S267>/Locked' incorporates:
-     *  ActionPort: '<S273>/Action'
+    /* Derivatives for IfAction SubSystem: '<S278>/Locked' incorporates:
+     *  ActionPort: '<S284>/Action'
      */
-    /* Derivatives for Integrator: '<S273>/Locked Shaft Integrator' */
+    /* Derivatives for Integrator: '<S284>/Locked Shaft Integrator' */
     lsat = (GVCU_HIL_X.LockedShaftIntegrator_CSTATE <=
             GVCU_HIL_P.LockedShaftIntegrator_LowerSa_a);
     usat = (GVCU_HIL_X.LockedShaftIntegrator_CSTATE >=
@@ -9057,15 +9006,15 @@ void GVCU_HIL_derivatives(void)
       _rtXdot->LockedShaftIntegrator_CSTATE = 0.0;
     }
 
-    /* End of Derivatives for Integrator: '<S273>/Locked Shaft Integrator' */
-    /* End of Derivatives for SubSystem: '<S267>/Locked' */
+    /* End of Derivatives for Integrator: '<S284>/Locked Shaft Integrator' */
+    /* End of Derivatives for SubSystem: '<S278>/Locked' */
     break;
 
    case 1:
-    /* Derivatives for IfAction SubSystem: '<S267>/Unlocked' incorporates:
-     *  ActionPort: '<S274>/Action'
+    /* Derivatives for IfAction SubSystem: '<S278>/Unlocked' incorporates:
+     *  ActionPort: '<S285>/Action'
      */
-    /* Derivatives for Integrator: '<S274>/Input Integrator' */
+    /* Derivatives for Integrator: '<S285>/Input Integrator' */
     lsat = (GVCU_HIL_X.InputIntegrator_CSTATE <=
             GVCU_HIL_P.InputIntegrator_LowerSat_c);
     usat = (GVCU_HIL_X.InputIntegrator_CSTATE >=
@@ -9078,9 +9027,9 @@ void GVCU_HIL_derivatives(void)
       _rtXdot->InputIntegrator_CSTATE = 0.0;
     }
 
-    /* End of Derivatives for Integrator: '<S274>/Input Integrator' */
+    /* End of Derivatives for Integrator: '<S285>/Input Integrator' */
 
-    /* Derivatives for Integrator: '<S274>/Output Integrator' */
+    /* Derivatives for Integrator: '<S285>/Output Integrator' */
     lsat = (GVCU_HIL_X.OutputIntegrator_CSTATE <=
             GVCU_HIL_P.OutputIntegrator_LowerSat_o);
     usat = (GVCU_HIL_X.OutputIntegrator_CSTATE >=
@@ -9093,44 +9042,32 @@ void GVCU_HIL_derivatives(void)
       _rtXdot->OutputIntegrator_CSTATE = 0.0;
     }
 
-    /* End of Derivatives for Integrator: '<S274>/Output Integrator' */
-    /* End of Derivatives for SubSystem: '<S267>/Unlocked' */
+    /* End of Derivatives for Integrator: '<S285>/Output Integrator' */
+    /* End of Derivatives for SubSystem: '<S278>/Unlocked' */
     break;
   }
 
-  /* End of Derivatives for If: '<S267>/If' */
+  /* End of Derivatives for If: '<S278>/If' */
 
-  /* Derivatives for TransferFcn: '<S25>/Transfer Fcn' */
+  /* Derivatives for TransferFcn: '<S36>/Transfer Fcn' */
   _rtXdot->TransferFcn_CSTATE_oq = 0.0;
   _rtXdot->TransferFcn_CSTATE_oq += GVCU_HIL_P.TransferFcn_A_g *
     GVCU_HIL_X.TransferFcn_CSTATE_oq;
   _rtXdot->TransferFcn_CSTATE_oq += GVCU_HIL_B.SFunction_a;
 
-  /* Derivatives for Integrator: '<S382>/Integrator3' */
+  /* Derivatives for Integrator: '<S393>/Integrator3' */
   _rtXdot->Integrator3_CSTATE = GVCU_HIL_B.VectorConcatenate2[0];
 
-  /* Derivatives for Enabled SubSystem: '<S428>/Bristle Deflection' */
-  GVCU_HI_BristleDeflection_Deriv(&GVCU_HIL_B.BristleDeflection,
-    &GVCU_HIL_DW.BristleDeflection, &_rtXdot->BristleDeflection);
-
-  /* End of Derivatives for SubSystem: '<S428>/Bristle Deflection' */
-
-  /* Derivatives for Enabled SubSystem: '<S484>/Bristle Deflection' */
-  GVCU_HI_BristleDeflection_Deriv(&GVCU_HIL_B.BristleDeflection_h,
-    &GVCU_HIL_DW.BristleDeflection_h, &_rtXdot->BristleDeflection_h);
-
-  /* End of Derivatives for SubSystem: '<S484>/Bristle Deflection' */
-
-  /* Derivatives for Integrator: '<S371>/Integrator1' */
+  /* Derivatives for Integrator: '<S382>/Integrator1' */
   _rtXdot->Integrator1_CSTATE_c = GVCU_HIL_B.Integrator;
 
-  /* Derivatives for TransferFcn: '<S26>/Transfer Fcn' */
+  /* Derivatives for TransferFcn: '<S37>/Transfer Fcn' */
   _rtXdot->TransferFcn_CSTATE_m = 0.0;
   _rtXdot->TransferFcn_CSTATE_m += GVCU_HIL_P.TransferFcn_A_o *
     GVCU_HIL_X.TransferFcn_CSTATE_m;
   _rtXdot->TransferFcn_CSTATE_m += GVCU_HIL_B.SFunction_d;
 
-  /* Derivatives for TransferFcn: '<S27>/Transfer Fcn' */
+  /* Derivatives for TransferFcn: '<S38>/Transfer Fcn' */
   _rtXdot->TransferFcn_CSTATE_l = 0.0;
   _rtXdot->TransferFcn_CSTATE_l += GVCU_HIL_P.TransferFcn_A_h *
     GVCU_HIL_X.TransferFcn_CSTATE_l;
@@ -9148,8 +9085,8 @@ void GVCU_HIL_initialize(void)
     real_T tmp;
     _rtXdis = ((XDis_GVCU_HIL_T *) GVCU_HIL_M->contStateDisabled);
 
-    /* Start for S-Function (anorsimstepinitshmem): '<S8>/S-Function' */
-    /* Level2 S-Function Block: '<S8>/S-Function' (anorsimstepinitshmem) */
+    /* Start for S-Function (anorsimstepinitshmem): '<S9>/S-Function' */
+    /* Level2 S-Function Block: '<S9>/S-Function' (anorsimstepinitshmem) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[0];
       sfcnStart(rts);
@@ -9157,8 +9094,8 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S32>/S-Function' */
-    /* Level2 S-Function Block: '<S32>/S-Function' (sigout) */
+    /* Start for S-Function (sigout): '<S16>/S-Function' */
+    /* Level2 S-Function Block: '<S16>/S-Function' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[1];
       sfcnStart(rts);
@@ -9166,8 +9103,42 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S33>/S-Function' */
-    /* Level2 S-Function Block: '<S33>/S-Function' (sigout) */
+    /* Start for Constant: '<S238>/domega_o' */
+    GVCU_HIL_B.domega_o = GVCU_HIL_P.FL_domega_o;
+
+    /* Start for Iterator SubSystem: '<S438>/Clutch' */
+    for (ForEach_itr_g = 0; ForEach_itr_g < 1; ForEach_itr_g++) {
+      /* Start for Iterator SubSystem: '<S438>/Clutch' */
+      /* Start for Chart: '<S463>/Clutch' */
+      GVCU_HIL_Clutch_Start(&GVCU_HIL_B.CoreSubsys[ForEach_itr_g].sf_Clutch);
+
+      /* End of Start for SubSystem: '<S438>/Clutch' */
+    }
+
+    /* End of Start for SubSystem: '<S438>/Clutch' */
+    /* Start for Enabled SubSystem: '<S439>/Bristle Deflection' */
+    GVCU_HI_BristleDeflection_Start(&GVCU_HIL_DW.BristleDeflection,
+      &_rtXdis->BristleDeflection);
+
+    /* End of Start for SubSystem: '<S439>/Bristle Deflection' */
+    /* Start for Iterator SubSystem: '<S494>/Clutch' */
+    for (ForEach_itr = 0; ForEach_itr < 1; ForEach_itr++) {
+      /* Start for Iterator SubSystem: '<S494>/Clutch' */
+      /* Start for Chart: '<S519>/Clutch' */
+      GVCU_HIL_Clutch_i_Start(&GVCU_HIL_B.CoreSubsys_h[ForEach_itr].sf_Clutch);
+
+      /* End of Start for SubSystem: '<S494>/Clutch' */
+    }
+
+    /* End of Start for SubSystem: '<S494>/Clutch' */
+    /* Start for Enabled SubSystem: '<S495>/Bristle Deflection' */
+    GVCU_HI_BristleDeflection_Start(&GVCU_HIL_DW.BristleDeflection_h,
+      &_rtXdis->BristleDeflection_h);
+
+    /* End of Start for SubSystem: '<S495>/Bristle Deflection' */
+
+    /* Start for S-Function (sigout): '<S17>/S-Function' */
+    /* Level2 S-Function Block: '<S17>/S-Function' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[2];
       sfcnStart(rts);
@@ -9175,8 +9146,8 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigin): '<S193>/S-Function' */
-    /* Level2 S-Function Block: '<S193>/S-Function' (sigin) */
+    /* Start for S-Function (sigout): '<S19>/S-Function' */
+    /* Level2 S-Function Block: '<S19>/S-Function' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[3];
       sfcnStart(rts);
@@ -9184,8 +9155,8 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigin): '<S191>/S-Function' */
-    /* Level2 S-Function Block: '<S191>/S-Function' (sigin) */
+    /* Start for S-Function (sigout): '<S20>/S-Function' */
+    /* Level2 S-Function Block: '<S20>/S-Function' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[4];
       sfcnStart(rts);
@@ -9193,8 +9164,26 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigin): '<S192>/S-Function' */
-    /* Level2 S-Function Block: '<S192>/S-Function' (sigin) */
+    /* Start for Constant: '<S1>/Zero6' */
+    GVCU_HIL_B.e2e_alive_counter = GVCU_HIL_P.Zero6_Value;
+
+    /* Start for Constant: '<S1>/Zero5' */
+    GVCU_HIL_B.e2e_checksum = GVCU_HIL_P.Zero5_Value;
+
+    /* Start for Constant: '<S1>/Zero8' */
+    GVCU_HIL_B.steer_tq = GVCU_HIL_P.Zero8_Value;
+
+    /* Start for Constant: '<S1>/Zero9' */
+    GVCU_HIL_B.steer_whl_ag = GVCU_HIL_P.Zero9_Value;
+
+    /* Start for Constant: '<S1>/Zero10' */
+    GVCU_HIL_B.steer_whl_rot_spd = GVCU_HIL_P.Zero10_Value;
+
+    /* Start for Constant: '<S1>/Zero7' */
+    GVCU_HIL_B.steer_whl_snsr_v = GVCU_HIL_P.Zero7_Value;
+
+    /* Start for S-Function (sigout): '<S12>/S-Function_1' */
+    /* Level2 S-Function Block: '<S12>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[5];
       sfcnStart(rts);
@@ -9202,102 +9191,8 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for Constant: '<S227>/domega_o' */
-    GVCU_HIL_B.domega_o = GVCU_HIL_P.FL_domega_o;
-
-    /* Start for Iterator SubSystem: '<S427>/Clutch' */
-    for (ForEach_itr_g = 0; ForEach_itr_g < 1; ForEach_itr_g++) {
-      /* Start for Iterator SubSystem: '<S427>/Clutch' */
-      /* Start for Chart: '<S452>/Clutch' */
-      GVCU_HIL_Clutch_Start(&GVCU_HIL_B.CoreSubsys[ForEach_itr_g].sf_Clutch);
-
-      /* End of Start for SubSystem: '<S427>/Clutch' */
-    }
-
-    /* End of Start for SubSystem: '<S427>/Clutch' */
-    /* Start for Iterator SubSystem: '<S483>/Clutch' */
-    for (ForEach_itr = 0; ForEach_itr < 1; ForEach_itr++) {
-      /* Start for Iterator SubSystem: '<S483>/Clutch' */
-      /* Start for Chart: '<S508>/Clutch' */
-      GVCU_HIL_Clutch_i_Start(&GVCU_HIL_B.CoreSubsys_h[ForEach_itr].sf_Clutch);
-
-      /* End of Start for SubSystem: '<S483>/Clutch' */
-    }
-
-    /* End of Start for SubSystem: '<S483>/Clutch' */
-    /* Start for InitialCondition: '<S243>/IC' */
-    GVCU_HIL_DW.IC_FirstOutputTime = true;
-
-    /* Start for InitialCondition: '<S244>/IC' */
-    GVCU_HIL_DW.IC_FirstOutputTime_m = true;
-
-    /* Start for InitialCondition: '<S239>/IC' */
-    GVCU_HIL_DW.IC_FirstOutputTime_c = true;
-
-    /* Start for If: '<S235>/If' */
-    (void) memset(&(GVCU_HIL_XDis.LockedShaftIntegrator_CSTATE_m), 1,
-                  1*sizeof(boolean_T));
-    (void) memset(&(GVCU_HIL_XDis.InputIntegrator_CSTATE_k), 1,
-                  2*sizeof(boolean_T));
-    GVCU_HIL_DW.If_ActiveSubsystem = -1;
-
-    /* Start for Constant: '<S259>/domega_o' */
-    GVCU_HIL_B.domega_o_a = GVCU_HIL_P.FR_domega_o;
-
-    /* Start for InitialCondition: '<S275>/IC' */
-    GVCU_HIL_DW.IC_FirstOutputTime_ca = true;
-
-    /* Start for InitialCondition: '<S276>/IC' */
-    GVCU_HIL_DW.IC_FirstOutputTime_n = true;
-
-    /* Start for InitialCondition: '<S271>/IC' */
-    GVCU_HIL_DW.IC_FirstOutputTime_g = true;
-
-    /* Start for If: '<S267>/If' */
-    (void) memset(&(GVCU_HIL_XDis.LockedShaftIntegrator_CSTATE), 1,
-                  1*sizeof(boolean_T));
-    (void) memset(&(GVCU_HIL_XDis.InputIntegrator_CSTATE), 1,
-                  2*sizeof(boolean_T));
-    GVCU_HIL_DW.If_ActiveSubsystem_o = -1;
-
-    /* Start for Enabled SubSystem: '<S428>/Bristle Deflection' */
-    GVCU_HI_BristleDeflection_Start(&GVCU_HIL_DW.BristleDeflection,
-      &_rtXdis->BristleDeflection);
-
-    /* End of Start for SubSystem: '<S428>/Bristle Deflection' */
-
-    /* Start for Enabled SubSystem: '<S484>/Bristle Deflection' */
-    GVCU_HI_BristleDeflection_Start(&GVCU_HIL_DW.BristleDeflection_h,
-      &_rtXdis->BristleDeflection_h);
-
-    /* End of Start for SubSystem: '<S484>/Bristle Deflection' */
-
-    /* Start for Constant: '<S4>/Constant37' */
-    GVCU_HIL_B.brake_pedal_travel_sensor_sts = GVCU_HIL_P.Constant37_Value;
-
-    /* Start for Constant: '<S4>/Constant38' */
-    GVCU_HIL_B.active_mode = GVCU_HIL_P.Constant38_Value;
-
-    /* Start for Constant: '<S4>/Constant30' */
-    GVCU_HIL_B.brake_pedal_travel_mm_v = GVCU_HIL_P.Constant30_Value;
-
-    /* Start for Constant: '<S4>/Zero181' */
-    GVCU_HIL_B.e2e_alive_counter = GVCU_HIL_P.Zero181_Value;
-
-    /* Start for Constant: '<S4>/Zero180' */
-    GVCU_HIL_B.e2e_checksum = GVCU_HIL_P.Zero180_Value;
-
-    /* Start for Constant: '<S4>/Constant39' */
-    GVCU_HIL_B.position_motor_v = GVCU_HIL_P.Constant39_Value;
-
-    /* Start for Constant: '<S4>/Constant34' */
-    GVCU_HIL_B.brake_pedal_travel_perc_v = GVCU_HIL_P.Constant34_Value;
-
-    /* Start for Constant: '<S4>/Constant36' */
-    GVCU_HIL_B.position_motor = GVCU_HIL_P.Constant36_Value;
-
-    /* Start for S-Function (sigout): '<S120>/S-Function_1' */
-    /* Level2 S-Function Block: '<S120>/S-Function_1' (sigout) */
+    /* Start for S-Function (sigout): '<S15>/S-Function' */
+    /* Level2 S-Function Block: '<S15>/S-Function' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[6];
       sfcnStart(rts);
@@ -9305,8 +9200,11 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S130>/S-Function' */
-    /* Level2 S-Function Block: '<S130>/S-Function' (sigout) */
+    /* Start for Constant: '<S1>/Zero15' */
+    GVCU_HIL_B.yaw_rate_qual = GVCU_HIL_P.Zero15_Value;
+
+    /* Start for S-Function (sigout): '<S18>/S-Function' */
+    /* Level2 S-Function Block: '<S18>/S-Function' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[7];
       sfcnStart(rts);
@@ -9314,14 +9212,136 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for Constant: '<S4>/Constant27' */
+    /* Start for S-Function (sigout): '<S43>/S-Function' */
+    /* Level2 S-Function Block: '<S43>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[8];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S44>/S-Function' */
+    /* Level2 S-Function Block: '<S44>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[9];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigin): '<S204>/S-Function' */
+    /* Level2 S-Function Block: '<S204>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[10];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigin): '<S202>/S-Function' */
+    /* Level2 S-Function Block: '<S202>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[11];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigin): '<S203>/S-Function' */
+    /* Level2 S-Function Block: '<S203>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[12];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for InitialCondition: '<S254>/IC' */
+    GVCU_HIL_DW.IC_FirstOutputTime = true;
+
+    /* Start for InitialCondition: '<S255>/IC' */
+    GVCU_HIL_DW.IC_FirstOutputTime_m = true;
+
+    /* Start for InitialCondition: '<S250>/IC' */
+    GVCU_HIL_DW.IC_FirstOutputTime_c = true;
+
+    /* Start for If: '<S246>/If' */
+    (void) memset(&(GVCU_HIL_XDis.LockedShaftIntegrator_CSTATE_m), 1,
+                  1*sizeof(boolean_T));
+    (void) memset(&(GVCU_HIL_XDis.InputIntegrator_CSTATE_k), 1,
+                  2*sizeof(boolean_T));
+    GVCU_HIL_DW.If_ActiveSubsystem = -1;
+
+    /* Start for Constant: '<S270>/domega_o' */
+    GVCU_HIL_B.domega_o_a = GVCU_HIL_P.FR_domega_o;
+
+    /* Start for InitialCondition: '<S286>/IC' */
+    GVCU_HIL_DW.IC_FirstOutputTime_ca = true;
+
+    /* Start for InitialCondition: '<S287>/IC' */
+    GVCU_HIL_DW.IC_FirstOutputTime_n = true;
+
+    /* Start for InitialCondition: '<S282>/IC' */
+    GVCU_HIL_DW.IC_FirstOutputTime_g = true;
+
+    /* Start for If: '<S278>/If' */
+    (void) memset(&(GVCU_HIL_XDis.LockedShaftIntegrator_CSTATE), 1,
+                  1*sizeof(boolean_T));
+    (void) memset(&(GVCU_HIL_XDis.InputIntegrator_CSTATE), 1,
+                  2*sizeof(boolean_T));
+    GVCU_HIL_DW.If_ActiveSubsystem_o = -1;
+
+    /* Start for Constant: '<S5>/Constant37' */
+    GVCU_HIL_B.brake_pedal_travel_sensor_sts = GVCU_HIL_P.Constant37_Value;
+
+    /* Start for Constant: '<S5>/Constant38' */
+    GVCU_HIL_B.active_mode = GVCU_HIL_P.Constant38_Value;
+
+    /* Start for Constant: '<S5>/Constant30' */
+    GVCU_HIL_B.brake_pedal_travel_mm_v = GVCU_HIL_P.Constant30_Value;
+
+    /* Start for Constant: '<S5>/Zero181' */
+    GVCU_HIL_B.e2e_alive_counter_p = GVCU_HIL_P.Zero181_Value;
+
+    /* Start for Constant: '<S5>/Zero180' */
+    GVCU_HIL_B.e2e_checksum_c = GVCU_HIL_P.Zero180_Value;
+
+    /* Start for Constant: '<S5>/Constant39' */
+    GVCU_HIL_B.position_motor_v = GVCU_HIL_P.Constant39_Value;
+
+    /* Start for Constant: '<S5>/Constant34' */
+    GVCU_HIL_B.brake_pedal_travel_perc_v = GVCU_HIL_P.Constant34_Value;
+
+    /* Start for Constant: '<S5>/Constant36' */
+    GVCU_HIL_B.position_motor = GVCU_HIL_P.Constant36_Value;
+
+    /* Start for S-Function (sigout): '<S131>/S-Function_1' */
+    /* Level2 S-Function Block: '<S131>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[13];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S141>/S-Function' */
+    /* Level2 S-Function Block: '<S141>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[14];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant27' */
     GVCU_HIL_B.available_charge_current = GVCU_HIL_P.Constant27_Value;
 
-    /* Start for Constant: '<S4>/Constant26' */
+    /* Start for Constant: '<S5>/Constant26' */
     GVCU_HIL_B.available_discharge_current = GVCU_HIL_P.Constant26_Value;
 
-    /* Start for TransportDelay: '<S4>/Transport Delay' incorporates:
-     *  TransportDelay: '<S5>/Transport Delay1'
+    /* Start for TransportDelay: '<S5>/Transport Delay' incorporates:
+     *  TransportDelay: '<S6>/Transport Delay1'
      */
     GVCU_HIL_DW.TransportDelay_RWORK[0] = 0.0;
     GVCU_HIL_DW.TransportDelay_IWORK[0] = 0;
@@ -9335,170 +9355,32 @@ void GVCU_HIL_initialize(void)
     ((real_T *)GVCU_HIL_DW.TransportDelay_PWORK[0])
       [GVCU_HIL_DW.TransportDelay_IWORK[3]] = tmp;
 
-    /* Start for Constant: '<S4>/Zero167' */
+    /* Start for Constant: '<S5>/Zero167' */
     GVCU_HIL_B.dcdc_contactor = GVCU_HIL_P.Zero167_Value;
 
-    /* Start for Constant: '<S4>/Zero171' */
+    /* Start for Constant: '<S5>/Zero171' */
     GVCU_HIL_B.e2e_alive_counter_disabled = GVCU_HIL_P.Zero171_Value;
 
-    /* Start for Constant: '<S4>/Zero170' */
+    /* Start for Constant: '<S5>/Zero170' */
     GVCU_HIL_B.e2e_checksum_disabled = GVCU_HIL_P.Zero170_Value;
 
-    /* Start for Constant: '<S4>/Zero164' */
+    /* Start for Constant: '<S5>/Zero164' */
     GVCU_HIL_B.front_hv_bat_fan_req = GVCU_HIL_P.Zero164_Value;
 
-    /* Start for Constant: '<S4>/Zero163' */
+    /* Start for Constant: '<S5>/Zero163' */
     GVCU_HIL_B.front_hv_bat_pump_req = GVCU_HIL_P.Zero163_Value;
 
-    /* Start for Constant: '<S4>/Zero165' */
+    /* Start for Constant: '<S5>/Zero165' */
     GVCU_HIL_B.hv_on_req_lv_charging = GVCU_HIL_P.Zero165_Value;
 
-    /* Start for Constant: '<S4>/Zero168' */
+    /* Start for Constant: '<S5>/Zero168' */
     GVCU_HIL_B.hvac_contactor = GVCU_HIL_P.Zero168_Value;
 
-    /* Start for Constant: '<S4>/Zero166' */
+    /* Start for Constant: '<S5>/Zero166' */
     GVCU_HIL_B.obc_contactor = GVCU_HIL_P.Zero166_Value;
 
-    /* Start for S-Function (sigout): '<S117>/S-Function_1' */
-    /* Level2 S-Function Block: '<S117>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[8];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigin): '<S125>/S-Function' */
-    /* Level2 S-Function Block: '<S125>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[9];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant' */
-    GVCU_HIL_B.third_shaft_speed = GVCU_HIL_P.Constant_Value_j;
-
-    /* Start for Constant: '<S4>/Constant11' */
-    GVCU_HIL_B.third_shaft_speed_v = GVCU_HIL_P.Constant11_Value_kw;
-
-    /* Start for S-Function (sigout): '<S119>/S-Function_1' */
-    /* Level2 S-Function Block: '<S119>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[10];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant28' */
-    GVCU_HIL_B.pack_current = GVCU_HIL_P.Constant28_Value;
-
-    /* Start for Constant: '<S4>/Constant29' */
-    GVCU_HIL_B.pack_voltage = GVCU_HIL_P.Constant29_Value;
-
-    /* Start for S-Function (sigout): '<S114>/S-Function_1' */
-    /* Level2 S-Function Block: '<S114>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[11];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Zero106' */
-    GVCU_HIL_B.ac_low_gas = GVCU_HIL_P.Zero106_Value;
-
-    /* Start for Constant: '<S4>/Zero107' */
-    GVCU_HIL_B.ac_pressure_high = GVCU_HIL_P.Zero107_Value;
-
-    /* Start for Constant: '<S4>/Zero108' */
-    GVCU_HIL_B.ac_pressure_low = GVCU_HIL_P.Zero108_Value;
-
-    /* Start for Constant: '<S4>/Zero110' */
-    GVCU_HIL_B.clima_hv_req = GVCU_HIL_P.Zero110_Value;
-
-    /* Start for Constant: '<S4>/Zero105' */
-    GVCU_HIL_B.compressor_fault = GVCU_HIL_P.Zero105_Value;
-
-    /* Start for Constant: '<S4>/Zero102' */
-    GVCU_HIL_B.compressor_hv_curr = GVCU_HIL_P.Zero102_Value;
-
-    /* Start for Constant: '<S4>/Zero101' */
-    GVCU_HIL_B.compressor_hv_volt = GVCU_HIL_P.Zero101_Value;
-
-    /* Start for Constant: '<S4>/Zero103' */
-    GVCU_HIL_B.compressor_op_state = GVCU_HIL_P.Zero103_Value;
-
-    /* Start for Constant: '<S4>/Zero104' */
-    GVCU_HIL_B.compressor_warning = GVCU_HIL_P.Zero104_Value;
-
-    /* Start for Constant: '<S4>/Zero109' */
-    GVCU_HIL_B.front_hvac_fan_request = GVCU_HIL_P.Zero109_Value;
-
-    /* Start for S-Function (sigout): '<S115>/S-Function_1' */
-    /* Level2 S-Function Block: '<S115>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[12];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Zero112' */
-    GVCU_HIL_B.e2e_alive_counter_l = GVCU_HIL_P.Zero112_Value;
-
-    /* Start for Constant: '<S4>/Zero111' */
-    GVCU_HIL_B.e2e_checksum_e = GVCU_HIL_P.Zero111_Value;
-
-    /* Start for S-Function (sigout): '<S116>/S-Function_1' */
-    /* Level2 S-Function Block: '<S116>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[13];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Zero174' */
-    GVCU_HIL_B.soh_v = GVCU_HIL_P.Zero174_Value;
-
-    /* Start for Constant: '<S4>/Zero178' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_i = GVCU_HIL_P.Zero178_Value;
-
-    /* Start for Constant: '<S4>/Zero172' */
-    GVCU_HIL_B.e2e_checksum_disabled_k = GVCU_HIL_P.Zero172_Value;
-
-    /* Start for Constant: '<S4>/Zero175' */
-    GVCU_HIL_B.soc = GVCU_HIL_P.Zero175_Value;
-
-    /* Start for Constant: '<S4>/Zero177' */
-    GVCU_HIL_B.soe = GVCU_HIL_P.Zero177_Value;
-
-    /* Start for Constant: '<S4>/Zero176' */
-    GVCU_HIL_B.soh = GVCU_HIL_P.Zero176_Value;
-
-    /* Start for Constant: '<S4>/Zero173' */
-    GVCU_HIL_B.thermal_runaway_detection = GVCU_HIL_P.Zero173_Value;
-
-    /* Start for Constant: '<S4>/Zero1' */
-    GVCU_HIL_B.soe_v = GVCU_HIL_P.Zero1_Value;
-
-    /* Start for S-Function (sigout): '<S118>/S-Function_1' */
-    /* Level2 S-Function Block: '<S118>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[14];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Zero3' */
-    GVCU_HIL_B.soc_predictive_v = GVCU_HIL_P.Zero3_Value;
-
-    /* Start for S-Function (sigout): '<S136>/S-Function' */
-    /* Level2 S-Function Block: '<S136>/S-Function' (sigout) */
+    /* Start for S-Function (sigout): '<S128>/S-Function_1' */
+    /* Level2 S-Function Block: '<S128>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[15];
       sfcnStart(rts);
@@ -9506,8 +9388,8 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S137>/S-Function' */
-    /* Level2 S-Function Block: '<S137>/S-Function' (sigout) */
+    /* Start for S-Function (sigin): '<S136>/S-Function' */
+    /* Level2 S-Function Block: '<S136>/S-Function' (sigin) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[16];
       sfcnStart(rts);
@@ -9515,13 +9397,460 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for Constant: '<S4>/Constant42' */
+    /* Start for Constant: '<S5>/Constant' */
+    GVCU_HIL_B.third_shaft_speed = GVCU_HIL_P.Constant_Value_j;
+
+    /* Start for Constant: '<S5>/Constant11' */
+    GVCU_HIL_B.third_shaft_speed_v = GVCU_HIL_P.Constant11_Value_kw;
+
+    /* Start for S-Function (sigout): '<S130>/S-Function_1' */
+    /* Level2 S-Function Block: '<S130>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[17];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant28' */
+    GVCU_HIL_B.pack_current = GVCU_HIL_P.Constant28_Value;
+
+    /* Start for Constant: '<S5>/Constant29' */
+    GVCU_HIL_B.pack_voltage = GVCU_HIL_P.Constant29_Value;
+
+    /* Start for S-Function (sigout): '<S125>/S-Function_1' */
+    /* Level2 S-Function Block: '<S125>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[18];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Zero106' */
+    GVCU_HIL_B.ac_low_gas = GVCU_HIL_P.Zero106_Value;
+
+    /* Start for Constant: '<S5>/Zero107' */
+    GVCU_HIL_B.ac_pressure_high = GVCU_HIL_P.Zero107_Value;
+
+    /* Start for Constant: '<S5>/Zero108' */
+    GVCU_HIL_B.ac_pressure_low = GVCU_HIL_P.Zero108_Value;
+
+    /* Start for Constant: '<S5>/Zero110' */
+    GVCU_HIL_B.clima_hv_req = GVCU_HIL_P.Zero110_Value;
+
+    /* Start for Constant: '<S5>/Zero105' */
+    GVCU_HIL_B.compressor_fault = GVCU_HIL_P.Zero105_Value;
+
+    /* Start for Constant: '<S5>/Zero102' */
+    GVCU_HIL_B.compressor_hv_curr = GVCU_HIL_P.Zero102_Value;
+
+    /* Start for Constant: '<S5>/Zero101' */
+    GVCU_HIL_B.compressor_hv_volt = GVCU_HIL_P.Zero101_Value;
+
+    /* Start for Constant: '<S5>/Zero103' */
+    GVCU_HIL_B.compressor_op_state = GVCU_HIL_P.Zero103_Value;
+
+    /* Start for Constant: '<S5>/Zero104' */
+    GVCU_HIL_B.compressor_warning = GVCU_HIL_P.Zero104_Value;
+
+    /* Start for Constant: '<S5>/Zero109' */
+    GVCU_HIL_B.front_hvac_fan_request = GVCU_HIL_P.Zero109_Value;
+
+    /* Start for S-Function (sigout): '<S126>/S-Function_1' */
+    /* Level2 S-Function Block: '<S126>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[19];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Zero112' */
+    GVCU_HIL_B.e2e_alive_counter_l = GVCU_HIL_P.Zero112_Value;
+
+    /* Start for Constant: '<S5>/Zero111' */
+    GVCU_HIL_B.e2e_checksum_e = GVCU_HIL_P.Zero111_Value;
+
+    /* Start for S-Function (sigout): '<S127>/S-Function_1' */
+    /* Level2 S-Function Block: '<S127>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[20];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Zero174' */
+    GVCU_HIL_B.soh_v = GVCU_HIL_P.Zero174_Value;
+
+    /* Start for Constant: '<S5>/Zero178' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_i = GVCU_HIL_P.Zero178_Value;
+
+    /* Start for Constant: '<S5>/Zero172' */
+    GVCU_HIL_B.e2e_checksum_disabled_k = GVCU_HIL_P.Zero172_Value;
+
+    /* Start for Constant: '<S5>/Zero175' */
+    GVCU_HIL_B.soc = GVCU_HIL_P.Zero175_Value;
+
+    /* Start for Constant: '<S5>/Zero177' */
+    GVCU_HIL_B.soe = GVCU_HIL_P.Zero177_Value;
+
+    /* Start for Constant: '<S5>/Zero176' */
+    GVCU_HIL_B.soh = GVCU_HIL_P.Zero176_Value;
+
+    /* Start for Constant: '<S5>/Zero173' */
+    GVCU_HIL_B.thermal_runaway_detection = GVCU_HIL_P.Zero173_Value;
+
+    /* Start for Constant: '<S5>/Zero1' */
+    GVCU_HIL_B.soe_v = GVCU_HIL_P.Zero1_Value;
+
+    /* Start for S-Function (sigout): '<S129>/S-Function_1' */
+    /* Level2 S-Function Block: '<S129>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[21];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Zero3' */
+    GVCU_HIL_B.soc_predictive_v = GVCU_HIL_P.Zero3_Value;
+
+    /* Start for S-Function (sigout): '<S147>/S-Function' */
+    /* Level2 S-Function Block: '<S147>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[22];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S148>/S-Function' */
+    /* Level2 S-Function Block: '<S148>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[23];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant42' */
     GVCU_HIL_B.soc_v = GVCU_HIL_P.Constant42_Value;
+
+    /* Start for S-Function (sigout): '<S149>/S-Function' */
+    /* Level2 S-Function Block: '<S149>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[24];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S150>/S-Function' */
+    /* Level2 S-Function Block: '<S150>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[25];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S151>/S-Function' */
+    /* Level2 S-Function Block: '<S151>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[26];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S152>/S-Function' */
+    /* Level2 S-Function Block: '<S152>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[27];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant17' */
+    GVCU_HIL_B.auto_shift_perf_mod_swt_req = GVCU_HIL_P.Constant17_Value_f;
+
+    /* Start for Constant: '<S5>/Constant31' */
+    GVCU_HIL_B.ddc_perf_mod_swt_req = GVCU_HIL_P.Constant31_Value;
+
+    /* Start for Constant: '<S5>/Zero19' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_b = GVCU_HIL_P.Zero19_Value;
+
+    /* Start for Constant: '<S5>/Zero18' */
+    GVCU_HIL_B.e2e_checksum_disabled_j = GVCU_HIL_P.Zero18_Value;
+
+    /* Start for Constant: '<S5>/Constant33' */
+    GVCU_HIL_B.eps_perf_mod_swt_req = GVCU_HIL_P.Constant33_Value;
+
+    /* Start for Constant: '<S5>/Constant12' */
+    GVCU_HIL_B.pedl_map_perf_mod_swt_req = GVCU_HIL_P.Constant12_Value_f;
+
+    /* Start for Constant: '<S5>/Constant15' */
+    GVCU_HIL_B.perf_mod_swt_req = GVCU_HIL_P.Constant15_Value_ow;
+
+    /* Start for Constant: '<S5>/Constant16' */
+    GVCU_HIL_B.perf_stgy_perf_mod_swt_req = GVCU_HIL_P.Constant16_Value_k;
+
+    /* Start for Constant: '<S5>/Constant13' */
+    GVCU_HIL_B.rgn_perf_mod_swt_req = GVCU_HIL_P.Constant13_Value_e;
+
+    /* Start for S-Function (sigout): '<S132>/S-Function_1' */
+    /* Level2 S-Function Block: '<S132>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[28];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Zero85' */
+    GVCU_HIL_B.dtc_list_12v = GVCU_HIL_P.Zero85_Value;
+
+    /* Start for Constant: '<S5>/Zero84' */
+    GVCU_HIL_B.dtc_list_48v = GVCU_HIL_P.Zero84_Value;
+
+    /* Start for Constant: '<S5>/Zero79' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_h = GVCU_HIL_P.Zero79_Value;
+
+    /* Start for Constant: '<S5>/Zero78' */
+    GVCU_HIL_B.e2e_checksum_disabled_n = GVCU_HIL_P.Zero78_Value;
+
+    /* Start for Constant: '<S5>/Zero86' */
+    GVCU_HIL_B.in_current_hv = GVCU_HIL_P.Zero86_Value;
+
+    /* Start for Constant: '<S5>/Zero87' */
+    GVCU_HIL_B.in_voltage_hv = GVCU_HIL_P.Zero87_Value;
+
+    /* Start for Constant: '<S5>/Zero83' */
+    GVCU_HIL_B.state_12v = GVCU_HIL_P.Zero83_Value;
+
+    /* Start for Constant: '<S5>/Zero81' */
+    GVCU_HIL_B.state_48v = GVCU_HIL_P.Zero81_Value;
+
+    /* Start for Constant: '<S5>/Zero82' */
+    GVCU_HIL_B.swt_ena_fb_12v = GVCU_HIL_P.Zero82_Value;
+
+    /* Start for Constant: '<S5>/Zero80' */
+    GVCU_HIL_B.swt_ena_fb_48v = GVCU_HIL_P.Zero80_Value;
+
+    /* Start for S-Function (sigout): '<S133>/S-Function_1' */
+    /* Level2 S-Function Block: '<S133>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[29];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant22' */
+    GVCU_HIL_B.available_power_12v = GVCU_HIL_P.Constant22_Value_m;
+
+    /* Start for Constant: '<S5>/Constant23' */
+    GVCU_HIL_B.available_power_48v = GVCU_HIL_P.Constant23_Value_a;
+
+    /* Start for Constant: '<S5>/Constant20' */
+    GVCU_HIL_B.current_output_12v = GVCU_HIL_P.Constant20_Value_i;
+
+    /* Start for Constant: '<S5>/Constant21' */
+    GVCU_HIL_B.current_output_48v = GVCU_HIL_P.Constant21_Value_c;
+
+    /* Start for Constant: '<S5>/Constant24' */
+    GVCU_HIL_B.dcdc_fan_req = GVCU_HIL_P.Constant24_Value_o;
+
+    /* Start for Constant: '<S5>/Constant25' */
+    GVCU_HIL_B.dcdc_pump_req = GVCU_HIL_P.Constant25_Value;
+
+    /* Start for Constant: '<S5>/Zero89' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_f = GVCU_HIL_P.Zero89_Value;
+
+    /* Start for Constant: '<S5>/Zero88' */
+    GVCU_HIL_B.e2e_checksum_disabled_e = GVCU_HIL_P.Zero88_Value;
+
+    /* Start for S-Function (sigout): '<S134>/S-Function_1' */
+    /* Level2 S-Function Block: '<S134>/S-Function_1' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[30];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant1' */
+    GVCU_HIL_B.bar = GVCU_HIL_P.Constant1_Value_ey;
 
     /* Start for S-Function (sigout): '<S138>/S-Function' */
     /* Level2 S-Function Block: '<S138>/S-Function' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[17];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[31];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant14' */
+    GVCU_HIL_B.Constant14 = GVCU_HIL_P.Constant14_Value_mb;
+
+    /* Start for S-Function (sigout): '<S156>/S-Function' */
+    /* Level2 S-Function Block: '<S156>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[32];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant18' */
+    GVCU_HIL_B.Constant18 = GVCU_HIL_P.Constant18_Value_b3;
+
+    /* Start for S-Function (sigout): '<S154>/S-Function' */
+    /* Level2 S-Function Block: '<S154>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[33];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant19' */
+    GVCU_HIL_B.Constant19 = GVCU_HIL_P.Constant19_Value_a;
+
+    /* Start for S-Function (sigout): '<S157>/S-Function' */
+    /* Level2 S-Function Block: '<S157>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[34];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant2' */
+    GVCU_HIL_B.degrees40 = GVCU_HIL_P.Constant2_Value_em;
+
+    /* Start for S-Function (sigout): '<S145>/S-Function' */
+    /* Level2 S-Function Block: '<S145>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[35];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant3' */
+    GVCU_HIL_B.bar_e = GVCU_HIL_P.Constant3_Value_i;
+
+    /* Start for S-Function (sigout): '<S155>/S-Function' */
+    /* Level2 S-Function Block: '<S155>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[36];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant32' */
+    GVCU_HIL_B.imob_st = GVCU_HIL_P.Constant32_Value;
+
+    /* Start for S-Function (sigout): '<S159>/S-Function' */
+    /* Level2 S-Function Block: '<S159>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[37];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant4' */
+    GVCU_HIL_B.degrees40_j = GVCU_HIL_P.Constant4_Value_o;
+
+    /* Start for S-Function (sigout): '<S140>/S-Function' */
+    /* Level2 S-Function Block: '<S140>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[38];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant5' */
+    GVCU_HIL_B.brake_pedal_travel_mm_v_e = GVCU_HIL_P.Constant5_Value_g;
+
+    /* Start for S-Function (sigout): '<S142>/S-Function' */
+    /* Level2 S-Function Block: '<S142>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[39];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for Constant: '<S5>/Constant9' */
+    GVCU_HIL_B.active_mode_m = GVCU_HIL_P.Constant9_Value_d;
+
+    /* Start for S-Function (sigout): '<S144>/S-Function' */
+    /* Level2 S-Function Block: '<S144>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[40];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S143>/S-Function' */
+    /* Level2 S-Function Block: '<S143>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[41];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S146>/S-Function' */
+    /* Level2 S-Function Block: '<S146>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[42];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S158>/S-Function' */
+    /* Level2 S-Function Block: '<S158>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[43];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigin): '<S135>/S-Function' */
+    /* Level2 S-Function Block: '<S135>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[44];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigout): '<S153>/S-Function' */
+    /* Level2 S-Function Block: '<S153>/S-Function' (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[45];
+      sfcnStart(rts);
+      if (ssGetErrorStatus(rts) != (NULL))
+        return;
+    }
+
+    /* Start for S-Function (sigin): '<S137>/S-Function' */
+    /* Level2 S-Function Block: '<S137>/S-Function' (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[46];
       sfcnStart(rts);
       if (ssGetErrorStatus(rts) != (NULL))
         return;
@@ -9530,352 +9859,43 @@ void GVCU_HIL_initialize(void)
     /* Start for S-Function (sigout): '<S139>/S-Function' */
     /* Level2 S-Function Block: '<S139>/S-Function' (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[18];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[47];
       sfcnStart(rts);
       if (ssGetErrorStatus(rts) != (NULL))
         return;
     }
 
-    /* Start for S-Function (sigout): '<S140>/S-Function' */
-    /* Level2 S-Function Block: '<S140>/S-Function' (sigout) */
+    /* Start for S-Function (sigin): '<S174>/S-Function' */
+    /* Level2 S-Function Block: '<S174>/S-Function' (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[19];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[48];
       sfcnStart(rts);
       if (ssGetErrorStatus(rts) != (NULL))
         return;
     }
 
-    /* Start for S-Function (sigout): '<S141>/S-Function' */
-    /* Level2 S-Function Block: '<S141>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[20];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant17' */
-    GVCU_HIL_B.auto_shift_perf_mod_swt_req = GVCU_HIL_P.Constant17_Value_f;
-
-    /* Start for Constant: '<S4>/Constant31' */
-    GVCU_HIL_B.ddc_perf_mod_swt_req = GVCU_HIL_P.Constant31_Value;
-
-    /* Start for Constant: '<S4>/Zero19' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_b = GVCU_HIL_P.Zero19_Value;
-
-    /* Start for Constant: '<S4>/Zero18' */
-    GVCU_HIL_B.e2e_checksum_disabled_j = GVCU_HIL_P.Zero18_Value;
-
-    /* Start for Constant: '<S4>/Constant33' */
-    GVCU_HIL_B.eps_perf_mod_swt_req = GVCU_HIL_P.Constant33_Value;
-
-    /* Start for Constant: '<S4>/Constant12' */
-    GVCU_HIL_B.pedl_map_perf_mod_swt_req = GVCU_HIL_P.Constant12_Value_f;
-
-    /* Start for Constant: '<S4>/Constant15' */
-    GVCU_HIL_B.perf_mod_swt_req = GVCU_HIL_P.Constant15_Value_ow;
-
-    /* Start for Constant: '<S4>/Constant16' */
-    GVCU_HIL_B.perf_stgy_perf_mod_swt_req = GVCU_HIL_P.Constant16_Value_k;
-
-    /* Start for Constant: '<S4>/Constant13' */
-    GVCU_HIL_B.rgn_perf_mod_swt_req = GVCU_HIL_P.Constant13_Value_e;
-
-    /* Start for S-Function (sigout): '<S121>/S-Function_1' */
-    /* Level2 S-Function Block: '<S121>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[21];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Zero85' */
-    GVCU_HIL_B.dtc_list_12v = GVCU_HIL_P.Zero85_Value;
-
-    /* Start for Constant: '<S4>/Zero84' */
-    GVCU_HIL_B.dtc_list_48v = GVCU_HIL_P.Zero84_Value;
-
-    /* Start for Constant: '<S4>/Zero79' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_h = GVCU_HIL_P.Zero79_Value;
-
-    /* Start for Constant: '<S4>/Zero78' */
-    GVCU_HIL_B.e2e_checksum_disabled_n = GVCU_HIL_P.Zero78_Value;
-
-    /* Start for Constant: '<S4>/Zero86' */
-    GVCU_HIL_B.in_current_hv = GVCU_HIL_P.Zero86_Value;
-
-    /* Start for Constant: '<S4>/Zero87' */
-    GVCU_HIL_B.in_voltage_hv = GVCU_HIL_P.Zero87_Value;
-
-    /* Start for Constant: '<S4>/Zero83' */
-    GVCU_HIL_B.state_12v = GVCU_HIL_P.Zero83_Value;
-
-    /* Start for Constant: '<S4>/Zero81' */
-    GVCU_HIL_B.state_48v = GVCU_HIL_P.Zero81_Value;
-
-    /* Start for Constant: '<S4>/Zero82' */
-    GVCU_HIL_B.swt_ena_fb_12v = GVCU_HIL_P.Zero82_Value;
-
-    /* Start for Constant: '<S4>/Zero80' */
-    GVCU_HIL_B.swt_ena_fb_48v = GVCU_HIL_P.Zero80_Value;
-
-    /* Start for S-Function (sigout): '<S122>/S-Function_1' */
-    /* Level2 S-Function Block: '<S122>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[22];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant22' */
-    GVCU_HIL_B.available_power_12v = GVCU_HIL_P.Constant22_Value_m;
-
-    /* Start for Constant: '<S4>/Constant23' */
-    GVCU_HIL_B.available_power_48v = GVCU_HIL_P.Constant23_Value_a;
-
-    /* Start for Constant: '<S4>/Constant20' */
-    GVCU_HIL_B.current_output_12v = GVCU_HIL_P.Constant20_Value_i;
-
-    /* Start for Constant: '<S4>/Constant21' */
-    GVCU_HIL_B.current_output_48v = GVCU_HIL_P.Constant21_Value_c;
-
-    /* Start for Constant: '<S4>/Constant24' */
-    GVCU_HIL_B.dcdc_fan_req = GVCU_HIL_P.Constant24_Value_o;
-
-    /* Start for Constant: '<S4>/Constant25' */
-    GVCU_HIL_B.dcdc_pump_req = GVCU_HIL_P.Constant25_Value;
-
-    /* Start for Constant: '<S4>/Zero89' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_f = GVCU_HIL_P.Zero89_Value;
-
-    /* Start for Constant: '<S4>/Zero88' */
-    GVCU_HIL_B.e2e_checksum_disabled_e = GVCU_HIL_P.Zero88_Value;
-
-    /* Start for S-Function (sigout): '<S123>/S-Function_1' */
-    /* Level2 S-Function Block: '<S123>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[23];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant1' */
-    GVCU_HIL_B.bar = GVCU_HIL_P.Constant1_Value_ey;
-
-    /* Start for S-Function (sigout): '<S127>/S-Function' */
-    /* Level2 S-Function Block: '<S127>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[24];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant14' */
-    GVCU_HIL_B.Constant14 = GVCU_HIL_P.Constant14_Value_mb;
-
-    /* Start for S-Function (sigout): '<S145>/S-Function' */
-    /* Level2 S-Function Block: '<S145>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[25];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant18' */
-    GVCU_HIL_B.Constant18 = GVCU_HIL_P.Constant18_Value_b3;
-
-    /* Start for S-Function (sigout): '<S143>/S-Function' */
-    /* Level2 S-Function Block: '<S143>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[26];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant19' */
-    GVCU_HIL_B.Constant19 = GVCU_HIL_P.Constant19_Value_a;
-
-    /* Start for S-Function (sigout): '<S146>/S-Function' */
-    /* Level2 S-Function Block: '<S146>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[27];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant2' */
-    GVCU_HIL_B.degrees40 = GVCU_HIL_P.Constant2_Value_e;
-
-    /* Start for S-Function (sigout): '<S134>/S-Function' */
-    /* Level2 S-Function Block: '<S134>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[28];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant3' */
-    GVCU_HIL_B.bar_e = GVCU_HIL_P.Constant3_Value_i4;
-
-    /* Start for S-Function (sigout): '<S144>/S-Function' */
-    /* Level2 S-Function Block: '<S144>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[29];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant32' */
-    GVCU_HIL_B.imob_st = GVCU_HIL_P.Constant32_Value;
-
-    /* Start for S-Function (sigout): '<S148>/S-Function' */
-    /* Level2 S-Function Block: '<S148>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[30];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant4' */
-    GVCU_HIL_B.degrees40_j = GVCU_HIL_P.Constant4_Value_o;
-
-    /* Start for S-Function (sigout): '<S129>/S-Function' */
-    /* Level2 S-Function Block: '<S129>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[31];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant5' */
-    GVCU_HIL_B.brake_pedal_travel_mm_v_e = GVCU_HIL_P.Constant5_Value_g;
-
-    /* Start for S-Function (sigout): '<S131>/S-Function' */
-    /* Level2 S-Function Block: '<S131>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[32];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S4>/Constant9' */
-    GVCU_HIL_B.active_mode_m = GVCU_HIL_P.Constant9_Value_d;
-
-    /* Start for S-Function (sigout): '<S133>/S-Function' */
-    /* Level2 S-Function Block: '<S133>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[33];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigout): '<S132>/S-Function' */
-    /* Level2 S-Function Block: '<S132>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[34];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigout): '<S135>/S-Function' */
-    /* Level2 S-Function Block: '<S135>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[35];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigout): '<S147>/S-Function' */
-    /* Level2 S-Function Block: '<S147>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[36];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigin): '<S124>/S-Function' */
-    /* Level2 S-Function Block: '<S124>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[37];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigout): '<S142>/S-Function' */
-    /* Level2 S-Function Block: '<S142>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[38];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigin): '<S126>/S-Function' */
-    /* Level2 S-Function Block: '<S126>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[39];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigout): '<S128>/S-Function' */
-    /* Level2 S-Function Block: '<S128>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[40];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigin): '<S163>/S-Function' */
-    /* Level2 S-Function Block: '<S163>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[41];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S5>/Constant13' */
+    /* Start for Constant: '<S6>/Constant13' */
     GVCU_HIL_B.e2e_alive_counter_disabled_d = GVCU_HIL_P.Constant13_Value_m;
 
-    /* Start for Constant: '<S5>/Constant14' */
+    /* Start for Constant: '<S6>/Constant14' */
     GVCU_HIL_B.e2e_checksum_disabled_f = GVCU_HIL_P.Constant14_Value_e;
 
-    /* Start for Constant: '<S5>/Constant9' */
+    /* Start for Constant: '<S6>/Constant9' */
     GVCU_HIL_B.fault_level = GVCU_HIL_P.Constant9_Value_f;
 
-    /* Start for Constant: '<S5>/Constant15' */
+    /* Start for Constant: '<S6>/Constant15' */
     GVCU_HIL_B.inv_enable_feedback = GVCU_HIL_P.Constant15_Value_j;
 
-    /* Start for Constant: '<S5>/Constant17' */
+    /* Start for Constant: '<S6>/Constant17' */
     GVCU_HIL_B.motor_enable_feedback = GVCU_HIL_P.Constant17_Value_o1;
 
-    /* Start for Constant: '<S5>/Constant18' */
+    /* Start for Constant: '<S6>/Constant18' */
     GVCU_HIL_B.safe_state_method = GVCU_HIL_P.Constant18_Value_g;
 
-    /* Start for Constant: '<S5>/Constant19' */
+    /* Start for Constant: '<S6>/Constant19' */
     GVCU_HIL_B.safe_state_req_feedback = GVCU_HIL_P.Constant19_Value_o3;
 
-    /* Start for TransportDelay: '<S5>/Transport Delay1' */
+    /* Start for TransportDelay: '<S6>/Transport Delay1' */
     GVCU_HIL_DW.TransportDelay1_RWORK[0] = 0.0;
     GVCU_HIL_DW.TransportDelay1_IWORK[0] = 0;
     GVCU_HIL_DW.TransportDelay1_IWORK[1] = 0;
@@ -9887,248 +9907,11 @@ void GVCU_HIL_initialize(void)
     ((real_T *)GVCU_HIL_DW.TransportDelay1_PWORK[0])
       [GVCU_HIL_DW.TransportDelay1_IWORK[3]] = tmp;
 
-    /* Start for Constant: '<S5>/Constant6' */
+    /* Start for Constant: '<S6>/Constant6' */
     GVCU_HIL_B.torque_limit_reason = GVCU_HIL_P.Constant6_Value_hd;
 
-    /* Start for S-Function (sigout): '<S152>/S-Function_1' */
-    /* Level2 S-Function Block: '<S152>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[42];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigin): '<S160>/S-Function' */
-    /* Level2 S-Function Block: '<S160>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[43];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigin): '<S161>/S-Function' */
-    /* Level2 S-Function Block: '<S161>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[44];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for S-Function (sigin): '<S162>/S-Function' */
-    /* Level2 S-Function Block: '<S162>/S-Function' (sigin) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[45];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S5>/Constant10' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_m = GVCU_HIL_P.Constant10_Value_e;
-
-    /* Start for Constant: '<S5>/Constant11' */
-    GVCU_HIL_B.e2e_checksum_disabled_nu = GVCU_HIL_P.Constant11_Value_m;
-
-    /* Start for Constant: '<S5>/Constant4' */
-    GVCU_HIL_B.motor_speed_valid_bit = GVCU_HIL_P.Constant4_Value_b;
-
-    /* Start for Constant: '<S5>/Constant35' */
-    GVCU_HIL_B.pos_offset_a = GVCU_HIL_P.Constant35_Value;
-
-    /* Start for Constant: '<S5>/Constant36' */
-    GVCU_HIL_B.pos_offset_b = GVCU_HIL_P.Constant36_Value_p;
-
-    /* Start for S-Function (sigout): '<S153>/S-Function_1' */
-    /* Level2 S-Function Block: '<S153>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[46];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S5>/Constant106' */
-    GVCU_HIL_B.can_comm_loss_error = GVCU_HIL_P.Constant106_Value;
-
-    /* Start for Constant: '<S5>/Constant80' */
-    GVCU_HIL_B.can_comm_loss_warning = GVCU_HIL_P.Constant80_Value;
-
-    /* Start for Constant: '<S5>/Constant79' */
-    GVCU_HIL_B.can_e2e = GVCU_HIL_P.Constant79_Value;
-
-    /* Start for Constant: '<S5>/Constant53' */
-    GVCU_HIL_B.coolant_t_fault = GVCU_HIL_P.Constant53_Value;
-
-    /* Start for Constant: '<S5>/Constant78' */
-    GVCU_HIL_B.coolant_t_rationality = GVCU_HIL_P.Constant78_Value;
-
-    /* Start for Constant: '<S5>/Constant57' */
-    GVCU_HIL_B.coolant_t_sensing = GVCU_HIL_P.Constant57_Value;
-
-    /* Start for Constant: '<S5>/Constant77' */
-    GVCU_HIL_B.coolant_t_warning = GVCU_HIL_P.Constant77_Value;
-
-    /* Start for Constant: '<S5>/Constant66' */
-    GVCU_HIL_B.crash_signal = GVCU_HIL_P.Constant66_Value;
-
-    /* Start for Constant: '<S5>/Constant54' */
-    GVCU_HIL_B.dc_link_t_fault = GVCU_HIL_P.Constant54_Value;
-
-    /* Start for Constant: '<S5>/Constant50' */
-    GVCU_HIL_B.dc_link_t_rationality = GVCU_HIL_P.Constant50_Value;
-
-    /* Start for Constant: '<S5>/Constant51' */
-    GVCU_HIL_B.dc_link_t_sensing = GVCU_HIL_P.Constant51_Value;
-
-    /* Start for Constant: '<S5>/Constant49' */
-    GVCU_HIL_B.dc_link_t_warning = GVCU_HIL_P.Constant49_Value;
-
-    /* Start for Constant: '<S5>/Constant46' */
-    GVCU_HIL_B.driver_t_fault = GVCU_HIL_P.Constant46_Value;
-
-    /* Start for Constant: '<S5>/Constant48' */
-    GVCU_HIL_B.driver_t_rationality = GVCU_HIL_P.Constant48_Value;
-
-    /* Start for Constant: '<S5>/Constant52' */
-    GVCU_HIL_B.driver_t_sensing = GVCU_HIL_P.Constant52_Value;
-
-    /* Start for Constant: '<S5>/Constant47' */
-    GVCU_HIL_B.driver_t_warning = GVCU_HIL_P.Constant47_Value;
-
-    /* Start for Constant: '<S5>/Constant7' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_iq = GVCU_HIL_P.Constant7_Value_e;
-
-    /* Start for Constant: '<S5>/Constant8' */
-    GVCU_HIL_B.e2e_checksum_disabled_p = GVCU_HIL_P.Constant8_Value_ld;
-
-    /* Start for Constant: '<S5>/Constant45' */
-    GVCU_HIL_B.gate_driver_bist_fault = GVCU_HIL_P.Constant45_Value;
-
-    /* Start for Constant: '<S5>/Constant40' */
-    GVCU_HIL_B.gate_driver_fault = GVCU_HIL_P.Constant40_Value;
-
-    /* Start for Constant: '<S5>/Constant41' */
-    GVCU_HIL_B.gate_driver_warning = GVCU_HIL_P.Constant41_Value;
-
-    /* Start for Constant: '<S5>/Constant60' */
-    GVCU_HIL_B.inverter_boards_t_fault = GVCU_HIL_P.Constant60_Value;
-
-    /* Start for Constant: '<S5>/Constant62' */
-    GVCU_HIL_B.inverter_boards_t_rationality = GVCU_HIL_P.Constant62_Value;
-
-    /* Start for Constant: '<S5>/Constant64' */
-    GVCU_HIL_B.inverter_boards_t_sensing = GVCU_HIL_P.Constant64_Value;
-
-    /* Start for Constant: '<S5>/Constant61' */
-    GVCU_HIL_B.inverter_boards_t_warning = GVCU_HIL_P.Constant61_Value;
-
-    /* Start for Constant: '<S5>/Constant70' */
-    GVCU_HIL_B.ipc_lock_cm = GVCU_HIL_P.Constant70_Value;
-
-    /* Start for Constant: '<S5>/Constant68' */
-    GVCU_HIL_B.ipc_lock_main = GVCU_HIL_P.Constant68_Value;
-
-    /* Start for Constant: '<S5>/Constant76' */
-    GVCU_HIL_B.lv_ext_supply_ov = GVCU_HIL_P.Constant76_Value;
-
-    /* Start for Constant: '<S5>/Constant75' */
-    GVCU_HIL_B.lv_ext_supply_uv = GVCU_HIL_P.Constant75_Value;
-
-    /* Start for Constant: '<S5>/Constant110' */
-    GVCU_HIL_B.lv_int_supply = GVCU_HIL_P.Constant110_Value;
-
-    /* Start for Constant: '<S5>/Constant67' */
-    GVCU_HIL_B.lv_self_check_main = GVCU_HIL_P.Constant67_Value;
-
-    /* Start for Constant: '<S5>/Constant16' */
-    GVCU_HIL_B.mcu_bist_fault = GVCU_HIL_P.Constant16_Value_h;
-
-    /* Start for Constant: '<S5>/Constant34' */
-    GVCU_HIL_B.mcu_fault = GVCU_HIL_P.Constant34_Value_m;
-
-    /* Start for Constant: '<S5>/Constant42' */
-    GVCU_HIL_B.mosfet_t_fault = GVCU_HIL_P.Constant42_Value_p;
-
-    /* Start for Constant: '<S5>/Constant55' */
-    GVCU_HIL_B.mosfet_t_rationality = GVCU_HIL_P.Constant55_Value;
-
-    /* Start for Constant: '<S5>/Constant56' */
-    GVCU_HIL_B.mosfet_t_sensing = GVCU_HIL_P.Constant56_Value;
-
-    /* Start for Constant: '<S5>/Constant44' */
-    GVCU_HIL_B.mosfet_t_warning = GVCU_HIL_P.Constant44_Value;
-
-    /* Start for Constant: '<S5>/Constant58' */
-    GVCU_HIL_B.motor_t_fault = GVCU_HIL_P.Constant58_Value;
-
-    /* Start for Constant: '<S5>/Constant63' */
-    GVCU_HIL_B.motor_t_rationality = GVCU_HIL_P.Constant63_Value;
-
-    /* Start for Constant: '<S5>/Constant65' */
-    GVCU_HIL_B.motor_t_sensing = GVCU_HIL_P.Constant65_Value;
-
-    /* Start for Constant: '<S5>/Constant59' */
-    GVCU_HIL_B.motor_t_warning = GVCU_HIL_P.Constant59_Value;
-
-    /* Start for Constant: '<S5>/Constant39' */
-    GVCU_HIL_B.sbc_bist_fault = GVCU_HIL_P.Constant39_Value_h;
-
-    /* Start for Constant: '<S5>/Constant43' */
-    GVCU_HIL_B.sbc_fault = GVCU_HIL_P.Constant43_Value;
-
-    /* Start for Constant: '<S5>/Constant72' */
-    GVCU_HIL_B.sw_compatibility = GVCU_HIL_P.Constant72_Value;
-
-    /* Start for Constant: '<S5>/Constant71' */
-    GVCU_HIL_B.task_alive_cm = GVCU_HIL_P.Constant71_Value;
-
-    /* Start for Constant: '<S5>/Constant74' */
-    GVCU_HIL_B.task_alive_main = GVCU_HIL_P.Constant74_Value;
-
-    /* Start for Constant: '<S5>/Constant73' */
-    GVCU_HIL_B.task_deadline_cm = GVCU_HIL_P.Constant73_Value;
-
-    /* Start for Constant: '<S5>/Constant69' */
-    GVCU_HIL_B.task_deadline_main = GVCU_HIL_P.Constant69_Value;
-
-    /* Start for Constant: '<S5>/Constant108' */
-    GVCU_HIL_B.y_cap_ctrl_u = GVCU_HIL_P.Constant108_Value;
-
-    /* Start for S-Function (sigout): '<S154>/S-Function_1' */
-    /* Level2 S-Function Block: '<S154>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[47];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S5>/Constant24' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_a = GVCU_HIL_P.Constant24_Value_on;
-
-    /* Start for Constant: '<S5>/Constant25' */
-    GVCU_HIL_B.e2e_checksum_disabled_o = GVCU_HIL_P.Constant25_Value_k;
-
-    /* Start for S-Function (sigout): '<S155>/S-Function_1' */
-    /* Level2 S-Function Block: '<S155>/S-Function_1' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[48];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S5>/Constant32' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_e = GVCU_HIL_P.Constant32_Value_k;
-
-    /* Start for Constant: '<S5>/Constant33' */
-    GVCU_HIL_B.e2e_checksum_disabled_h = GVCU_HIL_P.Constant33_Value_a;
-
-    /* Start for S-Function (sigout): '<S156>/S-Function_1' */
-    /* Level2 S-Function Block: '<S156>/S-Function_1' (sigout) */
+    /* Start for S-Function (sigout): '<S163>/S-Function_1' */
+    /* Level2 S-Function Block: '<S163>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[49];
       sfcnStart(rts);
@@ -10136,14 +9919,8 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for Constant: '<S5>/Constant37' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_hq = GVCU_HIL_P.Constant37_Value_h;
-
-    /* Start for Constant: '<S5>/Constant38' */
-    GVCU_HIL_B.e2e_checksum_disabled_ev = GVCU_HIL_P.Constant38_Value_m;
-
-    /* Start for S-Function (sigout): '<S157>/S-Function_1' */
-    /* Level2 S-Function Block: '<S157>/S-Function_1' (sigout) */
+    /* Start for S-Function (sigin): '<S171>/S-Function' */
+    /* Level2 S-Function Block: '<S171>/S-Function' (sigin) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[50];
       sfcnStart(rts);
@@ -10151,98 +9928,8 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for Constant: '<S5>/Constant89' */
-    GVCU_HIL_B.ac_i_sensor_calibration = GVCU_HIL_P.Constant89_Value;
-
-    /* Start for Constant: '<S5>/Constant84' */
-    GVCU_HIL_B.ac_i_sensor_oor = GVCU_HIL_P.Constant84_Value;
-
-    /* Start for Constant: '<S5>/Constant99' */
-    GVCU_HIL_B.ac_phase_i_imbalance = GVCU_HIL_P.Constant99_Value;
-
-    /* Start for Constant: '<S5>/Constant100' */
-    GVCU_HIL_B.ac_phase_i_oc = GVCU_HIL_P.Constant100_Value;
-
-    /* Start for Constant: '<S5>/Constant86' */
-    GVCU_HIL_B.ac_phase_loss = GVCU_HIL_P.Constant86_Value;
-
-    /* Start for Constant: '<S5>/Constant85' */
-    GVCU_HIL_B.ac_phase_short = GVCU_HIL_P.Constant85_Value;
-
-    /* Start for Constant: '<S5>/Constant88' */
-    GVCU_HIL_B.ac_phase_u_rationnality = GVCU_HIL_P.Constant88_Value;
-
-    /* Start for Constant: '<S5>/Constant105' */
-    GVCU_HIL_B.ctrl_mode_rationnality = GVCU_HIL_P.Constant105_Value;
-
-    /* Start for Constant: '<S5>/Constant90' */
-    GVCU_HIL_B.dc_bus_i_oc = GVCU_HIL_P.Constant90_Value;
-
-    /* Start for Constant: '<S5>/Constant91' */
-    GVCU_HIL_B.dc_bus_i_rationnality = GVCU_HIL_P.Constant91_Value;
-
-    /* Start for Constant: '<S5>/Constant92' */
-    GVCU_HIL_B.dc_bus_i_sensing = GVCU_HIL_P.Constant92_Value;
-
-    /* Start for Constant: '<S5>/Constant96' */
-    GVCU_HIL_B.dc_bus_u_ov = GVCU_HIL_P.Constant96_Value;
-
-    /* Start for Constant: '<S5>/Constant93' */
-    GVCU_HIL_B.dc_bus_u_rationnality = GVCU_HIL_P.Constant93_Value;
-
-    /* Start for Constant: '<S5>/Constant94' */
-    GVCU_HIL_B.dc_bus_u_sensing = GVCU_HIL_P.Constant94_Value;
-
-    /* Start for Constant: '<S5>/Constant98' */
-    GVCU_HIL_B.dc_bus_u_uv = GVCU_HIL_P.Constant98_Value;
-
-    /* Start for Constant: '<S5>/Constant114' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_g = GVCU_HIL_P.Constant114_Value;
-
-    /* Start for Constant: '<S5>/Constant81' */
-    GVCU_HIL_B.e2e_checksum_disabled_c = GVCU_HIL_P.Constant81_Value;
-
-    /* Start for Constant: '<S5>/Constant103' */
-    GVCU_HIL_B.hv_self_check_ctrl = GVCU_HIL_P.Constant103_Value;
-
-    /* Start for Constant: '<S5>/Constant104' */
-    GVCU_HIL_B.ipc_lock_ctrl = GVCU_HIL_P.Constant104_Value;
-
-    /* Start for Constant: '<S5>/Constant102' */
-    GVCU_HIL_B.lv_self_check_ctrl = GVCU_HIL_P.Constant102_Value;
-
-    /* Start for Constant: '<S5>/Constant95' */
-    GVCU_HIL_B.motor_over_speed = GVCU_HIL_P.Constant95_Value;
-
-    /* Start for Constant: '<S5>/Constant97' */
-    GVCU_HIL_B.motor_speed_rationnality = GVCU_HIL_P.Constant97_Value;
-
-    /* Start for Constant: '<S5>/Constant112' */
-    GVCU_HIL_B.motor_stall = GVCU_HIL_P.Constant112_Value;
-
-    /* Start for Constant: '<S5>/Constant82' */
-    GVCU_HIL_B.rslv_bist_fault = GVCU_HIL_P.Constant82_Value;
-
-    /* Start for Constant: '<S5>/Constant83' */
-    GVCU_HIL_B.rslv_fault = GVCU_HIL_P.Constant83_Value;
-
-    /* Start for Constant: '<S5>/Constant87' */
-    GVCU_HIL_B.rslv_offset = GVCU_HIL_P.Constant87_Value;
-
-    /* Start for Constant: '<S5>/Constant107' */
-    GVCU_HIL_B.task_alive_ctrl = GVCU_HIL_P.Constant107_Value;
-
-    /* Start for Constant: '<S5>/Constant109' */
-    GVCU_HIL_B.task_deadline_ctrl = GVCU_HIL_P.Constant109_Value;
-
-    /* Start for Constant: '<S5>/Constant101' */
-    GVCU_HIL_B.trq_command_rationnality = GVCU_HIL_P.Constant101_Value;
-
-    /* Start for Constant: '<S5>/Constant113' */
-    GVCU_HIL_B.trq_estimation_rationnality = GVCU_HIL_P.Constant113_Value;
-
-    /* Start for S-Function (sigout): '<S158>/S-Function_1' */
-    /* Level2 S-Function Block: '<S158>/S-Function_1' (sigout) */
+    /* Start for S-Function (sigin): '<S172>/S-Function' */
+    /* Level2 S-Function Block: '<S172>/S-Function' (sigin) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[51];
       sfcnStart(rts);
@@ -10250,14 +9937,8 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for Constant: '<S5>/Constant5' */
-    GVCU_HIL_B.e2e_alive_counter_disabled_j = GVCU_HIL_P.Constant5_Value_b;
-
-    /* Start for Constant: '<S5>/Constant111' */
-    GVCU_HIL_B.e2e_checksum_disabled_m = GVCU_HIL_P.Constant111_Value;
-
-    /* Start for S-Function (sigout): '<S159>/S-Function_1' */
-    /* Level2 S-Function Block: '<S159>/S-Function_1' (sigout) */
+    /* Start for S-Function (sigin): '<S173>/S-Function' */
+    /* Level2 S-Function Block: '<S173>/S-Function' (sigin) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[52];
       sfcnStart(rts);
@@ -10265,8 +9946,23 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S535>/S-Function' */
-    /* Level2 S-Function Block: '<S535>/S-Function' (sigout) */
+    /* Start for Constant: '<S6>/Constant10' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_m = GVCU_HIL_P.Constant10_Value_e;
+
+    /* Start for Constant: '<S6>/Constant11' */
+    GVCU_HIL_B.e2e_checksum_disabled_nu = GVCU_HIL_P.Constant11_Value_m;
+
+    /* Start for Constant: '<S6>/Constant4' */
+    GVCU_HIL_B.motor_speed_valid_bit = GVCU_HIL_P.Constant4_Value_b;
+
+    /* Start for Constant: '<S6>/Constant35' */
+    GVCU_HIL_B.pos_offset_a = GVCU_HIL_P.Constant35_Value;
+
+    /* Start for Constant: '<S6>/Constant36' */
+    GVCU_HIL_B.pos_offset_b = GVCU_HIL_P.Constant36_Value_p;
+
+    /* Start for S-Function (sigout): '<S164>/S-Function_1' */
+    /* Level2 S-Function Block: '<S164>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[53];
       sfcnStart(rts);
@@ -10274,8 +9970,155 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S536>/S-Function' */
-    /* Level2 S-Function Block: '<S536>/S-Function' (sigout) */
+    /* Start for Constant: '<S6>/Constant106' */
+    GVCU_HIL_B.can_comm_loss_error = GVCU_HIL_P.Constant106_Value;
+
+    /* Start for Constant: '<S6>/Constant80' */
+    GVCU_HIL_B.can_comm_loss_warning = GVCU_HIL_P.Constant80_Value;
+
+    /* Start for Constant: '<S6>/Constant79' */
+    GVCU_HIL_B.can_e2e = GVCU_HIL_P.Constant79_Value;
+
+    /* Start for Constant: '<S6>/Constant53' */
+    GVCU_HIL_B.coolant_t_fault = GVCU_HIL_P.Constant53_Value;
+
+    /* Start for Constant: '<S6>/Constant78' */
+    GVCU_HIL_B.coolant_t_rationality = GVCU_HIL_P.Constant78_Value;
+
+    /* Start for Constant: '<S6>/Constant57' */
+    GVCU_HIL_B.coolant_t_sensing = GVCU_HIL_P.Constant57_Value;
+
+    /* Start for Constant: '<S6>/Constant77' */
+    GVCU_HIL_B.coolant_t_warning = GVCU_HIL_P.Constant77_Value;
+
+    /* Start for Constant: '<S6>/Constant66' */
+    GVCU_HIL_B.crash_signal = GVCU_HIL_P.Constant66_Value;
+
+    /* Start for Constant: '<S6>/Constant54' */
+    GVCU_HIL_B.dc_link_t_fault = GVCU_HIL_P.Constant54_Value;
+
+    /* Start for Constant: '<S6>/Constant50' */
+    GVCU_HIL_B.dc_link_t_rationality = GVCU_HIL_P.Constant50_Value;
+
+    /* Start for Constant: '<S6>/Constant51' */
+    GVCU_HIL_B.dc_link_t_sensing = GVCU_HIL_P.Constant51_Value;
+
+    /* Start for Constant: '<S6>/Constant49' */
+    GVCU_HIL_B.dc_link_t_warning = GVCU_HIL_P.Constant49_Value;
+
+    /* Start for Constant: '<S6>/Constant46' */
+    GVCU_HIL_B.driver_t_fault = GVCU_HIL_P.Constant46_Value;
+
+    /* Start for Constant: '<S6>/Constant48' */
+    GVCU_HIL_B.driver_t_rationality = GVCU_HIL_P.Constant48_Value;
+
+    /* Start for Constant: '<S6>/Constant52' */
+    GVCU_HIL_B.driver_t_sensing = GVCU_HIL_P.Constant52_Value;
+
+    /* Start for Constant: '<S6>/Constant47' */
+    GVCU_HIL_B.driver_t_warning = GVCU_HIL_P.Constant47_Value;
+
+    /* Start for Constant: '<S6>/Constant7' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_iq = GVCU_HIL_P.Constant7_Value_e;
+
+    /* Start for Constant: '<S6>/Constant8' */
+    GVCU_HIL_B.e2e_checksum_disabled_p = GVCU_HIL_P.Constant8_Value_ld;
+
+    /* Start for Constant: '<S6>/Constant45' */
+    GVCU_HIL_B.gate_driver_bist_fault = GVCU_HIL_P.Constant45_Value;
+
+    /* Start for Constant: '<S6>/Constant40' */
+    GVCU_HIL_B.gate_driver_fault = GVCU_HIL_P.Constant40_Value;
+
+    /* Start for Constant: '<S6>/Constant41' */
+    GVCU_HIL_B.gate_driver_warning = GVCU_HIL_P.Constant41_Value;
+
+    /* Start for Constant: '<S6>/Constant60' */
+    GVCU_HIL_B.inverter_boards_t_fault = GVCU_HIL_P.Constant60_Value;
+
+    /* Start for Constant: '<S6>/Constant62' */
+    GVCU_HIL_B.inverter_boards_t_rationality = GVCU_HIL_P.Constant62_Value;
+
+    /* Start for Constant: '<S6>/Constant64' */
+    GVCU_HIL_B.inverter_boards_t_sensing = GVCU_HIL_P.Constant64_Value;
+
+    /* Start for Constant: '<S6>/Constant61' */
+    GVCU_HIL_B.inverter_boards_t_warning = GVCU_HIL_P.Constant61_Value;
+
+    /* Start for Constant: '<S6>/Constant70' */
+    GVCU_HIL_B.ipc_lock_cm = GVCU_HIL_P.Constant70_Value;
+
+    /* Start for Constant: '<S6>/Constant68' */
+    GVCU_HIL_B.ipc_lock_main = GVCU_HIL_P.Constant68_Value;
+
+    /* Start for Constant: '<S6>/Constant76' */
+    GVCU_HIL_B.lv_ext_supply_ov = GVCU_HIL_P.Constant76_Value;
+
+    /* Start for Constant: '<S6>/Constant75' */
+    GVCU_HIL_B.lv_ext_supply_uv = GVCU_HIL_P.Constant75_Value;
+
+    /* Start for Constant: '<S6>/Constant110' */
+    GVCU_HIL_B.lv_int_supply = GVCU_HIL_P.Constant110_Value;
+
+    /* Start for Constant: '<S6>/Constant67' */
+    GVCU_HIL_B.lv_self_check_main = GVCU_HIL_P.Constant67_Value;
+
+    /* Start for Constant: '<S6>/Constant16' */
+    GVCU_HIL_B.mcu_bist_fault = GVCU_HIL_P.Constant16_Value_h;
+
+    /* Start for Constant: '<S6>/Constant34' */
+    GVCU_HIL_B.mcu_fault = GVCU_HIL_P.Constant34_Value_m;
+
+    /* Start for Constant: '<S6>/Constant42' */
+    GVCU_HIL_B.mosfet_t_fault = GVCU_HIL_P.Constant42_Value_p;
+
+    /* Start for Constant: '<S6>/Constant55' */
+    GVCU_HIL_B.mosfet_t_rationality = GVCU_HIL_P.Constant55_Value;
+
+    /* Start for Constant: '<S6>/Constant56' */
+    GVCU_HIL_B.mosfet_t_sensing = GVCU_HIL_P.Constant56_Value;
+
+    /* Start for Constant: '<S6>/Constant44' */
+    GVCU_HIL_B.mosfet_t_warning = GVCU_HIL_P.Constant44_Value;
+
+    /* Start for Constant: '<S6>/Constant58' */
+    GVCU_HIL_B.motor_t_fault = GVCU_HIL_P.Constant58_Value;
+
+    /* Start for Constant: '<S6>/Constant63' */
+    GVCU_HIL_B.motor_t_rationality = GVCU_HIL_P.Constant63_Value;
+
+    /* Start for Constant: '<S6>/Constant65' */
+    GVCU_HIL_B.motor_t_sensing = GVCU_HIL_P.Constant65_Value;
+
+    /* Start for Constant: '<S6>/Constant59' */
+    GVCU_HIL_B.motor_t_warning = GVCU_HIL_P.Constant59_Value;
+
+    /* Start for Constant: '<S6>/Constant39' */
+    GVCU_HIL_B.sbc_bist_fault = GVCU_HIL_P.Constant39_Value_h;
+
+    /* Start for Constant: '<S6>/Constant43' */
+    GVCU_HIL_B.sbc_fault = GVCU_HIL_P.Constant43_Value;
+
+    /* Start for Constant: '<S6>/Constant72' */
+    GVCU_HIL_B.sw_compatibility = GVCU_HIL_P.Constant72_Value;
+
+    /* Start for Constant: '<S6>/Constant71' */
+    GVCU_HIL_B.task_alive_cm = GVCU_HIL_P.Constant71_Value;
+
+    /* Start for Constant: '<S6>/Constant74' */
+    GVCU_HIL_B.task_alive_main = GVCU_HIL_P.Constant74_Value;
+
+    /* Start for Constant: '<S6>/Constant73' */
+    GVCU_HIL_B.task_deadline_cm = GVCU_HIL_P.Constant73_Value;
+
+    /* Start for Constant: '<S6>/Constant69' */
+    GVCU_HIL_B.task_deadline_main = GVCU_HIL_P.Constant69_Value;
+
+    /* Start for Constant: '<S6>/Constant108' */
+    GVCU_HIL_B.y_cap_ctrl_u = GVCU_HIL_P.Constant108_Value;
+
+    /* Start for S-Function (sigout): '<S165>/S-Function_1' */
+    /* Level2 S-Function Block: '<S165>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[54];
       sfcnStart(rts);
@@ -10283,8 +10126,14 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S537>/S-Function' */
-    /* Level2 S-Function Block: '<S537>/S-Function' (sigout) */
+    /* Start for Constant: '<S6>/Constant24' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_a = GVCU_HIL_P.Constant24_Value_on;
+
+    /* Start for Constant: '<S6>/Constant25' */
+    GVCU_HIL_B.e2e_checksum_disabled_o = GVCU_HIL_P.Constant25_Value_k;
+
+    /* Start for S-Function (sigout): '<S166>/S-Function_1' */
+    /* Level2 S-Function Block: '<S166>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[55];
       sfcnStart(rts);
@@ -10292,8 +10141,14 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S538>/S-Function' */
-    /* Level2 S-Function Block: '<S538>/S-Function' (sigout) */
+    /* Start for Constant: '<S6>/Constant32' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_e = GVCU_HIL_P.Constant32_Value_k;
+
+    /* Start for Constant: '<S6>/Constant33' */
+    GVCU_HIL_B.e2e_checksum_disabled_h = GVCU_HIL_P.Constant33_Value_a;
+
+    /* Start for S-Function (sigout): '<S167>/S-Function_1' */
+    /* Level2 S-Function Block: '<S167>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[56];
       sfcnStart(rts);
@@ -10301,8 +10156,14 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S539>/S-Function' */
-    /* Level2 S-Function Block: '<S539>/S-Function' (sigout) */
+    /* Start for Constant: '<S6>/Constant37' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_hq = GVCU_HIL_P.Constant37_Value_h;
+
+    /* Start for Constant: '<S6>/Constant38' */
+    GVCU_HIL_B.e2e_checksum_disabled_ev = GVCU_HIL_P.Constant38_Value_m;
+
+    /* Start for S-Function (sigout): '<S168>/S-Function_1' */
+    /* Level2 S-Function Block: '<S168>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[57];
       sfcnStart(rts);
@@ -10310,8 +10171,98 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S540>/S-Function' */
-    /* Level2 S-Function Block: '<S540>/S-Function' (sigout) */
+    /* Start for Constant: '<S6>/Constant89' */
+    GVCU_HIL_B.ac_i_sensor_calibration = GVCU_HIL_P.Constant89_Value;
+
+    /* Start for Constant: '<S6>/Constant84' */
+    GVCU_HIL_B.ac_i_sensor_oor = GVCU_HIL_P.Constant84_Value;
+
+    /* Start for Constant: '<S6>/Constant99' */
+    GVCU_HIL_B.ac_phase_i_imbalance = GVCU_HIL_P.Constant99_Value;
+
+    /* Start for Constant: '<S6>/Constant100' */
+    GVCU_HIL_B.ac_phase_i_oc = GVCU_HIL_P.Constant100_Value;
+
+    /* Start for Constant: '<S6>/Constant86' */
+    GVCU_HIL_B.ac_phase_loss = GVCU_HIL_P.Constant86_Value;
+
+    /* Start for Constant: '<S6>/Constant85' */
+    GVCU_HIL_B.ac_phase_short = GVCU_HIL_P.Constant85_Value;
+
+    /* Start for Constant: '<S6>/Constant88' */
+    GVCU_HIL_B.ac_phase_u_rationnality = GVCU_HIL_P.Constant88_Value;
+
+    /* Start for Constant: '<S6>/Constant105' */
+    GVCU_HIL_B.ctrl_mode_rationnality = GVCU_HIL_P.Constant105_Value;
+
+    /* Start for Constant: '<S6>/Constant90' */
+    GVCU_HIL_B.dc_bus_i_oc = GVCU_HIL_P.Constant90_Value;
+
+    /* Start for Constant: '<S6>/Constant91' */
+    GVCU_HIL_B.dc_bus_i_rationnality = GVCU_HIL_P.Constant91_Value;
+
+    /* Start for Constant: '<S6>/Constant92' */
+    GVCU_HIL_B.dc_bus_i_sensing = GVCU_HIL_P.Constant92_Value;
+
+    /* Start for Constant: '<S6>/Constant96' */
+    GVCU_HIL_B.dc_bus_u_ov = GVCU_HIL_P.Constant96_Value;
+
+    /* Start for Constant: '<S6>/Constant93' */
+    GVCU_HIL_B.dc_bus_u_rationnality = GVCU_HIL_P.Constant93_Value;
+
+    /* Start for Constant: '<S6>/Constant94' */
+    GVCU_HIL_B.dc_bus_u_sensing = GVCU_HIL_P.Constant94_Value;
+
+    /* Start for Constant: '<S6>/Constant98' */
+    GVCU_HIL_B.dc_bus_u_uv = GVCU_HIL_P.Constant98_Value;
+
+    /* Start for Constant: '<S6>/Constant114' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_g = GVCU_HIL_P.Constant114_Value;
+
+    /* Start for Constant: '<S6>/Constant81' */
+    GVCU_HIL_B.e2e_checksum_disabled_c = GVCU_HIL_P.Constant81_Value;
+
+    /* Start for Constant: '<S6>/Constant103' */
+    GVCU_HIL_B.hv_self_check_ctrl = GVCU_HIL_P.Constant103_Value;
+
+    /* Start for Constant: '<S6>/Constant104' */
+    GVCU_HIL_B.ipc_lock_ctrl = GVCU_HIL_P.Constant104_Value;
+
+    /* Start for Constant: '<S6>/Constant102' */
+    GVCU_HIL_B.lv_self_check_ctrl = GVCU_HIL_P.Constant102_Value;
+
+    /* Start for Constant: '<S6>/Constant95' */
+    GVCU_HIL_B.motor_over_speed = GVCU_HIL_P.Constant95_Value;
+
+    /* Start for Constant: '<S6>/Constant97' */
+    GVCU_HIL_B.motor_speed_rationnality = GVCU_HIL_P.Constant97_Value;
+
+    /* Start for Constant: '<S6>/Constant112' */
+    GVCU_HIL_B.motor_stall = GVCU_HIL_P.Constant112_Value;
+
+    /* Start for Constant: '<S6>/Constant82' */
+    GVCU_HIL_B.rslv_bist_fault = GVCU_HIL_P.Constant82_Value;
+
+    /* Start for Constant: '<S6>/Constant83' */
+    GVCU_HIL_B.rslv_fault = GVCU_HIL_P.Constant83_Value;
+
+    /* Start for Constant: '<S6>/Constant87' */
+    GVCU_HIL_B.rslv_offset = GVCU_HIL_P.Constant87_Value;
+
+    /* Start for Constant: '<S6>/Constant107' */
+    GVCU_HIL_B.task_alive_ctrl = GVCU_HIL_P.Constant107_Value;
+
+    /* Start for Constant: '<S6>/Constant109' */
+    GVCU_HIL_B.task_deadline_ctrl = GVCU_HIL_P.Constant109_Value;
+
+    /* Start for Constant: '<S6>/Constant101' */
+    GVCU_HIL_B.trq_command_rationnality = GVCU_HIL_P.Constant101_Value;
+
+    /* Start for Constant: '<S6>/Constant113' */
+    GVCU_HIL_B.trq_estimation_rationnality = GVCU_HIL_P.Constant113_Value;
+
+    /* Start for S-Function (sigout): '<S169>/S-Function_1' */
+    /* Level2 S-Function Block: '<S169>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[58];
       sfcnStart(rts);
@@ -10319,75 +10270,24 @@ void GVCU_HIL_initialize(void)
         return;
     }
 
-    /* Start for S-Function (sigout): '<S545>/S-Function' */
-    /* Level2 S-Function Block: '<S545>/S-Function' (sigout) */
+    /* Start for Constant: '<S6>/Constant5' */
+    GVCU_HIL_B.e2e_alive_counter_disabled_j = GVCU_HIL_P.Constant5_Value_b;
+
+    /* Start for Constant: '<S6>/Constant111' */
+    GVCU_HIL_B.e2e_checksum_disabled_m = GVCU_HIL_P.Constant111_Value;
+
+    /* Start for S-Function (sigout): '<S170>/S-Function_1' */
+    /* Level2 S-Function Block: '<S170>/S-Function_1' (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[59];
       sfcnStart(rts);
       if (ssGetErrorStatus(rts) != (NULL))
         return;
     }
-
-    /* Start for S-Function (sigout): '<S546>/S-Function' */
-    /* Level2 S-Function Block: '<S546>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[60];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S10>/Constant' */
-    GVCU_HIL_B.Constant = GVCU_HIL_P.Constant_Value_pr;
-
-    /* Start for S-Function (sigout): '<S541>/S-Function' */
-    /* Level2 S-Function Block: '<S541>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[61];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S10>/Constant2' */
-    GVCU_HIL_B.Constant2 = GVCU_HIL_P.Constant2_Value_ek;
-
-    /* Start for S-Function (sigout): '<S542>/S-Function' */
-    /* Level2 S-Function Block: '<S542>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[62];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S10>/Constant3' */
-    GVCU_HIL_B.Constant3 = GVCU_HIL_P.Constant3_Value_e;
-
-    /* Start for S-Function (sigout): '<S543>/S-Function' */
-    /* Level2 S-Function Block: '<S543>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[63];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* Start for Constant: '<S10>/Constant4' */
-    GVCU_HIL_B.Constant4 = GVCU_HIL_P.Constant4_Value_oi;
-
-    /* Start for S-Function (sigout): '<S544>/S-Function' */
-    /* Level2 S-Function Block: '<S544>/S-Function' (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[64];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
   }
 
-  GVCU_HIL_PrevZCX.Integrator1_Reset_ZCE = UNINITIALIZED_ZCSIG;
   GVCU_HIL_PrevZCX.Integrator_Reset_ZCE = UNINITIALIZED_ZCSIG;
+  GVCU_HIL_PrevZCX.Integrator1_Reset_ZCE = UNINITIALIZED_ZCSIG;
   GVCU_HIL_PrevZCX.Integrator_Reset_ZCE_l = UNINITIALIZED_ZCSIG;
   GVCU_HIL_PrevZCX.Integrator_Reset_ZCE_g = UNINITIALIZED_ZCSIG;
   GVCU_HIL_PrevZCX.sf_FrictionMode_n.SFunction_zcVar_ZCE = UNINITIALIZED_ZCSIG;
@@ -10407,40 +10307,21 @@ void GVCU_HIL_initialize(void)
     int32_T ForEach_itr_g;
     real_T tmp;
 
-    /* InitializeConditions for RateLimiter: '<S2>/Rate Limiter' */
-    GVCU_HIL_DW.PrevY = GVCU_HIL_P.RateLimiter_IC;
+    /* InitializeConditions for Memory: '<S10>/Memory' */
+    GVCU_HIL_DW.Memory_PreviousInput = GVCU_HIL_P.Memory_InitialCondition;
 
-    /* InitializeConditions for Integrator: '<S374>/Integrator' */
-    GVCU_HIL_X.Integrator_CSTATE = GVCU_HIL_P.pos.xdot_0;
+    /* InitializeConditions for Memory: '<S239>/Memory' */
+    GVCU_HIL_DW.Memory_PreviousInput_f = GVCU_HIL_P.Memory_InitialCondition_n;
 
-    /* InitializeConditions for DiscreteIntegrator: '<S88>/Integrator' */
-    GVCU_HIL_DW.Integrator_DSTATE = GVCU_HIL_P.PIController_InitialConditionFo;
-    GVCU_HIL_DW.Integrator_PrevResetState = 0;
-
-    /* InitializeConditions for Integrator: '<S106>/Integrator' */
-    GVCU_HIL_X.Integrator_CSTATE_i = GVCU_HIL_P.Integrator_IC;
-
-    /* InitializeConditions for Integrator: '<S28>/Integrator1' */
-    GVCU_HIL_X.Integrator1_CSTATE = GVCU_HIL_P.Integrator1_IC;
-
-    /* InitializeConditions for RateLimiter: '<S2>/Rate Limiter1' */
-    GVCU_HIL_DW.LastMajorTime = (rtInf);
-
-    /* InitializeConditions for Integrator: '<S292>/Integrator' */
-    GVCU_HIL_X.Integrator_CSTATE_n = GVCU_HIL_P.RotationalInertia_omega_o;
-
-    /* InitializeConditions for TransferFcn: '<S188>/Transfer Fcn' */
-    GVCU_HIL_X.TransferFcn_CSTATE = 0.0;
-
-    /* InitializeConditions for Integrator: '<S200>/Integrator Limited' incorporates:
-     *  Integrator: '<S228>/Integrator'
-     *  Integrator: '<S260>/Integrator'
-     *  Integrator: '<S303>/Integrator'
-     *  Integrator: '<S304>/Integrator'
+    /* InitializeConditions for Integrator: '<S239>/Integrator' incorporates:
+     *  Integrator: '<S211>/Integrator Limited'
+     *  Integrator: '<S271>/Integrator'
+     *  Integrator: '<S314>/Integrator'
+     *  Integrator: '<S315>/Integrator'
      */
     if (rtmIsFirstInitCond(GVCU_HIL_M)) {
+      GVCU_HIL_X.Integrator_CSTATE = 0.0;
       GVCU_HIL_X.IntegratorLimited_CSTATE = 0.0;
-      GVCU_HIL_X.Integrator_CSTATE_o = 0.0;
       GVCU_HIL_X.Integrator_CSTATE_f[0] = 0.0;
       GVCU_HIL_X.Integrator_CSTATE_f[1] = 0.0;
       GVCU_HIL_X.Integrator_CSTATE_d[0] = 0.0;
@@ -10448,85 +10329,104 @@ void GVCU_HIL_initialize(void)
       GVCU_HIL_X.Integrator_CSTATE_m = 0.0;
     }
 
+    GVCU_HIL_DW.Integrator_DWORK1 = true;
+
+    /* End of InitializeConditions for Integrator: '<S239>/Integrator' */
+
+    /* InitializeConditions for Integrator: '<S238>/Integrator' */
+    GVCU_HIL_X.Integrator_CSTATE_j = GVCU_HIL_P.FL_theta_o;
+
+    /* InitializeConditions for Integrator: '<S482>/Integrator' */
+    GVCU_HIL_X.Integrator_CSTATE_a = GVCU_HIL_P.Integrator_IC;
+
+    /* InitializeConditions for Integrator: '<S385>/Integrator' */
+    GVCU_HIL_X.Integrator_CSTATE_k = GVCU_HIL_P.pos.xdot_0;
+
+    /* InitializeConditions for RateLimiter: '<S3>/Rate Limiter' */
+    GVCU_HIL_DW.PrevY = GVCU_HIL_P.RateLimiter_IC;
+
+    /* InitializeConditions for DiscreteIntegrator: '<S99>/Integrator' */
+    GVCU_HIL_DW.Integrator_DSTATE = GVCU_HIL_P.PIController_InitialConditionFo;
+    GVCU_HIL_DW.Integrator_PrevResetState = 0;
+
+    /* InitializeConditions for Integrator: '<S117>/Integrator' */
+    GVCU_HIL_X.Integrator_CSTATE_i = GVCU_HIL_P.Integrator_IC_k;
+
+    /* InitializeConditions for Integrator: '<S39>/Integrator1' */
+    GVCU_HIL_X.Integrator1_CSTATE = GVCU_HIL_P.Integrator1_IC;
+
+    /* InitializeConditions for RateLimiter: '<S3>/Rate Limiter1' */
+    GVCU_HIL_DW.LastMajorTime = (rtInf);
+
+    /* InitializeConditions for Memory: '<S10>/Memory1' */
+    GVCU_HIL_DW.Memory1_PreviousInput = GVCU_HIL_P.Memory1_InitialCondition;
+
+    /* InitializeConditions for Integrator: '<S538>/Integrator' */
+    GVCU_HIL_X.Integrator_CSTATE_e = GVCU_HIL_P.Integrator_IC_p;
+
+    /* InitializeConditions for Integrator: '<S303>/Integrator' */
+    GVCU_HIL_X.Integrator_CSTATE_n = GVCU_HIL_P.RotationalInertia_omega_o;
+
+    /* InitializeConditions for TransferFcn: '<S199>/Transfer Fcn' */
+    GVCU_HIL_X.TransferFcn_CSTATE = 0.0;
+
+    /* InitializeConditions for Integrator: '<S211>/Integrator Limited' */
     GVCU_HIL_DW.IntegratorLimited_DWORK1 = true;
 
-    /* End of InitializeConditions for Integrator: '<S200>/Integrator Limited' */
-
-    /* InitializeConditions for Integrator: '<S215>/Integrator' */
+    /* InitializeConditions for Integrator: '<S226>/Integrator' */
     GVCU_HIL_X.Integrator_CSTATE_g = GVCU_HIL_P.Integrator_IC_c;
 
-    /* InitializeConditions for RateLimiter: '<S7>/Rate Limiter' */
+    /* InitializeConditions for RateLimiter: '<S8>/Rate Limiter' */
     GVCU_HIL_DW.PrevY_o = GVCU_HIL_P.RateLimiter_IC_c;
 
-    /* InitializeConditions for DiscreteIntegrator: '<S348>/Integrator' */
+    /* InitializeConditions for DiscreteIntegrator: '<S359>/Integrator' */
     GVCU_HIL_DW.Integrator_DSTATE_d = GVCU_HIL_P.PIDController1_InitialCondition;
     GVCU_HIL_DW.Integrator_PrevResetState_c = 0;
 
-    /* InitializeConditions for Memory: '<S228>/Memory' */
-    GVCU_HIL_DW.Memory_PreviousInput = GVCU_HIL_P.Memory_InitialCondition;
-
-    /* InitializeConditions for Integrator: '<S228>/Integrator' */
-    GVCU_HIL_DW.Integrator_DWORK1 = true;
-
-    /* InitializeConditions for Integrator: '<S227>/Integrator' */
-    GVCU_HIL_X.Integrator_CSTATE_j = GVCU_HIL_P.FL_theta_o;
-
-    /* InitializeConditions for Integrator: '<S471>/Integrator' */
-    GVCU_HIL_X.Integrator_CSTATE_a = GVCU_HIL_P.Integrator_IC_p;
-
-    /* InitializeConditions for Integrator: '<S527>/Integrator' */
-    GVCU_HIL_X.Integrator_CSTATE_e = GVCU_HIL_P.Integrator_IC_p3;
-
-    /* InitializeConditions for Integrator: '<S303>/Integrator' */
+    /* InitializeConditions for Integrator: '<S314>/Integrator' */
     GVCU_HIL_DW.Integrator_DWORK1_f = true;
 
-    /* InitializeConditions for Memory: '<S304>/Memory' */
+    /* InitializeConditions for Memory: '<S315>/Memory' */
     GVCU_HIL_DW.Memory_PreviousInput_h = GVCU_HIL_P.Memory_InitialCondition_d;
 
-    /* InitializeConditions for Integrator: '<S304>/Integrator' */
+    /* InitializeConditions for Integrator: '<S315>/Integrator' */
     GVCU_HIL_DW.Integrator_DWORK1_m = true;
 
-    /* InitializeConditions for Integrator: '<S255>/Integrator' */
+    /* InitializeConditions for Integrator: '<S266>/Integrator' */
     GVCU_HIL_X.Integrator_CSTATE_fz = GVCU_HIL_P.Integrator_IC_o;
 
-    /* InitializeConditions for TransferFcn: '<S24>/Transfer Fcn' */
+    /* InitializeConditions for TransferFcn: '<S35>/Transfer Fcn' */
     GVCU_HIL_X.TransferFcn_CSTATE_o = 0.0;
 
-    /* InitializeConditions for Memory: '<S260>/Memory' */
+    /* InitializeConditions for Memory: '<S271>/Memory' */
     GVCU_HIL_DW.Memory_PreviousInput_j = GVCU_HIL_P.Memory_InitialCondition_di;
 
-    /* InitializeConditions for Integrator: '<S260>/Integrator' */
+    /* InitializeConditions for Integrator: '<S271>/Integrator' */
     GVCU_HIL_DW.Integrator_DWORK1_d = true;
 
-    /* InitializeConditions for Integrator: '<S259>/Integrator' */
+    /* InitializeConditions for Integrator: '<S270>/Integrator' */
     GVCU_HIL_X.Integrator_CSTATE_l = GVCU_HIL_P.FR_theta_o;
 
-    /* InitializeConditions for Integrator: '<S287>/Integrator' */
-    GVCU_HIL_X.Integrator_CSTATE_k = GVCU_HIL_P.Integrator_IC_j;
+    /* InitializeConditions for Integrator: '<S298>/Integrator' */
+    GVCU_HIL_X.Integrator_CSTATE_k0 = GVCU_HIL_P.Integrator_IC_j;
 
-    /* InitializeConditions for TransferFcn: '<S25>/Transfer Fcn' */
+    /* InitializeConditions for TransferFcn: '<S36>/Transfer Fcn' */
     GVCU_HIL_X.TransferFcn_CSTATE_oq = 0.0;
 
-    /* InitializeConditions for Memory: '<S9>/Memory' */
-    GVCU_HIL_DW.Memory_PreviousInput_n = GVCU_HIL_P.Memory_InitialCondition_o;
-
-    /* InitializeConditions for Memory: '<S9>/Memory1' */
-    GVCU_HIL_DW.Memory1_PreviousInput = GVCU_HIL_P.Memory1_InitialCondition;
-
-    /* InitializeConditions for Integrator: '<S382>/Integrator3' */
+    /* InitializeConditions for Integrator: '<S393>/Integrator3' */
     GVCU_HIL_X.Integrator3_CSTATE = GVCU_HIL_P.pos.xdot_0;
 
-    /* InitializeConditions for Integrator: '<S371>/Integrator1' */
+    /* InitializeConditions for Integrator: '<S382>/Integrator1' */
     GVCU_HIL_X.Integrator1_CSTATE_c = GVCU_HIL_P.pos.X_0;
 
-    /* InitializeConditions for TransferFcn: '<S26>/Transfer Fcn' */
+    /* InitializeConditions for TransferFcn: '<S37>/Transfer Fcn' */
     GVCU_HIL_X.TransferFcn_CSTATE_m = 0.0;
 
-    /* InitializeConditions for TransferFcn: '<S27>/Transfer Fcn' */
+    /* InitializeConditions for TransferFcn: '<S38>/Transfer Fcn' */
     GVCU_HIL_X.TransferFcn_CSTATE_l = 0.0;
 
-    /* InitializeConditions for TransportDelay: '<S4>/Transport Delay' incorporates:
-     *  TransportDelay: '<S5>/Transport Delay1'
+    /* InitializeConditions for TransportDelay: '<S5>/Transport Delay' incorporates:
+     *  TransportDelay: '<S6>/Transport Delay1'
      */
     GVCU_HIL_DW.TransportDelay_IWORK[0] = 0;
     GVCU_HIL_DW.TransportDelay_IWORK[1] = 0;
@@ -10536,10 +10436,10 @@ void GVCU_HIL_initialize(void)
     ((real_T *)GVCU_HIL_DW.TransportDelay_PWORK[0])
       [GVCU_HIL_DW.TransportDelay_IWORK[3]] = tmp;
 
-    /* InitializeConditions for UnitDelay: '<S4>/Unit Delay' */
+    /* InitializeConditions for UnitDelay: '<S5>/Unit Delay' */
     GVCU_HIL_DW.UnitDelay_DSTATE = GVCU_HIL_P.UnitDelay_InitialCondition;
 
-    /* InitializeConditions for TransportDelay: '<S5>/Transport Delay1' */
+    /* InitializeConditions for TransportDelay: '<S6>/Transport Delay1' */
     GVCU_HIL_DW.TransportDelay1_IWORK[0] = 0;
     GVCU_HIL_DW.TransportDelay1_IWORK[1] = 0;
     GVCU_HIL_DW.TransportDelay1_IWORK[2] = 0;
@@ -10547,10 +10447,10 @@ void GVCU_HIL_initialize(void)
     ((real_T *)GVCU_HIL_DW.TransportDelay1_PWORK[0])
       [GVCU_HIL_DW.TransportDelay1_IWORK[3]] = tmp;
 
-    /* InitializeConditions for UnitDelay: '<S5>/Unit Delay1' */
+    /* InitializeConditions for UnitDelay: '<S6>/Unit Delay1' */
     GVCU_HIL_DW.UnitDelay1_DSTATE = GVCU_HIL_P.UnitDelay1_InitialCondition;
 
-    /* SystemInitialize for MATLAB Function: '<S2>/MATLAB Function2' */
+    /* SystemInitialize for MATLAB Function: '<S3>/MATLAB Function2' */
     GVCU_HIL_DW.main_state_not_empty = false;
     GVCU_HIL_DW.freq_not_empty = false;
     GVCU_HIL_DW.main_state = 0.0;
@@ -10565,31 +10465,27 @@ void GVCU_HIL_initialize(void)
     GVCU_HIL_DW.pending_neutral_drive = 0.0;
     GVCU_HIL_DW.pending_park_drive = 0.0;
 
-    /* SystemInitialize for MATLAB Function: '<S2>/MATLAB Function' */
+    /* SystemInitialize for MATLAB Function: '<S3>/MATLAB Function' */
     GVCU_HIL_DW.t_mode_start_e = -1.0;
     GVCU_HIL_DW.last_mode_f = 0.0;
     GVCU_HIL_DW.last_cycle = 0.0;
 
-    /* SystemInitialize for MATLAB Function: '<S2>/MATLAB Function1' */
+    /* SystemInitialize for MATLAB Function: '<S3>/MATLAB Function1' */
     GVCU_HIL_DW.t_mode_start = -1.0;
     GVCU_HIL_DW.last_mode = 0.0;
 
-    /* SystemInitialize for MATLAB Function: '<S190>/MATLAB Function' */
-    GVCU_HIL_DW.stop_ts = 0.0;
-    GVCU_HIL_DW.fired = false;
-
-    /* SystemInitialize for Iterator SubSystem: '<S427>/Clutch' */
+    /* SystemInitialize for Iterator SubSystem: '<S438>/Clutch' */
     for (ForEach_itr_g = 0; ForEach_itr_g < 1; ForEach_itr_g++) {
-      /* InitializeConditions for ForEachSliceSelector generated from: '<S452>/Tout' */
+      /* InitializeConditions for ForEachSliceSelector generated from: '<S463>/Tout' */
       rtb_ImpSel_InsertedFor_Tout_a_m = GVCU_HIL_B.Signconvention;
 
-      /* InitializeConditions for ForEachSliceSelector generated from: '<S452>/Tfmaxs' */
+      /* InitializeConditions for ForEachSliceSelector generated from: '<S463>/Tfmaxs' */
       rtb_ImpSel_InsertedFor_Tfmaxs_h = GVCU_HIL_B.Ratioofstatictokinetic;
 
-      /* InitializeConditions for ForEachSliceSelector generated from: '<S452>/Tfmaxk' */
+      /* InitializeConditions for ForEachSliceSelector generated from: '<S463>/Tfmaxk' */
       rtb_ImpSel_InsertedFor_Tfmaxk_n = GVCU_HIL_B.Ratioofstatictokinetic1;
 
-      /* SystemInitialize for Chart: '<S452>/Clutch' */
+      /* SystemInitialize for Chart: '<S463>/Clutch' */
       GVCU_HIL_Clutch_Init(GVCU_HIL_P.pos.xdot_0 /
                            GVCU_HIL_P.veh.TyreLoadedRadius_F,
                            &GVCU_HIL_B.CoreSubsys[ForEach_itr_g].sf_Clutch,
@@ -10598,20 +10494,27 @@ void GVCU_HIL_initialize(void)
                            &GVCU_HIL_X.CoreSubsys[ForEach_itr_g].sf_Clutch);
     }
 
-    /* End of SystemInitialize for SubSystem: '<S427>/Clutch' */
+    /* End of SystemInitialize for SubSystem: '<S438>/Clutch' */
 
-    /* SystemInitialize for Iterator SubSystem: '<S483>/Clutch' */
+    /* SystemInitialize for Enabled SubSystem: '<S439>/Bristle Deflection' */
+    GVCU_HIL_BristleDeflection_Init(GVCU_HIL_M, &GVCU_HIL_B.BristleDeflection,
+      &GVCU_HIL_DW.BristleDeflection, &GVCU_HIL_P.BristleDeflection,
+      &GVCU_HIL_X.BristleDeflection);
+
+    /* End of SystemInitialize for SubSystem: '<S439>/Bristle Deflection' */
+
+    /* SystemInitialize for Iterator SubSystem: '<S494>/Clutch' */
     for (ForEach_itr = 0; ForEach_itr < 1; ForEach_itr++) {
-      /* InitializeConditions for ForEachSliceSelector generated from: '<S508>/Tout' */
+      /* InitializeConditions for ForEachSliceSelector generated from: '<S519>/Tout' */
       rtb_ImpSel_InsertedFor_Tout_at_ = GVCU_HIL_B.Signconvention_k;
 
-      /* InitializeConditions for ForEachSliceSelector generated from: '<S508>/Tfmaxs' */
+      /* InitializeConditions for ForEachSliceSelector generated from: '<S519>/Tfmaxs' */
       rtb_ImpSel_InsertedFor_Tfmaxs_a = GVCU_HIL_B.Ratioofstatictokinetic_m;
 
-      /* InitializeConditions for ForEachSliceSelector generated from: '<S508>/Tfmaxk' */
+      /* InitializeConditions for ForEachSliceSelector generated from: '<S519>/Tfmaxk' */
       rtb_ImpSel_InsertedFor_Tfmaxk_a = GVCU_HIL_B.Ratioofstatictokinetic1_g;
 
-      /* SystemInitialize for Chart: '<S508>/Clutch' */
+      /* SystemInitialize for Chart: '<S519>/Clutch' */
       GVCU_HIL_Clutch_i_Init(GVCU_HIL_P.pos.xdot_0 /
         GVCU_HIL_P.veh.TyreLoadedRadius_R, &GVCU_HIL_B.CoreSubsys_h[ForEach_itr]
         .sf_Clutch, &GVCU_HIL_DW.CoreSubsys_h[ForEach_itr].sf_Clutch,
@@ -10619,17 +10522,28 @@ void GVCU_HIL_initialize(void)
         .sf_Clutch);
     }
 
-    /* End of SystemInitialize for SubSystem: '<S483>/Clutch' */
+    /* End of SystemInitialize for SubSystem: '<S494>/Clutch' */
 
-    /* SystemInitialize for Chart: '<S235>/Friction Mode' */
+    /* SystemInitialize for Enabled SubSystem: '<S495>/Bristle Deflection' */
+    GVCU_HIL_BristleDeflection_Init(GVCU_HIL_M, &GVCU_HIL_B.BristleDeflection_h,
+      &GVCU_HIL_DW.BristleDeflection_h, &GVCU_HIL_P.BristleDeflection_h,
+      &GVCU_HIL_X.BristleDeflection_h);
+
+    /* End of SystemInitialize for SubSystem: '<S495>/Bristle Deflection' */
+
+    /* SystemInitialize for MATLAB Function: '<S201>/MATLAB Function' */
+    GVCU_HIL_DW.stop_ts = 0.0;
+    GVCU_HIL_DW.fired = false;
+
+    /* SystemInitialize for Chart: '<S246>/Friction Mode' */
     GVCU_HIL_FrictionMode_Init(&GVCU_HIL_B.sf_FrictionMode,
       &GVCU_HIL_DW.sf_FrictionMode);
 
-    /* SystemInitialize for IfAction SubSystem: '<S235>/Unlocked' */
-    /* SystemInitialize for IfAction SubSystem: '<S235>/Locked' */
-    /* InitializeConditions for Integrator: '<S241>/Locked Shaft Integrator' incorporates:
-     *  Integrator: '<S242>/Input Integrator'
-     *  Integrator: '<S242>/Output Integrator'
+    /* SystemInitialize for IfAction SubSystem: '<S246>/Unlocked' */
+    /* SystemInitialize for IfAction SubSystem: '<S246>/Locked' */
+    /* InitializeConditions for Integrator: '<S252>/Locked Shaft Integrator' incorporates:
+     *  Integrator: '<S253>/Input Integrator'
+     *  Integrator: '<S253>/Output Integrator'
      */
     if (rtmIsFirstInitCond(GVCU_HIL_M)) {
       GVCU_HIL_X.LockedShaftIntegrator_CSTATE_m = 0.0;
@@ -10637,30 +10551,30 @@ void GVCU_HIL_initialize(void)
       GVCU_HIL_X.OutputIntegrator_CSTATE_g = 0.0;
     }
 
-    /* End of SystemInitialize for SubSystem: '<S235>/Unlocked' */
+    /* End of SystemInitialize for SubSystem: '<S246>/Unlocked' */
     GVCU_HIL_DW.LockedShaftIntegrator_DWORK1_d = true;
 
-    /* End of InitializeConditions for Integrator: '<S241>/Locked Shaft Integrator' */
-    /* End of SystemInitialize for SubSystem: '<S235>/Locked' */
+    /* End of InitializeConditions for Integrator: '<S252>/Locked Shaft Integrator' */
+    /* End of SystemInitialize for SubSystem: '<S246>/Locked' */
 
-    /* SystemInitialize for IfAction SubSystem: '<S235>/Unlocked' */
-    /* InitializeConditions for Integrator: '<S242>/Input Integrator' */
+    /* SystemInitialize for IfAction SubSystem: '<S246>/Unlocked' */
+    /* InitializeConditions for Integrator: '<S253>/Input Integrator' */
     GVCU_HIL_DW.InputIntegrator_DWORK1_f = true;
 
-    /* InitializeConditions for Integrator: '<S242>/Output Integrator' */
+    /* InitializeConditions for Integrator: '<S253>/Output Integrator' */
     GVCU_HIL_DW.OutputIntegrator_DWORK1_f = true;
 
-    /* End of SystemInitialize for SubSystem: '<S235>/Unlocked' */
+    /* End of SystemInitialize for SubSystem: '<S246>/Unlocked' */
 
-    /* SystemInitialize for Chart: '<S267>/Friction Mode' */
+    /* SystemInitialize for Chart: '<S278>/Friction Mode' */
     GVCU_HIL_FrictionMode_Init(&GVCU_HIL_B.sf_FrictionMode_n,
       &GVCU_HIL_DW.sf_FrictionMode_n);
 
-    /* SystemInitialize for IfAction SubSystem: '<S267>/Unlocked' */
-    /* SystemInitialize for IfAction SubSystem: '<S267>/Locked' */
-    /* InitializeConditions for Integrator: '<S273>/Locked Shaft Integrator' incorporates:
-     *  Integrator: '<S274>/Input Integrator'
-     *  Integrator: '<S274>/Output Integrator'
+    /* SystemInitialize for IfAction SubSystem: '<S278>/Unlocked' */
+    /* SystemInitialize for IfAction SubSystem: '<S278>/Locked' */
+    /* InitializeConditions for Integrator: '<S284>/Locked Shaft Integrator' incorporates:
+     *  Integrator: '<S285>/Input Integrator'
+     *  Integrator: '<S285>/Output Integrator'
      */
     if (rtmIsFirstInitCond(GVCU_HIL_M)) {
       GVCU_HIL_X.LockedShaftIntegrator_CSTATE = 0.0;
@@ -10668,34 +10582,20 @@ void GVCU_HIL_initialize(void)
       GVCU_HIL_X.OutputIntegrator_CSTATE = 0.0;
     }
 
-    /* End of SystemInitialize for SubSystem: '<S267>/Unlocked' */
+    /* End of SystemInitialize for SubSystem: '<S278>/Unlocked' */
     GVCU_HIL_DW.LockedShaftIntegrator_DWORK1 = true;
 
-    /* End of InitializeConditions for Integrator: '<S273>/Locked Shaft Integrator' */
-    /* End of SystemInitialize for SubSystem: '<S267>/Locked' */
+    /* End of InitializeConditions for Integrator: '<S284>/Locked Shaft Integrator' */
+    /* End of SystemInitialize for SubSystem: '<S278>/Locked' */
 
-    /* SystemInitialize for IfAction SubSystem: '<S267>/Unlocked' */
-    /* InitializeConditions for Integrator: '<S274>/Input Integrator' */
+    /* SystemInitialize for IfAction SubSystem: '<S278>/Unlocked' */
+    /* InitializeConditions for Integrator: '<S285>/Input Integrator' */
     GVCU_HIL_DW.InputIntegrator_DWORK1 = true;
 
-    /* InitializeConditions for Integrator: '<S274>/Output Integrator' */
+    /* InitializeConditions for Integrator: '<S285>/Output Integrator' */
     GVCU_HIL_DW.OutputIntegrator_DWORK1 = true;
 
-    /* End of SystemInitialize for SubSystem: '<S267>/Unlocked' */
-
-    /* SystemInitialize for Enabled SubSystem: '<S428>/Bristle Deflection' */
-    GVCU_HIL_BristleDeflection_Init(GVCU_HIL_M, &GVCU_HIL_B.BristleDeflection,
-      &GVCU_HIL_DW.BristleDeflection, &GVCU_HIL_P.BristleDeflection,
-      &GVCU_HIL_X.BristleDeflection);
-
-    /* End of SystemInitialize for SubSystem: '<S428>/Bristle Deflection' */
-
-    /* SystemInitialize for Enabled SubSystem: '<S484>/Bristle Deflection' */
-    GVCU_HIL_BristleDeflection_Init(GVCU_HIL_M, &GVCU_HIL_B.BristleDeflection_h,
-      &GVCU_HIL_DW.BristleDeflection_h, &GVCU_HIL_P.BristleDeflection_h,
-      &GVCU_HIL_X.BristleDeflection_h);
-
-    /* End of SystemInitialize for SubSystem: '<S484>/Bristle Deflection' */
+    /* End of SystemInitialize for SubSystem: '<S278>/Unlocked' */
 
     /* set "at time zero" to false */
     if (rtmIsFirstInitCond(GVCU_HIL_M)) {
@@ -10707,769 +10607,758 @@ void GVCU_HIL_initialize(void)
 /* Model terminate function */
 void GVCU_HIL_terminate(void)
 {
-  /* Terminate for S-Function (anorsimstepinitshmem): '<S8>/S-Function' */
-  /* Level2 S-Function Block: '<S8>/S-Function' (anorsimstepinitshmem) */
+  /* Terminate for S-Function (anorsimstepinitshmem): '<S9>/S-Function' */
+  /* Level2 S-Function Block: '<S9>/S-Function' (anorsimstepinitshmem) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[0];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sysvarin): '<S36>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar);
-    GVCU_HIL_DW.SFunction_SysVar = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S37>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_p) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_p);
-    GVCU_HIL_DW.SFunction_SysVar_p = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S38>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_p0) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_p0);
-    GVCU_HIL_DW.SFunction_SysVar_p0 = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S39>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_b) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_b);
-    GVCU_HIL_DW.SFunction_SysVar_b = NULL;
-  }
-
-  /* Terminate for S-Function (sigout): '<S32>/S-Function' */
-  /* Level2 S-Function Block: '<S32>/S-Function' (sigout) */
+  /* Terminate for S-Function (sigout): '<S16>/S-Function' */
+  /* Level2 S-Function Block: '<S16>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[1];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S33>/S-Function' */
-  /* Level2 S-Function Block: '<S33>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[2];
-    sfcnTerminate(rts);
+  /* Terminate for S-Function (sysvarin): '<S46>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar);
+    GVCU_HIL_DW.SFunction_SysVar = NULL;
   }
 
-  /* Terminate for S-Function (sysvarin): '<S35>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_h) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_h);
-    GVCU_HIL_DW.SFunction_SysVar_h = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S40>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_c) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_c);
-    GVCU_HIL_DW.SFunction_SysVar_c = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarout): '<S41>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_b4) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_b4);
-    GVCU_HIL_DW.SFunction_SysVar_b4 = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarout): '<S42>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_c1) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_c1);
-    GVCU_HIL_DW.SFunction_SysVar_c1 = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarout): '<S43>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_f) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_f);
-    GVCU_HIL_DW.SFunction_SysVar_f = NULL;
-  }
-
-  /* Terminate for S-Function (sysvarin): '<S34>/S-Function' */
+  /* Terminate for S-Function (sysvarin): '<S45>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_l) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_l);
     GVCU_HIL_DW.SFunction_SysVar_l = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S44>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_hn) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_hn);
-    GVCU_HIL_DW.SFunction_SysVar_hn = NULL;
+  /* Terminate for S-Function (sysvarin): '<S51>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_c) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_c);
+    GVCU_HIL_DW.SFunction_SysVar_c = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S45>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_o) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_o);
-    GVCU_HIL_DW.SFunction_SysVar_o = NULL;
+  /* Terminate for S-Function (sysvarin): '<S47>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_m) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_m);
+    GVCU_HIL_DW.SFunction_SysVar_m = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S46>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_a) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_a);
-    GVCU_HIL_DW.SFunction_SysVar_a = NULL;
+  /* Terminate for S-Function (sysvarin): '<S48>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_p) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_p);
+    GVCU_HIL_DW.SFunction_SysVar_p = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S50>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_d) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_d);
-    GVCU_HIL_DW.SFunction_SysVar_d = NULL;
+  /* Terminate for S-Function (sysvarin): '<S49>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_p0) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_p0);
+    GVCU_HIL_DW.SFunction_SysVar_p0 = NULL;
   }
 
-  /* Terminate for S-Function (sigin): '<S193>/S-Function' */
-  /* Level2 S-Function Block: '<S193>/S-Function' (sigin) */
+  /* Terminate for S-Function (sysvarin): '<S50>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_b) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_b);
+    GVCU_HIL_DW.SFunction_SysVar_b = NULL;
+  }
+
+  /* Terminate for S-Function (sigout): '<S17>/S-Function' */
+  /* Level2 S-Function Block: '<S17>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[2];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S19>/S-Function' */
+  /* Level2 S-Function Block: '<S19>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[3];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigin): '<S191>/S-Function' */
-  /* Level2 S-Function Block: '<S191>/S-Function' (sigin) */
+  /* Terminate for S-Function (sigout): '<S20>/S-Function' */
+  /* Level2 S-Function Block: '<S20>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[4];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigin): '<S192>/S-Function' */
-  /* Level2 S-Function Block: '<S192>/S-Function' (sigin) */
+  /* Terminate for S-Function (sigout): '<S12>/S-Function_1' */
+  /* Level2 S-Function Block: '<S12>/S-Function_1' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[5];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sysvarout): '<S417>/S-Function' */
+  /* Terminate for S-Function (sigout): '<S15>/S-Function' */
+  /* Level2 S-Function Block: '<S15>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[6];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S18>/S-Function' */
+  /* Level2 S-Function Block: '<S18>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[7];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S43>/S-Function' */
+  /* Level2 S-Function Block: '<S43>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[8];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S44>/S-Function' */
+  /* Level2 S-Function Block: '<S44>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[9];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sysvarout): '<S52>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_b4) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_b4);
+    GVCU_HIL_DW.SFunction_SysVar_b4 = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarout): '<S53>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_c1) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_c1);
+    GVCU_HIL_DW.SFunction_SysVar_c1 = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarout): '<S54>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_f) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_f);
+    GVCU_HIL_DW.SFunction_SysVar_f = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarout): '<S55>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_h) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_h);
+    GVCU_HIL_DW.SFunction_SysVar_h = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarout): '<S56>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_o) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_o);
+    GVCU_HIL_DW.SFunction_SysVar_o = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarout): '<S57>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_a) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_a);
+    GVCU_HIL_DW.SFunction_SysVar_a = NULL;
+  }
+
+  /* Terminate for S-Function (sysvarout): '<S61>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_d) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_d);
+    GVCU_HIL_DW.SFunction_SysVar_d = NULL;
+  }
+
+  /* Terminate for S-Function (sigin): '<S204>/S-Function' */
+  /* Level2 S-Function Block: '<S204>/S-Function' (sigin) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[10];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigin): '<S202>/S-Function' */
+  /* Level2 S-Function Block: '<S202>/S-Function' (sigin) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[11];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigin): '<S203>/S-Function' */
+  /* Level2 S-Function Block: '<S203>/S-Function' (sigin) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[12];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sysvarout): '<S428>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_as) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_as);
     GVCU_HIL_DW.SFunction_SysVar_as = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S418>/S-Function' incorporates:
-   *  Constant: '<S189>/Constant2'
+  /* Terminate for S-Function (sysvarout): '<S429>/S-Function' incorporates:
+   *  Constant: '<S200>/Constant2'
    */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_dg) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_dg);
     GVCU_HIL_DW.SFunction_SysVar_dg = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S419>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S430>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_ca) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_ca);
     GVCU_HIL_DW.SFunction_SysVar_ca = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S20>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S31>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_am) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_am);
     GVCU_HIL_DW.SFunction_SysVar_am = NULL;
   }
 
-  /* Terminate for S-Function (sysvarin): '<S15>/S-Function' */
+  /* Terminate for S-Function (sysvarin): '<S26>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_e) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_e);
     GVCU_HIL_DW.SFunction_SysVar_e = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S21>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S32>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_aw) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_aw);
     GVCU_HIL_DW.SFunction_SysVar_aw = NULL;
   }
 
-  /* Terminate for S-Function (sysvarin): '<S16>/S-Function' */
+  /* Terminate for S-Function (sysvarin): '<S27>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_a3) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_a3);
     GVCU_HIL_DW.SFunction_SysVar_a3 = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S22>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S33>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_o0) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_o0);
     GVCU_HIL_DW.SFunction_SysVar_o0 = NULL;
   }
 
-  /* Terminate for S-Function (sysvarin): '<S17>/S-Function' */
+  /* Terminate for S-Function (sysvarin): '<S28>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_oc) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_oc);
     GVCU_HIL_DW.SFunction_SysVar_oc = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S23>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S34>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_cq) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_cq);
     GVCU_HIL_DW.SFunction_SysVar_cq = NULL;
   }
 
-  /* Terminate for S-Function (sysvarin): '<S18>/S-Function' */
+  /* Terminate for S-Function (sysvarin): '<S29>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_cj) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_cj);
     GVCU_HIL_DW.SFunction_SysVar_cj = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S19>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S30>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_cw) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_cw);
     GVCU_HIL_DW.SFunction_SysVar_cw = NULL;
   }
 
-  /* Terminate for S-Function (sigout): '<S120>/S-Function_1' */
-  /* Level2 S-Function Block: '<S120>/S-Function_1' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[6];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S130>/S-Function' */
-  /* Level2 S-Function Block: '<S130>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[7];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S117>/S-Function_1' */
-  /* Level2 S-Function Block: '<S117>/S-Function_1' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[8];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigin): '<S125>/S-Function' */
-  /* Level2 S-Function Block: '<S125>/S-Function' (sigin) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[9];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S119>/S-Function_1' */
-  /* Level2 S-Function Block: '<S119>/S-Function_1' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[10];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S114>/S-Function_1' */
-  /* Level2 S-Function Block: '<S114>/S-Function_1' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[11];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S115>/S-Function_1' */
-  /* Level2 S-Function Block: '<S115>/S-Function_1' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[12];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S116>/S-Function_1' */
-  /* Level2 S-Function Block: '<S116>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sigout): '<S131>/S-Function_1' */
+  /* Level2 S-Function Block: '<S131>/S-Function_1' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[13];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S118>/S-Function_1' */
-  /* Level2 S-Function Block: '<S118>/S-Function_1' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[14];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S136>/S-Function' */
-  /* Level2 S-Function Block: '<S136>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[15];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S137>/S-Function' */
-  /* Level2 S-Function Block: '<S137>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[16];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S138>/S-Function' */
-  /* Level2 S-Function Block: '<S138>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[17];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S139>/S-Function' */
-  /* Level2 S-Function Block: '<S139>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[18];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S140>/S-Function' */
-  /* Level2 S-Function Block: '<S140>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[19];
     sfcnTerminate(rts);
   }
 
   /* Terminate for S-Function (sigout): '<S141>/S-Function' */
   /* Level2 S-Function Block: '<S141>/S-Function' (sigout) */
   {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[14];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S128>/S-Function_1' */
+  /* Level2 S-Function Block: '<S128>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[15];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigin): '<S136>/S-Function' */
+  /* Level2 S-Function Block: '<S136>/S-Function' (sigin) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[16];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S130>/S-Function_1' */
+  /* Level2 S-Function Block: '<S130>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[17];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S125>/S-Function_1' */
+  /* Level2 S-Function Block: '<S125>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[18];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S126>/S-Function_1' */
+  /* Level2 S-Function Block: '<S126>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[19];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S127>/S-Function_1' */
+  /* Level2 S-Function Block: '<S127>/S-Function_1' (sigout) */
+  {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[20];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S121>/S-Function_1' */
-  /* Level2 S-Function Block: '<S121>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sigout): '<S129>/S-Function_1' */
+  /* Level2 S-Function Block: '<S129>/S-Function_1' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[21];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S122>/S-Function_1' */
-  /* Level2 S-Function Block: '<S122>/S-Function_1' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[22];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S123>/S-Function_1' */
-  /* Level2 S-Function Block: '<S123>/S-Function_1' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[23];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S127>/S-Function' */
-  /* Level2 S-Function Block: '<S127>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[24];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S145>/S-Function' */
-  /* Level2 S-Function Block: '<S145>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[25];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S143>/S-Function' */
-  /* Level2 S-Function Block: '<S143>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[26];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S146>/S-Function' */
-  /* Level2 S-Function Block: '<S146>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[27];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S134>/S-Function' */
-  /* Level2 S-Function Block: '<S134>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[28];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S144>/S-Function' */
-  /* Level2 S-Function Block: '<S144>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[29];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S148>/S-Function' */
-  /* Level2 S-Function Block: '<S148>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[30];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S129>/S-Function' */
-  /* Level2 S-Function Block: '<S129>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[31];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S131>/S-Function' */
-  /* Level2 S-Function Block: '<S131>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[32];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S133>/S-Function' */
-  /* Level2 S-Function Block: '<S133>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[33];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S132>/S-Function' */
-  /* Level2 S-Function Block: '<S132>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[34];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S135>/S-Function' */
-  /* Level2 S-Function Block: '<S135>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[35];
     sfcnTerminate(rts);
   }
 
   /* Terminate for S-Function (sigout): '<S147>/S-Function' */
   /* Level2 S-Function Block: '<S147>/S-Function' (sigout) */
   {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[22];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S148>/S-Function' */
+  /* Level2 S-Function Block: '<S148>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[23];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S149>/S-Function' */
+  /* Level2 S-Function Block: '<S149>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[24];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S150>/S-Function' */
+  /* Level2 S-Function Block: '<S150>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[25];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S151>/S-Function' */
+  /* Level2 S-Function Block: '<S151>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[26];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S152>/S-Function' */
+  /* Level2 S-Function Block: '<S152>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[27];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S132>/S-Function_1' */
+  /* Level2 S-Function Block: '<S132>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[28];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S133>/S-Function_1' */
+  /* Level2 S-Function Block: '<S133>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[29];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S134>/S-Function_1' */
+  /* Level2 S-Function Block: '<S134>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[30];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S138>/S-Function' */
+  /* Level2 S-Function Block: '<S138>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[31];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S156>/S-Function' */
+  /* Level2 S-Function Block: '<S156>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[32];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S154>/S-Function' */
+  /* Level2 S-Function Block: '<S154>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[33];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S157>/S-Function' */
+  /* Level2 S-Function Block: '<S157>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[34];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S145>/S-Function' */
+  /* Level2 S-Function Block: '<S145>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[35];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S155>/S-Function' */
+  /* Level2 S-Function Block: '<S155>/S-Function' (sigout) */
+  {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[36];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigin): '<S124>/S-Function' */
-  /* Level2 S-Function Block: '<S124>/S-Function' (sigin) */
+  /* Terminate for S-Function (sigout): '<S159>/S-Function' */
+  /* Level2 S-Function Block: '<S159>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[37];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S140>/S-Function' */
+  /* Level2 S-Function Block: '<S140>/S-Function' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[38];
     sfcnTerminate(rts);
   }
 
   /* Terminate for S-Function (sigout): '<S142>/S-Function' */
   /* Level2 S-Function Block: '<S142>/S-Function' (sigout) */
   {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[38];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sysvarout): '<S149>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_j) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_j);
-    GVCU_HIL_DW.SFunction_SysVar_j = NULL;
-  }
-
-  /* Terminate for S-Function (sigin): '<S126>/S-Function' */
-  /* Level2 S-Function Block: '<S126>/S-Function' (sigin) */
-  {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[39];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S128>/S-Function' */
-  /* Level2 S-Function Block: '<S128>/S-Function' (sigout) */
+  /* Terminate for S-Function (sigout): '<S144>/S-Function' */
+  /* Level2 S-Function Block: '<S144>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[40];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sysvarout): '<S150>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_pv) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_pv);
-    GVCU_HIL_DW.SFunction_SysVar_pv = NULL;
-  }
-
-  /* Terminate for S-Function (sigin): '<S163>/S-Function' */
-  /* Level2 S-Function Block: '<S163>/S-Function' (sigin) */
+  /* Terminate for S-Function (sigout): '<S143>/S-Function' */
+  /* Level2 S-Function Block: '<S143>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[41];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S152>/S-Function_1' */
-  /* Level2 S-Function Block: '<S152>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sigout): '<S146>/S-Function' */
+  /* Level2 S-Function Block: '<S146>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[42];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigin): '<S160>/S-Function' */
-  /* Level2 S-Function Block: '<S160>/S-Function' (sigin) */
+  /* Terminate for S-Function (sigout): '<S158>/S-Function' */
+  /* Level2 S-Function Block: '<S158>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[43];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigin): '<S161>/S-Function' */
-  /* Level2 S-Function Block: '<S161>/S-Function' (sigin) */
+  /* Terminate for S-Function (sigin): '<S135>/S-Function' */
+  /* Level2 S-Function Block: '<S135>/S-Function' (sigin) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[44];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigin): '<S162>/S-Function' */
-  /* Level2 S-Function Block: '<S162>/S-Function' (sigin) */
+  /* Terminate for S-Function (sigout): '<S153>/S-Function' */
+  /* Level2 S-Function Block: '<S153>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[45];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S153>/S-Function_1' */
-  /* Level2 S-Function Block: '<S153>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sysvarout): '<S160>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_j) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_j);
+    GVCU_HIL_DW.SFunction_SysVar_j = NULL;
+  }
+
+  /* Terminate for S-Function (sigin): '<S137>/S-Function' */
+  /* Level2 S-Function Block: '<S137>/S-Function' (sigin) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[46];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S154>/S-Function_1' */
-  /* Level2 S-Function Block: '<S154>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sigout): '<S139>/S-Function' */
+  /* Level2 S-Function Block: '<S139>/S-Function' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[47];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S155>/S-Function_1' */
-  /* Level2 S-Function Block: '<S155>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sysvarout): '<S161>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_pv) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_pv);
+    GVCU_HIL_DW.SFunction_SysVar_pv = NULL;
+  }
+
+  /* Terminate for S-Function (sigin): '<S174>/S-Function' */
+  /* Level2 S-Function Block: '<S174>/S-Function' (sigin) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[48];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S156>/S-Function_1' */
-  /* Level2 S-Function Block: '<S156>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sigout): '<S163>/S-Function_1' */
+  /* Level2 S-Function Block: '<S163>/S-Function_1' (sigout) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[49];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S157>/S-Function_1' */
-  /* Level2 S-Function Block: '<S157>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sigin): '<S171>/S-Function' */
+  /* Level2 S-Function Block: '<S171>/S-Function' (sigin) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[50];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S158>/S-Function_1' */
-  /* Level2 S-Function Block: '<S158>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sigin): '<S172>/S-Function' */
+  /* Level2 S-Function Block: '<S172>/S-Function' (sigin) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[51];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sigout): '<S159>/S-Function_1' */
-  /* Level2 S-Function Block: '<S159>/S-Function_1' (sigout) */
+  /* Terminate for S-Function (sigin): '<S173>/S-Function' */
+  /* Level2 S-Function Block: '<S173>/S-Function' (sigin) */
   {
     SimStruct *rts = GVCU_HIL_M->childSfunctions[52];
     sfcnTerminate(rts);
   }
 
-  /* Terminate for S-Function (sysvarout): '<S181>/S-Function' */
+  /* Terminate for S-Function (sigout): '<S164>/S-Function_1' */
+  /* Level2 S-Function Block: '<S164>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[53];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S165>/S-Function_1' */
+  /* Level2 S-Function Block: '<S165>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[54];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S166>/S-Function_1' */
+  /* Level2 S-Function Block: '<S166>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[55];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S167>/S-Function_1' */
+  /* Level2 S-Function Block: '<S167>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[56];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S168>/S-Function_1' */
+  /* Level2 S-Function Block: '<S168>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[57];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S169>/S-Function_1' */
+  /* Level2 S-Function Block: '<S169>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[58];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sigout): '<S170>/S-Function_1' */
+  /* Level2 S-Function Block: '<S170>/S-Function_1' (sigout) */
+  {
+    SimStruct *rts = GVCU_HIL_M->childSfunctions[59];
+    sfcnTerminate(rts);
+  }
+
+  /* Terminate for S-Function (sysvarout): '<S192>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_d3) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_d3);
     GVCU_HIL_DW.SFunction_SysVar_d3 = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S165>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S176>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_pa) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_pa);
     GVCU_HIL_DW.SFunction_SysVar_pa = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S166>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S177>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_n) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_n);
     GVCU_HIL_DW.SFunction_SysVar_n = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S167>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S178>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_er) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_er);
     GVCU_HIL_DW.SFunction_SysVar_er = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S168>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S179>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_g) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_g);
     GVCU_HIL_DW.SFunction_SysVar_g = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S169>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S180>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_k) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_k);
     GVCU_HIL_DW.SFunction_SysVar_k = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S171>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S182>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_e0) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_e0);
     GVCU_HIL_DW.SFunction_SysVar_e0 = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S170>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S181>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_lf) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_lf);
     GVCU_HIL_DW.SFunction_SysVar_lf = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S182>/S-Function' */
-  if (NULL != GVCU_HIL_DW.SFunction_SysVar_m) {
-    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_m);
-    GVCU_HIL_DW.SFunction_SysVar_m = NULL;
+  /* Terminate for S-Function (sysvarout): '<S193>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_mc) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_mc);
+    GVCU_HIL_DW.SFunction_SysVar_mc = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S172>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S183>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_py) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_py);
     GVCU_HIL_DW.SFunction_SysVar_py = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S173>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S184>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_fl) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_fl);
     GVCU_HIL_DW.SFunction_SysVar_fl = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S174>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S185>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_ko) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_ko);
     GVCU_HIL_DW.SFunction_SysVar_ko = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S175>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S186>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_m4) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_m4);
     GVCU_HIL_DW.SFunction_SysVar_m4 = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S176>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S187>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_lv) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_lv);
     GVCU_HIL_DW.SFunction_SysVar_lv = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S177>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S188>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_mn) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_mn);
     GVCU_HIL_DW.SFunction_SysVar_mn = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S178>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S189>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_la) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_la);
     GVCU_HIL_DW.SFunction_SysVar_la = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S179>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S190>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_kr) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_kr);
     GVCU_HIL_DW.SFunction_SysVar_kr = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S180>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S191>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_da) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_da);
     GVCU_HIL_DW.SFunction_SysVar_da = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S183>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S194>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_dc) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_dc);
     GVCU_HIL_DW.SFunction_SysVar_dc = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S184>/S-Function' incorporates:
-   *  Constant: '<S110>/wind x'
+  /* Terminate for S-Function (sysvarout): '<S195>/S-Function' incorporates:
+   *  Constant: '<S121>/wind x'
    */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_c5) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_c5);
     GVCU_HIL_DW.SFunction_SysVar_c5 = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S164>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S175>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_pi) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_pi);
     GVCU_HIL_DW.SFunction_SysVar_pi = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S185>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S196>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_mm) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_mm);
     GVCU_HIL_DW.SFunction_SysVar_mm = NULL;
   }
 
-  /* Terminate for S-Function (sysvarout): '<S186>/S-Function' */
+  /* Terminate for S-Function (sysvarout): '<S197>/S-Function' */
   if (NULL != GVCU_HIL_DW.SFunction_SysVar_flp) {
     cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_flp);
     GVCU_HIL_DW.SFunction_SysVar_flp = NULL;
   }
 
-  /* Terminate for S-Function (sigout): '<S535>/S-Function' */
-  /* Level2 S-Function Block: '<S535>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[53];
-    sfcnTerminate(rts);
+  /* Terminate for S-Function (sysvarout): '<S546>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_bd) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_bd);
+    GVCU_HIL_DW.SFunction_SysVar_bd = NULL;
   }
 
-  /* Terminate for S-Function (sigout): '<S536>/S-Function' */
-  /* Level2 S-Function Block: '<S536>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[54];
-    sfcnTerminate(rts);
+  /* Terminate for S-Function (sysvarout): '<S547>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_eq) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_eq);
+    GVCU_HIL_DW.SFunction_SysVar_eq = NULL;
   }
 
-  /* Terminate for S-Function (sigout): '<S537>/S-Function' */
-  /* Level2 S-Function Block: '<S537>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[55];
-    sfcnTerminate(rts);
+  /* Terminate for S-Function (sysvarout): '<S548>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_or) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_or);
+    GVCU_HIL_DW.SFunction_SysVar_or = NULL;
   }
 
-  /* Terminate for S-Function (sigout): '<S538>/S-Function' */
-  /* Level2 S-Function Block: '<S538>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[56];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S539>/S-Function' */
-  /* Level2 S-Function Block: '<S539>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[57];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S540>/S-Function' */
-  /* Level2 S-Function Block: '<S540>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[58];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S545>/S-Function' */
-  /* Level2 S-Function Block: '<S545>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[59];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S546>/S-Function' */
-  /* Level2 S-Function Block: '<S546>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[60];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S541>/S-Function' */
-  /* Level2 S-Function Block: '<S541>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[61];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S542>/S-Function' */
-  /* Level2 S-Function Block: '<S542>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[62];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S543>/S-Function' */
-  /* Level2 S-Function Block: '<S543>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[63];
-    sfcnTerminate(rts);
-  }
-
-  /* Terminate for S-Function (sigout): '<S544>/S-Function' */
-  /* Level2 S-Function Block: '<S544>/S-Function' (sigout) */
-  {
-    SimStruct *rts = GVCU_HIL_M->childSfunctions[64];
-    sfcnTerminate(rts);
+  /* Terminate for S-Function (sysvarout): '<S549>/S-Function' */
+  if (NULL != GVCU_HIL_DW.SFunction_SysVar_hf) {
+    cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_hf);
+    GVCU_HIL_DW.SFunction_SysVar_hf = NULL;
   }
 }
 
@@ -11724,24 +11613,24 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
     rtssSetSolverInfoPtr(sfcnInfo, &GVCU_HIL_M->solverInfoPtr);
   }
 
-  GVCU_HIL_M->Sizes.numSFcns = (65);
+  GVCU_HIL_M->Sizes.numSFcns = (60);
 
   /* register each child */
   {
     (void) memset((void *)&GVCU_HIL_M->NonInlinedSFcns.childSFunctions[0], 0,
-                  65*sizeof(SimStruct));
+                  60*sizeof(SimStruct));
     GVCU_HIL_M->childSfunctions =
       (&GVCU_HIL_M->NonInlinedSFcns.childSFunctionPtrs[0]);
 
     {
       int_T i;
-      for (i = 0; i < 65; i++) {
+      for (i = 0; i < 60; i++) {
         GVCU_HIL_M->childSfunctions[i] =
           (&GVCU_HIL_M->NonInlinedSFcns.childSFunctions[i]);
       }
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S8>/S-Function (anorsimstepinitshmem) */
+    /* Level2 S-Function Block: GVCU_HIL/<S9>/S-Function (anorsimstepinitshmem) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[0];
 
@@ -11852,7 +11741,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       sfcnInitializeSampleTimes(rts);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S32>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S16>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[1];
 
@@ -11917,7 +11806,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.btn_paddle_le);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Gain6);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -11925,7 +11814,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Driver/Signal Output1/S-Function");
+      ssSetPath(rts, "GVCU_HIL/Brake_HIL/Signal Output1/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -11937,7 +11826,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn1.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_k);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_d);
         ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size);
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size);
@@ -11972,7 +11861,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S33>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S17>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[2];
 
@@ -12029,7 +11918,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn2.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn2.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
+        ssSetInputPortUnit(rts, 0, 3);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn2.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
@@ -12037,7 +11926,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.btn_paddle_ri);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.UnitConversion[1]);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -12045,7 +11934,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Driver/Signal Output7/S-Function");
+      ssSetPath(rts, "GVCU_HIL/Brake_HIL/Signal Output2/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -12057,13 +11946,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn2.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_l);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_e);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_c);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_o);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_n);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_o);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_d);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_p);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_h);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_b);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_m);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_a);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_i);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_a);
       }
 
       /* registration */
@@ -12081,7 +11970,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortDataType(rts, 0, SS_DOUBLE);
       ssSetInputPortComplexSignal(rts, 0, 0);
       ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 3);
       ssSetInputPortIsContinuousQuantity(rts, 0, 0);
       ssSetNumNonsampledZCsAsInt(rts, 0);
 
@@ -12092,7 +11981,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S193>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S19>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[3];
 
@@ -12140,31 +12029,32 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[3]);
       }
 
-      /* outputs */
+      /* inputs */
       {
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn3.outputPortInfo[0]);
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn3.outputPortInfo[0]);
-        _ssSetNumOutputPorts(rts, 1);
-        _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn3.outputPortUnits[0]);
-        ssSetOutputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn3.outputPortCoSimAttribute[0]);
-        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn3.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn3.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn3.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 3);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn3.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
         {
-          _ssSetOutputPortNumDimensions(rts, 0, 1);
-          ssSetOutputPortWidthAsInt(rts, 0, 1);
-          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_p4));
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.UnitConversion[0]);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
         }
       }
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Powertrain (EV)/Signal Input4/S-Function");
+      ssSetPath(rts, "GVCU_HIL/Brake_HIL/Signal Output4/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -12174,20 +12064,19 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       {
         mxArray **sfcnParams = (mxArray **)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn3.params;
-        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_e);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_o);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_m);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_a);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_o);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_i);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_g);
-        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_h);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_n);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_i);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_i);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_e);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_d);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_d);
       }
 
       /* registration */
-      sigin(rts);
+      sigout(rts);
       sfcnInitializeSizes(rts);
       sfcnInitializeSampleTimes(rts);
 
@@ -12197,22 +12086,22 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       sfcnTsMap[0] = 1;
 
       /* set compiled values of dynamic vector attributes */
-      ssSetOutputPortWidthAsInt(rts, 0, 1);
-      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetOutputPortComplexSignal(rts, 0, 0);
-      ssSetOutputPortFrameData(rts, 0, 0);
-      ssSetOutputPortUnit(rts, 0, 0);
-      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 3);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
       ssSetNumNonsampledZCsAsInt(rts, 0);
 
       /* Update connectivity flags for each port */
-      _ssSetOutputPortConnected(rts, 0, 1);
-      _ssSetOutputPortBeingMerged(rts, 0, 0);
+      _ssSetInputPortConnected(rts, 0, 1);
 
       /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S191>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S20>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[4];
 
@@ -12260,31 +12149,32 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[4]);
       }
 
-      /* outputs */
+      /* inputs */
       {
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn4.outputPortInfo[0]);
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn4.outputPortInfo[0]);
-        _ssSetNumOutputPorts(rts, 1);
-        _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn4.outputPortUnits[0]);
-        ssSetOutputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn4.outputPortCoSimAttribute[0]);
-        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn4.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn4.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn4.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 4);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn4.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
         {
-          _ssSetOutputPortNumDimensions(rts, 0, 1);
-          ssSetOutputPortWidthAsInt(rts, 0, 1);
-          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_g));
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Gain_o);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
         }
       }
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Powertrain (EV)/Signal Input1/S-Function");
+      ssSetPath(rts, "GVCU_HIL/Brake_HIL/Signal Output5/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -12294,20 +12184,19 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       {
         mxArray **sfcnParams = (mxArray **)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn4.params;
-        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_kc);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_c);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_l);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_m);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_d);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_l);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_gz);
-        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_i);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_du);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_g);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_e);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_g);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_k);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_m);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_h);
       }
 
       /* registration */
-      sigin(rts);
+      sigout(rts);
       sfcnInitializeSizes(rts);
       sfcnInitializeSampleTimes(rts);
 
@@ -12317,22 +12206,22 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       sfcnTsMap[0] = 1;
 
       /* set compiled values of dynamic vector attributes */
-      ssSetOutputPortWidthAsInt(rts, 0, 1);
-      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetOutputPortComplexSignal(rts, 0, 0);
-      ssSetOutputPortFrameData(rts, 0, 0);
-      ssSetOutputPortUnit(rts, 0, 0);
-      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 4);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
       ssSetNumNonsampledZCsAsInt(rts, 0);
 
       /* Update connectivity flags for each port */
-      _ssSetOutputPortConnected(rts, 0, 1);
-      _ssSetOutputPortBeingMerged(rts, 0, 0);
+      _ssSetInputPortConnected(rts, 0, 1);
 
       /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S192>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S12>/S-Function_1 (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[5];
 
@@ -12380,31 +12269,82 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[5]);
       }
 
-      /* outputs */
+      /* inputs */
       {
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn5.outputPortInfo[0]);
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn5.outputPortInfo[0]);
-        _ssSetNumOutputPorts(rts, 1);
-        _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn5.outputPortUnits[0]);
-        ssSetOutputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn5.outputPortCoSimAttribute[0]);
-        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+        _ssSetNumInputPorts(rts, 6);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn5.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn5.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn5.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        ssSetInputPortUnit(rts, 1, 0);
+        ssSetInputPortUnit(rts, 2, 0);
+        ssSetInputPortUnit(rts, 3, 0);
+        ssSetInputPortUnit(rts, 4, 0);
+        ssSetInputPortUnit(rts, 5, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn5.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+        ssSetInputPortIsContinuousQuantity(rts, 1, 0);
+        ssSetInputPortIsContinuousQuantity(rts, 2, 0);
+        ssSetInputPortIsContinuousQuantity(rts, 3, 0);
+        ssSetInputPortIsContinuousQuantity(rts, 4, 0);
+        ssSetInputPortIsContinuousQuantity(rts, 5, 0);
 
         /* port 0 */
         {
-          _ssSetOutputPortNumDimensions(rts, 0, 1);
-          ssSetOutputPortWidthAsInt(rts, 0, 1);
-          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_e));
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.e2e_alive_counter);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
+        }
+
+        /* port 1 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 1, 1);
+          ssSetInputPortSignal(rts, 1, &GVCU_HIL_B.e2e_checksum);
+          _ssSetInputPortNumDimensions(rts, 1, 1);
+          ssSetInputPortWidthAsInt(rts, 1, 1);
+        }
+
+        /* port 2 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 2, 1);
+          ssSetInputPortSignal(rts, 2, &GVCU_HIL_B.steer_tq);
+          _ssSetInputPortNumDimensions(rts, 2, 1);
+          ssSetInputPortWidthAsInt(rts, 2, 1);
+        }
+
+        /* port 3 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 3, 1);
+          ssSetInputPortSignal(rts, 3, &GVCU_HIL_B.steer_whl_ag);
+          _ssSetInputPortNumDimensions(rts, 3, 1);
+          ssSetInputPortWidthAsInt(rts, 3, 1);
+        }
+
+        /* port 4 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 4, 1);
+          ssSetInputPortSignal(rts, 4, &GVCU_HIL_B.steer_whl_rot_spd);
+          _ssSetInputPortNumDimensions(rts, 4, 1);
+          ssSetInputPortWidthAsInt(rts, 4, 1);
+        }
+
+        /* port 5 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 5, 1);
+          ssSetInputPortSignal(rts, 5, &GVCU_HIL_B.steer_whl_snsr_v);
+          _ssSetInputPortNumDimensions(rts, 5, 1);
+          ssSetInputPortWidthAsInt(rts, 5, 1);
         }
       }
 
       /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Powertrain (EV)/Signal Input2/S-Function");
+      ssSetModelName(rts, "S-Function_1");
+      ssSetPath(rts, "GVCU_HIL/Brake_HIL/Message Output4/S-Function_1");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -12414,20 +12354,24 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       {
         mxArray **sfcnParams = (mxArray **)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn5.params;
-        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsCount(rts, 12);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_f);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_h);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_o);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_af);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_i);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_h);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_l);
-        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_h);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_1_P2_Size);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_1_P3_Size);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_1_P4_Size);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_1_P5_Size);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_1_P6_Size);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_1_P7_Size);
+        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_1_P8_Size);
+        ssSetSFcnParam(rts, 8, (mxArray*)GVCU_HIL_P.SFunction_1_P9_Size);
+        ssSetSFcnParam(rts, 9, (mxArray*)GVCU_HIL_P.SFunction_1_P10_Size);
+        ssSetSFcnParam(rts, 10, (mxArray*)GVCU_HIL_P.SFunction_1_P11_Size);
+        ssSetSFcnParam(rts, 11, (mxArray*)GVCU_HIL_P.SFunction_1_P12_Size);
       }
 
       /* registration */
-      sigin(rts);
+      sigout(rts);
       sfcnInitializeSizes(rts);
       sfcnInitializeSampleTimes(rts);
 
@@ -12437,22 +12381,62 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       sfcnTsMap[0] = 1;
 
       /* set compiled values of dynamic vector attributes */
-      ssSetOutputPortWidthAsInt(rts, 0, 1);
-      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetOutputPortComplexSignal(rts, 0, 0);
-      ssSetOutputPortFrameData(rts, 0, 0);
-      ssSetOutputPortUnit(rts, 0, 0);
-      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetInputPortWidthAsInt(rts, 1, 1);
+      ssSetInputPortDataType(rts, 1, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 1, 0);
+      ssSetInputPortFrameData(rts, 1, 0);
+      ssSetInputPortUnit(rts, 1, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 1, 0);
+      ssSetInputPortWidthAsInt(rts, 2, 1);
+      ssSetInputPortDataType(rts, 2, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 2, 0);
+      ssSetInputPortFrameData(rts, 2, 0);
+      ssSetInputPortUnit(rts, 2, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 2, 0);
+      ssSetInputPortWidthAsInt(rts, 3, 1);
+      ssSetInputPortDataType(rts, 3, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 3, 0);
+      ssSetInputPortFrameData(rts, 3, 0);
+      ssSetInputPortUnit(rts, 3, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 3, 0);
+      ssSetInputPortWidthAsInt(rts, 4, 1);
+      ssSetInputPortDataType(rts, 4, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 4, 0);
+      ssSetInputPortFrameData(rts, 4, 0);
+      ssSetInputPortUnit(rts, 4, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 4, 0);
+      ssSetInputPortWidthAsInt(rts, 5, 1);
+      ssSetInputPortDataType(rts, 5, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 5, 0);
+      ssSetInputPortFrameData(rts, 5, 0);
+      ssSetInputPortUnit(rts, 5, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 5, 0);
       ssSetNumNonsampledZCsAsInt(rts, 0);
 
       /* Update connectivity flags for each port */
-      _ssSetOutputPortConnected(rts, 0, 1);
-      _ssSetOutputPortBeingMerged(rts, 0, 0);
+      _ssSetInputPortConnected(rts, 0, 1);
+      _ssSetInputPortConnected(rts, 1, 1);
+      _ssSetInputPortConnected(rts, 2, 1);
+      _ssSetInputPortConnected(rts, 3, 1);
+      _ssSetInputPortConnected(rts, 4, 1);
+      _ssSetInputPortConnected(rts, 5, 1);
 
       /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
+      ssSetInputPortBufferDstPort(rts, 1, -1);
+      ssSetInputPortBufferDstPort(rts, 2, -1);
+      ssSetInputPortBufferDstPort(rts, 3, -1);
+      ssSetInputPortBufferDstPort(rts, 4, -1);
+      ssSetInputPortBufferDstPort(rts, 5, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S120>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S15>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[6];
 
@@ -12502,13 +12486,853 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* inputs */
       {
-        _ssSetNumInputPorts(rts, 11);
+        _ssSetNumInputPorts(rts, 1);
         ssSetPortInfoForInputs(rts,
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn6.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn6.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn6.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn6.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.steer_whl_snsr_v);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/Brake_HIL/Signal Output/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn6.params;
+        ssSetSFcnParamsCount(rts, 7);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_c);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_f);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_g);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_d);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_d);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_b);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_hr);
+      }
+
+      /* registration */
+      sigout(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetInputPortConnected(rts, 0, 1);
+
+      /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S18>/S-Function (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[7];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn7.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn7.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn7.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[7]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[7]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[7]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[7]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[7]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[7]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[7]);
+      }
+
+      /* inputs */
+      {
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.yaw_rate_qual);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/Brake_HIL/Signal Output3/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.params;
+        ssSetSFcnParamsCount(rts, 7);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_i);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_fq);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_n);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_p);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_p);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_bk);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_i);
+      }
+
+      /* registration */
+      sigout(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetInputPortConnected(rts, 0, 1);
+
+      /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S43>/S-Function (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[8];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn8.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn8.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn8.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[8]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[8]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[8]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[8]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[8]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[8]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[8]);
+      }
+
+      /* inputs */
+      {
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.btn_paddle_le);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/Driver/Signal Output1/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.params;
+        ssSetSFcnParamsCount(rts, 7);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_k);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_c);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_f);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_e);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_f);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_e);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_n);
+      }
+
+      /* registration */
+      sigout(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetInputPortConnected(rts, 0, 1);
+
+      /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S44>/S-Function (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[9];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn9.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn9.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn9.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[9]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[9]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[9]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[9]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[9]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[9]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[9]);
+      }
+
+      /* inputs */
+      {
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.btn_paddle_ri);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/Driver/Signal Output7/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.params;
+        ssSetSFcnParamsCount(rts, 7);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_l);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_e);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_c);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_o);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_n);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_o);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_ds);
+      }
+
+      /* registration */
+      sigout(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetInputPortConnected(rts, 0, 1);
+
+      /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S204>/S-Function (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[10];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn10.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn10.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn10.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[10]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[10]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[10]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[10]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[10]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[10]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[10]);
+      }
+
+      /* outputs */
+      {
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.outputPortInfo[0]);
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.outputPortInfo[0]);
+        _ssSetNumOutputPorts(rts, 1);
+        _ssSetPortInfo2ForOutputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.outputPortUnits[0]);
+        ssSetOutputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.outputPortCoSimAttribute[0]);
+        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          _ssSetOutputPortNumDimensions(rts, 0, 1);
+          ssSetOutputPortWidthAsInt(rts, 0, 1);
+          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_p4));
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/Powertrain (EV)/Signal Input4/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.params;
+        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_e);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_o);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_m);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_a);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_o);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_ia);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_g);
+        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size);
+      }
+
+      /* registration */
+      sigin(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetOutputPortWidthAsInt(rts, 0, 1);
+      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetOutputPortComplexSignal(rts, 0, 0);
+      ssSetOutputPortFrameData(rts, 0, 0);
+      ssSetOutputPortUnit(rts, 0, 0);
+      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetOutputPortConnected(rts, 0, 1);
+      _ssSetOutputPortBeingMerged(rts, 0, 0);
+
+      /* Update the BufferDstPort flags for each input port */
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S202>/S-Function (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[11];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn11.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn11.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn11.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[11]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[11]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[11]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[11]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[11]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[11]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[11]);
+      }
+
+      /* outputs */
+      {
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.outputPortInfo[0]);
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.outputPortInfo[0]);
+        _ssSetNumOutputPorts(rts, 1);
+        _ssSetPortInfo2ForOutputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.outputPortUnits[0]);
+        ssSetOutputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.outputPortCoSimAttribute[0]);
+        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          _ssSetOutputPortNumDimensions(rts, 0, 1);
+          ssSetOutputPortWidthAsInt(rts, 0, 1);
+          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_g));
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/Powertrain (EV)/Signal Input1/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.params;
+        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_kc);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_cl);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_l);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_mr);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_ds);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_l);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_gz);
+        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_i);
+      }
+
+      /* registration */
+      sigin(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetOutputPortWidthAsInt(rts, 0, 1);
+      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetOutputPortComplexSignal(rts, 0, 0);
+      ssSetOutputPortFrameData(rts, 0, 0);
+      ssSetOutputPortUnit(rts, 0, 0);
+      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetOutputPortConnected(rts, 0, 1);
+      _ssSetOutputPortBeingMerged(rts, 0, 0);
+
+      /* Update the BufferDstPort flags for each input port */
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S203>/S-Function (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[12];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn12.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn12.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn12.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[12]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[12]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[12]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[12]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[12]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[12]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[12]);
+      }
+
+      /* outputs */
+      {
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.outputPortInfo[0]);
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.outputPortInfo[0]);
+        _ssSetNumOutputPorts(rts, 1);
+        _ssSetPortInfo2ForOutputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.outputPortUnits[0]);
+        ssSetOutputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.outputPortCoSimAttribute[0]);
+        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          _ssSetOutputPortNumDimensions(rts, 0, 1);
+          ssSetOutputPortWidthAsInt(rts, 0, 1);
+          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_e));
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/Powertrain (EV)/Signal Input2/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.params;
+        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_f);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_hi);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_o);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_af);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_i);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_h);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_l);
+        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_h);
+      }
+
+      /* registration */
+      sigin(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetOutputPortWidthAsInt(rts, 0, 1);
+      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetOutputPortComplexSignal(rts, 0, 0);
+      ssSetOutputPortFrameData(rts, 0, 0);
+      ssSetOutputPortUnit(rts, 0, 0);
+      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetOutputPortConnected(rts, 0, 1);
+      _ssSetOutputPortBeingMerged(rts, 0, 0);
+
+      /* Update the BufferDstPort flags for each input port */
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S131>/S-Function_1 (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[13];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn13.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn13.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn13.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[13]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[13]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[13]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[13]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[13]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[13]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[13]);
+      }
+
+      /* inputs */
+      {
+        _ssSetNumInputPorts(rts, 11);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -12521,7 +13345,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 9, 0);
         ssSetInputPortUnit(rts, 10, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn6.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -12561,7 +13385,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 3 */
         {
           ssSetInputPortRequiredContiguous(rts, 3, 1);
-          ssSetInputPortSignal(rts, 3, &GVCU_HIL_B.e2e_alive_counter);
+          ssSetInputPortSignal(rts, 3, &GVCU_HIL_B.e2e_alive_counter_p);
           _ssSetInputPortNumDimensions(rts, 3, 1);
           ssSetInputPortWidthAsInt(rts, 3, 1);
         }
@@ -12569,7 +13393,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 4 */
         {
           ssSetInputPortRequiredContiguous(rts, 4, 1);
-          ssSetInputPortSignal(rts, 4, &GVCU_HIL_B.e2e_checksum);
+          ssSetInputPortSignal(rts, 4, &GVCU_HIL_B.e2e_checksum_c);
           _ssSetInputPortNumDimensions(rts, 4, 1);
           ssSetInputPortWidthAsInt(rts, 4, 1);
         }
@@ -12634,21 +13458,21 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn6.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.params;
         ssSetSFcnParamsCount(rts, 17);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_1_P2_Size);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_1_P3_Size);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_1_P4_Size);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_1_P5_Size);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_1_P6_Size);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_1_P7_Size);
-        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_1_P8_Size);
-        ssSetSFcnParam(rts, 8, (mxArray*)GVCU_HIL_P.SFunction_1_P9_Size);
-        ssSetSFcnParam(rts, 9, (mxArray*)GVCU_HIL_P.SFunction_1_P10_Size);
-        ssSetSFcnParam(rts, 10, (mxArray*)GVCU_HIL_P.SFunction_1_P11_Size);
-        ssSetSFcnParam(rts, 11, (mxArray*)GVCU_HIL_P.SFunction_1_P12_Size);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_g);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_1_P2_Size_k);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_1_P3_Size_l);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_1_P4_Size_b);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_1_P5_Size_l);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_1_P6_Size_e);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_1_P7_Size_f);
+        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_1_P8_Size_k);
+        ssSetSFcnParam(rts, 8, (mxArray*)GVCU_HIL_P.SFunction_1_P9_Size_e);
+        ssSetSFcnParam(rts, 9, (mxArray*)GVCU_HIL_P.SFunction_1_P10_Size_d);
+        ssSetSFcnParam(rts, 10, (mxArray*)GVCU_HIL_P.SFunction_1_P11_Size_p);
+        ssSetSFcnParam(rts, 11, (mxArray*)GVCU_HIL_P.SFunction_1_P12_Size_i);
         ssSetSFcnParam(rts, 12, (mxArray*)GVCU_HIL_P.SFunction_1_P13_Size);
         ssSetSFcnParam(rts, 13, (mxArray*)GVCU_HIL_P.SFunction_1_P14_Size);
         ssSetSFcnParam(rts, 14, (mxArray*)GVCU_HIL_P.SFunction_1_P15_Size);
@@ -12762,14 +13586,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 10, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S130>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S141>/S-Function (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[7];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[14];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn7.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn7.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn7.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn14.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn14.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn14.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -12779,49 +13603,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[7]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[14]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[7]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[14]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[7]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[14]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[7]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[14]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[7]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[14]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[7]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[14]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[7]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[14]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 1);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -12844,16 +13668,16 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn7.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_n);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_n);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_nh);
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_p);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_i);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ic);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_c);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_hn);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_n);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_nk);
       }
 
       /* registration */
@@ -12882,14 +13706,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S117>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S128>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[8];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[15];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn8.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn8.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn8.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn15.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn15.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn15.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -12899,46 +13723,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[8]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[15]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[8]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[15]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[8]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[15]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[8]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[15]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[8]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[15]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[8]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[15]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[8]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[15]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 11);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -12951,7 +13775,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 9, 0);
         ssSetInputPortUnit(rts, 10, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -13064,7 +13888,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn8.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.params;
         ssSetSFcnParamsCount(rts, 17);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_l);
@@ -13192,14 +14016,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 10, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S125>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S136>/S-Function (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[9];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[16];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn9.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn9.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn9.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn16.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn16.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn16.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -13209,49 +14033,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[9]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[16]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[9]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[16]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[9]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[16]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[9]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[16]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[9]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[16]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[9]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[16]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[9]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[16]);
       }
 
       /* outputs */
       {
         ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.outputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.outputPortInfo[0]);
         ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.outputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.outputPortInfo[0]);
         _ssSetNumOutputPorts(rts, 1);
         _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.outputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.outputPortUnits[0]);
         ssSetOutputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.outputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.outputPortCoSimAttribute[0]);
         ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -13273,14 +14097,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn9.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.params;
         ssSetSFcnParamsCount(rts, 8);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_c);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_cx);
         ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_d);
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_pr);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_b);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_f);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_fe);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_p);
         ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_f);
         ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_n);
@@ -13312,14 +14136,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* Update the BufferDstPort flags for each input port */
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S119>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S130>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[10];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[17];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn10.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn10.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn10.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn17.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn17.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn17.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -13329,50 +14153,50 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[10]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[17]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[10]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[17]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[10]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[17]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[10]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[17]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[10]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[17]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[10]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[17]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[10]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[17]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 2);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
 
@@ -13404,7 +14228,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn10.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.params;
         ssSetSFcnParamsCount(rts, 8);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_j);
@@ -13451,14 +14275,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 1, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S114>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S125>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[11];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[18];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn11.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn11.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn11.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn18.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn18.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn18.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -13468,50 +14292,50 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[11]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[18]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[11]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[18]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[11]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[18]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[11]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[18]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[11]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[18]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[11]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[18]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[11]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[18]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 2);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
 
@@ -13543,7 +14367,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn11.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.params;
         ssSetSFcnParamsCount(rts, 8);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_f);
@@ -13590,14 +14414,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 1, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S115>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S126>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[12];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[19];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn12.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn12.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn12.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn19.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn19.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn19.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -13607,46 +14431,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[12]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[19]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[12]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[19]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[12]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[19]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[12]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[19]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[12]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[19]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[12]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[19]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[12]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[19]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 10);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -13658,7 +14482,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 8, 0);
         ssSetInputPortUnit(rts, 9, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -13762,13 +14586,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn12.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.params;
         ssSetSFcnParamsCount(rts, 16);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_n);
         ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_1_P2_Size_j);
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_1_P3_Size_m2);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_1_P4_Size_b);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_1_P4_Size_bi);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_1_P5_Size_g);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_1_P6_Size_k);
         ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_1_P7_Size_n);
@@ -13881,14 +14705,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 9, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S116>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S127>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[13];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[20];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn13.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn13.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn13.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn20.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn20.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn20.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -13898,51 +14722,51 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[13]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[20]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[13]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[20]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[13]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[20]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[13]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[20]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[13]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[20]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[13]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[20]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[13]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[20]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 3);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -13983,7 +14807,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn13.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.params;
         ssSetSFcnParamsCount(rts, 9);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_p);
@@ -14039,14 +14863,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 2, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S118>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S129>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[14];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[21];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn14.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn14.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn14.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn21.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn21.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn21.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -14056,46 +14880,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[14]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[21]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[14]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[21]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[14]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[21]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[14]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[21]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[14]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[21]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[14]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[21]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[14]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[21]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 11);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -14108,7 +14932,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 9, 0);
         ssSetInputPortUnit(rts, 10, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -14221,7 +15045,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn14.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.params;
         ssSetSFcnParamsCount(rts, 17);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_ny);
@@ -14349,14 +15173,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 10, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S136>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S147>/S-Function (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[15];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[22];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn15.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn15.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn15.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn22.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn22.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn22.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -14366,49 +15190,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[15]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[22]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[15]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[22]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[15]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[22]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[15]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[22]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[15]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[22]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[15]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[22]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[15]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[22]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 1);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -14431,15 +15255,15 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn15.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_d);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_dc);
         ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_dn);
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_lu);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_l);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_cq);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_b);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_bw);
         ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_go);
       }
 
@@ -14469,14 +15293,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S137>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S148>/S-Function (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[16];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[23];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn16.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn16.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn16.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn23.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn23.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn23.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -14486,49 +15310,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[16]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[23]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[16]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[23]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[16]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[23]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[16]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[23]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[16]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[23]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[16]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[23]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[16]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[23]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 1);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -14551,7 +15375,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn16.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_co);
@@ -14560,7 +15384,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_c);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_d5);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_on);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_a);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_al);
       }
 
       /* registration */
@@ -14589,14 +15413,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S138>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S149>/S-Function (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[17];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[24];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn17.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn17.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn17.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn24.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn24.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn24.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -14606,49 +15430,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[17]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[24]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[17]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[24]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[17]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[24]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[17]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[24]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[17]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[24]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[17]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[24]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[17]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[24]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 1);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -14671,16 +15495,16 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn17.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_la);
         ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_n1);
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_j);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_j);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_k);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_kj);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_c);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_h);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_hm);
       }
 
       /* registration */
@@ -14709,14 +15533,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S139>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S150>/S-Function (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[18];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[25];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn18.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn18.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn18.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn25.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn25.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn25.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -14726,49 +15550,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[18]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[25]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[18]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[25]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[18]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[25]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[18]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[25]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[18]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[25]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[18]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[25]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[18]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[25]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 1);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -14791,14 +15615,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn18.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_h);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_hd);
         ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_a);
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_a);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_h);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_p);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_ph);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_p4);
         ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_o);
       }
@@ -14829,14 +15653,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S140>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S151>/S-Function (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[19];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[26];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn19.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn19.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn19.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn26.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn26.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn26.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -14846,49 +15670,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[19]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[26]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[19]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[26]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[19]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[26]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[19]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[26]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[19]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[26]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[19]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[26]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[19]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[26]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 1);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -14911,7 +15735,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn19.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_kt);
@@ -14949,14 +15773,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S141>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S152>/S-Function (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[20];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[27];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn20.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn20.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn20.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn27.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn27.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn27.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -14966,49 +15790,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[20]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[27]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[20]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[27]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[20]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[27]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[20]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[27]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[20]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[27]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[20]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[27]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[20]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[27]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 1);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -15031,16 +15855,16 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn20.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_du);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_du5);
         ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_j);
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_am);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_hk);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_h);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_bz);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_i);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_iz);
       }
 
       /* registration */
@@ -15069,14 +15893,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S121>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S132>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[21];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[28];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn21.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn21.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn21.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn28.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn28.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn28.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -15086,46 +15910,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[21]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[28]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[21]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[28]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[21]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[28]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[21]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[28]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[21]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[28]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[21]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[28]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[21]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[28]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 10);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -15137,7 +15961,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 8, 0);
         ssSetInputPortUnit(rts, 9, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -15241,7 +16065,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn21.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.params;
         ssSetSFcnParamsCount(rts, 16);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_d);
@@ -15360,14 +16184,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 9, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S122>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S133>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[22];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[29];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn22.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn22.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn22.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn29.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn29.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn29.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -15377,46 +16201,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[22]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[29]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[22]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[29]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[22]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[29]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[22]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[29]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[22]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[29]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[22]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[29]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[22]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[29]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 10);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -15428,7 +16252,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 8, 0);
         ssSetInputPortUnit(rts, 9, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -15532,12 +16356,12 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn22.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.params;
         ssSetSFcnParamsCount(rts, 16);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_o);
         ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_1_P2_Size_dt);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_1_P3_Size_l);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_1_P3_Size_lk);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_1_P4_Size_f);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_1_P5_Size_o);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_1_P6_Size_j);
@@ -15651,14 +16475,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 9, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S123>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S134>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[23];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[30];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn23.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn23.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn23.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn30.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn30.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn30.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -15668,46 +16492,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[23]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[30]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[23]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[30]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[23]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[30]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[23]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[30]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[23]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[30]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[23]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[30]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[23]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[30]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 8);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -15717,7 +16541,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 6, 0);
         ssSetInputPortUnit(rts, 7, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -15803,10 +16627,10 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn23.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.params;
         ssSetSFcnParamsCount(rts, 14);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_g);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_gg);
         ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_1_P2_Size_n3);
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_1_P3_Size_fr);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_1_P4_Size_g);
@@ -15904,847 +16728,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 7, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S127>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[24];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn24.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn24.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn24.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[24]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[24]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[24]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[24]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[24]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[24]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[24]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.bar);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output1/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn24.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_a);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_m);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_b);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_p);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_g);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_ot);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_ai);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S145>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[25];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn25.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn25.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn25.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[25]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[25]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[25]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[25]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[25]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[25]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[25]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant14);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output6/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn25.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_hu);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_nl);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_n);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ck);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_nz);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_ota);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_ij);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S143>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[26];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn26.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn26.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn26.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[26]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[26]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[26]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[26]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[26]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[26]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[26]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant18);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output4/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn26.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_p);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_my);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_f);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ig);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_po);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_be);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_fz);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S146>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[27];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn27.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn27.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn27.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[27]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[27]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[27]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[27]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[27]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[27]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[27]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant19);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output7/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn27.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_dz);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_jy);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_oi);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ix);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_l);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_b1);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_c);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S134>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[28];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn28.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn28.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn28.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[28]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[28]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[28]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[28]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[28]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[28]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[28]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.degrees40);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output2/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn28.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_dv);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_e3);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_c3);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_f);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_j);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_bn);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_fy);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S144>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[29];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn29.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn29.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn29.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[29]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[29]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[29]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[29]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[29]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[29]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[29]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.bar_e);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output5/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn29.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_o);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_nlr);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_h);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_oh);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_e);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_lf);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_av);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S148>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[30];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn30.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn30.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn30.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[30]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[30]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[30]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[30]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[30]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[30]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[30]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.imob_st);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output9/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn30.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_ab);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_k);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_f0);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_n);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_b1);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_d);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_hp);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S129>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S138>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[31];
 
@@ -16809,7 +16793,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.degrees40_j);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.bar);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -16817,7 +16801,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output11/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output1/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -16829,13 +16813,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn31.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_nz);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_l);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_i);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_lg);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_pg);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_dy);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_lt);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_a);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_m);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_bh);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_pe);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_g);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_ot);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_ai);
       }
 
       /* registration */
@@ -16864,7 +16848,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S131>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S156>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[32];
 
@@ -16929,7 +16913,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.brake_pedal_travel_mm_v_e);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant14);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -16937,7 +16921,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output13/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output6/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -16949,13 +16933,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn32.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_g);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_jt);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_as);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_aw);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_cv);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_f);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_gs);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_hu);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_nl);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_nu);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ck);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_nz);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_ota);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_ij);
       }
 
       /* registration */
@@ -16984,7 +16968,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S133>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S154>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[33];
 
@@ -17049,7 +17033,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.active_mode_m);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant18);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -17057,7 +17041,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output18/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output4/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -17069,13 +17053,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn33.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_dn);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_g);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_nt);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_e);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_c0);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_a);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_du);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_ps);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_my);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_f2);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ig);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_po);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_be);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_fz);
       }
 
       /* registration */
@@ -17104,7 +17088,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S132>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S157>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[34];
 
@@ -17169,7 +17153,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.brake_pedal_travel_mm_j);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant19);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -17177,7 +17161,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output15/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output7/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -17189,13 +17173,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn34.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_m);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_p);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_a3);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_eo);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_hj);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_n);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_p);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_dz);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_jy);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_oi);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ix);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_l);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_b1);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_c);
       }
 
       /* registration */
@@ -17224,7 +17208,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S135>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S145>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[35];
 
@@ -17289,7 +17273,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.brake_pedal_travel_perc);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.degrees40);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -17297,7 +17281,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output20/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output2/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -17309,13 +17293,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn35.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_gp);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_f);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_k);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_k);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_km);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_m);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_hl);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_dv);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_e3);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_c3);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_f);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_j);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_bn);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_fy);
       }
 
       /* registration */
@@ -17344,7 +17328,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S147>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S155>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[36];
 
@@ -17409,7 +17393,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.brake_switch);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.bar_e);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -17417,7 +17401,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output8/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output5/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -17429,13 +17413,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn36.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_hb);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_at);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_hs);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_e2);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_pq);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_m3);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_b);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_o);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_nlr);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_h);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_oh);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_eg);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_lf);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_av);
       }
 
       /* registration */
@@ -17464,7 +17448,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S124>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S159>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[37];
 
@@ -17512,31 +17496,32 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[37]);
       }
 
-      /* outputs */
+      /* inputs */
       {
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn37.outputPortInfo[0]);
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn37.outputPortInfo[0]);
-        _ssSetNumOutputPorts(rts, 1);
-        _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn37.outputPortUnits[0]);
-        ssSetOutputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn37.outputPortCoSimAttribute[0]);
-        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn37.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn37.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn37.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn37.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
         {
-          _ssSetOutputPortNumDimensions(rts, 0, 1);
-          ssSetOutputPortWidthAsInt(rts, 0, 1);
-          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_hp));
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.imob_st);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
         }
       }
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Input/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output9/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -17546,20 +17531,19 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       {
         mxArray **sfcnParams = (mxArray **)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn37.params;
-        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_i);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_fu);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_bs);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_hy);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_hb);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_pd);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_aq);
-        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_m);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_ab);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_k);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_f0);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_n);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_b1);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_d2);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_hp);
       }
 
       /* registration */
-      sigin(rts);
+      sigout(rts);
       sfcnInitializeSizes(rts);
       sfcnInitializeSampleTimes(rts);
 
@@ -17569,22 +17553,22 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       sfcnTsMap[0] = 1;
 
       /* set compiled values of dynamic vector attributes */
-      ssSetOutputPortWidthAsInt(rts, 0, 1);
-      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetOutputPortComplexSignal(rts, 0, 0);
-      ssSetOutputPortFrameData(rts, 0, 0);
-      ssSetOutputPortUnit(rts, 0, 0);
-      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
       ssSetNumNonsampledZCsAsInt(rts, 0);
 
       /* Update connectivity flags for each port */
-      _ssSetOutputPortConnected(rts, 0, 1);
-      _ssSetOutputPortBeingMerged(rts, 0, 0);
+      _ssSetInputPortConnected(rts, 0, 1);
 
       /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S142>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S140>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[38];
 
@@ -17649,7 +17633,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.SFunction_hp);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.degrees40_j);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -17657,7 +17641,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output3/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output11/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -17669,13 +17653,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn38.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_nf);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_lr);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_m1);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ka);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_dv);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_aw);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_ic);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_nz);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_l);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_ia);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_lg);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_pg);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_dy);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_lt);
       }
 
       /* registration */
@@ -17704,7 +17688,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S126>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S142>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[39];
 
@@ -17752,31 +17736,32 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[39]);
       }
 
-      /* outputs */
+      /* inputs */
       {
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn39.outputPortInfo[0]);
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn39.outputPortInfo[0]);
-        _ssSetNumOutputPorts(rts, 1);
-        _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn39.outputPortUnits[0]);
-        ssSetOutputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn39.outputPortCoSimAttribute[0]);
-        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn39.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn39.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn39.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn39.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
         {
-          _ssSetOutputPortNumDimensions(rts, 0, 1);
-          ssSetOutputPortWidthAsInt(rts, 0, 1);
-          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_gn));
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.brake_pedal_travel_mm_v_e);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
         }
       }
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Input2/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output13/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -17786,20 +17771,19 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       {
         mxArray **sfcnParams = (mxArray **)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn39.params;
-        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_nx);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_lru);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_lh);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_bl);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_lt);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_om);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_gw);
-        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_c);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_g);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_jt);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_as);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_aw);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_cv);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_f);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_gs);
       }
 
       /* registration */
-      sigin(rts);
+      sigout(rts);
       sfcnInitializeSizes(rts);
       sfcnInitializeSampleTimes(rts);
 
@@ -17809,22 +17793,22 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       sfcnTsMap[0] = 1;
 
       /* set compiled values of dynamic vector attributes */
-      ssSetOutputPortWidthAsInt(rts, 0, 1);
-      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetOutputPortComplexSignal(rts, 0, 0);
-      ssSetOutputPortFrameData(rts, 0, 0);
-      ssSetOutputPortUnit(rts, 0, 0);
-      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
       ssSetNumNonsampledZCsAsInt(rts, 0);
 
       /* Update connectivity flags for each port */
-      _ssSetOutputPortConnected(rts, 0, 1);
-      _ssSetOutputPortBeingMerged(rts, 0, 0);
+      _ssSetInputPortConnected(rts, 0, 1);
 
       /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S128>/S-Function (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S144>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[40];
 
@@ -17889,7 +17873,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         /* port 0 */
         {
           ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.SFunction_gn);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.active_mode_m);
           _ssSetInputPortNumDimensions(rts, 0, 1);
           ssSetInputPortWidthAsInt(rts, 0, 1);
         }
@@ -17897,7 +17881,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output10/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output18/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -17909,13 +17893,13 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn40.params;
         ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_fm);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_ao);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_bn);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_n0);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_m);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_bk);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_k);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_dn);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_gb);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_nt);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_es);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_c0);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_a);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_du);
       }
 
       /* registration */
@@ -17944,7 +17928,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S163>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S143>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[41];
 
@@ -17992,31 +17976,32 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
           &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[41]);
       }
 
-      /* outputs */
+      /* inputs */
       {
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn41.outputPortInfo[0]);
-        ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn41.outputPortInfo[0]);
-        _ssSetNumOutputPorts(rts, 1);
-        _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn41.outputPortUnits[0]);
-        ssSetOutputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn41.outputPortCoSimAttribute[0]);
-        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn41.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn41.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn41.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn41.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
         {
-          _ssSetOutputPortNumDimensions(rts, 0, 1);
-          ssSetOutputPortWidthAsInt(rts, 0, 1);
-          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_bs));
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.brake_pedal_travel_mm_j);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
         }
       }
 
       /* path info */
       ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Inverter/Signal Input5/S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output15/S-Function");
       ssSetRTModel(rts,GVCU_HIL_M);
       ssSetParentSS(rts, (NULL));
       ssSetRootSS(rts, rts);
@@ -18026,20 +18011,19 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       {
         mxArray **sfcnParams = (mxArray **)
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn41.params;
-        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsCount(rts, 7);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_il);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_jd);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_g);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_av);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_ny);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_k);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_hlb);
-        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_ca);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_m);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_p);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_a3);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_eo);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_hj);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_n);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_p);
       }
 
       /* registration */
-      sigin(rts);
+      sigout(rts);
       sfcnInitializeSizes(rts);
       sfcnInitializeSampleTimes(rts);
 
@@ -18049,22 +18033,22 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       sfcnTsMap[0] = 1;
 
       /* set compiled values of dynamic vector attributes */
-      ssSetOutputPortWidthAsInt(rts, 0, 1);
-      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetOutputPortComplexSignal(rts, 0, 0);
-      ssSetOutputPortFrameData(rts, 0, 0);
-      ssSetOutputPortUnit(rts, 0, 0);
-      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
       ssSetNumNonsampledZCsAsInt(rts, 0);
 
       /* Update connectivity flags for each port */
-      _ssSetOutputPortConnected(rts, 0, 1);
-      _ssSetOutputPortBeingMerged(rts, 0, 0);
+      _ssSetInputPortConnected(rts, 0, 1);
 
       /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S152>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S146>/S-Function (sigout) */
     {
       SimStruct *rts = GVCU_HIL_M->childSfunctions[42];
 
@@ -18114,13 +18098,853 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
 
       /* inputs */
       {
-        _ssSetNumInputPorts(rts, 12);
+        _ssSetNumInputPorts(rts, 1);
         ssSetPortInfoForInputs(rts,
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn42.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn42.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
           &GVCU_HIL_M->NonInlinedSFcns.Sfcn42.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn42.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.brake_pedal_travel_perc);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output20/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn42.params;
+        ssSetSFcnParamsCount(rts, 7);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_gp);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_f5);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_k);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_k);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_km);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_mo);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_hl);
+      }
+
+      /* registration */
+      sigout(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetInputPortConnected(rts, 0, 1);
+
+      /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S158>/S-Function (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[43];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn43.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn43.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn43.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[43]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[43]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[43]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[43]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[43]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[43]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[43]);
+      }
+
+      /* inputs */
+      {
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.brake_switch);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output8/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.params;
+        ssSetSFcnParamsCount(rts, 7);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_hb);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_at);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_hs);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_e2);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_pq);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_m3);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_b);
+      }
+
+      /* registration */
+      sigout(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetInputPortConnected(rts, 0, 1);
+
+      /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S135>/S-Function (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[44];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn44.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn44.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn44.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[44]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[44]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[44]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[44]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[44]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[44]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[44]);
+      }
+
+      /* outputs */
+      {
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.outputPortInfo[0]);
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.outputPortInfo[0]);
+        _ssSetNumOutputPorts(rts, 1);
+        _ssSetPortInfo2ForOutputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.outputPortUnits[0]);
+        ssSetOutputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.outputPortCoSimAttribute[0]);
+        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          _ssSetOutputPortNumDimensions(rts, 0, 1);
+          ssSetOutputPortWidthAsInt(rts, 0, 1);
+          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_hp));
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Input/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.params;
+        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_iq);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_fu);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_bs);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_hy);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_hb);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_pd);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_aq);
+        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_m);
+      }
+
+      /* registration */
+      sigin(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetOutputPortWidthAsInt(rts, 0, 1);
+      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetOutputPortComplexSignal(rts, 0, 0);
+      ssSetOutputPortFrameData(rts, 0, 0);
+      ssSetOutputPortUnit(rts, 0, 0);
+      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetOutputPortConnected(rts, 0, 1);
+      _ssSetOutputPortBeingMerged(rts, 0, 0);
+
+      /* Update the BufferDstPort flags for each input port */
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S153>/S-Function (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[45];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn45.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn45.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn45.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[45]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[45]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[45]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[45]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[45]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[45]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[45]);
+      }
+
+      /* inputs */
+      {
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.SFunction_hp);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output3/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.params;
+        ssSetSFcnParamsCount(rts, 7);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_nf);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_lr);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_m1);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ka);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_dv);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_aw);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_ic);
+      }
+
+      /* registration */
+      sigout(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetInputPortConnected(rts, 0, 1);
+
+      /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S137>/S-Function (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[46];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn46.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn46.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn46.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[46]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[46]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[46]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[46]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[46]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[46]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[46]);
+      }
+
+      /* outputs */
+      {
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.outputPortInfo[0]);
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.outputPortInfo[0]);
+        _ssSetNumOutputPorts(rts, 1);
+        _ssSetPortInfo2ForOutputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.outputPortUnits[0]);
+        ssSetOutputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.outputPortCoSimAttribute[0]);
+        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          _ssSetOutputPortNumDimensions(rts, 0, 1);
+          ssSetOutputPortWidthAsInt(rts, 0, 1);
+          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_gn));
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Input2/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.params;
+        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_nx);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_lru);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_lh);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_bl);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_lt);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_om);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_gw);
+        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_c);
+      }
+
+      /* registration */
+      sigin(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetOutputPortWidthAsInt(rts, 0, 1);
+      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetOutputPortComplexSignal(rts, 0, 0);
+      ssSetOutputPortFrameData(rts, 0, 0);
+      ssSetOutputPortUnit(rts, 0, 0);
+      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetOutputPortConnected(rts, 0, 1);
+      _ssSetOutputPortBeingMerged(rts, 0, 0);
+
+      /* Update the BufferDstPort flags for each input port */
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S139>/S-Function (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[47];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn47.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn47.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn47.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[47]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[47]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[47]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[47]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[47]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[47]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[47]);
+      }
+
+      /* inputs */
+      {
+        _ssSetNumInputPorts(rts, 1);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.inputPortUnits[0]);
+        ssSetInputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForInputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.inputPortCoSimAttribute[0]);
+        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          ssSetInputPortRequiredContiguous(rts, 0, 1);
+          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.SFunction_gn);
+          _ssSetInputPortNumDimensions(rts, 0, 1);
+          ssSetInputPortWidthAsInt(rts, 0, 1);
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/GVCU - HiL/Signal Output10/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.params;
+        ssSetSFcnParamsCount(rts, 7);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_fm);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_ao);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_bn);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_n0);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_m);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_bkg);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_k);
+      }
+
+      /* registration */
+      sigout(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetInputPortWidthAsInt(rts, 0, 1);
+      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetInputPortComplexSignal(rts, 0, 0);
+      ssSetInputPortFrameData(rts, 0, 0);
+      ssSetInputPortUnit(rts, 0, 0);
+      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetInputPortConnected(rts, 0, 1);
+
+      /* Update the BufferDstPort flags for each input port */
+      ssSetInputPortBufferDstPort(rts, 0, -1);
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S174>/S-Function (sigin) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[48];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn48.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn48.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn48.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[48]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[48]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[48]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[48]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[48]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[48]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[48]);
+      }
+
+      /* outputs */
+      {
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.outputPortInfo[0]);
+        ssSetPortInfoForOutputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.outputPortInfo[0]);
+        _ssSetNumOutputPorts(rts, 1);
+        _ssSetPortInfo2ForOutputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.outputPortUnits[0]);
+        ssSetOutputPortUnit(rts, 0, 0);
+        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.outputPortCoSimAttribute[0]);
+        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+
+        /* port 0 */
+        {
+          _ssSetOutputPortNumDimensions(rts, 0, 1);
+          ssSetOutputPortWidthAsInt(rts, 0, 1);
+          ssSetOutputPortSignal(rts, 0, ((real_T *) &GVCU_HIL_B.SFunction_bs));
+        }
+      }
+
+      /* path info */
+      ssSetModelName(rts, "S-Function");
+      ssSetPath(rts, "GVCU_HIL/Inverter/Signal Input5/S-Function");
+      ssSetRTModel(rts,GVCU_HIL_M);
+      ssSetParentSS(rts, (NULL));
+      ssSetRootSS(rts, rts);
+      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
+
+      /* parameters */
+      {
+        mxArray **sfcnParams = (mxArray **)
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.params;
+        ssSetSFcnParamsCount(rts, 8);
+        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
+        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_il);
+        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_jd);
+        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_g2);
+        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_av);
+        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_ny);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_k);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_hlb);
+        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_ca);
+      }
+
+      /* registration */
+      sigin(rts);
+      sfcnInitializeSizes(rts);
+      sfcnInitializeSampleTimes(rts);
+
+      /* adjust sample time */
+      ssSetSampleTime(rts, 0, 0.0002);
+      ssSetOffsetTime(rts, 0, 0.0);
+      sfcnTsMap[0] = 1;
+
+      /* set compiled values of dynamic vector attributes */
+      ssSetOutputPortWidthAsInt(rts, 0, 1);
+      ssSetOutputPortDataType(rts, 0, SS_DOUBLE);
+      ssSetOutputPortComplexSignal(rts, 0, 0);
+      ssSetOutputPortFrameData(rts, 0, 0);
+      ssSetOutputPortUnit(rts, 0, 0);
+      ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
+      ssSetNumNonsampledZCsAsInt(rts, 0);
+
+      /* Update connectivity flags for each port */
+      _ssSetOutputPortConnected(rts, 0, 1);
+      _ssSetOutputPortBeingMerged(rts, 0, 0);
+
+      /* Update the BufferDstPort flags for each input port */
+    }
+
+    /* Level2 S-Function Block: GVCU_HIL/<S163>/S-Function_1 (sigout) */
+    {
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[49];
+
+      /* timing info */
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn49.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn49.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn49.sfcnTsMap;
+      (void) memset((void*)sfcnPeriod, 0,
+                    sizeof(time_T)*1);
+      (void) memset((void*)sfcnOffset, 0,
+                    sizeof(time_T)*1);
+      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
+      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
+      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
+
+      {
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[49]);
+      }
+
+      _ssSetBlkInfo2PortInfo2Ptr(rts,
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[49]);
+
+      /* Set up the mdlInfo pointer */
+      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
+
+      /* Allocate memory of model methods 2 */
+      {
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[49]);
+      }
+
+      /* Allocate memory of model methods 3 */
+      {
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[49]);
+      }
+
+      /* Allocate memory of model methods 4 */
+      {
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[49]);
+      }
+
+      /* Allocate memory for states auxilliary information */
+      {
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[49]);
+        ssSetPeriodicStatesInfo(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[49]);
+      }
+
+      /* inputs */
+      {
+        _ssSetNumInputPorts(rts, 12);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.inputPortInfo[0]);
+        ssSetPortInfoForInputs(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.inputPortInfo[0]);
+        _ssSetPortInfo2ForInputUnits(rts,
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -18134,7 +18958,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 10, 0);
         ssSetInputPortUnit(rts, 11, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn42.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -18256,7 +19080,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn42.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.params;
         ssSetSFcnParamsCount(rts, 18);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_a);
@@ -18265,7 +19089,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_1_P4_Size_lz);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_1_P5_Size_he);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_1_P6_Size_l);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_1_P7_Size_f);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_1_P7_Size_fw);
         ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_1_P8_Size_f);
         ssSetSFcnParam(rts, 8, (mxArray*)GVCU_HIL_P.SFunction_1_P9_Size_j);
         ssSetSFcnParam(rts, 9, (mxArray*)GVCU_HIL_P.SFunction_1_P10_Size_bm);
@@ -18393,14 +19217,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 11, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S160>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S171>/S-Function (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[43];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[50];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn43.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn43.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn43.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn50.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn50.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn50.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -18410,49 +19234,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[43]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[50]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[43]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[50]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[43]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[50]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[43]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[50]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[43]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[50]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[43]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[50]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[43]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[50]);
       }
 
       /* outputs */
       {
         ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.outputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.outputPortInfo[0]);
         ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.outputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.outputPortInfo[0]);
         _ssSetNumOutputPorts(rts, 1);
         _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.outputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.outputPortUnits[0]);
         ssSetOutputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.outputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.outputPortCoSimAttribute[0]);
         ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -18474,7 +19298,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn43.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.params;
         ssSetSFcnParamsCount(rts, 8);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_me);
@@ -18483,7 +19307,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_cky);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_bf);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_o5);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_ds);
+        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_ds4);
         ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_p);
       }
 
@@ -18513,14 +19337,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* Update the BufferDstPort flags for each input port */
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S161>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S172>/S-Function (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[44];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[51];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn44.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn44.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn44.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn51.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn51.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn51.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -18530,49 +19354,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[44]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[51]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[44]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[51]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[44]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[51]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[44]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[51]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[44]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[51]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[44]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[51]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[44]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[51]);
       }
 
       /* outputs */
       {
         ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.outputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.outputPortInfo[0]);
         ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.outputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.outputPortInfo[0]);
         _ssSetNumOutputPorts(rts, 1);
         _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.outputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.outputPortUnits[0]);
         ssSetOutputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.outputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.outputPortCoSimAttribute[0]);
         ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -18594,7 +19418,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn44.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.params;
         ssSetSFcnParamsCount(rts, 8);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_ls);
@@ -18633,14 +19457,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* Update the BufferDstPort flags for each input port */
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S162>/S-Function (sigin) */
+    /* Level2 S-Function Block: GVCU_HIL/<S173>/S-Function (sigin) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[45];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[52];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn45.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn45.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn45.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn52.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn52.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn52.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -18650,49 +19474,49 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[45]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[52]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[45]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[52]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[45]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[52]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[45]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[52]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[45]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[52]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[45]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[52]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[45]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[52]);
       }
 
       /* outputs */
       {
         ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.outputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.outputPortInfo[0]);
         ssSetPortInfoForOutputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.outputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.outputPortInfo[0]);
         _ssSetNumOutputPorts(rts, 1);
         _ssSetPortInfo2ForOutputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.outputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.outputPortUnits[0]);
         ssSetOutputPortUnit(rts, 0, 0);
         _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.outputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.outputPortCoSimAttribute[0]);
         ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
 
         /* port 0 */
@@ -18714,7 +19538,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn45.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.params;
         ssSetSFcnParamsCount(rts, 8);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_ms);
@@ -18722,7 +19546,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_je);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_kb);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_hv);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_d2);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_d2a);
         ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_iu);
         ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_P8_Size_c4);
       }
@@ -18753,14 +19577,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* Update the BufferDstPort flags for each input port */
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S153>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S164>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[46];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[53];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn46.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn46.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn46.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn53.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn53.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn53.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -18770,46 +19594,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[46]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[53]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[46]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[53]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[46]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[53]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[46]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[53]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[46]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[53]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[46]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[53]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[46]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[53]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 6);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -18817,7 +19641,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 4, 0);
         ssSetInputPortUnit(rts, 5, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -18885,7 +19709,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn46.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.params;
         ssSetSFcnParamsCount(rts, 12);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_b);
@@ -18968,14 +19792,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 5, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S154>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S165>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[47];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[54];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn47.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn47.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn47.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn54.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn54.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn54.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -18985,46 +19809,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[47]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[54]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[47]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[54]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[47]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[54]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[47]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[54]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[47]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[54]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[47]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[54]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[47]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[54]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 50);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -19076,7 +19900,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 48, 0);
         ssSetInputPortUnit(rts, 49, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -19542,7 +20366,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn47.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.params;
         ssSetSFcnParamsCount(rts, 56);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_na);
@@ -19554,7 +20378,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_1_P7_Size_eb);
         ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_1_P8_Size_f1);
         ssSetSFcnParam(rts, 8, (mxArray*)GVCU_HIL_P.SFunction_1_P9_Size_nl);
-        ssSetSFcnParam(rts, 9, (mxArray*)GVCU_HIL_P.SFunction_1_P10_Size_d);
+        ssSetSFcnParam(rts, 9, (mxArray*)GVCU_HIL_P.SFunction_1_P10_Size_di);
         ssSetSFcnParam(rts, 10, (mxArray*)GVCU_HIL_P.SFunction_1_P11_Size_o);
         ssSetSFcnParam(rts, 11, (mxArray*)GVCU_HIL_P.SFunction_1_P12_Size_p);
         ssSetSFcnParam(rts, 12, (mxArray*)GVCU_HIL_P.SFunction_1_P13_Size_la);
@@ -20021,14 +20845,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 49, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S155>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S166>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[48];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[55];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn48.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn48.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn48.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn55.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn55.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn55.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -20038,46 +20862,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[48]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[55]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[48]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[55]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[48]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[55]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[48]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[55]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[48]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[55]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[48]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[55]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[48]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[55]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 8);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -20087,7 +20911,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 6, 0);
         ssSetInputPortUnit(rts, 7, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -20173,7 +20997,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn48.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.params;
         ssSetSFcnParamsCount(rts, 14);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_m);
@@ -20183,7 +21007,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_1_P5_Size_j);
         ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_1_P6_Size_ld);
         ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_1_P7_Size_od);
-        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_1_P8_Size_k);
+        ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_1_P8_Size_kx);
         ssSetSFcnParam(rts, 8, (mxArray*)GVCU_HIL_P.SFunction_1_P9_Size_od);
         ssSetSFcnParam(rts, 9, (mxArray*)GVCU_HIL_P.SFunction_1_P10_Size_o5);
         ssSetSFcnParam(rts, 10, (mxArray*)GVCU_HIL_P.SFunction_1_P11_Size_fj);
@@ -20274,14 +21098,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 7, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S156>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S167>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[49];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[56];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn49.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn49.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn49.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn56.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn56.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn56.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -20291,46 +21115,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[49]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[56]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[49]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[56]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[49]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[56]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[49]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[56]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[49]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[56]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[49]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[56]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[49]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[56]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 6);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -20338,7 +21162,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 4, 0);
         ssSetInputPortUnit(rts, 5, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -20406,7 +21230,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn49.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.params;
         ssSetSFcnParamsCount(rts, 12);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_h);
@@ -20414,7 +21238,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_1_P3_Size_e);
         ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_1_P4_Size_fo);
         ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_1_P5_Size_n);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_1_P6_Size_e);
+        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_1_P6_Size_ec);
         ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_1_P7_Size_dz);
         ssSetSFcnParam(rts, 7, (mxArray*)GVCU_HIL_P.SFunction_1_P8_Size_h);
         ssSetSFcnParam(rts, 8, (mxArray*)GVCU_HIL_P.SFunction_1_P9_Size_k3);
@@ -20489,14 +21313,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 5, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S157>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S168>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[50];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[57];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn50.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn50.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn50.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn57.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn57.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn57.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -20506,46 +21330,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[50]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[57]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[50]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[57]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[50]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[57]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[50]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[57]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[50]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[57]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[50]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[57]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[50]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[57]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 6);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -20553,7 +21377,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 4, 0);
         ssSetInputPortUnit(rts, 5, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -20621,7 +21445,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn50.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.params;
         ssSetSFcnParamsCount(rts, 12);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_ll);
@@ -20704,14 +21528,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 5, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S158>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S169>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[51];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[58];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn51.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn51.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn51.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn58.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn58.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn58.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -20721,46 +21545,46 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[51]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[58]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[51]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[58]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[51]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[58]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[51]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[58]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[51]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[58]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[51]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[58]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[51]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[58]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 30);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
@@ -20792,7 +21616,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
         ssSetInputPortUnit(rts, 28, 0);
         ssSetInputPortUnit(rts, 29, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -21076,7 +21900,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn51.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.params;
         ssSetSFcnParamsCount(rts, 36);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_k);
@@ -21375,14 +22199,14 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 29, -1);
     }
 
-    /* Level2 S-Function Block: GVCU_HIL/<S159>/S-Function_1 (sigout) */
+    /* Level2 S-Function Block: GVCU_HIL/<S170>/S-Function_1 (sigout) */
     {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[52];
+      SimStruct *rts = GVCU_HIL_M->childSfunctions[59];
 
       /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn52.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn52.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn52.sfcnTsMap;
+      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn59.sfcnPeriod;
+      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn59.sfcnOffset;
+      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn59.sfcnTsMap;
       (void) memset((void*)sfcnPeriod, 0,
                     sizeof(time_T)*1);
       (void) memset((void*)sfcnOffset, 0,
@@ -21392,51 +22216,51 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
 
       {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[52]);
+        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[59]);
       }
 
       _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[52]);
+        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[59]);
 
       /* Set up the mdlInfo pointer */
       ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
 
       /* Allocate memory of model methods 2 */
       {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[52]);
+        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[59]);
       }
 
       /* Allocate memory of model methods 3 */
       {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[52]);
+        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[59]);
       }
 
       /* Allocate memory of model methods 4 */
       {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[52]);
+        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[59]);
       }
 
       /* Allocate memory for states auxilliary information */
       {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[52]);
+        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[59]);
         ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[52]);
+          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[59]);
       }
 
       /* inputs */
       {
         _ssSetNumInputPorts(rts, 3);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.inputPortInfo[0]);
         ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.inputPortInfo[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.inputPortInfo[0]);
         _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.inputPortUnits[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.inputPortUnits[0]);
         ssSetInputPortUnit(rts, 0, 0);
         ssSetInputPortUnit(rts, 1, 0);
         ssSetInputPortUnit(rts, 2, 0);
         _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.inputPortCoSimAttribute[0]);
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.inputPortCoSimAttribute[0]);
         ssSetInputPortIsContinuousQuantity(rts, 0, 0);
         ssSetInputPortIsContinuousQuantity(rts, 1, 0);
         ssSetInputPortIsContinuousQuantity(rts, 2, 0);
@@ -21477,7 +22301,7 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       /* parameters */
       {
         mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn52.params;
+          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.params;
         ssSetSFcnParamsCount(rts, 9);
         ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
         ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_1_P1_Size_op);
@@ -21532,1446 +22356,6 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       ssSetInputPortBufferDstPort(rts, 1, -1);
       ssSetInputPortBufferDstPort(rts, 2, -1);
     }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S535>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[53];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn53.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn53.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn53.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[53]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[53]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[53]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[53]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[53]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[53]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[53]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Saturation_cd);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn53.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_o2);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_nu);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_bnj);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_hi);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_hr);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_b5);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_iy);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S536>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[54];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn54.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn54.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn54.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[54]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[54]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[54]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[54]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[54]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[54]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[54]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Saturation1_i);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output1/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn54.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_k0);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_pw);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_d);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_k1);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_kq);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_ls);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_kl);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S537>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[55];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn55.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn55.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn55.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[55]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[55]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[55]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[55]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[55]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[55]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[55]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.wheel_direction);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output10/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn55.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_id);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_dh);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_p0);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_co);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_p3);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_h0);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_fc);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S538>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[56];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn56.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn56.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn56.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[56]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[56]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[56]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[56]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[56]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[56]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[56]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.wheel_direction);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output11/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn56.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_j);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_pwa);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_bp);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_bw);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_d2);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_hs);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_hk);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S539>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[57];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn57.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn57.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn57.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[57]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[57]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[57]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[57]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[57]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[57]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[57]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Saturation2_p);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output2/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn57.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_g0);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_oj);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_gm);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_kf);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_ix);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_nb);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_fcc);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S540>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[58];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn58.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn58.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn58.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[58]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[58]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[58]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[58]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[58]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[58]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[58]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Saturation3);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output3/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn58.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_ch);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_hq);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_px);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ey);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_nd);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_io);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_cv);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S545>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[59];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn59.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn59.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn59.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[59]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[59]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[59]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[59]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[59]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[59]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[59]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.wheel_direction);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output8/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn59.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_je);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_js);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_me);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_hb);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_df);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_if);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_j);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S546>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[60];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn60.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn60.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn60.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[60]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[60]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[60]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[60]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[60]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[60]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[60]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn60.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn60.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn60.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn60.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.wheel_direction);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output9/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn60.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_gv);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_nk);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_jd);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_kx);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_jc);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_nbr);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_br);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S541>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[61];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn61.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn61.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn61.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[61]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[61]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[61]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[61]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[61]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[61]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[61]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn61.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn61.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn61.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn61.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output4/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn61.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_ol);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_fv);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_id);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_ln);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_gz);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_e);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_m);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S542>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[62];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn62.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn62.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn62.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[62]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[62]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[62]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[62]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[62]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[62]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[62]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn62.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn62.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn62.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn62.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant2);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output5/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn62.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_mf);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_dg);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_gw);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_lw);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_fg);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_p2);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_e);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S543>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[63];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn63.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn63.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn63.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[63]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[63]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[63]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[63]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[63]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[63]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[63]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn63.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn63.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn63.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn63.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant3);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output6/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn63.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_l0);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_g0);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_dy);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_lm);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_of);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_lfe);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_pk);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
-
-    /* Level2 S-Function Block: GVCU_HIL/<S544>/S-Function (sigout) */
-    {
-      SimStruct *rts = GVCU_HIL_M->childSfunctions[64];
-
-      /* timing info */
-      time_T *sfcnPeriod = GVCU_HIL_M->NonInlinedSFcns.Sfcn64.sfcnPeriod;
-      time_T *sfcnOffset = GVCU_HIL_M->NonInlinedSFcns.Sfcn64.sfcnOffset;
-      int_T *sfcnTsMap = GVCU_HIL_M->NonInlinedSFcns.Sfcn64.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &GVCU_HIL_M->NonInlinedSFcns.blkInfo2[64]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts,
-        &GVCU_HIL_M->NonInlinedSFcns.inputOutputPortInfo2[64]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, GVCU_HIL_M->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &GVCU_HIL_M->NonInlinedSFcns.methods2[64]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &GVCU_HIL_M->NonInlinedSFcns.methods3[64]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &GVCU_HIL_M->NonInlinedSFcns.methods4[64]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &GVCU_HIL_M->NonInlinedSFcns.statesInfo2[64]);
-        ssSetPeriodicStatesInfo(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.periodicStatesInfo[64]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 1);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn64.inputPortInfo[0]);
-        ssSetPortInfoForInputs(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn64.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn64.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn64.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &GVCU_HIL_B.Constant4);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidthAsInt(rts, 0, 1);
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "S-Function");
-      ssSetPath(rts, "GVCU_HIL/Wheel_rates/Signal Output7/S-Function");
-      ssSetRTModel(rts,GVCU_HIL_M);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* parameters */
-      {
-        mxArray **sfcnParams = (mxArray **)
-          &GVCU_HIL_M->NonInlinedSFcns.Sfcn64.params;
-        ssSetSFcnParamsCount(rts, 7);
-        ssSetSFcnParamsPtr(rts, &sfcnParams[0]);
-        ssSetSFcnParam(rts, 0, (mxArray*)GVCU_HIL_P.SFunction_P1_Size_l3);
-        ssSetSFcnParam(rts, 1, (mxArray*)GVCU_HIL_P.SFunction_P2_Size_f5);
-        ssSetSFcnParam(rts, 2, (mxArray*)GVCU_HIL_P.SFunction_P3_Size_ab);
-        ssSetSFcnParam(rts, 3, (mxArray*)GVCU_HIL_P.SFunction_P4_Size_lo);
-        ssSetSFcnParam(rts, 4, (mxArray*)GVCU_HIL_P.SFunction_P5_Size_i1);
-        ssSetSFcnParam(rts, 5, (mxArray*)GVCU_HIL_P.SFunction_P6_Size_ku);
-        ssSetSFcnParam(rts, 6, (mxArray*)GVCU_HIL_P.SFunction_P7_Size_cf);
-      }
-
-      /* registration */
-      sigout(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.0002);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetInputPortWidthAsInt(rts, 0, 1);
-      ssSetInputPortDataType(rts, 0, SS_DOUBLE);
-      ssSetInputPortComplexSignal(rts, 0, 0);
-      ssSetInputPortFrameData(rts, 0, 0);
-      ssSetInputPortUnit(rts, 0, 0);
-      ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-      ssSetNumNonsampledZCsAsInt(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-    }
   }
 
   /* user code (registration function exit) */
@@ -22981,6 +22365,51 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
     }
 
     GVCU_HIL_DW.SFunction_SysVar = (void*)cnCreateInputSystemVariable(
+      "Checker_Simulink",
+      "input_mode",
+      1,
+      (int_T)-1.0,
+      false,
+      false,
+      1.0);
+  }
+
+  {
+    if (NULL != GVCU_HIL_DW.SFunction_SysVar_l) {
+      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_l);
+    }
+
+    GVCU_HIL_DW.SFunction_SysVar_l = (void*)cnCreateInputSystemVariable(
+      "Checker_Simulink",
+      "Panel_brake_pedal_perc",
+      1,
+      (int_T)-1.0,
+      false,
+      false,
+      1.0);
+  }
+
+  {
+    if (NULL != GVCU_HIL_DW.SFunction_SysVar_c) {
+      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_c);
+    }
+
+    GVCU_HIL_DW.SFunction_SysVar_c = (void*)cnCreateInputSystemVariable(
+      "Checker_Simulink",
+      "drive_cycle_idx",
+      1,
+      (int_T)-1.0,
+      false,
+      false,
+      1.0);
+  }
+
+  {
+    if (NULL != GVCU_HIL_DW.SFunction_SysVar_m) {
+      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_m);
+    }
+
+    GVCU_HIL_DW.SFunction_SysVar_m = (void*)cnCreateInputSystemVariable(
       "Checker_Simulink",
       "RefVel",
       1,
@@ -23036,36 +22465,6 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
   }
 
   {
-    if (NULL != GVCU_HIL_DW.SFunction_SysVar_h) {
-      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_h);
-    }
-
-    GVCU_HIL_DW.SFunction_SysVar_h = (void*)cnCreateInputSystemVariable(
-      "Checker_Simulink",
-      "input_mode",
-      1,
-      (int_T)-1.0,
-      false,
-      false,
-      1.0);
-  }
-
-  {
-    if (NULL != GVCU_HIL_DW.SFunction_SysVar_c) {
-      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_c);
-    }
-
-    GVCU_HIL_DW.SFunction_SysVar_c = (void*)cnCreateInputSystemVariable(
-      "Checker_Simulink",
-      "drive_cycle_idx",
-      1,
-      (int_T)-1.0,
-      false,
-      false,
-      1.0);
-  }
-
-  {
     if (NULL != GVCU_HIL_DW.SFunction_SysVar_b4) {
       cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_b4);
     }
@@ -23111,26 +22510,11 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
   }
 
   {
-    if (NULL != GVCU_HIL_DW.SFunction_SysVar_l) {
-      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_l);
+    if (NULL != GVCU_HIL_DW.SFunction_SysVar_h) {
+      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_h);
     }
 
-    GVCU_HIL_DW.SFunction_SysVar_l = (void*)cnCreateInputSystemVariable(
-      "Checker_Simulink",
-      "Panel_brake_pedal_perc",
-      1,
-      (int_T)-1.0,
-      false,
-      false,
-      1.0);
-  }
-
-  {
-    if (NULL != GVCU_HIL_DW.SFunction_SysVar_hn) {
-      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_hn);
-    }
-
-    GVCU_HIL_DW.SFunction_SysVar_hn = (void*)cnCreateOutputSystemVariable(
+    GVCU_HIL_DW.SFunction_SysVar_h = (void*)cnCreateOutputSystemVariable(
       "VehicleRefVel",
       "DecelCmd",
       1,
@@ -23516,11 +22900,11 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
   }
 
   {
-    if (NULL != GVCU_HIL_DW.SFunction_SysVar_m) {
-      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_m);
+    if (NULL != GVCU_HIL_DW.SFunction_SysVar_mc) {
+      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_mc);
     }
 
-    GVCU_HIL_DW.SFunction_SysVar_m = (void*)cnCreateOutputSystemVariable(
+    GVCU_HIL_DW.SFunction_SysVar_mc = (void*)cnCreateOutputSystemVariable(
       "Checker_Simulink",
       "Force_rear_wheel",
       1,
@@ -23740,6 +23124,66 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
       1.0);
   }
 
+  {
+    if (NULL != GVCU_HIL_DW.SFunction_SysVar_bd) {
+      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_bd);
+    }
+
+    GVCU_HIL_DW.SFunction_SysVar_bd = (void*)cnCreateOutputSystemVariable(
+      "VTS::VT7820_2_Channel4",
+      "RotationFreq",
+      1,
+      (int_T)-1.0,
+      false,
+      false,
+      1.0);
+  }
+
+  {
+    if (NULL != GVCU_HIL_DW.SFunction_SysVar_eq) {
+      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_eq);
+    }
+
+    GVCU_HIL_DW.SFunction_SysVar_eq = (void*)cnCreateOutputSystemVariable(
+      "VTS::VT7820_2_Channel1",
+      "RotationFreq",
+      1,
+      (int_T)-1.0,
+      false,
+      false,
+      1.0);
+  }
+
+  {
+    if (NULL != GVCU_HIL_DW.SFunction_SysVar_or) {
+      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_or);
+    }
+
+    GVCU_HIL_DW.SFunction_SysVar_or = (void*)cnCreateOutputSystemVariable(
+      "VTS::VT7820_2_Channel2",
+      "RotationFreq",
+      1,
+      (int_T)-1.0,
+      false,
+      false,
+      1.0);
+  }
+
+  {
+    if (NULL != GVCU_HIL_DW.SFunction_SysVar_hf) {
+      cnReleaseSystemVariable(GVCU_HIL_DW.SFunction_SysVar_hf);
+    }
+
+    GVCU_HIL_DW.SFunction_SysVar_hf = (void*)cnCreateOutputSystemVariable(
+      "VTS::VT7820_2_Channel3",
+      "RotationFreq",
+      1,
+      (int_T)-1.0,
+      false,
+      false,
+      1.0);
+  }
+
   /* Initialize Sizes */
   GVCU_HIL_M->Sizes.numContStates = (35);/* Number of continuous states */
   GVCU_HIL_M->Sizes.numPeriodicContStates = (0);
@@ -23748,9 +23192,9 @@ RT_MODEL_GVCU_HIL_T *GVCU_HIL(void)
   GVCU_HIL_M->Sizes.numU = (0);        /* Number of model inputs */
   GVCU_HIL_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   GVCU_HIL_M->Sizes.numSampTimes = (7);/* Number of sample times */
-  GVCU_HIL_M->Sizes.numBlocks = (1577);/* Number of blocks */
-  GVCU_HIL_M->Sizes.numBlockIO = (464);/* Number of block outputs */
-  GVCU_HIL_M->Sizes.numBlockPrms = (94082);/* Sum of parameter "widths" */
+  GVCU_HIL_M->Sizes.numBlocks = (1587);/* Number of blocks */
+  GVCU_HIL_M->Sizes.numBlockIO = (469);/* Number of block outputs */
+  GVCU_HIL_M->Sizes.numBlockPrms = (93734);/* Sum of parameter "widths" */
   return GVCU_HIL_M;
 }
 
